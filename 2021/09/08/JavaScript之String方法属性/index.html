@@ -1,0 +1,700 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="Keven">
+  <meta name="keywords" content="">
+  
+  <title>JavaScript之String方法属性 - Keven&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":60,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"siteId=16939915","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 50vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Keven's Blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tools/">
+                <i class="iconfont icon-th-large"></i>
+                工具
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/example.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.2)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="JavaScript之String方法属性">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-author" aria-hidden="true"></i>
+      Keven
+    </span>
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-09-08 10:00" pubdate>
+        2021年9月8日
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2.9k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      34
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">JavaScript之String方法属性</h1>
+            
+            <div class="markdown-body">
+              <p>参考：<br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903927754784781">https://juejin.cn/post/6844903927754784781</a> 。<br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6921593483757092878">https://juejin.cn/post/6921593483757092878</a> 。<br><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String">https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String</a> 。</p>
+<h1 id="字符串方法"><a href="#字符串方法" class="headerlink" title="字符串方法"></a>字符串方法</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-built_in">String</span>.raw()<br><span class="hljs-built_in">String</span>.fromCharcode()<br><span class="hljs-built_in">String</span>.fromCodePoint()<br></code></pre></td></tr></table></figure>
+
+<h2 id="String-raw"><a href="#String-raw" class="headerlink" title="String.raw()"></a>String.raw()</h2><p>String.raw() 方法用来获取一个模板字符串的原始字符串。</p>
+<h2 id="String-fromCharcode"><a href="#String-fromCharcode" class="headerlink" title="String.fromCharcode()"></a>String.fromCharcode()</h2><p>String.fromCharCode() 方法返回由指定的 UTF-16 代码单元序列创建的字符串。</p>
+<h2 id="String-fromCodePoint"><a href="#String-fromCodePoint" class="headerlink" title="String.fromCodePoint()"></a>String.fromCodePoint()</h2><p>String.fromCodePoint() 方法返回使用指定的代码点序列创建的字符串。</p>
+<h1 id="字符串实例属性"><a href="#字符串实例属性" class="headerlink" title="字符串实例属性"></a>字符串实例属性</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-built_in">String</span>.prototype.length<br></code></pre></td></tr></table></figure>
+
+<h2 id="length-字符串长度"><a href="#length-字符串长度" class="headerlink" title="length 字符串长度"></a>length 字符串长度</h2><p>length 属性表示字符串的长度，不可以设置该属性来改变字符串的长度。</p>
+<h1 id="字符串实例方法"><a href="#字符串实例方法" class="headerlink" title="字符串实例方法"></a>字符串实例方法</h1><p>字符串实例方法都不会改变原字符串。</p>
+<h2 id="增删改替"><a href="#增删改替" class="headerlink" title="增删改替"></a>增删改替</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-built_in">String</span>.prototype.repeat()<br><span class="hljs-built_in">String</span>.prototype.split()<br><span class="hljs-built_in">String</span>.prototype.slice()<br><span class="hljs-built_in">String</span>.prototype.substring()<br><span class="hljs-built_in">String</span>.prototype.concat()<br><span class="hljs-built_in">String</span>.prototype.replace()<br><span class="hljs-built_in">String</span>.prototype.replaceAll()<br><span class="hljs-built_in">String</span>.prototype.padEnd()<br><span class="hljs-built_in">String</span>.prototype.padStart()<br><span class="hljs-built_in">String</span>.prototype.trim()<br><span class="hljs-built_in">String</span>.prototype.trimEnd()<br><span class="hljs-built_in">String</span>.prototype.trimRight()<br><span class="hljs-built_in">String</span>.prototype.trimStart()<br><span class="hljs-built_in">String</span>.prototype.trimLeft()<br></code></pre></td></tr></table></figure>
+
+<h3 id="repeat-重复"><a href="#repeat-重复" class="headerlink" title="repeat() 重复"></a>repeat() 重复</h3><p>repeat() 方法构造并返回一个新字符串，新字符串包含被连接在一起的指定数量的字符串的副本。</p>
+<p>接收一个参数：</p>
+<ul>
+<li>count（可选）：表示在新构造的字符串中重复多少遍原字符串，默认为 0。</li>
+</ul>
+<h3 id="split-分割"><a href="#split-分割" class="headerlink" title="split() 分割"></a>split() 分割</h3><p>split() 方法使用指定的分隔符字符串，将调用该方法的字符串分割成子字符串数组并返回。</p>
+<p>接收两个参数：</p>
+<ul>
+<li>separator（可选）：指定表示每个拆分应发生的点的字符串。可以是一个字符串或正则表达式。若省略或者不出现分隔符，则返回的数组包含一个由整个字符串组成的元素；若为空字符串，则将原字符串中每个字符的数组形式返回。</li>
+<li>limit（可选）：限定返回的分割片段数量。默认不限定。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> str = <span class="hljs-string">&#x27;a,b,c,de,f&#x27;</span>;<br>str.split(<span class="hljs-string">&#x27;&#x27;</span>); <span class="hljs-comment">// [&#x27;a&#x27;, &#x27;,&#x27;, &#x27;b&#x27;, &#x27;,&#x27;, &#x27;c&#x27;, &#x27;,&#x27;, &#x27;d&#x27;, &#x27;e&#x27;, &#x27;,&#x27;, &#x27;f&#x27;]</span><br>str.split(<span class="hljs-string">&#x27;,&#x27;</span>); <span class="hljs-comment">// [&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;, &#x27;de&#x27;, &#x27;f&#x27;]</span><br>str.split(); <span class="hljs-comment">// [&#x27;a,b,c,de,f&#x27;]</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="slice-提取"><a href="#slice-提取" class="headerlink" title="slice() 提取"></a>slice() 提取</h3><p>slice() 方法提取调用该方法的字符串的一部分并返回。</p>
+<p>接收两个参数：</p>
+<ul>
+<li>beginIndex（必需）：从该索引处开始提取原字符串中的字符。接受负值。</li>
+<li>endIndex（可选）：在该索引处前结束提取字符串。默认提取完字符串。接受负值。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> str = <span class="hljs-string">&#x27;aaabbbccc&#x27;</span>;<br>str.slice(<span class="hljs-number">0</span>); <span class="hljs-comment">// &#x27;aaabbbccc&#x27;</span><br>str.slice(<span class="hljs-number">0</span>, <span class="hljs-number">3</span>); <span class="hljs-comment">// &#x27;aaa&#x27;</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="substring-截取"><a href="#substring-截取" class="headerlink" title="substring() 截取"></a>substring() 截取</h3><p>substring() 方法返回一个字符串在开始索引到结束索引之间的一个子集。</p>
+<p>接收两个参数：</p>
+<ul>
+<li>indexStart（必需）：从该索引处开始截取原字符串中的字符。接受负值。</li>
+<li>indexEnd（可选）：在该索引处前结束截取字符串。默认截取完字符串。接受负值。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> anyString = <span class="hljs-string">&quot;Mozilla&quot;</span>;<br><br><span class="hljs-comment">// 输出 &quot;Moz&quot;</span><br>anyString.substring(<span class="hljs-number">0</span>, <span class="hljs-number">3</span>));<br>anyString.substring(<span class="hljs-number">3</span>, <span class="hljs-number">0</span>));<br>anyString.substring(<span class="hljs-number">3</span>, -<span class="hljs-number">3</span>));<br>anyString.substring(<span class="hljs-number">3</span>, <span class="hljs-literal">NaN</span>));<br>anyString.substring(-<span class="hljs-number">2</span>, <span class="hljs-number">3</span>));<br>anyString.substring(<span class="hljs-literal">NaN</span>, <span class="hljs-number">3</span>));<br><br><span class="hljs-comment">// 输出 &quot;lla&quot;</span><br>anyString.substring(<span class="hljs-number">4</span>, <span class="hljs-number">7</span>));<br>anyString.substring(<span class="hljs-number">7</span>, <span class="hljs-number">4</span>));<br><br><span class="hljs-comment">// 输出 &quot;&quot;</span><br>anyString.substring(<span class="hljs-number">4</span>, <span class="hljs-number">4</span>));<br><br><span class="hljs-comment">// 输出 &quot;Mozill&quot;</span><br>anyString.substring(<span class="hljs-number">0</span>, <span class="hljs-number">6</span>));<br><br><span class="hljs-comment">// 输出 &quot;Mozilla&quot;</span><br>anyString.substring(<span class="hljs-number">0</span>, <span class="hljs-number">7</span>));<br>anyString.substring(<span class="hljs-number">0</span>, <span class="hljs-number">10</span>));<br></code></pre></td></tr></table></figure>
+
+<h3 id="concat-合并"><a href="#concat-合并" class="headerlink" title="concat() 合并"></a>concat() 合并</h3><p>concat() 方法将一个或多个字符串与原字符串连接合并，形成一个新的字符串并返回。</p>
+<p>接收参数：</p>
+<ul>
+<li>要合并的字符串。可以是任意多个。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> str = <span class="hljs-string">&#x27;aaa&#x27;</span>;<br>str.concat(<span class="hljs-string">&#x27;bbb&#x27;</span>); <span class="hljs-comment">// &#x27;aaabbb&#x27;</span><br>str.concat(<span class="hljs-string">&#x27;bbb&#x27;</span>, <span class="hljs-string">&#x27;ccc&#x27;</span>); <span class="hljs-comment">// &#x27;aaabbbccc&#x27;</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="replace-替换首个"><a href="#replace-替换首个" class="headerlink" title="replace() 替换首个"></a>replace() 替换首个</h3><p>replace() 方法返回一个由替换值替换第一个模式匹配项后的新字符串。模式可以是一个字符串或者一个正则表达式，替换值可以是一个字符串或者一个每次匹配都要调用的回调函数。</p>
+<p>接收参数：</p>
+<ul>
+<li>regexp：一个 RegExp 对象或者其字面量。该正则所匹配的内容会被第二个参数的返回值替换掉。</li>
+<li>substr：一个将被 newSubStr 替换的字符串。其被视为一整个字符串，而不是一个正则表达式。仅首个匹配项会被替换。</li>
+<li>newSubStr：用于替换掉第一个参数在原字符串中的匹配部分的字符串。该字符串中可以内插一些特殊的变量名。</li>
+<li>function：一个用来创建新子字符串的函数，该函数的返回值将替换掉第一个参数匹配到的结果。</li>
+</ul>
+<h3 id="replaceAll-替换所有"><a href="#replaceAll-替换所有" class="headerlink" title="replaceAll() 替换所有"></a>replaceAll() 替换所有</h3><p>replaceAll() 方法返回一个由替换值替换所有模式匹配项后的新字符串。模式可以是一个字符串或者一个正则表达式，替换值可以是一个字符串或者一个每次匹配都要调用的回调函数。</p>
+<p>接收参数：</p>
+<ul>
+<li>regexp：一个 RegExp 对象或者其字面量。该正则所匹配的内容会被第二个参数的返回值替换掉。</li>
+<li>substr：一个将被 newSubStr 替换的字符串。其被视为一整个字符串，而不是一个正则表达式。</li>
+<li>newSubStr：用于替换掉第一个参数在原字符串中的匹配部分的字符串。该字符串中可以内插一些特殊的变量名。</li>
+<li>function：一个用来创建新子字符串的函数，该函数的返回值将替换掉第一个参数匹配到的结果。</li>
+</ul>
+<h3 id="padEnd-结尾填充"><a href="#padEnd-结尾填充" class="headerlink" title="padEnd() 结尾填充"></a>padEnd() 结尾填充</h3><p>padEnd() 方法用一个字符串从当前字符串的末尾（右侧）开始填充当前字符串，返回填充后字符串。</p>
+<p>接收两个参数：</p>
+<ul>
+<li>targetLength（必需）：需填充到的目标长度。若其小于当前字符串的长度，则返回当前字符串本身。</li>
+<li>padString （可选）：用于填充的字符串。默认为空格。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> str = <span class="hljs-string">&#x27;aaa&#x27;</span>;<br>str.padEnd(<span class="hljs-number">5</span>); <span class="hljs-comment">// &#x27;aaa  &#x27;</span><br>str.padEnd(<span class="hljs-number">5</span>, <span class="hljs-string">&#x27;s&#x27;</span>); <span class="hljs-comment">// &#x27;aaass&#x27;</span><br>str.padEnd(<span class="hljs-number">5</span>, <span class="hljs-string">&#x27;sssss&#x27;</span>); <span class="hljs-comment">// &#x27;aaass&#x27;</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="padStart-开头填充"><a href="#padStart-开头填充" class="headerlink" title="padStart() 开头填充"></a>padStart() 开头填充</h3><p>padStart() 方法用一个字符串从当前字符串的开头（左侧）开始填充当前字符串，返回填充后字符串。</p>
+<p>接收两个参数：</p>
+<ul>
+<li>targetLength（必需）：需填充到的目标长度。若其小于当前字符串的长度，则返回当前字符串本身。</li>
+<li>padString （可选）：用于填充的字符串。默认为空格。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> str = <span class="hljs-string">&#x27;aaa&#x27;</span>;<br>str.padStart(<span class="hljs-number">5</span>); <span class="hljs-comment">// &#x27;  aaa&#x27;</span><br>str.padStart(<span class="hljs-number">5</span>, <span class="hljs-string">&#x27;s&#x27;</span>); <span class="hljs-comment">// &#x27;ssaaa&#x27;</span><br>str.padStart(<span class="hljs-number">5</span>, <span class="hljs-string">&#x27;sssss&#x27;</span>); <span class="hljs-comment">// &#x27;ssaaa&#x27;</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="trim-删除空格"><a href="#trim-删除空格" class="headerlink" title="trim() 删除空格"></a>trim() 删除空格</h3><p>trim() 方法会将调用该方法的字符串的两端删除空白字符。</p>
+<h3 id="trimEnd-删除结尾空格"><a href="#trimEnd-删除结尾空格" class="headerlink" title="trimEnd() 删除结尾空格"></a>trimEnd() 删除结尾空格</h3><p>trimEnd() 方法会将调用该方法的字符串的结尾删除空白字符。trimRight() 是此方法的别名。</p>
+<h3 id="trimStart-删除开头空格"><a href="#trimStart-删除开头空格" class="headerlink" title="trimStart() 删除开头空格"></a>trimStart() 删除开头空格</h3><p>trimStart() 方法会将调用该方法的字符串的开头删除空白字符。trimLeft() 是此方法的别名。</p>
+<h2 id="查找返回"><a href="#查找返回" class="headerlink" title="查找返回"></a>查找返回</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-built_in">String</span>.prototype.at()<br><span class="hljs-built_in">String</span>.prototype.charAt()<br><span class="hljs-built_in">String</span>.prototype.indexOf()<br><span class="hljs-built_in">String</span>.prototype.lastIndexOf()<br><span class="hljs-built_in">String</span>.prototype.includes()<br><span class="hljs-built_in">String</span>.prototype.startsWith()<br><span class="hljs-built_in">String</span>.prototype.endsWith()<br><span class="hljs-built_in">String</span>.prototype.match()<br><span class="hljs-built_in">String</span>.prototype.matchAll()<br><span class="hljs-built_in">String</span>.prototype.search()<br><span class="hljs-built_in">String</span>.prototype.charCodeAt()<br><span class="hljs-built_in">String</span>.prototype.codePointAt()<br></code></pre></td></tr></table></figure>
+
+<h3 id="at-查找返回字符"><a href="#at-查找返回字符" class="headerlink" title="at() 查找返回字符"></a>at() 查找返回字符</h3><p>at() 方法用于在字符串中查找给定位置对应的字符，返回该位置处的字符，找不到则返回 undefined。</p>
+<p>接收一个参数：</p>
+<ul>
+<li>index（可选）。要查找的字符的位置。接受负值，默认值为 0。<br>（方括号语法只能是正整数且必须给参数）</li>
+</ul>
+<h3 id="charAt-查找返回字符"><a href="#charAt-查找返回字符" class="headerlink" title="charAt() 查找返回字符"></a>charAt() 查找返回字符</h3><p>charAt() 方法用于在字符串中查找给定的一个位置，返回该位置处的字符，找不到则返回空字符串。</p>
+<p>接收一个参数：</p>
+<ul>
+<li>index（可选）：要查找的字符的位置。接受负值，默认值为 0。<br>（方括号语法只能是正整数且必须给参数）</li>
+</ul>
+<h3 id="indexOf-查找返回位置"><a href="#indexOf-查找返回位置" class="headerlink" title="indexOf() 查找返回位置"></a>indexOf() 查找返回位置</h3><p>indexOf() 方法用于在字符串中查找给定字符串对应的位置，从 fromIndex 位置开始，从前向后搜索，只返回首个满足条件的位置，如果不存在则返回 -1。使用严格相等搜索元素。</p>
+<p>接收两个参数：</p>
+<ul>
+<li>searchValue（必需）：指定要查找的字符串。</li>
+<li>fromIndex（可选）：起始搜索位置。接受负值，默认值为 0。</li>
+</ul>
+<h3 id="lastIndexOf-查找返回位置"><a href="#lastIndexOf-查找返回位置" class="headerlink" title="lastIndexOf() 查找返回位置"></a>lastIndexOf() 查找返回位置</h3><p>lastIndexOf() 方法用于在字符串中查找给定字符串对应的位置，从 fromIndex 位置开始，从后向前搜索，只返回首个满足条件的位置，如果不存在则返回 -1。使用严格相等搜索元素。</p>
+<p>接收两个参数：</p>
+<ul>
+<li>searchValue（必需）：指定要查找的字符串。</li>
+<li>fromIndex（可选）：起始搜索位置。接受负值，默认值为 0。</li>
+</ul>
+<h3 id="includes-查找是否包含"><a href="#includes-查找是否包含" class="headerlink" title="includes() 查找是否包含"></a>includes() 查找是否包含</h3><p>includes() 方法用于在字符串中查找给定字符串，从 fromIndex 位置开始，从后向前搜索，返回布尔值，表示是否至少找到一个与指定字符串匹配的项。使用严格相等搜索元素。</p>
+<p>接收两个参数：</p>
+<ul>
+<li>searchString（必需）：要搜索的指定的字符串。</li>
+<li>fromIndex（可选）：起始搜索位置。接受负值，默认值为 0。</li>
+</ul>
+<h3 id="startsWith-查找是否开头"><a href="#startsWith-查找是否开头" class="headerlink" title="startsWith() 查找是否开头"></a>startsWith() 查找是否开头</h3><p>startsWith() 方法用于判断调用该方法的字符串是否以给定的字符串开头，返回布尔值。</p>
+<p>接收两个参数：</p>
+<ul>
+<li>searchString（必需）：要搜索的字符串。</li>
+<li>position（可选）：起始搜索位置。接受负值，默认值为 0。</li>
+</ul>
+<h3 id="endsWith-查找是否结尾"><a href="#endsWith-查找是否结尾" class="headerlink" title="endsWith() 查找是否结尾"></a>endsWith() 查找是否结尾</h3><p>endsWith() 方法用于判断调用该方法的字符串是否以给定的字符串结尾，返回布尔值。</p>
+<p>接收两个参数：</p>
+<ul>
+<li>searchString（必需）：要搜索的字符串。</li>
+<li>position（可选）：起始搜索位置。接受负值，默认值为 0。</li>
+</ul>
+<h3 id="match"><a href="#match" class="headerlink" title="match()"></a>match()</h3><p>match() 方法检索返回一个字符串匹配正则表达式的结果。</p>
+<h3 id="matchAll"><a href="#matchAll" class="headerlink" title="matchAll()"></a>matchAll()</h3><p>matchAll() 方法检索返回一个包含所有匹配正则表达式的结果及分组捕获组的迭代器。</p>
+<h3 id="search"><a href="#search" class="headerlink" title="search()"></a>search()</h3><p>search() 方法执行正则表达式和调用该方法的字符串之间的一个搜索匹配。</p>
+<h3 id="charCodeAt-查找返回-UTF-16-代码"><a href="#charCodeAt-查找返回-UTF-16-代码" class="headerlink" title="charCodeAt() 查找返回 UTF-16 代码"></a>charCodeAt() 查找返回 UTF-16 代码</h3><p>charCodeAt() 方法从调用该方法的字符串中返回指定位置的字符的 UTF-16 代码单元。</p>
+<p>接收一个参数：</p>
+<ul>
+<li>index（可选）：要查找的字符的位置。介于 0 到字符串长度减 1 之间，默认为 0。</li>
+</ul>
+<h3 id="codePointAt-查找返回-Unicode-编码"><a href="#codePointAt-查找返回-Unicode-编码" class="headerlink" title="codePointAt() 查找返回 Unicode 编码"></a>codePointAt() 查找返回 Unicode 编码</h3><p>codePointAt() 方法从调用该方法的字符串中返回指定位置的字符的 Unicode 编码点值的非负整数。</p>
+<p>接收一个参数：</p>
+<ul>
+<li>pos（可选）：要查找的字符的位置。介于 0 到字符串长度减 1 之间，默认为 0。</li>
+</ul>
+<h2 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-built_in">String</span>.prototype.toLowerCase()<br><span class="hljs-built_in">String</span>.prototype.toUpperCase()<br><span class="hljs-built_in">String</span>.prototype.toLocaleLowerCase()<br><span class="hljs-built_in">String</span>.prototype.toLocaleUpperCase()<br><span class="hljs-built_in">String</span>.prototype.localeCompare()<br><span class="hljs-built_in">String</span>.prototype.normalize()<br><span class="hljs-built_in">String</span>.prototype.valueOf()<br><span class="hljs-built_in">String</span>.prototype.toString()<br></code></pre></td></tr></table></figure>
+
+<h3 id="toLowerCase-转小写"><a href="#toLowerCase-转小写" class="headerlink" title="toLowerCase() 转小写"></a>toLowerCase() 转小写</h3><p>toLowerCase() 方法会将调用该方法的字符串的每个字母都转为小写形式并返回。<br>（如果调用该方法的值不是字符串类型会被强制转换）</p>
+<h3 id="toUpperCase-转大写"><a href="#toUpperCase-转大写" class="headerlink" title="toUpperCase() 转大写"></a>toUpperCase() 转大写</h3><p>toUpperCase() 方法会将调用该方法的字符串的每个字母都转为大写形式并返回。<br>（如果调用该方法的值不是字符串类型会被强制转换）</p>
+<h3 id="toLocaleLowerCase-转本地小写"><a href="#toLocaleLowerCase-转本地小写" class="headerlink" title="toLocaleLowerCase() 转本地小写"></a>toLocaleLowerCase() 转本地小写</h3><p>toLocaleLowerCase() 方法根据本地主机语言环境把字符串转换为小写格式并返回。</p>
+<h3 id="toLocaleUpperCase-转本地大写"><a href="#toLocaleUpperCase-转本地大写" class="headerlink" title="toLocaleUpperCase() 转本地大写"></a>toLocaleUpperCase() 转本地大写</h3><p>toLocaleUpperCase() 方法根据本地主机语言环境把字符串转换为大写格式并返回。</p>
+<h3 id="localeCompare"><a href="#localeCompare" class="headerlink" title="localeCompare()"></a>localeCompare()</h3><p>localeCompare() 方法返回一个数字来指示一个参考字符串是否在排序顺序前面或之后或与给定字符串相同。</p>
+<h3 id="normalize"><a href="#normalize" class="headerlink" title="normalize()"></a>normalize()</h3><p>normalize() 方法会按照指定的一种 Unicode 正规形式将当前字符串正规化。</p>
+<h3 id="valueOf-NaN"><a href="#valueOf-NaN" class="headerlink" title="valueOf()"></a>valueOf()</h3><p>valueOf() 方法返回指定对象的原始值。</p>
+<h3 id="toString-NaN"><a href="#toString-NaN" class="headerlink" title="toString()"></a>toString()</h3><p>toString() 方法返回指定对象的字符串形式。</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/JavaScript/">JavaScript</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/JavaScript/">JavaScript</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%96%B9%E6%B3%95%E5%B1%9E%E6%80%A7/">方法属性</a>
+                    
+                      <a class="hover-with-bg" href="/tags/String/">String</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/09/09/%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%AD%98%E5%82%A8/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">客户端存储</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/09/07/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%92%8C%E8%B4%AA%E5%A9%AA%E7%AE%97%E6%B3%95/">
+                        <span class="hidden-mobile">动态规划和贪婪算法</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"syQxyJQH6mJ9tVidXW3H8d00-gzGzoHsz","appKey":"CkmQXvhPR7AQJnJEU8kKs00A","placeholder":"说点什么","path":"window.location.pathname","avatar":"retro","meta":["nick","mail","link"],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false,"requiredFields":[]},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+  <div class="col-lg-7 mx-auto nopadding-x-md">
+    <div class="container custom post-custom mx-auto">
+      <img src="https://octodex.github.com/images/jetpacktocat.png" srcset="/img/loading.gif" lazyload class="rounded mx-auto d-block mt-5" style="width:150px; height:150px;">
+    </div>
+  </div>
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Powered by Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Theme is Fluid</span></a>
+  </div>
+  
+
+  
+  <!-- 备案信息 -->
+  <div class="beian">
+    <span>
+      <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+        冀ICP备2021010393号-1
+      </a>
+    </span>
+    
+      
+        <span>
+          <a
+            href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=13048102000303"
+            rel="nofollow noopener"
+            class="beian-police"
+            target="_blank"
+          >
+            
+              <span style="visibility: hidden; width: 0">|</span>
+              <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
+            
+            <span>冀公网安备13048102000303号</span>
+          </a>
+        </span>
+      
+    
+  </div>
+
+
+  
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?bbe44c28232a60458d913426edaff12f";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+    
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?siteId=16939915";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

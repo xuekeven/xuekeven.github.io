@@ -1,0 +1,636 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="Keven">
+  <meta name="keywords" content="">
+  
+  <title>JavaScript面试题 - Keven&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":60,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"siteId=16939915","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 50vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Keven's Blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tools/">
+                <i class="iconfont icon-th-large"></i>
+                工具
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/example.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.2)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="JavaScript面试题">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-author" aria-hidden="true"></i>
+      Keven
+    </span>
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-07-16 12:00" pubdate>
+        2021年7月16日
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2.9k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      39
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">JavaScript面试题</h1>
+            
+            <div class="markdown-body">
+              <h1 id="虚拟-DOM-和-diff-算法"><a href="#虚拟-DOM-和-diff-算法" class="headerlink" title="虚拟 DOM 和 diff 算法"></a>虚拟 DOM 和 diff 算法</h1><p>参考：<a target="_blank" rel="noopener" href="https://juejin.cn/post/6994959998283907102">https://juejin.cn/post/6994959998283907102</a> 。</p>
+<p>好处：</p>
+<ul>
+<li>跨平台</li>
+<li>只需要操作数据，开发效率更高</li>
+<li>通过 DOM diff 算法，可减少不必要的 DOM 操作，提高性能</li>
+</ul>
+<h1 id="可迭代对象"><a href="#可迭代对象" class="headerlink" title="可迭代对象"></a>可迭代对象</h1><p>可迭代对象是指实现了<code>[Symbol.iterator]</code>方法属性的对象。注意，区分类数组对象。<br>类数组对象（伪数组对象）是指可以通过索引属性访问元素并且拥有一个 <code>length</code> 属性的对象。<br>可迭代对象和类数组对象并非是相互排斥的。比如，字符串既是可迭代对象又是类数组对象。</p>
+<p>迭代器模式（特别是在 ECMAScript 这个语境下）描述了一个方案，即可以把有些结构称为“可迭代对象”（iterable），因为它们实现了正式的 Iterable 接口，而且可以通过迭代器 Iterator 消费。</p>
+<p>可迭代对象是一种抽象的说法。基本上，可以把可迭代对象理解成数组或集合这样的集合类型的对象。它们包含的元素都是有限的，而且都具有无歧义的遍历顺序。不过，可迭代对象不一定都是集合对象，也可以是仅仅具有类似数组行为的其他数据结构。基本上，可以使用for…of循环的对象都是可迭代对象。</p>
+<h1 id="ES6新语法"><a href="#ES6新语法" class="headerlink" title="ES6新语法"></a>ES6新语法</h1><p>参考：<br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6854818580660387853">https://juejin.cn/post/6854818580660387853</a> 。<br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903581426925581">https://juejin.cn/post/6844903581426925581</a> 。</p>
+<ul>
+<li>let、const</li>
+<li>Set、Map、Symbol</li>
+<li>for-of/for-in</li>
+<li>模块导入导出</li>
+<li>函数默认参数</li>
+<li>箭头函数</li>
+<li>类</li>
+<li>展开运算符</li>
+<li>对象的解构</li>
+<li>字符串模版</li>
+</ul>
+<h1 id="箭头函数和普通函数"><a href="#箭头函数和普通函数" class="headerlink" title="箭头函数和普通函数"></a>箭头函数和普通函数</h1><ul>
+<li>箭头函数没有没有原型对象。</li>
+<li>箭头函数 this 值为其所在上下文的 this 值。</li>
+<li>箭头函数箭头函数不能使用 arguments、super、new.target。</li>
+<li>箭头函数不能定义生成器函数。</li>
+</ul>
+<h1 id="for-in-循环和-for-of-循环"><a href="#for-in-循环和-for-of-循环" class="headerlink" title="for-in 循环和 for-of 循环"></a>for-in 循环和 for-of 循环</h1><ul>
+<li>for-in 循环：可用于遍历数组索引下标值和对象键名，大部分用于对象。</li>
+<li>for-of 循环：可用于遍历可迭代对象（Array、String、Map、Set 等等），不能遍历类数组对象和对象。但是 for-of 循环和 Object.keys()、Object.vales()、Object.entries() 配合可用来遍历对象。</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> a = &#123; <span class="hljs-string">&#x27;sfd&#x27;</span>: <span class="hljs-number">45</span>, <span class="hljs-string">&#x27;eee&#x27;</span>: <span class="hljs-number">93</span> &#125;;<br><span class="hljs-keyword">const</span> b = [<span class="hljs-string">&#x27;sfd&#x27;</span>, <span class="hljs-number">45</span>, <span class="hljs-string">&#x27;eee&#x27;</span>, <span class="hljs-number">93</span> ];<br><span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> s <span class="hljs-keyword">in</span> a) &#123;<br>  <span class="hljs-built_in">console</span>.log(s)<br>&#125; <br><span class="hljs-comment">// sfd</span><br><span class="hljs-comment">// eee</span><br><span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> s <span class="hljs-keyword">in</span> b) &#123;<br>  <span class="hljs-built_in">console</span>.log(s)<br>&#125; <br><span class="hljs-comment">// 0</span><br><span class="hljs-comment">// 1</span><br><span class="hljs-comment">// 2</span><br><span class="hljs-comment">// 3</span><br><span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> s <span class="hljs-keyword">of</span> a) &#123;<br>  <span class="hljs-built_in">console</span>.log(s)<br>&#125; <br><span class="hljs-comment">// Uncaught TypeError: a is not iterable</span><br><span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> s <span class="hljs-keyword">of</span> <span class="hljs-built_in">Object</span>.keys(a)) &#123;<br>  <span class="hljs-built_in">console</span>.log(s)<br>&#125; <br><span class="hljs-comment">// sfd</span><br><span class="hljs-comment">// eee</span><br></code></pre></td></tr></table></figure>
+
+<h1 id="判断数据类型"><a href="#判断数据类型" class="headerlink" title="判断数据类型"></a>判断数据类型</h1><ul>
+<li>Object.prototype.toString.call() 方法</li>
+<li>typeof 操作符</li>
+<li>instanceof 操作符</li>
+<li>constructor 属性</li>
+</ul>
+<p>此外，还有 Array.isArray(obj) 方法、isNaN(obj) 方法等可以精准判断。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> und = <span class="hljs-literal">undefined</span>;<br><span class="hljs-keyword">var</span> nul = <span class="hljs-literal">null</span>;<br><span class="hljs-keyword">var</span> boo = <span class="hljs-literal">true</span>;<br><span class="hljs-keyword">var</span> num = <span class="hljs-number">1</span>;<br><span class="hljs-keyword">var</span> str = <span class="hljs-string">&#x27;xys&#x27;</span>;<br><span class="hljs-keyword">var</span> obj= <span class="hljs-keyword">new</span> <span class="hljs-built_in">Object</span>();<br><span class="hljs-keyword">var</span> arr = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>];<br><span class="hljs-keyword">var</span> fun = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;&#125;<br><span class="hljs-keyword">var</span> date = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>();<br><span class="hljs-keyword">var</span> reg = <span class="hljs-regexp">/a/g</span>;<br><span class="hljs-keyword">var</span> err = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>();<br><span class="hljs-keyword">var</span> arg;<br>(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getArg</span>(<span class="hljs-params"></span>)</span>&#123;<br>  arg = <span class="hljs-built_in">arguments</span>;<br>&#125;)()<br><br><span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">Object</span>.prototype.toString.call(und));  <span class="hljs-comment">// [object Undefined]</span><br><span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">Object</span>.prototype.toString.call(nul));  <span class="hljs-comment">// [object Null]</span><br><span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">Object</span>.prototype.toString.call(boo));  <span class="hljs-comment">// [object Boolean]</span><br><span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">Object</span>.prototype.toString.call(num));  <span class="hljs-comment">// [object Number]</span><br><span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">Object</span>.prototype.toString.call(str));  <span class="hljs-comment">// [object String]</span><br><span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">Object</span>.prototype.toString.call(obj));  <span class="hljs-comment">// [object Object]</span><br><span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">Object</span>.prototype.toString.call(arr));  <span class="hljs-comment">// [object Array]</span><br><span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">Object</span>.prototype.toString.call(fun));  <span class="hljs-comment">// [object Function]</span><br><span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">Object</span>.prototype.toString.call(date)); <span class="hljs-comment">// [object Date]</span><br><span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">Object</span>.prototype.toString.call(reg));  <span class="hljs-comment">// [object RegExp]</span><br><span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">Object</span>.prototype.toString.call(err));  <span class="hljs-comment">// [object Error]</span><br><span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">Object</span>.prototype.toString.call(arg));  <span class="hljs-comment">// [object Arguments]</span><br><br><span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">typeof</span> und);  <span class="hljs-comment">// undefined</span><br><span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">typeof</span> nul);  <span class="hljs-comment">// object</span><br><span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">typeof</span> boo);  <span class="hljs-comment">// boolean</span><br><span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">typeof</span> num);  <span class="hljs-comment">// number</span><br><span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">typeof</span> str);  <span class="hljs-comment">// string</span><br><span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">typeof</span> obj);  <span class="hljs-comment">// object</span><br><span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">typeof</span> arr);  <span class="hljs-comment">// object</span><br><span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">typeof</span> fun);  <span class="hljs-comment">// function</span><br><span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">typeof</span> date); <span class="hljs-comment">// object</span><br><span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">typeof</span> reg);  <span class="hljs-comment">// object</span><br><span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">typeof</span> err);  <span class="hljs-comment">// object</span><br><span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">typeof</span> arg);  <span class="hljs-comment">// object</span><br><br><span class="hljs-built_in">console</span>.log(obj <span class="hljs-keyword">instanceof</span> <span class="hljs-built_in">Object</span>);    <span class="hljs-comment">// true</span><br><span class="hljs-built_in">console</span>.log(arr <span class="hljs-keyword">instanceof</span> <span class="hljs-built_in">Array</span>);     <span class="hljs-comment">// true</span><br><span class="hljs-built_in">console</span>.log(fun <span class="hljs-keyword">instanceof</span> <span class="hljs-built_in">Function</span>);  <span class="hljs-comment">// true</span><br><span class="hljs-built_in">console</span>.log(date <span class="hljs-keyword">instanceof</span> <span class="hljs-built_in">Date</span>);     <span class="hljs-comment">// true</span><br><span class="hljs-built_in">console</span>.log(reg <span class="hljs-keyword">instanceof</span> <span class="hljs-built_in">RegExp</span>);    <span class="hljs-comment">// true</span><br><span class="hljs-built_in">console</span>.log(err <span class="hljs-keyword">instanceof</span> <span class="hljs-built_in">Error</span>);     <span class="hljs-comment">// true</span><br><span class="hljs-built_in">console</span>.log(arg <span class="hljs-keyword">instanceof</span> Arguments); <span class="hljs-comment">// true</span><br><br>obj.__proto__.constructor === <span class="hljs-built_in">Object</span>;    <span class="hljs-comment">// true</span><br>arr.__proto__.constructor === <span class="hljs-built_in">Array</span>;     <span class="hljs-comment">// true</span><br>fun.__proto__.constructor === <span class="hljs-built_in">Function</span>;  <span class="hljs-comment">// true</span><br>date.__proto__.constructor === <span class="hljs-built_in">Date</span>;     <span class="hljs-comment">// true</span><br>reg.__proto__.constructor === <span class="hljs-built_in">RegExp</span>;    <span class="hljs-comment">// true</span><br>err.__proto__.constructor === <span class="hljs-built_in">Error</span>;     <span class="hljs-comment">// true</span><br>arg.__proto__.constructor === Arguments; <span class="hljs-comment">// Uncaught ReferenceError</span><br></code></pre></td></tr></table></figure>
+
+<p>说明：</p>
+<ul>
+<li>Object.prototype.toString.call() 方法是最准确的方法。</li>
+<li>typeof 操作符只用于原始值，对于 Null 类型其返回为 Object。</li>
+<li>instanceof 操作符只用于引用值，且是假定只有一种全局环境，如果网页中包含多个框架多个全局环境，如果从一个框架向另一个框架传入一个数组，那么传入的数组与在第二个框架中原生创建的数组分别具有各自不同的构造函数。</li>
+<li>constructor 属性只用于引用值，而且其可以被重写，所以不一定准确。</li>
+</ul>
+<h1 id="垃圾回收"><a href="#垃圾回收" class="headerlink" title="垃圾回收"></a>垃圾回收</h1><p>JavaScript 是使用垃圾回收的语言，也就是说执行环境负责在代码执行时管理内存。在 C 和 C++ 等语言中，跟踪内存使用对开发者来说是个很大的负担，也是很多问题的来源。JavaScript 则为开发者卸下了这个负担，通过自动内存管理实现内存分配和闲置资源回收。</p>
+<p>基本思路很简单：确定哪个变量不会再使用，然后释放它所占用的内存。这个过程是周期性的，即垃圾回收程序每隔一定时间（或者说在代码执行过程中某个预定的收集时间）就会自动运行。垃圾回收过程是个近似且不完美的方案，因为某块内存是否还有用，属于“不可判定的”问题，意味着靠算法是解决不了的。</p>
+<p>以函数中局部变量的正常生命周期为例。函数中的局部变量会在函数执行时存在。此时，栈（或堆）内存会分配空间以保存相应的值。函数在内部使用了变量，然后退出。此时，就不再需要那个局部变量，它占用的内存可以释放，供后面使用。这种情况下显然不再需要局部变量了，但并不是所有时候都会这么明显。垃圾回收程序必须跟踪记录哪个变量还会使用以及哪个变量不会再使用，以便回收内存。如何标记未使用的变量也许有不同的实现方式。不过，在浏览器的发展史上，用到过两种主要的标记策略：标记清理和引用计数。</p>
+<p>JavaScript 最常用的垃圾回收策略是标记清理（mark-and-sweep）。当变量进入上下文，如在函数内部声明一个变量时，这个变量会被加上存在于上下文中的标记。而在上下文中的变量，逻辑上讲，永远不应该释放它们的内存，因为只要上下文中的代码在运行，就有可能用到它们。当变量离开上下文时，也会被加上离开上下文的标记。给变量加标记的方式有很多种。比如，当变量进入上下文时，反转某一位；或者，可以维护“在上下文中”和“不在上下文中”两个变量列表，可以把变量从一个列表转移到另一个列表。标记过程中的实现并不重要，关键是策略。</p>
+<p>垃圾回收程序运行的时候，会标记内存中存储的所有变量（标记方法有很多）。然后，它会将所有在上下文中的变量，以及被在上下文中的变量引用的变量的标记去掉。在此之后再被加上标记的变量就是待删除的，原因是任何在上下文中的变量都访问不到它们了。随后垃圾回收程序做一次内存清理，销毁带标记的所有值并收回它们的内存。</p>
+<ul>
+<li>通过 const 和 let 声明提升性能。</li>
+<li>隐藏类和删除操作。</li>
+</ul>
+<h1 id="event-target-和-event-currentTarget"><a href="#event-target-和-event-currentTarget" class="headerlink" title="event.target 和 event.currentTarget"></a>event.target 和 event.currentTarget</h1><p>在事件处理程序内部，this 对象始终等于 currentTarget 的值，target 只包含事件的实际目标。</p>
+<p>如果事件处理程序直接添加在了意图的目标，则 this、currentTarget 和 target 的值是一样的。如果这个事件处理程序是添加到按钮的父节点（如document.body）上，那么它们的值就不一样了。由于按钮本身并没有注册事件处理程序，因此 click 事件冒泡到 document.body，从而触发了在它上面注册的处理程序。</p>
+<h1 id="CommonJS-和-ES-Module"><a href="#CommonJS-和-ES-Module" class="headerlink" title="CommonJS 和 ES Module"></a>CommonJS 和 ES Module</h1><p>参考：<a target="_blank" rel="noopener" href="https://juejin.cn/post/6994224541312483336">https://juejin.cn/post/6994224541312483336</a> 。</p>
+<ul>
+<li>CommonJS<br>CommonJS 模块由 JS 运行时实现。<br>CommonJs 是单个值导出，本质上导出的就是 exports 属性。<br>CommonJS 是可以动态加载的，对每一个加载都存在缓存，可以有效的解决循环引用问题。<br>CommonJS 模块同步加载并执行模块文件</li>
+<li>ES Module<br>ES6 Module 静态的，不能放在块级作用域内，代码发生在编译时。<br>ES6 Module 的值是动态绑定的，可以通过导出方法修改，可以直接访问修改结果。<br>ES6 Module 可以导出多个属性和方法，可以单个导入导出，混合导入导出。<br>ES6 模块提前加载并执行模块文件，<br>ES6 Module 导入模块在严格模式下。<br>ES6 Module 的特性可以很容易实现 Tree Shaking 和 Code Splitting。</li>
+</ul>
+<h1 id="输出判断题"><a href="#输出判断题" class="headerlink" title="输出判断题"></a>输出判断题</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">test1</span>(<span class="hljs-params">aaa, bbb</span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(aaa, <span class="hljs-built_in">arguments</span>[<span class="hljs-number">0</span>], bbb, <span class="hljs-built_in">arguments</span>[<span class="hljs-number">1</span>]);<br>  aaa = <span class="hljs-number">666</span>;<br>  bbb = <span class="hljs-number">777</span>;<br>  <span class="hljs-built_in">console</span>.log(aaa, <span class="hljs-built_in">arguments</span>[<span class="hljs-number">0</span>], bbb, <span class="hljs-built_in">arguments</span>[<span class="hljs-number">1</span>]);<br>  <span class="hljs-built_in">arguments</span>[<span class="hljs-number">0</span>] = <span class="hljs-number">888</span>;<br>  <span class="hljs-built_in">arguments</span>[<span class="hljs-number">1</span>] = <span class="hljs-number">999</span>;<br>  <span class="hljs-built_in">console</span>.log(aaa, <span class="hljs-built_in">arguments</span>[<span class="hljs-number">0</span>], bbb, <span class="hljs-built_in">arguments</span>[<span class="hljs-number">1</span>]);<br>&#125;<br>test1(<span class="hljs-number">111</span>, <span class="hljs-number">222</span>);<br><br><span class="hljs-comment">// 111 111 222 222</span><br><span class="hljs-comment">// 666 666 777 777</span><br><span class="hljs-comment">// 888 888 999 999</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">test1</span>(<span class="hljs-params">a, b</span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(a, <span class="hljs-built_in">arguments</span>[<span class="hljs-number">0</span>], b, <span class="hljs-built_in">arguments</span>[<span class="hljs-number">1</span>]);<br>  a = <span class="hljs-string">&#x27;aaa&#x27;</span>;<br>  b = <span class="hljs-string">&#x27;bbb&#x27;</span>;<br>  <span class="hljs-built_in">console</span>.log(a, <span class="hljs-built_in">arguments</span>[<span class="hljs-number">0</span>], b, <span class="hljs-built_in">arguments</span>[<span class="hljs-number">1</span>]);<br>  <span class="hljs-built_in">arguments</span>[<span class="hljs-number">0</span>] = <span class="hljs-string">&#x27;trueaaa&#x27;</span>;<br>  <span class="hljs-built_in">arguments</span>[<span class="hljs-number">1</span>] = <span class="hljs-string">&#x27;truebbb&#x27;</span>;<br>  <span class="hljs-built_in">console</span>.log(a, <span class="hljs-built_in">arguments</span>[<span class="hljs-number">0</span>], b, <span class="hljs-built_in">arguments</span>[<span class="hljs-number">1</span>]);<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">test2</span>(<span class="hljs-params">a = <span class="hljs-string">&#x27;aaabbb&#x27;</span>, b</span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(a, <span class="hljs-built_in">arguments</span>[<span class="hljs-number">0</span>], b, <span class="hljs-built_in">arguments</span>[<span class="hljs-number">1</span>]);<br>  a = <span class="hljs-string">&#x27;aaa&#x27;</span>;<br>  b = <span class="hljs-string">&#x27;bbb&#x27;</span>;<br>  <span class="hljs-built_in">console</span>.log(a, <span class="hljs-built_in">arguments</span>[<span class="hljs-number">0</span>], b, <span class="hljs-built_in">arguments</span>[<span class="hljs-number">1</span>]);<br>  <span class="hljs-built_in">arguments</span>[<span class="hljs-number">0</span>] = <span class="hljs-string">&#x27;trueaaa&#x27;</span>;<br>  <span class="hljs-built_in">arguments</span>[<span class="hljs-number">1</span>] = <span class="hljs-string">&#x27;truebbb&#x27;</span>;<br>  <span class="hljs-built_in">console</span>.log(a, <span class="hljs-built_in">arguments</span>[<span class="hljs-number">0</span>], b, <span class="hljs-built_in">arguments</span>[<span class="hljs-number">1</span>]);<br>&#125;<br>test1();<br>test1(<span class="hljs-string">&#x27;AAA&#x27;</span>);<br>test2();<br>test2(<span class="hljs-string">&#x27;AAA&#x27;</span>);<br><br><span class="hljs-comment">// undefined undefined undefined undefined</span><br><span class="hljs-comment">// aaa undefined bbb undefined</span><br><span class="hljs-comment">// aaa trueaaa bbb truebbb</span><br><br><span class="hljs-comment">// AAA AAA undefined undefined</span><br><span class="hljs-comment">// aaa aaa bbb undefined</span><br><span class="hljs-comment">// trueaaa trueaaa bbb truebbb</span><br><br><span class="hljs-comment">// aaabbb undefined undefined undefined</span><br><span class="hljs-comment">// aaa undefined bbb undefined</span><br><span class="hljs-comment">// aaa trueaaa bbb truebbb</span><br><br><span class="hljs-comment">// AAA AAA undefined undefined</span><br><span class="hljs-comment">// aaa AAA bbb undefined</span><br><span class="hljs-comment">// aaa trueaaa bbb truebbb</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">test1</span>(<span class="hljs-params">arg</span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(arg);<br>  <span class="hljs-keyword">var</span> arg = <span class="hljs-string">&#x27;hello1&#x27;</span>;<br>  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">arg</span>(<span class="hljs-params"></span>) </span>&#123; <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;aaa&#x27;</span>) &#125;<br>  <span class="hljs-built_in">console</span>.log(arg);<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">test2</span>(<span class="hljs-params">arg</span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(arg);<br>  <span class="hljs-keyword">var</span> arg = <span class="hljs-string">&#x27;hello2&#x27;</span>;<br>  <span class="hljs-built_in">console</span>.log(arg);<br>&#125;<br>test1(<span class="hljs-string">&#x27;hi1&#x27;</span>);<br>test2(<span class="hljs-string">&#x27;hi2&#x27;</span>);<br><br><span class="hljs-comment">// ƒ arg() &#123;</span><br><span class="hljs-comment">//   console.log(&#x27;aaa&#x27;)</span><br><span class="hljs-comment">// &#125;</span><br><span class="hljs-comment">// hello1</span><br><span class="hljs-comment">// hi2</span><br><span class="hljs-comment">// hello2</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">type</span>(<span class="hljs-params">t</span>) </span>&#123;<br>  <span class="hljs-keyword">return</span> <span class="hljs-built_in">Object</span>.prototype.toString.call(t).slice(<span class="hljs-number">8</span>,-<span class="hljs-number">1</span>)<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fn1</span>(<span class="hljs-params">...args</span>) </span>&#123;<br>  <span class="hljs-keyword">return</span> args<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fn2</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-keyword">return</span> <span class="hljs-built_in">arguments</span>                                                <br>&#125;<br><span class="hljs-built_in">console</span>.log(type(fn1(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>)));<br><span class="hljs-built_in">console</span>.log(type(fn2(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>)));<br><br><span class="hljs-comment">// Array</span><br><span class="hljs-comment">// Arguments</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-built_in">console</span>.log(a); <span class="hljs-comment">// Uncaught ReferenceError: a is not defined</span><br>a = <span class="hljs-number">12</span>;<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fn</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(a); <span class="hljs-comment">// undefined</span><br>  <span class="hljs-built_in">console</span>.log(b); <span class="hljs-comment">// Uncaught ReferenceError: Cannot access &#x27;b&#x27; before initialization</span><br>  a = <span class="hljs-number">13</span>;<br>  <span class="hljs-keyword">var</span> a = <span class="hljs-number">14</span>;<br>  <span class="hljs-keyword">let</span> b = <span class="hljs-number">15</span>;<br>  <span class="hljs-built_in">console</span>.log(a) <span class="hljs-comment">// 14</span><br>&#125; <br>fn();<br><span class="hljs-built_in">console</span>.log(a); <span class="hljs-comment">// 12</span><br><span class="hljs-built_in">console</span>.log(b); <span class="hljs-comment">// Uncaught ReferenceError: b is not defined</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">showcase</span>(<span class="hljs-params">value</span>) </span>&#123;<br>  <span class="hljs-keyword">switch</span>(value) &#123;<br>    <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;A&#x27;</span>:<br>      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;A&#x27;</span>)<br>      <span class="hljs-keyword">break</span><br>    <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;B&#x27;</span>:<br>      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;B&#x27;</span>)<br>      <span class="hljs-keyword">break</span><br>    <span class="hljs-keyword">case</span> <span class="hljs-literal">undefined</span>:<br>      <span class="hljs-built_in">console</span>. log(<span class="hljs-literal">undefined</span>)<br>      <span class="hljs-keyword">break</span><br>    <span class="hljs-attr">default</span>:<br>      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;unKnown&#x27;</span>)<br>  &#125;<br>&#125;<br>showcase(<span class="hljs-keyword">new</span> <span class="hljs-built_in">String</span>(<span class="hljs-string">&#x27;A&#x27;</span>)) <span class="hljs-comment">// &#x27;unKnown&#x27;</span><br><br>[[<span class="hljs-number">4</span>,<span class="hljs-number">2</span>,<span class="hljs-number">1</span>].reduce(<span class="hljs-built_in">Math</span>.pow),[<span class="hljs-string">&#x27;&#x27;</span>].reduce(<span class="hljs-built_in">Math</span>.pow)] <span class="hljs-comment">// [16, &#x27;&#x27;]</span><br><br><span class="hljs-built_in">Symbol</span>() === <span class="hljs-built_in">Symbol</span>() <span class="hljs-comment">// false</span><br><br><span class="hljs-built_in">Symbol</span>(<span class="hljs-string">&#x27;aa&#x27;</span>) === <span class="hljs-built_in">Symbol</span>(<span class="hljs-string">&#x27;aa&#x27;</span>) <span class="hljs-comment">// false</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-built_in">Object</span>.__proto__ === <span class="hljs-built_in">Function</span>.__proto__; <span class="hljs-comment">// true</span><br><span class="hljs-built_in">Object</span>.__proto__ === <span class="hljs-built_in">Function</span>.prototype; <span class="hljs-comment">// true</span><br><span class="hljs-built_in">Array</span>.__proto__ === <span class="hljs-built_in">Function</span>.__proto__; <span class="hljs-comment">// true</span><br><span class="hljs-built_in">Function</span>.prototype === <span class="hljs-built_in">Function</span>.__proto__; <span class="hljs-comment">// true</span><br><span class="hljs-built_in">Function</span>.prototype; <span class="hljs-comment">// ƒ () &#123; [native code] &#125;</span><br><span class="hljs-built_in">Object</span>.prototype.prototype; <span class="hljs-comment">// undefined</span><br><span class="hljs-built_in">Object</span>.prototype.__proto__; <span class="hljs-comment">// null</span><br><span class="hljs-built_in">Function</span>.prototype.prototype; <span class="hljs-comment">// undefined</span><br><br><span class="hljs-string">&#x27;标准的7个汉字&#x27;</span>.length <span class="hljs-comment">// 7</span><br><span class="hljs-string">&#x27;11&#x27;</span> == <span class="hljs-keyword">new</span> <span class="hljs-built_in">String</span>(<span class="hljs-number">11</span>) <span class="hljs-comment">// true</span><br><span class="hljs-string">&#x27;11&#x27;</span> === <span class="hljs-keyword">new</span> <span class="hljs-built_in">String</span>(<span class="hljs-number">11</span>) <span class="hljs-comment">// false</span><br><br><span class="hljs-keyword">var</span> s1 = <span class="hljs-string">&#x27;afa&#x27;</span>;<br><span class="hljs-keyword">var</span> s2 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">String</span>(<span class="hljs-string">&#x27;jodo&#x27;</span>);<br><span class="hljs-built_in">Object</span>.prototype.toString.call(s1); <span class="hljs-comment">// &#x27;[object String]&#x27;</span><br><span class="hljs-built_in">Object</span>.prototype.toString.call(s2); <span class="hljs-comment">// &#x27;[object String]&#x27;</span><br>s1 <span class="hljs-keyword">instanceof</span> <span class="hljs-built_in">Object</span>; <span class="hljs-comment">// false</span><br>s2 <span class="hljs-keyword">instanceof</span> <span class="hljs-built_in">Object</span>; <span class="hljs-comment">// true</span><br><span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;Value is&#x27;</span> + (s === <span class="hljs-string">&#x27;afa&#x27;</span>) ? <span class="hljs-string">&#x27;yes&#x27;</span> : <span class="hljs-string">&#x27;no&#x27;</span>); <span class="hljs-comment">// yes</span><br></code></pre></td></tr></table></figure>
+
+<h1 id="其它问题"><a href="#其它问题" class="headerlink" title="其它问题"></a>其它问题</h1><ul>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects">JavaScript 标准内置对象</a></li>
+<li>数据类型（基本/集合）</li>
+<li>原型、原型链、继承</li>
+<li>this 指向</li>
+<li>数组方法</li>
+<li>数组扁平化</li>
+<li>期约（Promise）</li>
+<li>微任务和宏任务</li>
+<li>事件循环</li>
+</ul>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/JavaScript/">JavaScript</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/">面试题</a>
+                    
+                      <a class="hover-with-bg" href="/tags/JavaScript/">JavaScript</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/07/17/JavaScript%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">JavaScript数据类型</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"syQxyJQH6mJ9tVidXW3H8d00-gzGzoHsz","appKey":"CkmQXvhPR7AQJnJEU8kKs00A","placeholder":"说点什么","path":"window.location.pathname","avatar":"retro","meta":["nick","mail","link"],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false,"requiredFields":[]},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+  <div class="col-lg-7 mx-auto nopadding-x-md">
+    <div class="container custom post-custom mx-auto">
+      <img src="https://octodex.github.com/images/jetpacktocat.png" srcset="/img/loading.gif" lazyload class="rounded mx-auto d-block mt-5" style="width:150px; height:150px;">
+    </div>
+  </div>
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Powered by Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Theme is Fluid</span></a>
+  </div>
+  
+
+  
+  <!-- 备案信息 -->
+  <div class="beian">
+    <span>
+      <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+        冀ICP备2021010393号-1
+      </a>
+    </span>
+    
+      
+        <span>
+          <a
+            href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=13048102000303"
+            rel="nofollow noopener"
+            class="beian-police"
+            target="_blank"
+          >
+            
+              <span style="visibility: hidden; width: 0">|</span>
+              <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
+            
+            <span>冀公网安备13048102000303号</span>
+          </a>
+        </span>
+      
+    
+  </div>
+
+
+  
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?bbe44c28232a60458d913426edaff12f";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+    
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?siteId=16939915";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

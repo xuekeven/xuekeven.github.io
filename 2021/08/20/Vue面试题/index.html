@@ -1,0 +1,650 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="Keven">
+  <meta name="keywords" content="">
+  
+  <title>Vue面试题 - Keven&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":60,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"siteId=16939915","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 50vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Keven's Blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tools/">
+                <i class="iconfont icon-th-large"></i>
+                工具
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/example.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.2)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Vue面试题">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-author" aria-hidden="true"></i>
+      Keven
+    </span>
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-08-20 16:00" pubdate>
+        2021年8月20日
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.7k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      18
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Vue面试题</h1>
+            
+            <div class="markdown-body">
+              <h1 id="Vue-优点"><a href="#Vue-优点" class="headerlink" title="Vue 优点"></a>Vue 优点</h1><ul>
+<li>轻量级框架。只关注视图层，体积小。</li>
+<li>组件化。把单页应用中的模块拆分为一个个单独组件，清晰明了。</li>
+<li>响应式数据绑定。自动对页面某些数据的变化做出同步响应。</li>
+<li>使用虚拟 DOM 算法。使用虚拟 DOM 配合 diff 算法，提高性能。  </li>
+</ul>
+<h1 id="为什么-Vue-组件中-data-必须是一个函数"><a href="#为什么-Vue-组件中-data-必须是一个函数" class="headerlink" title="为什么 Vue 组件中 data 必须是一个函数"></a>为什么 Vue 组件中 data 必须是一个函数</h1><p>对象为引用类型，若 data 是对象，当复用组件时，同样的组件的 data 都指向同一个数据对象，使用相同的内存地址，导致数据混用：当在一个组件中修改 data 时，其他同样的组件的 data 会同时被修改；若 data 是函数，当复用组件时，都会调用函数，返回是一个新对象，使用不同的内存地址，数据不会混用。</p>
+<h1 id="Vue-组件通信"><a href="#Vue-组件通信" class="headerlink" title="Vue 组件通信"></a>Vue 组件通信</h1><p>参考：<a target="_blank" rel="noopener" href="https://juejin.cn/post/6999687348120190983">https://juejin.cn/post/6999687348120190983</a> 。</p>
+<ul>
+<li>父组件向子组件传递数据通过 props 传递</li>
+<li>子组件向父组件传递数据通过 $emit 触发事件</li>
+<li>获取当前组件的父组件 $parent、根组件 $root（不推荐）</li>
+<li>获取当前组件的子组件 $children、组件实例 $refs （不推荐）</li>
+<li>bus 事件总线</li>
+<li>Vuex 状态管理</li>
+</ul>
+<h2 id="Vue2-x-组件通信共有-12-种："><a href="#Vue2-x-组件通信共有-12-种：" class="headerlink" title="Vue2.x 组件通信共有 12 种："></a>Vue2.x 组件通信共有 12 种：</h2><ul>
+<li>props</li>
+<li>$refs</li>
+<li>$root</li>
+<li>$emit / v-on</li>
+<li>$children / $parent</li>
+<li>$attrs / $listeners</li>
+<li>provide / inject</li>
+<li>.sync</li>
+<li>v-model</li>
+<li>EventBus</li>
+<li>Vuex</li>
+<li>slot</li>
+</ul>
+<h2 id="父子组件通信可以用："><a href="#父子组件通信可以用：" class="headerlink" title="父子组件通信可以用："></a>父子组件通信可以用：</h2><ul>
+<li>props</li>
+<li>$refs</li>
+<li>$root</li>
+<li>$emit / v-on</li>
+<li>$children / $parent</li>
+<li>$attrs / $listeners</li>
+<li>provide / inject</li>
+<li>.sync</li>
+<li>v-model</li>
+<li>EventBus</li>
+<li>Vuex</li>
+<li>slot</li>
+</ul>
+<h2 id="兄弟组件通信可以用："><a href="#兄弟组件通信可以用：" class="headerlink" title="兄弟组件通信可以用："></a>兄弟组件通信可以用：</h2><ul>
+<li>$parent</li>
+<li>EventBus</li>
+<li>Vuex</li>
+</ul>
+<h2 id="跨层级组件通信可以用："><a href="#跨层级组件通信可以用：" class="headerlink" title="跨层级组件通信可以用："></a>跨层级组件通信可以用：</h2><ul>
+<li>$root</li>
+<li>$attrs / $listeners</li>
+<li>provide / inject</li>
+<li>EventBus</li>
+<li>Vuex</li>
+</ul>
+<h1 id="v-if-和-v-show-的区别"><a href="#v-if-和-v-show-的区别" class="headerlink" title="v-if 和 v-show 的区别"></a>v-if 和 v-show 的区别</h1><p>v-if 确保在切换过程中条件块内的事件监听器和子组件适当地被销毁和重建，首次渲染时，v-if 条件为真才会在 DOM 树上，v-if 条件为假则什么也不做，不会在 DOM 树上，直到条件变为真才会在 DOM 树上；对应，v-show 无论首次渲染时是否真假都会在 DOM 树上，如果条件不为真，其对应 CSS 为<code>dispaly: none</code>。</p>
+<p>因此，操作元素时，v-if 更消耗性能，因为 v-if 在使用过程中有 DOM 的添加和删除，v-show 在使用过程中只是操作 CSS。v-if 适用于在运行时很少改变条件、不会频繁切换条件的场景。v-show 适用于在运行时经常改变条件、需要频繁切换条件的场景。</p>
+<h1 id="computed-和-watch-的区别"><a href="#computed-和-watch-的区别" class="headerlink" title="computed 和 watch 的区别"></a>computed 和 watch 的区别</h1><h2 id="计算属性-computed"><a href="#计算属性-computed" class="headerlink" title="计算属性 computed"></a>计算属性 computed</h2><ul>
+<li>支持缓存，依赖其他属性值，只有其依赖值的数据发生改变，才会触发相应的操作；</li>
+<li>不支持异步；</li>
+<li>computed 属性值会默认走缓存，计算属性是基于它们的响应式依赖进行缓存的，也就是基于 data 中声明过或者父组件传递的 props 中的数据通过计算得到的值；</li>
+<li>如果一个属性是由其他属性计算而来的，这个属性依赖其他属性，是一个多对一或者一对一，一般用 computed；</li>
+<li>如果 computed 属性属性值是函数，那么默认会走 get 方法；函数的返回值就是属性的属性值；在 computed 中的，属性都有一个 get 和一个 set 方法，当数据变化时，调用 set 方法；</li>
+<li>适用于在模板渲染中，某个值是依赖了其它的响应式对象甚至是计算属性计算而来。</li>
+</ul>
+<h2 id="侦听属性-watch"><a href="#侦听属性-watch" class="headerlink" title="侦听属性 watch"></a>侦听属性 watch</h2><ul>
+<li>不支持缓存，监听到值的变化，就会直接触发相应的操作；</li>
+<li>支持异步；</li>
+<li>监听的函数接收两个参数，第一个参数是最新的值；第二个参数是输入之前的值；</li>
+<li>当一个属性发生变化时，需要执行对应的操作，一对多；</li>
+<li>监听数据必须是 data 中声明过或者父组件传递过来的 props 中的数据，当数据变化时，触发其他操作，函数有两个参数；</li>
+<li>适用于观测某个值的变化去完成一段复杂的业务逻辑。</li>
+</ul>
+<h1 id="Vue-Loader-是什么？使用它的用途有哪些？"><a href="#Vue-Loader-是什么？使用它的用途有哪些？" class="headerlink" title="Vue Loader 是什么？使用它的用途有哪些？"></a>Vue Loader 是什么？使用它的用途有哪些？</h1><p>Vue Loader 是一个 webpack 的 loader，是 vue 文件的一个加载器，跟 template/js/style 转换成 js 模块。</p>
+<h1 id="Vue-指令"><a href="#Vue-指令" class="headerlink" title="Vue 指令"></a>Vue 指令</h1><ul>
+<li>v-text</li>
+<li>v-html</li>
+<li>v-show</li>
+<li>v-if</li>
+<li>v-else</li>
+<li>v-else-if</li>
+<li>v-for</li>
+<li>v-on</li>
+<li>v-bind</li>
+<li>v-model</li>
+<li>v-slot</li>
+<li>v-pre</li>
+<li>v-cloak</li>
+<li>v-once</li>
+</ul>
+<h1 id="使用-v-for-时-key-的作用"><a href="#使用-v-for-时-key-的作用" class="headerlink" title="使用 v-for 时 key 的作用"></a>使用 v-for 时 key 的作用</h1><p>当 Vue 用 - v-for 正在更新已渲染过的元素列表时使用“就地复用”策略。如果数据项的顺序被改变，Vue 将不是移动 DOM 元素来匹配数据项的改变，而是简单复用此处每个元素，并且确保它在特定索引下显示已被渲染过的每个元素。</p>
+<p>key 属性用于方便 Vue 跟踪每个节点的身份，从而重用和重新排序现有元素，需要为每项提供一个唯一 key 属性。key 属性只能为 Strig 或 Number 类型。<br>如果不使用 key，Vue 会使用一种最大限度减少动态元素并且尽可能的尝试修复/再利用相同类型元素的算法。使用 key，Vue 会基于 key 的变化重新排列元素顺序，并且会移除 key 不存在的元素。</p>
+<h1 id="nextTick-使用场景和原理"><a href="#nextTick-使用场景和原理" class="headerlink" title="$nextTick 使用场景和原理"></a>$nextTick 使用场景和原理</h1><p>Vue 实现响应式并不是数据发生变化后 DOM 立即变化，而是按照一定的策略来进行 DOM 更新。$nextTick 是在下次 DOM 更新循环结束之后执行延迟回调，在修改数据之后使用 $nextTick，则可以在回调中获取更新后的 DOM。跟全局方法 Vue.nextTick 一样，不同的是回调的 this 自动绑定到调用它的实例上。</p>
+<h1 id="Vue-数据双向绑定原理"><a href="#Vue-数据双向绑定原理" class="headerlink" title="Vue 数据双向绑定原理"></a>Vue 数据双向绑定原理</h1><p>参考：<a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903903822086151">https://juejin.cn/post/6844903903822086151</a> 。<br>DOME：<a target="_blank" rel="noopener" href="https://github.com/xuekeven/js-learn_vue2/tree/main/15.vue%E5%8E%9F%E7%90%86%E9%AB%98%E7%BA%A7%E6%95%99%E7%A8%8B/%E5%93%8D%E5%BA%94%E6%80%A7/4.mini-observer.html">https://github.com/xuekeven/js-learn_vue2/tree/main/15.vue原理高级教程/响应性/4.mini-observer.html</a> 。</p>
+<p>1、实现一个监听器 Observer ，用来劫持并监听所有属性，如果属性发生变化，就通知订阅者；<br>2、实现一个订阅器 Dep，用来收集订阅者，对监听器 Observer 和 订阅者 Watcher 进行统一管理；<br>3、实现一个订阅者 Watcher，可以收到属性的变化通知并执行相应的方法，从而更新视图；<br>4、实现一个解析器 Compile，可以解析每个节点的相关指令，对模板数据和订阅器进行初始化。</p>
+<h1 id="Vue3-对比-Vue2"><a href="#Vue3-对比-Vue2" class="headerlink" title="Vue3 对比 Vue2"></a>Vue3 对比 Vue2</h1><p>参考：<a target="_blank" rel="noopener" href="https://juejin.cn/post/6892295955844956167">https://juejin.cn/post/6892295955844956167</a> 。</p>
+<h1 id="观察者模式与发布订阅模式"><a href="#观察者模式与发布订阅模式" class="headerlink" title="观察者模式与发布订阅模式"></a>观察者模式与发布订阅模式</h1><p>参考：<a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903603107266567">https://juejin.cn/post/6844903603107266567</a> 。</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E6%A1%86%E6%9E%B6%E6%A8%A1%E5%9D%97/">框架模块</a>
+                    
+                      <a class="hover-with-bg" href="/categories/%E6%A1%86%E6%9E%B6%E6%A8%A1%E5%9D%97/Vue/">Vue</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/">面试题</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Vue/">Vue</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/08/20/JavaScript%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%88%B6/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">JavaScript运行机制</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/08/20/%E7%BD%91%E7%BB%9C%E9%9D%A2%E8%AF%95%E9%A2%98/">
+                        <span class="hidden-mobile">网络面试题</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"syQxyJQH6mJ9tVidXW3H8d00-gzGzoHsz","appKey":"CkmQXvhPR7AQJnJEU8kKs00A","placeholder":"说点什么","path":"window.location.pathname","avatar":"retro","meta":["nick","mail","link"],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false,"requiredFields":[]},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+  <div class="col-lg-7 mx-auto nopadding-x-md">
+    <div class="container custom post-custom mx-auto">
+      <img src="https://octodex.github.com/images/jetpacktocat.png" srcset="/img/loading.gif" lazyload class="rounded mx-auto d-block mt-5" style="width:150px; height:150px;">
+    </div>
+  </div>
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Powered by Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Theme is Fluid</span></a>
+  </div>
+  
+
+  
+  <!-- 备案信息 -->
+  <div class="beian">
+    <span>
+      <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+        冀ICP备2021010393号-1
+      </a>
+    </span>
+    
+      
+        <span>
+          <a
+            href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=13048102000303"
+            rel="nofollow noopener"
+            class="beian-police"
+            target="_blank"
+          >
+            
+              <span style="visibility: hidden; width: 0">|</span>
+              <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
+            
+            <span>冀公网安备13048102000303号</span>
+          </a>
+        </span>
+      
+    
+  </div>
+
+
+  
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?bbe44c28232a60458d913426edaff12f";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+    
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?siteId=16939915";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

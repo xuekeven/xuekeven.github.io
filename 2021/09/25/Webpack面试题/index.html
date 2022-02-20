@@ -1,0 +1,659 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="Keven">
+  <meta name="keywords" content="">
+  
+  <title>Webpack面试题 - Keven&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":60,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"siteId=16939915","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 50vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Keven's Blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tools/">
+                <i class="iconfont icon-th-large"></i>
+                工具
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/example.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.2)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Webpack面试题">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-author" aria-hidden="true"></i>
+      Keven
+    </span>
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-09-25 15:00" pubdate>
+        2021年9月25日
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2.4k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      27
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Webpack面试题</h1>
+            
+            <div class="markdown-body">
+              <p>参考：<br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904094281236487">https://juejin.cn/post/6844904094281236487</a> 。<br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6943468761575849992">https://juejin.cn/post/6943468761575849992</a> 。</p>
+<h2 id="Webpack的作用是什么？"><a href="#Webpack的作用是什么？" class="headerlink" title="Webpack的作用是什么？"></a>Webpack的作用是什么？</h2><ul>
+<li>模块打包。可以将不同模块的文件打包整合在一起，并且保证它们之间的引用正确，执行有序。利用好打包我们就可以在开发的时候根据我们自己的业务自由划分文件模块，保证项目结构的清晰和可读性。</li>
+<li>编译兼容。在前端的“上古时期”，手写一堆浏览器兼容代码一直是令前端工程师头皮发麻的事情，而在今天这个问题被大大的弱化了，通过 Webpack 的 Loader 机制，不仅仅可以帮助我们对代码做 polyfill，还可以编译转换诸如 .less、.vue、.jsx 这类在浏览器无法识别的格式文件，让我们在开发的时候可以使用新特性和新语法做开发，提高开发效率。</li>
+<li>能力扩展。通过 Webpack 的 Plugin 机制，在实现模块化打包和编译兼容的基础上，可以进一步实现如按需加载，代码压缩等一系列功能，帮助我们进一步提高自动化程度，工程效率以及打包输出的质量。</li>
+</ul>
+<h2 id="Webpack构建流程"><a href="#Webpack构建流程" class="headerlink" title="Webpack构建流程"></a>Webpack构建流程</h2><p>Webpack 的运行流程是一个串行的过程，从启动到结束会依次执行以下流程：</p>
+<ul>
+<li>初始化参数<br>从配置文件和 Shell 语句中读取与合并参数，得出最终的参数</li>
+<li>开始编译<br>用上一步得到的参数初始化 Compiler 对象，加载所有配置的插件，执行对象的 run 方法开始执行编译</li>
+<li>确定入口<br>根据配置中的 Entry 找出所有的入口文件</li>
+<li>编译模块<br>从入口文件出发，调用所有配置的 Loader 对模块进行翻译，找出该模块依赖的模块，再递归本步骤直到所有入口依赖的文件都经过了本步骤的处理</li>
+<li>完成模块编译<br>经过上一步使用 Loader 翻译完所有模块后，得到每个模块被翻译后的最终内容以及它们之间的依赖关系</li>
+<li>输出资源<br>根据入口和模块之间的依赖关系，组装成一个个包含多个模块的 Chunk，然后把每个 Chunk 转换成一个单独的文件加入到输出列表，这步是可以修改输出内容的最后机会</li>
+<li>输出完成<br>在确定好输出内容后，根据配置确定输出的路径和文件名，把文件内容写入到文件系统</li>
+</ul>
+<p>在以上过程中，Webpack 会在特定的时间点广播出特定的事件，插件在监听到感兴趣的事件后会执行特定的逻辑，并且插件可以调用 Webpack 提供的 API 改变 Webpack 的运行结果。</p>
+<p>简洁版：</p>
+<ul>
+<li>初始化：启动构建，读取与合并配置参数，加载 Plugin，实例化 Compiler。</li>
+<li>编译：从 Entry 出发，针对每个 Module 串行调用对应的 Loader 去翻译文件的内容，再找到该 Module 依赖的 Module，递归地进行编译处理。</li>
+<li>输出：将编译后的 Module 组合成 Chunk，将 Chunk 转换成文件，输出到文件系统中。</li>
+</ul>
+<h2 id="Loader和Plugin的区别？"><a href="#Loader和Plugin的区别？" class="headerlink" title="Loader和Plugin的区别？"></a>Loader和Plugin的区别？</h2><p>Loader 是函数，在该函数中对接收到的内容进行转换，返回转换后的结果。因为 Webpack 只认识 JavaScript，所以 Loader 就成了翻译官，对其他类型的资源进行转译的预处理工作。</p>
+<p>Loader 在 module.rules 中配置，作为模块的解析规则，类型为数组。每一项都是一个 Object，内部包含了 test（类型文件）、loader、options （参数）等属性。</p>
+<p>Plugin 是插件，基于事件流框架 Tapable，插件可以扩展 Webpack 的功能，在 Webpack 运行的生命周期中会广播出许多事件，Plugin 可以监听这些事件，在合适的时机通过 Webpack 提供的 API 改变输出结果。</p>
+<p>Plugin 在 plugins 中单独配置，类型为数组，每一项是一个 Plugin 的实例，参数都通过构造函数传入。</p>
+<h2 id="有哪些常见的Loader？"><a href="#有哪些常见的Loader？" class="headerlink" title="有哪些常见的Loader？"></a>有哪些常见的Loader？</h2><p>Loader 官网：<a target="_blank" rel="noopener" href="https://webpack.docschina.org/loaders">https://Webpack.docschina.org/loaders</a> 。</p>
+<h3 id="文件"><a href="#文件" class="headerlink" title="文件"></a>文件</h3><ul>
+<li>val-loader：将代码作为模块执行，并将其导出为 JS 代码</li>
+<li>ref-loader：用于手动建立文件之间的依赖关系</li>
+</ul>
+<h3 id="JSON"><a href="#JSON" class="headerlink" title="JSON"></a>JSON</h3><ul>
+<li>cson-loader：加载并转换 CSON 文件</li>
+</ul>
+<h3 id="语法转换"><a href="#语法转换" class="headerlink" title="语法转换"></a>语法转换</h3><ul>
+<li>babel-loader：把 ES6 转换成 ES5</li>
+<li>buble-loader：使用 Bublé 加载 ES2015+ 代码并将其转换为 ES5</li>
+<li>traceur-loader：使用 Traceur 加载 ES2015+ 代码并将其转换为 ES5</li>
+<li>ts-loader：像加载 JavaScript 一样加载 TypeScript 2.0+</li>
+<li>coffee-loader：像加载 JavaScript 一样加载 CoffeeScript</li>
+<li>fengari-loader：使用 fengari 加载 Lua 代码</li>
+<li>elm-webpack-loader：像加载 JavaScript 一样加载 Elm</li>
+</ul>
+<h3 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h3><ul>
+<li>html-loader：将 HTML 导出为字符串，需要传入静态资源的引用路径</li>
+<li>pug-loader：加载 Pug 和 Jade 模板并返回一个函数</li>
+<li>markdown-loader：将 Markdown 编译为 HTML</li>
+<li>react-markdown-loader：使用 markdown-parse 解析器将 Markdown 编译为 React 组件</li>
+<li>posthtml-loader：使用 PostHTML 加载并转换 HTML 文件</li>
+<li>handlebars-loader：将 Handlebars 文件编译为 HTML</li>
+<li>markup-inline-loader：将 SVG/MathML 文件内嵌到 HTML 中。在将图标字体或 CSS 动画应用于 SVG 时，此功能非常实用。</li>
+<li>twig-loader：编译 Twig 模板并返回一个函数</li>
+<li>remark-loader：通过 remark 加载 markdown，且支持解析内容中的图片</li>
+</ul>
+<h3 id="样式"><a href="#样式" class="headerlink" title="样式"></a>样式</h3><ul>
+<li>style-loader：将模块导出的内容作为样式并添加到 DOM 中，通过 DOM 操作去加载 CSS</li>
+<li>css-loader：加载 CSS 文件并解析 import 的 CSS 文件，最终返回 CSS 代码，支持模块化、压缩、文件导入等特性</li>
+<li>less-loader：加载并编译 LESS 文件</li>
+<li>sass-loader：加载并编译 SASS/SCSS 文件</li>
+<li>postcss-loader：使用 PostCSS 加载并转换 CSS/SSS 文件，使用下一代 CSS，可以配合 autoprefixer 插件自动补齐 CSS3 前缀</li>
+<li>stylus-loader：加载并编译 Stylus 文件</li>
+</ul>
+<h3 id="框架"><a href="#框架" class="headerlink" title="框架"></a>框架</h3><ul>
+<li>vue-loader：加载并编译 Vue 组件</li>
+<li>angular2-template-loader：加载并编译 Angular 组件</li>
+</ul>
+<h3 id="第三方"><a href="#第三方" class="headerlink" title="第三方"></a>第三方</h3><ul>
+<li>awesome-typescript-loader：将 TypeScript 转换成 JavaScript，性能优于 ts-loader</li>
+<li>eslint-loader：通过 ESLint 检查 JavaScript 代码</li>
+<li>tslint-loader：通过 TSLint检查 TypeScript 代码</li>
+<li>mocha-loader：加载 Mocha 测试用例的代码</li>
+<li>coverjs-loader：计算测试的覆盖率</li>
+<li>i18n-loader: 国际化</li>
+<li>cache-loader: 可以在一些性能开销较大的 Loader 之前添加，目的是将结果缓存到磁盘里</li>
+<li>file-loader</li>
+<li>url-loader</li>
+</ul>
+<h2 id="有哪些常见的Plugin？"><a href="#有哪些常见的Plugin？" class="headerlink" title="有哪些常见的Plugin？"></a>有哪些常见的Plugin？</h2><p>Plugin 官网：<a target="_blank" rel="noopener" href="https://webpack.docschina.org/plugins">https://Webpack.docschina.org/plugins</a> 。</p>
+<ul>
+<li>define-plugin：定义环境变量 （Webpack4 之后指定 mode 会自动配置）</li>
+<li>ignore-plugin：忽略部分文件</li>
+<li>html-Webpack-plugin：简化 HTML 文件创建 （依赖于 html-loader）</li>
+<li>web-Webpack-plugin：可方便地为单页应用输出 HTML，比 html-Webpack-plugin 好用</li>
+<li>uglifyjs-Webpack-plugin：不支持 ES6 压缩 （Webpack4 以前）</li>
+<li>terser-Webpack-plugin: 支持压缩 ES6 （Webpack4）</li>
+<li>Webpack-parallel-uglify-plugin: 多进程执行代码压缩，提升构建速度</li>
+<li>mini-css-extract-plugin: 分离样式文件，CSS 提取为独立文件，支持按需加载<br>（替代extract-text-Webpack-plugin）</li>
+<li>serviceworker-Webpack-plugin：为网页应用增加离线缓存功能</li>
+<li>clean-Webpack-plugin: 目录清理</li>
+<li>ModuleConcatenationPlugin: 开启 Scope Hoisting</li>
+<li>speed-measure-Webpack-plugin: 可以看到每个 Loader 和 Plugin 执行耗时<br>（整个打包耗时、每个 Plugin 和 Loader 耗时）</li>
+<li>Webpack-bundle-analyzer: 可视化 Webpack 输出文件的体积 （业务组件、依赖第三方模块）</li>
+</ul>
+<h2 id="文件监听原理"><a href="#文件监听原理" class="headerlink" title="文件监听原理"></a>文件监听原理</h2><p>在发现源码发生变化时，自动重新构建出新的输出文件。</p>
+<p>Webpack开启监听模式，有两种方式：</p>
+<ul>
+<li>启动 Webpack 命令时，带上 –watch 参数</li>
+<li>在配置 Webpack.config.js 中设置 watch:true</li>
+</ul>
+<p>原理：轮询判断文件的最后编辑时间是否变化，如果某个文件发生了变化，并不会立刻告诉监听者，而是先缓存起来，等<code>aggregateTimeout</code>后再执行。</p>
+<p>缺点：每次需要手动刷新浏览器。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-built_in">module</span>.export = &#123;    <br>  <span class="hljs-comment">// 默认false,也就是不开启    </span><br>  <span class="hljs-attr">watch</span>: <span class="hljs-literal">true</span>,    <br>  <span class="hljs-comment">// 只有开启监听模式时，watchOptions才有意义    </span><br>  <span class="hljs-attr">watchOptions</span>: &#123;        <br>    <span class="hljs-comment">// 默认为空，不监听的文件或者文件夹，支持正则匹配        </span><br>    <span class="hljs-attr">ignored</span>: <span class="hljs-regexp">/node_modules/</span>,        <br>    <span class="hljs-comment">// 监听到变化发生后会等300ms再去执行，默认300ms        </span><br>    aggregateTimeout:<span class="hljs-number">300</span>,        <br>    <span class="hljs-comment">// 判断文件是否发生变化是通过不停询问系统指定文件有没有变化实现的，默认每秒问1000次</span><br>    <span class="hljs-attr">poll</span>:<span class="hljs-number">1000</span>    <br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="热更新原理"><a href="#热更新原理" class="headerlink" title="热更新原理"></a>热更新原理</h2><p>Webpack 的热更新又称热替换（Hot Module Replacement），缩写为 HMR。这个机制可以做到不用人刷新浏览器而将新变更的模块替换掉旧的模块。</p>
+<p>HMR 的核心就是客户端从服务端拉去更新后的文件，准确的来说是 chunk diff（chunk 需要更新的部分），实际上 WDS 与浏览器之间维护了一个 Websocket，当本地资源发生变化时，WDS 会向浏览器推送更新，并带上构建时的 hash，让客户端与上一次资源进行对比。客户端对比出差异后会向 WDS 发起 Ajax 请求来获取更改内容（文件列表、hash），这样客户端就可以再借助这些信息继续向 WDS 发起 jsonp 请求获取该 chunk 的增量更新。</p>
+<p>后续的部分（拿到增量更新之后如何处理？哪些状态该保留？哪些又需要更新？）是由 HotModulePlugin 来完成，提供了相关 API 以供开发者针对自身场景进行处理，像 react-hot-loader 和 vue-loader 都是借助这些 API 实现 HMR。</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E6%A1%86%E6%9E%B6%E6%A8%A1%E5%9D%97/">框架模块</a>
+                    
+                      <a class="hover-with-bg" href="/categories/%E6%A1%86%E6%9E%B6%E6%A8%A1%E5%9D%97/Webpack/">Webpack</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/">面试题</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Webpack/">Webpack</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/09/25/%E8%B7%A8%E5%9F%9F/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">跨域</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/09/23/JavaScript%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D/">
+                        <span class="hidden-mobile">JavaScript数组去重</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"syQxyJQH6mJ9tVidXW3H8d00-gzGzoHsz","appKey":"CkmQXvhPR7AQJnJEU8kKs00A","placeholder":"说点什么","path":"window.location.pathname","avatar":"retro","meta":["nick","mail","link"],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false,"requiredFields":[]},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+  <div class="col-lg-7 mx-auto nopadding-x-md">
+    <div class="container custom post-custom mx-auto">
+      <img src="https://octodex.github.com/images/jetpacktocat.png" srcset="/img/loading.gif" lazyload class="rounded mx-auto d-block mt-5" style="width:150px; height:150px;">
+    </div>
+  </div>
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Powered by Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Theme is Fluid</span></a>
+  </div>
+  
+
+  
+  <!-- 备案信息 -->
+  <div class="beian">
+    <span>
+      <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+        冀ICP备2021010393号-1
+      </a>
+    </span>
+    
+      
+        <span>
+          <a
+            href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=13048102000303"
+            rel="nofollow noopener"
+            class="beian-police"
+            target="_blank"
+          >
+            
+              <span style="visibility: hidden; width: 0">|</span>
+              <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
+            
+            <span>冀公网安备13048102000303号</span>
+          </a>
+        </span>
+      
+    
+  </div>
+
+
+  
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?bbe44c28232a60458d913426edaff12f";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+    
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?siteId=16939915";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

@@ -1,0 +1,649 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="Keven">
+  <meta name="keywords" content="">
+  
+  <title>弹性布局 - Keven&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":60,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"siteId=16939915","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 50vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Keven's Blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tools/">
+                <i class="iconfont icon-th-large"></i>
+                工具
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/example.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.2)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="弹性布局">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-author" aria-hidden="true"></i>
+      Keven
+    </span>
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-10-03 21:00" pubdate>
+        2021年10月3日
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      3.8k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      41
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">弹性布局</h1>
+            
+            <div class="markdown-body">
+              <p>Dome：<br><a target="_blank" rel="noopener" href="https://github.com/xuekeven/dome/blob/main/css/%E4%B8%A4%E6%A0%8F_%E5%BC%B9%E6%80%A7%E5%B8%83%E5%B1%801.html">https://github.com/xuekeven/dome/blob/main/css/两栏_弹性布局1.html</a> 。<br><a target="_blank" rel="noopener" href="https://github.com/xuekeven/dome/blob/main/css/%E4%B8%A4%E6%A0%8F_%E5%BC%B9%E6%80%A7%E5%B8%83%E5%B1%802.html">https://github.com/xuekeven/dome/blob/main/css/两栏_弹性布局2.html</a> 。</p>
+<p>搭配：<br><a target="_blank" rel="noopener" href="https://www.ruanyifeng.com/blog/2015/07/flex-grammar.html">https://www.ruanyifeng.com/blog/2015/07/flex-grammar.html</a> 。<br><a target="_blank" rel="noopener" href="https://www.ruanyifeng.com/blog/2015/07/flex-examples.html">https://www.ruanyifeng.com/blog/2015/07/flex-examples.html</a> 。</p>
+<h1 id="介绍使用"><a href="#介绍使用" class="headerlink" title="介绍使用"></a>介绍使用</h1><p>Flexbox，全称弹性盒子布局（FlexibleBox Layout），是一种新的布局方式。跟浮动比，Flexbox 的可预测性更好，还能提供更精细的控制，它也能轻松解决困扰我们许久的垂直居中和等高列问题。</p>
+<p>给元素添加<code>display:flex</code>，该元素变成了一个弹性容器（flex container），它的直接子元素变成弹性子元素（flex item）。弹性子元素默认在同一行按照从左到右的顺序并排排列。弹性容器像块级元素一样填满可用宽度，但弹性子元素不一定填满其弹性容器的宽度。弹性子元素高度相等，该高度由它们的内容决定。</p>
+<p>还可以用<code>display: inline-flex</code>，它也能创建了一个弹性容器，行为类似于 inline-block 元素。它会跟其他行内元素一起流式排列，但不会自动增长到 100% 的宽度。此容器内部的弹性子元素跟使用 <code>display: flex</code> 创建的弹性子元素行为一样。在实际开发时，很少用到 <code>display:inline-flex</code>。</p>
+<p>弹性容器能控制内部元素的布局。子元素按照主轴线排列，主轴的方向为主起点（左）直到主终点（右）；垂直于主轴的是副轴，方向从副起点（上）到副终点（下）。轴方向可改变。</p>
+<p>通常情况下，创建一个弹性盒子需要用到这些方法</p>
+<ul>
+<li>选择一个容器及其子元素，给容器设置 <code>display: flex</code> 或 <code>display: inline-flex</code></li>
+<li>如有必要，给容器设置 flex-direction 属性</li>
+<li>给弹性子元素设置外边距和/或 flex 值，用来控制子元素的大小</li>
+<li>将元素大致摆放到合适的位置后，就可以按需添加其他的 Flexbox 属性</li>
+</ul>
+<p>Flexbox 的实现是 CSS 的一大进步。一旦你熟悉了，你可能想要在页面的每个地方都开始使用，不过你应该依靠正常的文档流，只在必要的时候才使用 Flexbox。</p>
+<p>Flexbox 的一个有趣之处是如何基于弹性子元素的数量和其中内容量（及大小）计算容器大小。因为如果网页很大，或者加载很慢时可能会产生奇怪的行为，建议整页布局时用网格布局。只有一行多列的布局才会产生这个问题。如果主页面布局采用的是一列多行 不会出现问题。</p>
+<p>Flexbox 是一维的，是以内容为切入点由内向外工作的。<br>Flexbox 允许使用<code>margin:auto</code>来填充弹性子元素之间的可用空间。</p>
+<h1 id="容器属性"><a href="#容器属性" class="headerlink" title="容器属性"></a>容器属性</h1><ul>
+<li>flex-flow（子元素排列方式）</li>
+<li>flex-direction（主副轴方向）</li>
+<li>flex-wrap（子元素换行）</li>
+<li>justify-content（主轴方向子元素对齐方式）</li>
+<li>align-items（副轴方向子元素对齐方式）</li>
+<li>align-content（多轴线对齐方式）</li>
+</ul>
+<h2 id="flex-flow"><a href="#flex-flow" class="headerlink" title="flex-flow"></a>flex-flow</h2><p>flex-flow 属性用于设置或检索弹性盒模型对象的子元素排列方式。<br>flex-flow 是 flex-direction 和 flex-wrap 的属性简写，默认值为 row nowrap。</p>
+<h2 id="flex-direction"><a href="#flex-direction" class="headerlink" title="flex-direction"></a>flex-direction</h2><p>Flexbox 一个重要功能是能够切换主副轴方向，其用弹性容器的 flex-direction 属性控制。<br>改变弹性方向就改变了主轴方向，副轴因为要与主轴垂直，所以方向也随之改变。</p>
+<h3 id="row"><a href="#row" class="headerlink" title="row"></a>row</h3><p>主轴从左到右的方向排列，副轴从上到下的方向排列。默认值。</p>
+<h3 id="row-reverse"><a href="#row-reverse" class="headerlink" title="row-reverse"></a>row-reverse</h3><p>主轴从右到左的方向排列，副轴从上到下的方向排列，类似 row。</p>
+<h3 id="column"><a href="#column" class="headerlink" title="column"></a>column</h3><p>主轴从上到下的方向排列，副轴从左到右的方向排列。</p>
+<p>对于弹性子元素而言，flex-basis、flex-grow 和 flex-shrink 现在作用于元素的高度而不是宽度。</p>
+<p>水平弹性盒子的大部分概念同样适用于垂直的弹性盒子。但有一点不同：CSS 中处理高度的方式与处理宽度的方式在本质上不一样。弹性容器会占据 100% 的可用宽度，而高度则由自身的内容来决定。即使改变主轴方向，也不会影响这一本质。</p>
+<p>弹性容器的高度由弹性子元素决定，它们会填满容器高度。但在垂直的弹性盒子里，子元素的 flex-grow 和 flex-shrink 不会起作用，除非有“外力”强行改变弹性容器的高度。</p>
+<h3 id="column-reverse"><a href="#column-reverse" class="headerlink" title="column-reverse"></a>column-reverse</h3><p>主轴从下到的上方向排列，副轴从左到右的方向排列，类似 column。</p>
+<h2 id="flex-wrap"><a href="#flex-wrap" class="headerlink" title="flex-wrap"></a>flex-wrap</h2><p>默认情况下，子元素都排在一条线（又称”轴线”）上。当子元素填满这根轴线呢？</p>
+<p>flex-wrap 属性设置是否允许弹性子元素换行（列）显示。当 flex-wrap 属性设置启用换行后，子元素将不再根据 flex-shrink 属性收缩，任何超过弹性容器的子元素都会换行（列）显示。</p>
+<p>若 flex-direction 值为 column 或 column-reverse，则 flex-wrap 允许弹性子元素换到新的一列显示，不过这只在限制容器高度的情况下才发生，否则容器会扩展高度以包含全部子元素。</p>
+<h3 id="nowrap"><a href="#nowrap" class="headerlink" title="nowrap"></a>nowrap</h3><p>不拆行或不拆列。默认值。</p>
+<h3 id="wrap"><a href="#wrap" class="headerlink" title="wrap"></a>wrap</h3><p>必要的时候拆行或拆列，第一行在上方。<br>启用后，子元素不再根据 flex-shrink 值收缩，超过弹性容器的子元素都会换行显示。</p>
+<h3 id="wrap-reverse"><a href="#wrap-reverse" class="headerlink" title="wrap-reverse"></a>wrap-reverse</h3><p>必要的时候拆行或拆列，但是以相反的顺序，第一行在下方。<br>启用后，子元素不再根据 flex-shrink 值收缩，超过弹性容器的子元素都会换行显示。</p>
+<h2 id="justify-content"><a href="#justify-content" class="headerlink" title="justify-content"></a>justify-content</h2><p>justify-content 属性控制子元素在主轴方向上的对齐方式（前提为子元素未填满容器）。</p>
+<p>对齐时子元素之间会产生间距，间距是在子元素的外边距之后另进行计算的，且 flex-grow 值要考虑进来。如果任意子元素的 flex-grow 值不为 0，或任意子元素在主轴方向的外边距值为 auto，justify-content 失效。</p>
+<h3 id="flex-start"><a href="#flex-start" class="headerlink" title="flex-start"></a>flex-start</h3><p>左对齐（子元素从主轴的开始位置顺序排列）。默认值。</p>
+<h3 id="flex-end"><a href="#flex-end" class="headerlink" title="flex-end"></a>flex-end</h3><p>右对齐（子元素从主轴的结束位置开始排列）。</p>
+<h3 id="center"><a href="#center" class="headerlink" title="center"></a>center</h3><p>子元素居中。</p>
+<h3 id="space-between"><a href="#space-between" class="headerlink" title="space-between"></a>space-between</h3><p>第一个子元素左对齐，最后一个子元素右对齐，剩下的子元素间隔均匀放在两者中间。</p>
+<h3 id="space-around"><a href="#space-around" class="headerlink" title="space-around"></a>space-around</h3><p>每个子元素两侧的间隔相等。所以，子元素之间的间隔是子元素与边框的间隔的两倍。</p>
+<h2 id="align-items"><a href="#align-items" class="headerlink" title="align-items"></a>align-items</h2><p>align-items 属性控制子元素在副轴方向上的对齐方式。</p>
+<h3 id="stretch"><a href="#stretch" class="headerlink" title="stretch"></a>stretch</h3><p>在主轴为水平排列情况下，子元素未设高度或设为 auto，子元素填充容器高度（弹性布局能实现等高列）；在主轴为垂直排列情况下，子元素未设宽度或设为 auto，子元素填充容器宽度。默认值。</p>
+<h3 id="flex-start-1"><a href="#flex-start-1" class="headerlink" title="flex-start"></a>flex-start</h3><p>子元素与副轴的起点对齐。</p>
+<h3 id="flex-end-1"><a href="#flex-end-1" class="headerlink" title="flex-end"></a>flex-end</h3><p>子元素与副轴的终点对齐。</p>
+<h3 id="center-1"><a href="#center-1" class="headerlink" title="center"></a>center</h3><p>子元素与副轴的中点对齐。</p>
+<h3 id="baseline"><a href="#baseline" class="headerlink" title="baseline"></a>baseline</h3><p>子元素根据每个弹性子元素的第一行文字的基线对齐。</p>
+<h2 id="align-content"><a href="#align-content" class="headerlink" title="align-content"></a>align-content</h2><p>align-content 属性定义多根轴线在容器内对齐方式（前提为允许子元素换行（列）且有多跟轴线）。</p>
+<p>在主轴为水平排列情况下，轴线为水平轴线，有几行则几根轴线；<br>在主轴为垂直排列情况下，轴线为竖直轴线，有几列则几根轴线。</p>
+<p>Flexbox 为一维布局，适合用在元素组成的行或列上。Flexbox 支持用 flex-wrap 属性换行（列），但是没法让上一行（列）的元素跟下一行（列）的元素对齐，所以没有 justify-items 这样的属性。</p>
+<p>当 align-content 属性与 align-items 属性冲突时，align-content 属性优先。</p>
+<h3 id="stretch-1"><a href="#stretch-1" class="headerlink" title="stretch"></a>stretch</h3><p>轴线占满整个副轴。默认值。</p>
+<h3 id="flex-start-2"><a href="#flex-start-2" class="headerlink" title="flex-start"></a>flex-start</h3><p>与副轴的起点对齐。</p>
+<h3 id="flex-end-2"><a href="#flex-end-2" class="headerlink" title="flex-end"></a>flex-end</h3><p>与副轴的终点对齐。</p>
+<h3 id="center-2"><a href="#center-2" class="headerlink" title="center"></a>center</h3><p>与副轴的中点对齐。</p>
+<h3 id="space-between-1"><a href="#space-between-1" class="headerlink" title="space-between"></a>space-between</h3><p>与副轴两端对齐，轴线之间的间隔平均分布。</p>
+<h3 id="space-around-1"><a href="#space-around-1" class="headerlink" title="space-around"></a>space-around</h3><p>每根轴线两侧的间隔相等。所以轴线之间的间隔是轴线与边框的间隔一倍。</p>
+<h1 id="子元素属性"><a href="#子元素属性" class="headerlink" title="子元素属性"></a>子元素属性</h1><ul>
+<li>order（子元素顺序）</li>
+<li>flex（子元素大小）</li>
+<li>flex-basis（子元素基准）</li>
+<li>flex-grow（子元素增长）</li>
+<li>flex-shrink（子元素收缩）</li>
+<li>align-self（副轴方向子元素对齐方式）</li>
+</ul>
+<h2 id="order"><a href="#order" class="headerlink" title="order"></a>order</h2><p>正常情况下，弹性子元素按照在 HTML 源码中出现的顺序排列。它们会沿着主轴方向从主轴起点开始排列。使用 order 属性能改变子元素排列顺序。还可以将其指为任意正负整数。如果多个弹性子元素有一样的值，它们就会按照源码顺序出现。</p>
+<p>在初始状态下，所有弹性子元素的 order 属性值都为 0。指定一个元素的值为 −1 它则会移动到列表最前面，指定为 1 则会移动到最后。可以按需要给每个子元素指定 order 以便重新编排它们。这些值不一定要连续。</p>
+<p>谨慎使用 order。让屏幕上的视觉布局顺序和源码顺序差别太大会影响网站的可访问性。在大多数浏览器里使用 Tab 键浏览元素的顺序与源码保持一致，如果视觉上的差别太大就会令人困惑。视力受损的用户使用的大部分屏幕阅读器也是根据源码的顺序来的。</p>
+<h2 id="flex"><a href="#flex" class="headerlink" title="flex"></a>flex</h2><p>flex 属性控制弹性子元素在主轴方向上的大小（指元素的宽度），用来设置或者检索弹性盒模型对象子元素如何分配空间。flex 属性是 flex-grow、flex-shrink 和 flex-basis 的属性简写，前两个属性都基于 flex-basis。</p>
+<p>推荐使用简写属性 flex，而不是分别声明 flex-grow、flex-shrink、flex-basis。与大部分的简写属性不一样，如果在 flex 中忽略声明某个子属性，那么子属性的值并不会被置为默认值。如果某个子属性被省略，那么 flex 简写属性会设置其为：<code>flex-grow:1``flex-shrink:1``flex-basis:0</code>，这些默认值正是大多数情况下所需要的值。</p>
+<p>flex 有几个特殊值：</p>
+<ul>
+<li><code>flex: 0 1 auto</code>（默认值）<br>不增长但自动收缩，收缩比例为 1；flex-basis 为 auto，即取自用户定义的宽度或内容本身的宽度。</li>
+<li><code>flex: 1 1 auto</code>（auto）<br>自动增长缩放，比例均为 1；flex-basis 为 auto，即取自用户定义的宽度或内容本身的宽度。</li>
+<li><code>flex: 0 0 auto</code>（none）<br>不增长不缩放；flex-basis 为 auto，即取自用户定义的宽度或内容本身的宽度。</li>
+<li><code>flex: 1 1 0</code>（<code>flex: 1</code>）<br>自动增长缩放，比例均为 1；flex-basis 为 0。当给所有子元素设置 flex: 1 则代表子元素平分宽度。</li>
+<li>两个值<br>第一个为 flex-grow；第二个，如果是数字认为是 flex-shrink，如果是宽度认为是 flex-basis。</li>
+</ul>
+<h2 id="flex-basis"><a href="#flex-basis" class="headerlink" title="flex-basis"></a>flex-basis</h2><p>flex-basis 属性定义了子元素大小的长度基准值，即一个初始的“主尺寸”。</p>
+<p>flex-basis 属性可以设置为任意长度单位的值，包括 px、em、百分比。它默认值是 auto，此时浏览器会检查元素是否设置 width 属性。如果有则使用 width 值作为 flex-basis 值；如果没有则用元素内容自身的大小。如果 flex-basis 的值不是 auto，那么 width 属性会被忽略。</p>
+<p>每个子元素初始主尺寸确定后，它们可能需要在主轴方向扩大或者缩小来适应（或填充）弹性容器的大小。这时候就需要 flex-grow 属性和 flex-shrink 属性来决定如何增长和缩放。</p>
+<p>当 flex-basis 为 0% 时，内边距会改变弹性子元素的初始主宽度计算的方式。如果想要精确结果，则要么保证两列有相同的内边距，要么用 flex 属性时使用 flex-basis 设置弹性基准值。</p>
+<h2 id="flex-grow"><a href="#flex-grow" class="headerlink" title="flex-grow"></a>flex-grow</h2><p>每个弹性子元素 flex-basis 值计算出来后，它们（加上子元素间的外边距）加起来会占据一定的宽度。如果加起来的宽度不一定正好填满弹性容器的宽度，可能会有留白。</p>
+<p>多出来的留白（或剩余宽度）会按照 flex-grow（增长因子）的值分配给每个弹性子元素，flex-grow 的值为非负整数。如果弹性子元素 flex-grow 值为 0，那么子元素的宽度不会超过 flex-basis 的值；如果弹性子元素 flex-grow 值非 0，那么子元素会增长到所有的剩余空间被分配完，这意味着弹性子元素会填满容器的宽度。</p>
+<p>flex-grow 值越大，元素的“权重”越高，就会占据更大剩余宽度。一个<code>flex-grow:2</code>的子元素增长的宽度为<code>flex-grow:1</code>的子元素增长的宽度的两倍。分配时只跟 flex-grow 有关，跟 flex-basis 无关。</p>
+<p>flex-shrink 默认值为 0。</p>
+<h2 id="flex-shrink"><a href="#flex-shrink" class="headerlink" title="flex-shrink"></a>flex-shrink</h2><p>flex-shrink 属性与 flex-grow 属性遵循相似的原则。计算出弹性子元素的初始主尺寸后，它们的累加值可能会超出弹性容器的可用宽度。如果不用 flex-shrink 属性又不用 flex-wrap 属性，就会导致溢出。</p>
+<p>每个子元素的 flex-shrink 值代表它是否应该收缩以防止溢出，flex-grow 的值为非负整数。与 flex-grow 属性类似，如果子元素 flex-shrink 值为 0，则不会收缩；如果子元素 flex-shrink 值非 0，则会收缩至不再溢出。按照 flex-shrink 值的比例，值越大的元素收缩得越多。收缩时只跟 flex-shrink 有关，跟 flex-basis 无关。</p>
+<p>flex-shrink 默认值为 1。</p>
+<h2 id="align-self"><a href="#align-self" class="headerlink" title="align-self"></a>align-self</h2><p>align-self 属性控制单个子元素在副轴方向上的对齐方式。align-self 属性跟弹性容器的 align-items 属性效果相同，但是它能单独给弹性子元素设定不同的对齐方式，两者冲突时 align-self 属性优先。</p>
+<h3 id="auto"><a href="#auto" class="headerlink" title="auto"></a>auto</h3><p>以容器的 align-items 值为准，使用其他值会覆盖容器的设置。默认值。</p>
+<h3 id="stretch-2"><a href="#stretch-2" class="headerlink" title="stretch"></a>stretch</h3><p>在主轴为水平排列情况下，子元素未设高度或设为 auto，子元素填充容器高度（弹性布局能实现等高列）；在主轴为垂直排列情况下，子元素未设宽度或设为 auto，子元素填充容器宽度。</p>
+<h3 id="flex-start-3"><a href="#flex-start-3" class="headerlink" title="flex-start"></a>flex-start</h3><p>子元素与副轴的起点对齐。</p>
+<h3 id="flex-end-3"><a href="#flex-end-3" class="headerlink" title="flex-end"></a>flex-end</h3><p>子元素与副轴的终点对齐。</p>
+<h3 id="center-3"><a href="#center-3" class="headerlink" title="center"></a>center</h3><p>子元素与副轴的中点对齐。</p>
+<h3 id="baseline-1"><a href="#baseline-1" class="headerlink" title="baseline"></a>baseline</h3><p>子元素根据每个弹性子元素的第一行文字的基线对齐。</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/CSS/">CSS</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/CSS/">CSS</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/10/03/%E7%BD%91%E6%A0%BC%E5%B8%83%E5%B1%80/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">网格布局</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/10/03/%E5%B1%82%E5%8F%A0%E5%92%8C%E7%BB%A7%E6%89%BF/">
+                        <span class="hidden-mobile">层叠和继承</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"syQxyJQH6mJ9tVidXW3H8d00-gzGzoHsz","appKey":"CkmQXvhPR7AQJnJEU8kKs00A","placeholder":"说点什么","path":"window.location.pathname","avatar":"retro","meta":["nick","mail","link"],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false,"requiredFields":[]},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+  <div class="col-lg-7 mx-auto nopadding-x-md">
+    <div class="container custom post-custom mx-auto">
+      <img src="https://octodex.github.com/images/jetpacktocat.png" srcset="/img/loading.gif" lazyload class="rounded mx-auto d-block mt-5" style="width:150px; height:150px;">
+    </div>
+  </div>
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Powered by Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Theme is Fluid</span></a>
+  </div>
+  
+
+  
+  <!-- 备案信息 -->
+  <div class="beian">
+    <span>
+      <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+        冀ICP备2021010393号-1
+      </a>
+    </span>
+    
+      
+        <span>
+          <a
+            href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=13048102000303"
+            rel="nofollow noopener"
+            class="beian-police"
+            target="_blank"
+          >
+            
+              <span style="visibility: hidden; width: 0">|</span>
+              <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
+            
+            <span>冀公网安备13048102000303号</span>
+          </a>
+        </span>
+      
+    
+  </div>
+
+
+  
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?bbe44c28232a60458d913426edaff12f";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+    
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?siteId=16939915";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

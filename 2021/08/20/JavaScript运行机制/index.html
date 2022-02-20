@@ -1,0 +1,721 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="Keven">
+  <meta name="keywords" content="">
+  
+  <title>JavaScript运行机制 - Keven&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":60,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"siteId=16939915","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 50vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Keven's Blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tools/">
+                <i class="iconfont icon-th-large"></i>
+                工具
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/example.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.2)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="JavaScript运行机制">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-author" aria-hidden="true"></i>
+      Keven
+    </span>
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-08-20 17:30" pubdate>
+        2021年8月20日
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      4.7k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      57
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">JavaScript运行机制</h1>
+            
+            <div class="markdown-body">
+              <p>参考：<br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903512845860872">https://juejin.cn/post/6844903512845860872</a> 。<br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904100195205133">https://juejin.cn/post/6844904100195205133</a> 。<br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6991849728493256741">https://juejin.cn/post/6991849728493256741</a> 。</p>
+<h1 id="JavaScript-异步实现"><a href="#JavaScript-异步实现" class="headerlink" title="JavaScript 异步实现"></a>JavaScript 异步实现</h1><p>JavaScript 是一门单线程语言，虽然 HTML5 中提出 Web-Worker，但 JavaScript 是单线程这一核心仍未改变。所以一切 JavaScript 的”多线程”都是用单线程模拟出来的。</p>
+<p>JavaScript 的主运行线程只有一个，但不是整个运行环境都是单线程。JavaScript 的运行环境主要是浏览器，它不仅是多线程的，而且是多进程的。</p>
+<h1 id="浏览器的多进程架构"><a href="#浏览器的多进程架构" class="headerlink" title="浏览器的多进程架构"></a>浏览器的多进程架构</h1><p>以 Chrome 浏览器为例，它由多个进程组成，每个进程都有自己核心的职责，它们相互配合来完成浏览器的整体功能。每个进程中又包含多个线程，一个进程内的多个线程也会协同工作，配合完成所在进程的职责。</p>
+<p>Chrome 浏览器采用多进程架构，其顶层存在一个 Browser 进程用以协调浏览器的其它进程。</p>
+<p><img src="/images/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E4%B8%BB%E8%A6%81%E8%BF%9B%E7%A8%8B.png" srcset="/img/loading.gif" lazyload alt="Chrome 浏览器的主要进程"></p>
+<p>上图只是一个概括，意思是浏览器有这几类的进程和线程，并不是每种只有一个，比如渲染进程就有多个，每个页面都有自己的渲染进程。有时候使用浏览器会遇到某个页面崩溃或者没有响应的情况，这个页面对应的渲染进程可能崩溃了，但是其它页面并没有用这个渲染进程，它们各自有各自的渲染进程，所以其它页面并不会受影响。</p>
+<p>最新 Chrome 浏览器包括：1个Browser进程、1个GPU进程、1个网络进程、多个渲染进程、多个插件进程。打开浏览器的一个页面至少需要 4 个进程：1个Browser进程、1个GPU进程、1个网络进程、1个渲染进程。</p>
+<h2 id="Browser进程"><a href="#Browser进程" class="headerlink" title="Browser进程"></a>Browser进程</h2><p>负责控制浏览器除标签页外的界面，包括地址栏、书签、前进后退按钮等，及负责与其他进程的协调工作，同时提供存储功能。</p>
+<h2 id="GPU进程"><a href="#GPU进程" class="headerlink" title="GPU进程"></a>GPU进程</h2><p>负责整个浏览器界面的渲染。Chrome 刚开始发布的时候是没有GPU进程的，而使用GPU的初衷是为了实现3D CSS效果，只是后面网页、Chrome 的 UI 界面都用GPU来绘制，这使GPU成为浏览器普遍的需求，最后 Chrome 在多进程架构上也引入了GPU进程。</p>
+<h2 id="网络进程"><a href="#网络进程" class="headerlink" title="网络进程"></a>网络进程</h2><p>负责发起和接受网络请求，以前是作为模块运行在浏览器进程一时在面的，后面才独立出来，成为一个单独的进程。</p>
+<h2 id="插件进程"><a href="#插件进程" class="headerlink" title="插件进程"></a>插件进程</h2><p>负责插件的运行，因为插件可能崩溃，所以需要通过插件进程来隔离，以保证插件崩溃也不会对浏览器和页面造成影响。每种类型的插件对应一个进程，仅当使用插件时才创建插件进程。</p>
+<h2 id="渲染进程"><a href="#渲染进程" class="headerlink" title="渲染进程"></a>渲染进程</h2><p>负责控制显示标签页内的所有内容，核心任务是将HTML、CSS、JS转为用户可以与之交互的网页，排版引擎 Blink 和 JS V8 引擎都是运行在该进程中，默认情况下 Chrome 会为每个标签页创建一个渲染进程。渲染进程被称为浏览器渲染进程或浏览器内核，内部是多线程的。</p>
+<h1 id="浏览器的渲染进程"><a href="#浏览器的渲染进程" class="headerlink" title="浏览器的渲染进程"></a>浏览器的渲染进程</h1><p>我们平时看到的浏览器呈现出页面过程中，大部分工作都是在渲染进程中完成，对于前端工程师来说，主要关心的还是渲染进程。</p>
+<h2 id="GUI渲染线程"><a href="#GUI渲染线程" class="headerlink" title="GUI渲染线程"></a>GUI渲染线程</h2><p>GUI渲染线程负责渲染浏览器界面，解析 HTML 和 CSS，构建 DOM Tree、CSSOM Tree、Render Tree，布局和绘制页面。</p>
+<p>当界面需要重绘（Repaint）或由于某种操作引发回流（reflow）时，该线程也会执行。</p>
+<p>注意，GUI渲染线程与JS引擎线程是互斥的，当JS引擎线程执行时 GUI 线程会被挂起（相当于被冻结了），GUI渲染线程会被保存在一个队列中，等到JS引擎线程空闲时再立即被执行。</p>
+<h2 id="JS引擎线程"><a href="#JS引擎线程" class="headerlink" title="JS引擎线程"></a>JS引擎线程</h2><p>JS引擎线程是负责执行 JavaScript 的主线程，“JavaScript 是单线程的”就是指的这个线程。Chrome V8 引擎就是在这个线程运行的。JS引擎线程负责解析 Javascript 脚本，运行代码。一个页面只有一个JS引擎线程负责解析和执行 JavaScrip。</p>
+<p>需要注意的是，这个线程跟GUI渲染线程是互斥的。互斥的原因是 JavaScript 也可以操作 DOM 和 CSSOM，如果JS引擎线程和GUI渲染线程同时操作，结果就混乱了，不知道到底渲染哪个结果。互斥带来的后果就是如果 JavaScript 长时间运行，GUI渲染线程就不能执行，造成页面的渲染不连贯，导致页面渲染加载阻塞，整个页面就感觉卡死了。</p>
+<h2 id="定时触发器线程"><a href="#定时触发器线程" class="headerlink" title="定时触发器线程"></a>定时触发器线程</h2><p>setTimeout 和 setInterval 就运行在这里，它跟JS引擎线程不在同一个地方，因为JS引擎线程是单线程的，所以如果其处于阻塞状态，那么计时器就会不准确，所以需要单独的线程来负责计时器工作，因而“单线程的 JavaScrip”能够实现异步。</p>
+<p>定时触发器线程其实只是一个计时的作用，它并不会真正执行时间到了的回调函数，真正执行这个回调函数的还是 JS引擎线程。所以当时间到了，定时触发器线程会将回调函数给到事件触发线程，然后事件触发线程将它加到事件队列里面去。最终JS引擎线程从事件队列取出这个回调函数执行。</p>
+<h2 id="异步HTTP请求线程"><a href="#异步HTTP请求线程" class="headerlink" title="异步HTTP请求线程"></a>异步HTTP请求线程</h2><p>异步HTTP请求线程负责处理异步的 Ajax 请求，当请求完成后，它也会通知事件触发线程，然后事件触发线程将这个事件放入事件队列给JS引擎线程执行。</p>
+<h2 id="事件触发线程"><a href="#事件触发线程" class="headerlink" title="事件触发线程"></a>事件触发线程</h2><p>事件触发线程主要用来控制事件循环，比如 JavaScript 执行遇到定时器，AJAX 异步请求等，就会将对应任务添加到事件触发线程中，在对应事件符合触发条件触发时，就把事件添加到事件队列，等待JS引擎线程来处理。事件触发线程不仅会将定时器事件放入事件队列，其它满足条件的事件也是它负责放进事件队列。</p>
+<p>JavaScript 异步的实现靠的就是浏览器的多线程，当主线程遇到异步任务时，就将这个任务交给对应的线程，当这个异步任务满足回调函数条件时，对应的线程又通过事件触发线程将这个任务放入事件队列，然后主线程从事件队列取出事件继续执行。事件队列（Event Queue）是事件循环（Event Loop）的一部分。</p>
+<h1 id="Event-Loop"><a href="#Event-Loop" class="headerlink" title="Event Loop"></a>Event Loop</h1><p>Event Loop 是 JavaScript 管理事件执行的一个流程，具体的管理办法由它具体的运行环境确定。<br>JavaScript 的主要运行环境有两个：浏览器和 Node.js。这两个环境的 Event Loop 有区别。</p>
+<h2 id="宏任务和微任务"><a href="#宏任务和微任务" class="headerlink" title="宏任务和微任务"></a>宏任务和微任务</h2><p>Event Queue 里面的事件分两类：宏任务和微任务。</p>
+<p>微任务拥有更高的优先级，Event Loop 遍历队列时会先检查微任务队列，如果里面有任务就全部拿来执行，执行完所有微任务之后再执行下一个宏任务。执行每个宏任务之前都检查微任务队列是否有任务，如果有会优先执行微任务队列。</p>
+<table>
+<thead>
+<tr>
+<th align="center">常见宏任务</th>
+<th align="center">浏览器环境</th>
+<th align="center">Node.js 环境</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">I/O</td>
+<td align="center">✅</td>
+<td align="center">✅</td>
+</tr>
+<tr>
+<td align="center">script（外层同步代码）</td>
+<td align="center">✅</td>
+<td align="center">✅</td>
+</tr>
+<tr>
+<td align="center">setTimeout</td>
+<td align="center">✅</td>
+<td align="center">✅</td>
+</tr>
+<tr>
+<td align="center">setInterval</td>
+<td align="center">✅</td>
+<td align="center">✅</td>
+</tr>
+<tr>
+<td align="center">setImmediate</td>
+<td align="center">❌</td>
+<td align="center">✅</td>
+</tr>
+<tr>
+<td align="center">requestAnimationFrame</td>
+<td align="center">✅</td>
+<td align="center">❌</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th align="center">常见微任务</th>
+<th align="center">浏览器环境</th>
+<th align="center">Node.js 环境</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Promise</td>
+<td align="center">✅</td>
+<td align="center">✅</td>
+</tr>
+<tr>
+<td align="center">async/await</td>
+<td align="center">✅</td>
+<td align="center">✅</td>
+</tr>
+<tr>
+<td align="center">process.nextTick</td>
+<td align="center">❌</td>
+<td align="center">✅</td>
+</tr>
+<tr>
+<td align="center">MutaionObserver</td>
+<td align="center">✅</td>
+<td align="center">❌</td>
+</tr>
+</tbody></table>
+<p>不同类型的任务会进入对应的 Event Queue，比如 setTimeout 和 setInterval 会进入相同的 Event Queue。</p>
+<p>事件循环的顺序，决定 JS 代码的执行顺序。进入整体代码（宏任务）后，开始第一次循环。接着执行所有的微任务。然后再次从宏任务开始，找到其中一个事件队列执行完毕，再执行所有的微任务。</p>
+<h2 id="浏览器的-Event-Loop"><a href="#浏览器的-Event-Loop" class="headerlink" title="浏览器的 Event Loop"></a>浏览器的 Event Loop</h2><p>Event Loop 是各个异步线程用来通讯和协同执行的机制。各个线程为了交换消息，还有一个公用的数据区，这就是 Event Queue。各个异步线程执行完后，通过事件触发线程将回调函数放到 Event Queue。</p>
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/da2a8fb96e8c49d08589c1c31470d366~tplv-k3u1fbpfcp-watermark.awebp" srcset="/img/loading.gif" lazyload alt="浏览器的 Event Loop"></p>
+<p>执行流程：</p>
+<ul>
+<li>主线程执行时，先看要执行的是同步任务还是异步任务；</li>
+<li>同步任务进入主线程，异步任务进入相对应的线程，主线程继续执行同步任务；</li>
+<li>相对应的线程执行异步任务，满足条件后对应的线程将异步任务的回调函数放入 Event Queue；</li>
+<li>主线程内的任务执行完毕后就去 Event Queue 取出里面的函数进入主线程执行；</li>
+</ul>
+<p>主线程不断循环上述执行流程，就是浏览器的 Event Loop。</p>
+<h3 id="计时不准"><a href="#计时不准" class="headerlink" title="计时不准"></a>计时不准</h3><p>Event Loop 的这个流程里面其实还是隐藏了一些问题的，最典型的就是总是先执行同步任务，然后再执行 Event Queue 里面的回调函数。这个特性就直接影响了定时器的执行。如果主线程长时间被阻塞，定时器的回调函数就没机会执行，即使执行了时间也不准。所以写代码时一定不要长时间占用主线程。</p>
+<h3 id="setTimeout"><a href="#setTimeout" class="headerlink" title="setTimeout"></a>setTimeout</h3><p>setTimeout() 用于指定在一定时间后执行某些代码。实际中，是指经过指定时间后，把要执行的任务加入到 Event Queue 中，又因为是单线程任务要一个一个执行，如果前面的任务需要的时间太久，那么只能等着，导致真正的延迟时间大于指定的时间。</p>
+<p>setTimeout(fn, 0) 含义是，指定某个任务在主线程最早可得的空闲时间执行，意思就是不用再等多少时间，只要主线程执行栈内的同步任务全部执行完成，栈为空就马上执行。但是，即便主线程为空，0 毫秒实际上也达不到。根据 HTML 的标准最低是 4 毫秒。而且，setTimeout(fn, 0) 会被强制改为 setTimeout(fn, 1)。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> &#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;执行啦1&#x27;</span>)<br>&#125;, <span class="hljs-number">1000</span>);<br><span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> &#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;执行啦2&#x27;</span>)<br>&#125;, <span class="hljs-number">0</span>);<br><span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;先执行这里&#x27;</span>);<br><span class="hljs-comment">// 先执行这里</span><br><span class="hljs-comment">// 执行啦2</span><br><span class="hljs-comment">// 执行啦1</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> &#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;执行啦1&#x27;</span>)<br>&#125;, <span class="hljs-number">1</span>);<br><span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> &#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;执行啦2&#x27;</span>)<br>&#125;, <span class="hljs-number">0</span>);<br><span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;先执行这里&#x27;</span>);<br><span class="hljs-comment">// 先执行这里</span><br><span class="hljs-comment">// 执行啦1</span><br><span class="hljs-comment">// 执行啦2</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="setInterval"><a href="#setInterval" class="headerlink" title="setInterval"></a>setInterval</h3><p>setInterval() 用于指定每隔一段时间执行某些代码，直到取消循环或者页面卸载。setInterval() 会在每过指定的时间，将注册的函数放入 Event Queue。同理，如果 Event Queue 前面的任务耗时太久，一样需要等待。</p>
+<p>唯一需要注意的一点是，对 setInterval(fn, ms) 来说，我们已经知道不是每过 ms 秒会执行一次 fn，而是每过 ms 秒，会有 fn 进入 Event Queue。一旦 setInterval 的回调函数 fn 执行时间超过了延迟时间 ms，那就完全看不出来有指定的时间间隔。</p>
+<h2 id="Node-js-的-Event-Loop"><a href="#Node-js-的-Event-Loop" class="headerlink" title="Node.js 的 Event Loop"></a>Node.js 的 Event Loop</h2><p>Node.js 是运行在服务端的 JavaScrip，虽然它也用到了 V8 引擎，但是它的服务目的和环境不同，导致了它的 API 与原生 JavaScript 有些区别，它的 Event Loop 还要处理一些 I/O，比如新的网络连接等，所以与浏览器 Event Loop 也是不一样的。Node.js 的 Event Loop 是分阶段的，而且 Node.js 是先将外层的同步代码一次性全部执行完，遇到异步任务就塞到对应的阶段，然后进入 Event Queue 进行阶段循环。</p>
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/3027cbdfe546433a84fd8f80733e99dd~tplv-k3u1fbpfcp-watermark.awebp" srcset="/img/loading.gif" lazyload alt="Node.js 的 Event Loop"></p>
+<p>不同阶段：</p>
+<ul>
+<li>timers：执行 setTimeout 和 setInterval 的回调函数；</li>
+<li>pending callbacks：执行延迟到下一个循环迭代的 I/O 回调函数；</li>
+<li>idle：仅系统内部使用；</li>
+<li>prepare：仅系统内部使用；</li>
+<li>poll：检索新的 I/O 事件、执行与 I/O 相关的回调函数；</li>
+<li>check：setImmediate 在这里执行；</li>
+<li>close callbacks：一些关闭的回调函数。</li>
+</ul>
+<p>不断循环上述执行阶段，就是 Node.js 的 Event Loop。</p>
+<p>每个阶段都有一个自己先进先出的队列，只有当这个队列的事件执行完或者达到该阶段的上限时，才会进入下一个阶段。在每次事件循环之间，Node.js 都会检查它是否在等待任何一个 I/O 或者定时器，如果没有程序就关闭退出。我们的直观感受就是，如果一个 Node.js 程序只有同步代码，在控制台运行完后它就退出了。</p>
+<p>需要注意的是 poll 阶段，它后面并不一定每次都是 check 阶段，poll 队列执行完后，如果没有 setImmediate 但是有定时器到期，它会绕回去执行定时器阶段。</p>
+<h3 id="setImmediate"><a href="#setImmediate" class="headerlink" title="setImmediate"></a>setImmediate</h3><p>在一个异步流程里，setImmediate 会比定时器先执行。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// 在 Node.js 执行</span><br><span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;outer&#x27;</span>);<br><span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> &#123;<br>  <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> &#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;setTimeout&#x27;</span>);<br>  &#125;, <span class="hljs-number">0</span>); <span class="hljs-comment">// setTimeout(fn, 0)会被强制改为setTimeout(fn, 1)</span><br>  setImmediate(<span class="hljs-function">() =&gt;</span> &#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;setImmediate&#x27;</span>);<br>  &#125;);<br>&#125;, <span class="hljs-number">0</span>);<br><span class="hljs-comment">// outer</span><br><span class="hljs-comment">// setImmediate</span><br><span class="hljs-comment">// setTimeout</span><br></code></pre></td></tr></table></figure>
+<p>上面<code>console.log(&#39;setTimeout&#39;)</code>和<code>console.log(&#39;setImmediate&#39;)</code>都包在了一个 setTimeout 里面，如果直接写在最外层会怎么样呢？上面没有问题，但是，下面的代码输出结果不一定。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// 在 Node.js 执行</span><br><span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;outer&#x27;</span>);<br><span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> &#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;setTimeout&#x27;</span>);<br>&#125;, <span class="hljs-number">0</span>); <span class="hljs-comment">// setTimeout(fn, 0)会被强制改为setTimeout(fn, 1)</span><br>setImmediate(<span class="hljs-function">() =&gt;</span> &#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;setImmediate&#x27;</span>);<br>&#125;);<br><span class="hljs-comment">// outer</span><br><span class="hljs-comment">// setImmediate</span><br><span class="hljs-comment">// setTimeout</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// 在 Node.js 执行</span><br><span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;outer&#x27;</span>);<br><span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> &#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;setTimeout&#x27;</span>);<br>&#125;, <span class="hljs-number">0</span>); <span class="hljs-comment">// setTimeout(fn, 0)会被强制改为setTimeout(fn, 1)</span><br>setImmediate(<span class="hljs-function">() =&gt;</span> &#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;setImmediate&#x27;</span>);<br>&#125;);<br><span class="hljs-comment">// outer</span><br><span class="hljs-comment">// setTimeout</span><br><span class="hljs-comment">// setImmediate</span><br></code></pre></td></tr></table></figure>
+<p>分析执行流程：</p>
+<ul>
+<li>外层同步代码一次性全部执行完，遇到异步API就塞到对应的阶段</li>
+<li>遇到 setTimeout，虽然设置是 0 毫秒触发，但是被 node.js 强制改为 1 毫秒，塞入 times 阶段</li>
+<li>遇到 setImmediate 塞入 check 阶段</li>
+<li>同步代码执行完毕，进入 Event Loop</li>
+<li>先进入 times 阶段，检查是否过去 1 毫秒：若已过，满足 setTimeout 条件，执行回调；若未过，跳过</li>
+<li>跳过空的阶段，进入 check 阶段，执行 setImmediate 回调</li>
+</ul>
+<p>关键就在这个 1 毫秒，如果同步代码执行时间较长，进入 Event Loop 的时候 1 毫秒已经过了，setTimeout 执行，如果 1 毫秒还没到，就先执行了 setImmediate。每次我们运行脚本时，机器的状态可能不一样，导致运行时有 1 毫秒的差距，一会儿 setTimeout 先执行，一会儿 setImmediate 先执行。但是这种情况只会发生在还没进入timers 阶段的时候。像第一个例子那样，因为已经在 timers 阶段，所以里面的 setTimeout 只能等下个循环，所以 setImmediate 肯定先执行。同理的还有其他 poll 阶段也是这样。</p>
+<h3 id="process-nextTick"><a href="#process-nextTick" class="headerlink" title="process.nextTick"></a>process.nextTick</h3><p>process.nextTick() 是一个特殊的异步任务，它不属于任何的 Event Loop 阶段。实际 Node 在遇到这个 API 时 Event Loop 根本就不会继续进行，而是马上停下来执行 process.nextTick()，执行完后继续 Event Loop。可以理解为，该任务执行在同步任务执行之后、异步任务执行之前；或者理解为，该任务在微任务队列最前列。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// 在 Node.js 执行</span><br><span class="hljs-keyword">var</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;fs&#x27;</span>);<br>fs.readFile(__filename, <span class="hljs-function">() =&gt;</span> &#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;start&#x27;</span>);<br>  <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> &#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;setTimeout&#x27;</span>);<br>  &#125;, <span class="hljs-number">0</span>);<br>  setImmediate(<span class="hljs-function">() =&gt;</span> &#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;setImmediate&#x27;</span>);<br>    process.nextTick(<span class="hljs-function">() =&gt;</span> &#123;<br>      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;nextTick 2&#x27;</span>);<br>    &#125;);<br>  &#125;);<br>  process.nextTick(<span class="hljs-function">() =&gt;</span> &#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;nextTick 1&#x27;</span>);<br>  &#125;);<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;end&#x27;</span>);<br>&#125;);<br><span class="hljs-comment">// start</span><br><span class="hljs-comment">// end</span><br><span class="hljs-comment">// nextTick 1</span><br><span class="hljs-comment">// setImmediate</span><br><span class="hljs-comment">// nextTick 2</span><br><span class="hljs-comment">// setTimeout</span><br></code></pre></td></tr></table></figure>
+<p>分析执行流程：</p>
+<ul>
+<li>代码基本都在 readFile 回调里面，它自己执行时，已经在 poll 阶段</li>
+<li>遇到 setTimeout(fn, 0)，其实是 setTimeout(fn, 1)，塞入之后的 timers 阶段</li>
+<li>遇到 setImmediate 塞入 check 阶段</li>
+<li>遇到 nextTick 立马执行，输出<code>nextTick 1</code></li>
+<li>到 check 阶段，输出<code>setImmediate</code>，又遇到 nextTick 立马执行，输出<code>nextTick 2</code></li>
+<li>到 timers 阶段，输出<code>setTimeout</code></li>
+</ul>
+<p>这种机制其实类似于微任务，但是并不完全一样，同时有 nextTick 和 Promise 时是 nextTick 先执行，原因是 nextTick 的队列比 Promise 队列优先级更高。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// 在 Node.js 执行</span><br><span class="hljs-keyword">const</span> promise = <span class="hljs-built_in">Promise</span>.resolve();<br>setImmediate(<span class="hljs-function">() =&gt;</span> &#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;setImmediate&#x27;</span>);<br>&#125;)<br>promise.then(<span class="hljs-function">()=&gt;</span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;promise&#x27;</span>)<br>&#125;);<br>process.nextTick(<span class="hljs-function">()=&gt;</span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;nextTick&#x27;</span>)<br>&#125;);<br><span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;fafa&#x27;</span>);<br><span class="hljs-comment">// fafa</span><br><span class="hljs-comment">// nextTick</span><br><span class="hljs-comment">// promise</span><br><span class="hljs-comment">// setImmediate</span><br></code></pre></td></tr></table></figure>
+
+<h1 id="实践分析"><a href="#实践分析" class="headerlink" title="实践分析"></a>实践分析</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-built_in">setTimeout</span>(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;setTimeout&#x27;</span>);<br>&#125;)<br><br><span class="hljs-keyword">const</span> promise = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">resolve</span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;promise&#x27;</span>);<br>&#125;).then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;then&#x27;</span>);<br>&#125;)<br><span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;console&#x27;</span>);<br><span class="hljs-comment">// promise</span><br><span class="hljs-comment">// console</span><br><span class="hljs-comment">// setTimeout</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> a = <span class="hljs-number">0</span>;<br><span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">printa</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(a);<br>  <span class="hljs-keyword">let</span> result = a + <span class="hljs-keyword">await</span> <span class="hljs-number">10</span>;<br>  <span class="hljs-built_in">console</span>.log(a);<br>  <span class="hljs-built_in">console</span>.log(result);<br>&#125; <br>printa();<br><span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;log&#x27;</span>);<br>a++;<br><span class="hljs-built_in">console</span>.log(a);<br><span class="hljs-comment">// 0</span><br><span class="hljs-comment">// log</span><br><span class="hljs-comment">// 1</span><br><span class="hljs-comment">// 1</span><br><span class="hljs-comment">// 10</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> b = <span class="hljs-number">0</span>;<br><span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">printb</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(b);<br>  <span class="hljs-keyword">let</span> result = <span class="hljs-keyword">await</span> <span class="hljs-number">10</span> + b;<br>  <span class="hljs-built_in">console</span>.log(b);<br>  <span class="hljs-built_in">console</span>.log(result);<br>&#125;<br>printb();<br><span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;log&#x27;</span>);<br>b++; <br><span class="hljs-built_in">console</span>.log(b);<br><span class="hljs-comment">// 0</span><br><span class="hljs-comment">// log</span><br><span class="hljs-comment">// 1</span><br><span class="hljs-comment">// 1</span><br><span class="hljs-comment">// 11</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">async1</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;async1 start&#x27;</span>);<br>  <span class="hljs-keyword">await</span> async2().then(<span class="hljs-function">() =&gt;</span> &#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;async2 end&quot;</span>)<br>  &#125;);<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;async1 end&#x27;</span>);<br>&#125;<br><br><span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">async2</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;async2 start&#x27;</span>);<br>&#125;<br><br><span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;script start&#x27;</span>);<br><br><span class="hljs-built_in">setTimeout</span>(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;setTimeout&#x27;</span>);<br>&#125;, <span class="hljs-number">0</span>)<br><br>async1();<br><br><span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">resolve</span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;promise1&#x27;</span>);<br>  resolve();<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;promise2&#x27;</span>);<br>&#125;).then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;promise3&#x27;</span>);<br>&#125;)<br><span class="hljs-comment">// script start</span><br><span class="hljs-comment">// async1 start</span><br><span class="hljs-comment">// async2 start</span><br><span class="hljs-comment">// promise1</span><br><span class="hljs-comment">// promise2</span><br><span class="hljs-comment">// async2 end</span><br><span class="hljs-comment">// promise3</span><br><span class="hljs-comment">// async1 end</span><br><span class="hljs-comment">// setTimeout</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">async1</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;async1 start&#x27;</span>);<br>  <span class="hljs-keyword">await</span> async3();<br>  <span class="hljs-keyword">await</span> async2().then(<span class="hljs-function">() =&gt;</span> &#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;async2 end&quot;</span>)<br>  &#125;);<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;async1 end&#x27;</span>);<br>&#125;<br><br><span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">async2</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;async2 start&#x27;</span>);<br>&#125;<br><br><span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">async3</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;async3&#x27;</span>);<br>&#125;<br><br><span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;script start&#x27;</span>);<br><br><span class="hljs-built_in">setTimeout</span>(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;setTimeout&#x27;</span>);<br>&#125;, <span class="hljs-number">0</span>)<br><br>async1();<br><br><span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">resolve</span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;promise1&#x27;</span>);<br>  resolve();<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;promise2&#x27;</span>);<br>&#125;).then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;promise3&#x27;</span>);<br>&#125;)<br><span class="hljs-comment">// script start</span><br><span class="hljs-comment">// async1 start</span><br><span class="hljs-comment">// async3</span><br><span class="hljs-comment">// promise1</span><br><span class="hljs-comment">// promise2</span><br><span class="hljs-comment">// async2 start</span><br><span class="hljs-comment">// promise3</span><br><span class="hljs-comment">// async2 end</span><br><span class="hljs-comment">// async1 end</span><br><span class="hljs-comment">// setTimeout</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// 在 Node.js 执行</span><br><span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;1&#x27;</span>);<br><br><span class="hljs-built_in">setTimeout</span>(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;2&#x27;</span>);<br>  process.nextTick(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;3&#x27;</span>);<br>  &#125;)<br>  <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">resolve</span>) </span>&#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;4&#x27;</span>);<br>    resolve();<br>  &#125;).then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;5&#x27;</span>)<br>  &#125;)<br>&#125;)<br><br><span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">resolve</span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;6&#x27;</span>);<br>  resolve();<br>&#125;).then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;7&#x27;</span>)<br>&#125;)<br><br>process.nextTick(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;8&#x27;</span>);<br>&#125;)<br><br><span class="hljs-built_in">setTimeout</span>(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;9&#x27;</span>);<br>  process.nextTick(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;10&#x27;</span>);<br>  &#125;)<br>  <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">resolve</span>) </span>&#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;11&#x27;</span>);<br>    resolve();<br>  &#125;).then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;12&#x27;</span>)<br>  &#125;)<br>&#125;)<br><span class="hljs-comment">// 1 6 8 7 2 4 3 5 9 11 10 12</span><br></code></pre></td></tr></table></figure>
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/JavaScript/">JavaScript</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/JavaScript/">JavaScript</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/">浏览器</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Node/">Node</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/08/21/JavaScript%E6%95%B0%E7%BB%84%E6%89%81%E5%B9%B3%E5%8C%96/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">JavaScript数组扁平化</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/08/20/Vue%E9%9D%A2%E8%AF%95%E9%A2%98/">
+                        <span class="hidden-mobile">Vue面试题</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"syQxyJQH6mJ9tVidXW3H8d00-gzGzoHsz","appKey":"CkmQXvhPR7AQJnJEU8kKs00A","placeholder":"说点什么","path":"window.location.pathname","avatar":"retro","meta":["nick","mail","link"],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false,"requiredFields":[]},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+  <div class="col-lg-7 mx-auto nopadding-x-md">
+    <div class="container custom post-custom mx-auto">
+      <img src="https://octodex.github.com/images/jetpacktocat.png" srcset="/img/loading.gif" lazyload class="rounded mx-auto d-block mt-5" style="width:150px; height:150px;">
+    </div>
+  </div>
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Powered by Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Theme is Fluid</span></a>
+  </div>
+  
+
+  
+  <!-- 备案信息 -->
+  <div class="beian">
+    <span>
+      <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+        冀ICP备2021010393号-1
+      </a>
+    </span>
+    
+      
+        <span>
+          <a
+            href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=13048102000303"
+            rel="nofollow noopener"
+            class="beian-police"
+            target="_blank"
+          >
+            
+              <span style="visibility: hidden; width: 0">|</span>
+              <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
+            
+            <span>冀公网安备13048102000303号</span>
+          </a>
+        </span>
+      
+    
+  </div>
+
+
+  
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?bbe44c28232a60458d913426edaff12f";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+    
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?siteId=16939915";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

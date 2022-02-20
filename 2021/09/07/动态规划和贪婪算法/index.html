@@ -1,0 +1,572 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="Keven">
+  <meta name="keywords" content="">
+  
+  <title>动态规划和贪婪算法 - Keven&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":60,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"siteId=16939915","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 50vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Keven's Blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tools/">
+                <i class="iconfont icon-th-large"></i>
+                工具
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/example.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.2)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="动态规划和贪婪算法">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-author" aria-hidden="true"></i>
+      Keven
+    </span>
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-09-07 22:00" pubdate>
+        2021年9月7日
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.6k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      18
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">动态规划和贪婪算法</h1>
+            
+            <div class="markdown-body">
+              <h1 id="剪绳子问题"><a href="#剪绳子问题" class="headerlink" title="剪绳子问题"></a>剪绳子问题</h1><blockquote>
+<p>有一根长度为 n 的绳子，请把绳子剪成整数长度的 m 段（m、n都是整数，n &gt; 1 并且 m &gt; 1），每段绳子的长度记为 k[0],k[1]…k[m-1] 。请问 k[0]<em>k[1]</em>…*k[m-1] 可能的最大乘积是多少？如，当绳子的长度是 8 时，把它剪成 2、3、3 三段，此时得到的最大乘积是18。</p>
+</blockquote>
+<h1 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h1><p>动态规划是编程面试中的热门话题，如果求一个问题的最优解（通常是最大值或最小值），同时该问题能够分解成若干个子问题，而且子问题之间还有重叠的更小子问题，就可以考虑用动态规划来解决这个问题。</p>
+<p>我们在应用动态规划之前要分析能否把大问题分解成小问题，分解后的每个小问题是否存在最优解。如果把小问题的最优解组合起来能够得到整个问题的最优解，那么我们可以应用动态规划解决这个问题。</p>
+<ul>
+<li><p>我们如何把长度为 n 的绳子剪成若干段，使得得到的各段长度的乘积最大。这个问题的目标是求剪出的各段绳子长度的乘积最大值：<strong>求一个问题的最优解 =&gt; 应用动态规划求解问题的第一个特点</strong></p>
+</li>
+<li><p>我们把长度为 n 的绳子剪成若干段后得到的乘积最大值定义为函数 f(n)。假设我们把第一刀剪在长度为 i (0 &lt; i &lt; n)的位置，于是把绳子剪成长度分别为 i 和 n-i 的两段。我们要想得到整个问题的最优解 f(n)，那么要同样用最优化的方法把长度为 i 和 n-i 的两段分别剪成若干段，使得它们各自剪出的每段绳子长度乘积最大：<strong>整体问题的最优解是依赖各个子问题的最优解 =&gt; 应用动态规划求解的问题的第二个特点</strong></p>
+</li>
+<li><p>假设绳子最初长度为 10，我们可以把绳子剪成长度分别为 4 和 6 的两段，也就是 f(4) 和 f(6) 都是 f(10) 的子问题。接下来分别求解这两个子问题。我们可以把长度为 4 的绳子剪成均为 2 的两段，即 f(2) 是 f(4) 的子问题。同样，我们也可以把长度为 6 的绳子剪成长度分别为 2 和 4 的两段，即 f(2) 和 f(4) 都是 f(6) 的子问题。注意到， f(2) 是 f(4) 和 f(6) 公共的更小的子问题：<strong>把大问题分解成若干个小问题，这些小问题之间还有相互重叠的更小的子问题 =&gt; 应用动态规划求解的问题的第三个特点</strong></p>
+</li>
+<li><p>由于子问题在分解大问题的过程中重复出现，为了避免重复求解子问题，我们可以按照从下往上的顺序先计算小问题的最优解并存储下来，再以此为基础求取大问题的最优解：<strong>从上往下分析问题，从下往上解决问题  =&gt; 应用动态规划求解的问题的第四个特点</strong></p>
+</li>
+</ul>
+<p>在应用动态规划解决问题的时候，我们总是从解决最小问题开始，并把已经解决的子问题的最优解存储下来(大部分面试题都是存储在一维或者二维数组里)，并把子问题的最优解组合起来逐步解决大的问题。</p>
+<p>在应用动态规划的时候，我们每一步都可能面临若干个选择。由于我们不知道哪个才是最优的解法，只好把所有的可能都尝试一遍，然后比较得出最优方法。如果用数学的语言来表示，这就是 f(n) = max(f(i)×(n-i))，其中 0 &lt; i &lt; n。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">cuttingRope</span>(<span class="hljs-params">n</span>) </span>&#123;<br>  <span class="hljs-keyword">const</span> dp = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span>(n + <span class="hljs-number">1</span>).fill(<span class="hljs-number">1</span>);<br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">3</span>; i &lt;= n; i++) &#123;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> j = <span class="hljs-number">1</span>; j &lt; i; j++) &#123;<br>      dp[i] = <span class="hljs-built_in">Math</span>.max(dp[i], j * (i - j), j * dp[i - j])<br>    &#125;<br>  &#125;<br>  <span class="hljs-keyword">return</span> dp[n];<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h1 id="贪婪算法"><a href="#贪婪算法" class="headerlink" title="贪婪算法"></a>贪婪算法</h1><p>贪婪算法和动态规划不一样。当应用贪婪算法解决问题的时候，每一步都可以做出一个贪婪的选择。基于此选择，我们确定能够得到最优解。为什么这样的贪婪选择能够得到最优解？需要用数学方式来证明贪婪选择是正确的。</p>
+<p>如果绳子的长度大于 5，则每次都剪出一段长度为 3 的绳子。如果剩下的绳子的长度仍然大于 5，接着剪出一段长度为 3 的绳子。重复这个步骤，直到剩下的绳子的长度小于 5。剪出一段长度为 3 的绳子，就是我们 <strong>在每一步做出贪婪选择</strong> 。为什么这样的贪婪选择能够得到最优解？这是应用贪婪算法时，都需要问的问题：<strong>需要用数学方式来证明贪婪选择是正确的</strong> 。</p>
+<p>首先，当 n ≥ 5 的时候，我们可以证明 2(n - 2) &gt; n并且 3(n - 3) &gt; n。也就是说，当绳子剩下的长度大于或者等于 5 的时候，我们就把它剪成长度为 3 或者 2 的绳子段。另外，当 n ≥ 5 时 3(n - 3) ≥ 2 (n - 2)，因此我们应该尽可能地多剪长度为 3 的绳子段。前面证明的前提是 n ≥ 5。那么当绳子的长度为 4 呢？在长度为 4 的绳子上剪一刀，有两种可能的结果: 2 × 2 &gt; 1 × 3，同时 2 × 2 = 4，也就是说，当绳子长度为 4 时其实没有必要剪，只是题目的要求是至少要剪一刀。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">cuttingRope</span>(<span class="hljs-params">n</span>) </span>&#123;<br>  <span class="hljs-keyword">if</span> (n &lt;= <span class="hljs-number">3</span>) <span class="hljs-keyword">return</span> n - <span class="hljs-number">1</span><br>  <span class="hljs-comment">// 下面内容可以加上也可以去掉</span><br>  <span class="hljs-comment">// else if (n == 4) &#123;</span><br>  <span class="hljs-comment">//   return 4</span><br>  <span class="hljs-comment">// &#125;</span><br>  <span class="hljs-keyword">else</span> &#123;<br>    <span class="hljs-keyword">let</span> num = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">while</span> (n &gt;= <span class="hljs-number">5</span>) &#123;<br>      n = n - <span class="hljs-number">3</span>;<br>      num++;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">Math</span>.pow(<span class="hljs-number">3</span>, num) * n<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>或</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">cuttingRope</span>(<span class="hljs-params">n</span>) </span>&#123;<br>  <span class="hljs-keyword">if</span> (n &lt;= <span class="hljs-number">3</span>) &#123;<br>    <span class="hljs-keyword">return</span> n - <span class="hljs-number">1</span><br>  &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(n % <span class="hljs-number">3</span> === <span class="hljs-number">0</span>) &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">3</span> ** (n / <span class="hljs-number">3</span>)<br>  &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(n % <span class="hljs-number">3</span> === <span class="hljs-number">1</span>) &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">3</span> ** (<span class="hljs-built_in">Math</span>.floor(n / <span class="hljs-number">3</span>) - <span class="hljs-number">1</span>) * <span class="hljs-number">2</span> * <span class="hljs-number">2</span><br>  &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(n % <span class="hljs-number">3</span> === <span class="hljs-number">2</span>) &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">3</span> ** <span class="hljs-built_in">Math</span>.floor(n / <span class="hljs-number">3</span>) * <span class="hljs-number">2</span><br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/09/08/JavaScript%E4%B9%8BString%E6%96%B9%E6%B3%95%E5%B1%9E%E6%80%A7/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">JavaScript之String方法属性</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/09/07/%E9%80%92%E5%BD%92%E5%92%8C%E5%BE%AA%E7%8E%AF/">
+                        <span class="hidden-mobile">递归和循环</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"syQxyJQH6mJ9tVidXW3H8d00-gzGzoHsz","appKey":"CkmQXvhPR7AQJnJEU8kKs00A","placeholder":"说点什么","path":"window.location.pathname","avatar":"retro","meta":["nick","mail","link"],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false,"requiredFields":[]},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+  <div class="col-lg-7 mx-auto nopadding-x-md">
+    <div class="container custom post-custom mx-auto">
+      <img src="https://octodex.github.com/images/jetpacktocat.png" srcset="/img/loading.gif" lazyload class="rounded mx-auto d-block mt-5" style="width:150px; height:150px;">
+    </div>
+  </div>
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Powered by Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Theme is Fluid</span></a>
+  </div>
+  
+
+  
+  <!-- 备案信息 -->
+  <div class="beian">
+    <span>
+      <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+        冀ICP备2021010393号-1
+      </a>
+    </span>
+    
+      
+        <span>
+          <a
+            href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=13048102000303"
+            rel="nofollow noopener"
+            class="beian-police"
+            target="_blank"
+          >
+            
+              <span style="visibility: hidden; width: 0">|</span>
+              <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
+            
+            <span>冀公网安备13048102000303号</span>
+          </a>
+        </span>
+      
+    
+  </div>
+
+
+  
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?bbe44c28232a60458d913426edaff12f";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+    
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?siteId=16939915";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

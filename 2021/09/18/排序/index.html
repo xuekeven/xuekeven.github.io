@@ -1,0 +1,615 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="Keven">
+  <meta name="keywords" content="">
+  
+  <title>排序 - Keven&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":60,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"siteId=16939915","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 50vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Keven's Blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tools/">
+                <i class="iconfont icon-th-large"></i>
+                工具
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/example.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.2)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="排序">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-author" aria-hidden="true"></i>
+      Keven
+    </span>
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-09-18 22:00" pubdate>
+        2021年9月18日
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.3k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      18
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">排序</h1>
+            
+            <div class="markdown-body">
+              <p>参考：<br><a target="_blank" rel="noopener" href="https://github.com/biaochenxuying/blog/issues/42">https://github.com/biaochenxuying/blog/issues/42</a> 。<br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6956624975600025613">https://juejin.cn/post/6956624975600025613</a> 。</p>
+<p>排序有冒泡排序、插入排序、选择排序、归并排序等十种经典方法。</p>
+<p>分析一个排序算法，要从执行效率、内存消耗、稳定性三方面入手。</p>
+<p><img src="/images/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95.png" srcset="/img/loading.gif" lazyload alt="排序算法，图源网络"></p>
+<h1 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h1><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><ul>
+<li>每次冒泡操作是对相邻的两个元素进行比较，看是否满足特定关系要求，若（不）满足就让它俩互换。</li>
+<li>一次冒泡会让至少一个元素移动到它应该在的位置，重复 n - 1 次，就能完成 n 个数据的排序工作。</li>
+</ul>
+<h2 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h2><ul>
+<li>优点：排序算法的基础，简单实用易于理解。</li>
+<li>缺点：比较次数多，效率较低。</li>
+<li>使用多个循环。</li>
+</ul>
+<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><p>普通：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">bubbleSort</span>(<span class="hljs-params">arr</span>) </span>&#123;<br>  <span class="hljs-keyword">const</span> len = arr.length;<br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; len - <span class="hljs-number">1</span>; i++) &#123;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> j = <span class="hljs-number">0</span>; j &lt; len - i -<span class="hljs-number">1</span>; j++) &#123;<br>      <span class="hljs-keyword">if</span> (arr[j] &gt; arr[j + <span class="hljs-number">1</span>]) &#123;<br>        <span class="hljs-keyword">const</span> temp = arr[j];<br>        arr[j] = arr[j + <span class="hljs-number">1</span>];<br>        arr[j + <span class="hljs-number">1</span>] = temp;<br>      &#125;<br>    &#125;<br>  &#125;<br>  <span class="hljs-keyword">return</span> arr;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>改进：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">bubbleSort2</span>(<span class="hljs-params">arr</span>) </span>&#123;<br>  <span class="hljs-keyword">const</span> len = arr.length;<br><br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; len - <span class="hljs-number">1</span>; i++) &#123;<br>    <span class="hljs-keyword">let</span> hasChange = <span class="hljs-literal">false</span>;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> j = <span class="hljs-number">0</span>; j &lt; len -i - <span class="hljs-number">1</span>; j++) &#123;<br>      <span class="hljs-keyword">if</span> (arr[j] &gt; arr[j + <span class="hljs-number">1</span>]) &#123;<br>        <span class="hljs-keyword">const</span> temp = arr[j];<br>        arr[j] = arr[j + <span class="hljs-number">1</span>];<br>        arr[j + <span class="hljs-number">1</span>] = temp;<br>        hasChange = <span class="hljs-literal">true</span>;<br>      &#125;<br>    &#125;<br>    <span class="hljs-keyword">if</span> (!hasChange) <span class="hljs-keyword">break</span><br>  &#125;<br>  <span class="hljs-keyword">return</span> arr;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h1 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h1><h2 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h2><ul>
+<li>构建有序序列和未排序序列。认为第一个元素已经被排序，其余均为未排序序列的元素。</li>
+<li>选择排序每次会从未排序序列中找到最小（大）的元素，将其放到已排序区间的开头（末尾）。</li>
+</ul>
+<h2 id="特点-1"><a href="#特点-1" class="headerlink" title="特点"></a>特点</h2><ul>
+<li>使用多个循环。</li>
+</ul>
+<h2 id="实现-1"><a href="#实现-1" class="headerlink" title="实现"></a>实现</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">selectSort</span>(<span class="hljs-params">arr</span>) </span>&#123;<br>  <span class="hljs-keyword">const</span> len = arr.length;<br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; len - <span class="hljs-number">1</span>; i++) &#123;<br>    <span class="hljs-keyword">let</span> minIndex = i,<br>        temp = arr[i];<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> j = i + <span class="hljs-number">1</span>; j &lt; len; j++) <span class="hljs-keyword">if</span> (arr[j] &lt; arr[minIndex]) minIndex = j<br>    arr[i] = arr[minIndex];<br>    arr[minIndex] = temp;<br>  &#125;<br>  <span class="hljs-keyword">return</span> arr<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h1 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h1><p>插入排序又为分为 <strong>直接插入排序</strong> 和优化后的 <strong>拆半插入排序</strong> 与 <strong>希尔排序</strong> 。</p>
+<h2 id="思路-2"><a href="#思路-2" class="headerlink" title="思路"></a>思路</h2><ul>
+<li>构建有序序列和未排序序列。认为第一个元素已经被排序，其余均为未排序序列的元素。</li>
+<li>插入排序每次从未排序序列中取出一个元素，在有序序列中从后向前扫描，如果有序序列中的元素大于取出的元素，将该元素移到该元素的下一位置，直到找到相应位置并插入。</li>
+</ul>
+<h2 id="特点-2"><a href="#特点-2" class="headerlink" title="特点"></a>特点</h2><ul>
+<li>使用多个循环。</li>
+</ul>
+<h2 id="实现-2"><a href="#实现-2" class="headerlink" title="实现"></a>实现</h2><p>普通：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">insertSort</span>(<span class="hljs-params">arr</span>) </span>&#123;<br>  <span class="hljs-keyword">const</span> len = arr.length;<br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">1</span>; i &lt; len; i++) &#123;<br>    <span class="hljs-keyword">let</span> preIndex = i - <span class="hljs-number">1</span>,<br>        current = arr[i];<br>    <span class="hljs-keyword">while</span> (preIndex &gt;= <span class="hljs-number">0</span> &amp;&amp; arr[preIndex] &gt; current) &#123;<br>      arr[preIndex + <span class="hljs-number">1</span>] = arr[preIndex];<br>      preIndex--;<br>    &#125;<br>    <span class="hljs-keyword">if</span> (preIndex !== i - <span class="hljs-number">1</span>) arr[preIndex + <span class="hljs-number">1</span>] = current;<br>  &#125;<br>  <span class="hljs-keyword">return</span> arr<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>改进：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">binaryInsertionSort</span>(<span class="hljs-params">arr</span>) </span>&#123;<br>  <span class="hljs-keyword">const</span> len = arr.length;<br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">1</span>; i &lt; len; i++) &#123;<br>    <span class="hljs-keyword">let</span> low = <span class="hljs-number">0</span>,<br>        high = i - <span class="hljs-number">1</span>,<br>        current = arr[i];<br>    <span class="hljs-keyword">while</span> (low &lt;= high) &#123;<br>      <span class="hljs-keyword">let</span> m = (low + high) &gt;&gt; <span class="hljs-number">1</span>; <br>      <span class="hljs-keyword">if</span> (arr[i] &gt;= arr[m]) low = m + <span class="hljs-number">1</span>; <br>      <span class="hljs-keyword">else</span> high = m - <span class="hljs-number">1</span>;<br>    &#125;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> j = i; j &gt; low; j--) arr[j] = arr[j - <span class="hljs-number">1</span>];<br>    arr[low] = current; <br>  &#125;<br>  <span class="hljs-keyword">return</span> arr;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h1 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h1><h2 id="思想"><a href="#思想" class="headerlink" title="思想"></a>思想</h2><p>归并排序采用的是分治思想。就是分而治之，将一个大问题分解成小的子问题来解决。小的子问题解决了，大问题也就解决了。</p>
+<p>排序一个数组，我们先把数组从中间分成前后两部分，然后对前后两部分分别排序，再将排好序的两部分合并在一起，这样整个数组就都有序了。</p>
+<h2 id="特点-3"><a href="#特点-3" class="headerlink" title="特点"></a>特点</h2><ul>
+<li>使用递归。</li>
+</ul>
+<h2 id="实现-3"><a href="#实现-3" class="headerlink" title="实现"></a>实现</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">mergeSort</span>(<span class="hljs-params">arr</span>) </span>&#123;<br>  <span class="hljs-keyword">const</span> len = arr.length;<br>  <span class="hljs-keyword">if</span> (len &lt; <span class="hljs-number">2</span>) <span class="hljs-keyword">return</span> arr;<br>  <span class="hljs-keyword">let</span> middle = <span class="hljs-built_in">Math</span>.floor(len / <span class="hljs-number">2</span>),<br>      left = arr.slice(<span class="hljs-number">0</span>, middle),<br>      right = arr.slice(middle);<br>  <span class="hljs-keyword">return</span> merge(<span class="hljs-built_in">arguments</span>.callee(left), <span class="hljs-built_in">arguments</span>.callee(right));<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">merge</span>(<span class="hljs-params">left, right</span>) </span>&#123;<br>  <span class="hljs-keyword">const</span> result = [];<br>  <span class="hljs-keyword">while</span> (left.length &amp;&amp; right.length) &#123;<br>    <span class="hljs-keyword">if</span> (left[<span class="hljs-number">0</span>] &lt;= right[<span class="hljs-number">0</span>]) result.push(left.shift());<br>    <span class="hljs-keyword">else</span> result.push(right.shift());<br>  &#125;<br>  <span class="hljs-keyword">while</span> (left.length) result.push(left.shift());<br>  <span class="hljs-keyword">while</span> (right.length) result.push(right.shift());<br>  <span class="hljs-keyword">return</span> result<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h1 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h1><h2 id="思想-1"><a href="#思想-1" class="headerlink" title="思想"></a>思想</h2><p>先找到一个基准点（一般指数组的中部），然后数组被该基准点分割为两部分，依次与该基准点数据比较。如果比它小，放左边；反之放右边。左右分别用一个空数组去存储比较后的数据。最后递归执行上述操作，直到数组长度小于等于 1。</p>
+<h2 id="特点-4"><a href="#特点-4" class="headerlink" title="特点"></a>特点</h2><ul>
+<li>优点：快速，常用。这是处理大数据最快的排序算法之一。</li>
+<li>缺点：需要另外声明两个数组，浪费了内存空间资源。</li>
+<li>使用递归。</li>
+</ul>
+<h2 id="实现-4"><a href="#实现-4" class="headerlink" title="实现"></a>实现</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">quickSort</span>(<span class="hljs-params">arr</span>) </span>&#123;<br>  <span class="hljs-keyword">const</span> len = arr.length;<br>  <span class="hljs-keyword">if</span> (len &lt;= <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> arr;<br>  <span class="hljs-keyword">const</span> midIndex = <span class="hljs-built_in">Math</span>.floor(len / <span class="hljs-number">2</span>),<br>        valArr = arr.splice(midIndex, <span class="hljs-number">1</span>),<br>        midIndexVal = valArr[<span class="hljs-number">0</span>],<br>        left = [],<br>        right = [];<br>        <span class="hljs-comment">// 此时 len != arr.length</span><br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; arr.length; i++) &#123;<br>		<span class="hljs-keyword">if</span> (arr[i] &lt; midIndexVal) left.push(arr[i]);<br>		<span class="hljs-keyword">else</span> right.push(arr[i]);<br>	&#125;<br>  <span class="hljs-keyword">return</span> <span class="hljs-built_in">arguments</span>.callee(left).concat(midIndexVal, <span class="hljs-built_in">arguments</span>.callee(right));<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h1 id="希尔排序"><a href="#希尔排序" class="headerlink" title="希尔排序"></a>希尔排序</h1><h2 id="思想-2"><a href="#思想-2" class="headerlink" title="思想"></a>思想</h2><p>先将整个待排序的记录序列分割成为若干子序列，分别进行直接插入排序。待整个序列中记录基本有序时，再对全体记录进行依次直接插入排序。</p>
+<h2 id="特点-5"><a href="#特点-5" class="headerlink" title="特点"></a>特点</h2><ul>
+<li>使用多个循环。</li>
+</ul>
+<h2 id="实现-5"><a href="#实现-5" class="headerlink" title="实现"></a>实现</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">shellSort</span>(<span class="hljs-params">arr</span>) </span>&#123;<br>  <span class="hljs-keyword">const</span> len = arr.length;<br>  <span class="hljs-keyword">let</span> gap = <span class="hljs-number">1</span>;<br>  <span class="hljs-keyword">while</span> (gap &lt; len / <span class="hljs-number">3</span>) gap = gap * <span class="hljs-number">3</span> + <span class="hljs-number">1</span>;<br>  <span class="hljs-keyword">while</span> (gap &gt; <span class="hljs-number">0</span>) &#123;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = gap; i &lt; len; i++) &#123;<br>      <span class="hljs-keyword">const</span> temp = arr[i];<br>      <span class="hljs-keyword">let</span> j = i - gap;<br>      <span class="hljs-keyword">for</span> (; j &gt;= <span class="hljs-number">0</span> &amp;&amp; arr[j] &gt; temp; j -= gap) arr[j + gap] = arr[j];<br>      arr[j + gap] = temp;<br>    &#125;<br>    gap = <span class="hljs-built_in">Math</span>.floor(gap / <span class="hljs-number">3</span>);<br>  &#125;<br>  <span class="hljs-keyword">return</span> arr;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h1 id="堆排序"><a href="#堆排序" class="headerlink" title="堆排序"></a>堆排序</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><br></code></pre></td></tr></table></figure>
+
+<h1 id="桶排序"><a href="#桶排序" class="headerlink" title="桶排序"></a>桶排序</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><br></code></pre></td></tr></table></figure>
+
+<h1 id="计数排序"><a href="#计数排序" class="headerlink" title="计数排序"></a>计数排序</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><br></code></pre></td></tr></table></figure>
+
+<h1 id="基数排序"><a href="#基数排序" class="headerlink" title="基数排序"></a>基数排序</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><br></code></pre></td></tr></table></figure>
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/09/19/%E6%9F%A5%E6%89%BE/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">查找</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/09/18/%E7%AC%94%E8%AF%95%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/">
+                        <span class="hidden-mobile">笔试输入输出</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"syQxyJQH6mJ9tVidXW3H8d00-gzGzoHsz","appKey":"CkmQXvhPR7AQJnJEU8kKs00A","placeholder":"说点什么","path":"window.location.pathname","avatar":"retro","meta":["nick","mail","link"],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false,"requiredFields":[]},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+  <div class="col-lg-7 mx-auto nopadding-x-md">
+    <div class="container custom post-custom mx-auto">
+      <img src="https://octodex.github.com/images/jetpacktocat.png" srcset="/img/loading.gif" lazyload class="rounded mx-auto d-block mt-5" style="width:150px; height:150px;">
+    </div>
+  </div>
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Powered by Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Theme is Fluid</span></a>
+  </div>
+  
+
+  
+  <!-- 备案信息 -->
+  <div class="beian">
+    <span>
+      <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+        冀ICP备2021010393号-1
+      </a>
+    </span>
+    
+      
+        <span>
+          <a
+            href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=13048102000303"
+            rel="nofollow noopener"
+            class="beian-police"
+            target="_blank"
+          >
+            
+              <span style="visibility: hidden; width: 0">|</span>
+              <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
+            
+            <span>冀公网安备13048102000303号</span>
+          </a>
+        </span>
+      
+    
+  </div>
+
+
+  
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?bbe44c28232a60458d913426edaff12f";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+    
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?siteId=16939915";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

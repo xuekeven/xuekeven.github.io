@@ -1,0 +1,636 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="Keven">
+  <meta name="keywords" content="">
+  
+  <title>Vue生命周期 - Keven&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":60,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"siteId=16939915","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 50vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Keven's Blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tools/">
+                <i class="iconfont icon-th-large"></i>
+                工具
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/example.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.2)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Vue生命周期">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-author" aria-hidden="true"></i>
+      Keven
+    </span>
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-10-24 12:00" pubdate>
+        2021年10月24日
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.3k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      14
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Vue生命周期</h1>
+            
+            <div class="markdown-body">
+              <p>参考：<br><a target="_blank" rel="noopener" href="https://www.nowcoder.com/discuss/693647?channel=-1&amp;source_id=profile_follow_post_nctrack">https://www.nowcoder.com/discuss/693647?channel=-1&amp;source_id=profile_follow_post_nctrack</a> 。<br><a target="_blank" rel="noopener" href="https://cn.vuejs.org/v2/api/#%E9%80%89%E9%A1%B9-%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E9%92%A9%E5%AD%90">https://cn.vuejs.org/v2/api/#选项-生命周期钩子</a> 。<br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904113914773518">https://juejin.cn/post/6844904113914773518</a> 。<br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903780736040973">https://juejin.cn/post/6844903780736040973</a> 。<br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904114879463437">https://juejin.cn/post/6844904114879463437</a> 。</p>
+<h1 id="图片分析"><a href="#图片分析" class="headerlink" title="图片分析"></a>图片分析</h1><p><img src="/images/VueLifeCycle.png" srcset="/img/loading.gif" lazyload alt="VueLifeCycle"></p>
+<p><img src="/images/Vue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E5%88%86%E6%9E%90.png" srcset="/img/loading.gif" lazyload alt="Vue生命周期分析"></p>
+<h1 id="文字详解"><a href="#文字详解" class="headerlink" title="文字详解"></a>文字详解</h1><h2 id="大纲"><a href="#大纲" class="headerlink" title="大纲"></a>大纲</h2><p>（activated、deactivated 是组件使用 keep-alive 时独有的钩子）</p>
+<ul>
+<li>beforeCreate（初始化界面前）</li>
+<li>created（初始化界面后）</li>
+<li>beforeMount（渲染 DOM 前）</li>
+<li>mounted（渲染 DOM 后）</li>
+<li>beforeUpdate（更新数据前）</li>
+<li>updated（更新数据后）</li>
+<li>activated（组件激活时）</li>
+<li>deactivated（组件失活时）</li>
+<li>beforeDestroy（卸载组件前）</li>
+<li>destroyed（卸载组件后）</li>
+<li>errorCaptured（组件出错时）</li>
+</ul>
+<h2 id="简洁版"><a href="#简洁版" class="headerlink" title="简洁版"></a>简洁版</h2><table>
+<thead>
+<tr>
+<th align="center">生命周期</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">beforeCreate</td>
+<td align="center">组件实例仅被初始化，组件数据未生效</td>
+</tr>
+<tr>
+<td align="center">created</td>
+<td align="center">组件实例已创建，数据已绑定生效，但真实DOM还没有生成，$el不可用</td>
+</tr>
+<tr>
+<td align="center">beforeMount</td>
+<td align="center">虚拟DOM已创建完成，在数据渲染前最后一次更改数据</td>
+</tr>
+<tr>
+<td align="center">mounted</td>
+<td align="center">el被新创建的vm.$el替换，真实DOM挂载完成，页面、数据渲染完成</td>
+</tr>
+<tr>
+<td align="center">beforeUpdate</td>
+<td align="center">组件数据更新之前，发生在虚拟DOM打补丁之前调用该钩子</td>
+</tr>
+<tr>
+<td align="center">updated</td>
+<td align="center">组件数据更新之后调用该钩子</td>
+</tr>
+<tr>
+<td align="center">activated</td>
+<td align="center">keep-alive专属，组件激活时调用该钩子</td>
+</tr>
+<tr>
+<td align="center">deactivated</td>
+<td align="center">keep-alive专属，组件失活时调用该钩子</td>
+</tr>
+<tr>
+<td align="center">beforeDestroy</td>
+<td align="center">组件销毁前调用该钩子</td>
+</tr>
+<tr>
+<td align="center">destroyed</td>
+<td align="center">组件销毁后调用该钩子</td>
+</tr>
+</tbody></table>
+<h2 id="详细版"><a href="#详细版" class="headerlink" title="详细版"></a>详细版</h2><h3 id="beforeCreate"><a href="#beforeCreate" class="headerlink" title="beforeCreate"></a>beforeCreate</h3><p>在实例初始化后，进行数据侦听（data observer）和事件/侦听器（event/watcher）的配置之前同步调用。</p>
+<h3 id="created"><a href="#created" class="headerlink" title="created"></a>created</h3><p>在实例创建完成后被调用。在这一步中，实例已完成对选项的处理，意味着以下内容已被配置完毕：<br>数据侦听（data observer）、计算属性（computed）、方法（methods）、事件/侦听器（event/watcher）的回调函数。然而，挂载阶段还没开始，且<code>$el</code>property目前尚不可用。</p>
+<h3 id="beforeMount"><a href="#beforeMount" class="headerlink" title="beforeMount"></a>beforeMount</h3><p>在挂载开始之前被调用：相关的<code>render</code>函数首次被调用。 <strong>该钩子在服务器端渲染期间不被调用。</strong></p>
+<h3 id="mounted"><a href="#mounted" class="headerlink" title="mounted"></a>mounted</h3><p>实例被挂载后调用，这时<code>el</code>被新创建的<code>vm.$el</code>替换了。如果根实例挂载到了一个文档内的元素上，当<code>mounted</code>被调用时<code>vm.$el</code>也在文档内。 <strong>该钩子在服务器端渲染期间不被调用。</strong></p>
+<p>注意<code>mounted</code>不会保证所有的子组件也都被挂载完成。如果希望等到整个视图都渲染完毕再执行某些操作，可以在<code>mounted</code>内部使用<code>vm.$nextTick</code>：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js">mounted: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">this</span>.$nextTick(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;<br>    <span class="hljs-comment">// 仅在整个视图都被渲染之后才会运行的代码</span><br>  &#125;)<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="beforeUpdate"><a href="#beforeUpdate" class="headerlink" title="beforeUpdate"></a>beforeUpdate</h3><p>在数据发生改变后，DOM 被更新之前被调用。这里适合在现有 DOM 将要被更新之前访问它，比如移除手动添加的事件监听器。 <strong>该钩子在服务器端渲染期间不被调用，因为只有初次渲染会在服务器端进行。</strong></p>
+<h3 id="updated"><a href="#updated" class="headerlink" title="updated"></a>updated</h3><p>在数据更改导致的虚拟 DOM 重新渲染和更新完毕之后被调用。当这个钩子被调用，组件 DOM 已经更新，所以现在可以执行依赖于 DOM 的操作。然而在大多数情况下，你应该避免在此期间更改状态。如果要相应状态改变，通常最好使用 computed 或 watcher 取而代之。 <strong>该钩子在服务器端渲染期间不被调用。</strong></p>
+<p>注意<code>updated</code>不会保证所有的子组件也都被重新渲染完毕。如果希望等到整个视图都渲染完毕，可以在<code>updated</code>内部使用<code>vm.$nextTick</code>：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js">updated: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">this</span>.$nextTick(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;<br>    <span class="hljs-comment">// 仅在整个视图都被渲染之后才会运行的代码</span><br>  &#125;)<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="activated"><a href="#activated" class="headerlink" title="activated"></a>activated</h3><p>被 keep-alive 缓存的组件激活时调用。 <strong>该钩子在服务器端渲染期间不被调用。</strong></p>
+<h3 id="deactivated"><a href="#deactivated" class="headerlink" title="deactivated"></a>deactivated</h3><p>被 keep-alive 缓存的组件失活时调用。 <strong>该钩子在服务器端渲染期间不被调用。</strong></p>
+<h3 id="beforeDestroy"><a href="#beforeDestroy" class="headerlink" title="beforeDestroy"></a>beforeDestroy</h3><p>实例销毁之前调用。在这一步，实例仍然完全可用。 <strong>该钩子在服务器端渲染期间不被调用。</strong></p>
+<h3 id="destroyed"><a href="#destroyed" class="headerlink" title="destroyed"></a>destroyed</h3><p>实例销毁后调用。该钩子被调用后，对应 Vue 实例的所有指令都被解绑，所有的事件监听器被移除，所有的子实例也都被销毁。 <strong>该钩子在服务器端渲染期间不被调用。</strong></p>
+<h3 id="errorCaptured"><a href="#errorCaptured" class="headerlink" title="errorCaptured"></a>errorCaptured</h3><p>在捕获一个来自后代组件的错误时被调用。此钩子会收到三个参数：错误对象、发生错误的组件实例、一个包含错误来源信息的字符串。此钩子可以返回<code>false</code>以阻止该错误继续向上传播。</p>
+<h1 id="父子组件"><a href="#父子组件" class="headerlink" title="父子组件"></a>父子组件</h1><p>当父子组件嵌套时，父组件和子组件各拥有各自独立的钩子函数，这些父子组件的这些钩子是如何交融执行，且执行顺序又是怎样的呢？</p>
+<h2 id="加载渲染过程"><a href="#加载渲染过程" class="headerlink" title="加载渲染过程"></a>加载渲染过程</h2><p>父beforeCreate-&gt;父created-&gt;父beforeMount-&gt;子beforeCreate-&gt;子created-&gt;子beforeMount-&gt;<br>子mounted-&gt;父mounted</p>
+<h2 id="更新过程"><a href="#更新过程" class="headerlink" title="更新过程"></a>更新过程</h2><p>父beforeUpdate-&gt;子beforeUpdate-&gt;子updated-&gt;父updated</p>
+<h2 id="销毁过程"><a href="#销毁过程" class="headerlink" title="销毁过程"></a>销毁过程</h2><p>父beforeDestroy-&gt;子beforeDestroy-&gt;子destroyed-&gt;父destroyed</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E6%A1%86%E6%9E%B6%E6%A8%A1%E5%9D%97/">框架模块</a>
+                    
+                      <a class="hover-with-bg" href="/categories/%E6%A1%86%E6%9E%B6%E6%A8%A1%E5%9D%97/Vue/">Vue</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Vue/">Vue</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/10/25/%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">网络请求</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/10/15/%E7%99%BB%E5%BD%95%E8%AE%A4%E8%AF%81/">
+                        <span class="hidden-mobile">登录认证</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"syQxyJQH6mJ9tVidXW3H8d00-gzGzoHsz","appKey":"CkmQXvhPR7AQJnJEU8kKs00A","placeholder":"说点什么","path":"window.location.pathname","avatar":"retro","meta":["nick","mail","link"],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false,"requiredFields":[]},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+  <div class="col-lg-7 mx-auto nopadding-x-md">
+    <div class="container custom post-custom mx-auto">
+      <img src="https://octodex.github.com/images/jetpacktocat.png" srcset="/img/loading.gif" lazyload class="rounded mx-auto d-block mt-5" style="width:150px; height:150px;">
+    </div>
+  </div>
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Powered by Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Theme is Fluid</span></a>
+  </div>
+  
+
+  
+  <!-- 备案信息 -->
+  <div class="beian">
+    <span>
+      <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+        冀ICP备2021010393号-1
+      </a>
+    </span>
+    
+      
+        <span>
+          <a
+            href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=13048102000303"
+            rel="nofollow noopener"
+            class="beian-police"
+            target="_blank"
+          >
+            
+              <span style="visibility: hidden; width: 0">|</span>
+              <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
+            
+            <span>冀公网安备13048102000303号</span>
+          </a>
+        </span>
+      
+    
+  </div>
+
+
+  
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?bbe44c28232a60458d913426edaff12f";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+    
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?siteId=16939915";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

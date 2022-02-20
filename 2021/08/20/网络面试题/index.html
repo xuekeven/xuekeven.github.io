@@ -1,0 +1,906 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="Keven">
+  <meta name="keywords" content="">
+  
+  <title>网络面试题 - Keven&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":60,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"siteId=16939915","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 50vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Keven's Blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tools/">
+                <i class="iconfont icon-th-large"></i>
+                工具
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/example.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.2)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="网络面试题">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-author" aria-hidden="true"></i>
+      Keven
+    </span>
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-08-20 14:00" pubdate>
+        2021年8月20日
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      5.4k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      58
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">网络面试题</h1>
+            
+            <div class="markdown-body">
+              <h1 id="网络"><a href="#网络" class="headerlink" title="网络"></a>网络</h1><h2 id="OSI-七层模型和-TCP-IP-四层模型"><a href="#OSI-七层模型和-TCP-IP-四层模型" class="headerlink" title="OSI 七层模型和 TCP/IP 四层模型"></a>OSI 七层模型和 TCP/IP 四层模型</h2><p>参考：<a target="_blank" rel="noopener" href="https://juejin.cn/post/6939691851746279437">https://juejin.cn/post/6939691851746279437</a> 。</p>
+<p>OSI 七层模型：（从上到下）应用层，表示层，会话层，传输层，网络层，数据链路层，物理层。<br>TCP/IP 四层模型：（从上到下）应用层，传输层，网络层，数据链路层。</p>
+<table>
+<thead>
+<tr>
+<th align="center">TCP/IP 四层模型</th>
+<th align="center">典型协议</th>
+<th align="center">对应的 OSI 七层模型</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">应用层</td>
+<td align="center">HTTP、FTP</td>
+<td align="center">应用层、表示层、会话层</td>
+</tr>
+<tr>
+<td align="center">传输层</td>
+<td align="center">TCP、UDP</td>
+<td align="center">传输层</td>
+</tr>
+<tr>
+<td align="center">网络层</td>
+<td align="center">IP</td>
+<td align="center">网络层</td>
+</tr>
+<tr>
+<td align="center">数据链路层</td>
+<td align="center">-</td>
+<td align="center">数据链路层、物理层</td>
+</tr>
+</tbody></table>
+<h2 id="浏览器输入一个-URL-按下回车后发生了什么"><a href="#浏览器输入一个-URL-按下回车后发生了什么" class="headerlink" title="浏览器输入一个 URL 按下回车后发生了什么"></a>浏览器输入一个 URL 按下回车后发生了什么</h2><p>参考：<br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6935232082482298911">https://juejin.cn/post/6935232082482298911</a> 。<br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904021308735502">https://juejin.cn/post/6844904021308735502</a> 。</p>
+<ul>
+<li>输入网址并解析<ul>
+<li>URL 解析</li>
+<li>DNS 查询</li>
+<li>HTTP 缓存</li>
+</ul>
+</li>
+<li>TCP 三次握手建立连接</li>
+<li>浏览器发送 HTTP 请求报文</li>
+<li>服务器处理 HTTP 请求报文并返回 HTTP 响应报文</li>
+<li>浏览器处理 HTTP 响应报文</li>
+<li>TCP 四次挥手断开连接</li>
+<li>浏览器渲染页面<ul>
+<li>解析 HTML 文件，构建 DOM Tree</li>
+<li>解析 CSS 文件，构建 CSSOM Tree</li>
+<li>利用 DOM Tree 和 CSSOM Tree 构建 Render Tree</li>
+<li>布局 Render Tree 计算每个节点的位置大小等信息（回流）</li>
+<li>绘制 Render Tree 每个节点像素信息渲染到屏幕（重绘）</li>
+<li>合并渲染层</li>
+</ul>
+</li>
+</ul>
+<h2 id="WebSocket-与-Ajax-的区别"><a href="#WebSocket-与-Ajax-的区别" class="headerlink" title="WebSocket 与 Ajax 的区别"></a>WebSocket 与 Ajax 的区别</h2><p>参考：<a target="_blank" rel="noopener" href="https://juejin.cn/post/6939691851746279437">https://juejin.cn/post/6939691851746279437</a> 。</p>
+<table>
+<thead>
+<tr>
+<th>区别</th>
+<th>WebSocket</th>
+<th>Ajax</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>本质</td>
+<td>是异步 JavaScript 和 XML，是一种创建交互式网页的应用的网页开发技术</td>
+<td>是 HTML5 的一种新协议，实现了浏览器和服务器的实时通信</td>
+</tr>
+<tr>
+<td>生命周期</td>
+<td>WebSocket 是长连接，会话一直保持</td>
+<td>Ajax 发送接收之后就会断开</td>
+</tr>
+<tr>
+<td>适用范围</td>
+<td>WebSocket 用于前后端实时交互数据</td>
+<td>Ajax 非实时</td>
+</tr>
+<tr>
+<td>发起人</td>
+<td>WebSocket 服务器端和客户端相互推送</td>
+<td>Ajax 客户端发起</td>
+</tr>
+</tbody></table>
+<h1 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h1><h2 id="HTTP-请求方式"><a href="#HTTP-请求方式" class="headerlink" title="HTTP 请求方式"></a>HTTP 请求方式</h2><p>参考：<a target="_blank" rel="noopener" href="https://juejin.cn/post/6939691851746279437">https://juejin.cn/post/6939691851746279437</a> 。</p>
+<ul>
+<li>GET：获取数据</li>
+<li>HEAD：获取数据的元信息</li>
+<li>POST：提交数据</li>
+<li>PUT：修改数据</li>
+<li>DELETE：删除数据</li>
+<li>CONNECT：建立连接隧道，用于代理服务器</li>
+<li>OPTIONS：列出可对资源实行的请求方法，常用于跨域</li>
+<li>TRACE：追踪请求-响应的传输路径</li>
+</ul>
+<p>GET 是请求从服务器获取资源，这个资源可以是静态的文本、页面、图片视频等。<br>POST 是是相反操作，它向 URI 指定的资源提交数据，数据就放在报⽂的 body ⾥。</p>
+<p>GET 方法就是安全且幂等的，因为它是「只读」操作，⽆论操作多少次，服务器上的数据都是安全的，而且每次的结果都是相同的。POST 因为是「新增或提交数据」的操作，会修改服务器上的资源，所以不安全，而且多次提交数据就会创建多个资源，所以不幂等。</p>
+<h2 id="HTTP-缓存"><a href="#HTTP-缓存" class="headerlink" title="HTTP 缓存"></a>HTTP 缓存</h2><p>参考：<br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903517702848526">https://juejin.cn/post/6844903517702848526</a> 。<br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904021308735502">https://juejin.cn/post/6844904021308735502</a> 。</p>
+<h3 id="规则"><a href="#规则" class="headerlink" title="规则"></a>规则</h3><p>HTTP 缓存属于客户端缓存。我们认为浏览器存在一个缓存数据库，用于储存一些不经常变化的静态文件。我们将缓存分为强制缓存和协商缓存。两类缓存机制同时存在，强制缓存的优先级高于协商缓存，当执行强制缓存时，如果缓存命中，则不再进行缓存协商。</p>
+<h4 id="强制缓存"><a href="#强制缓存" class="headerlink" title="强制缓存"></a>强制缓存</h4><p>当缓存数据库中已有所请求的数据，而且没有过期时，属于强制缓存命中，浏览器不会向服务器发送请求，而是直接返回状态码 200 并且从缓存数据库获取数据；当缓存数据库中没有所请求的数据或是数据已过期，属于强制缓存未命中，浏览器才会向服务器发起请求。<br><img src="/images/%E5%BC%BA%E5%88%B6%E7%BC%93%E5%AD%98.png" srcset="/img/loading.gif" lazyload alt="强制缓存（来源掘金@北海北方）"></p>
+<h4 id="协商缓存"><a href="#协商缓存" class="headerlink" title="协商缓存"></a>协商缓存</h4><p>如果是缓存数据库的数据已过期，则浏览器向服务器发起请求前，会先从缓存数据库中获取到一个缓存数据标识，得到标识后请求服务器来验证数据是否失效（新鲜）。如果标识没有失效（资源未更新），属于协商缓存命中，服务器返回状态码 304 并且告诉浏览器直接使用缓存数据库资源；如果标识失效（资源更新），属于协商缓存未命中，服务器返回状态码 200 和新资源。<br><img src="/images/%E5%8D%8F%E5%95%86%E7%BC%93%E5%AD%98.png" srcset="/img/loading.gif" lazyload alt="协商缓存（来源掘金@北海北方）"></p>
+<h3 id="方案"><a href="#方案" class="headerlink" title="方案"></a>方案</h3><p>浏览器和服务器是如何判断缓存是否过期和失效呢？浏览器和服务器进行交互的时候会发送一些请求数据和响应数据，我们称之为 HTTP 报文。报文中包含首部header和主体部分body。与缓存相关的规则信息就包含在header中。boby中的内容是 HTTP 请求真正要传输的部分。HTTP 缓存机制在首部header中相关参数为 Expires、Cache-Control、Last-Modified、If-Modified-Since、Etag、If-None-Match 等。</p>
+<h4 id="强制缓存-1"><a href="#强制缓存-1" class="headerlink" title="强制缓存"></a>强制缓存</h4><p>对于强制缓存，服务器响应的header中会用两个字段来表明：Expires 和 Cache-Control。</p>
+<ul>
+<li>Expires</li>
+</ul>
+<p>Expires 的值为服务端返回的数据到期时间。当再次请求时的请求时间小于此时间，则直接使用缓存数据库的数据。但是服务器的时间和浏览器的时间可能并不一致，那服务器返回的这个过期时间可能就是不准确的，这将导致缓存命中的误差。</p>
+<ul>
+<li>Cache-Control</li>
+</ul>
+<p>Cache-Control 有很多属性，不同的属性代表的意义也不同。最主要是 max-age，当 max-age 设为 300 时，则代表在这个请求正确返回时间的 300 秒（5 分钟）内再次加载资源，就会命中强制缓存。除 max-age 外，还有其它比较常用的设置值，可组合使用。</p>
+<p>Expires 是 HTTP1.0 头字段，Cache-Control 是 HTTP1.1 头字段，如果 Expires 和 Cache-Control 同时存在，则 Cache-Control 会覆盖 Expires。</p>
+<h4 id="协商缓存-1"><a href="#协商缓存-1" class="headerlink" title="协商缓存"></a>协商缓存</h4><p>协商缓存需要进行对比判断是否可以使用缓存。浏览器第一次请求数据时，服务器会将缓存标识与数据一起响应给客户端，客户端将它们备份至缓存中。再次请求时，客户端会将缓存中的标识发送给服务器，服务器根据此标识判断数据是否失效。</p>
+<ul>
+<li>Last-Modified：</li>
+</ul>
+<p>服务器在响应请求时，通过此字段告诉浏览器当前资源的最后修改时间。</p>
+<ul>
+<li>If-Modified-Since</li>
+</ul>
+<p>浏览器再次请求服务器时，浏览器的请求报文头部会包含此字段，后面跟着在缓存数据库中获得的最后修改时间 Last-Modified。服务器接收到此请求头后发现有 If-Modified-Since，则与被请求资源的最后修改时间来进行对比。</p>
+<ul>
+<li>Etag</li>
+</ul>
+<p>服务器在响应请求时，通过此字段告诉浏览器当前资源的唯一标识（生成规则由服务器决定）。</p>
+<ul>
+<li>If-None-Match</li>
+</ul>
+<p>浏览器再次请求服务器时，浏览器的请求报文头部会包含此字段，后面跟着在缓存数据库中获得的唯一标识 Etag。服务器接收到此请求头后发现有 If-None-Match，则与被请求资源的唯一标识来进行对比。</p>
+<p>在精准度上，ETag 优于 Last-Modified，因为 ETag 是按照内容给资源上标识，因此能准确感知资源的变化，而 Last-Modified 则不一样，它在一些特殊的情况并不能准确感知资源变化，主要有两种情况：①资源文件被编辑，但是文件内容并没有更改，那这样也会造成缓存失效；②Last-Modified 能够感知的单位时间是秒，如果资源文件在 1 秒内被多次改变，那么此时的 Last-Modified 并没有体现出修改了。</p>
+<p>在性能上，Last-Modified 优于 ETag，因为 Last-Modified 仅仅只是记录一个时间点，而 Etag 需要根据文件具体内容生成哈希值。服务器会优先考虑 ETag。</p>
+<h3 id="缓存位置"><a href="#缓存位置" class="headerlink" title="缓存位置"></a>缓存位置</h3><p>当强制缓存命中或者协商缓存中命中时，我们直接从缓存中获取资源，那这些资源究竟缓存在什么位置呢？浏览器中的缓存位置一共有四种，按优先级从高到低排列分别是：</p>
+<ul>
+<li>Service Worker</li>
+<li>Memory Cache</li>
+<li>Disk Cache</li>
+<li>Push Cache</li>
+</ul>
+<p>Service Worker 借鉴了 Web Worker 的思路，即让 JS 运行在主线程之外，由于它脱离了浏览器的窗体，因此无法直接访问 DOM。虽然如此，但它仍然能帮助我们完成很多有用的功能，比如离线缓存、消息推送和网络代理等功能。其中的离线缓存就是 Service Worker Cache。</p>
+<p>Memory Cache 是内存缓存。已经加载过该资源且缓存在内存当中，直接从内存中读取数据。关闭浏览器后数据将不存在，再次打开相同的页面时不可能再是 from memory cache。从效率上讲它是最快的，但从存活时间讲又是最短的，当渲染进程结束后，内存缓存也就不存在了。</p>
+<p>Disk Cache 是磁盘缓存。已经在之前的某个时间加载过该资源，直接从硬盘中读取数据，关闭浏览器后数据依然存在，再次打开相同的页面时可能仍然是 from disk cache。从效率上讲比内存缓存慢，但它的优势在于存储容量和存储时长。比较大的 JS 和 CSS 文件会直接被丢进 Disk Cache，反之丢进 Memory Cache。内存使用率比较高的时候，文件优先进入磁盘。</p>
+<p>Push Cache 是推送缓存，这是浏览器缓存的最后一道防线。它是 HTTP/2 的内容，虽然现在应用并不广泛，但随着 HTTP/2 的推广，它的应用越来越广泛。</p>
+<h3 id="缓存优点"><a href="#缓存优点" class="headerlink" title="缓存优点"></a>缓存优点</h3><ul>
+<li>减少了冗余的数据传递，节省宽带流量</li>
+<li>减少了服务器的负担，大大提高了网站性能</li>
+<li>加快了浏览器加载网页的速度</li>
+</ul>
+<h3 id="不同请求"><a href="#不同请求" class="headerlink" title="不同请求"></a>不同请求</h3><ul>
+<li><strong>地址栏写入URL</strong>：浏览器发现缓存中有这个文件，不用继续请求，直接从缓存拿（最快）</li>
+<li><strong>F5</strong>：去服务器看看缓存中的文件是否过期，于是浏览器就发送一个请求</li>
+<li><strong>Ctrl + F5</strong>：先将缓存中的文件删除，然后去服务器请求完整的资源文件</li>
+</ul>
+<h2 id="HTTP-状态码"><a href="#HTTP-状态码" class="headerlink" title="HTTP 状态码"></a>HTTP 状态码</h2><table>
+<thead>
+<tr>
+<th align="center"></th>
+<th align="center">类别</th>
+<th align="center">含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1xx</td>
+<td align="center">Information（信息状态码）</td>
+<td align="center">提示信息，表示目前是协议的中间状态，还需要后续操作</td>
+</tr>
+<tr>
+<td align="center">2xx</td>
+<td align="center">Success（成功状态码）</td>
+<td align="center">成功，报文已经收到并被正确处理</td>
+</tr>
+<tr>
+<td align="center">3xx</td>
+<td align="center">Redirection（重定向状态码）</td>
+<td align="center">重定向，资源位置发送变动，需要客户端重新请求</td>
+</tr>
+<tr>
+<td align="center">4xx</td>
+<td align="center">Client Error（客户端错误状态码）</td>
+<td align="center">客户端错误，请求报文错误，服务器无法处理</td>
+</tr>
+<tr>
+<td align="center">5xx</td>
+<td align="center">Server Error（服务端错误状态码）</td>
+<td align="center">服务器错误，服务器在处理请求时内部出错</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th align="center">常用状态码</th>
+<th align="center">含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">200</td>
+<td align="center">请求成功，一切正常</td>
+</tr>
+<tr>
+<td align="center">301</td>
+<td align="center">永久重定向，请求的资源已经不存在，需用新 URL 访问，浏览器会自动重定向并缓存</td>
+</tr>
+<tr>
+<td align="center">302</td>
+<td align="center">临时重定向，请求的资源还在，但暂时需用新 URL 访问，浏览器会自动重定向不缓存</td>
+</tr>
+<tr>
+<td align="center">303</td>
+<td align="center">临时重定向，重定向到新地址时，客户端必须使用GET方法请求新地址</td>
+</tr>
+<tr>
+<td align="center">304</td>
+<td align="center">缓存重定向，请求的资源未修改，重定向至已存在的缓存文件，用于缓存控制</td>
+</tr>
+<tr>
+<td align="center">307</td>
+<td align="center">临时重定向，和302相似，唯一区别是不允许将请求方法从POST改为GET</td>
+</tr>
+<tr>
+<td align="center">308</td>
+<td align="center">永久重定向，和301相似，唯一区别是不允许将请求方法从POST改为GET</td>
+</tr>
+<tr>
+<td align="center">400</td>
+<td align="center">客户端请求报文错误，但原因未知</td>
+</tr>
+<tr>
+<td align="center">401</td>
+<td align="center">用户身份验证未通过</td>
+</tr>
+<tr>
+<td align="center">403</td>
+<td align="center">服务器理解请求但拒绝授权禁止访问，不是客户端的请求出错</td>
+</tr>
+<tr>
+<td align="center">404</td>
+<td align="center">请求的资源在服务器上不存在或未找到</td>
+</tr>
+<tr>
+<td align="center">500</td>
+<td align="center">服务器处理错误，但原因未知</td>
+</tr>
+<tr>
+<td align="center">503</td>
+<td align="center">服务器繁忙，暂时无法响应</td>
+</tr>
+</tbody></table>
+<h3 id="200-OK"><a href="#200-OK" class="headerlink" title="200 OK"></a>200 OK</h3><p>成功，表示请求在服务器被正常处理。</p>
+<h3 id="301-Moved-Permanently"><a href="#301-Moved-Permanently" class="headerlink" title="301 Moved Permanently"></a>301 Moved Permanently</h3><p>永久重定向，表示请求的资源已经不存在，需用新 URI 访问，浏览器会自动重定向并缓存。</p>
+<h3 id="302-Found"><a href="#302-Found" class="headerlink" title="302 Found"></a>302 Found</h3><p>临时重定向，表示请求的资源还在，但暂时需用新 URL 访问，浏览器会自动重定向不缓存。</p>
+<h3 id="303-See-Other"><a href="#303-See-Other" class="headerlink" title="303 See Other"></a>303 See Other</h3><p>临时重定向，与 302 有相同的含义，不同的是，重定向到新地址时，浏览器必须使用 GET 请求方法。</p>
+<h3 id="307-Temporary-Redirect"><a href="#307-Temporary-Redirect" class="headerlink" title="307 Temporary Redirect"></a>307 Temporary Redirect</h3><p>临时重定向，与 302 有相同的含义，不同的是，重定向到新地址时，不允许将请求方法从 POST 改为 GET。</p>
+<h3 id="308-Permanent-Redirect"><a href="#308-Permanent-Redirect" class="headerlink" title="308 Permanent Redirect"></a>308 Permanent Redirect</h3><p>永久重定向，与 301 有相同的含义，不同的是，重定向到新地址时，不允许将请求方法从 POST 改为 GET。</p>
+<h3 id="400-Bad-Request"><a href="#400-Bad-Request" class="headerlink" title="400 Bad Request"></a>400 Bad Request</h3><p>客户端请求报文错误，但原因未知。</p>
+<h3 id="401-Unauthorized"><a href="#401-Unauthorized" class="headerlink" title="401 Unauthorized"></a>401 Unauthorized</h3><p>用户身份验证未通过。</p>
+<h3 id="403-Forbidden"><a href="#403-Forbidden" class="headerlink" title="403 Forbidden"></a>403 Forbidden</h3><p>服务器理解请求但拒绝授权禁止访问，不是客户端的请求出错。</p>
+<h3 id="404-Not-Found"><a href="#404-Not-Found" class="headerlink" title="404 Not Found"></a>404 Not Found</h3><p>请求的资源在服务器上不存在或未找到，也可能是服务器端在拒绝请求且不想说明原因。</p>
+<h3 id="500-Internal-Server-Error"><a href="#500-Internal-Server-Error" class="headerlink" title="500 Internal Server Error"></a>500 Internal Server Error</h3><p>服务器处理错误，但原因未知。</p>
+<h3 id="503-Service-Unavailable"><a href="#503-Service-Unavailable" class="headerlink" title="503 Service Unavailable"></a>503 Service Unavailable</h3><p>服务器繁忙，暂时无法响应。</p>
+<h2 id="HTTPS"><a href="#HTTPS" class="headerlink" title="HTTPS"></a>HTTPS</h2><p>参考：<br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904021308735502">https://juejin.cn/post/6844904021308735502</a> 。<br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903599303032845">https://juejin.cn/post/6844903599303032845</a> 。<br><a target="_blank" rel="noopener" href="http://ruanyifeng.com/blog/2014/02/ssl_tls.html">http://ruanyifeng.com/blog/2014/02/ssl_tls.html</a> 。</p>
+<p>HTTP 的特性是明文传输，因此在传输的每一个环节，数据都有可能被第三方窃取或者篡改，具体来说，就是HTTP 数据经过 TCP 层，然后经过 WIFI 路由器、运营商和目标服务器，这些环节中都可能被中间人拿到数据并进行篡改，也就是常说的中间人攻击。而且，客户端和服务器无法互相认证，无法确认对方是否是真正的而非伪装的服务器和客户端。</p>
+<p>为了安全，我们引入新的加密方案，即 HTTPS。HTTPS 并不是一个新的协议，而是一个加强版的 HTTP。其原理是在 HTTP 和 TCP 之间建立了一个中间层，HTTP 和 TCP 通信时并不是像以前直接通信，而是经过了一个中间层进行加密，这个中间层也叫安全层。</p>
+<p>安全层使用 TLS/SSL 协议，核心就是对数据加解密。TLS/SSL 的功能实现主要依赖于三类算法：散列函数、对称加密和非对称加密。其中，非对称加密实现身份认证和密钥协商，对称加密用协商的密钥对数据加密，散列函数验证信息的完整性。</p>
+<h1 id="TCP-UDP"><a href="#TCP-UDP" class="headerlink" title="TCP/UDP"></a>TCP/UDP</h1><h2 id="TCP-和-UDP-的区别"><a href="#TCP-和-UDP-的区别" class="headerlink" title="TCP 和 UDP 的区别"></a>TCP 和 UDP 的区别</h2><p>参考：<br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6939691851746279437">https://juejin.cn/post/6939691851746279437</a> 。<br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6972027657047244837">https://juejin.cn/post/6972027657047244837</a> 。</p>
+<p>TCP 是一个面向连接的、可靠的、基于字节流的传输层协议。UDP 是一个面向无连接的传输层协议。</p>
+<table>
+<thead>
+<tr>
+<th align="center">对比</th>
+<th align="center">TCP</th>
+<th align="center">UDP</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">是否连接</td>
+<td align="center">连接</td>
+<td align="center">无连接</td>
+</tr>
+<tr>
+<td align="center">传输可靠</td>
+<td align="center">可靠传输</td>
+<td align="center">不可靠传输</td>
+</tr>
+<tr>
+<td align="center">传输方式</td>
+<td align="center">面向字节流</td>
+<td align="center">面向报文</td>
+</tr>
+<tr>
+<td align="center">首部开销</td>
+<td align="center">开销大，20字节到60字节不等</td>
+<td align="center">开销小，仅8字节</td>
+</tr>
+<tr>
+<td align="center">适用场景</td>
+<td align="center">要求可靠传输的应用，如文件传输</td>
+<td align="center">适用实时应用，如直播、视频会议</td>
+</tr>
+<tr>
+<td align="center">连接对象个数</td>
+<td align="center">只支持一对一通信</td>
+<td align="center">支持一对一、一对多、多对一、多对多通信</td>
+</tr>
+</tbody></table>
+<ul>
+<li>是否连接</li>
+</ul>
+<p>连接，指的是客户端和服务端的连接。<br>在双方互相通信之前，TCP 需要三次握手建立连接，UDP 没有建立连接的过程。</p>
+<ul>
+<li>传输可靠</li>
+</ul>
+<p>TCP 的可靠性体现在有状态和可控制的。TCP 会精准记录哪些数据被发送，哪些数据被对方接收，哪些没有被接收到，而且保证数据包按序到达，不允许半点差错，这是有状态。当意识到丢包了或者网络环境不佳，TCP 会根据具体情况调整自己的行为，控制自己的发送速度或者重发，这是可控制。</p>
+<p>UDP 不可靠性首先体现在无连接上，通信都不需要建立连接；其次因为它是无状态和不可控的。UDP 收到什么数据就传递什么数据，并且也不会备份数据，发送数据时也不会关心对方是否已经正确接收到数据。</p>
+<ul>
+<li>传输方式</li>
+</ul>
+<p>TCP 为了维护状态，将一个个 IP 包变成了字节流。UDP 的数据传输是基于数据报的，继承了 IP 特性。</p>
+<p>TCP 向上层提供面向连接的可靠服务，UDP 向上层提供无连接不可靠服务。虽然 UDP 没有 TCP 传输准确，但是也能在很多实时性要求高的地方有所作为。对数据准确性要求高、速度可以相对较慢，可选用 TCP。</p>
+<h2 id="TCP-的三次握手和四次挥手"><a href="#TCP-的三次握手和四次挥手" class="headerlink" title="TCP 的三次握手和四次挥手"></a>TCP 的三次握手和四次挥手</h2><p>参考：<br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6939691851746279437">https://juejin.cn/post/6939691851746279437</a> 。<br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903625513238541">https://juejin.cn/post/6844903625513238541</a> 。<br><a target="_blank" rel="noopener" href="https://yuanrengu.com/2020/77eef79f.html">https://yuanrengu.com/2020/77eef79f.html</a> 。</p>
+<h3 id="三次握手过程"><a href="#三次握手过程" class="headerlink" title="三次握手过程"></a>三次握手过程</h3><ul>
+<li>一开始客户端和服务端都处于 CLOSED 状态，然后服务端开始监听某个端口进入 LISTEN 状态</li>
+<li>第一次握手：客户端向服务端发送报文：SYN = 1，seq = x，客户端变为 SYN-SENT 状态</li>
+<li>第二次握手：服务端收到客户端报文后向客户端发送报文：SYN = 1，ACK = 1，seq = y，ack = x + 1，服务端变为 SYN-REVD 状态</li>
+<li>第三次握手：客户端收到服务端报文后向服务端发送报文：ACK = 1，seq = x + 1，ack = y + 1，客户端变为 EASTABLISHED 状态，服务端收到报文变为 ESTABLISHED 状态，双方建立连接</li>
+</ul>
+<h3 id="四次挥手过程（客户端主动关闭）"><a href="#四次挥手过程（客户端主动关闭）" class="headerlink" title="四次挥手过程（客户端主动关闭）"></a>四次挥手过程（客户端主动关闭）</h3><ul>
+<li>一开始客户端和服务端都处于 ESTABLISH 状态</li>
+<li>第一次挥手：客户端向服务端发送报文：FIN = 1，seq = u，客户端变为 FIN_WAIT_1 状态</li>
+<li>第二次挥手：服务端收到客户端报文后向客户端发送报文：ACK = 1，seq = v，ack= u + 1，服务端变为 CLOSED_WAIT 状态。客户端收到服务端的报文之后变为 FIN_WAIT_2 状态</li>
+<li>第三次挥手：服务端向客户端发送报文：FIN = 1，ACK = 1，seq = w，ack= u + 1，服务端变为 LAST_ACK 状态</li>
+<li>第四次挥手：客户端收到服务端报文后经过 2MSL 时间后变为 CLOSED 状态，期间向服务端发送报文：ACK = 1，seq = u + 1，ack= w + 1，客户端变为 TIME_WAIT 状态。服务端收到客户端报文变为 CLOSED 状态</li>
+</ul>
+<h3 id="为什么需要三次握手，两次不行吗"><a href="#为什么需要三次握手，两次不行吗" class="headerlink" title="为什么需要三次握手，两次不行吗"></a>为什么需要三次握手，两次不行吗</h3><ul>
+<li>第一次握手：客户端发送网络包，服务端接收。<ul>
+<li>客户端就能得出结论：客户端的发送能力正常。</li>
+<li>服务端就能得出结论：客户端的发送能力、服务端的接收能力正常。</li>
+</ul>
+</li>
+<li>第二次握手：服务端发送网络包，客户端接收。<ul>
+<li>客户端就能得出结论：客户端的发送、接收能力正常，服务端的发送、接收能力正常。</li>
+<li>服务端就能得出结论：客户端的发送能力、服务端的发送、接收能力正常。<br>（服务端并不能确认客户端的接收能力是否正常，所以两次握手不行）</li>
+</ul>
+</li>
+<li>第三次握手：客户端发送网络包，服务端接收。<ul>
+<li>客户端就能得出结论：客户端的发送、接收能力正常，服务端的发送、接收能力正常。</li>
+<li>服务端就能得出结论：客户端的发送、接收能力正常，服务端的发送、接收能力正常。</li>
+</ul>
+</li>
+</ul>
+<h3 id="为什么需要四次挥手，三次不行吗"><a href="#为什么需要四次挥手，三次不行吗" class="headerlink" title="为什么需要四次挥手，三次不行吗"></a>为什么需要四次挥手，三次不行吗</h3><p>TCP 不允许连接处于半打开状态时就单向传输数据，所以在三次握手建立连接时，服务器会把 ACK 和 SYN 放在一起发给客户端，其中，ACK 用来打开客户端的发送通道，SYN 用来打开服务器的发送通道。这样原本的四次握手就成为三次握手。</p>
+<p>但是当连接处于半关闭状态时，TCP 是允许单向传输数据的。我们把先关闭连接的一方叫做主动方，后关闭连接的一方叫做被动方。当主动方关闭连接时，被动方仍然可以在不调用 close 函数的状态下，长时间发送数据，此时连接处于半关闭状态。这一特性是 TCP 的双向通道互相独立所致，却这也使得关闭连接必须通过四次挥手才能做到。</p>
+<h3 id="为什么需要等待-2MSL"><a href="#为什么需要等待-2MSL" class="headerlink" title="为什么需要等待 2MSL"></a>为什么需要等待 2MSL</h3><p>如果不等待，但是服务端还有很多数据包要给客户端发，且此时客户端端口被新应用占据，那么就会接收到无用的数据包，造成数据包混乱，所以最保险方法是等服务器发来的数据包都被接收后再启动新应用。</p>
+<p>1个 MSL 保证四次挥手中主动关闭方最后的 ACK 报文能最终到达对端。<br>1个 MSL 保证对端没有收到 ACK 报文，那么对端进行重传的 FIN 报文能够到达。</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/">计算机基础</a>
+                    
+                      <a class="hover-with-bg" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E7%BD%91%E7%BB%9C/">网络</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/">面试题</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E7%BD%91%E7%BB%9C/">网络</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/">计算机基础</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/08/20/Vue%E9%9D%A2%E8%AF%95%E9%A2%98/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Vue面试题</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/08/20/%E6%89%8B%E5%86%99JavaScript/">
+                        <span class="hidden-mobile">手写JavaScript</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"syQxyJQH6mJ9tVidXW3H8d00-gzGzoHsz","appKey":"CkmQXvhPR7AQJnJEU8kKs00A","placeholder":"说点什么","path":"window.location.pathname","avatar":"retro","meta":["nick","mail","link"],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false,"requiredFields":[]},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+  <div class="col-lg-7 mx-auto nopadding-x-md">
+    <div class="container custom post-custom mx-auto">
+      <img src="https://octodex.github.com/images/jetpacktocat.png" srcset="/img/loading.gif" lazyload class="rounded mx-auto d-block mt-5" style="width:150px; height:150px;">
+    </div>
+  </div>
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Powered by Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Theme is Fluid</span></a>
+  </div>
+  
+
+  
+  <!-- 备案信息 -->
+  <div class="beian">
+    <span>
+      <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+        冀ICP备2021010393号-1
+      </a>
+    </span>
+    
+      
+        <span>
+          <a
+            href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=13048102000303"
+            rel="nofollow noopener"
+            class="beian-police"
+            target="_blank"
+          >
+            
+              <span style="visibility: hidden; width: 0">|</span>
+              <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
+            
+            <span>冀公网安备13048102000303号</span>
+          </a>
+        </span>
+      
+    
+  </div>
+
+
+  
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?bbe44c28232a60458d913426edaff12f";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+    
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?siteId=16939915";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

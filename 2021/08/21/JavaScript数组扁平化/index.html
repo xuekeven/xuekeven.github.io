@@ -1,0 +1,604 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="Keven">
+  <meta name="keywords" content="">
+  
+  <title>JavaScript数组扁平化 - Keven&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":60,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"siteId=16939915","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 50vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Keven's Blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tools/">
+                <i class="iconfont icon-th-large"></i>
+                工具
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/example.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.2)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="JavaScript数组扁平化">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-author" aria-hidden="true"></i>
+      Keven
+    </span>
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-08-21 10:00" pubdate>
+        2021年8月21日
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.1k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      14
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">JavaScript数组扁平化</h1>
+            
+            <div class="markdown-body">
+              <p>参考：<a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904025993773063">https://juejin.cn/post/6844904025993773063</a> 。</p>
+<h1 id="数组扁平化的实现"><a href="#数组扁平化的实现" class="headerlink" title="数组扁平化的实现"></a>数组扁平化的实现</h1><p>数组拍平方法 Array.prototype.flat() 也叫数组扁平化、数组拉平、数组降维。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> animals = [<span class="hljs-string">&quot;🐷&quot;</span>, [<span class="hljs-string">&quot;🐶&quot;</span>, <span class="hljs-string">&quot;🐂&quot;</span>], [<span class="hljs-string">&quot;🐎&quot;</span>, [<span class="hljs-string">&quot;🐑&quot;</span>, [<span class="hljs-string">&quot;🐲&quot;</span>]], <span class="hljs-string">&quot;🐛&quot;</span>]];<br><span class="hljs-comment">// 不传参数时，默认“拉平”一层</span><br>animals.flat();<br><span class="hljs-comment">// [&quot;🐷&quot;, &quot;🐶&quot;, &quot;🐂&quot;, &quot;🐎&quot;, [&quot;🐑&quot;, [&quot;🐲&quot;]], &quot;🐛&quot;]</span><br><span class="hljs-comment">// 传入一个整数参数，整数即“拉平”的层数</span><br>animals.flat(<span class="hljs-number">2</span>);<br><span class="hljs-comment">// [&quot;🐷&quot;, &quot;🐶&quot;, &quot;🐂&quot;, &quot;🐎&quot;, &quot;🐑&quot;, [&quot;🐲&quot;], &quot;🐛&quot;]</span><br><span class="hljs-comment">// Infinity 关键字作为参数时，无论多少层嵌套，都会转为一维数组</span><br>animals.flat(<span class="hljs-literal">Infinity</span>);<br><span class="hljs-comment">// [&quot;🐷&quot;, &quot;🐶&quot;, &quot;🐂&quot;, &quot;🐎&quot;, &quot;🐑&quot;, &quot;🐲&quot;, &quot;🐛&quot;]</span><br><span class="hljs-comment">// 传入 &lt;=0 的整数将返回原数组，不“拉平”</span><br>animals.flat(<span class="hljs-number">0</span>);<br>animals.flat(-<span class="hljs-number">10</span>);<br><span class="hljs-comment">// [&quot;🐷&quot;, [&quot;🐶&quot;, &quot;🐂&quot;], [&quot;🐎&quot;, [&quot;🐑&quot;, [&quot;🐲&quot;]], &quot;🐛&quot;]];</span><br><span class="hljs-comment">// 如果原数组有空位，flat()方法会跳过空位。</span><br>[<span class="hljs-string">&quot;🐷&quot;</span>, <span class="hljs-string">&quot;🐶&quot;</span>, <span class="hljs-string">&quot;🐂&quot;</span>, <span class="hljs-string">&quot;🐎&quot;</span>,,].flat();<br><span class="hljs-comment">// [&quot;🐷&quot;, &quot;🐶&quot;, &quot;🐂&quot;, &quot;🐎&quot;]</span><br></code></pre></td></tr></table></figure>
+<p>Array.prototype.flat() 特性总结：</p>
+<ul>
+<li>Array.prototype.flat() 用于将嵌套的数组“拉平”变成一维的数组。该方法返回一个新数组，对原数据没影响。</li>
+<li>不传参数时，默认“拉平”一层，可以传入一个整数，表示想要“拉平”的层数；传入小于等于零的整数将返回原数组，不“拉平”。Infinity 关键字作为参数时，无论多少层嵌套，都会转为一维数组。</li>
+<li>如果原数组有空位，Array.prototype.flat() 会跳过空位。</li>
+</ul>
+<h1 id="实现一个简单的数组拍平-flat-函数"><a href="#实现一个简单的数组拍平-flat-函数" class="headerlink" title="实现一个简单的数组拍平 flat 函数"></a>实现一个简单的数组拍平 flat 函数</h1><p>思路非常简单：实现一个有数组拍平功能的 flat 函数，我们要做的就是在数组中找到是数组类型的元素，然后将他们展开。这就是实现数组拍平 flat 方法的关键思路。</p>
+<p>解决实现这个思路需要克服的困难：</p>
+<ul>
+<li>第一个要解决的就是遍历数组的每一个元素；</li>
+<li>第二个要解决的就是判断元素是否是数组；</li>
+<li>第三个要解决的就是将数组的元素展开一层；</li>
+</ul>
+<h2 id="遍历数组的方案"><a href="#遍历数组的方案" class="headerlink" title="遍历数组的方案"></a>遍历数组的方案</h2><ul>
+<li>for 循环</li>
+<li>for…of</li>
+<li>for…in</li>
+<li>forEach()</li>
+<li>entries()</li>
+<li>keys()</li>
+<li>values()</li>
+<li>reduce()</li>
+<li>map()</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> arr = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]]], <span class="hljs-number">5</span>, <span class="hljs-string">&quot;string&quot;</span>, &#123; <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;同学&quot;</span> &#125;];<br><span class="hljs-comment">// for 循环</span><br><span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; arr.length; i++) &#123;<br>  <span class="hljs-built_in">console</span>.log(arr[i]);<br>&#125;<br><span class="hljs-comment">// for...of</span><br><span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> value <span class="hljs-keyword">of</span> arr) &#123;<br>  <span class="hljs-built_in">console</span>.log(value);<br>&#125;<br><span class="hljs-comment">// for...in</span><br><span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i <span class="hljs-keyword">in</span> arr) &#123;<br>  <span class="hljs-built_in">console</span>.log(arr[i]);<br>&#125;<br><span class="hljs-comment">// forEach 循环</span><br>arr.forEach(<span class="hljs-function"><span class="hljs-params">value</span> =&gt;</span> &#123;<br>  <span class="hljs-built_in">console</span>.log(value);<br>&#125;);<br><span class="hljs-comment">// entries()</span><br><span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> [index, value] <span class="hljs-keyword">of</span> arr.entries()) &#123;<br>  <span class="hljs-built_in">console</span>.log(value);<br>&#125;<br><span class="hljs-comment">// keys()</span><br><span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> index <span class="hljs-keyword">of</span> arr.keys()) &#123;<br>  <span class="hljs-built_in">console</span>.log(arr[index]);<br>&#125;<br><span class="hljs-comment">// values()</span><br><span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> value <span class="hljs-keyword">of</span> arr.values()) &#123;<br>  <span class="hljs-built_in">console</span>.log(value);<br>&#125;<br><span class="hljs-comment">// reduce()</span><br>arr.reduce(<span class="hljs-function">(<span class="hljs-params">pre, cur</span>) =&gt;</span> &#123;<br>  <span class="hljs-built_in">console</span>.log(cur);<br>&#125;, []);<br><span class="hljs-comment">// map()</span><br>arr.map(<span class="hljs-function"><span class="hljs-params">value</span> =&gt;</span> <span class="hljs-built_in">console</span>.log(value));<br></code></pre></td></tr></table></figure>
+
+<h2 id="判断是数组的方法"><a href="#判断是数组的方法" class="headerlink" title="判断是数组的方法"></a>判断是数组的方法</h2><ul>
+<li>Array.isArray 方法</li>
+<li>Object.prototype.toString 方法</li>
+<li>instanceof 操作符</li>
+<li>constructor 属性</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> arr = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]]], <span class="hljs-number">5</span>, <span class="hljs-string">&quot;string&quot;</span>, &#123; <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;同学&quot;</span> &#125;];<br>arr <span class="hljs-keyword">instanceof</span> <span class="hljs-built_in">Array</span><br><span class="hljs-comment">// true</span><br>arr.constructor === <span class="hljs-built_in">Array</span><br><span class="hljs-comment">// true</span><br><span class="hljs-built_in">Object</span>.prototype.toString.call(arr) === <span class="hljs-string">&#x27;[object Array]&#x27;</span><br><span class="hljs-comment">// true</span><br><span class="hljs-built_in">Array</span>.isArray(arr)<br><span class="hljs-comment">// true</span><br></code></pre></td></tr></table></figure>
+
+<p>说明：</p>
+<ul>
+<li>instanceof 操作符是假定只有一种全局环境，如果网页中包含多个框架，多个全局环境，如果你从一个框架向另一个框架传入一个数组，那么传入的数组与在第二个框架中原生创建的数组分别具有各自不同的构造函数。</li>
+<li>constructor 属性可以被重写，所以不能确保一定是数组</li>
+</ul>
+<h2 id="将数组的元素展开一层的方案"><a href="#将数组的元素展开一层的方案" class="headerlink" title="将数组的元素展开一层的方案"></a>将数组的元素展开一层的方案</h2><ul>
+<li>扩展运算符 + concat</li>
+</ul>
+<p>concat() 方法用于合并两个或多个数组，在拼接的过程中加上扩展运算符会展开一层数组。详细见下面的代码。</p>
+<ul>
+<li>concat +apply</li>
+</ul>
+<p>主要是利用 apply 在绑定作用域时，传入的第二个参数是一个数组或者类数组对象，其中的数组元素将作为单独的参数传给 func 函数。也就是在调用 apply 函数的过程中，会将传入的数组一个一个的传入到要执行的函数中，也就是相当对数组进行了一层的展开。</p>
+<ul>
+<li>toString  + split</li>
+</ul>
+<p>不推荐使用 toString + split 方法，因为操作字符串是和危险的事情，在上一文章中我做了一个操作字符串的案例还被许多小伙伴们批评了。如果数组中的元素所有都是数字的话，toString +split 是可行的，并且是一步搞定。</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/JavaScript/">JavaScript</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/JavaScript/">JavaScript</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Array/">Array</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/08/23/JavaScript%E5%86%85%E5%AD%98%E5%92%8C%E6%8B%B7%E8%B4%9D/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">JavaScript内存和拷贝</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/08/20/JavaScript%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%88%B6/">
+                        <span class="hidden-mobile">JavaScript运行机制</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"syQxyJQH6mJ9tVidXW3H8d00-gzGzoHsz","appKey":"CkmQXvhPR7AQJnJEU8kKs00A","placeholder":"说点什么","path":"window.location.pathname","avatar":"retro","meta":["nick","mail","link"],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false,"requiredFields":[]},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+  <div class="col-lg-7 mx-auto nopadding-x-md">
+    <div class="container custom post-custom mx-auto">
+      <img src="https://octodex.github.com/images/jetpacktocat.png" srcset="/img/loading.gif" lazyload class="rounded mx-auto d-block mt-5" style="width:150px; height:150px;">
+    </div>
+  </div>
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Powered by Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Theme is Fluid</span></a>
+  </div>
+  
+
+  
+  <!-- 备案信息 -->
+  <div class="beian">
+    <span>
+      <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+        冀ICP备2021010393号-1
+      </a>
+    </span>
+    
+      
+        <span>
+          <a
+            href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=13048102000303"
+            rel="nofollow noopener"
+            class="beian-police"
+            target="_blank"
+          >
+            
+              <span style="visibility: hidden; width: 0">|</span>
+              <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
+            
+            <span>冀公网安备13048102000303号</span>
+          </a>
+        </span>
+      
+    
+  </div>
+
+
+  
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?bbe44c28232a60458d913426edaff12f";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+    
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?siteId=16939915";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

@@ -1,0 +1,613 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="Keven">
+  <meta name="keywords" content="">
+  
+  <title>Git基本使用 - Keven&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":60,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"siteId=16939915","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 50vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Keven's Blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tools/">
+                <i class="iconfont icon-th-large"></i>
+                工具
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/example.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.2)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Git基本使用">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-author" aria-hidden="true"></i>
+      Keven
+    </span>
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-08-07 12:00" pubdate>
+        2021年8月7日
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.4k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      17
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Git基本使用</h1>
+            
+            <div class="markdown-body">
+              <p>参考：<br><a target="_blank" rel="noopener" href="https://www.runoob.com/git/git-tutorial.html">https://www.runoob.com/git/git-tutorial.html</a> 。<br><a target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2015/12/git-cheat-sheet.html">http://www.ruanyifeng.com/blog/2015/12/git-cheat-sheet.html</a> 。<br><a target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2015/08/git-use-process.html">http://www.ruanyifeng.com/blog/2015/08/git-use-process.html</a> 。</p>
+<h1 id="工作流程"><a href="#工作流程" class="headerlink" title="工作流程"></a>工作流程</h1><p>工作区 =&gt; 暂存区 =&gt; 版本库 =&gt; 远程仓库<br><img src="/images/Git%E5%85%B3%E7%B3%BB%E5%9B%BE.jpg" srcset="/img/loading.gif" lazyload alt="Git关系图（来自@菜鸟教程）"><br><img src="/images/Git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4.jpg" srcset="/img/loading.gif" lazyload alt="Git常用命令（来自@菜鸟教程）"></p>
+<h1 id="新建仓库"><a href="#新建仓库" class="headerlink" title="新建仓库"></a>新建仓库</h1><h2 id="新建仓库-1"><a href="#新建仓库-1" class="headerlink" title="新建仓库"></a>新建仓库</h2><p><code>git init</code> 初始化一个 Git 新仓库，会在当前目录生成一个 .git 目录</p>
+<p><code>git init &lt;dirName&gt;</code> 初始化 dirName 目录为一个 Git 新仓库，会在 dirName 目录中生成一个 .git 目录</p>
+<h2 id="克隆仓库"><a href="#克隆仓库" class="headerlink" title="克隆仓库"></a>克隆仓库</h2><p><code>git clone &lt;repo&gt;</code> 从 repo 地址克隆仓库，repo 地址可以是 URL 地址也可以是本地地址</p>
+<p><code>git clone &lt;repo&gt; &lt;dirName&gt;</code> 从 repo 地址克隆仓库到本地 dirName 目录</p>
+<h1 id="提交修改"><a href="#提交修改" class="headerlink" title="提交修改"></a>提交修改</h1><h2 id="添加"><a href="#添加" class="headerlink" title="添加"></a>添加</h2><p><code>git add &lt;fileName&gt;</code> 添加 fileName 文件到暂存区（可同时添加多个）</p>
+<p><code>git add &lt;dirName&gt;</code> 添加 dirName 目录到暂存区</p>
+<p><code>git add .</code> 添加当前目录下的所有文件到暂存区</p>
+<h2 id="提交"><a href="#提交" class="headerlink" title="提交"></a>提交</h2><p><code>git commit -m &lt;message&gt;</code> 将暂存区内容提交到版本库，message 是备注信息</p>
+<p><code>git commit &lt;fileName&gt; -m &lt;message&gt;</code> 将暂存区的 fileName 文件提交到版本库（可同时提交多个）</p>
+<p><code>git commit -a</code> 修改文件后不需要执行 git add 命令，直接提交</p>
+<h2 id="回退"><a href="#回退" class="headerlink" title="回退"></a>回退</h2><p><code>git checkout &lt;fileName&gt;</code> 从暂存区回退 fileName 文件到工作区</p>
+<p><code>git checkout .</code> 从暂存区回退所有文件到工作区</p>
+<p><code>git checkout &lt;verson&gt; &lt;fileName&gt;</code> 从版本库的 verson 版本的回退 fileName 文件到暂存区和工作区</p>
+<p><code>git reset [--soft | --mixed | --hard] [HEAD]</code></p>
+<p><code>git reset HEAD^</code> 回退暂存区所有内容到上个版本，但工作区不变</p>
+<p><code>git reset HEAD^^</code> 回退暂存区所有内容到上上个版本，但工作区不变</p>
+<p><code>git reset HEAD^ &lt;fileName&gt;</code> 回退暂存区 fileName 文件到上个版本，但工作区不变</p>
+<p><code>git reset &lt;verson&gt;</code> 回退暂存区所有内容到 verson 版本，但工作区不变</p>
+<h2 id="查看文件状态"><a href="#查看文件状态" class="headerlink" title="查看文件状态"></a>查看文件状态</h2><p><code>git status</code> 查看在你上次提交之后是否有对文件进行再次修改</p>
+<p><code>git status -s</code> 获得简短的结果</p>
+<h2 id="删除工作区文件"><a href="#删除工作区文件" class="headerlink" title="删除工作区文件"></a>删除工作区文件</h2><p><a target="_blank" rel="noopener" href="https://www.runoob.com/git/git-rm.html">https://www.runoob.com/git/git-rm.html</a></p>
+<h2 id="操作工作区文件"><a href="#操作工作区文件" class="headerlink" title="操作工作区文件"></a>操作工作区文件</h2><p><a target="_blank" rel="noopener" href="https://www.runoob.com/git/git-mv.html">https://www.runoob.com/git/git-mv.html</a></p>
+<h1 id="远程操作"><a href="#远程操作" class="headerlink" title="远程操作"></a>远程操作</h1><h2 id="远程仓库的操作"><a href="#远程仓库的操作" class="headerlink" title="远程仓库的操作"></a>远程仓库的操作</h2><p><code>git remote -v</code> 显示所有远程仓库</p>
+<p><code>git remote show &lt;remote&gt;</code> 显示远程 remote 仓库的信息</p>
+<p><code>git remote add &lt;repo&gt; &lt;url&gt;</code> 添加远程 url 地址仓库，并命名该仓库在本地的名字为 repo（常命名为 origin）</p>
+<h2 id="上传代码并合并"><a href="#上传代码并合并" class="headerlink" title="上传代码并合并"></a>上传代码并合并</h2><p><code>git push &lt;repo&gt; &lt;branchName1&gt;:&lt;branchName2&gt;</code> 上传本地仓库的 branchName1 分支到远程 repo 仓库的 branchName2 分支</p>
+<p><code>git push &lt;repo&gt; &lt;branchName&gt;</code> 上传本地仓库的 branchName 分支到远程 repo 仓库的 branchName 分支（本地分支名与远程分支名相同）</p>
+<p><code>git push &lt;repo&gt; --force</code> 强行推送本地仓库的当前分支到远程 repo 仓库，即使有冲突（本地分支名与远程分支名相同）</p>
+<p><code>git push &lt;repo&gt; --all</code> 推送本地仓库的所有分支到远程 repo 仓库</p>
+<h2 id="下载代码并合并"><a href="#下载代码并合并" class="headerlink" title="下载代码并合并"></a>下载代码并合并</h2><p><code>git pull &lt;repo&gt; &lt;branchName1&gt;:&lt;branchName2&gt;</code> 从远程 repo 仓库下载 branchName1 分支到本地仓库 branchName2 分支</p>
+<p><code>git pull &lt;repo&gt; &lt;branchName&gt;</code> 从远程 repo 仓库下载 branchName 分支到本地仓库 branchName 分支（本地分支名与远程分支名相同）</p>
+<h2 id="从远程获取代码库"><a href="#从远程获取代码库" class="headerlink" title="从远程获取代码库"></a>从远程获取代码库</h2><p><code>git fetch &lt;repo&gt;</code> 下载远程 repo 仓库的所有变动</p>
+<h1 id="分支管理"><a href="#分支管理" class="headerlink" title="分支管理"></a>分支管理</h1><h2 id="列出分支"><a href="#列出分支" class="headerlink" title="列出分支"></a>列出分支</h2><p><code>git branch</code> 列出所有本地分支</p>
+<p><code>git branch -r</code> 列出所有远程分支</p>
+<p><code>git branch -a</code> 列出所有本地分支和远程分支</p>
+<h2 id="新建分支"><a href="#新建分支" class="headerlink" title="新建分支"></a>新建分支</h2><p><code>git branch &lt;branchName&gt;</code> 新建 branchName 分支，但依然停留在当前分支</p>
+<p><code>git checkout -b &lt;branchName&gt;</code> 新建 branchName 分支并立即切换到该分支下</p>
+<p><code>git branch &lt;branchName&gt; &lt;version&gt;</code> 新建 branchName 分支，指向版本库的指定版本</p>
+<p><code>git branch --track &lt;branchName&gt; &lt;remoteBranch&gt;</code> 新建 branchName 分支，与远程的 remoteBranch 分支建立追踪关系</p>
+<h2 id="切换分支"><a href="#切换分支" class="headerlink" title="切换分支"></a>切换分支</h2><p><code>git checkout &lt;branchName&gt;</code> 从当前分支切换到 branchName 分支</p>
+<p><code>git checkout -</code> 从当前分支切换到切换到上一个分支</p>
+<h2 id="删除分支"><a href="#删除分支" class="headerlink" title="删除分支"></a>删除分支</h2><p><code>git branch -d &lt;branchName&gt;</code> 删除本地 branchName 分支</p>
+<p><code>git branch -d -r &lt;repo&gt; &lt;branchName&gt;</code> 删除远程 repo 仓库的 branchName 分支</p>
+<h2 id="合并分支"><a href="#合并分支" class="headerlink" title="合并分支"></a>合并分支</h2><p><code>git merge &lt;branchName&gt;</code> 合并 branchName 分支到当前分支</p>
+<p><code>git cherry-pick &lt;version&gt;</code> 从版本库选择一个版本合并进当前分支</p>
+<h2 id="重命名分支"><a href="#重命名分支" class="headerlink" title="重命名分支"></a>重命名分支</h2><p><code>git branch -M &lt;oldbranchName&gt; &lt;newbranchName&gt;</code> 将本地 oldbranchName 分支重命名为 newbranchName</p>
+<p>重命名远程分支的做法：删除远程待修改分支后上传本地分支到远程</p>
+<h1 id="查看提交"><a href="#查看提交" class="headerlink" title="查看提交"></a>查看提交</h1><h2 id="查看历史提交记录"><a href="#查看历史提交记录" class="headerlink" title="查看历史提交记录"></a>查看历史提交记录</h2><p><code>git log</code> 查看历史提交记录（从近到远）</p>
+<p><code>git log --oneline</code> 查看历史记录的简洁版本</p>
+<p><code>git log --graph</code> 查看历史中何时出现分支和合并</p>
+<p><code>git log --reverse</code> 逆向查看历史提交记录（从远到近）</p>
+<h2 id="查看指定文件历史修改记录"><a href="#查看指定文件历史修改记录" class="headerlink" title="查看指定文件历史修改记录"></a>查看指定文件历史修改记录</h2><p><code>git blame &lt;fileName&gt;</code> 以列表形式查看 fileName 文件的历史修改记录</p>
+<h1 id="标签"><a href="#标签" class="headerlink" title="标签"></a>标签</h1><h2 id="查看标签"><a href="#查看标签" class="headerlink" title="查看标签"></a>查看标签</h2><p><code>git tag</code> 列出所有标签</p>
+<h2 id="新建标签"><a href="#新建标签" class="headerlink" title="新建标签"></a>新建标签</h2><p><code>git tag &lt;tagName&gt;</code> 新建名为 tagName 标签</p>
+<h1 id="选项解释"><a href="#选项解释" class="headerlink" title="选项解释"></a>选项解释</h1><ul>
+<li>-f –force：强制</li>
+<li>-d –delete：删除</li>
+<li>-D –delete –force的快捷键</li>
+<li>-m –move：移动或重命名</li>
+<li>-M –move –force的快捷键</li>
+<li>-r –remote：远程</li>
+<li>-a –all：所有</li>
+</ul>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/Git/">Git</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Git/">Git</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/08/07/Git%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Git常用方法</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/07/17/JavaScript%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">
+                        <span class="hidden-mobile">JavaScript数据类型</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"syQxyJQH6mJ9tVidXW3H8d00-gzGzoHsz","appKey":"CkmQXvhPR7AQJnJEU8kKs00A","placeholder":"说点什么","path":"window.location.pathname","avatar":"retro","meta":["nick","mail","link"],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false,"requiredFields":[]},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+  <div class="col-lg-7 mx-auto nopadding-x-md">
+    <div class="container custom post-custom mx-auto">
+      <img src="https://octodex.github.com/images/jetpacktocat.png" srcset="/img/loading.gif" lazyload class="rounded mx-auto d-block mt-5" style="width:150px; height:150px;">
+    </div>
+  </div>
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Powered by Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Theme is Fluid</span></a>
+  </div>
+  
+
+  
+  <!-- 备案信息 -->
+  <div class="beian">
+    <span>
+      <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+        冀ICP备2021010393号-1
+      </a>
+    </span>
+    
+      
+        <span>
+          <a
+            href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=13048102000303"
+            rel="nofollow noopener"
+            class="beian-police"
+            target="_blank"
+          >
+            
+              <span style="visibility: hidden; width: 0">|</span>
+              <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
+            
+            <span>冀公网安备13048102000303号</span>
+          </a>
+        </span>
+      
+    
+  </div>
+
+
+  
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?bbe44c28232a60458d913426edaff12f";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+    
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?siteId=16939915";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

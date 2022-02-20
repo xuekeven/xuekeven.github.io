@@ -1,0 +1,636 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="Keven">
+  <meta name="keywords" content="">
+  
+  <title>客户端存储 - Keven&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":60,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"siteId=16939915","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 50vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Keven's Blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tools/">
+                <i class="iconfont icon-th-large"></i>
+                工具
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/example.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.2)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="客户端存储">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-author" aria-hidden="true"></i>
+      Keven
+    </span>
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-09-09 15:00" pubdate>
+        2021年9月9日
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.9k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      21
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">客户端存储</h1>
+            
+            <div class="markdown-body">
+              <p>参考：<br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903516826255373">https://juejin.cn/post/6844903516826255373</a> 。<br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903989096497159">https://juejin.cn/post/6844903989096497159</a> 。<br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904021308735502#heading-13">https://juejin.cn/post/6844904021308735502#heading-13</a> 。</p>
+<p>在前端开发的时候，如果网页刷新，所有数据都会被清空，这时候就要用到本地存储的技术，前端本地存储方式有三种，分别是 Cookie、WebStorage、IndexedDB。</p>
+<h1 id="Cookie"><a href="#Cookie" class="headerlink" title="Cookie"></a>Cookie</h1><p>Cookie 最开始被设计出来并不是来做本地存储的，而是为了弥补 HTTP 在状态管理上的不足。HTTP 协议是一个无状态协议，客户端向服务器发请求，服务器返回响应，故事就结束了，但是下次发请求如何让服务端知道客户端是谁呢？这种背景下，就产生了 Cookie。</p>
+<p>Cookie 是浏览器里面存储的一个很小的文本文件，内部以键值对的方式来存储。向同一个域名下发送请求，都会携带相同的 Cookie，服务器拿到 Cookie 进行解析，便能拿到客户端的状态。</p>
+<p>Cookie 的作用很好理解，就是用来做状态存储的。</p>
+<h2 id="缺陷"><a href="#缺陷" class="headerlink" title="缺陷"></a>缺陷</h2><ul>
+<li>容量缺陷。Cookie 的体积上限只有 4KB，只能用来存储少量的信息。</li>
+<li>性能缺陷。Cookie 紧跟域名，不管域名下面的某一个地址需不需要这个 Cookie ，请求都会携带上完整 Cookie，这样随着请求数的增多，其实会造成巨大的性能浪费的，因为请求携带了很多不必要的内容。</li>
+<li>安全缺陷。由于 Cookie 以纯文本的形式在浏览器和服务器中传递，很容易被非法用户截获，然后进行一系列的篡改，在 Cookie 的有效期内重新发送给服务器，这是相当危险的。另外，在 HttpOnly 为 false 的情况下，Cookie 信息能直接通过 JS 脚本来读取。</li>
+</ul>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>可通过 document.cookie 获取全部 Cookie。Cookie 是一段字符串，是键值对的形式。操作起来有些麻烦，可引入封装好的库进行使用，比如 js-Cookie。</p>
+<ul>
+<li>原生<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// 保存 Cookie 值</span><br><span class="hljs-keyword">let</span> dataCookie=<span class="hljs-string">&#x27;110&#x27;</span>;<br><span class="hljs-built_in">document</span>.cookie = <span class="hljs-string">&#x27;token&#x27;</span> + <span class="hljs-string">&quot;=&quot;</span> + dataCookie;<br><span class="hljs-comment">//获取指定名称的Cookie值</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getCookie</span>(<span class="hljs-params">name</span>) </span>&#123;<br>  <span class="hljs-keyword">var</span> arr = <span class="hljs-built_in">document</span>.cookie.match(<span class="hljs-keyword">new</span> <span class="hljs-built_in">RegExp</span>(<span class="hljs-string">&quot;(^| )&quot;</span> + name + <span class="hljs-string">&quot;=([^;]*)(;|$)&quot;</span>));<br>  <span class="hljs-keyword">if</span>(arr != <span class="hljs-literal">null</span>) &#123;<br>    <span class="hljs-built_in">console</span>.log(arr);<br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">unescape</span>(arr[<span class="hljs-number">2</span>]);<br>  &#125;<br>  <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;<br>&#125;<br><span class="hljs-keyword">var</span> CookieData=getCookie(<span class="hljs-string">&#x27;token&#x27;</span>); <span class="hljs-comment">//Cookie赋值给变量。</span><br></code></pre></td></tr></table></figure></li>
+<li>js-Cookie<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs javascript">Cookies.set(<span class="hljs-string">&quot;name&quot;</span>, <span class="hljs-string">&quot;value&quot;</span>, &#123; <span class="hljs-attr">expires</span>: <span class="hljs-number">7</span> &#125;); <span class="hljs-comment">// 设置一个 Cookie，7天后失效</span><br>Cookies.get(<span class="hljs-string">&quot;name&quot;</span>);<br>Cookies.remove(<span class="hljs-string">&quot;name&quot;</span>);<br></code></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h2><p>Cookie 和 Session 都是普遍用来跟踪浏览用户身份的会话方式。</p>
+<ul>
+<li>Cookie 数据存放在客户端，Session 数据放在服务器端，而且后者是依赖于 Cookie 实现的；</li>
+<li>Cookie 本身并不安全，考虑到安全应当使用 Session；</li>
+<li>Session 会在一定时间内保存在服务器上。如果访问量比较大，会比较消耗服务器的性能。考虑到减轻服务器性能方面的开销，应当使用 Cookie；</li>
+<li>单个 Cookie 保存的数据不能超过 4K，很多浏览器都限制一个域名最多保存 50 个 Cookie。将登陆等等重要信息存放为 Session，其他信息如果需要保留，可以放在 Cookie 中。</li>
+</ul>
+<h1 id="WebStorage"><a href="#WebStorage" class="headerlink" title="WebStorage"></a>WebStorage</h1><p>在 Web 本地存储场景上 Cookie 的使用受到种种限制，最关键的就是存储容量太小和数据无法持久化存储。在 HTML5 的标准下，出现了 WebStorage（其又分为 localStorage 和 SessionStorage）。</p>
+<p>不同浏览器无法共享 localStorage 和 SessionStorage 中的信息。同一浏览器的相同域名和端口的不同页面间可以共享相同的 localStorage，但是不同页面间无法共享 SessionStorage 信息。这里需要注意的是，页面仅指顶级窗口，如果一个页面包含多个 iframe 且他们属于同源页面，那么他们之间可以共享 SessionStorage。</p>
+<h2 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h2><p>它相对 Cookie 有相当多的区别：</p>
+<ul>
+<li>容量。WebStorage 的容量上限为 5M，相比于 Cookie 的 4K 大大增加。当然 5M 是针对一个域名的。</li>
+<li>只存在客户端。默认不参与与服务端的通信，这样就很好地避免了 Cookie 带来的性能问题和安全问题。</li>
+<li>接口封装。通过 localStorage 和 SessionStorage 暴露在全局，并通过它的方法进行操作，非常方便。</li>
+</ul>
+<h2 id="使用-1"><a href="#使用-1" class="headerlink" title="使用"></a>使用</h2><p>localStorage 和 SessionStorage 都是 WebStorage 类型实例，它们的使用方法是一样的。</p>
+<p>注意事项：</p>
+<ul>
+<li>WebStorage 写入的时候，如果超出容量会报错，之前保存的数据不会丢失。</li>
+<li>WebStorage 存储容量快要满的时候，getItem() 方法性能会急剧下降。</li>
+<li>WebStorage 存储的都是字符串。（若要存储对象，需调用 JSON.stringify() 方法转为 JSON 数据类型；若要获取数据，需调用 JSON.parse() 方法再解析 JSON 数据类型成对象）</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> name = <span class="hljs-string">&#x27;SessionData&#x27;</span>, num = <span class="hljs-number">120</span>;<br>SessionStorage.setItem(name, num); <span class="hljs-comment">// 存储数据</span><br>SessionStorage.value = <span class="hljs-number">110</span>; <span class="hljs-comment">// 存储数据</span><br>SessionStorage.valueOf(); <span class="hljs-comment">// 获取全部数据</span><br><span class="hljs-comment">//  &#123;value: &#x27;110&#x27;, SessionData: &#x27;120&#x27;, length: 2&#125;</span><br><span class="hljs-keyword">let</span> dataSession1 = SessionStorage.getItem(name); <span class="hljs-comment">// 获取指定键名数据</span><br><span class="hljs-keyword">let</span> dataSession2 = SessionStorage.SessionData; <span class="hljs-comment">// 获取指定键名数据</span><br><span class="hljs-built_in">console</span>.log(dataSession1, dataSession2);<br><span class="hljs-comment">// 120 120</span><br>SessionStorage.removeItem(name); <span class="hljs-comment">// 删除指定键名数据</span><br>SessionStorage.clear(); <span class="hljs-comment">// 清空缓存数据</span><br></code></pre></td></tr></table></figure>
+
+<h1 id="IndexedDB"><a href="#IndexedDB" class="headerlink" title="IndexedDB"></a>IndexedDB</h1><p>IndexedDB 是运行在浏览器中的非关系型数据库，本质上是数据库，不是和 WebStorage的 5M 一个量级，理论上这个容量是没有上限的。关于它的使用， MDN 上的教程文档已经非常详尽。</p>
+<p>分析一下 IndexedDB 的一些重要特性，除了拥有数据库本身的特性，比如支持事务，存储二进制数据等等，还有这样一些特性需要格外注意：</p>
+<ul>
+<li>键值对存储。内部采用对象仓库存放数据，在这个对象仓库中数据采用键值对的方式来存储。</li>
+<li>异步操作。数据库的读写属于 I/O 操作, 浏览器中对异步 I/O 提供了支持。</li>
+<li>受同源策略限制。即无法访问跨域的数据库。</li>
+</ul>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>在浏览器开发者面板的 Application 栏可以看到对应的具体信息。</p>
+<h2 id="对比异同"><a href="#对比异同" class="headerlink" title="对比异同"></a>对比异同</h2><table>
+<thead>
+<tr>
+<th align="center">分类</th>
+<th align="center">存储数据容量</th>
+<th align="center">生命周期</th>
+<th align="center">存储位置</th>
+<th align="center">易用性</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Cookie</td>
+<td align="center">4KB</td>
+<td align="center">可以设置失效时间，默认是关闭浏览器后失效</td>
+<td align="center">保存在客户端，每次网络请求时都带上</td>
+<td align="center">需要封装，源生接口不友好</td>
+</tr>
+<tr>
+<td align="center">localStorage</td>
+<td align="center">5MB</td>
+<td align="center">除非被手动清除，否则永久保存</td>
+<td align="center">保存在客户端，不与服务端通信。节省网络流量</td>
+<td align="center">源生接口可以接受，可封装</td>
+</tr>
+<tr>
+<td align="center">SessionStorage</td>
+<td align="center">5MB</td>
+<td align="center">仅在当前网页会话下有效，关闭页面后失效</td>
+<td align="center">保存在客户端，不与服务端通信。节省网络流量</td>
+<td align="center">源生接口可以接受，可封装</td>
+</tr>
+</tbody></table>
+<p>相同：</p>
+<ul>
+<li>存储数据类型都是字符串。</li>
+<li>都受到跨域限制。</li>
+</ul>
+<h2 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h2><p>从性能来说，因为每次 HTTP 请求都会携带 Cookie 信息，这样无形中浪费了带宽，所以应该尽可能少的使用 Cookie。另外，Cookie 还需要指定作用域，不可以跨域调用，限制比较多。但是用来识别用户登录来说，Cookie 还是更好用的。其他情况下，可以使用 WebStorage 就用 WebStorage。</p>
+<p>WebStorage 在存储数据的大小上秒杀 Cookie，因此基本很少使用 Cookie。localStorage 和 SessionStorage 唯一的差别就是一个永久保存在浏览器中，一个关闭网页就清除信息。localStorage 适合持久化缓存数据，可以用来跨页面传递参数、存储一些内容稳定的资源等等；SessionStorage 适合一次性临时数据保存，防止用户刷新页面之后丢失了一些参数，可以用来对表单信息进行维护，存储本次浏览记录等。</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/HTML-%E6%B5%8F%E8%A7%88%E5%99%A8/">HTML&浏览器</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/">浏览器</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/">数据存储</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/09/09/JavaScript%E4%B9%8BSet%E6%96%B9%E6%B3%95%E5%B1%9E%E6%80%A7/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">JavaScript之Set方法属性</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/09/08/JavaScript%E4%B9%8BString%E6%96%B9%E6%B3%95%E5%B1%9E%E6%80%A7/">
+                        <span class="hidden-mobile">JavaScript之String方法属性</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"syQxyJQH6mJ9tVidXW3H8d00-gzGzoHsz","appKey":"CkmQXvhPR7AQJnJEU8kKs00A","placeholder":"说点什么","path":"window.location.pathname","avatar":"retro","meta":["nick","mail","link"],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false,"requiredFields":[]},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+  <div class="col-lg-7 mx-auto nopadding-x-md">
+    <div class="container custom post-custom mx-auto">
+      <img src="https://octodex.github.com/images/jetpacktocat.png" srcset="/img/loading.gif" lazyload class="rounded mx-auto d-block mt-5" style="width:150px; height:150px;">
+    </div>
+  </div>
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Powered by Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Theme is Fluid</span></a>
+  </div>
+  
+
+  
+  <!-- 备案信息 -->
+  <div class="beian">
+    <span>
+      <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+        冀ICP备2021010393号-1
+      </a>
+    </span>
+    
+      
+        <span>
+          <a
+            href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=13048102000303"
+            rel="nofollow noopener"
+            class="beian-police"
+            target="_blank"
+          >
+            
+              <span style="visibility: hidden; width: 0">|</span>
+              <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
+            
+            <span>冀公网安备13048102000303号</span>
+          </a>
+        </span>
+      
+    
+  </div>
+
+
+  
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?bbe44c28232a60458d913426edaff12f";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+    
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?siteId=16939915";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

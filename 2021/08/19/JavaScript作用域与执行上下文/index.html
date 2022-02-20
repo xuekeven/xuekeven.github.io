@@ -1,0 +1,702 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="Keven">
+  <meta name="keywords" content="">
+  
+  <title>JavaScript作用域与执行上下文 - Keven&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":60,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"siteId=16939915","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 50vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Keven's Blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tools/">
+                <i class="iconfont icon-th-large"></i>
+                工具
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/example.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.2)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="JavaScript作用域与执行上下文">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-author" aria-hidden="true"></i>
+      Keven
+    </span>
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-08-19 16:30" pubdate>
+        2021年8月19日
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      4.9k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      60
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">JavaScript作用域与执行上下文</h1>
+            
+            <div class="markdown-body">
+              <p><img src="/images/%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%92%8C%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87.png" srcset="/img/loading.gif" lazyload alt="作用域和执行上下文"></p>
+<h1 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h1><p>参考：<a target="_blank" rel="noopener" href="https://github.com/mqyqingfeng/Blog/issues/3">https://github.com/mqyqingfeng/Blog/issues/3</a> 。</p>
+<h2 id="作用域-1"><a href="#作用域-1" class="headerlink" title="作用域"></a>作用域</h2><p>作用域是指程序源代码中定义变量的区域。作用域规定了如何查找变量，也就是确定当前执行代码对变量的访问权限。JavaScript 采用词法作用域（lexical scoping），也就是静态作用域。</p>
+<p>JavaScript 作用域有三种：全局作用域、函数作用域、块级作用域。</p>
+<h2 id="静态作用域与动态作用域"><a href="#静态作用域与动态作用域" class="headerlink" title="静态作用域与动态作用域"></a>静态作用域与动态作用域</h2><p>因为 JavaScript 采用的是词法作用域，所以函数作用域在函数定义的时候就决定了，函数的作用域基于函数创建的位置。与词法作用域相对的是动态作用域，如果使用的是动态作用域，那么函数作用域就是在被函数调用的时候才被决定。</p>
+<h1 id="执行上下文"><a href="#执行上下文" class="headerlink" title="执行上下文"></a>执行上下文</h1><p>参考：<a target="_blank" rel="noopener" href="https://github.com/mqyqingfeng/Blog/issues/4">https://github.com/mqyqingfeng/Blog/issues/4</a> 。</p>
+<h2 id="执行上下文-1"><a href="#执行上下文-1" class="headerlink" title="执行上下文"></a>执行上下文</h2><p>JavaScript 引擎并非一行一行地分析和执行程序，而是一段一段地分析执行。当执行一段代码的时候，会进行一个“准备工作”，但 JavaScript 引擎遇到一段怎样的代码时才会做“准备工作”？</p>
+<p>JavaScript 可执行代码（executable code）就三种：全局代码、函数代码、eval 代码。比如，当执行到一个函数的时候，就会进行准备工作，这里的“准备工作”，就叫做执行上下文（execution context）。</p>
+<h2 id="执行上下文栈"><a href="#执行上下文栈" class="headerlink" title="执行上下文栈"></a>执行上下文栈</h2><p>如何管理创建的那么多执行上下文呢？JavaScript 引擎创建了执行上下文栈（Execution context stack，ECS）来管理执行上下文。</p>
+<p>当 JavaScript 开始要解释执行代码的时候，最先遇到的就是全局代码，所以初始化的时候，首先就会向执行上下文栈压入一个全局执行上下文，我们用 globalContext 表示它，且只有当整个应用程序结束的时候执行上下文栈才会被清空。所以程序结束之前，执行上下文栈最底部永远有 globalContext。</p>
+<p>当执行一个函数的时候，就会创建一个执行上下文，并且压入执行上下文栈，当函数执行完毕的时候，就会将函数的执行上下文从栈中弹出。</p>
+<h1 id="执行上下文之变量对象"><a href="#执行上下文之变量对象" class="headerlink" title="执行上下文之变量对象"></a>执行上下文之变量对象</h1><p>参考：<a target="_blank" rel="noopener" href="https://github.com/mqyqingfeng/Blog/issues/5">https://github.com/mqyqingfeng/Blog/issues/5</a> 。  </p>
+<p>当 JavaScript 代码执行一段可执行代码（executable code）时，都会创建对应的执行上下文。对于每个执行上下文，都有三个重要属性：变量对象（Variable object）、作用域链（Scope chain）、this。</p>
+<p>变量对象是与执行上下文相关的数据作用域，存储了在上下文中定义的变量和函数声明。不同执行上下文下的变量对象会稍有不同，所以我们来聊聊全局上下文的变量对象和函数上下文的变量对象。</p>
+<h2 id="全局上下文的变量对象"><a href="#全局上下文的变量对象" class="headerlink" title="全局上下文的变量对象"></a>全局上下文的变量对象</h2><p>全局对象是预定义的对象，作为 JavaScript 的全局函数和全局属性的占位符。通过使用全局对象，可以访问所有其他所有预定义的对象、函数和属性。</p>
+<p>在顶层 JavaScript 代码中，可以用关键字 this 引用全局对象。因为全局对象是作用域链的头，这意味着所有非限定性的变量和函数名都会作为该对象的属性来查询。</p>
+<p>注意，不要混淆全局上下文和全局对象。全局上下文包括变量对象、作用域链、this，全局上下文的变量对象中包含全局对象。</p>
+<p>全局上下文的变量对象初始化只包括全局对象。</p>
+<h2 id="函数上下文的变量对象"><a href="#函数上下文的变量对象" class="headerlink" title="函数上下文的变量对象"></a>函数上下文的变量对象</h2><p>在函数上下文中，我们用活动对象（activation object）来表示变量对象。  </p>
+<p>活动对象（AO）和变量对象（VO）其实是一个东西，只是变量对象是规范上的或说是引擎上实现的，不可在 JavaScript 环境中访问。只有到当进入函数执行上下文中，这个执行上下文的变量对象才会被激活，所以叫 activation object。被激活的变量对象就是活动对象，只有活动对象上的各种属性才能被访问。</p>
+<p>活动对象是在进入函数上下文时刻被创建的，它通过函数的 arguments 属性初始化。arguments 属性值是 Arguments 对象。</p>
+<p>函数上下文的变量对象初始化只包括 Arguments 对象。</p>
+<h2 id="执行上下文的执行过程"><a href="#执行上下文的执行过程" class="headerlink" title="执行上下文的执行过程"></a>执行上下文的执行过程</h2><p>执行上下文的代码会分成两个阶段进行处理：分析（进入执行上下文）和执行（代码执行）。</p>
+<h3 id="全局上下文"><a href="#全局上下文" class="headerlink" title="全局上下文"></a>全局上下文</h3><p>全局上下文当进入执行上下文时，这时候还没有执行代码，变量对象会包括两方面。</p>
+<ul>
+<li>函数声明<ul>
+<li>由名称和对应值（函数对象）组成一个变量对象的属性被创建</li>
+<li>如果变量对象当中已经存在相同名称的属性，则完全替换这个属性</li>
+</ul>
+</li>
+<li>变量声明<ul>
+<li>使用<code>var</code>声明的变量：由名称和 undefined 值组成一个变量对象的属性被创建<br>（无论声明时是否已经初始化变量，此时值都为 undefined，等执行时再修改值）<br>（使用<code>let</code>和<code>const</code>声明的变量都属于未声明的变量，等执行时再添加到变量对象）</li>
+<li>如果变量名称跟已经声明的函数相同，则变量声明不会干扰已经存在的属性</li>
+<li>如果变量名称跟已经声明的变量相同，则变量声明将会覆盖已经存在的属性</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-built_in">console</span>.log(a); <span class="hljs-comment">// ƒ a() &#123;</span><br>                <span class="hljs-comment">//   console.log(&#x27;a&#x27;);</span><br>                <span class="hljs-comment">// &#125;</span><br><span class="hljs-built_in">console</span>.log(b); <span class="hljs-comment">// Uncaught ReferenceError: b is not defined</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">a</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;a&#x27;</span>);<br>&#125;<br><span class="hljs-keyword">let</span> b = <span class="hljs-number">0</span>;<br></code></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-built_in">console</span>.log(a); <span class="hljs-comment">// ƒ a() &#123;</span><br>                <span class="hljs-comment">//   console.log(&#x27;a&#x27;);</span><br>                <span class="hljs-comment">// &#125;</span><br><span class="hljs-built_in">console</span>.log(b); <span class="hljs-comment">// undefined</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">a</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;a&#x27;</span>);<br>&#125;<br><span class="hljs-keyword">var</span> b = <span class="hljs-number">0</span>;<br></code></pre></td></tr></table></figure>
+
+<h3 id="函数上下文"><a href="#函数上下文" class="headerlink" title="函数上下文"></a>函数上下文</h3><p>函数上下文当进入执行上下文时，这时候还没有执行代码，变量对象会包括三方面。</p>
+<ul>
+<li>函数的所有形参<ul>
+<li>由名称和对应值组成的一个变量对象的属性被创建<br>（有实参，属性值为对应值；没有实参，属性值为 undefined）</li>
+</ul>
+</li>
+<li>函数声明<ul>
+<li>由名称和对应值（函数对象）组成一个变量对象的属性被创建</li>
+<li>如果变量对象当中已经存在相同名称的属性，则完全替换这个属性</li>
+</ul>
+</li>
+<li>变量声明<ul>
+<li>使用<code>var</code>声明的变量：由名称和 undefined 值组成一个变量对象的属性被创建<br>（无论声明时是否已经初始化变量，此时值都为 undefined，等执行时再修改值）<br>（使用<code>let</code>和<code>const</code>声明的变量都处于暂时性死区，等执行时再添加到变量对象）</li>
+<li>如果变量名称跟已经声明的形参或函数相同，则变量声明不会干扰已经存在的属性</li>
+<li>如果变量名称跟已经声明的变量相同，则变量声明将会覆盖已经存在的属性</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">foo</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(a);           <br>  <span class="hljs-built_in">console</span>.log(b);<br>  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">a</span>(<span class="hljs-params"></span>) </span>&#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;a&#x27;</span>);<br>  &#125;<br>  <span class="hljs-keyword">let</span> b = <span class="hljs-number">1</span>;<br>&#125;<br>foo(); <br><span class="hljs-comment">// ƒ a() &#123;</span><br><span class="hljs-comment">//   console.log(&#x27;a&#x27;);</span><br><span class="hljs-comment">// &#125;</span><br><span class="hljs-comment">// Uncaught ReferenceError: Cannot access &#x27;b&#x27; before initialization</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">foo</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(a);           <br>  <span class="hljs-built_in">console</span>.log(b);<br>  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">a</span>(<span class="hljs-params"></span>) </span>&#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;a&#x27;</span>);<br>  &#125;<br>  <span class="hljs-keyword">var</span> b = <span class="hljs-number">1</span>;<br>&#125;<br>foo();<br><span class="hljs-comment">// ƒ a() &#123;</span><br><span class="hljs-comment">//   console.log(&#x27;a&#x27;);</span><br><span class="hljs-comment">// &#125; </span><br><span class="hljs-comment">// undefined</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="代码执行"><a href="#代码执行" class="headerlink" title="代码执行"></a>代码执行</h3><p>在代码执行阶段，JavaScript 引擎会按顺序执行代码，根据代码，修改变量对象的值。</p>
+<p>要特别注意的是，<code>var</code>、<code>let</code>、<code>const</code>三者声明的效果不同。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul>
+<li>全局上下文的变量对象初始化只包括全局对象。</li>
+<li>函数上下文的变量对象初始化只包括 Arguments 对象。</li>
+<li>在进入执行上下文时会给变量对象添加形参、函数声明、变量声明等初始的属性值。</li>
+<li>在代码执行阶段，会再次修改变量对象的属性值。</li>
+</ul>
+<p>需要特别注意的是，ES6 添加了 let 和 const 声明。使用 var 声明的变量会成为全局对象的属性，但是使用 let 和 const 声明的变量不会成为全局对象的属性，而是会成为的变量对象的属性，与全局对象“平级”。</p>
+<p>因此，ES6 之前，全局上下文的变量对象就是全局对象；ES6 之后，全局上下文的变量对象包含全局对象和使用 let 和 const 声明的变量和对象。要特别注意的是，<code>var</code>、<code>let</code>、<code>const</code>三者声明的效果不同。</p>
+<h1 id="执行上下文之作用域链"><a href="#执行上下文之作用域链" class="headerlink" title="执行上下文之作用域链"></a>执行上下文之作用域链</h1><p>参考：<a target="_blank" rel="noopener" href="https://github.com/mqyqingfeng/Blog/issues/6">https://github.com/mqyqingfeng/Blog/issues/6</a> 。</p>
+<p>当 JavaScript 代码执行一段可执行代码（executable code）时，都会创建对应的执行上下文。对于每个执行上下文，都有三个重要属性：变量对象（Variable object）、作用域链（Scope chain）、this。</p>
+<p>当查找变量的时候，会先从当前上下文的变量对象中查找，若没有找到，就会从父级（词法层面上的父级）执行上下文的变量对象中查找，一直找到全局上下文的变量对象，也就是全局对象。这样由多个执行上下文的变量对象构成的链表就叫做作用域链。</p>
+<h2 id="函数创建"><a href="#函数创建" class="headerlink" title="函数创建"></a>函数创建</h2><p>函数作用域在函数定义的时候就决定了。</p>
+<p>这是因为函数有一个内部属性 [[scope]]，当函数创建的时候，它就会保存所有父变量对象到其中，可以理解 [[scope]] 就是所有父变量对象的层级链，但是注意：[[scope]] 并不代表完整的作用域链。</p>
+<h2 id="函数激活"><a href="#函数激活" class="headerlink" title="函数激活"></a>函数激活</h2><p>当函数激活时，进入函数上下文，创建变量对象/活动对象后，就会将活动对象添加到作用链的前端。此时，执行上下文的作用域链，我们命名为 Scope：<code>Scope = [AO].concat([[Scope]])</code>。至此作用域链创建完毕。</p>
+<h2 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h2><p>以下面的例子为例，来总结一下函数执行上下文中作用域链和变量对象的创建过程。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> scope = <span class="hljs-string">&quot;global scope&quot;</span>;<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">checkscope</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-keyword">var</span> scope2 = <span class="hljs-string">&#x27;local scope&#x27;</span>;<br>  <span class="hljs-keyword">return</span> scope2;<br>&#125;<br>checkscope();<br></code></pre></td></tr></table></figure>
+<ol>
+<li>checkscope 函数被创建，保存作用域链到内部属性 [[scope]]。<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript">checkscope.[[scope]] = [ globalContext.VO ];<br></code></pre></td></tr></table></figure></li>
+<li>创建 checkscope 函数执行上下文，checkscope 函数执行上下文被压入执行上下文栈。<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript">ECStack = [ globalContext, checkscopeContext ];<br></code></pre></td></tr></table></figure></li>
+<li>不立刻执行 checkscope 函数，开始做准备工作。</li>
+</ol>
+<ul>
+<li>第一步：复制函数 [[scope]] 属性创建作用域链。<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs javascript">checkscopeContext = &#123; <br>  <span class="hljs-attr">Scope</span>: checkscope.[[scope]] <br>&#125;<br></code></pre></td></tr></table></figure></li>
+<li>第二步：用 arguments 创建活动对象，随后初始化活动对象，加入形参、函数声明、变量声明。<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs javascript">checkscopeContext = &#123;<br>  <span class="hljs-attr">AO</span>: &#123;<br>    <span class="hljs-attr">arguments</span>: &#123;<br>      <span class="hljs-attr">length</span>: <span class="hljs-number">0</span><br>    &#125;,<br>    <span class="hljs-attr">scope2</span>: <span class="hljs-literal">undefined</span><br>  &#125;，<br>  <span class="hljs-attr">Scope</span>: checkscope.[[scope]],<br>&#125;<br></code></pre></td></tr></table></figure></li>
+<li>第三步：将活动对象压入 checkscope 作用域链顶端。<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs javascript">checkscopeContext = &#123;<br>  <span class="hljs-attr">AO</span>: &#123;<br>    <span class="hljs-attr">arguments</span>: &#123;<br>      <span class="hljs-attr">length</span>: <span class="hljs-number">0</span><br>    &#125;,<br>    <span class="hljs-attr">scope2</span>: <span class="hljs-literal">undefined</span><br>  &#125;,<br>  <span class="hljs-attr">Scope</span>: [AO, [[Scope]]]<br>&#125;<br></code></pre></td></tr></table></figure></li>
+</ul>
+<ol start="4">
+<li>准备工作做完，开始执行函数，随着函数的执行，修改活动对象的属性值。<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs javascript">checkscopeContext = &#123;<br>  <span class="hljs-attr">AO</span>: &#123;<br>    <span class="hljs-attr">arguments</span>: &#123;<br>      <span class="hljs-attr">length</span>: <span class="hljs-number">0</span><br>    &#125;,<br>    <span class="hljs-attr">scope2</span>: <span class="hljs-string">&#x27;local scope&#x27;</span><br>  &#125;,<br>  <span class="hljs-attr">Scope</span>: [AO, [[Scope]]]<br>&#125;<br></code></pre></td></tr></table></figure></li>
+<li>函数执行完毕后，函数上下文从执行上下文栈中弹出。<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript">ECStack = [ globalContext ];<br></code></pre></td></tr></table></figure></li>
+</ol>
+<h1 id="执行上下文之this"><a href="#执行上下文之this" class="headerlink" title="执行上下文之this"></a>执行上下文之this</h1><p>参考：<a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903488304971789">https://juejin.cn/post/6844903488304971789</a> 。</p>
+<p>当 JavaScript 代码执行一段可执行代码（executable code）时，都会创建对应的执行上下文。对于每个执行上下文，都有三个重要属性：变量对象（Variable object）、作用域链（Scope chain）、this。</p>
+<p>this 只在函数调用阶段确定，也就是执行上下文创建的阶段进行赋值，然后保存下来。这个特性导致了 this 的多变性：当函数在不同的调用方式下都可能会导致 this 的值不同。标准函数和箭头函数也有所不同。</p>
+<h2 id="标准函数"><a href="#标准函数" class="headerlink" title="标准函数"></a>标准函数</h2><p>在标准函数中，this 引用的是把标准函数当成方法调用的对象。可分为 4 种情况。</p>
+<h3 id="直接被调用"><a href="#直接被调用" class="headerlink" title="直接被调用"></a>直接被调用</h3><p>当独立调用函数的时候，严格模式下 this 会指向 undefined，非严格模式自动转为指向全局对象。</p>
+<p>不管是全局函数被直接调用还是父函数里的子函数被父函数直接调用，都指向全局对象。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> a = <span class="hljs-number">1</span>;<br><span class="hljs-keyword">var</span> obj = &#123;<br>  <span class="hljs-attr">a</span>: <span class="hljs-number">2</span>,<br>  <span class="hljs-attr">b</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123; <br>      <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">this</span>.a) <br>    &#125;,<br>  <span class="hljs-attr">c</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;<br>      <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fun</span>(<span class="hljs-params"></span>) </span>&#123; <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.a &#125;<br>      <span class="hljs-built_in">console</span>.log(fun());<br>    &#125;<br>&#125;;<br>obj.b(); <span class="hljs-comment">// 2</span><br>obj.c(); <span class="hljs-comment">// 1</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> a = <span class="hljs-number">1</span>;<br><span class="hljs-keyword">var</span> obj = &#123;<br>  <span class="hljs-attr">a</span>: <span class="hljs-number">2</span><br>&#125;;<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">b</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-keyword">var</span> a = <span class="hljs-number">3</span>;<br>  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fun</span>(<span class="hljs-params"></span>) </span>&#123; <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">this</span>.a) &#125;<br>  fun();<br>&#125;<br>b(); <span class="hljs-comment">// 1</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="作为对象的方法被调用"><a href="#作为对象的方法被调用" class="headerlink" title="作为对象的方法被调用"></a>作为对象的方法被调用</h3><p>当函数作为对象的方法被调用时，这时 this 指向调用它的对象。</p>
+<p>当对象在全局代码中声明的时候，对象内部属性中的 this 指向全局对象；<br>当对象在一个函数中声明的时候，严格模式下 this 会指向 undefined，非严格模式自动转为指向全局对象。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> a = <span class="hljs-number">1000</span>;<br><span class="hljs-keyword">var</span> obj = &#123;<br>  <span class="hljs-attr">a</span>: <span class="hljs-number">1</span>,<br>  <span class="hljs-attr">b</span>: <span class="hljs-built_in">this</span>.a + <span class="hljs-number">1</span><br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fun</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-keyword">var</span> obj = &#123;<br>    <span class="hljs-attr">a</span>: <span class="hljs-number">1</span>,<br>    <span class="hljs-attr">c</span>: <span class="hljs-built_in">this</span>.a + <span class="hljs-number">2</span><br>  &#125;<br>  <span class="hljs-keyword">return</span> obj.c;<br>&#125;<br><span class="hljs-built_in">console</span>.log(fun()); <span class="hljs-comment">// 1002</span><br><span class="hljs-built_in">console</span>.log(obj.b); <span class="hljs-comment">// 1001</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> a = <span class="hljs-number">1</span>;<br><span class="hljs-keyword">var</span> obj = &#123;<br>  <span class="hljs-attr">a</span>: <span class="hljs-number">2</span>,<br>  <span class="hljs-attr">b</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123; <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">this</span>.a) &#125;<br>&#125;;<br>obj.b() <span class="hljs-comment">// 2</span><br><span class="hljs-keyword">var</span> t = obj.b;<br>t(); <span class="hljs-comment">// 1</span><br><br><span class="hljs-comment">// obj 对象的 b 属性存储的是对该匿名函数的一个引用，可以理解为一个指针。</span><br><span class="hljs-comment">// 当赋值给 t 时并没有单独开辟内存空间存储新的函数，而是让 t 存储一个指针，该指针指向这个函数。</span><br><span class="hljs-comment">// 相当于执行了这么一段伪代码：</span><br><br><span class="hljs-keyword">var</span> a = <span class="hljs-number">1</span>;<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fun</span>(<span class="hljs-params"></span>) </span>&#123; <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.a &#125; <span class="hljs-comment">// 此函数存储在堆中</span><br><span class="hljs-keyword">var</span> obj = &#123;<br>  <span class="hljs-attr">a</span>: <span class="hljs-number">2</span>,<br>  <span class="hljs-attr">b</span>: fun <span class="hljs-comment">// b 指向 fun 函数</span><br>&#125;<br><span class="hljs-keyword">var</span> t = fun; <span class="hljs-comment">// 此时的 t 就是一个指向 fun 函数的指针，调用 t，相当于直接调用 fun</span><br><span class="hljs-built_in">console</span>.log(t()); <span class="hljs-comment">// 1 </span><br></code></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> a = <span class="hljs-number">0</span>;<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fun</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">this</span>.a)<br>&#125;<br>obj1 = &#123;<br>  <span class="hljs-attr">a</span>:<span class="hljs-number">1</span>,<br>  <span class="hljs-attr">fun</span>: obj2<br>&#125;<br>obj2 = &#123;<br>  <span class="hljs-attr">a</span>:<span class="hljs-number">2</span>,<br>  <span class="hljs-attr">fun</span>:fun<br>&#125;<br>obj1.fun.fun(); <span class="hljs-comment">// 2</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="使用-call-或-apply-被调用"><a href="#使用-call-或-apply-被调用" class="headerlink" title="使用 call 或 apply 被调用"></a>使用 call 或 apply 被调用</h3><p>当函数使用 call 或 apply 被调用时，由其传入的参数作为 this 值。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> a = <span class="hljs-number">0</span>;<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fun</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">this</span>.a)<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">b</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-keyword">let</span> a = <span class="hljs-number">7</span>;<br>&#125;<br><span class="hljs-keyword">let</span> c = &#123;<br>  <span class="hljs-attr">a</span>: <span class="hljs-number">9</span><br>&#125;<br>fun.call(b); <span class="hljs-comment">// undefined</span><br>fun.call(c); <span class="hljs-comment">// 9</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="作为构造函数被调用"><a href="#作为构造函数被调用" class="headerlink" title="作为构造函数被调用"></a>作为构造函数被调用</h3><p>当函数作为构造函数被调用时，那么其中的 this 就代表它即将 new 出来的对象。</p>
+<h2 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h2><p>箭头函数会捕获其所在上下文的 this 值，作为自己的 this 值，箭头函数 this 由其所在上下文的 this 所决定。</p>
+<p>对箭头函数使用 apply 或 call 方法只是传入参数，改变不了 this。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> a = <span class="hljs-number">1</span>;<br><span class="hljs-keyword">var</span> obj = &#123; <span class="hljs-attr">a</span>: <span class="hljs-number">2</span> &#125;;<br><span class="hljs-keyword">var</span> fun = <span class="hljs-function">() =&gt;</span> <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">this</span>.a);<br>fun(); <span class="hljs-comment">// 1</span><br>fun.call(obj); <span class="hljs-comment">// 1</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> a = <span class="hljs-number">1</span>;<br><span class="hljs-keyword">var</span> obj = &#123; <span class="hljs-attr">a</span>: <span class="hljs-number">2</span> &#125;;<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fun</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-keyword">var</span> a = <span class="hljs-number">3</span>;<br>  <span class="hljs-keyword">let</span> f = <span class="hljs-function">() =&gt;</span> <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">this</span>.a);<br>  f();<br>&#125;<br>fun(); <span class="hljs-comment">// 1</span><br>fun.call(obj); <span class="hljs-comment">// 2</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> a = <span class="hljs-number">1</span>;<br><span class="hljs-keyword">var</span> obj = &#123; <span class="hljs-attr">a</span>: <span class="hljs-number">2</span> &#125;;<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fun</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-keyword">var</span> a = <span class="hljs-number">3</span>;<br>  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f</span>(<span class="hljs-params"></span>) </span>&#123; <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">this</span>.a) &#125;<br>  f();<br>&#125;;<br>fun(); <span class="hljs-comment">// 1</span><br>fun.call(obj); <span class="hljs-comment">// 1</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="总结-2"><a href="#总结-2" class="headerlink" title="总结"></a>总结</h2><ul>
+<li>函数的<code>color</code>与 <strong>其所在的上下文的作用域链</strong> 有关</li>
+<li>箭头函数的<code>this.color</code>与 <strong>其所在的上下文的this</strong> 有关</li>
+<li>标准函数的<code>this.color</code>与 <strong>把其当成方法调用的对象</strong> 有关</li>
+</ul>
+<p>注意，全局上下文的变量对象包含着全局对象和使用 let 和 const 声明的变量和对象。</p>
+<p>练习：</p>
+<ul>
+<li>1.<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> color = <span class="hljs-string">&#x27;red&#x27;</span>; <span class="hljs-comment">// var 声明的变量会成为全局变量的属性</span><br><span class="hljs-keyword">const</span> o = &#123;<br>  <span class="hljs-attr">color</span>: <span class="hljs-string">&#x27;blue&#x27;</span>,<br>  <span class="hljs-attr">a</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;<br>    <span class="hljs-built_in">console</span>.log(color); <span class="hljs-comment">// o 只是全局上下文的一个变量，不是块级作用域</span><br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">this</span>.color); <span class="hljs-comment">// 函数作为对象的方法被调用，this 指向调用它的对象</span><br>  &#125;,<br>  <span class="hljs-attr">b</span>: <span class="hljs-function">() =&gt;</span> &#123;<br>    <span class="hljs-built_in">console</span>.log(color); <span class="hljs-comment">// o 只是全局上下文的一个变量，不是块级作用域</span><br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">this</span>.color); <span class="hljs-comment">// 此箭头函数被定义在全局上下文</span><br>  &#125;<br>&#125;;<br>o.a(); <span class="hljs-comment">// red // blue</span><br>o.b(); <span class="hljs-comment">// red // red</span><br></code></pre></td></tr></table></figure></li>
+<li>2.<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> color = <span class="hljs-string">&#x27;red&#x27;</span>; <span class="hljs-comment">// let 声明不会成为全局变量的属性</span><br><span class="hljs-keyword">const</span> o = &#123;<br>  <span class="hljs-attr">color</span>: <span class="hljs-string">&#x27;blue&#x27;</span>,<br>  <span class="hljs-attr">a</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;<br>    <span class="hljs-built_in">console</span>.log(color); <span class="hljs-comment">// o 只是全局上下文的一个变量，不是块级作用域</span><br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">this</span>.color); <span class="hljs-comment">// 函数作为对象的方法被调用，this 指向调用它的对象</span><br>  &#125;,<br>  <span class="hljs-attr">b</span>: <span class="hljs-function">() =&gt;</span> &#123;<br>    <span class="hljs-built_in">console</span>.log(color); <span class="hljs-comment">// o 只是全局上下文的一个变量，不是块级作用域</span><br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">this</span>.color); <span class="hljs-comment">// 全局变量没有 color 属性</span><br>  &#125;<br>&#125;;<br>o.a(); <span class="hljs-comment">// red // blue</span><br>o.b(); <span class="hljs-comment">// red // undefined</span><br></code></pre></td></tr></table></figure></li>
+<li>3.<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> color = <span class="hljs-string">&#x27;red&#x27;</span>; <span class="hljs-comment">// var 声明的变量会成为全局变量的属性</span><br>&#123;<br>  <span class="hljs-keyword">let</span> color = <span class="hljs-string">&#x27;blue&#x27;</span>; <span class="hljs-comment">// let 声明不会成为全局变量的属性</span><br>  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">a</span>(<span class="hljs-params"></span>) </span>&#123;<br>    <span class="hljs-built_in">console</span>.log(color);<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">this</span>.color);<br>  &#125;;<br>  <span class="hljs-keyword">let</span> b = <span class="hljs-function">() =&gt;</span> &#123;<br>    <span class="hljs-built_in">console</span>.log(color);<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">this</span>.color);<br>  &#125;;<br>  a(); <span class="hljs-comment">// blue // red</span><br>  b(); <span class="hljs-comment">// blue // red</span><br>&#125;<br></code></pre></td></tr></table></figure></li>
+<li>4.<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> color = <span class="hljs-string">&#x27;red&#x27;</span>; <span class="hljs-comment">// var 声明的变量会成为全局变量的属性</span><br>&#123;<br>  <span class="hljs-keyword">var</span> color = <span class="hljs-string">&#x27;blue&#x27;</span>; <span class="hljs-comment">// var 声明的变量会成为全局变量的属性，会覆盖</span><br>  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">a</span>(<span class="hljs-params"></span>) </span>&#123;<br>    <span class="hljs-built_in">console</span>.log(color);<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">this</span>.color);<br>  &#125;;<br>  <span class="hljs-keyword">let</span> b = <span class="hljs-function">() =&gt;</span> &#123;<br>    <span class="hljs-built_in">console</span>.log(color);<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">this</span>.color);<br>  &#125;;<br>  a(); <span class="hljs-comment">// blue // blue</span><br>  b(); <span class="hljs-comment">// blue // blue</span><br>&#125;<br></code></pre></td></tr></table></figure></li>
+<li>5.<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> color = <span class="hljs-string">&#x27;red&#x27;</span>; <span class="hljs-comment">// var 声明的变量会成为全局变量的属性</span><br>&#123;<br>  <span class="hljs-keyword">let</span> color = <span class="hljs-string">&#x27;blue&#x27;</span>;<br>  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">a</span>(<span class="hljs-params"></span>) </span>&#123;<br>    <span class="hljs-keyword">let</span> color = <span class="hljs-string">&#x27;black&#x27;</span>;<br>    <span class="hljs-built_in">console</span>.log(color);<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">this</span>.color);<br>  &#125;;<br>  <span class="hljs-keyword">let</span> b = <span class="hljs-function">() =&gt;</span> &#123;<br>    <span class="hljs-keyword">let</span> color = <span class="hljs-string">&#x27;black&#x27;</span>;<br>    <span class="hljs-built_in">console</span>.log(color);<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">this</span>.color);<br>  &#125;;<br>  a(); <span class="hljs-comment">// black // red</span><br>  b(); <span class="hljs-comment">// black // red</span><br>&#125;<br></code></pre></td></tr></table></figure></li>
+<li>6.<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> color = <span class="hljs-string">&#x27;red&#x27;</span>; <span class="hljs-comment">// let 声明不会成为全局变量的属性</span><br>&#123;<br>  <span class="hljs-keyword">let</span> color = <span class="hljs-string">&#x27;blue&#x27;</span>;<br>  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">a</span>(<span class="hljs-params"></span>) </span>&#123;<br>    <span class="hljs-keyword">let</span> color = <span class="hljs-string">&#x27;black&#x27;</span>;<br>    <span class="hljs-built_in">console</span>.log(color);<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">this</span>.color); <span class="hljs-comment">// 全局变量没有 color 属性</span><br>  &#125;;<br>  <span class="hljs-keyword">let</span> b = <span class="hljs-function">() =&gt;</span> &#123;<br>    <span class="hljs-keyword">let</span> color = <span class="hljs-string">&#x27;black&#x27;</span>;<br>    <span class="hljs-built_in">console</span>.log(color);<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">this</span>.color);<br>  &#125;;<br>  a(); <span class="hljs-comment">// black // undefined</span><br>  b(); <span class="hljs-comment">// black // undefined</span><br>&#125;<br></code></pre></td></tr></table></figure></li>
+<li>7.<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> color = <span class="hljs-string">&#x27;red&#x27;</span>; <span class="hljs-comment">// var 声明的变量会成为全局变量的属性</span><br><span class="hljs-keyword">const</span> o = &#123;<br>  <span class="hljs-attr">color</span>: <span class="hljs-string">&#x27;blue&#x27;</span><br>&#125;;<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">a</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(color); <span class="hljs-comment">// o 只是全局上下文的一个变量，不是块级作用域</span><br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">this</span>.color); <span class="hljs-comment">// 函数作为对象的方法被调用，this 指向调用它的对象</span><br>&#125;<br><span class="hljs-keyword">const</span> b = <span class="hljs-function">() =&gt;</span> &#123;<br>  <span class="hljs-built_in">console</span>.log(color); <span class="hljs-comment">// o 只是全局上下文的一个变量，不是块级作用域</span><br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">this</span>.color);<br>&#125;<br>o.a = a;<br>o.b = b;<br>a(); <span class="hljs-comment">// red // red</span><br>b(); <span class="hljs-comment">// red // red</span><br>o.a(); <span class="hljs-comment">// red // blue</span><br>o.b(); <span class="hljs-comment">// red // red</span><br></code></pre></td></tr></table></figure></li>
+<li>8.<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">a</span>(<span class="hljs-params"></span>) </span>&#123; <br>  <span class="hljs-built_in">this</span>.royaltyName = <span class="hljs-string">&#x27;Henry&#x27;</span>; <br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">this</span>.royaltyName)<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">b</span>(<span class="hljs-params"></span>) </span>&#123; <br>  <span class="hljs-built_in">this</span>.royaltyName = <span class="hljs-string">&#x27;Elizabeth&#x27;</span>; <br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">this</span>.royaltyName)<br>&#125;<br>a(); <span class="hljs-comment">// Henry </span><br><span class="hljs-built_in">console</span>.log(royaltyName); <span class="hljs-comment">// Henry </span><br>b(); <span class="hljs-comment">// Elizabeth</span><br><span class="hljs-built_in">console</span>.log(royaltyName); <span class="hljs-comment">// Elizabeth</span><br></code></pre></td></tr></table></figure></li>
+</ul>
+<h1 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h1><p>参考：<a target="_blank" rel="noopener" href="https://github.com/mqyqingfeng/Blog/issues/9">https://github.com/mqyqingfeng/Blog/issues/9</a> 。</p>
+<h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>MDN 对闭包的定义为：闭包是指那些能够访问自由变量的函数。</p>
+<p>自由变量是指在函数中使用的，但既不是函数参数也不是函数的局部变量的变量。</p>
+<p>所以，可以得出：闭包 = 函数 + 函数能够访问的自由变量。</p>
+<h3 id="理论角度"><a href="#理论角度" class="headerlink" title="理论角度"></a>理论角度</h3><p>所有的 JavaScript 函数都是闭包。因为在创建函数的时候就将上层上下文的数据保存起来了。哪怕是简单的全局变量也是如此，因为函数中访问全局变量就相当于是在访问自由变量，这个时候使用最外层的作用域。</p>
+<h3 id="实践角度"><a href="#实践角度" class="headerlink" title="实践角度"></a>实践角度</h3><p>从实践角度，符合以下条件的函数才算是闭包：</p>
+<ul>
+<li>创建闭包的函数已经被销毁，但闭包仍然存在（比如，内部函数从父函数中返回）</li>
+<li>闭包的代码中引用了自由变量</li>
+</ul>
+<h2 id="用途"><a href="#用途" class="headerlink" title="用途"></a>用途</h2><h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><ul>
+<li>闭包及其变量长期在内存中，可长时间访问。</li>
+<li>创建闭包的函数的变量可被外部访问。</li>
+<li>私有化变量，避免污染全局变量。</li>
+</ul>
+<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><ul>
+<li>内存消耗很大，不能滥用闭包，否则会造成网页性能问题。</li>
+<li>容易造成内存泄漏。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> count = (<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-keyword">let</span> num = <span class="hljs-number">0</span>;<br>  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">aaa</span>(<span class="hljs-params"></span>) </span>&#123;<br>    <span class="hljs-keyword">return</span> ++num;<br>  &#125;<br>  aaa.renew = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123; num = <span class="hljs-number">0</span>; &#125;<br>  <span class="hljs-keyword">return</span> aaa;<br>&#125;)()<br>count(); <span class="hljs-comment">// 1</span><br>count(); <span class="hljs-comment">// 2</span><br>count(); <span class="hljs-comment">// 3</span><br>count.renew();<br>count(); <span class="hljs-comment">// 1</span><br></code></pre></td></tr></table></figure>
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/JavaScript/">JavaScript</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/JavaScript/">JavaScript</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/08/20/%E6%89%8B%E5%86%99JavaScript/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">手写JavaScript</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/08/18/CSS%E9%9D%A2%E8%AF%95%E9%A2%98/">
+                        <span class="hidden-mobile">CSS面试题</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"syQxyJQH6mJ9tVidXW3H8d00-gzGzoHsz","appKey":"CkmQXvhPR7AQJnJEU8kKs00A","placeholder":"说点什么","path":"window.location.pathname","avatar":"retro","meta":["nick","mail","link"],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false,"requiredFields":[]},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+  <div class="col-lg-7 mx-auto nopadding-x-md">
+    <div class="container custom post-custom mx-auto">
+      <img src="https://octodex.github.com/images/jetpacktocat.png" srcset="/img/loading.gif" lazyload class="rounded mx-auto d-block mt-5" style="width:150px; height:150px;">
+    </div>
+  </div>
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Powered by Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Theme is Fluid</span></a>
+  </div>
+  
+
+  
+  <!-- 备案信息 -->
+  <div class="beian">
+    <span>
+      <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+        冀ICP备2021010393号-1
+      </a>
+    </span>
+    
+      
+        <span>
+          <a
+            href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=13048102000303"
+            rel="nofollow noopener"
+            class="beian-police"
+            target="_blank"
+          >
+            
+              <span style="visibility: hidden; width: 0">|</span>
+              <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
+            
+            <span>冀公网安备13048102000303号</span>
+          </a>
+        </span>
+      
+    
+  </div>
+
+
+  
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?bbe44c28232a60458d913426edaff12f";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+    
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?siteId=16939915";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

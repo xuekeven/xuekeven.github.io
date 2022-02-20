@@ -1,0 +1,607 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="Keven">
+  <meta name="keywords" content="">
+  
+  <title>城市生活 - Keven&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":60,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"siteId=16939915","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 50vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Keven's Blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tools/">
+                <i class="iconfont icon-th-large"></i>
+                工具
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/example.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.2)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="城市生活">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-author" aria-hidden="true"></i>
+      Keven
+    </span>
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-02-15 10:00" pubdate>
+        2022年2月15日
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.5k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      17
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">城市生活</h1>
+            
+            <div class="markdown-body">
+              <p>比较城市：北京、天津、上海、成都、杭州、苏州、广州。<br>比较维度：城市地位、城市气候、幸福感排名、司法文明指数排名、教育水平、医疗水平、户籍迁入政策、购房资格、公积金提取等。</p>
+<h1 id="北京"><a href="#北京" class="headerlink" title="北京"></a>北京</h1><p>参考：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%8C%97%E4%BA%AC/128981">https://baike.baidu.com/item/%E5%8C%97%E4%BA%AC/128981</a></li>
+<li><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%8C%97%E4%BA%AC%E5%B8%82">https://zh.wikipedia.org/wiki/%E5%8C%97%E4%BA%AC%E5%B8%82</a></li>
+</ul>
+<h2 id="城市地位"><a href="#城市地位" class="headerlink" title="城市地位"></a>城市地位</h2><ul>
+<li>中国首都、直辖市、<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%9B%BD%E5%AE%B6%E4%B8%AD%E5%BF%83%E5%9F%8E%E5%B8%82/842500">国家中心城市</a><sup id="fnref:1" class="footnote-ref"><a href="#fn:1" rel="footnote"><span class="hint--top hint--rounded" aria-label="国家中心城市：北京、天津、上海、广州、重庆、成都、武汉、郑州、西安
+">[1]</span></a></sup>、<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E8%B6%85%E5%A4%A7%E5%9F%8E%E5%B8%82/413865">超大城市</a><sup id="fnref:2" class="footnote-ref"><a href="#fn:2" rel="footnote"><span class="hint--top hint--rounded" aria-label="超大城市：北京、天津、上海、广州、重庆、成都、深圳
+">[2]</span></a></sup></li>
+<li>中国政治中心、文化中心、国际交往中心、科技创新中心</li>
+<li><a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E4%B8%96%E7%95%8C%E4%B8%80%E7%BA%BF%E5%9F%8E%E5%B8%82/4722524#3">世界一线城市</a>（GaWC中国城市排名 Alpha+）</li>
+</ul>
+<h2 id="城市气候"><a href="#城市气候" class="headerlink" title="城市气候"></a>城市气候</h2><p>温带季风气候（夏季高温多雨，冬季寒冷干燥）</p>
+<h2 id="幸福感排名"><a href="#幸福感排名" class="headerlink" title="幸福感排名"></a>幸福感排名</h2><p>暂无。</p>
+<h2 id="司法文明指数排名"><a href="#司法文明指数排名" class="headerlink" title="司法文明指数排名"></a>司法文明指数排名</h2><p>2019北京市排名：11<br>2018北京市排名：7<br>2017北京市排名：26<br>更多详情：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/409173066">https://zhuanlan.zhihu.com/p/409173066</a></p>
+<h2 id="教育水平"><a href="#教育水平" class="headerlink" title="教育水平"></a>教育水平</h2><h2 id="医疗水平"><a href="#医疗水平" class="headerlink" title="医疗水平"></a>医疗水平</h2><h2 id="户籍迁入政策"><a href="#户籍迁入政策" class="headerlink" title="户籍迁入政策"></a>户籍迁入政策</h2><p>暂无。</p>
+<h2 id="购房资格"><a href="#购房资格" class="headerlink" title="购房资格"></a>购房资格</h2><p>暂无。</p>
+<h2 id="公积金提取"><a href="#公积金提取" class="headerlink" title="公积金提取"></a>公积金提取</h2><p>租房每月可提一次，每次1500元。<br>更多详情：<a target="_blank" rel="noopener" href="http://gjj.beijing.gov.cn/web/zwfw5/386727/386730/386732/index.html">http://gjj.beijing.gov.cn/web/zwfw5/386727/386730/386732/index.html</a></p>
+<h1 id="天津"><a href="#天津" class="headerlink" title="天津"></a>天津</h1><h1 id="上海"><a href="#上海" class="headerlink" title="上海"></a>上海</h1><h1 id="成都"><a href="#成都" class="headerlink" title="成都"></a>成都</h1><p>参考：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%8C%97%E4%BA%AC/128981">https://baike.baidu.com/item/%E5%8C%97%E4%BA%AC/128981</a></li>
+<li><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E6%88%90%E9%83%BD%E5%B8%82">https://zh.wikipedia.org/wiki/%E6%88%90%E9%83%BD%E5%B8%82</a></li>
+</ul>
+<h2 id="城市地位-1"><a href="#城市地位-1" class="headerlink" title="城市地位"></a>城市地位</h2><ul>
+<li>四川省辖地级市、省会、副省级市、<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%9B%BD%E5%AE%B6%E4%B8%AD%E5%BF%83%E5%9F%8E%E5%B8%82/842500">国家中心城市</a><sup id="fnref:1" class="footnote-ref"><a href="#fn:1" rel="footnote"><span class="hint--top hint--rounded" aria-label="国家中心城市：北京、天津、上海、广州、重庆、成都、武汉、郑州、西安
+">[1]</span></a></sup>、<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E8%B6%85%E5%A4%A7%E5%9F%8E%E5%B8%82/413865">超大城市</a><sup id="fnref:2" class="footnote-ref"><a href="#fn:2" rel="footnote"><span class="hint--top hint--rounded" aria-label="超大城市：北京、天津、上海、广州、重庆、成都、深圳
+">[2]</span></a></sup></li>
+<li>成渝地区双城经济圈核心城市</li>
+<li><a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E4%B8%96%E7%95%8C%E4%B8%80%E7%BA%BF%E5%9F%8E%E5%B8%82/4722524#3">世界二线城市</a>（GaWC中国城市排名 Beta+）</li>
+</ul>
+<h2 id="城市气候-1"><a href="#城市气候-1" class="headerlink" title="城市气候"></a>城市气候</h2><p>亚热带季风气候（夏季高温多雨，冬季温暖湿润）</p>
+<h2 id="幸福感排名-1"><a href="#幸福感排名-1" class="headerlink" title="幸福感排名"></a>幸福感排名</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E4%B8%AD%E5%9B%BD%E6%9C%80%E5%85%B7%E5%B9%B8%E7%A6%8F%E6%84%9F%E5%9F%8E%E5%B8%82/23186310#viewPageContent">中国最具幸福感城市（新华社瞭望东方周刊、瞭望智库共同主办）</a></li>
+</ul>
+<p>2021年12月30日，“2021中国最具幸福感城市”榜单在北京揭晓，成都获得第一名。<br>至此，成都已连续13年荣膺“中国最具幸福感城市”冠军。</p>
+<p>“2021中国最具幸福感城市”的十大省会及计划单列市是：<br>成都、杭州、宁波、长沙、武汉、南京、青岛、贵阳、西宁、哈尔滨。<br>“2020中国最具幸福感城市”的十大省会及计划单列市是：<br>成都、杭州、宁波、广州、长沙、南京、郑州、西宁、青岛、西安。<br>“2019中国最具幸福感城市”的十大省会及计划单列市是：<br>成都、杭州、宁波、西安、广州、长沙、温州、台州、铜川、徐州.</p>
+<h2 id="司法文明指数排名-1"><a href="#司法文明指数排名-1" class="headerlink" title="司法文明指数排名"></a>司法文明指数排名</h2><p>2019四川省排名：3<br>2018四川省排名：5<br>2017四川省排名：25<br>更多详情：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/409173066">https://zhuanlan.zhihu.com/p/409173066</a></p>
+<h2 id="教育水平-1"><a href="#教育水平-1" class="headerlink" title="教育水平"></a>教育水平</h2><h2 id="医疗水平-1"><a href="#医疗水平-1" class="headerlink" title="医疗水平"></a>医疗水平</h2><h2 id="户籍迁入政策-1"><a href="#户籍迁入政策-1" class="headerlink" title="户籍迁入政策"></a>户籍迁入政策</h2><p>45周岁以下的全日制普通大学本科及以上学历毕业生（含经教育部留学服务中心认证的国（境）外取得同等学历人员），按本人或直系亲属拥有的合法稳定住所、单位集体户、人才流动服务中心集体户的顺序申请本人入户。<br>更多详情：<a target="_blank" rel="noopener" href="http://gk.chengdu.gov.cn/govInfo/detail.action?id=135066&amp;tn=6">http://gk.chengdu.gov.cn/govInfo/detail.action?id=135066&amp;tn=6</a></p>
+<h2 id="购房资格-1"><a href="#购房资格-1" class="headerlink" title="购房资格"></a>购房资格</h2><p>满足以下条件其中之一：<br>①户口：两年及以上户口<br>②社保：两年大成都范围内稳定就业且连续缴纳社保<br>③户口+社保：落户不满两年，大成都范围内社保一年及以上（落户+社保1年）<br>更多详情：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/341571210">https://zhuanlan.zhihu.com/p/341571210</a></p>
+<h2 id="公积金提取-1"><a href="#公积金提取-1" class="headerlink" title="公积金提取"></a>公积金提取</h2><p>租房每月可提一次，具体金额看租房合同租金。<br>更多详情：<a target="_blank" rel="noopener" href="http://cdzfgjj.chengdu.gov.cn/cdgjj/c1156359/news_dfwj.shtml">http://cdzfgjj.chengdu.gov.cn/cdgjj/c1156359/news_dfwj.shtml</a></p>
+<h1 id="杭州"><a href="#杭州" class="headerlink" title="杭州"></a>杭州</h1><p>参考：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%9D%AD%E5%B7%9E/147639">https://baike.baidu.com/item/%E6%9D%AD%E5%B7%9E/147639</a></li>
+<li><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-hans/%E6%9D%AD%E5%B7%9E%E5%B8%82">https://zh.wikipedia.org/zh-hans/%E6%9D%AD%E5%B7%9E%E5%B8%82</a></li>
+</ul>
+<h2 id="城市地位-2"><a href="#城市地位-2" class="headerlink" title="城市地位"></a>城市地位</h2><ul>
+<li>浙江省辖地级市、省会、副省级市、<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E7%89%B9%E5%A4%A7%E5%9F%8E%E5%B8%82/1491">特大城市</a><sup id="fnref:3" class="footnote-ref"><a href="#fn:3" rel="footnote"><span class="hint--top hint--rounded" aria-label="特大城市：武汉、东莞、西安、杭州、佛山、南京、沈阳、青岛、济南、长沙、哈尔滨、郑州、昆明、大连
+">[3]</span></a></sup></li>
+<li>杭州都市圈核心城市</li>
+<li><a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E4%B8%96%E7%95%8C%E4%B8%80%E7%BA%BF%E5%9F%8E%E5%B8%82/4722524#3">世界二线城市</a>（GaWC中国城市排名 Beta）</li>
+</ul>
+<h2 id="城市气候-2"><a href="#城市气候-2" class="headerlink" title="城市气候"></a>城市气候</h2><p>亚热带湿润季风气候，亦有海洋性气候的部分特征（夏季高温多雨，冬季温暖湿润）</p>
+<h2 id="幸福感排名-2"><a href="#幸福感排名-2" class="headerlink" title="幸福感排名"></a>幸福感排名</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E4%B8%AD%E5%9B%BD%E6%9C%80%E5%85%B7%E5%B9%B8%E7%A6%8F%E6%84%9F%E5%9F%8E%E5%B8%82/23186310#viewPageContent">中国最具幸福感城市（新华社瞭望东方周刊、瞭望智库共同主办）</a></li>
+</ul>
+<p>2021年12月30日，“2021中国最具幸福感城市”榜单在北京揭晓，杭州获得第二名。</p>
+<p>“2021中国最具幸福感城市”的十大省会及计划单列市是：<br>成都、杭州、宁波、长沙、武汉、南京、青岛、贵阳、西宁、哈尔滨。<br>“2020中国最具幸福感城市”的十大省会及计划单列市是：<br>成都、杭州、宁波、广州、长沙、南京、郑州、西宁、青岛、西安。<br>“2019中国最具幸福感城市”的十大省会及计划单列市是：<br>成都、杭州、宁波、西安、广州、长沙、温州、台州、铜川、徐州.</p>
+<h2 id="司法文明指数排名-2"><a href="#司法文明指数排名-2" class="headerlink" title="司法文明指数排名"></a>司法文明指数排名</h2><p>2019浙江省排名：1<br>2018浙江省排名：18<br>2017浙江省排名：2<br>更多详情：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/409173066">https://zhuanlan.zhihu.com/p/409173066</a></p>
+<h2 id="教育水平-2"><a href="#教育水平-2" class="headerlink" title="教育水平"></a>教育水平</h2><h2 id="医疗水平-2"><a href="#医疗水平-2" class="headerlink" title="医疗水平"></a>医疗水平</h2><h2 id="户籍迁入政策-2"><a href="#户籍迁入政策-2" class="headerlink" title="户籍迁入政策"></a>户籍迁入政策</h2><p>具有全日制普通高校本科以上学历者（本科45周岁以下,不含45周岁；硕士50周岁以下，不含50周岁），在杭州市区落实工作单位并由用人单位正常缴纳社保的可以落户杭州市区。<br>更多详情：<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/g0c3XbVmYba7EkcTIeuFZw">https://mp.weixin.qq.com/s/g0c3XbVmYba7EkcTIeuFZw</a></p>
+<h2 id="购房资格-2"><a href="#购房资格-2" class="headerlink" title="购房资格"></a>购房资格</h2><p>落户杭州市未满5年的户籍家庭，在购房之日前2年起已在本市限购范围内连续缴纳城镇社保满24个月，方可在本市限购范围内限购1套住房。<br>更多详情：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/142977813">https://zhuanlan.zhihu.com/p/142977813</a></p>
+<h2 id="公积金提取-2"><a href="#公积金提取-2" class="headerlink" title="公积金提取"></a>公积金提取</h2><p>租房每年提取一次，提取限额不超过12个月，1200元/月。<br>更多详情：<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/bMAlymjVYhKpAYzY9CGdCA">https://mp.weixin.qq.com/s/bMAlymjVYhKpAYzY9CGdCA</a></p>
+<h1 id="苏州"><a href="#苏州" class="headerlink" title="苏州"></a>苏州</h1><h1 id="广州"><a href="#广州" class="headerlink" title="广州"></a>广州</h1><h1 id="备注"><a href="#备注" class="headerlink" title="备注"></a>备注</h1><section class="footnotes"><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span>国家中心城市：北京、天津、上海、广州、重庆、成都、武汉、郑州、西安
+<a href="#fnref:1" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:2" class="footnote-text"><span>超大城市：北京、天津、上海、广州、重庆、成都、深圳
+<a href="#fnref:2" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:3" class="footnote-text"><span>特大城市：武汉、东莞、西安、杭州、佛山、南京、沈阳、青岛、济南、长沙、哈尔滨、郑州、昆明、大连
+<a href="#fnref:3" rev="footnote" class="footnote-backref"> ↩</a></span></span></li></ol></div></section>
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E7%94%9F%E6%B4%BB/">生活</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E7%94%9F%E6%B4%BB/">生活</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/01/25/JavaScript%E8%AF%8D%E6%B3%95%E7%BB%93%E6%9E%84/">
+                        <span class="hidden-mobile">JavaScript词法结构</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"syQxyJQH6mJ9tVidXW3H8d00-gzGzoHsz","appKey":"CkmQXvhPR7AQJnJEU8kKs00A","placeholder":"说点什么","path":"window.location.pathname","avatar":"retro","meta":["nick","mail","link"],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false,"requiredFields":[]},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+  <div class="col-lg-7 mx-auto nopadding-x-md">
+    <div class="container custom post-custom mx-auto">
+      <img src="https://octodex.github.com/images/jetpacktocat.png" srcset="/img/loading.gif" lazyload class="rounded mx-auto d-block mt-5" style="width:150px; height:150px;">
+    </div>
+  </div>
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Powered by Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Theme is Fluid</span></a>
+  </div>
+  
+
+  
+  <!-- 备案信息 -->
+  <div class="beian">
+    <span>
+      <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+        冀ICP备2021010393号-1
+      </a>
+    </span>
+    
+      
+        <span>
+          <a
+            href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=13048102000303"
+            rel="nofollow noopener"
+            class="beian-police"
+            target="_blank"
+          >
+            
+              <span style="visibility: hidden; width: 0">|</span>
+              <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
+            
+            <span>冀公网安备13048102000303号</span>
+          </a>
+        </span>
+      
+    
+  </div>
+
+
+  
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?bbe44c28232a60458d913426edaff12f";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+    
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?siteId=16939915";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

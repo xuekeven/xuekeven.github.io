@@ -1,0 +1,565 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="Keven">
+  <meta name="keywords" content="">
+  
+  <title>MVVM原理 - Keven&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":60,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"siteId=16939915","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 50vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Keven's Blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tools/">
+                <i class="iconfont icon-th-large"></i>
+                工具
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/example.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.2)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="MVVM原理">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-author" aria-hidden="true"></i>
+      Keven
+    </span>
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-09-20 20:00" pubdate>
+        2021年9月20日
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      956 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      13
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">MVVM原理</h1>
+            
+            <div class="markdown-body">
+              <p>参考：<a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903586103558158">https://juejin.cn/post/6844903586103558158</a> 。</p>
+<p>现在无论是 React 还是 Vue 还是最新的 Angular，MVVM 双向数据绑定通过 <strong>数据劫持+发布订阅模式</strong> 完成。真正实现其实靠的是 ES5 中提供的 Object.defineProperty() 方法。</p>
+<h1 id="Object-defineProperty-用法"><a href="#Object-defineProperty-用法" class="headerlink" title="Object.defineProperty()用法"></a>Object.defineProperty()用法</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> obj = &#123;&#125;;<br><span class="hljs-keyword">let</span> song = <span class="hljs-string">&#x27;发如雪&#x27;</span>;<br>obj.singer = <span class="hljs-string">&#x27;周杰伦&#x27;</span>;<br><br><span class="hljs-built_in">Object</span>.defineProperty(obj, <span class="hljs-string">&#x27;music&#x27;</span>, &#123;<br>  <span class="hljs-attr">value</span>: <span class="hljs-string">&#x27;七里香&#x27;</span>, <span class="hljs-comment">// 1.属性值</span><br>  <span class="hljs-attr">configurable</span>: <span class="hljs-literal">true</span>, <span class="hljs-comment">// 2.属性是否可被删除</span><br>  <span class="hljs-attr">writable</span>: <span class="hljs-literal">true</span>, <span class="hljs-comment">// 3.属性值是否可修改</span><br>  <span class="hljs-attr">enumerable</span>: <span class="hljs-literal">true</span>, <span class="hljs-comment">// 4.属性是否可被枚举</span><br>  <span class="hljs-comment">// get 和 set 设置时不能设置 writable 和 value，它们代替了二者且是互斥的</span><br>  <span class="hljs-function"><span class="hljs-title">set</span>(<span class="hljs-params">val</span>)</span> &#123;<br>    song = val<br>  &#125;,<br>  <span class="hljs-function"><span class="hljs-title">get</span>(<span class="hljs-params"></span>)</span> &#123;<br>    <span class="hljs-keyword">return</span> song<br>  &#125;<br>&#125;)<br><br><span class="hljs-comment">// 下面打印的部分分别是对应代码写入顺序执行</span><br><span class="hljs-comment">// 1</span><br><span class="hljs-built_in">console</span>.log(obj); <span class="hljs-comment">// &#123;singer: &#x27;周杰伦&#x27;, music: &#x27;七里香&#x27;&#125;  </span><br><span class="hljs-comment">// 2</span><br><span class="hljs-keyword">delete</span> obj.music; <br><span class="hljs-built_in">console</span>.log(obj); <span class="hljs-comment">// &#123;singer: &#x27;周杰伦&#x27;&#125;</span><br><span class="hljs-comment">// 3</span><br>obj.music = <span class="hljs-string">&#x27;听妈妈的话&#x27;</span>; <br><span class="hljs-built_in">console</span>.log(obj); <span class="hljs-comment">// &#123;singer: &#x27;周杰伦&#x27;, music: &quot;听妈妈的话&quot;&#125;</span><br><span class="hljs-comment">// 4</span><br><span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> key <span class="hljs-keyword">in</span> obj) &#123; <br>  <span class="hljs-built_in">console</span>.log(key); <span class="hljs-comment">// singer, music</span><br>&#125;<br><span class="hljs-comment">// 5</span><br><span class="hljs-built_in">console</span>.log(obj.music); <span class="hljs-comment">// &#x27;发如雪&#x27; </span><br><span class="hljs-comment">// 6</span><br>obj.music = <span class="hljs-string">&#x27;夜曲&#x27;</span>;<br><span class="hljs-built_in">console</span>.log(obj.music); <span class="hljs-comment">// &#x27;夜曲&#x27;</span><br></code></pre></td></tr></table></figure>
+
+<h1 id="打造MVVM"><a href="#打造MVVM" class="headerlink" title="打造MVVM"></a>打造MVVM</h1><p>以 Vue 为参照去实现 MVVM。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// 创建一个 Mvvm 构造函数</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Mvvm</span>(<span class="hljs-params">options = &#123;&#125;</span>) </span>&#123;<br>  <span class="hljs-comment">// 将所有属性挂载到 $options</span><br>  <span class="hljs-built_in">this</span>.$options = options;<br>  <span class="hljs-comment">// this._data 也和 Vue 一样</span><br>  <span class="hljs-keyword">let</span> data = <span class="hljs-built_in">this</span>._data = <span class="hljs-built_in">this</span>.$options.data;<br>  <span class="hljs-comment">// 数据劫持 </span><br>  Observe(data);<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="数据劫持"><a href="#数据劫持" class="headerlink" title="数据劫持"></a>数据劫持</h2><p>为什么要做数据劫持？</p>
+<ul>
+<li>观察对象，给对象增加 Object.defineProperty()</li>
+<li>vue 特点是不能新增不存在的属性 不存在的属性没有 get 和 set</li>
+<li>深度响应 因为每次赋予一个新对象时会给这个新对象增加 Object.defineProperty()</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// 创建一个 Observe 构造函数写数据劫持的主要逻辑</span><br><span class="hljs-comment">// 数据劫持就是给对象增加 get 和 set</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Observe</span>(<span class="hljs-params">data</span>) </span>&#123;<br>  <span class="hljs-comment">// 先遍历一遍数据对象</span><br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> key <span class="hljs-keyword">in</span> data) &#123;<br>    <span class="hljs-keyword">let</span> val = data[key];<br>    <span class="hljs-comment">// 递归继续向下找，实现深度的数据劫持</span><br>    observe(val);<br>    <span class="hljs-built_in">Object</span>.defineProperty(data, key, &#123;<br>      <span class="hljs-attr">configurable</span>: <span class="hljs-literal">true</span>,<br>      <span class="hljs-function"><span class="hljs-title">get</span>(<span class="hljs-params"></span>)</span> &#123;<br>        <span class="hljs-keyword">return</span> val<br>      &#125;,<br>      <span class="hljs-function"><span class="hljs-title">set</span>(<span class="hljs-params">newVal</span>)</span> &#123;<br>        <span class="hljs-keyword">if</span> (val === newVal) <span class="hljs-keyword">return</span> <br>        val = newVal;<br>        <span class="hljs-comment">// 当设置为新值后，也需要把新值再去定义成属性</span><br>        observe(newVal);<br>      &#125;<br>    &#125;)<br>  &#125;<br>&#125;<br><span class="hljs-comment">// 方便递归调用</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">observe</span>(<span class="hljs-params">data</span>) </span>&#123;<br>  <span class="hljs-comment">// 如果不是对象的话就直接返回，防止递归溢出</span><br>  <span class="hljs-keyword">if</span> (!data || <span class="hljs-keyword">typeof</span> data !== <span class="hljs-string">&#x27;object&#x27;</span>) <span class="hljs-keyword">return</span><br>  <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> Observe(data)<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="数据代理"><a href="#数据代理" class="headerlink" title="数据代理"></a>数据代理</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Mvvm</span>(<span class="hljs-params">options = &#123;&#125;</span>) </span>&#123;<br>  <span class="hljs-comment">// 数据劫持</span><br>  Observe(data);<br>  <span class="hljs-comment">// this 代理了this._data</span><br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> key <span class="hljs-keyword">in</span> data) &#123;<br>    <span class="hljs-built_in">Object</span>.defineProperty(<span class="hljs-built_in">this</span>, key, &#123;<br>      <span class="hljs-attr">configurable</span>: <span class="hljs-literal">true</span>,<br>      <span class="hljs-function"><span class="hljs-title">get</span>(<span class="hljs-params"></span>)</span> &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>._data[key];<br>      &#125;,<br>      <span class="hljs-function"><span class="hljs-title">set</span>(<span class="hljs-params">newVal</span>)</span> &#123;<br>        <span class="hljs-built_in">this</span>._data[key] = newVal;<br>      &#125;<br>    &#125;);<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="数据编译"><a href="#数据编译" class="headerlink" title="数据编译"></a>数据编译</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Mvvm</span>(<span class="hljs-params">options = &#123;&#125;</span>) </span>&#123;<br>  <span class="hljs-comment">// 数据劫持</span><br>  observe(data);   <br>  <span class="hljs-comment">// 编译    </span><br>  <span class="hljs-keyword">new</span> Compile(options.el, <span class="hljs-built_in">this</span>);    <br>&#125;<br><br><span class="hljs-comment">// 创建Compile构造函数</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Compile</span>(<span class="hljs-params">el, vm</span>) </span>&#123;<br>  <span class="hljs-comment">// 将el挂载到实例上方便调用</span><br>  vm.$el = <span class="hljs-built_in">document</span>.querySelector(el);<br>  <span class="hljs-comment">// 在el范围里将内容都拿到，当然不能一个一个的拿</span><br>  <span class="hljs-comment">// 可以选择移到内存中去然后放入文档碎片中，节省开销</span><br>  <span class="hljs-keyword">let</span> fragment = <span class="hljs-built_in">document</span>.createDocumentFragment();<br>  <span class="hljs-keyword">while</span> (child = vm.$el.firstChild) &#123;<br>    fragment.appendChild(child);    <span class="hljs-comment">// 此时将el中的内容放入内存中</span><br>  &#125;<br>  <span class="hljs-comment">// 对el里面的内容进行替换</span><br>  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">replace</span>(<span class="hljs-params">frag</span>) </span>&#123;<br>    <span class="hljs-built_in">Array</span>.from(frag.childNodes).forEach(<span class="hljs-function"><span class="hljs-params">node</span> =&gt;</span> &#123;<br>      <span class="hljs-keyword">let</span> txt = node.textContent;<br>      <span class="hljs-keyword">let</span> reg = <span class="hljs-regexp">/\&#123;\&#123;(.*?)\&#125;\&#125;/g</span>;   <span class="hljs-comment">// 正则匹配&#123;&#123;&#125;&#125;</span><br>      <span class="hljs-keyword">if</span> (node.nodeType === <span class="hljs-number">3</span> &amp;&amp; reg.test(txt)) &#123; <span class="hljs-comment">// 即是文本节点又有大括号的情况&#123;&#123;&#125;&#125;</span><br>        <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">RegExp</span>.$1); <span class="hljs-comment">// 匹配到的第一个分组 如： a.b, c</span><br>        <span class="hljs-keyword">let</span> arr = <span class="hljs-built_in">RegExp</span>.$1.split(<span class="hljs-string">&#x27;.&#x27;</span>);<br>        <span class="hljs-keyword">let</span> val = vm;<br>        arr.forEach(<span class="hljs-function"><span class="hljs-params">key</span> =&gt;</span> &#123;<br>          val = val[key];     <span class="hljs-comment">// 如this.a.b</span><br>        &#125;);<br>        <span class="hljs-comment">// 用trim方法去除一下首尾空格</span><br>        node.textContent = txt.replace(reg, val).trim();<br>      &#125;<br>      <span class="hljs-comment">// 如果还有子节点，继续递归replace</span><br>      <span class="hljs-keyword">if</span> (node.childNodes &amp;&amp; node.childNodes.length) &#123;<br>        replace(node);<br>      &#125;<br>    &#125;);<br>  &#125;<br>  replace(fragment);  <span class="hljs-comment">// 替换内容</span><br>  vm.$el.appendChild(fragment);   <span class="hljs-comment">// 再将文档碎片放入el中</span><br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="发布订阅"><a href="#发布订阅" class="headerlink" title="发布订阅"></a>发布订阅</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><br></code></pre></td></tr></table></figure>
+<h2 id="数据更新视图"><a href="#数据更新视图" class="headerlink" title="数据更新视图"></a>数据更新视图</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><br></code></pre></td></tr></table></figure>
+<h2 id="双向数据绑定"><a href="#双向数据绑定" class="headerlink" title="双向数据绑定"></a>双向数据绑定</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><br></code></pre></td></tr></table></figure>
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E6%A1%86%E6%9E%B6%E6%A8%A1%E5%9D%97/">框架模块</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%A1%86%E6%9E%B6%E6%A8%A1%E5%9D%97/">框架模块</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/09/20/%E5%A4%8D%E6%9D%82%E5%BA%A6/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">复杂度</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/09/19/%E6%9F%A5%E6%89%BE/">
+                        <span class="hidden-mobile">查找</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"syQxyJQH6mJ9tVidXW3H8d00-gzGzoHsz","appKey":"CkmQXvhPR7AQJnJEU8kKs00A","placeholder":"说点什么","path":"window.location.pathname","avatar":"retro","meta":["nick","mail","link"],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false,"requiredFields":[]},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+  <div class="col-lg-7 mx-auto nopadding-x-md">
+    <div class="container custom post-custom mx-auto">
+      <img src="https://octodex.github.com/images/jetpacktocat.png" srcset="/img/loading.gif" lazyload class="rounded mx-auto d-block mt-5" style="width:150px; height:150px;">
+    </div>
+  </div>
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Powered by Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Theme is Fluid</span></a>
+  </div>
+  
+
+  
+  <!-- 备案信息 -->
+  <div class="beian">
+    <span>
+      <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+        冀ICP备2021010393号-1
+      </a>
+    </span>
+    
+      
+        <span>
+          <a
+            href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=13048102000303"
+            rel="nofollow noopener"
+            class="beian-police"
+            target="_blank"
+          >
+            
+              <span style="visibility: hidden; width: 0">|</span>
+              <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
+            
+            <span>冀公网安备13048102000303号</span>
+          </a>
+        </span>
+      
+    
+  </div>
+
+
+  
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?bbe44c28232a60458d913426edaff12f";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+    
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?siteId=16939915";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
