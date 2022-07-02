@@ -257,18 +257,24 @@
             <h1 style="display: none">JavaScript词法结构</h1>
             
             <div class="markdown-body">
-              <p>参考：<a target="_blank" rel="noopener" href="https://book.douban.com/subject/35396470/">《JavaScript权威指南（原书第7版）》</a>。</p>
+              <p>参考：<a target="_blank" rel="noopener" href="https://book.douban.com/subject/35396470/">《JavaScript 权威指南（原书第 7 版）》</a>。</p>
 <p>编程语言的词法结构是一套基本规则，规定了如何使用这门语言编写程序。<br>词法结构是一门语言最低级的语法，规定了变量如何命名、注释的界定符，以及如何分割程序的语句等等。</p>
 <h1 id="程序文本"><a href="#程序文本" class="headerlink" title="程序文本"></a>程序文本</h1><p>JavaScript 区分大小写。这意味着它的关键字、变量、函数名和其他标识符必须始终保持一致的大小写形式。例如，<code>online</code>、<code>Online</code>、<code>OnLine</code>、<code>ONLINE</code> 是 4 个完全不同的变量名。</p>
 <p>JavaScript 忽略程序记号之间的<strong>空格</strong>。很大程度上也忽略<strong>换行符</strong>。因为可以在程序中随意使用空格和换行符，所以可以按照便于阅读理解的方式对程序进行格式化和缩进。</p>
 <p>除了常规空格（\u0020），JavaScript 也将<strong>制表符</strong>、<strong>各种 ASCII 控制符</strong>和 <strong>Unicode 间格</strong>识别为空格。JavaScript 将<strong>换行符</strong>、<strong>回车符</strong>和<strong>回车 / 换行序列</strong>识别为行终止符。</p>
 <h1 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h1><p>JavaScript 支持两种注释，<strong>单行注释</strong>和<strong>多行注释</strong>。</p>
 <ul>
-<li>单行注释是以 <code>//</code> 开头到一行末尾的内容。<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// 单行注释</span><br></code></pre></td></tr></table></figure></li>
-<li>多行注释位于 <code>/*</code> 和 <code>*/</code> 之间，可以跨行，但是不能嵌套。<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">/* </span><br><span class="hljs-comment">  多行注释</span><br><span class="hljs-comment">*/</span><br><br><span class="hljs-comment">/* </span><br><span class="hljs-comment"> * 多行注释（美观）</span><br><span class="hljs-comment"> */</span><br></code></pre></td></tr></table></figure></li>
+<li>单行注释是以 <code>//</code> 开头到一行末尾的内容。</li>
 </ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// 单行注释</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>多行注释位于 <code>/*</code> 和 <code>*/</code> 之间，可以跨行，但是不能嵌套。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">/* </span><br><span class="hljs-comment">  多行注释</span><br><span class="hljs-comment">*/</span><br><br><span class="hljs-comment">/*</span><br><span class="hljs-comment"> * 多行注释（美观）</span><br><span class="hljs-comment"> */</span><br></code></pre></td></tr></table></figure>
+
 <h1 id="字面量"><a href="#字面量" class="headerlink" title="字面量"></a>字面量</h1><p>字面量是一种直接出现在程序中的<strong>数据值</strong>。如有：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-number">12</span><br><span class="hljs-number">1.2</span><br><span class="hljs-string">&#x27;hi&#x27;</span><br><span class="hljs-string">&#x27;hello world&#x27;</span><br><span class="hljs-literal">true</span><br><span class="hljs-literal">null</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-number">12</span>;<br><span class="hljs-number">1.2</span>;<br>(<span class="hljs-string">&quot;hi&quot;</span>);<br>(<span class="hljs-string">&quot;hello world&quot;</span>);<br><span class="hljs-literal">true</span>;<br><span class="hljs-literal">null</span>;<br></code></pre></td></tr></table></figure>
 
 <h1 id="标识符和保留字"><a href="#标识符和保留字" class="headerlink" title="标识符和保留字"></a>标识符和保留字</h1><p>简单来说，标识符就是一个名字。在 JavaScript 中，标识符用于在 JavaScript 代码中命名。<br><strong>常量</strong>、<strong>变量</strong>、<strong>属性</strong>、<strong>函数</strong>、<strong>类</strong>，以及为某些循环提供标记。</p>
 <p>JavaScript 标识符必须以<strong>字母</strong>、<strong>下划线</strong>（_）、<strong>美元符号</strong>（$）开头，<br>后续的字符可以是<strong>数字</strong>、<strong>字母</strong>、<strong>下划线</strong>、<strong>美元符号</strong>。（数字不能作首个字符，以便区分标识符和数值）</p>
@@ -281,19 +287,20 @@
 <li>一种风格是，使用分号明确标识语句结束，即使这些分号并非必需。</li>
 <li>另一种风格是，尽可能地省略分号，只在少数必要情况下采用。</li>
 </ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js">a1 = <span class="hljs-number">3</span>; <span class="hljs-comment">// 第一个分号可以省略</span><br>b1 = <span class="hljs-number">4</span>;<br><br>a2 = <span class="hljs-number">3</span>; b2 = <span class="hljs-number">4</span>; <span class="hljs-comment">// 分号不能省略</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js">a1 = <span class="hljs-number">3</span>; <span class="hljs-comment">// 第一个分号可以省略</span><br>b1 = <span class="hljs-number">4</span>;<br><br>a2 = <span class="hljs-number">3</span>;<br>b2 = <span class="hljs-number">4</span>; <span class="hljs-comment">// 分号不能省略</span><br></code></pre></td></tr></table></figure>
+
 <p>JavaScript 并非任何时候都把换行符当作分号，而只是在不隐式添加分号就无法解析代码的情况下才这么做。更准确地讲，只在下一个非空格字符无法被解释为当前语句的一部分时才把换行符当作分号。如：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> a3<br>a3<br>=<br><span class="hljs-number">3</span><br><span class="hljs-built_in">console</span>.log(a3)<br><br><span class="hljs-keyword">let</span> a4; a4 = <span class="hljs-number">3</span>; <span class="hljs-built_in">console</span>.log(<span class="hljs-number">14</span>); <span class="hljs-comment">// 与上方代码的解释相同</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> a3;<br>a3 = <span class="hljs-number">3</span>;<br><span class="hljs-built_in">console</span>.log(a3);<br><br><span class="hljs-keyword">let</span> a4;<br>a4 = <span class="hljs-number">3</span>;<br><span class="hljs-built_in">console</span>.log(<span class="hljs-number">14</span>); <span class="hljs-comment">// 与上方代码的解释相同</span><br></code></pre></td></tr></table></figure>
 
 <p>但是，这些语句终止规则会导致某些意外情形。而这很有可能不是代码作者的意图。为了保证代码能按代码作者的意图指向，必须在相应的地方添加分号。如：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> y1 = x + f<br>(a + b).toString()<br><br><span class="hljs-keyword">let</span> y2 = x + f(a + b).toString(); <span class="hljs-comment">// 与上方代码的解释相同</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> y1 = x + f(a + b).toString();<br><br><span class="hljs-keyword">let</span> y2 = x + f(a + b).toString(); <span class="hljs-comment">// 与上方代码的解释相同</span><br></code></pre></td></tr></table></figure>
 
 <p>通常，如果语句以 <strong>(<strong>、</strong>[<strong>、</strong>/<strong>、</strong>+<strong>、</strong>-</strong> 开头，就有可能被解释为之前语句的一部分。实践中，以 <strong>/<strong>、</strong>+<strong>、</strong>-</strong> 开头的语句极少，但以 <strong>(<strong>、</strong>[</strong> 开头的语句则并不鲜见。可以在所以这些语句前面都防御性地添加一个分号，这样即使它前面的语句被修改，删掉了之前末尾的分号，也不会影响当前语句。如：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> x = <span class="hljs-number">0</span><br>;[x, x + <span class="hljs-number">1</span>, x + <span class="hljs-number">2</span>].forEach(<span class="hljs-built_in">console</span>.log())<br></code></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> x = <span class="hljs-number">0</span>;<br>[x, x + <span class="hljs-number">1</span>, x + <span class="hljs-number">2</span>].forEach(<span class="hljs-built_in">console</span>.log());<br></code></pre></td></tr></table></figure>
 
 <p>JavaScript 在不能把第二行解析为第一行的连续部分时，对换行符的解释有三种例外情况。</p>
 <p>第一种情况涉及 <code>return</code>、<code>throw</code>、<code>yield</code>、<code>break</code>、<code>continue</code> 语句。这些语句通常独立存在，但是有时候后面也会跟一个标识符或表达式。如果这几个单词后面有换行符，JavaScript 就会把这个换行符解释为分号。这意味着，一定不能在 <code>return</code>、<code>break</code> 等以上关键字和它们后面的表达式之间添加换行符。那如果加入了换行符，那代码出错后的调试会非常麻烦，因为错误不明显。如：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">return</span><br><span class="hljs-literal">true</span>;<br><br><span class="hljs-keyword">return</span>; <span class="hljs-literal">true</span>; <span class="hljs-comment">// 与上方代码的解释相同</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">return</span>;<br><span class="hljs-literal">true</span>;<br><br><span class="hljs-keyword">return</span>;<br><span class="hljs-literal">true</span>; <span class="hljs-comment">// 与上方代码的解释相同</span><br></code></pre></td></tr></table></figure>
 
 <p>第二种情况涉及 <code>++</code> 和 <code>--</code> 操作。这些操作符既可以放在表达式前面，也可以放在表达式后面，如果想把这两个操作符作为后置操作符，那它们必须与自己操作的表达式位于同一行。</p>
 <p>第三种情况涉及箭头函数，箭头 <code>=&gt;</code> 必须跟参数列表在同一行。</p>
@@ -315,6 +322,8 @@
                     <i class="iconfont icon-tags"></i>
                     
                       <a class="hover-with-bg" href="/tags/JavaScript/">JavaScript</a>
+                    
+                      <a class="hover-with-bg" href="/tags/JavaScript%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97/">JavaScript权威指南</a>
                     
                   </div>
                 

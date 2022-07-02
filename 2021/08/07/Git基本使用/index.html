@@ -214,7 +214,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.4k 字
+      1.5k 字
     </span>
   
 
@@ -224,7 +224,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      17
+      19
        分钟
     </span>
   
@@ -257,68 +257,71 @@
             <h1 style="display: none">Git基本使用</h1>
             
             <div class="markdown-body">
-              <p>参考：<br><a target="_blank" rel="noopener" href="https://www.runoob.com/git/git-tutorial.html">https://www.runoob.com/git/git-tutorial.html</a> 。<br><a target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2015/12/git-cheat-sheet.html">http://www.ruanyifeng.com/blog/2015/12/git-cheat-sheet.html</a> 。<br><a target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2015/08/git-use-process.html">http://www.ruanyifeng.com/blog/2015/08/git-use-process.html</a> 。</p>
-<h1 id="工作流程"><a href="#工作流程" class="headerlink" title="工作流程"></a>工作流程</h1><p>工作区 =&gt; 暂存区 =&gt; 版本库 =&gt; 远程仓库<br><img src="/images/Git%E5%85%B3%E7%B3%BB%E5%9B%BE.jpg" srcset="/img/loading.gif" lazyload alt="Git关系图（来自@菜鸟教程）"><br><img src="/images/Git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4.jpg" srcset="/img/loading.gif" lazyload alt="Git常用命令（来自@菜鸟教程）"></p>
-<h1 id="新建仓库"><a href="#新建仓库" class="headerlink" title="新建仓库"></a>新建仓库</h1><h2 id="新建仓库-1"><a href="#新建仓库-1" class="headerlink" title="新建仓库"></a>新建仓库</h2><p><code>git init</code> 初始化一个 Git 新仓库，会在当前目录生成一个 .git 目录</p>
-<p><code>git init &lt;dirName&gt;</code> 初始化 dirName 目录为一个 Git 新仓库，会在 dirName 目录中生成一个 .git 目录</p>
-<h2 id="克隆仓库"><a href="#克隆仓库" class="headerlink" title="克隆仓库"></a>克隆仓库</h2><p><code>git clone &lt;repo&gt;</code> 从 repo 地址克隆仓库，repo 地址可以是 URL 地址也可以是本地地址</p>
-<p><code>git clone &lt;repo&gt; &lt;dirName&gt;</code> 从 repo 地址克隆仓库到本地 dirName 目录</p>
-<h1 id="提交修改"><a href="#提交修改" class="headerlink" title="提交修改"></a>提交修改</h1><h2 id="添加"><a href="#添加" class="headerlink" title="添加"></a>添加</h2><p><code>git add &lt;fileName&gt;</code> 添加 fileName 文件到暂存区（可同时添加多个）</p>
-<p><code>git add &lt;dirName&gt;</code> 添加 dirName 目录到暂存区</p>
-<p><code>git add .</code> 添加当前目录下的所有文件到暂存区</p>
-<h2 id="提交"><a href="#提交" class="headerlink" title="提交"></a>提交</h2><p><code>git commit -m &lt;message&gt;</code> 将暂存区内容提交到版本库，message 是备注信息</p>
-<p><code>git commit &lt;fileName&gt; -m &lt;message&gt;</code> 将暂存区的 fileName 文件提交到版本库（可同时提交多个）</p>
-<p><code>git commit -a</code> 修改文件后不需要执行 git add 命令，直接提交</p>
-<h2 id="回退"><a href="#回退" class="headerlink" title="回退"></a>回退</h2><p><code>git checkout &lt;fileName&gt;</code> 从暂存区回退 fileName 文件到工作区</p>
-<p><code>git checkout .</code> 从暂存区回退所有文件到工作区</p>
-<p><code>git checkout &lt;verson&gt; &lt;fileName&gt;</code> 从版本库的 verson 版本的回退 fileName 文件到暂存区和工作区</p>
-<p><code>git reset [--soft | --mixed | --hard] [HEAD]</code></p>
-<p><code>git reset HEAD^</code> 回退暂存区所有内容到上个版本，但工作区不变</p>
-<p><code>git reset HEAD^^</code> 回退暂存区所有内容到上上个版本，但工作区不变</p>
-<p><code>git reset HEAD^ &lt;fileName&gt;</code> 回退暂存区 fileName 文件到上个版本，但工作区不变</p>
-<p><code>git reset &lt;verson&gt;</code> 回退暂存区所有内容到 verson 版本，但工作区不变</p>
-<h2 id="查看文件状态"><a href="#查看文件状态" class="headerlink" title="查看文件状态"></a>查看文件状态</h2><p><code>git status</code> 查看在你上次提交之后是否有对文件进行再次修改</p>
+              <p>参考：<br><a target="_blank" rel="noopener" href="https://www.runoob.com/git/git-tutorial.html">Git 教程 | 菜鸟教程</a> 。<br><a target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2015/12/git-cheat-sheet.html">常用 Git 命令清单 - 阮一峰的网络日志</a> 。<br><a target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2015/08/git-use-process.html">Git 使用规范流程 - 阮一峰的网络日志</a> 。</p>
+<h1 id="工作流程"><a href="#工作流程" class="headerlink" title="工作流程"></a>工作流程</h1><p>工作区 =&gt; 暂存区 =&gt; 版本库 =&gt; 远程仓库<br><img src="/images/Git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4.jpg" srcset="/img/loading.gif" lazyload alt="Git常用命令（来自@菜鸟教程）"><br><img src="/images/Git%E5%85%B3%E7%B3%BB%E5%9B%BE.jpg" srcset="/img/loading.gif" lazyload alt="Git关系图（来自@菜鸟教程）"></p>
+<h1 id="创建仓库"><a href="#创建仓库" class="headerlink" title="创建仓库"></a>创建仓库</h1><h2 id="新建仓库"><a href="#新建仓库" class="headerlink" title="新建仓库"></a>新建仓库</h2><p><code>git init</code> 在当前目录新建一个 Git 仓库，会在当前目录生成一个 <code>.git</code> 目录</p>
+<p><code>git init &lt;dirName&gt;</code> 在当前目录新建一个 <code>dirName</code> Git 仓库目录，会在 <code>dirName</code> 目录生成一个 <code>.git</code> 目录</p>
+<h2 id="克隆仓库"><a href="#克隆仓库" class="headerlink" title="克隆仓库"></a>克隆仓库</h2><p><code>git clone &lt;repo&gt;</code> 从 <code>repo</code> 地址克隆仓库到当前目录，<code>repo</code> 地址可以是 URL 地址也可以是本地地址</p>
+<p><code>git clone &lt;repo&gt; &lt;dirName&gt;</code> 从 <code>repo</code> 地址克隆仓库到当前目录下的 <code>dirName</code> 目录</p>
+<h1 id="提交修改"><a href="#提交修改" class="headerlink" title="提交修改"></a>提交修改</h1><h2 id="添加"><a href="#添加" class="headerlink" title="添加"></a>添加</h2><p><code>git add &lt;fileName&gt;</code> 添加当前目录下的 <code>fileName</code> 文件到暂存区（可同时添加多个）</p>
+<p><code>git add &lt;dirName&gt;</code> 添加当前目录下的 <code>dirName</code> 目录到暂存区</p>
+<p><code>git add .</code> 添加当前目录下的所有内容到暂存区</p>
+<h2 id="提交"><a href="#提交" class="headerlink" title="提交"></a>提交</h2><p><code>git commit -m &lt;message&gt;</code> 将暂存区的所有内容提交到版本库，<code>message</code> 是备注信息</p>
+<p><code>git commit &lt;fileName&gt; -m &lt;message&gt;</code> 将暂存区的 <code>fileName</code> 文件提交到版本库（可同时提交多个）</p>
+<p><code>git commit -a</code> 修改文件后不需要执行 <code>git add</code> 命令，直接提交</p>
+<h2 id="回退"><a href="#回退" class="headerlink" title="回退"></a>回退</h2><p><code>git checkout &lt;fileName&gt;</code> 从暂存区回退 <code>fileName</code> 文件到工作区</p>
+<p><code>git checkout .</code> 从暂存区回退所有内容到工作区</p>
+<p><code>git checkout &lt;commit&gt; &lt;fileName&gt;</code> 从版本库的 <code>commit</code> 版本回退 <code>fileName</code> 文件到暂存区和工作区</p>
+<p><code>git reset HEAD^</code> 重置暂存区所有内容到上个版本，但工作区不变</p>
+<p><code>git reset HEAD^^</code> 重置暂存区所有内容到上上个版本，但工作区不变</p>
+<p><code>git reset --hard</code> 重置暂存区与工作区所有内容到上个版本</p>
+<p><code>git reset &lt;fileName&gt;</code> 重置暂存区 <code>fileName</code> 文件到上个版本，但工作区不变</p>
+<p><code>git reset &lt;commit&gt;</code> 重置当前分支的指针为 <code>commit</code> 版本，但工作区不变</p>
+<p><code>git reset --keep &lt;commit&gt;</code> 重置当前分支的 HEAD 为指定 <code>commit</code> 版本，但保持暂存区和工作区不变</p>
+<p><code>git reset --hard &lt;commit&gt;</code> 重置当前分支的 HEAD 为指定 <code>commit</code> 版本，同时重置暂存区和工作区为 <code>commit</code> 版本</p>
+<p><code>git revert &lt;commit&gt;</code> 新建 <code>commit</code> 版本用来撤销旧版本，后者的所有变化都将被前者抵消，并且应用到当前分支</p>
+<h2 id="查看文件状态"><a href="#查看文件状态" class="headerlink" title="查看文件状态"></a>查看文件状态</h2><p><code>git status</code> 查看当前版本状态（在你上次提交之后是否有对文件进行再次修改）</p>
 <p><code>git status -s</code> 获得简短的结果</p>
 <h2 id="删除工作区文件"><a href="#删除工作区文件" class="headerlink" title="删除工作区文件"></a>删除工作区文件</h2><p><a target="_blank" rel="noopener" href="https://www.runoob.com/git/git-rm.html">https://www.runoob.com/git/git-rm.html</a></p>
 <h2 id="操作工作区文件"><a href="#操作工作区文件" class="headerlink" title="操作工作区文件"></a>操作工作区文件</h2><p><a target="_blank" rel="noopener" href="https://www.runoob.com/git/git-mv.html">https://www.runoob.com/git/git-mv.html</a></p>
-<h1 id="远程操作"><a href="#远程操作" class="headerlink" title="远程操作"></a>远程操作</h1><h2 id="远程仓库的操作"><a href="#远程仓库的操作" class="headerlink" title="远程仓库的操作"></a>远程仓库的操作</h2><p><code>git remote -v</code> 显示所有远程仓库</p>
-<p><code>git remote show &lt;remote&gt;</code> 显示远程 remote 仓库的信息</p>
-<p><code>git remote add &lt;repo&gt; &lt;url&gt;</code> 添加远程 url 地址仓库，并命名该仓库在本地的名字为 repo（常命名为 origin）</p>
-<h2 id="上传代码并合并"><a href="#上传代码并合并" class="headerlink" title="上传代码并合并"></a>上传代码并合并</h2><p><code>git push &lt;repo&gt; &lt;branchName1&gt;:&lt;branchName2&gt;</code> 上传本地仓库的 branchName1 分支到远程 repo 仓库的 branchName2 分支</p>
-<p><code>git push &lt;repo&gt; &lt;branchName&gt;</code> 上传本地仓库的 branchName 分支到远程 repo 仓库的 branchName 分支（本地分支名与远程分支名相同）</p>
-<p><code>git push &lt;repo&gt; --force</code> 强行推送本地仓库的当前分支到远程 repo 仓库，即使有冲突（本地分支名与远程分支名相同）</p>
-<p><code>git push &lt;repo&gt; --all</code> 推送本地仓库的所有分支到远程 repo 仓库</p>
-<h2 id="下载代码并合并"><a href="#下载代码并合并" class="headerlink" title="下载代码并合并"></a>下载代码并合并</h2><p><code>git pull &lt;repo&gt; &lt;branchName1&gt;:&lt;branchName2&gt;</code> 从远程 repo 仓库下载 branchName1 分支到本地仓库 branchName2 分支</p>
-<p><code>git pull &lt;repo&gt; &lt;branchName&gt;</code> 从远程 repo 仓库下载 branchName 分支到本地仓库 branchName 分支（本地分支名与远程分支名相同）</p>
-<h2 id="从远程获取代码库"><a href="#从远程获取代码库" class="headerlink" title="从远程获取代码库"></a>从远程获取代码库</h2><p><code>git fetch &lt;repo&gt;</code> 下载远程 repo 仓库的所有变动</p>
+<h1 id="远程操作"><a href="#远程操作" class="headerlink" title="远程操作"></a>远程操作</h1><h2 id="远程仓库的操作"><a href="#远程仓库的操作" class="headerlink" title="远程仓库的操作"></a>远程仓库的操作</h2><p><code>git remote -v</code> 显示远程仓库所有分支的信息</p>
+<p><code>git remote show &lt;remote&gt;</code> 显示远程仓库 <code>remote</code> 分支的信息</p>
+<p><code>git remote add &lt;repo&gt; &lt;url&gt;</code> 添加远程 <code>url</code> 地址仓库，并命名该仓库在本地的名字为 <code>repo</code>（常命名为 <code>origin</code>）</p>
+<h2 id="上传代码并合并"><a href="#上传代码并合并" class="headerlink" title="上传代码并合并"></a>上传代码并合并</h2><p><code>git push &lt;repo&gt; &lt;branchName1&gt;:&lt;branchName2&gt;</code> 上传本地仓库的 <code>branchName1</code> 分支到远程 <code>repo</code> 仓库的 <code>branchName2</code> 分支</p>
+<p><code>git push &lt;repo&gt; &lt;branchName&gt;</code> 上传本地仓库的 <code>branchName</code> 分支到远程 <code>repo</code> 仓库的 <code>branchName</code> 分支（本地分支名与远程分支名相同）</p>
+<p><code>git push &lt;repo&gt; --force</code> 强行推送本地仓库的当前分支到远程 <code>repo</code> 仓库，即使有冲突（本地分支名与远程分支名相同）</p>
+<p><code>git push &lt;repo&gt; --all</code> 推送本地仓库的所有分支到远程 <code>repo</code> 仓库</p>
+<h2 id="下载代码并合并"><a href="#下载代码并合并" class="headerlink" title="下载代码并合并"></a>下载代码并合并</h2><p><code>git pull &lt;repo&gt; &lt;branchName1&gt;:&lt;branchName2&gt;</code> 从远程 <code>repo</code> 仓库下载 <code>branchName1</code> 分支到本地仓库 branchName2 分支</p>
+<p><code>git pull &lt;repo&gt; &lt;branchName&gt;</code> 从远程 <code>repo</code> 仓库下载 <code>branchName</code> 分支到本地仓库 <code>branchName</code> 分支（本地分支名与远程分支名相同）</p>
+<h2 id="从远程获取代码库"><a href="#从远程获取代码库" class="headerlink" title="从远程获取代码库"></a>从远程获取代码库</h2><p><code>git fetch &lt;repo&gt;</code> 下载远程 <code>repo</code> 仓库的所有变动</p>
 <h1 id="分支管理"><a href="#分支管理" class="headerlink" title="分支管理"></a>分支管理</h1><h2 id="列出分支"><a href="#列出分支" class="headerlink" title="列出分支"></a>列出分支</h2><p><code>git branch</code> 列出所有本地分支</p>
 <p><code>git branch -r</code> 列出所有远程分支</p>
 <p><code>git branch -a</code> 列出所有本地分支和远程分支</p>
-<h2 id="新建分支"><a href="#新建分支" class="headerlink" title="新建分支"></a>新建分支</h2><p><code>git branch &lt;branchName&gt;</code> 新建 branchName 分支，但依然停留在当前分支</p>
-<p><code>git checkout -b &lt;branchName&gt;</code> 新建 branchName 分支并立即切换到该分支下</p>
-<p><code>git branch &lt;branchName&gt; &lt;version&gt;</code> 新建 branchName 分支，指向版本库的指定版本</p>
-<p><code>git branch --track &lt;branchName&gt; &lt;remoteBranch&gt;</code> 新建 branchName 分支，与远程的 remoteBranch 分支建立追踪关系</p>
-<h2 id="切换分支"><a href="#切换分支" class="headerlink" title="切换分支"></a>切换分支</h2><p><code>git checkout &lt;branchName&gt;</code> 从当前分支切换到 branchName 分支</p>
+<h2 id="新建分支"><a href="#新建分支" class="headerlink" title="新建分支"></a>新建分支</h2><p><code>git branch &lt;branchName&gt;</code> 新建 <code>branchName</code> 分支，但依然停留在当前分支</p>
+<p><code>git checkout -b &lt;branchName&gt;</code> 新建 <code>branchName</code> 分支并立即切换到该分支下</p>
+<p><code>git branch &lt;branchName&gt; &lt;version&gt;</code> 新建 <code>branchName</code> 分支，指向版本库的指定版本</p>
+<p><code>git branch --track &lt;branchName&gt; &lt;remoteBranch&gt;</code> 新建 <code>branchName</code> 分支，与远程的 <code>remoteBranch</code> 分支建立追踪关系</p>
+<h2 id="切换分支"><a href="#切换分支" class="headerlink" title="切换分支"></a>切换分支</h2><p><code>git checkout &lt;branchName&gt;</code> 从当前分支切换到 <code>branchName</code> 分支</p>
 <p><code>git checkout -</code> 从当前分支切换到切换到上一个分支</p>
-<h2 id="删除分支"><a href="#删除分支" class="headerlink" title="删除分支"></a>删除分支</h2><p><code>git branch -d &lt;branchName&gt;</code> 删除本地 branchName 分支</p>
-<p><code>git branch -d -r &lt;repo&gt; &lt;branchName&gt;</code> 删除远程 repo 仓库的 branchName 分支</p>
-<h2 id="合并分支"><a href="#合并分支" class="headerlink" title="合并分支"></a>合并分支</h2><p><code>git merge &lt;branchName&gt;</code> 合并 branchName 分支到当前分支</p>
+<h2 id="删除分支"><a href="#删除分支" class="headerlink" title="删除分支"></a>删除分支</h2><p><code>git branch -d &lt;branchName&gt;</code> 删除本地 <code>branchName</code> 分支</p>
+<p><code>git branch -d -r &lt;repo&gt; &lt;branchName&gt;</code> 删除远程 <code>repo</code> 仓库的 <code>branchName</code> 分支</p>
+<h2 id="合并分支"><a href="#合并分支" class="headerlink" title="合并分支"></a>合并分支</h2><p><code>git merge &lt;branchName&gt;</code> 合并 <code>branchName</code> 分支到当前分支</p>
 <p><code>git cherry-pick &lt;version&gt;</code> 从版本库选择一个版本合并进当前分支</p>
-<h2 id="重命名分支"><a href="#重命名分支" class="headerlink" title="重命名分支"></a>重命名分支</h2><p><code>git branch -M &lt;oldbranchName&gt; &lt;newbranchName&gt;</code> 将本地 oldbranchName 分支重命名为 newbranchName</p>
+<h2 id="重命名分支"><a href="#重命名分支" class="headerlink" title="重命名分支"></a>重命名分支</h2><p><code>git branch -M &lt;oldbranchName&gt; &lt;newbranchName&gt;</code> 将本地 <code>oldbranchName</code> 分支重命名为 <code>newbranchName</code></p>
 <p>重命名远程分支的做法：删除远程待修改分支后上传本地分支到远程</p>
 <h1 id="查看提交"><a href="#查看提交" class="headerlink" title="查看提交"></a>查看提交</h1><h2 id="查看历史提交记录"><a href="#查看历史提交记录" class="headerlink" title="查看历史提交记录"></a>查看历史提交记录</h2><p><code>git log</code> 查看历史提交记录（从近到远）</p>
 <p><code>git log --oneline</code> 查看历史记录的简洁版本</p>
 <p><code>git log --graph</code> 查看历史中何时出现分支和合并</p>
 <p><code>git log --reverse</code> 逆向查看历史提交记录（从远到近）</p>
-<h2 id="查看指定文件历史修改记录"><a href="#查看指定文件历史修改记录" class="headerlink" title="查看指定文件历史修改记录"></a>查看指定文件历史修改记录</h2><p><code>git blame &lt;fileName&gt;</code> 以列表形式查看 fileName 文件的历史修改记录</p>
+<h2 id="查看指定文件历史修改记录"><a href="#查看指定文件历史修改记录" class="headerlink" title="查看指定文件历史修改记录"></a>查看指定文件历史修改记录</h2><p><code>git blame &lt;fileName&gt;</code> 以列表形式查看 <code>fileName</code> 文件的历史修改记录</p>
 <h1 id="标签"><a href="#标签" class="headerlink" title="标签"></a>标签</h1><h2 id="查看标签"><a href="#查看标签" class="headerlink" title="查看标签"></a>查看标签</h2><p><code>git tag</code> 列出所有标签</p>
-<h2 id="新建标签"><a href="#新建标签" class="headerlink" title="新建标签"></a>新建标签</h2><p><code>git tag &lt;tagName&gt;</code> 新建名为 tagName 标签</p>
+<h2 id="新建标签"><a href="#新建标签" class="headerlink" title="新建标签"></a>新建标签</h2><p><code>git tag &lt;tagName&gt;</code> 新建名为 <code>tagName</code> 标签</p>
 <h1 id="选项解释"><a href="#选项解释" class="headerlink" title="选项解释"></a>选项解释</h1><ul>
 <li>-f –force：强制</li>
 <li>-d –delete：删除</li>
-<li>-D –delete –force的快捷键</li>
+<li>-D –delete –force 的快捷键</li>
 <li>-m –move：移动或重命名</li>
-<li>-M –move –force的快捷键</li>
+<li>-M –move –force 的快捷键</li>
 <li>-r –remote：远程</li>
 <li>-a –all：所有</li>
 </ul>

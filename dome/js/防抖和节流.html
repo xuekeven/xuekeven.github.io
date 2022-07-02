@@ -220,18 +220,17 @@
   <title>防抖和节流</title>
 </head>
 <body>
-  <input id="de" type="button" value="防抖函数">
-  <br>
-  <input id="thro" type="button" value="节流函数">
+  <p><input id="de" type="button" value="简单版防抖函数"></p>
+  <p><input id="thro" type="button" value="简单版节流函数"></p>
 
   <script>
     function clickDeBounce() {
       console.log(arguments)
-      console.log('这是防抖函数')
+      console.log('这是简单版防抖函数')
     }
     function clickThrottle() {
       console.log(arguments)
-      console.log('这是节流函数')
+      console.log('这是简单版节流函数')
     }
 
     const debounce = function(fun, wait) {
@@ -256,10 +255,10 @@
     }
 
     const de = document.getElementById('de');
-    de.addEventListener('click', debounce(clickDeBounce, 1000), false);
+    de.addEventListener('click', debounce(clickDeBounce, 3000), false);
 
     const thro = document.getElementById('thro');
-    thro.addEventListener('click', throttle(clickThrottle, 1000), false);
+    thro.addEventListener('click', throttle(clickThrottle, 3000), false);
   </script>
 </body>
 </html>
