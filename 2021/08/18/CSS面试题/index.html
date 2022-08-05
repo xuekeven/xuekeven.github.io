@@ -214,7 +214,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      2k 字
+      1.5k 字
     </span>
   
 
@@ -224,7 +224,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      23
+      18
        分钟
     </span>
   
@@ -350,24 +350,9 @@
 <h2 id="双飞翼布局缺点"><a href="#双飞翼布局缺点" class="headerlink" title="双飞翼布局缺点"></a>双飞翼布局缺点</h2><ul>
 <li>增加一层节点，增加渲染树生成的计算量</li>
 </ul>
-<h1 id="简写属性"><a href="#简写属性" class="headerlink" title="简写属性"></a>简写属性</h1><p>简写属性是用于同时给多个属性赋值的属性。如：</p>
-<ul>
-<li>border 是 border-width、border-style、border-color 的简写，这三个也是简写属性，border-width 是 border-top-width、border-bottom-width、border-left-width、border-right-width 的简写</li>
-<li>background 是 background-color、background-image、background-size、background-repeat、background-position、background-origin、background-chip、background-attachment 的简写</li>
-<li>font 是 font-style、font-weight、font-size、font-height、font-family 的简写</li>
-</ul>
-<p>大多数简写属性可以省略一些值，只指定我们关注的值。但是要知道这样做仍会设置省略的值，即它们会被隐式地设置为初始值。这会默默覆盖在其他地方定义的样式。</p>
-<h2 id="上、右、下、左"><a href="#上、右、下、左" class="headerlink" title="上、右、下、左"></a>上、右、下、左</h2><p>当遇到像 margin、padding 这样的属性，还有为元素的四条边分别指定值的边框属性时，容易弄错这些简写属性的顺序。这些属性的值是按顺时针方向，从上边开始的。记住顺序能少犯错误。它的记忆口诀是<strong>TRouBLe</strong>：top（上）、right（右）、bottom（下）、left（左）：</p>
-<ul>
-<li>使用一个值，用于全部四个边</li>
-<li>使用两个值，前一个值用于上下两边，后一个值用于左右两边</li>
-<li>使用三个值，第一个值用于上边，第二个值用于左右两边，第三个值用于下边</li>
-<li>使用四个值，按照时钟顺序依次应用于上、右、下、左四个边</li>
-</ul>
-<h2 id="水平、垂直"><a href="#水平、垂直" class="headerlink" title="水平、垂直"></a>水平、垂直</h2><p>还有一些属性只支持最多指定两个值，这些属性包括 background-position、box-shadow、text-shadow 等（虽然严格来讲它们并不是简写属性）。这些属性值顺序跟 padding 这种四值属性的顺序刚好相反。</p>
-<p>看起来顺序相反的定义违背直觉，原因很简单：这两个值代表了一个笛卡儿网格。笛卡儿网格的测量值一般是按照(x,y)(水平,垂直)的顺序来的。第一个值指定水平方向的偏移量，第二个值指定垂直方向的偏移量。</p>
 <h1 id="元素同行显示"><a href="#元素同行显示" class="headerlink" title="元素同行显示"></a>元素同行显示</h1><ul>
-<li>设置行内元素或行内块元素</li>
+<li>设置元素为行内元素或行内块元素</li>
+<li>设置父元素为 flex 布局或 grid 布局</li>
 <li>设置浮动</li>
 </ul>
 <h1 id="其它问题"><a href="#其它问题" class="headerlink" title="其它问题"></a>其它问题</h1><ul>
@@ -436,32 +421,6 @@
               
             </div>
 
-            
-              <!-- Comments -->
-              <article class="comments" id="comments" lazyload>
-                
-                  
-                
-                
-  <div id="valine"></div>
-  <script type="text/javascript">
-    Fluid.utils.loadComments('#valine', function() {
-      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', function() {
-        var options = Object.assign(
-          {"appId":"syQxyJQH6mJ9tVidXW3H8d00-gzGzoHsz","appKey":"CkmQXvhPR7AQJnJEU8kKs00A","placeholder":"说点什么","path":"window.location.pathname","avatar":"retro","meta":["nick","mail","link"],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false,"requiredFields":[]},
-          {
-            el: "#valine",
-            path: window.location.pathname
-          }
-        )
-        new Valine(options);
-      });
-    });
-  </script>
-  <noscript>Please enable JavaScript to view the comments</noscript>
-
-
-              </article>
             
           </article>
         </div>

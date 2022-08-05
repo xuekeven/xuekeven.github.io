@@ -214,7 +214,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      2.7k 字
+      2.8k 字
     </span>
   
 
@@ -224,7 +224,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      27
+      28
        分钟
     </span>
   
@@ -260,11 +260,12 @@
               <p>盒模型指的是网页元素的结构，每个元素都是由一个盒子构成。</p>
 <p>一个盒子由<strong>内容区域（Content）</strong>、<strong>内边距（Padding）</strong>、<strong>边框（Border）</strong>、<strong>外边距（Margin）</strong>构成。</p>
 <h1 id="盒子类型"><a href="#盒子类型" class="headerlink" title="盒子类型"></a>盒子类型</h1><ul>
-<li><p><code>box-sizing: content-box</code>（标准盒模型）<br>元素的宽度等于<strong>内容区域</strong>宽度，比显示的宽度低（高度同理）。默认值。</p>
+<li><p><code>box-sizing: content-box</code>（标准盒模型）<br>元素的<strong>宽度（width）</strong>等于元素的<strong>内容区域（Content）</strong>宽度，比显示的宽度低（高度同理）。默认值。</p>
 </li>
-<li><p><code>box-sizing: border-box</code>（IE盒模型）<br>元素的宽度等于<strong>内容区域</strong>、<strong>内边距</strong>、<strong>边框</strong>宽度之和，与显示的宽度相同（高度同理）。</p>
+<li><p><code>box-sizing: border-box</code>（IE 盒模型）<br>元素的<strong>宽度（width）</strong>等于元素的<strong>内容区域（Content）</strong>、<strong>内边距（Padding）</strong>、<strong>边框（Border）</strong>宽度之和，与显示的宽度相同（高度同理）。</p>
 </li>
 </ul>
+<p>不管是标准盒模型还是 IE 盒模型，元素的<strong>宽度（width）</strong>都不会包括<strong>外边距（Margin）</strong>。</p>
 <h1 id="元素宽度问题"><a href="#元素宽度问题" class="headerlink" title="元素宽度问题"></a>元素宽度问题</h1><p>将两列内容宽度设置为 70% 和 30%，但它们总共占据宽度超过了可用空间的 100%，这是因为盒模型的默认行为。当给一个元素设置宽或高的时候，指定的是内容的宽或高，元素的所有内边距、边框都是额外追加到宽度上的。</p>
 <p>最笨的方法是减少其中一列（比如侧边栏）的宽度。但在编程中不推荐魔术数值，因为往往这难以解释一个魔术数值生效原因。如果不理解这个数值是怎么来的，那就不会知道在不同的情况下会产生什么样的结果。替代魔术数值的一个方法是让浏览器帮忙计算，使用 calc() 函数减去内边距、边框、外边距等值，得到刚好 100% 的总和，但还有更好解决办法：修改盒类型。</p>
 <p>用通用选择器选中页面上所有元素，并用两个伪元素选择器选中网页的所有伪元素。但是如果在网页中使用了带样式的第三方组件，就可能会因此破坏其中一些组件的布局，尤其是当第三方组件在开发 CSS 的过程中没有考虑到使用者会修改盒模型时。因为全局设置 border-box 时，使用的通用选择器会选中第三方组件内的每个元素，修改盒模型可能会有问题，所以最终需要写另外的样式将组件内的元素恢复为 content-box。</p>
@@ -358,32 +359,6 @@
               
             </div>
 
-            
-              <!-- Comments -->
-              <article class="comments" id="comments" lazyload>
-                
-                  
-                
-                
-  <div id="valine"></div>
-  <script type="text/javascript">
-    Fluid.utils.loadComments('#valine', function() {
-      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', function() {
-        var options = Object.assign(
-          {"appId":"syQxyJQH6mJ9tVidXW3H8d00-gzGzoHsz","appKey":"CkmQXvhPR7AQJnJEU8kKs00A","placeholder":"说点什么","path":"window.location.pathname","avatar":"retro","meta":["nick","mail","link"],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false,"requiredFields":[]},
-          {
-            el: "#valine",
-            path: window.location.pathname
-          }
-        )
-        new Valine(options);
-      });
-    });
-  </script>
-  <noscript>Please enable JavaScript to view the comments</noscript>
-
-
-              </article>
             
           </article>
         </div>
