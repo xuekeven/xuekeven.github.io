@@ -18,7 +18,7 @@
   <meta name="author" content="Keven">
   <meta name="keywords" content="">
   
-  <title>类数组对象 - Keven&#39;s Blog</title>
+  <title>JavaScript内存泄漏 - Keven&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
 
@@ -187,7 +187,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.2)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="类数组对象">
+            <span class="h2" id="subtitle" title="JavaScript内存泄漏">
               
             </span>
 
@@ -202,8 +202,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-11-08 22:00" pubdate>
-        2021年11月8日
+      <time datetime="2021-11-09 18:00" pubdate>
+        2021年11月9日
       </time>
     </span>
   
@@ -214,7 +214,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      469 字
+      118 字
     </span>
   
 
@@ -224,7 +224,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      5
+      1
        分钟
     </span>
   
@@ -254,14 +254,11 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">类数组对象</h1>
+            <h1 style="display: none">JavaScript内存泄漏</h1>
             
             <div class="markdown-body">
-              <p>类数组对象（伪数组对象）是指可以通过索引属性访问元素并且拥有一个 <code>length</code> 属性的对象。<br>注意，区分可迭代对象。可迭代对象是指实现了<code>[Symbol.iterator]</code>方法属性的对象。<br>可迭代对象和类数组对象并非是相互排斥的。比如，字符串既是可迭代对象又是类数组对象。</p>
-<p>类数组对象有<code>arguments</code>对象、<code>NodeList</code>对象、<code>HTMLCollection</code>对象、<code>DOMTokenList</code>对象、<code>typedArray</code>对象等。</p>
-<h1 id="arguments"><a href="#arguments" class="headerlink" title="arguments"></a>arguments</h1><h1 id="NodeList"><a href="#NodeList" class="headerlink" title="NodeList"></a>NodeList</h1><p>文档的每个节点都有一个 childNodes 属性，指向其所有子节点，其中包含一个 NodeList 的实例。NodeList 是一个类数组对象，可以使用中括号和 item() 方法访问它的值，而且它也有 length 属性。</p>
-<h1 id="HTMLCollection"><a href="#HTMLCollection" class="headerlink" title="HTMLCollection"></a>HTMLCollection</h1><p>getElementsByTagName() 方法接收一个参数，即要获取元素的标签名，返回包含零个或多个元素的 NodeList。在 HTML 文档中，该方法返回 HTMLCollection 对象。可以使用中括号或 item() 方法从 HTMLCollection 取得特定的元素。而取得元素的数量同样可以通过 length 属性得知。HTMLCollection 对象还有一个额外的方法 namedItem()，可通过标签的 name 属性取得某一项的引用。这样，就提供了除索引之外的另一种获取列表项的方式，从而为取得元素提供了便利。对于 name 属性的元素，还可以直接使用中括号来获取。对 HTMLCollection 对象而言，中括号既可以接收数值索引，也可以接收字符串索引。而在后台，数值索引会调用 item()，字符串索引会调用 namedItem()。</p>
-<h1 id="DOMTokenList"><a href="#DOMTokenList" class="headerlink" title="DOMTokenList"></a>DOMTokenList</h1><p>classList 属性返回是一个新的集合类型 DOMTokenList 的实例。与其他 DOM 集合类型一样，DOMTokenList 也有 length 属性表示自己包含多少项，也可以通过 item() 或中括号取得个别的元素。</p>
+              <p>参考：<a target="_blank" rel="noopener" href="https://juejin.cn/post/6947841638118998029">https://juejin.cn/post/6947841638118998029</a> 。</p>
+<p>内存泄漏就是指由于疏忽或者程序的某些错误造成未能释放已经不再使用的内存的情况。简单来讲就是假设某个变量占用 100M 的内存，而你又用不到这个变量，但是这个变量没有被手动的回收或自动回收，即仍然占用 100M 的内存空间，这就是一种内存的浪费，即内存泄漏。</p>
 
             </div>
             <hr>
@@ -281,8 +278,6 @@
                     
                       <a class="hover-with-bg" href="/tags/JavaScript/">JavaScript</a>
                     
-                      <a class="hover-with-bg" href="/tags/Array/">Array</a>
-                    
                   </div>
                 
               </div>
@@ -298,9 +293,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2021/11/09/%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F/">
+                      <a href="/2022/01/25/JavaScript%E8%AF%8D%E6%B3%95%E7%BB%93%E6%9E%84/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">内存泄漏</span>
+                        <span class="hidden-mobile">JavaScript词法结构</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -308,8 +303,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2021/11/06/JavaScript%E4%B9%8BFunction%E6%96%B9%E6%B3%95%E5%B1%9E%E6%80%A7/">
-                        <span class="hidden-mobile">JavaScript之Function方法属性</span>
+                      <a href="/2021/11/08/JavaScript%E7%B1%BB%E6%95%B0%E7%BB%84%E5%AF%B9%E8%B1%A1/">
+                        <span class="hidden-mobile">JavaScript类数组对象</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

@@ -18,7 +18,7 @@
   <meta name="author" content="Keven">
   <meta name="keywords" content="">
   
-  <title>内存泄漏 - Keven&#39;s Blog</title>
+  <title>JavaScript网络请求 - Keven&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
 
@@ -187,7 +187,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.2)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="内存泄漏">
+            <span class="h2" id="subtitle" title="JavaScript网络请求">
               
             </span>
 
@@ -202,8 +202,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-11-09 18:00" pubdate>
-        2021年11月9日
+      <time datetime="2021-10-25 12:00" pubdate>
+        2021年10月25日
       </time>
     </span>
   
@@ -214,7 +214,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      118 字
+      511 字
     </span>
   
 
@@ -224,7 +224,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      1
+      5
        分钟
     </span>
   
@@ -254,11 +254,17 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">内存泄漏</h1>
+            <h1 style="display: none">JavaScript网络请求</h1>
             
             <div class="markdown-body">
-              <p>参考：<a target="_blank" rel="noopener" href="https://juejin.cn/post/6947841638118998029">https://juejin.cn/post/6947841638118998029</a> 。</p>
-<p>内存泄漏就是指由于疏忽或者程序的某些错误造成未能释放已经不再使用的内存的情况。简单来讲就是假设某个变量占用 100M 的内存，而你又用不到这个变量，但是这个变量没有被手动的回收或自动回收，即仍然占用 100M 的内存空间，这就是一种内存的浪费，即内存泄漏。</p>
+              <h1 id="Axios"><a href="#Axios" class="headerlink" title="Axios"></a>Axios</h1><p>Axios 是一个基于 Promise 的 HTTP 库，可以用在浏览器和 node.js 中。</p>
+<p>更多：<a target="_blank" rel="noopener" href="http://axios-js.com/zh-cn/docs">http://axios-js.com/zh-cn/docs</a> 。</p>
+<h1 id="Ajax"><a href="#Ajax" class="headerlink" title="Ajax"></a>Ajax</h1><p>Ajax 即“Asynchronous Javascript And XML”，是指一种创建交互式网页应用的网页开发技术。这是一种用于创建快速动态网页的技术。它可令开发者只向服务器获取数据（而不是图片、HTML 文档等资源），互联网资源的传输变得前所未有的轻量级和纯粹，这激发了广大开发者的创造力，使各式各样功能强大的网络站点和互联网应用如雨后春笋一般冒出，不断带给人惊喜。</p>
+<p>更多：<br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903618764603399">https://juejin.cn/post/6844903618764603399</a> 。<br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903469896171533">https://juejin.cn/post/6844903469896171533</a> 。</p>
+<h1 id="WebSocket"><a href="#WebSocket" class="headerlink" title="WebSocket"></a>WebSocket</h1><p>Web Socket（套接字）的目标是通过一个长时连接实现与服务器全双工、双向的通信。在 JavaScript中创建 Web Socket 时，一个 HTTP 请求会发送到服务器以初始化连接。服务器响应后，连接使用 HTTP的 Upgrade 头部从 HTTP 协议切换到 Web Socket 协议。这意味着 Web Socket 不能通过标准 HTTP 服务器实现，而必须使用支持该协议的专有服务器。</p>
+<p>因为 Web Socket 使用了自定义协议，所以 URL方案（scheme）稍有变化：不能再使用 http://或 https://，而要使用 ws://和 wss://。前者是不安全的连接，后者是安全连接。在指定 Web Socket URL 时，必须包含 URL 方案，因为将来有可能再支持其他方案。</p>
+<p>使用自定义协议而非 HTTP 协议的好处是，客户端与服务器之间可以发送非常少的数据，不会对 HTTP 造成任何负担。使用更小的数据包让 Web Socket 非常适合带宽和延迟问题比较明显的移动应用。但使用自定义协议的缺点是，定义协议的时间比定义 JavaScript API 要长。Web Socket 得到了所有主流浏览器支持。</p>
+<p>更多：<br><a target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2017/05/websocket.html">http://www.ruanyifeng.com/blog/2017/05/websocket.html</a> 。<br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903544978407431">https://juejin.cn/post/6844903544978407431</a> 。</p>
 
             </div>
             <hr>
@@ -278,6 +284,8 @@
                     
                       <a class="hover-with-bg" href="/tags/JavaScript/">JavaScript</a>
                     
+                      <a class="hover-with-bg" href="/tags/%E7%BD%91%E7%BB%9C/">网络</a>
+                    
                   </div>
                 
               </div>
@@ -293,9 +301,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/01/25/JavaScript%E8%AF%8D%E6%B3%95%E7%BB%93%E6%9E%84/">
+                      <a href="/2021/11/01/%E5%B8%B8%E8%A7%81%E7%9A%84%E7%BB%84%E4%BB%B6%E5%BA%93/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">JavaScript词法结构</span>
+                        <span class="hidden-mobile">常见的组件库</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -303,8 +311,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2021/11/08/%E7%B1%BB%E6%95%B0%E7%BB%84%E5%AF%B9%E8%B1%A1/">
-                        <span class="hidden-mobile">类数组对象</span>
+                      <a href="/2021/10/24/Vue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/">
+                        <span class="hidden-mobile">Vue生命周期</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
