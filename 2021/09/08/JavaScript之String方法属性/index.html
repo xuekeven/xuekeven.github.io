@@ -214,7 +214,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      2.9k 字
+      3.8k 字
     </span>
   
 
@@ -224,7 +224,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      34
+      49
        分钟
     </span>
   
@@ -257,23 +257,46 @@
             <h1 style="display: none">JavaScript之String方法属性</h1>
             
             <div class="markdown-body">
-              <p>参考：<br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903927754784781">https://juejin.cn/post/6844903927754784781</a> 。<br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6921593483757092878">https://juejin.cn/post/6921593483757092878</a> 。<br><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String">https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String</a> 。</p>
+              <p>参考：</p>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903927754784781">https://juejin.cn/post/6844903927754784781</a> 。</li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6921593483757092878">https://juejin.cn/post/6921593483757092878</a> 。</li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String">https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String</a> 。</li>
+</ol>
 <h1 id="字符串方法"><a href="#字符串方法" class="headerlink" title="字符串方法"></a>字符串方法</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-built_in">String</span>.raw()<br><span class="hljs-built_in">String</span>.fromCharcode()<br><span class="hljs-built_in">String</span>.fromCodePoint()<br></code></pre></td></tr></table></figure>
-
 <h2 id="String-raw"><a href="#String-raw" class="headerlink" title="String.raw()"></a>String.raw()</h2><p>String.raw() 方法用来获取一个模板字符串的原始字符串。</p>
+<p>接收参数：</p>
+<ul>
+<li>callSite。一个模板字符串的“调用点对象”。类似 <code>&#123; raw: [&#39;foo&#39;, &#39;bar&#39;, &#39;baz&#39;] &#125;</code>。</li>
+<li>substitutions。任意个可选的参数，表示任意个内插表达式对应的值。</li>
+<li>templateString。模板字符串，可包含占位符<code>$&#123;...&#125;</code>。</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-built_in">String</span>.raw<span class="hljs-string">`Hi\n<span class="hljs-subst">$&#123;<span class="hljs-number">2</span>+<span class="hljs-number">3</span>&#125;</span>!`</span>; <span class="hljs-comment">// &#x27;Hi\\n5!&#x27; // Hi 后面的字符不是换行符，\ 和 n 是两个不同的字符</span><br><span class="hljs-keyword">const</span> name = <span class="hljs-string">&quot;Bob&quot;</span>;<br><span class="hljs-built_in">String</span>.raw <span class="hljs-string">`Hi\n<span class="hljs-subst">$&#123;name&#125;</span>!`</span>; <span class="hljs-comment">// &#x27;Hi\\nBob!&#x27;</span><br><span class="hljs-built_in">String</span>.raw(&#123; <span class="hljs-attr">raw</span>: <span class="hljs-string">&#x27;test&#x27;</span> &#125;, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>); <span class="hljs-comment">// &#x27;t0e1s2t&#x27;</span><br><span class="hljs-built_in">String</span>.raw(&#123; <span class="hljs-attr">raw</span>: [<span class="hljs-string">&#x27;foo&#x27;</span>, <span class="hljs-string">&#x27;bar&#x27;</span>, <span class="hljs-string">&#x27;baz&#x27;</span>] &#125;, <span class="hljs-number">2</span> + <span class="hljs-number">3</span>, <span class="hljs-string">&#x27;Java&#x27;</span> + <span class="hljs-string">&#x27;Script&#x27;</span>); <span class="hljs-comment">// &#x27;foo5barJavaScriptbaz&#x27;</span><br></code></pre></td></tr></table></figure>
 <h2 id="String-fromCharcode"><a href="#String-fromCharcode" class="headerlink" title="String.fromCharcode()"></a>String.fromCharcode()</h2><p>String.fromCharCode() 方法返回由指定的 UTF-16 代码单元序列创建的字符串。</p>
+<p>接收参数：</p>
+<ul>
+<li>num1, …, numN。一系列 UTF-16 代码单元的数字。范围介于 0 到 65535（0xFFFF）之间。大于 0xFFFF 的数字将被截断。不进行有效性检查。</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-built_in">String</span>.fromCharCode(<span class="hljs-number">189</span>, <span class="hljs-number">43</span>, <span class="hljs-number">190</span>, <span class="hljs-number">61</span>); <span class="hljs-comment">// &#x27;½+¾=&#x27;</span><br></code></pre></td></tr></table></figure>
 <h2 id="String-fromCodePoint"><a href="#String-fromCodePoint" class="headerlink" title="String.fromCodePoint()"></a>String.fromCodePoint()</h2><p>String.fromCodePoint() 方法返回使用指定的代码点序列创建的字符串。</p>
-<h1 id="字符串实例属性"><a href="#字符串实例属性" class="headerlink" title="字符串实例属性"></a>字符串实例属性</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-built_in">String</span>.prototype.length<br></code></pre></td></tr></table></figure>
+<p>接收参数：</p>
+<ul>
+<li>num1, …, numN。一串 Unicode 编码位置，即“代码点”。</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-built_in">String</span>.fromCodePoint(<span class="hljs-number">9731</span>, <span class="hljs-number">9733</span>, <span class="hljs-number">9842</span>, <span class="hljs-number">0x2F804</span>); <span class="hljs-comment">// &#x27;☃★♲你&#x27;</span><br></code></pre></td></tr></table></figure>
 
+<h1 id="字符串实例属性"><a href="#字符串实例属性" class="headerlink" title="字符串实例属性"></a>字符串实例属性</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-built_in">String</span>.prototype.length<br></code></pre></td></tr></table></figure>
 <h2 id="length-字符串长度"><a href="#length-字符串长度" class="headerlink" title="length 字符串长度"></a>length 字符串长度</h2><p>length 属性表示字符串的长度，不可以设置该属性来改变字符串的长度。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> x = <span class="hljs-string">&quot;Mozilla&quot;</span>;<br><span class="hljs-keyword">const</span> empty = <span class="hljs-string">&quot;&quot;</span>;<br><br><span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;Mozilla is &quot;</span> + x.length + <span class="hljs-string">&quot; code units long&quot;</span>);<br><span class="hljs-comment">// &quot;Mozilla is 7 code units long&quot;</span><br><span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;The empty string is has a length of &quot;</span> + empty.length);<br><span class="hljs-comment">// &quot;The empty string is has a length of 0&quot;</span><br></code></pre></td></tr></table></figure>
+
 <h1 id="字符串实例方法"><a href="#字符串实例方法" class="headerlink" title="字符串实例方法"></a>字符串实例方法</h1><p>字符串实例方法都不会改变原字符串。</p>
 <h2 id="增删改替"><a href="#增删改替" class="headerlink" title="增删改替"></a>增删改替</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-built_in">String</span>.prototype.repeat()<br><span class="hljs-built_in">String</span>.prototype.split()<br><span class="hljs-built_in">String</span>.prototype.slice()<br><span class="hljs-built_in">String</span>.prototype.substring()<br><span class="hljs-built_in">String</span>.prototype.concat()<br><span class="hljs-built_in">String</span>.prototype.replace()<br><span class="hljs-built_in">String</span>.prototype.replaceAll()<br><span class="hljs-built_in">String</span>.prototype.padEnd()<br><span class="hljs-built_in">String</span>.prototype.padStart()<br><span class="hljs-built_in">String</span>.prototype.trim()<br><span class="hljs-built_in">String</span>.prototype.trimEnd()<br><span class="hljs-built_in">String</span>.prototype.trimRight()<br><span class="hljs-built_in">String</span>.prototype.trimStart()<br><span class="hljs-built_in">String</span>.prototype.trimLeft()<br></code></pre></td></tr></table></figure>
-
 <h3 id="repeat-重复"><a href="#repeat-重复" class="headerlink" title="repeat() 重复"></a>repeat() 重复</h3><p>repeat() 方法构造并返回一个新字符串，新字符串包含被连接在一起的指定数量的字符串的副本。</p>
 <p>接收一个参数：</p>
 <ul>
 <li>count（可选）：表示在新构造的字符串中重复多少遍原字符串，默认为 0。</li>
 </ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> str = <span class="hljs-string">&#x27;abcdef&#x27;</span>;<br>str.repeat(); <span class="hljs-comment">// &#x27;&#x27;</span><br>str.repeat(<span class="hljs-number">3</span>); <span class="hljs-comment">// &#x27;abcdefabcdefabcdef&#x27;</span><br></code></pre></td></tr></table></figure>
 <h3 id="split-分割"><a href="#split-分割" class="headerlink" title="split() 分割"></a>split() 分割</h3><p>split() 方法使用指定的分隔符字符串，将调用该方法的字符串分割成子字符串数组并返回。</p>
 <p>接收两个参数：</p>
 <ul>
@@ -281,7 +304,6 @@
 <li>limit（可选）：限定返回的分割片段数量。默认不限定。</li>
 </ul>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> str = <span class="hljs-string">&#x27;a,b,c,de,f&#x27;</span>;<br>str.split(<span class="hljs-string">&#x27;&#x27;</span>); <span class="hljs-comment">// [&#x27;a&#x27;, &#x27;,&#x27;, &#x27;b&#x27;, &#x27;,&#x27;, &#x27;c&#x27;, &#x27;,&#x27;, &#x27;d&#x27;, &#x27;e&#x27;, &#x27;,&#x27;, &#x27;f&#x27;]</span><br>str.split(<span class="hljs-string">&#x27;,&#x27;</span>); <span class="hljs-comment">// [&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;, &#x27;de&#x27;, &#x27;f&#x27;]</span><br>str.split(); <span class="hljs-comment">// [&#x27;a,b,c,de,f&#x27;]</span><br></code></pre></td></tr></table></figure>
-
 <h3 id="slice-提取"><a href="#slice-提取" class="headerlink" title="slice() 提取"></a>slice() 提取</h3><p>slice() 方法提取调用该方法的字符串的一部分并返回。</p>
 <p>接收两个参数：</p>
 <ul>
@@ -289,7 +311,6 @@
 <li>endIndex（可选）：在该索引处前结束提取字符串。默认提取完字符串。接受负值。</li>
 </ul>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> str = <span class="hljs-string">&#x27;aaabbbccc&#x27;</span>;<br>str.slice(<span class="hljs-number">0</span>); <span class="hljs-comment">// &#x27;aaabbbccc&#x27;</span><br>str.slice(<span class="hljs-number">0</span>, <span class="hljs-number">3</span>); <span class="hljs-comment">// &#x27;aaa&#x27;</span><br></code></pre></td></tr></table></figure>
-
 <h3 id="substring-截取"><a href="#substring-截取" class="headerlink" title="substring() 截取"></a>substring() 截取</h3><p>substring() 方法返回一个字符串在开始索引到结束索引之间的一个子集。</p>
 <p>接收两个参数：</p>
 <ul>
@@ -297,14 +318,12 @@
 <li>indexEnd（可选）：在该索引处前结束截取字符串。默认截取完字符串。接受负值。</li>
 </ul>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> anyString = <span class="hljs-string">&quot;Mozilla&quot;</span>;<br><br><span class="hljs-comment">// 输出 &quot;Moz&quot;</span><br>anyString.substring(<span class="hljs-number">0</span>, <span class="hljs-number">3</span>));<br>anyString.substring(<span class="hljs-number">3</span>, <span class="hljs-number">0</span>));<br>anyString.substring(<span class="hljs-number">3</span>, -<span class="hljs-number">3</span>));<br>anyString.substring(<span class="hljs-number">3</span>, <span class="hljs-literal">NaN</span>));<br>anyString.substring(-<span class="hljs-number">2</span>, <span class="hljs-number">3</span>));<br>anyString.substring(<span class="hljs-literal">NaN</span>, <span class="hljs-number">3</span>));<br><br><span class="hljs-comment">// 输出 &quot;lla&quot;</span><br>anyString.substring(<span class="hljs-number">4</span>, <span class="hljs-number">7</span>));<br>anyString.substring(<span class="hljs-number">7</span>, <span class="hljs-number">4</span>));<br><br><span class="hljs-comment">// 输出 &quot;&quot;</span><br>anyString.substring(<span class="hljs-number">4</span>, <span class="hljs-number">4</span>));<br><br><span class="hljs-comment">// 输出 &quot;Mozill&quot;</span><br>anyString.substring(<span class="hljs-number">0</span>, <span class="hljs-number">6</span>));<br><br><span class="hljs-comment">// 输出 &quot;Mozilla&quot;</span><br>anyString.substring(<span class="hljs-number">0</span>, <span class="hljs-number">7</span>));<br>anyString.substring(<span class="hljs-number">0</span>, <span class="hljs-number">10</span>));<br></code></pre></td></tr></table></figure>
-
 <h3 id="concat-合并"><a href="#concat-合并" class="headerlink" title="concat() 合并"></a>concat() 合并</h3><p>concat() 方法将一个或多个字符串与原字符串连接合并，形成一个新的字符串并返回。</p>
 <p>接收参数：</p>
 <ul>
 <li>要合并的字符串。可以是任意多个。</li>
 </ul>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> str = <span class="hljs-string">&#x27;aaa&#x27;</span>;<br>str.concat(<span class="hljs-string">&#x27;bbb&#x27;</span>); <span class="hljs-comment">// &#x27;aaabbb&#x27;</span><br>str.concat(<span class="hljs-string">&#x27;bbb&#x27;</span>, <span class="hljs-string">&#x27;ccc&#x27;</span>); <span class="hljs-comment">// &#x27;aaabbbccc&#x27;</span><br></code></pre></td></tr></table></figure>
-
 <h3 id="replace-替换首个"><a href="#replace-替换首个" class="headerlink" title="replace() 替换首个"></a>replace() 替换首个</h3><p>replace() 方法返回一个由替换值替换第一个模式匹配项后的新字符串。模式可以是一个字符串或者一个正则表达式，替换值可以是一个字符串或者一个每次匹配都要调用的回调函数。</p>
 <p>接收参数：</p>
 <ul>
@@ -313,6 +332,7 @@
 <li>newSubStr：用于替换掉第一个参数在原字符串中的匹配部分的字符串。该字符串中可以内插一些特殊的变量名。</li>
 <li>function：一个用来创建新子字符串的函数，该函数的返回值将替换掉第一个参数匹配到的结果。</li>
 </ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> str = <span class="hljs-string">&#x27;aaa&#x27;</span>;<br><span class="hljs-keyword">const</span> string = <span class="hljs-string">&#x27;Twas the night before Xmas...&#x27;</span>;<br>str.replace(<span class="hljs-string">&#x27;a&#x27;</span>, <span class="hljs-string">&#x27;bbb&#x27;</span>); <span class="hljs-comment">// &#x27;bbbaa&#x27;</span><br>string.replace(<span class="hljs-regexp">/xmas/i</span>, <span class="hljs-string">&#x27;Christmas&#x27;</span>); <span class="hljs-comment">// &#x27;Twas the night before Christmas...&#x27;</span><br></code></pre></td></tr></table></figure>
 <h3 id="replaceAll-替换所有"><a href="#replaceAll-替换所有" class="headerlink" title="replaceAll() 替换所有"></a>replaceAll() 替换所有</h3><p>replaceAll() 方法返回一个由替换值替换所有模式匹配项后的新字符串。模式可以是一个字符串或者一个正则表达式，替换值可以是一个字符串或者一个每次匹配都要调用的回调函数。</p>
 <p>接收参数：</p>
 <ul>
@@ -321,6 +341,7 @@
 <li>newSubStr：用于替换掉第一个参数在原字符串中的匹配部分的字符串。该字符串中可以内插一些特殊的变量名。</li>
 <li>function：一个用来创建新子字符串的函数，该函数的返回值将替换掉第一个参数匹配到的结果。</li>
 </ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> str = <span class="hljs-string">&#x27;aaa&#x27;</span>;<br><span class="hljs-keyword">const</span> p = <span class="hljs-string">&#x27;The fox jumps over the dog. If the dog reacted, was it really lazy?&#x27;</span>;<br><span class="hljs-keyword">const</span> regex = <span class="hljs-regexp">/Dog/ig</span>;<br>str.replaceAll(<span class="hljs-string">&#x27;a&#x27;</span>, <span class="hljs-string">&#x27;bbb&#x27;</span>); <span class="hljs-comment">// &#x27;bbbbbbbbb&#x27;</span><br>p.replaceAll(regex, <span class="hljs-string">&#x27;ferret&#x27;</span>); <span class="hljs-comment">// &#x27;The fox jumps over the ferret. If the ferret reacted, was it really lazy?&#x27;</span><br></code></pre></td></tr></table></figure>
 <h3 id="padEnd-结尾填充"><a href="#padEnd-结尾填充" class="headerlink" title="padEnd() 结尾填充"></a>padEnd() 结尾填充</h3><p>padEnd() 方法用一个字符串从当前字符串的末尾（右侧）开始填充当前字符串，返回填充后字符串。</p>
 <p>接收两个参数：</p>
 <ul>
@@ -328,7 +349,6 @@
 <li>padString （可选）：用于填充的字符串。默认为空格。</li>
 </ul>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> str = <span class="hljs-string">&#x27;aaa&#x27;</span>;<br>str.padEnd(<span class="hljs-number">5</span>); <span class="hljs-comment">// &#x27;aaa  &#x27;</span><br>str.padEnd(<span class="hljs-number">5</span>, <span class="hljs-string">&#x27;s&#x27;</span>); <span class="hljs-comment">// &#x27;aaass&#x27;</span><br>str.padEnd(<span class="hljs-number">5</span>, <span class="hljs-string">&#x27;sssss&#x27;</span>); <span class="hljs-comment">// &#x27;aaass&#x27;</span><br></code></pre></td></tr></table></figure>
-
 <h3 id="padStart-开头填充"><a href="#padStart-开头填充" class="headerlink" title="padStart() 开头填充"></a>padStart() 开头填充</h3><p>padStart() 方法用一个字符串从当前字符串的开头（左侧）开始填充当前字符串，返回填充后字符串。</p>
 <p>接收两个参数：</p>
 <ul>
@@ -336,67 +356,89 @@
 <li>padString （可选）：用于填充的字符串。默认为空格。</li>
 </ul>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> str = <span class="hljs-string">&#x27;aaa&#x27;</span>;<br>str.padStart(<span class="hljs-number">5</span>); <span class="hljs-comment">// &#x27;  aaa&#x27;</span><br>str.padStart(<span class="hljs-number">5</span>, <span class="hljs-string">&#x27;s&#x27;</span>); <span class="hljs-comment">// &#x27;ssaaa&#x27;</span><br>str.padStart(<span class="hljs-number">5</span>, <span class="hljs-string">&#x27;sssss&#x27;</span>); <span class="hljs-comment">// &#x27;ssaaa&#x27;</span><br></code></pre></td></tr></table></figure>
-
 <h3 id="trim-删除空格"><a href="#trim-删除空格" class="headerlink" title="trim() 删除空格"></a>trim() 删除空格</h3><p>trim() 方法会将调用该方法的字符串的两端删除空白字符。</p>
 <h3 id="trimEnd-删除结尾空格"><a href="#trimEnd-删除结尾空格" class="headerlink" title="trimEnd() 删除结尾空格"></a>trimEnd() 删除结尾空格</h3><p>trimEnd() 方法会将调用该方法的字符串的结尾删除空白字符。trimRight() 是此方法的别名。</p>
 <h3 id="trimStart-删除开头空格"><a href="#trimStart-删除开头空格" class="headerlink" title="trimStart() 删除开头空格"></a>trimStart() 删除开头空格</h3><p>trimStart() 方法会将调用该方法的字符串的开头删除空白字符。trimLeft() 是此方法的别名。</p>
 <h2 id="查找返回"><a href="#查找返回" class="headerlink" title="查找返回"></a>查找返回</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-built_in">String</span>.prototype.at()<br><span class="hljs-built_in">String</span>.prototype.charAt()<br><span class="hljs-built_in">String</span>.prototype.indexOf()<br><span class="hljs-built_in">String</span>.prototype.lastIndexOf()<br><span class="hljs-built_in">String</span>.prototype.includes()<br><span class="hljs-built_in">String</span>.prototype.startsWith()<br><span class="hljs-built_in">String</span>.prototype.endsWith()<br><span class="hljs-built_in">String</span>.prototype.match()<br><span class="hljs-built_in">String</span>.prototype.matchAll()<br><span class="hljs-built_in">String</span>.prototype.search()<br><span class="hljs-built_in">String</span>.prototype.charCodeAt()<br><span class="hljs-built_in">String</span>.prototype.codePointAt()<br></code></pre></td></tr></table></figure>
-
-<h3 id="at-查找返回字符"><a href="#at-查找返回字符" class="headerlink" title="at() 查找返回字符"></a>at() 查找返回字符</h3><p>at() 方法用于在字符串中查找给定位置对应的字符，返回该位置处的字符，找不到则返回 undefined。</p>
+<h3 id="at-由位置找元素"><a href="#at-由位置找元素" class="headerlink" title="at() 由位置找元素"></a>at() 由位置找元素</h3><p>at() 方法用于在字符串中查找给定位置对应的字符，返回该位置处的字符，找不到则返回 undefined。</p>
 <p>接收一个参数：</p>
 <ul>
 <li>index（可选）。要查找的字符的位置。接受负值，默认值为 0。<br>（方括号语法只能是正整数且必须给参数）</li>
 </ul>
-<h3 id="charAt-查找返回字符"><a href="#charAt-查找返回字符" class="headerlink" title="charAt() 查找返回字符"></a>charAt() 查找返回字符</h3><p>charAt() 方法用于在字符串中查找给定的一个位置，返回该位置处的字符，找不到则返回空字符串。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> str = <span class="hljs-string">&#x27;abcdefg&#x27;</span>;<br>str.at(<span class="hljs-number">5</span>); <span class="hljs-comment">// &#x27;f&#x27;</span><br>str.at(-<span class="hljs-number">3</span>); <span class="hljs-comment">// &#x27;e&#x27;</span><br>str.charAt(<span class="hljs-number">10</span>); <span class="hljs-comment">// undefined</span><br></code></pre></td></tr></table></figure>
+<h3 id="charAt-由位置找元素"><a href="#charAt-由位置找元素" class="headerlink" title="charAt() 由位置找元素"></a>charAt() 由位置找元素</h3><p>charAt() 方法用于在字符串中查找给定的一个位置，返回该位置处的字符，找不到则返回空字符串。</p>
 <p>接收一个参数：</p>
 <ul>
-<li>index（可选）：要查找的字符的位置。接受负值，默认值为 0。<br>（方括号语法只能是正整数且必须给参数）</li>
+<li>index（可选）：要查找的字符的位置。不接受负值，默认值为 0。<br>（方括号语法只能是正整数且必须给参数）</li>
 </ul>
-<h3 id="indexOf-查找返回位置"><a href="#indexOf-查找返回位置" class="headerlink" title="indexOf() 查找返回位置"></a>indexOf() 查找返回位置</h3><p>indexOf() 方法用于在字符串中查找给定字符串对应的位置，从 fromIndex 位置开始，从前向后搜索，只返回首个满足条件的位置，如果不存在则返回 -1。使用严格相等搜索元素。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> str = <span class="hljs-string">&#x27;abcdefg&#x27;</span>;<br>str.charAt(<span class="hljs-number">5</span>); <span class="hljs-comment">// &#x27;f&#x27;</span><br>str.charAt(-<span class="hljs-number">3</span>); <span class="hljs-comment">// &#x27;&#x27;</span><br>str.charAt(<span class="hljs-number">10</span>); <span class="hljs-comment">// &#x27;&#x27;</span><br></code></pre></td></tr></table></figure>
+<h3 id="indexOf-由元素找位置"><a href="#indexOf-由元素找位置" class="headerlink" title="indexOf() 由元素找位置"></a>indexOf() 由元素找位置</h3><p>indexOf() 方法用于在字符串中查找给定字符串对应的位置，从 fromIndex 位置开始，从前向后搜索，只返回首个满足条件的位置，如果不存在则返回 -1。使用严格相等搜索元素。</p>
 <p>接收两个参数：</p>
 <ul>
 <li>searchValue（必需）：指定要查找的字符串。</li>
 <li>fromIndex（可选）：起始搜索位置。接受负值，默认值为 0。</li>
 </ul>
-<h3 id="lastIndexOf-查找返回位置"><a href="#lastIndexOf-查找返回位置" class="headerlink" title="lastIndexOf() 查找返回位置"></a>lastIndexOf() 查找返回位置</h3><p>lastIndexOf() 方法用于在字符串中查找给定字符串对应的位置，从 fromIndex 位置开始，从后向前搜索，只返回首个满足条件的位置，如果不存在则返回 -1。使用严格相等搜索元素。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> str = <span class="hljs-string">&#x27;abcdefg&#x27;</span>;<br>str.indexOf(<span class="hljs-string">&#x27;a&#x27;</span>); <span class="hljs-comment">// 0</span><br>str.indexOf(<span class="hljs-string">&#x27;fg&#x27;</span>); <span class="hljs-comment">// 5</span><br></code></pre></td></tr></table></figure>
+<h3 id="lastIndexOf-由元素找位置"><a href="#lastIndexOf-由元素找位置" class="headerlink" title="lastIndexOf() 由元素找位置"></a>lastIndexOf() 由元素找位置</h3><p>lastIndexOf() 方法用于在字符串中查找给定字符串对应的位置，从 fromIndex 位置开始，从后向前搜索，只返回首个满足条件的位置，如果不存在则返回 -1。使用严格相等搜索元素。</p>
 <p>接收两个参数：</p>
 <ul>
 <li>searchValue（必需）：指定要查找的字符串。</li>
 <li>fromIndex（可选）：起始搜索位置。接受负值，默认值为 0。</li>
 </ul>
-<h3 id="includes-查找是否包含"><a href="#includes-查找是否包含" class="headerlink" title="includes() 查找是否包含"></a>includes() 查找是否包含</h3><p>includes() 方法用于在字符串中查找给定字符串，从 fromIndex 位置开始，从后向前搜索，返回布尔值，表示是否至少找到一个与指定字符串匹配的项。使用严格相等搜索元素。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> str = <span class="hljs-string">&#x27;abcdefg&#x27;</span>;<br>str.lastIndexOf(<span class="hljs-string">&#x27;a&#x27;</span>); <span class="hljs-comment">// 0</span><br>str.lastIndexOf(<span class="hljs-string">&#x27;fg&#x27;</span>); <span class="hljs-comment">// 5</span><br></code></pre></td></tr></table></figure>
+<h3 id="includes-是否包含元素"><a href="#includes-是否包含元素" class="headerlink" title="includes() 是否包含元素"></a>includes() 是否包含元素</h3><p>includes() 方法用于在字符串中查找给定字符串，从 fromIndex 位置开始，从后向前搜索，返回布尔值，表示是否至少找到一个与指定字符串匹配的项。使用严格相等搜索元素。</p>
 <p>接收两个参数：</p>
 <ul>
 <li>searchString（必需）：要搜索的指定的字符串。</li>
 <li>fromIndex（可选）：起始搜索位置。接受负值，默认值为 0。</li>
 </ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> str = <span class="hljs-string">&#x27;abcdefg&#x27;</span>;<br>str.includes(<span class="hljs-string">&#x27;a&#x27;</span>); <span class="hljs-comment">// true</span><br>str.includes(<span class="hljs-string">&#x27;i&#x27;</span>); <span class="hljs-comment">// false</span><br></code></pre></td></tr></table></figure>
 <h3 id="startsWith-查找是否开头"><a href="#startsWith-查找是否开头" class="headerlink" title="startsWith() 查找是否开头"></a>startsWith() 查找是否开头</h3><p>startsWith() 方法用于判断调用该方法的字符串是否以给定的字符串开头，返回布尔值。</p>
 <p>接收两个参数：</p>
 <ul>
 <li>searchString（必需）：要搜索的字符串。</li>
 <li>position（可选）：起始搜索位置。接受负值，默认值为 0。</li>
 </ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> str = <span class="hljs-string">&#x27;abcdefg&#x27;</span>;<br>str.startsWith(<span class="hljs-string">&#x27;a&#x27;</span>); <span class="hljs-comment">// true</span><br>str.startsWith(<span class="hljs-string">&#x27;i&#x27;</span>); <span class="hljs-comment">// false</span><br></code></pre></td></tr></table></figure>
 <h3 id="endsWith-查找是否结尾"><a href="#endsWith-查找是否结尾" class="headerlink" title="endsWith() 查找是否结尾"></a>endsWith() 查找是否结尾</h3><p>endsWith() 方法用于判断调用该方法的字符串是否以给定的字符串结尾，返回布尔值。</p>
 <p>接收两个参数：</p>
 <ul>
 <li>searchString（必需）：要搜索的字符串。</li>
 <li>position（可选）：起始搜索位置。接受负值，默认值为 0。</li>
 </ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> str = <span class="hljs-string">&#x27;abcdefg&#x27;</span>;<br>str.includes(<span class="hljs-string">&#x27;fg&#x27;</span>); <span class="hljs-comment">// true</span><br>str.lastIndexOf(<span class="hljs-string">&#x27;i&#x27;</span>); <span class="hljs-comment">// false</span><br></code></pre></td></tr></table></figure>
 <h3 id="match"><a href="#match" class="headerlink" title="match()"></a>match()</h3><p>match() 方法检索返回一个字符串匹配正则表达式的结果。</p>
+<p>接收参数：</p>
+<ul>
+<li>regexp。一个正则表达式对象。如果传入一个非正则表达式对象，则会隐式地使用 new RegExp(obj) 将其转换为一个 RegExp 。如果没有给出任何参数并直接使用 match() 方法，将会得到一 个包含空字符串的 [“”] 。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> paragraph = <span class="hljs-string">&#x27;The quick brown fox jumps over the lazy dog. It barked.&#x27;</span>;<br><span class="hljs-keyword">const</span> regex = <span class="hljs-regexp">/[A-Z]/g</span>;<br>paragraph.match(regex); <span class="hljs-comment">// [&quot;T&quot;, &quot;I&quot;]</span><br></code></pre></td></tr></table></figure>
 <h3 id="matchAll"><a href="#matchAll" class="headerlink" title="matchAll()"></a>matchAll()</h3><p>matchAll() 方法检索返回一个包含所有匹配正则表达式的结果及分组捕获组的迭代器。</p>
+<p>接收参数：</p>
+<ul>
+<li>regexp。一个正则表达式对象。如果所传参数不是一个正则表达式对象，则会隐式地使用 new RegExp(obj) 将其转换为一个 RegExp。RegExp必须是设置了全局模式g的形式，否则会抛出异常TypeError。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> regexp = <span class="hljs-regexp">/t(e)(st(\d?))/g</span>;<br><span class="hljs-keyword">const</span> str = <span class="hljs-string">&#x27;test1test2&#x27;</span>;<br><span class="hljs-keyword">const</span> array = [...str.matchAll(regexp)];<br>array[<span class="hljs-number">0</span>]; <span class="hljs-comment">// [&quot;test1&quot;, &quot;e&quot;, &quot;st1&quot;, &quot;1&quot;]</span><br>array[<span class="hljs-number">1</span>]; <span class="hljs-comment">// [&quot;test2&quot;, &quot;e&quot;, &quot;st2&quot;, &quot;2&quot;]</span><br></code></pre></td></tr></table></figure>
 <h3 id="search"><a href="#search" class="headerlink" title="search()"></a>search()</h3><p>search() 方法执行正则表达式和调用该方法的字符串之间的一个搜索匹配。</p>
+<p>接收参数：</p>
+<ul>
+<li>regexp。一个正则表达式对象。如果所传参数不是一个正则表达式对象，则会隐式地使用 new RegExp(obj) 将其转换为一个 RegExp。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> paragraph = <span class="hljs-string">&#x27;The quick brown fox jumps over the lazy dog. If the dog barked, was it really lazy?&#x27;</span>;<br><span class="hljs-keyword">const</span> regex = <span class="hljs-regexp">/[^\w\s]/g</span>;<br>paragraph.search(regex); <span class="hljs-comment">// 43</span><br>paragraph[paragraph.search(regex)]; <span class="hljs-comment">// &quot;.&quot;</span><br></code></pre></td></tr></table></figure>
 <h3 id="charCodeAt-查找返回-UTF-16-代码"><a href="#charCodeAt-查找返回-UTF-16-代码" class="headerlink" title="charCodeAt() 查找返回 UTF-16 代码"></a>charCodeAt() 查找返回 UTF-16 代码</h3><p>charCodeAt() 方法从调用该方法的字符串中返回指定位置的字符的 UTF-16 代码单元。</p>
 <p>接收一个参数：</p>
 <ul>
 <li>index（可选）：要查找的字符的位置。介于 0 到字符串长度减 1 之间，默认为 0。</li>
 </ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> sentence = <span class="hljs-string">&#x27;The quick brown fox jumps over the lazy dog.&#x27;</span>;<br><span class="hljs-keyword">const</span> index = <span class="hljs-number">4</span>;<br><span class="hljs-built_in">console</span>.log(<span class="hljs-string">`The character code <span class="hljs-subst">$&#123;sentence.charCodeAt(index)&#125;</span> is equal to <span class="hljs-subst">$&#123;sentence.charAt(index)&#125;</span>`</span>);<br><span class="hljs-comment">// &quot;The character code 113 is equal to q&quot;</span><br></code></pre></td></tr></table></figure>
 <h3 id="codePointAt-查找返回-Unicode-编码"><a href="#codePointAt-查找返回-Unicode-编码" class="headerlink" title="codePointAt() 查找返回 Unicode 编码"></a>codePointAt() 查找返回 Unicode 编码</h3><p>codePointAt() 方法从调用该方法的字符串中返回指定位置的字符的 Unicode 编码点值的非负整数。</p>
 <p>接收一个参数：</p>
 <ul>
 <li>pos（可选）：要查找的字符的位置。介于 0 到字符串长度减 1 之间，默认为 0。</li>
 </ul>
-<h2 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-built_in">String</span>.prototype.toLowerCase()<br><span class="hljs-built_in">String</span>.prototype.toUpperCase()<br><span class="hljs-built_in">String</span>.prototype.toLocaleLowerCase()<br><span class="hljs-built_in">String</span>.prototype.toLocaleUpperCase()<br><span class="hljs-built_in">String</span>.prototype.localeCompare()<br><span class="hljs-built_in">String</span>.prototype.normalize()<br><span class="hljs-built_in">String</span>.prototype.valueOf()<br><span class="hljs-built_in">String</span>.prototype.toString()<br></code></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-string">&#x27;ABC&#x27;</span>.codePointAt(<span class="hljs-number">1</span>);          <span class="hljs-comment">// 66</span><br><span class="hljs-string">&#x27;\uD800\uDC00&#x27;</span>.codePointAt(<span class="hljs-number">0</span>); <span class="hljs-comment">// 65536</span><br><span class="hljs-string">&#x27;XYZ&#x27;</span>.codePointAt(<span class="hljs-number">42</span>); <span class="hljs-comment">// undefined</span><br></code></pre></td></tr></table></figure>
 
+<h2 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-built_in">String</span>.prototype.toLowerCase()<br><span class="hljs-built_in">String</span>.prototype.toUpperCase()<br><span class="hljs-built_in">String</span>.prototype.toLocaleLowerCase()<br><span class="hljs-built_in">String</span>.prototype.toLocaleUpperCase()<br><span class="hljs-built_in">String</span>.prototype.localeCompare()<br><span class="hljs-built_in">String</span>.prototype.normalize()<br><span class="hljs-built_in">String</span>.prototype.valueOf()<br><span class="hljs-built_in">String</span>.prototype.toString()<br></code></pre></td></tr></table></figure>
 <h3 id="toLowerCase-转小写"><a href="#toLowerCase-转小写" class="headerlink" title="toLowerCase() 转小写"></a>toLowerCase() 转小写</h3><p>toLowerCase() 方法会将调用该方法的字符串的每个字母都转为小写形式并返回。<br>（如果调用该方法的值不是字符串类型会被强制转换）</p>
 <h3 id="toUpperCase-转大写"><a href="#toUpperCase-转大写" class="headerlink" title="toUpperCase() 转大写"></a>toUpperCase() 转大写</h3><p>toUpperCase() 方法会将调用该方法的字符串的每个字母都转为大写形式并返回。<br>（如果调用该方法的值不是字符串类型会被强制转换）</p>
 <h3 id="toLocaleLowerCase-转本地小写"><a href="#toLocaleLowerCase-转本地小写" class="headerlink" title="toLocaleLowerCase() 转本地小写"></a>toLocaleLowerCase() 转本地小写</h3><p>toLocaleLowerCase() 方法根据本地主机语言环境把字符串转换为小写格式并返回。</p>
