@@ -18,7 +18,7 @@
   <meta name="author" content="Keven">
   <meta name="keywords" content="">
   
-  <title>Vue生命周期 - Keven&#39;s Blog</title>
+  <title>React Hook - Keven&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
 
@@ -187,7 +187,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.2)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="Vue生命周期">
+            <span class="h2" id="subtitle" title="React Hook">
               
             </span>
 
@@ -202,8 +202,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-10-24 12:00" pubdate>
-        2021年10月24日
+      <time datetime="2022-12-03 22:00" pubdate>
+        2022年12月3日
       </time>
     </span>
   
@@ -214,7 +214,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.3k 字
+      994 字
     </span>
   
 
@@ -224,7 +224,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      14
+      11
        分钟
     </span>
   
@@ -254,95 +254,25 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Vue生命周期</h1>
+            <h1 style="display: none">React Hook</h1>
             
             <div class="markdown-body">
-              <p>参考：<br><a target="_blank" rel="noopener" href="https://www.nowcoder.com/discuss/693647?channel=-1&amp;source_id=profile_follow_post_nctrack">https://www.nowcoder.com/discuss/693647?channel=-1&amp;source_id=profile_follow_post_nctrack</a> 。<br><a target="_blank" rel="noopener" href="https://cn.vuejs.org/v2/api/#%E9%80%89%E9%A1%B9-%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E9%92%A9%E5%AD%90">https://cn.vuejs.org/v2/api/#选项-生命周期钩子</a> 。<br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904113914773518">https://juejin.cn/post/6844904113914773518</a> 。<br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903780736040973">https://juejin.cn/post/6844903780736040973</a> 。<br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904114879463437">https://juejin.cn/post/6844904114879463437</a> 。</p>
-<h1 id="图片分析"><a href="#图片分析" class="headerlink" title="图片分析"></a>图片分析</h1><p><img src="/images/VueLifeCycle.png" srcset="/img/loading.gif" lazyload alt="VueLifeCycle"></p>
-<p><img src="/images/Vue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E5%88%86%E6%9E%90.png" srcset="/img/loading.gif" lazyload alt="Vue生命周期分析"></p>
-<h1 id="文字详解"><a href="#文字详解" class="headerlink" title="文字详解"></a>文字详解</h1><h2 id="大纲"><a href="#大纲" class="headerlink" title="大纲"></a>大纲</h2><p>（activated、deactivated 是组件使用 keep-alive 时独有的钩子）</p>
-<ul>
-<li>beforeCreate（初始化界面前）</li>
-<li>created（初始化界面后）</li>
-<li>beforeMount（渲染 DOM 前）</li>
-<li>mounted（渲染 DOM 后）</li>
-<li>beforeUpdate（更新数据前）</li>
-<li>updated（更新数据后）</li>
-<li>activated（组件激活时）</li>
-<li>deactivated（组件失活时）</li>
-<li>beforeDestroy（卸载组件前）</li>
-<li>destroyed（卸载组件后）</li>
-<li>errorCaptured（组件出错时）</li>
-</ul>
-<h2 id="简洁版"><a href="#简洁版" class="headerlink" title="简洁版"></a>简洁版</h2><table>
-<thead>
-<tr>
-<th align="center">生命周期</th>
-<th align="center">描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">beforeCreate</td>
-<td align="center">组件实例仅被初始化，组件数据未生效</td>
-</tr>
-<tr>
-<td align="center">created</td>
-<td align="center">组件实例已创建，数据已绑定生效，但真实DOM还没有生成，$el不可用</td>
-</tr>
-<tr>
-<td align="center">beforeMount</td>
-<td align="center">虚拟DOM已创建完成，在数据渲染前最后一次更改数据</td>
-</tr>
-<tr>
-<td align="center">mounted</td>
-<td align="center">el被新创建的vm.$el替换，真实DOM挂载完成，页面、数据渲染完成</td>
-</tr>
-<tr>
-<td align="center">beforeUpdate</td>
-<td align="center">组件数据更新之前，发生在虚拟DOM打补丁之前调用该钩子</td>
-</tr>
-<tr>
-<td align="center">updated</td>
-<td align="center">组件数据更新之后调用该钩子</td>
-</tr>
-<tr>
-<td align="center">activated</td>
-<td align="center">keep-alive专属，组件激活时调用该钩子</td>
-</tr>
-<tr>
-<td align="center">deactivated</td>
-<td align="center">keep-alive专属，组件失活时调用该钩子</td>
-</tr>
-<tr>
-<td align="center">beforeDestroy</td>
-<td align="center">组件销毁前调用该钩子</td>
-</tr>
-<tr>
-<td align="center">destroyed</td>
-<td align="center">组件销毁后调用该钩子</td>
-</tr>
-</tbody></table>
-<h2 id="详细版"><a href="#详细版" class="headerlink" title="详细版"></a>详细版</h2><h3 id="beforeCreate"><a href="#beforeCreate" class="headerlink" title="beforeCreate"></a>beforeCreate</h3><p>在实例初始化后，进行数据侦听（data observer）和事件/侦听器（event/watcher）的配置之前同步调用。</p>
-<h3 id="created"><a href="#created" class="headerlink" title="created"></a>created</h3><p>在实例创建完成后被调用。在这一步中，实例已完成对选项的处理，意味着以下内容已被配置完毕：<br>数据侦听（data observer）、计算属性（computed）、方法（methods）、事件/侦听器（event/watcher）的回调函数。然而，挂载阶段还没开始，且<code>$el</code>property目前尚不可用。</p>
-<h3 id="beforeMount"><a href="#beforeMount" class="headerlink" title="beforeMount"></a>beforeMount</h3><p>在挂载开始之前被调用：相关的<code>render</code>函数首次被调用。 <strong>该钩子在服务器端渲染期间不被调用。</strong></p>
-<h3 id="mounted"><a href="#mounted" class="headerlink" title="mounted"></a>mounted</h3><p>实例被挂载后调用，这时<code>el</code>被新创建的<code>vm.$el</code>替换了。如果根实例挂载到了一个文档内的元素上，当<code>mounted</code>被调用时<code>vm.$el</code>也在文档内。 <strong>该钩子在服务器端渲染期间不被调用。</strong></p>
-<p>注意<code>mounted</code>不会保证所有的子组件也都被挂载完成。如果希望等到整个视图都渲染完毕再执行某些操作，可以在<code>mounted</code>内部使用<code>vm.$nextTick</code>：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js">mounted: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">this</span>.$nextTick(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;<br>    <span class="hljs-comment">// 仅在整个视图都被渲染之后才会运行的代码</span><br>  &#125;)<br>&#125;<br></code></pre></td></tr></table></figure>
+              <h1 id="useCallback"><a href="#useCallback" class="headerlink" title="useCallback"></a>useCallback</h1><p>参考：<a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904101445124110">https://juejin.cn/post/6844904101445124110</a> 。<br>Demo：<a target="_blank" rel="noopener" href="https://github.com/xuekeven/learn-react/blob/main/src/hook/useCallBack/index.tsx">https://github.com/xuekeven/learn-react/blob/main/src/hook/useCallBack/index.tsx</a> .</p>
+<h2 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h2><p>简单来说就是传递一个返回的函数和依赖项，只有在依赖项发生变化的时候才会更新（返回一个新的函数），否则返回的原函数不变。</p>
+<h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><p>不要把所有的方法都包上 useCallback。useCallback 是要配合子组件的 shouldComponentUpdate 或者 React.memo 一起来使用的，否则就是反向优化。</p>
+<p>组件重新渲染时，useCallback 里面的函数也会声明一个新的函数，并被传入到 useCallback 中，尽管这个新的函数有可能因为依赖项没有发生改变不会被返回到定义的变量上。那么在这种情况下，它返回新的函数和老的函数也都一样，如果子组件没有使用 shouldComponentUpdate 或 React.memo，子组件都会被重新渲染，这时使用 useCallback 后每次执行到这里内部要要比对依赖项是否变化，还要存一下之前的函数，消耗更大了。</p>
+<h1 id="useMemo"><a href="#useMemo" class="headerlink" title="useMemo"></a>useMemo</h1><p>参考：<a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904101445124110">https://juejin.cn/post/6844904101445124110</a> 。<br>Demo：<a target="_blank" rel="noopener" href="https://github.com/xuekeven/learn-react/blob/main/src/hook/useMemo/index.tsx">https://github.com/xuekeven/learn-react/blob/main/src/hook/useMemo/index.tsx</a> .</p>
+<h2 id="作用-1"><a href="#作用-1" class="headerlink" title="作用"></a>作用</h2><p>简单来说就是传递一个创建函数和依赖项，创建函数需要返回一个值，只有在依赖项发生改变的时候，才会重新调用此函数返回一个新的值，否则返回的原值不变。</p>
+<p>useMemo 与 useCallback 很像，根据 useCallback 可以想到 useMemo 也能针对传入子组件的值进行缓存优化。</p>
+<h2 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h2><p>可以把一些昂贵的计算逻辑放到 useMemo 中，只有当依赖值发生改变的时候才去更新。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> num = useMemo(<span class="hljs-function">() =&gt;</span> &#123;<br>  <span class="hljs-keyword">let</span> num = <span class="hljs-number">0</span>;<br>  <span class="hljs-comment">// 这里使用 count 针对 num 做一些很复杂的计算，</span><br>  <span class="hljs-comment">// 当 count 没改变的时候，组件重新渲染就会直接返回之前缓存的值。</span><br>  <span class="hljs-keyword">return</span> num;<br>&#125;, [count]);<br><br><span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>&#123;num&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
 
-<h3 id="beforeUpdate"><a href="#beforeUpdate" class="headerlink" title="beforeUpdate"></a>beforeUpdate</h3><p>在数据发生改变后，DOM 被更新之前被调用。这里适合在现有 DOM 将要被更新之前访问它，比如移除手动添加的事件监听器。 <strong>该钩子在服务器端渲染期间不被调用，因为只有初次渲染会在服务器端进行。</strong></p>
-<h3 id="updated"><a href="#updated" class="headerlink" title="updated"></a>updated</h3><p>在数据更改导致的虚拟 DOM 重新渲染和更新完毕之后被调用。当这个钩子被调用，组件 DOM 已经更新，所以现在可以执行依赖于 DOM 的操作。然而在大多数情况下，你应该避免在此期间更改状态。如果要相应状态改变，通常最好使用 computed 或 watcher 取而代之。 <strong>该钩子在服务器端渲染期间不被调用。</strong></p>
-<p>注意<code>updated</code>不会保证所有的子组件也都被重新渲染完毕。如果希望等到整个视图都渲染完毕，可以在<code>updated</code>内部使用<code>vm.$nextTick</code>：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js">updated: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">this</span>.$nextTick(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;<br>    <span class="hljs-comment">// 仅在整个视图都被渲染之后才会运行的代码</span><br>  &#125;)<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>事实上在使用中 useMemo 的场景远比 useCallback 要广泛的很多，我们可以将 useMemo 的返回值定义为返回一个函数这样就可以变通的实现了 useCallback。在开发中当我们有部分变量改变时会影响到多个地方的更新那我们就可以返回一个对象或者数组，通过解构赋值的方式来实现同时对多个数据的缓存。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> [age, followUser] = useMemo(<span class="hljs-function">() =&gt;</span> &#123;<br>  <span class="hljs-keyword">return</span> [<br>    <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>().getFullYear() - userInfo.birth, <span class="hljs-comment">// 根据生日计算年龄</span><br>    <span class="hljs-keyword">async</span> () =&gt; &#123; <span class="hljs-comment">// 关注用户</span><br>      <span class="hljs-keyword">await</span> request(<span class="hljs-string">&#x27;/follow&#x27;</span>, &#123; <span class="hljs-attr">uid</span>: userInfo.id &#125;);<br>      <span class="hljs-comment">// ...</span><br>    &#125;<br>  ];<br>&#125;, [userInfo]);<br><br><span class="hljs-keyword">return</span> (<br>  <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span></span><br><span class="xml">    <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>name: &#123;userInfo.name&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span></span><br><span class="xml">    <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>age: &#123;age&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span></span><br><span class="xml">    <span class="hljs-tag">&lt;<span class="hljs-name">Card</span> <span class="hljs-attr">followUser</span>=<span class="hljs-string">&#123;followUser&#125;/</span>&gt;</span></span><br><span class="xml">    &#123;</span><br><span class="xml">      useMemo(() =&gt; (</span><br><span class="xml">        // 如果 Card1 组件内部没有使用 React.memo 函数，那还可以通过这种方式在父组件减少子组件的渲染</span><br><span class="xml">        <span class="hljs-tag">&lt;<span class="hljs-name">Card1</span> <span class="hljs-attr">followUser</span>=<span class="hljs-string">&#123;followUser&#125;/</span>&gt;</span></span><br><span class="xml">      ), [followUser])</span><br><span class="xml">    &#125;</span><br><span class="xml">  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br>)<br></code></pre></td></tr></table></figure>
 
-<h3 id="activated"><a href="#activated" class="headerlink" title="activated"></a>activated</h3><p>被 keep-alive 缓存的组件激活时调用。 <strong>该钩子在服务器端渲染期间不被调用。</strong></p>
-<h3 id="deactivated"><a href="#deactivated" class="headerlink" title="deactivated"></a>deactivated</h3><p>被 keep-alive 缓存的组件失活时调用。 <strong>该钩子在服务器端渲染期间不被调用。</strong></p>
-<h3 id="beforeDestroy"><a href="#beforeDestroy" class="headerlink" title="beforeDestroy"></a>beforeDestroy</h3><p>实例销毁之前调用。在这一步，实例仍然完全可用。 <strong>该钩子在服务器端渲染期间不被调用。</strong></p>
-<h3 id="destroyed"><a href="#destroyed" class="headerlink" title="destroyed"></a>destroyed</h3><p>实例销毁后调用。该钩子被调用后，对应 Vue 实例的所有指令都被解绑，所有的事件监听器被移除，所有的子实例也都被销毁。 <strong>该钩子在服务器端渲染期间不被调用。</strong></p>
-<h3 id="errorCaptured"><a href="#errorCaptured" class="headerlink" title="errorCaptured"></a>errorCaptured</h3><p>在捕获一个来自后代组件的错误时被调用。此钩子会收到三个参数：错误对象、发生错误的组件实例、一个包含错误来源信息的字符串。此钩子可以返回<code>false</code>以阻止该错误继续向上传播。</p>
-<h1 id="父子组件"><a href="#父子组件" class="headerlink" title="父子组件"></a>父子组件</h1><p>当父子组件嵌套时，父组件和子组件各拥有各自独立的钩子函数，这些父子组件的这些钩子是如何交融执行，且执行顺序又是怎样的呢？</p>
-<h2 id="加载渲染过程"><a href="#加载渲染过程" class="headerlink" title="加载渲染过程"></a>加载渲染过程</h2><p>父beforeCreate-&gt;父created-&gt;父beforeMount-&gt;子beforeCreate-&gt;子created-&gt;子beforeMount-&gt;<br>子mounted-&gt;父mounted</p>
-<h2 id="更新过程"><a href="#更新过程" class="headerlink" title="更新过程"></a>更新过程</h2><p>父beforeUpdate-&gt;子beforeUpdate-&gt;子updated-&gt;父updated</p>
-<h2 id="销毁过程"><a href="#销毁过程" class="headerlink" title="销毁过程"></a>销毁过程</h2><p>父beforeDestroy-&gt;子beforeDestroy-&gt;子destroyed-&gt;父destroyed</p>
+<h1 id="useCallback-和-useMemo"><a href="#useCallback-和-useMemo" class="headerlink" title="useCallback 和 useMemo"></a>useCallback 和 useMemo</h1><p>useCallback 与 useMemo 一个缓存的是函数，一个缓存的是函数的返回值。<br>useCallback 是来优化子组件的，防止子组件的重复渲染。useMemo 可以优化当前组件也可以优化子组件，优化当前组件主要是通过 memoize 来将一些复杂的计算逻辑进行缓存。当然如果只是进行一些简单的计算也没必要使用 useMemo，这里可以考虑一些计算的性能消耗和比较依赖项的性能消耗来做一个权衡。</p>
+<p>参考：<a target="_blank" rel="noopener" href="https://juejin.cn/post/7104436526494253087">https://juejin.cn/post/7104436526494253087</a> 。</p>
+<p>但是，关于是否使用这些，或许可以用一句话来总结：<br>如果没有性能瓶颈，那就建议不用，大部分项目你可能并不需要考虑以阻止 React 的渲染来提高性能 ———— 甚至可以说如果你不能保证收获比成本大的“多”，那就尽量不用。<br>其实这上面这句话也藏着性能优化的原则之一：不要过早优化。</p>
 
             </div>
             <hr>
@@ -354,7 +284,7 @@
                     
                       <a class="hover-with-bg" href="/categories/%E6%A1%86%E6%9E%B6%E6%A8%A1%E5%9D%97/">框架模块</a>
                     
-                      <a class="hover-with-bg" href="/categories/%E6%A1%86%E6%9E%B6%E6%A8%A1%E5%9D%97/Vue/">Vue</a>
+                      <a class="hover-with-bg" href="/categories/%E6%A1%86%E6%9E%B6%E6%A8%A1%E5%9D%97/React/">React</a>
                     
                   </div>
                 
@@ -362,7 +292,7 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/Vue/">Vue</a>
+                      <a class="hover-with-bg" href="/tags/React/">React</a>
                     
                   </div>
                 
@@ -379,9 +309,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2021/10/25/JavaScript%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82/">
+                      <a href="/2022/12/04/React%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">JavaScript网络请求</span>
+                        <span class="hidden-mobile">React生命周期</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -389,8 +319,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2021/10/15/%E7%99%BB%E5%BD%95%E8%AE%A4%E8%AF%81/">
-                        <span class="hidden-mobile">登录认证</span>
+                      <a href="/2022/10/24/JavaScript%E7%9F%A5%E8%AF%86/">
+                        <span class="hidden-mobile">JavaScript知识</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
