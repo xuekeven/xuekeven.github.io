@@ -327,19 +327,15 @@
 <h3 id="replace-替换首个"><a href="#replace-替换首个" class="headerlink" title="replace() 替换首个"></a>replace() 替换首个</h3><p>replace() 方法返回一个由替换值替换第一个模式匹配项后的新字符串。模式可以是一个字符串或者一个正则表达式，替换值可以是一个字符串或者一个每次匹配都要调用的回调函数。</p>
 <p>接收参数：</p>
 <ul>
-<li>regexp：一个 RegExp 对象或者其字面量。该正则所匹配的内容会被第二个参数的返回值替换掉。</li>
-<li>substr：一个将被 newSubStr 替换的字符串。其被视为一整个字符串，而不是一个正则表达式。仅首个匹配项会被替换。</li>
-<li>newSubStr：用于替换掉第一个参数在原字符串中的匹配部分的字符串。该字符串中可以内插一些特殊的变量名。</li>
-<li>function：一个用来创建新子字符串的函数，该函数的返回值将替换掉第一个参数匹配到的结果。</li>
+<li>regexp | substr：regexp指一个 RegExp 对象或者其字面量。该正则所匹配的内容会被第二个参数的返回值替换掉。substr指一个将被 newSubStr 替换的字符串。其被视为一整个字符串，而不是一个正则表达式。</li>
+<li>newSubStr | function：newSubStr指用于替换掉第一个参数在原字符串中的匹配部分的字符串。该字符串中可以内插一些特殊的变量名。function指一个用来创建新子字符串的函数，该函数的返回值将替换掉第一个参数匹配到的结果。</li>
 </ul>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> str = <span class="hljs-string">&#x27;aaa&#x27;</span>;<br><span class="hljs-keyword">const</span> string = <span class="hljs-string">&#x27;Twas the night before Xmas...&#x27;</span>;<br>str.replace(<span class="hljs-string">&#x27;a&#x27;</span>, <span class="hljs-string">&#x27;bbb&#x27;</span>); <span class="hljs-comment">// &#x27;bbbaa&#x27;</span><br>string.replace(<span class="hljs-regexp">/xmas/i</span>, <span class="hljs-string">&#x27;Christmas&#x27;</span>); <span class="hljs-comment">// &#x27;Twas the night before Christmas...&#x27;</span><br></code></pre></td></tr></table></figure>
 <h3 id="replaceAll-替换所有"><a href="#replaceAll-替换所有" class="headerlink" title="replaceAll() 替换所有"></a>replaceAll() 替换所有</h3><p>replaceAll() 方法返回一个由替换值替换所有模式匹配项后的新字符串。模式可以是一个字符串或者一个正则表达式，替换值可以是一个字符串或者一个每次匹配都要调用的回调函数。</p>
 <p>接收参数：</p>
 <ul>
-<li>regexp：一个 RegExp 对象或者其字面量。该正则所匹配的内容会被第二个参数的返回值替换掉。</li>
-<li>substr：一个将被 newSubStr 替换的字符串。其被视为一整个字符串，而不是一个正则表达式。</li>
-<li>newSubStr：用于替换掉第一个参数在原字符串中的匹配部分的字符串。该字符串中可以内插一些特殊的变量名。</li>
-<li>function：一个用来创建新子字符串的函数，该函数的返回值将替换掉第一个参数匹配到的结果。</li>
+<li>regexp | substr：regexp指一个 RegExp 对象或者其字面量。该正则所匹配的内容会被第二个参数的返回值替换掉。substr指一个将被 newSubStr 替换的字符串。其被视为一整个字符串，而不是一个正则表达式。</li>
+<li>newSubStr | function：newSubStr指用于替换掉第一个参数在原字符串中的匹配部分的字符串。该字符串中可以内插一些特殊的变量名。function指一个用来创建新子字符串的函数，该函数的返回值将替换掉第一个参数匹配到的结果。</li>
 </ul>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> str = <span class="hljs-string">&#x27;aaa&#x27;</span>;<br><span class="hljs-keyword">const</span> p = <span class="hljs-string">&#x27;The fox jumps over the dog. If the dog reacted, was it really lazy?&#x27;</span>;<br><span class="hljs-keyword">const</span> regex = <span class="hljs-regexp">/Dog/ig</span>;<br>str.replaceAll(<span class="hljs-string">&#x27;a&#x27;</span>, <span class="hljs-string">&#x27;bbb&#x27;</span>); <span class="hljs-comment">// &#x27;bbbbbbbbb&#x27;</span><br>p.replaceAll(regex, <span class="hljs-string">&#x27;ferret&#x27;</span>); <span class="hljs-comment">// &#x27;The fox jumps over the ferret. If the ferret reacted, was it really lazy?&#x27;</span><br></code></pre></td></tr></table></figure>
 <h3 id="padEnd-结尾填充"><a href="#padEnd-结尾填充" class="headerlink" title="padEnd() 结尾填充"></a>padEnd() 结尾填充</h3><p>padEnd() 方法用一个字符串从当前字符串的末尾（右侧）开始填充当前字符串，返回填充后字符串。</p>
