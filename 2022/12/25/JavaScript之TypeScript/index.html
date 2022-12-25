@@ -1,0 +1,537 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="Keven">
+  <meta name="keywords" content="">
+  
+  <title>JavaScript之JavaScript - Keven&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":60,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"siteId=16939915","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 50vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Keven's Blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/dome/">
+                <i class="iconfont icon-th-large"></i>
+                Dome
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tools/">
+                <i class="iconfont icon-briefcase"></i>
+                工具
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/example.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.2)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="JavaScript之JavaScript">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-author" aria-hidden="true"></i>
+      Keven
+    </span>
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-12-25 23:00" pubdate>
+        2022年12月25日
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      826 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      11
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">JavaScript之JavaScript</h1>
+            
+            <div class="markdown-body">
+              <h1 id="原始数据类型"><a href="#原始数据类型" class="headerlink" title="原始数据类型"></a>原始数据类型</h1><p>JS 的数据类型两大类：原始数据类型和对象数据类型。</p>
+<p>原始数据类型共七种：<code>Null</code>、<code>Undefined</code>、<code>Boolean</code>、<code>Number</code>、<code>String</code>、<code>Symbol</code>、<code>BigInt</code>。</p>
+<p>这里主要介绍前五种原始数据类型在 TS 中的应用。</p>
+<h2 id="布尔值"><a href="#布尔值" class="headerlink" title="布尔值"></a>布尔值</h2><p>使用 boolean 来定义布尔值类型。直接调用 <code>Boolean()</code> 返回<code>Boolean</code>类型。但是，使用构造函数 <code>new Boolean()</code> 创造的对象不是布尔值，而是 Boolean <strong>对象</strong>。</p>
+<p>这方面来说，其他类型的构造函数同理（除 null 和 undefined）。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> isDone: boolean = <span class="hljs-literal">false</span><br><span class="hljs-keyword">let</span> createdByBoolean: boolean = <span class="hljs-built_in">Boolean</span>(<span class="hljs-number">1</span>)<br><span class="hljs-keyword">let</span> createdBynewBoolean: boolean = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Boolean</span>(<span class="hljs-number">1</span>) <span class="hljs-comment">// Type &#x27;Boolean&#x27; is not assignable to type &#x27;boolean&#x27;</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="数值"><a href="#数值" class="headerlink" title="数值"></a>数值</h2><p>使用 number 来定义数值类型。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> decLiteral: number = <span class="hljs-number">6</span><br><span class="hljs-keyword">let</span> hexLiteral: number = <span class="hljs-number">0xf00d</span>     <span class="hljs-comment">// ES6 中的二进制表示法，会被编译为十进制数字。</span><br><span class="hljs-keyword">let</span> binaryLinteral: number = <span class="hljs-number">0b1010</span> <span class="hljs-comment">// ES6 中的八进制表示法，会被编译为十进制数字。</span><br><span class="hljs-keyword">let</span> octalLiteral: number = <span class="hljs-number">0o744</span><br><span class="hljs-keyword">let</span> notANumber: number = <span class="hljs-literal">NaN</span><br><span class="hljs-keyword">let</span> infinityNumber: number = <span class="hljs-literal">Infinity</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><p>使用 string 来定义字符串类型。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> myName: string = <span class="hljs-string">&#x27;Tom&#x27;</span><br><span class="hljs-keyword">let</span> myAge: number = <span class="hljs-number">25</span><br><span class="hljs-keyword">let</span> sentence: string = <span class="hljs-string">`Hello, I am <span class="hljs-subst">$&#123;myName&#125;</span>.I will be <span class="hljs-subst">$&#123;myAge + <span class="hljs-number">1</span>&#125;</span> years old tomorrow.`</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="空值"><a href="#空值" class="headerlink" title="空值"></a>空值</h2><p>JS 中没有空值（Void）的概念，在 TS 中可用 void 表示没有任何返回值的函数。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">alertName</span>(<span class="hljs-params"></span>): <span class="hljs-title">void</span> </span>&#123;<br>  alert(<span class="hljs-string">&#x27;Now is alerting!&#x27;</span>)<br>&#125;<br><span class="hljs-keyword">let</span> unusable: <span class="hljs-keyword">void</span> = <span class="hljs-literal">undefined</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="Null和Undefined"><a href="#Null和Undefined" class="headerlink" title="Null和Undefined"></a><code>Null</code>和<code>Undefined</code></h2><p>使用 null 和 Undefined 来定义这两个类型。</p>
+<p>void、null 和 undefined， 这三个类型的变量，都不能赋值给其他类型的变量。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> u: <span class="hljs-literal">undefined</span> = <span class="hljs-literal">undefined</span><br><span class="hljs-keyword">let</span> n: <span class="hljs-literal">null</span> = <span class="hljs-literal">null</span><br><span class="hljs-keyword">let</span> v: <span class="hljs-keyword">void</span><br><span class="hljs-keyword">let</span> num: number = <span class="hljs-literal">undefined</span><br><span class="hljs-keyword">let</span> num1: number = u <span class="hljs-comment">// Type &#x27;undefined&#x27; is not assignable to type &#x27;number&#x27;</span><br><span class="hljs-keyword">let</span> num2: number = n <span class="hljs-comment">// Type &#x27;null&#x27; is not assignable to type &#x27;number&#x27;</span><br><span class="hljs-keyword">let</span> num4: number = v <span class="hljs-comment">// Type &#x27;void&#x27; is not assignable to type &#x27;number&#x27;</span><br></code></pre></td></tr></table></figure>
+
+<h1 id="任意值"><a href="#任意值" class="headerlink" title="任意值"></a>任意值</h1><p>任意值用来表示允许赋值为任意类型。</p>
+<h2 id="什么是任意值类型"><a href="#什么是任意值类型" class="headerlink" title="什么是任意值类型"></a>什么是任意值类型</h2><p>如果是普通类型，在赋值过程中改变类型是不被允许的。如果是 any 类型，则允许被赋值为任意类型。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> myNum1: string = <span class="hljs-string">&#x27;seven&#x27;</span><br><span class="hljs-keyword">let</span> myNum2: any = <span class="hljs-string">&#x27;seven&#x27;</span><br>myNum1 = <span class="hljs-number">7</span> <span class="hljs-comment">// error TS2322: Type &#x27;number&#x27; is not assignable to type &#x27;string&#x27;</span><br>myNum2 = <span class="hljs-number">7</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="任意值的属性和方法"><a href="#任意值的属性和方法" class="headerlink" title="任意值的属性和方法"></a>任意值的属性和方法</h2><p>在任意值上访问任何属性和调用任何方法但是允许的。</p>
+<p>可以认为，声明一个变量为任意值之后，对它的任何操作，返回的内容的类型都是任意值。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> anyThing: any = <span class="hljs-string">&#x27;hello&#x27;</span><br><span class="hljs-built_in">console</span>.log(anyThing.myName)<br><span class="hljs-built_in">console</span>.log(anyThing.myName.firstName)<br>anyThing.setName(<span class="hljs-string">&#x27;Jerry&#x27;</span>)<br>anyThing.setName(<span class="hljs-string">&#x27;Jerry&#x27;</span>).sayHello()<br>anyThing.myName.setFirstName(<span class="hljs-string">&#x27;Tom&#x27;</span>)<br></code></pre></td></tr></table></figure>
+
+<h2 id="未声明类型的变量"><a href="#未声明类型的变量" class="headerlink" title="未声明类型的变量"></a>未声明类型的变量</h2><p>如果在声明变量时未指定其类型，则它会被识别为任意类型。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> something;<br>something = <span class="hljs-string">&#x27;seven&#x27;</span>;<br>something = <span class="hljs-number">7</span>;<br>something.setName(<span class="hljs-string">&#x27;Tom&#x27;</span>);<br></code></pre></td></tr></table></figure>
+
+<h1 id="类型推论"><a href="#类型推论" class="headerlink" title="类型推论"></a>类型推论</h1><p>如果没有明确的指定类型，那么 TS 会按照类型推论的规则推断出一个类型。</p>
+<h2 id="什么是类型推论"><a href="#什么是类型推论" class="headerlink" title="什么是类型推论"></a>什么是类型推论</h2><p>TS 会在没有明确的指定类型的时候推测出一个类型，这就是类型推论。</p>
+<p>如果定义时没有赋值，不管之后有无赋值，该变量都会被推断为 any 类型而不被类型检查。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> favoriteNum1 = <span class="hljs-string">&#x27;seven&#x27;</span><br><span class="hljs-keyword">let</span> favoriteNum2: string = <span class="hljs-string">&#x27;seven&#x27;</span> <span class="hljs-comment">// 这两个赋值是等价的</span><br>favoriteNum1 = <span class="hljs-number">7</span> <span class="hljs-comment">// error TS2322: Type &#x27;number&#x27; is not assignable to type &#x27;string&#x27;</span><br>favoriteNum2 = <span class="hljs-number">7</span> <span class="hljs-comment">// error TS2322: Type &#x27;number&#x27; is not assignable to type &#x27;string&#x27;</span><br><span class="hljs-keyword">let</span> favoriteNum<br>favoriteNum = <span class="hljs-string">&#x27;seven&#x27;</span><br>favoriteNum = <span class="hljs-number">7</span><br></code></pre></td></tr></table></figure>
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/JavaScript/">JavaScript</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/JavaScript/">JavaScript</a>
+                    
+                      <a class="hover-with-bg" href="/tags/TypeScript/">TypeScript</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/12/10/JavaScript%E4%B9%8BRegExp%E4%B8%8E%E6%AD%A3%E5%88%99/">
+                        <span class="hidden-mobile">JavaScript之RegExp与正则</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+  <div class="col-lg-7 mx-auto nopadding-x-md">
+    <div class="container custom post-custom mx-auto">
+      <img src="https://octodex.github.com/images/jetpacktocat.png" srcset="/img/loading.gif" lazyload class="rounded mx-auto d-block mt-5" style="width:150px; height:150px;">
+    </div>
+  </div>
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Powered by Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Theme is Fluid</span></a>
+  </div>
+  
+
+  
+
+  
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?bbe44c28232a60458d913426edaff12f";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+    
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?siteId=16939915";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
