@@ -1,0 +1,1199 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="Keven">
+  <meta name="keywords" content="">
+  
+  <title>CSS基础 - Keven&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":60,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"siteId=16939915","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 50vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Keven's Blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/dome/">
+                <i class="iconfont icon-th-large"></i>
+                Dome
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tools/">
+                <i class="iconfont icon-briefcase"></i>
+                工具
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/example.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.2)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="CSS基础">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-author" aria-hidden="true"></i>
+      Keven
+    </span>
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2023-01-02 18:00" pubdate>
+        2023年1月2日
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      4.9k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      56
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">CSS基础</h1>
+            
+            <div class="markdown-body">
+              <ul>
+<li><p>基础</p>
+<ul>
+<li>显示类型<ul>
+<li>display<ul>
+<li>display 属性可以设置元素的内部和外部显示类型。元素的外部显示类型将会决定该元素在流式布局中的表现；元素的内部显示类型可以控制其子元素的布局</li>
+<li>display 属性使用关键字取值来指定，关键字取值被分为六类</li>
+<li>display-outside（外部值）<ul>
+<li>这些关键字指定了元素的外部显示类型</li>
+<li>block：这个值会生成一个块级元素盒子，该元素之前和之后打断（换行）</li>
+<li>inline：这个值会生成一个行内元素盒子，该元素之前和之后不会打断（换行）。如果空间充足，该元素后的元素将会在同一行显示</li>
+<li>run-in：这个值生成一个 run-in 盒子。如果其后的兄弟元素是块级盒子，那么此 run-in 盒子就会以兄弟元素的第一个行内元素盒子的形式存在；如果其后的兄弟元素是行内元素，那么这个run-in盒子会变成块级元素。run-in元素的存在形式取决于相邻元素，如果它的内部存在 block box，那么它会变成块级元素盒子</li>
+</ul>
+</li>
+<li>display-inside（内部值）<ul>
+<li>这些关键字指定了元素的内部显示类型</li>
+<li>flow：目前含义不清，实验室阶段产品</li>
+<li>flow-root：可以让元素块状化，同时包含 BFC，可以用来清除浮动，去除 margin 合并，实现两栏自适应布局等</li>
+<li>table：此元素作为块级表格来显示（类似 <code>&lt;table&gt;</code>），表格前后带有换行符</li>
+<li>flex：此元素作为一个弹性布局盒子</li>
+<li>grid：此元素作为一个网格布局盒子</li>
+<li>ruby：此元素可以显示旁注标记，与 ruby 标签配合使用</li>
+</ul>
+</li>
+<li>display-listitem（列表值）<ul>
+<li>将这个元素的外部显示类型变为 block 盒，内部显示类型变为多个 list-item inline 盒</li>
+<li>list-item：此元素作为列表显示</li>
+</ul>
+</li>
+<li>display-internal（属性值）<ul>
+<li>有些布局模型（如 table 和 ruby）有着复杂的内部结构，因此它们的子元素可能扮演着不同的角色。这一类关键字就是用来定义这些“内部”显示类型，并且只有在这些特定的布局模型中才有意义</li>
+<li>table-row-group：此元素作为一个或多个行的分组来显示（类似 <code>&lt;tbody&gt;</code>）</li>
+<li>table-header-group：此元素作为一个或多个行的分组显示（类似 <code>&lt;thead&gt;</code>）</li>
+<li>table-footer-group：此元素作为一个或多个行的分组显示（类似 <code>&lt;tfoot&gt;</code>）</li>
+<li>table-row：此元素作为一个表格行显示（类似 <code>&lt;tr&gt;</code>）</li>
+<li>table-cell：此元素作为一个表格单元格显示（类似 <code>&lt;td&gt;</code> 和 <code>&lt;th&gt;</code>）</li>
+<li>table-column-group：此元素作为一个或多个列的分组显示（类似 <code>&lt;colgroup&gt;</code>）</li>
+<li>table-column：此元素作为一个单元格列显示（类似 <code>&lt;col&gt;</code>）</li>
+<li>table-caption：此元素作为一个表格标题显示（类似 <code>&lt;caption&gt;</code>）</li>
+<li>ruby-base：此元素的行为类似于 <code>&lt;rb&gt;</code></li>
+<li>ruby-text：此元素的行为类似于 <code>&lt;rt&gt;</code></li>
+<li>ruby-base-container：此元素的行为类似于 <code>&lt;rbc&gt;</code></li>
+<li>ruby-text-container：此元素的行为类似 <code>&lt;rtc&gt;</code></li>
+</ul>
+</li>
+<li>display-box（显示值）<ul>
+<li>这些值决定元素是否使用盒模型</li>
+<li>none：关闭此元素的显示，不影响布局（文件中没有该元素）。所有子项的显示也被关闭。要一个元素占据空间（文件中存在），但不渲染，使用 visibility 属性</li>
+<li>contents：此元素自己不显示。它们被它们的伪盒和子项盒取代</li>
+</ul>
+</li>
+<li>display-legacy（混合值）<ul>
+<li>CSS Level 3 规范详细说明了 display 属性的两类取值——显式地指定了外部和内部显示属性的规范——但是还没有被浏览器广泛支持</li>
+<li>inline-block：此元素会产生一个块元素盒子，并且像内联盒子一样（表现得更像一个被替换的元素），可以融入到周围内容中</li>
+<li>inline-table：此元素作为内联表格显示（类似 <code>&lt;table&gt;</code>），表现为一个不同于块级盒子的内联盒子。表盒子内部是一个块级上下文</li>
+<li>inline-flex：元素表现为一个内联元素，并对内容采用弹性盒子模型进行布局</li>
+<li>inline-grid：元素表现为一个内联元素，并对内容采用网格模型进行布局</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>可见性<ul>
+<li>visibility<ul>
+<li>visible：元素是可见的。默认值。</li>
+<li>hidden：元素是不可见的</li>
+<li>collapse：当在表格元素中使用时，此值可删除一行或一列，但它不影响表格布局。它被行或列占据的空间会留给其他内容使用。如果此值被用在其他的元素上会呈现为 “hidden”</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>高度<ul>
+<li>height<ul>
+<li>不显式设置，浏览器会使用 auto</li>
+</ul>
+</li>
+<li>min-height<ul>
+<li>属性指定最小或最大值，而不是明确定义高度，元素就可以在这些界限内自动决定高度</li>
+</ul>
+</li>
+<li>max-height<ul>
+<li>属性指定最小或最大值，而不是明确定义高度，元素就可以在这些界限内自动决定高度</li>
+<li>在小区域上会填满屏幕，在大区域上它会扩展到最大值。相比设置 height，这种方式能够有效避免在小区域上出现垂直滚动条</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>宽度<ul>
+<li>width<ul>
+<li>不显式设置，浏览器会使用 auto</li>
+</ul>
+</li>
+<li>min-width<ul>
+<li>属性指定最小或最大值，而不是明确定义宽度，元素就可以在这些界限内自动决定宽度</li>
+</ul>
+</li>
+<li>max-width<ul>
+<li>属性指定最小或最大值，而不是明确定义宽度，元素就可以在这些界限内自动决定宽度</li>
+<li>在小视口上会填满屏幕，在大视口上它会扩展到最大值。相比设置 width，这种方式能够有效避免在小屏幕上出现水平滚动条</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>内边距<ul>
+<li>padding<ul>
+<li>简记法，同时设置四个边的内边距。如果需要，输入 -top、-right、-bottom、-left 将边框效果限制在某一条边上<ul>
+<li>padding-top</li>
+<li>padding-right</li>
+<li>padding-bottom</li>
+<li>padding-left</li>
+</ul>
+</li>
+<li>padding 值为百分比时，其值是基于其父元素的宽度（width，不包含 padding 和 border）来定义的</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>外边距<ul>
+<li>margin<ul>
+<li>简记法，同时设置四个边的内边距。如果需要，输入 -top、-right、-bottom、-left 将边框效果限制在某一条边上<ul>
+<li>margin-top</li>
+<li>margin-right</li>
+<li>margin-bottom</li>
+<li>margin-left</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>水平对齐<ul>
+<li>text-align<ul>
+<li>定义行内元素的内容如何相对它的块父元素对齐</li>
+<li>left：行内内容向左侧边对齐。默认值由浏览器决定。</li>
+<li>right：行内内容向右侧边对齐</li>
+<li>center：行内内容居中</li>
+<li>justify：文字向两侧对齐，对最后一行无效</li>
+<li>justify-all：和 justify 一致，但是强制使最后一行两端对齐</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>垂直对齐<ul>
+<li>vertical-align<ul>
+<li>指定行内元素（inline）或表格单元格元素（table-cell）的垂直对齐方式</li>
+<li>行内元素的值<ul>
+<li>baseline：使元素的基线与父元素的基线对齐。默认值。</li>
+<li>sub：使元素的基线与父元素的下标基线对齐</li>
+<li>super：使元素的基线与父元素的上标基线对齐</li>
+<li>text-top：使元素的顶部与父元素的字体顶部对齐</li>
+<li>text-bottom：使元素的底部与父元素的字体底部对齐</li>
+<li>top：使元素及其后代元素的顶部与整行的顶部对齐</li>
+<li>middle：把此元素放置在父元素的中部</li>
+<li>bottom：使元素及其后代元素的底部与整行的底部对齐</li>
+<li><code>&lt;length&gt;</code>：将元素升高或降低指定的高度，可以是负数</li>
+<li>%：使用 “line-height” 属性的百分比值来排列此元素，允许使用负值</li>
+</ul>
+</li>
+<li>表格单元格元素的值<ul>
+<li>baseline：使单元格的基线，与该行中所有以基线对齐的其它单元格的基线对齐</li>
+<li>top：使单元格内边距的上边缘与该行顶部对齐</li>
+<li>middle：使单元格内边距盒模型在该行内居中对齐</li>
+<li>bottom：使单元格内边距的下边缘与该行底部对齐</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>处理溢出<ul>
+<li>overflow<ul>
+<li>visible：内容不会被修剪，让元素盒子中的所有内容可见。默认值。</li>
+<li>hidden：裁剪内容 - 不提供滚动机制</li>
+<li>scroll：裁剪内容 - 提供滚动机制</li>
+<li>auto：让滚动条仅在访问者访问溢出内容时出现</li>
+</ul>
+</li>
+<li>overflow-x<ul>
+<li>visible：内容不会被修剪，让元素盒子中的所有内容可见。默认值。</li>
+<li>hidden：裁剪内容 - 不提供滚动机制</li>
+<li>scroll：裁剪内容 - 提供滚动机制</li>
+<li>auto：让滚动条仅在访问者访问溢出内容时出现</li>
+<li>no-display：如果内容不适合内容框，则删除整个框</li>
+<li>no-content：如果内容不适合内容框，则隐藏整个内容</li>
+</ul>
+</li>
+<li>overflow-y<ul>
+<li>visible：内容不会被修剪，让元素盒子中的所有内容可见。默认值。</li>
+<li>hidden：裁剪内容 - 不提供滚动机制</li>
+<li>scroll：裁剪内容 - 提供滚动机制</li>
+<li>auto：让滚动条仅在访问者访问溢出内容时出现</li>
+<li>no-display：如果内容不适合内容框，则删除整个框</li>
+<li>no-content：如果内容不适合内容框，则隐藏整个内容</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>指针形状<ul>
+<li>cursor<ul>
+<li>default：默认光标</li>
+<li>crosshair：光标呈现为十字线</li>
+<li>move：此光标指示某对象可被移动</li>
+<li>wait：此光标指示程序正忙（通常是一只表或沙漏）</li>
+<li>help：此光标指示可用的帮助（通常是一个问号或一个气球）</li>
+<li>text：此光标指示文本</li>
+<li>x-resize：显示双向箭头，x是其中一个箭头需指向的方向，可以是 n、nw</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>边框<ul>
+<li>border<ul>
+<li>简记法，同时设置四个边框的 border-style、border-width、border-color 属性</li>
+<li>如果需要，输入 -top、-right、-bottom、-left 将边框效果限制在某一条边上<ul>
+<li>border-top<ul>
+<li>简记法，同时设置上边框的 border-style、border-width、border-color 属性</li>
+<li>border-top-style</li>
+<li>border-top-width</li>
+<li>border-top-color</li>
+</ul>
+</li>
+<li>border-right<ul>
+<li>简记法，同时设置右边框的 border-style、border-width、border-color 属性</li>
+<li>border-right-style</li>
+<li>border-right-width</li>
+<li>border-right-color</li>
+</ul>
+</li>
+<li>border-bottom<ul>
+<li>简记法，同时设置下边框的 border-style、border-width、border-color 属性</li>
+<li>border-bottom-style</li>
+<li>border-bottom-width</li>
+<li>border-bottom-color</li>
+</ul>
+</li>
+<li>border-left<ul>
+<li>简记法，同时设置左边框的 border-style、border-width、border-color 属性</li>
+<li>border-left-style</li>
+<li>border-left-width</li>
+<li>border-left-color</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>边框风格<ul>
+<li>border-style<ul>
+<li>简记法，同时设置四个边框的风格属性。如果需要，输入 -top、-right、-bottom、-left 将边框效果限制在某一条边上<ul>
+<li>border-top-style</li>
+<li>border-right-style</li>
+<li>border-bottom-style</li>
+<li>border-left-style</li>
+</ul>
+</li>
+<li>none：不显示边框。默认值。</li>
+<li>dotted：点线</li>
+<li>dashed：虚线</li>
+<li>solid：实线</li>
+<li>double：双线</li>
+<li>groove：槽线</li>
+<li>ridge：脊线</li>
+<li>inset：凹边</li>
+<li>outset：凸边</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>边框宽度<ul>
+<li>border-width<ul>
+<li>简记法，同时设置四个边框的宽度属性。如果需要，输入 -top、-right、-bottom、-left 将边框效果限制在某一条边上<ul>
+<li>border-top-width</li>
+<li>border-right-width</li>
+<li>border-bottom-width</li>
+<li>border-left-width</li>
+</ul>
+</li>
+<li>medium：定义中等的边框。默认值。</li>
+<li>thin：定义细的边框</li>
+<li>thick：定义粗的边框</li>
+<li>length：允许自定义边框的宽度</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>边框颜色<ul>
+<li>border-color<ul>
+<li>简记法，同时设置四个边框的颜色属性。如果需要，输入 -top、-right、-bottom、-left 将边框效果限制在某一条边上<ul>
+<li>border-top-color</li>
+<li>border-right-color</li>
+<li>border-bottom-color</li>
+<li>border-left-color</li>
+</ul>
+</li>
+<li>transparent：指定边框的颜色应该是透明的。默认值。</li>
+<li>colo：指定背景颜色</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>边框图像<ul>
+<li>border-image<ul>
+<li>简记法，同时设置四个边框的 border-image-source、border-image-slice、 border-image-width、border-image-outset、border-image-repeat 属性</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>边框图像位置<ul>
+<li>border-image-source<ul>
+<li>none：没有图像被使用。默认值。</li>
+<li>image：边框使用图像的路径</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>边框图像边界向内偏移<ul>
+<li>border-image-slice</li>
+</ul>
+</li>
+<li>边框图像边界宽度<ul>
+<li>border-image-width</li>
+</ul>
+</li>
+<li>边框图像越界大小<ul>
+<li>border-image-outset</li>
+</ul>
+</li>
+<li>边框图像填充<ul>
+<li>border-image-repea<ul>
+<li>stretch：拉伸图像来填充区域。默认值。</li>
+<li>repeat：平铺（repeated）图像来填充区域</li>
+<li>round：类似 repeat 值。如果无法完整平铺所有图像，则对图像进行缩放以适应区域</li>
+<li>space：类似 repeat 值。如果无法完整平铺所有图像，扩展空间会分布在图像周围</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>背景<ul>
+<li>background<ul>
+<li>简记法，同时设置 background-color、background-image、background-size、background-repeat、background-position、background-origin、background-attachment、background-chip 属性</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>背景颜色<ul>
+<li>background-color</li>
+</ul>
+</li>
+<li>背景图像<ul>
+<li>background-image</li>
+</ul>
+</li>
+<li>背景图像重复<ul>
+<li>background-repeat<ul>
+<li>repeat：背景图像将向垂直和水平方向重复。这是默认</li>
+<li>repeat-x：只有水平位置会重复背景图像</li>
+<li>repeat-y：只有垂直位置会重复背景图像</li>
+<li>no-repeat：不重复</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>背景图像滚动<ul>
+<li>background-attachment<ul>
+<li>scroll：背景图片随着页面的滚动而滚动，这是默认的</li>
+<li>fixed：背景图片不会随着页面的滚动而滚动</li>
+<li>local：背景图片会随着元素内容的滚动而滚动</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>背景图像位置<ul>
+<li>background-position<ul>
+<li>left top</li>
+<li>left center</li>
+<li>left bottom</li>
+<li>right top</li>
+<li>right center</li>
+<li>right bottom</li>
+<li>center top</li>
+<li>center center</li>
+<li>center bottom</li>
+<li>x% y%<ul>
+<li>第一个值是水平位置，第二个值是垂直。左上角是0％0％。右下角是100％100％。如果仅指定了一个值，其他值将是50％。 。默认值为：0％0％</li>
+</ul>
+</li>
+<li>xpos ypos<ul>
+<li>第一个值是水平位置，第二个值是垂直。左上角是0。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>文本</p>
+<ul>
+<li>字体<ul>
+<li>font<ul>
+<li>简记法，同时设置字体 font-style、font-weight、font-size、font-height、font-family 属性</li>
+<li>必须始终显式地声明文本大小和字体属性：先是字体大小，再是字体系列</li>
+<li>行高是可选的，但它如果出现就必须紧跟在字体大小和斜杠后面</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>类型<ul>
+<li>font-family</li>
+</ul>
+</li>
+<li>斜体<ul>
+<li>font-style<ul>
+<li>normal：浏览器显示一个标准的字体样式，默认值</li>
+<li>italic：浏览器会显示一个斜体的字体样式</li>
+<li>oblique；浏览器会显示一个倾斜的字体样式</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>粗细<ul>
+<li>font-weight<ul>
+<li>normal：定义标准的字符。默认值。</li>
+<li>bold：定义粗体字符，常用</li>
+<li>bolder：定义更粗的字符</li>
+<li>lighter：定义更细的字符</li>
+<li>100-900：定义由细到粗的字符。400 等同于 normal，而 700 等同于 bold</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>大小<ul>
+<li>font-size<ul>
+<li>xx-small</li>
+<li>x-small</li>
+<li>small</li>
+<li>medium：默认值</li>
+<li>large</li>
+<li>x-large</li>
+<li>xx-large</li>
+<li>smaller：设置为比父元素更小的尺寸</li>
+<li>larger：设置为比父元素更大的尺寸</li>
+<li>length：设置为一个固定的值</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>行高<ul>
+<li>line-height<ul>
+<li>normal：设置合理的行间距。默认。</li>
+<li>number：设置数字，此数字会与当前的字体尺寸相乘来设置行间距</li>
+<li>length：设置固定的行间距</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>颜色<ul>
+<li>color</li>
+</ul>
+</li>
+<li>字间距<ul>
+<li>word-spacing</li>
+</ul>
+</li>
+<li>字偶距<ul>
+<li>letter-spacing</li>
+</ul>
+</li>
+<li>首行缩进<ul>
+<li>text-indent</li>
+</ul>
+</li>
+<li>单词内断行<ul>
+<li>word-break<ul>
+<li>normal：使用浏览器默认的换行规则</li>
+<li>break-all：可在任意字符间换行，允许在单词内换行</li>
+<li>keep-all：文本不断行，只能在半角空格或连字符处换行</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>大小写<ul>
+<li>text-transform<ul>
+<li>none：定义带有小写字母和大写字母的标准的文本。默认</li>
+<li>capitalize：文本中的每个单词以大写字母开头</li>
+<li>uppercase：定义仅有大写字母</li>
+<li>lowercase：定义仅有小写字母</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>小型大写<ul>
+<li>font-variant<ul>
+<li>normal：浏览器会显示一个标准的字体。默认值</li>
+<li>small-caps：浏览器会显示小型大写字母的字体。并非所有的字体都有对应小型大写字母设计</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>文本线条<ul>
+<li>text-decoration<ul>
+<li>none<ul>
+<li>定义标准的文本。默认。</li>
+</ul>
+</li>
+<li>underline<ul>
+<li>下划线</li>
+</ul>
+</li>
+<li>overline<ul>
+<li>上划线</li>
+</ul>
+</li>
+<li>line-through<ul>
+<li>删除线</li>
+</ul>
+</li>
+<li>blink<ul>
+<li>闪烁文本</li>
+</ul>
+</li>
+<li>除了 a 元素外，也可以应用到其他元素</li>
+</ul>
+</li>
+<li>text-decoration-style<ul>
+<li>solid<ul>
+<li>线条将显示为单线。默认值。</li>
+</ul>
+</li>
+<li>double<ul>
+<li>线条将显示为双线</li>
+</ul>
+</li>
+<li>dotted<ul>
+<li>线条将显示为点状线</li>
+</ul>
+</li>
+<li>dashed<ul>
+<li>线条将显示为虚线</li>
+</ul>
+</li>
+<li>wavy<ul>
+<li>线条将显示为波浪线</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>text-decoration-color</li>
+</ul>
+</li>
+<li>空白属性<ul>
+<li>white-space<ul>
+<li>指定元素内的空白怎样处理</li>
+<li>normal<ul>
+<li>空白会被浏览器忽略。默认值。</li>
+</ul>
+</li>
+<li>pre<ul>
+<li>空白会被浏览器保留。类似 HTML 中 <pre> 标签</li>
+</ul>
+</li>
+<li>nowrap<ul>
+<li>文本不会换行，文本会在在同一行上继续直到遇到 <br> 标签</li>
+</ul>
+</li>
+<li>pre-wrap<ul>
+<li>保留空白符序列，但是正常地进行换行</li>
+</ul>
+</li>
+<li>pre-line<ul>
+<li>合并空白符序列，但是保留换行符</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>表格</p>
+<ul>
+<li>合并边框<ul>
+<li>border-collapse<ul>
+<li>separate：边框会被分开。不会忽略 border-spacing 和 empty-cells 属性。默认值。</li>
+<li>collapse：如果可能边框会合并为一个单一边框。忽略 border-spacing 和 empty-cells 属性</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>边框间距<ul>
+<li>border-spacing<ul>
+<li>定义一个 length 参数，那么定义的是水平和垂直间距</li>
+<li>如果定义两个 length 参数，那么第一个设置水平间距，而第二个设置垂直间距</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>增强</p>
+<ul>
+<li>创建圆角<ul>
+<li>border-radius: r<ul>
+<li>border-top-left-radius</li>
+<li>border-top-right -radius</li>
+<li>border-bottom-right-radius</li>
+<li>border-bottom-left-radius</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>创建椭圆形圆角<ul>
+<li>border-radius: x/y</li>
+</ul>
+</li>
+<li>创建圆形<ul>
+<li>border-radius: r</li>
+</ul>
+</li>
+<li>旋转缩放<ul>
+<li>transform<ul>
+<li>matrix(n,n,n,n,n,n)：定义 2D 转换，使用 6 个值的矩阵</li>
+<li>matrix3d(n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n)：定义 3D 转换，使用 16 个值的 4x4 矩阵</li>
+<li>translate(x,y)：定义 2D 转换</li>
+<li>translate3d(x,y,z)：定义 3D 转换</li>
+<li>translateX(x)：定义转换，只是用 X 轴的值</li>
+<li>translateY(y)：定义转换，只是用 Y 轴的值</li>
+<li>translateZ(z)：定义 3D 转换，只是用 Z 轴的值</li>
+<li>scale(x[,y]?)：定义 2D 缩放转换</li>
+<li>scale3d(x,y,z)：定义 3D 缩放转换</li>
+<li>scaleX(x)：通过设置 X 轴的值来定义缩放转换</li>
+<li>scaleY(y)：通过设置 Y 轴的值来定义缩放转换</li>
+<li>scaleZ(z)：通过设置 Z 轴的值来定义 3D 缩放转换</li>
+<li>rotate(angle)：定义 2D 旋转，在参数中规定角度</li>
+<li>rotate3d(x,y,z,angle)：定义 3D 旋转</li>
+<li>rotateX(angle)：定义沿着 X 轴的 3D 旋转</li>
+<li>rotateY(angle)：定义沿着 Y 轴的 3D 旋转</li>
+<li>rotateZ(angle)：定义沿着 Z 轴的 3D 旋转</li>
+<li>skew(x-angle,y-angle)：定义沿着 X 和 Y 轴的 2D 倾斜转换</li>
+<li>skewX(angle)：定义沿着 X 轴的 2D 倾斜转换</li>
+<li>skewY(angle)：定义沿着 Y 轴的 2D 倾斜转换</li>
+<li>perspective(n)：为 3D 转换元素定义透视视图</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>不透明度<ul>
+<li>opacity<ul>
+<li>默认值为 1 。当 opacity 属性的值应用于某个元素上时，是把这个元素（包括它的内容）当成一个整体看待，即使这个值没有被子元素继承。因此，一个元素和它包含的子元素都会具有和元素背景相同的透明度，哪怕这个元素和它的子元素有不同的 opacity 属性值</li>
+<li>使用 opacity 属性，当属性值不为 1 时，会把元素放置在一个新的层叠上下文中</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>媒体</p>
+<ul>
+<li>渲染媒体<ul>
+<li>object-fit<ul>
+<li>两个概念要分清楚：盒子（由元素的宽和高决定）和渲染的媒体。默认情况二者大小相等</li>
+<li>object-fit 属性让我们能在盒子内部控制渲染媒体的大小，同时又保持盒子的大小不变，即元素的内容应该如何适应指定容器的高度与宽度，元素主要用于图片和视频</li>
+<li>fill<ul>
+<li>不保证保持原有的比例，内容拉伸填充整个内容容器。默认值。</li>
+</ul>
+</li>
+<li>none<ul>
+<li>保留原有元素内容的长度和宽度，即不被重置</li>
+</ul>
+</li>
+<li>cover<ul>
+<li>保持原有尺寸比例，让它填满盒子（导致图片一部分被裁剪）</li>
+</ul>
+</li>
+<li>contain<ul>
+<li>保持原有尺寸比例，让它完整地填充盒子（导致盒子里出现空白）</li>
+</ul>
+</li>
+<li>scale-down<ul>
+<li>保持原有尺寸比例。内容的尺寸是 none 或 contain 中的一个相同，取决于它们两个之间谁得到的对象尺寸会更小一些</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/CSS/">CSS</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/CSS/">CSS</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/01/02/HTML%E5%9F%BA%E7%A1%80/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">HTML基础</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/12/25/JavaScript%E4%B9%8BTypeScript/">
+                        <span class="hidden-mobile">JavaScript之JavaScript</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+  <div class="col-lg-7 mx-auto nopadding-x-md">
+    <div class="container custom post-custom mx-auto">
+      <img src="https://octodex.github.com/images/jetpacktocat.png" srcset="/img/loading.gif" lazyload class="rounded mx-auto d-block mt-5" style="width:150px; height:150px;">
+    </div>
+  </div>
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Powered by Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Theme is Fluid</span></a>
+  </div>
+  
+
+  
+
+  
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?bbe44c28232a60458d913426edaff12f";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+    
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?siteId=16939915";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

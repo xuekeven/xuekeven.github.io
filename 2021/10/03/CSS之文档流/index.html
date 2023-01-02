@@ -18,7 +18,7 @@
   <meta name="author" content="Keven">
   <meta name="keywords" content="">
   
-  <title>CSS技巧 - Keven&#39;s Blog</title>
+  <title>CSS之文档流 - Keven&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
 
@@ -187,7 +187,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.2)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="CSS技巧">
+            <span class="h2" id="subtitle" title="CSS之文档流">
               
             </span>
 
@@ -202,8 +202,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2022-10-21 10:00" pubdate>
-        2022年10月21日
+      <time datetime="2021-10-03 15:00" pubdate>
+        2021年10月3日
       </time>
     </span>
   
@@ -214,7 +214,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      646 字
+      1.9k 字
     </span>
   
 
@@ -224,7 +224,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      8
+      21
        分钟
     </span>
   
@@ -254,42 +254,62 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">CSS技巧</h1>
+            <h1 style="display: none">CSS之文档流</h1>
             
             <div class="markdown-body">
-              <h1 id="文本长度"><a href="#文本长度" class="headerlink" title="文本长度"></a>文本长度</h1><h2 id="超出宽度需要打点打点"><a href="#超出宽度需要打点打点" class="headerlink" title="超出宽度需要打点打点"></a>超出宽度需要打点打点</h2><ol>
-<li>文字超过部分显示为省略号。用到属性：</li>
-</ol>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://www.runoob.com/cssref/css3-pr-text-overflow.html">text-overflow</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.runoob.com/cssref/pr-text-white-space.html">white-space</a></li>
+              <h1 id="文档"><a href="#文档" class="headerlink" title="文档"></a>文档</h1><p>当浏览器解析HTML文档时，会在内存里将页面的所有元素表示为 DOM（文档对象模型）。它是一个树结构，其中每个元素都由一个节点表示。<code>&lt;html&gt;</code>元素是顶级根节点。它的下面是子节点：<code>&lt;head&gt;</code>和<code>&lt;body&gt;</code>。再下面是逐级嵌套的后代节点。</p>
+<p>在文档中，根节点是所有其他元素的祖先节点。根节点有一个伪类选择器（:root）可以用来选中它自己。这等价于类型选择器 html，但是 html 的优先级相当于一个类名，而不是一个标签。</p>
+<p>定位方案是控制元素的布局，有三种常见方案：普通流、浮动、定位。</p>
+<h1 id="普通流"><a href="#普通流" class="headerlink" title="普通流"></a>普通流</h1><p>普通文档流指的是网页元素的默认布局行为。</p>
+<p>普通文档流中，元素按照其在 HTML 文档中的先后位置至上而下布局。此过程中，行内元素水平排列，跟随文字的方向从左到右排列，直到当行被占满然后换行。块级元素则会被渲染成为一个完整的新行，它会占据完整的一行，前后都有换行。除非另外指定，否则所有元素默认都是普通流定位，即普通流中元素的位置由该元素在 HTML 文档中的位置决定。</p>
+<p>普通文档流是为限定的宽度和无限的高度设计的。内容会填满视口的宽度，然后在必要的时候折行。因此，容器的高度由内容天然地决定，而不是容器自己决定。</p>
+<p>脱离普通文档流有三种方式：浮动、定位（绝对定位和固定定位）。</p>
+<h2 id="BFC"><a href="#BFC" class="headerlink" title="BFC"></a>BFC</h2><p>块格式化上下文（Block Formatting Contexts）是 Web 页面可视 CSS 渲染的一部分，是块盒子的布局过程发生的区域。BFC 是网页的一块区域，元素基于此区域布局，BFC 里内容不会跟外部的元素重叠或相互影响。</p>
+<p>具有 BFC 特性的元素可以看作是隔离了的独立容器，容器里面元素不会在布局上影响到外面元素，并且 BFC 具有普通容器所没有的一些特性。可以把 BFC 理解为一个封闭大箱子，箱子内部的元素无论如何翻江倒海，都不会影响到外部。某些情况下，BFC 中的内容可能还会与别的 BFC 的内容重叠。</p>
+<p>BFC 包含创建它的元素内部的所有内容，属于定位方案的普通流。</p>
+<h3 id="创建-BFC"><a href="#创建-BFC" class="headerlink" title="创建 BFC"></a>创建 BFC</h3><ul>
+<li>根元素（html）</li>
+<li>元素 overflow 值不为 visible</li>
+<li>元素 float 值不为 none</li>
+<li>元素 position 值为 absolute、fixed</li>
+<li>元素 contain 值为 layout、content、paint </li>
+<li>元素 display 值为 flow-root</li>
+<li>元素 display 值为 inline-block</li>
+<li>元素 display 值为 flex、 inline-flex 及其直接子元素（弹性元素及其直接子元素）</li>
+<li>元素 display 值为 grid、inline-grid 及其直接子元素（网格元素及其直接子元素）</li>
+<li>元素 display 值为 table-cell（表格单元格）</li>
+<li>元素 display 值为 table-caption（表格标题）</li>
+<li>元素 display 值为 table、inline-table、table-row、<br>table-row-group、table-header-group、table-footer-group（匿名表格单元格元素）</li>
+<li>元素 column-count、column-width 值不为 auto，包括 column-count 值为 1（多列容器）</li>
+<li>元素 column-span 值为 all，即使该元素没有包裹在一个多列容器中</li>
 </ul>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css"></span><br><span class="css">    <span class="hljs-selector-class">.p</span> &#123;</span><br><span class="css">      <span class="hljs-attribute">width</span>: <span class="hljs-number">200px</span>;</span><br><span class="css">      <span class="hljs-attribute">overflow</span>: hidden;</span><br><span class="css">      <span class="hljs-attribute">text-overflow</span>: ellipsis;</span><br><span class="css">      <span class="hljs-attribute">white-space</span>: nowrap;</span><br><span class="css">    &#125;</span><br><span class="css">  </span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;p&quot;</span>&gt;</span><br>    我是一行自动换的文本123我是一行自动换的文本123我是一行自动换的文本123我是一行自动换的文本<br>  <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<p>使用说明：</p>
+<p>使用<code>display: flow-root</code>可以创建无副作用的 BFC。在父级块当中使用<code>display: flow-root</code>可以创建新的 BFC，父级块的所有内容都会参与 BFC。</p>
+<p>使用<code>overflow: auto</code>会创建一个包含这个元素的 BFC，通常的做法是设置父级块<code>overflow: auto</code>或者设置其它的非默认的<code>overflow: visible</code>的值。使用 overflow 创建一个新的 BFC，是因为 overflow 属性告诉浏览器你想要怎样处理溢出的内容。当使用这个属性只是为了创建 BFC 的时候，你可能会发现一些不想要的问题，比如滚动条或一些剪切的阴影，需要注意。另外，对于后续的开发，可能不是很清楚当时为什么使用 overflow，所以最好添加一些注释来解释为什么这样做。</p>
+<p>也可以使用其他方式，但是有些问题需要注意，比如，使用浮动或<code>display: inline-block</code>方式创建 BFC 的元素宽度会变成 100%，因此需要限制一下元素的宽度，防止因为过宽而换行，导致内容移动到浮动图片的下面。相反，使用<code>display: table-cell</code>方式显示的元素，它的宽度只会刚好容纳其中的内容，因此需要设置一个较大的宽度，强制使其填满剩余空间。</p>
+<h3 id="BFC-用途"><a href="#BFC-用途" class="headerlink" title="BFC 用途"></a>BFC 用途</h3><ul>
+<li>使用 BFC 浮动定位</li>
+<li>使用 BFC 清除浮动</li>
+<li>使用 BFC 防止外边距折叠</li>
+<li>使用 BFC 防止浮动容器高度塌陷</li>
+<li>使用 BFC 防止媒体对象「文字环绕」</li>
+</ul>
+<h2 id="IFC"><a href="#IFC" class="headerlink" title="IFC"></a>IFC</h2><p>内联格式化上下文（Inline Formatting Contexts）是一个网页的渲染结果的一部分。其中，各行内框（inline boxes）一个接一个地排列，其排列顺序则是根据书写模式的设置来决定的：水平书写，各个框从左边开始水平地排列；垂直书写，各个框从顶部开始水平地排列。</p>
+<h3 id="IFC-布局规则"><a href="#IFC-布局规则" class="headerlink" title="IFC 布局规则"></a>IFC 布局规则</h3><p>子元素水平方向横向排列，并且垂直方向起点为元素顶部。</p>
+<p>子元素只会计算横向样式空间，垂直方向样式空间不会被计算。</p>
+<p>在垂直方向上，子元素会以不同形式来对齐（vertical-align）。</p>
+<p>能把在一行上的框都完全包含进去的一个矩形区域，被称为该行的行框（line box）。行框的宽度是由包含块（containing box）和与其中的浮动来决定。</p>
+<p>IFC中的“line box”一般左右边贴紧其包含块，但float元素会优先排列。</p>
+<p>IFC中的“line box”高度由 CSS 行高计算规则来确定，同个IFC下的多个line box高度可能会不同。</p>
+<p>当 inline-level boxes的总宽度少于包含它们的line box时，其水平渲染规则由 text-align 属性值来决定。</p>
+<p>当一个“inline box”超过父元素的宽度时，它会被分割成多个boxes，这些 oxes 分布在多个“line box”中。如果子元素未设置强制换行的情况下，“inline box”将不可被分割，将会溢出父元素。</p>
+<p>框会从包含块的顶部开始，一个接一个地水平摆放。</p>
+<p>摆放这些框时，它们在水平方向的 内外边距+边框 所占用的空间都会被考虑； 在垂直方向上，这些框可能会以不同形式来对齐： 水平的margin、padding、border有效，垂直无效。不能指定宽高。</p>
+<p>行框的宽度是 由包含块和存在的浮动来决定; 行框的高度 由行高来决定。</p>
+<h3 id="创建-IFC"><a href="#创建-IFC" class="headerlink" title="创建 IFC"></a>创建 IFC</h3><p>块级元素中仅包含内联级别元素。形成条件非常简单，需要注意的是当 IFC 中有块级元素插入时，会产生两个匿名块将父元素分割开来，产生两个 IFC。</p>
+<h3 id="IFC-用途"><a href="#IFC-用途" class="headerlink" title="IFC 用途"></a>IFC 用途</h3><p>水平居中：当一个块要在环境中水平居中时，设置其为<code>displau: inline-block</code>则会在外层产生 IFC，通过 text-align 属性则可以使其水平居中。</p>
+<p>垂直居中：创建一个 IFC，用其中一个元素撑开父元素的高度，然后设置其<code>vertical-align: middle</code>，其他的行内元素则可以在此父元素下垂直居中。</p>
 
-<ol>
-<li>文本超出两行，超出部分省略号显示。用到属性：</li>
-</ol>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://www.runoob.com/cssref/css3-pr-word-break.html">word-break</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.runoob.com/cssref/pr-text-white-space.html">white-space</a></li>
-</ul>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css"></span><br><span class="css">    <span class="hljs-selector-class">.p</span> &#123;</span><br><span class="css">      <span class="hljs-attribute">width</span>: <span class="hljs-number">200px</span>;</span><br><span class="css">      <span class="hljs-attribute">overflow</span>: hidden;</span><br><span class="css">      <span class="hljs-attribute">text-overflow</span>: ellipsis; <span class="hljs-comment">/* ? */</span></span><br><span class="css">      <span class="hljs-attribute">word-break</span>: break-all;  <span class="hljs-comment">/* ? */</span></span><br><span class="css">      <span class="hljs-attribute">display</span>: -webkit-box;</span><br><span class="css">      -webkit-box-orient: vertical;</span><br><span class="css">      -webkit-line-clamp: <span class="hljs-number">2</span>; <span class="hljs-comment">/* 这里是超出几行省略 */</span></span><br><span class="css">    &#125;</span><br><span class="css">  </span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;p&quot;</span>&gt;</span><br>    我是两行自动换的文本123我是两行自动换的文本123我是两行自动换的文本123我是两行自动换的文本<br>  <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br></code></pre></td></tr></table></figure>
-<p>用到相关属性： <a target="_blank" rel="noopener" href="https://www.runoob.com/cssref/css3-pr-text-overflow.html">white-space</a></p>
-<h2 id="长度够还打点"><a href="#长度够还打点" class="headerlink" title="长度够还打点"></a>长度够还打点</h2><p>可能是因为设置了max-width</p>
-<h1 id="画图形"><a href="#画图形" class="headerlink" title="画图形"></a>画图形</h1><p>原理是利用元素的长度、宽度、、边框、背景颜色及其伪元素来实现。<br>如画一个对勾：</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-class">.checkbox</span><span class="hljs-selector-class">.checked</span> &#123;<br>  <span class="hljs-attribute">width</span>: <span class="hljs-number">16px</span>;<br>  <span class="hljs-attribute">height</span>: <span class="hljs-number">16px</span>;<br>  <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#2fd2fe</span>;<br>  <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">50%</span>;<br>  <span class="hljs-attribute">position</span>: relative;<br> &#125;<br><br><span class="hljs-selector-class">.checkbox</span><span class="hljs-selector-class">.checked</span><span class="hljs-selector-pseudo">::after</span> &#123;<br>  <span class="hljs-attribute">content</span>: <span class="hljs-string">&quot;&quot;</span>;<br>  <span class="hljs-attribute">display</span>: block;<br>  <span class="hljs-attribute">width</span>: <span class="hljs-number">6px</span>;<br>  <span class="hljs-attribute">height</span>: <span class="hljs-number">4px</span>;<br>  <span class="hljs-attribute">border</span>: <span class="hljs-number">1px</span> solid black;<br>  <span class="hljs-attribute">border-right</span>: none;<br>  <span class="hljs-attribute">border-top</span>: none;<br>  <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">rotate</span>(-<span class="hljs-number">60deg</span>) <span class="hljs-built_in">translate</span>(<span class="hljs-number">7px</span>, -<span class="hljs-number">10px</span>);<br>  <span class="hljs-attribute">position</span>: absolute;<br>  <span class="hljs-attribute">top</span>: <span class="hljs-number">16px</span>;<br>  <span class="hljs-attribute">left</span>: <span class="hljs-number">8.5px</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<h1 id="滚动条"><a href="#滚动条" class="headerlink" title="滚动条"></a>滚动条</h1><p>相关伪元素：</p>
-<ul>
-<li>div::-webkit-scrollbar 滚动条整体部分</li>
-<li>div::-webkit-scrollbar-thumb 滚动条里面的小方块，能向上向下移动（或往左往右移动，取决于是垂直滚动条还是水平滚动条</li>
-<li>div::-webkit-scrollbar-track 滚动条的轨道（里面装有 Thumb</li>
-<li>div::-webkit-scrollbar-button 滚动条的轨道的两端按钮，允许通过点击微调小方块的位置</li>
-<li>div::-webkit-scrollbar-track-piece 内层轨道，滚动条中间部分（除去</li>
-<li>div::-webkit-scrollbar-corner 边角，即两个滚动条的交汇处</li>
-<li>div::-webkit-resizer 两个滚动条的交汇处上用于通过拖动调整元素大小的小控件。注意此方案有兼容性问题，一般需要隐藏滚动条时可以用一个色块通过定位盖上去，或者将子级元素调大，父级元素使用 overflow-hidden 截掉滚动条部分。暴力且直接。</li>
-</ul>
-<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs scss"><span class="hljs-keyword">@mixin</span> scrollBar &#123;<br>  &amp;::-webkit-scrollbar &#123;<br>    width: <span class="hljs-number">10px</span>;<br>    <span class="hljs-attribute">height</span>: <span class="hljs-number">10px</span>;<br><br>    &amp;-track &#123;<br>      <span class="hljs-attribute">border-radius</span>: <span class="hljs-variable">$Ra-5</span>;<br>      <span class="hljs-attribute">background-color</span>: transparent;<br>    &#125;<br><br>    &amp;-thumb &#123;<br>      <span class="hljs-attribute">border</span>: <span class="hljs-number">2px</span> solid transparent;<br>      <span class="hljs-attribute">border-radius</span>: <span class="hljs-variable">$Ra-5</span>;<br>      <span class="hljs-attribute">background-color</span>: rgba(<span class="hljs-variable">$M10</span>, <span class="hljs-number">0.1</span>);<br>      <span class="hljs-attribute">background-clip</span>: content-box;<br><br>      &amp;<span class="hljs-selector-pseudo">:hover</span> &#123;<br>        <span class="hljs-attribute">background-color</span>: rgba(<span class="hljs-variable">$M1</span>, <span class="hljs-number">0.3</span>);<br>      &#125;<br>    &#125;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
             </div>
             <hr>
             <div>
@@ -308,8 +328,6 @@
                     
                       <a class="hover-with-bg" href="/tags/CSS/">CSS</a>
                     
-                      <a class="hover-with-bg" href="/tags/%E7%9F%A5%E8%AF%86%E6%8A%80%E5%B7%A7/">知识技巧</a>
-                    
                   </div>
                 
               </div>
@@ -325,9 +343,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/10/24/JavaScript%E7%9F%A5%E8%AF%86/">
+                      <a href="/2021/10/03/CSS%E4%B9%8B%E5%AE%9A%E4%BD%8D/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">JavaScript知识</span>
+                        <span class="hidden-mobile">CSS之定位</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -335,8 +353,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/08/24/%E5%BC%82%E6%AD%A5JavaScript/">
-                        <span class="hidden-mobile">异步JavaScript</span>
+                      <a href="/2021/10/03/CSS%E4%B9%8B%E5%B1%85%E4%B8%AD/">
+                        <span class="hidden-mobile">CSS之居中</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

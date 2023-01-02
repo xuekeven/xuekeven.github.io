@@ -1,0 +1,586 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="Keven">
+  <meta name="keywords" content="">
+  
+  <title>CSS之单位 - Keven&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":60,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"siteId=16939915","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 50vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Keven's Blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/dome/">
+                <i class="iconfont icon-th-large"></i>
+                Dome
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tools/">
+                <i class="iconfont icon-briefcase"></i>
+                工具
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/example.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.2)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="CSS之单位">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-author" aria-hidden="true"></i>
+      Keven
+    </span>
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-09-26 20:00" pubdate>
+        2021年9月26日
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2.9k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      31
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">CSS之单位</h1>
+            
+            <div class="markdown-body">
+              <p>参考：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903630655471624">https://juejin.cn/post/6844903630655471624</a> 。</li>
+<li><a target="_blank" rel="noopener" href="https://book.douban.com/subject/35021471/">《深入解析 CSS》</a> 。</li>
+</ul>
+<h1 id="长度"><a href="#长度" class="headerlink" title="长度"></a>长度</h1><p>长度：一种用于测量距离的 CSS 值的正式称谓，它由一个数值和一个单位组成。<br>长度有两种类型：<strong>绝对长度</strong>和<strong>相对长度</strong>。百分比类似于长度，但是严格来讲，它不是长度。</p>
+<ul>
+<li>绝对单位：值放在哪里都一样大。</li>
+<li>相对单位：值会根据外部因素发生变化，浏览器会根据相对单位的值计算出绝对值，称作计算值。</li>
+</ul>
+<h2 id="绝对长度单位"><a href="#绝对长度单位" class="headerlink" title="绝对长度单位"></a>绝对长度单位</h2><p>一般应在输出尺寸已知时使用绝对长度。<br>换算：1<code>in</code> = 25.4<code>mm</code> = 2.54<code>cm</code> = 6<code>pc</code> = 72<code>pt</code> = 96<code>px</code>。</p>
+<h3 id="px（像素）"><a href="#px（像素）" class="headerlink" title="px（像素）"></a>px（像素）</h3><p>像素是最常用、最基础的长度单位。</p>
+<p>像素是一个具有误导性的名称，CSS 像素并不严格等于显示器的像素，尤其是在高清屏视网膜屏下。尽管 CSS 单位会根据浏览器、操作系统或硬件适当缩放，在某些设备或用户的分辨率设置下也会发生变化，但是 96px 通常等于一个物理英寸的大小。</p>
+<p>某种设备上一个像素的大小<strong>不一定</strong>与另一种设备上一个像素的大小完全相等。</p>
+<h3 id="mm（毫米）"><a href="#mm（毫米）" class="headerlink" title="mm（毫米）"></a>mm（毫米）</h3><h3 id="cm（厘米）"><a href="#cm（厘米）" class="headerlink" title="cm（厘米）"></a>cm（厘米）</h3><h3 id="in（英尺）"><a href="#in（英尺）" class="headerlink" title="in（英尺）"></a>in（英尺）</h3><h3 id="pt（点）"><a href="#pt（点）" class="headerlink" title="pt（点）"></a>pt（点）</h3><p>印刷术语</p>
+<h3 id="pc（派卡）"><a href="#pc（派卡）" class="headerlink" title="pc（派卡）"></a>pc（派卡）</h3><p>印刷术语</p>
+<h2 id="相对长度单位"><a href="#相对长度单位" class="headerlink" title="相对长度单位"></a>相对长度单位</h2><h3 id="em"><a href="#em" class="headerlink" title="em"></a>em</h3><p>em 是最常见的相对长度单位，适合基于特定的字号进行排版。<br>在 CSS 中，1em 等于当前元素的字号，其准确值取决于作用的元素的字号属性值（font-size 属性值）。</p>
+<p>设置 padding、height、width、border-radius 等属性时使用 em 会很方便。这是因为当元素继承不同的字号或用户改变了字体设置时，这些属性会跟着元素均匀地缩放。</p>
+<p>em 用在内边距、外边距及元素大小上很好，但用在字号上就会很复杂。</p>
+<h4 id="em-定义字号"><a href="#em-定义字号" class="headerlink" title="em 定义字号"></a>em 定义字号</h4><p>谈到 font-size 属性时，em 表现得不太一样。当前元素的字号决定了 em。使用 em 定义某元素字号时，font-size 将根据继承的字号（父元素的字号）来计算。</p>
+<p>对大多数浏览器来说，默认的字号为 16px。准确地说，medium 关键字的值是 16px。</p>
+<p>em 的复杂之处在于同时用它指定一个元素的字号和其他属性。这时，浏览器必须先算字号，然后使用这个计算值去算出其余的属性值。这两类属性可以拥有一样的声明值，但是计算值不一样。</p>
+<p>当用 em 来指定多重嵌套的元素的字号时就会产生意外的结果。为了算出每个元素准确值，就需要知道继承的字号，如果这个值是在父元素上用 em 定义的，就需要知道父元素的继承值，以此类推，就会沿着 DOM 树一直往上查找。如当列表多级嵌套并且给每一级使用 em 定义字号时，就会发生文字缩小的现象。</p>
+<h3 id="rem"><a href="#rem" class="headerlink" title="rem"></a>rem</h3><p>rem 是 root em 缩写。rem 不是相对当前元素，而是相对于根元素的单位。不管在文档什么位置使用 rem，1.2rem 都会有相同的计算值：1.2 乘以根元素的字号。由于默认的字号对某些用户而言很重要，尤其是对视力受损的人，故应该始终用相对单位或者百分比设置字号。</p>
+<p>对大多数浏览器来说，根元素字号默认为 16px。准确地说，medium 关键字的值是 16px。</p>
+<p>与 em 相比 rem 降低了复杂性。实际上 rem 结合了 px 和 em 的优点，既保留了相对单位优势又简单易用。那是不是应该全用 rem 抛弃其他选择呢？答案是否定的。在 CSS 里，答案通常是“看情况”。rem 只是工具包中的一种工具。掌握 CSS 很重要一点是学会在适当的场景使用适当的工具。</p>
+<p><strong>拿不准时，一般用 rem 设置字号，px 设置边框，em 设置其他大部分属性，尤其是内边距、外边距和圆角。</strong>这样字号可预测，同时还能在其他因素改变元素字号时，借助 em 缩放内外边距。用 px 定义边框也很好用，尤其是想要一个好看又精致线时。这些都是在设置各种属性时常用单位，但是它们仅是工具，在某些情况下用其他工具更好。</p>
+<ul>
+<li>px2rem：Webpack 中使用<code>px2rem-loader</code>或<code>postcss-loader</code>。</li>
+</ul>
+<h3 id="视口"><a href="#视口" class="headerlink" title="视口"></a>视口</h3><p>视口相对单位：相对浏览器视口定义长度的单位。<br>视口：浏览器窗口里网页可见部分边框区域，不包括浏览器的地址栏、工具栏、状态栏等。</p>
+<ul>
+<li>vh：视口高度的 1/100。</li>
+<li>vw：视口宽度的 1/100。</li>
+<li>vmin：视口宽、高中较小的一方的 1/100。</li>
+<li>vmax：视口宽、高中较大的一方的 1/100。</li>
+</ul>
+<h4 id="不起眼的用途：设置字号"><a href="#不起眼的用途：设置字号" class="headerlink" title="不起眼的用途：设置字号"></a>不起眼的用途：设置字号</h4><p>相对视口单位还有一个不起眼的用途就是设置字号，可以发现它比用 vh 和 vw 设置元素宽和高还要实用。</p>
+<p><code>calc()</code> 函数内可以对两个及其以上的值进行基本运算。当要结合不同单位的值时，<code>calc()</code> 特别实用。它支持的运算包括：加（+）、减（−）、乘（×）、除（÷）。加号和减号两边必须有空白，因此建议养成在每个操作符的前后都加上一个空格的习惯。</p>
+<p>可以用 <code>calc()</code> 函数结合 em 和 vw 两种单位定义 font-size，打开网页，慢慢缩放浏览器，字体平滑地缩放。em 保证最小字号，vw 确保字体会随着视口缩放。我们不用媒体查询就能实现大部分响应式策略。不仅省掉三四个硬编码的断点，而且网页上的内容也能由视口流畅地缩放。</p>
+<h1 id="百分比"><a href="#百分比" class="headerlink" title="百分比"></a>百分比</h1><p>百分比类似于长度，但是严格来讲，它不是长度。<br>需要知道的是，在 CSS 中，子元素中的百分比到底是谁的百分比。需要分情况讨论。</p>
+<h2 id="height、width"><a href="#height、width" class="headerlink" title="height、width"></a>height、width</h2><p>在子元素的 height 当中使用百分比，是相对于直接父元素的 height。</p>
+<p>在子元素的 width 当中使用百分比，是相对于直接父元素的 width。</p>
+<h2 id="top、bottom-、left、right"><a href="#top、bottom-、left、right" class="headerlink" title="top、bottom 、left、right"></a>top、bottom 、left、right</h2><p>在子元素的 top 和 bottom 当中使用百分比，是相对于直接非static定位（非默认定位）的父元素的 height。</p>
+<p>在子元素的 left 和 right 当中使用百分比，是相对于直接非static定位（非默认定位）的父元素的 width。</p>
+<h2 id="padding、margin"><a href="#padding、margin" class="headerlink" title="padding、margin"></a>padding、margin</h2><p>在子元素的 padding 当中使用百分比，不论是垂直方向或者是水平方向，都是相对于直接父元素的 width，而与父元素的 height 无关。</p>
+<p>在子元素的 margin 当中使用百分比，不论是垂直方向或者是水平方向，都是相对于直接父元素的 width， 而与父元素的 height 无关。</p>
+<h2 id="border-radius"><a href="#border-radius" class="headerlink" title="border-radius"></a>border-radius</h2><p>在子元素的 border-radius 当中使用百分比，是相对于子元素自身的 width。</p>
+<p>除了 border-radius 外，还有比如 translate、background-size 等都是相对于子元素自身的 width。</p>
+<h1 id="颜色"><a href="#颜色" class="headerlink" title="颜色"></a>颜色</h1><ul>
+<li>HSL</li>
+<li>RGB</li>
+<li>RGBA</li>
+<li>HSLA</li>
+<li>十六进制（通常称 hex）</li>
+</ul>
+<h1 id="无单位"><a href="#无单位" class="headerlink" title="无单位"></a>无单位</h1><p>有些属性允许无单位的值（即一个不指定单位的数）。支持这种值的属性包括 font-weight 、line-height、 z-index（700 等于 bold，400 等于 normal 等）。任何的长度单位（px、rem 等）都可以用无单位的值 0，因为这些情况下单位不影响计算值，即 0px、0%、0em 均相等。</p>
+<p>一个无单位的 0 只能用于长度和百分比，比如内边距、边框和宽度，而不能用于角度值，比如度，或者时间相关的值，比如秒。</p>
+<p>line-height 属性比较特殊，它的值既可以有单位也可以无单位。<br>通常我们应使用无单位数值，因为它们继承的方式不一样。</p>
+<p>继承的一个怪异特性：当一个元素的值定义为长度（px、em、rem 等等）时，子元素就会继承它的计算值。当使用 em 等单位定义行高时它们的值是计算值，传递到了任何继承子元素上。如果子元素有不同的字号，且继承 line-height 属性，就会造成意想不到的结果，如文字重叠。</p>
+<p>使用无单位的数值时，继承的是声明值，即在每个继承子元素上会重新算它的计算值。这样得到的结果几乎总是我们想要的。我们可以用一个无单位的数值来给 body 设置行高，之后则不用修改，除非有些地方想要不一样的行高。</p>
+<h1 id="自定义属性（CSS变量）"><a href="#自定义属性（CSS变量）" class="headerlink" title="自定义属性（CSS变量）"></a>自定义属性（CSS变量）</h1><p><strong>层叠变量的自定义属性</strong>给CSS引进了变量的概念，开启了一种全新的基于上下文的动态样式。你可以声明一个变量，为它赋一个值，然后在样式表的其他地方引用这个值。这样不仅能减少样式表中的重复，而且还有其他好处。</p>
+<p>如果刚好用了内置变量功能的CSS预处理器，比如 Sass 或者 Less，你可能就不太想用 CSS 变量了。千万别这样。CSS 变量和它们有本质上的区别，它比任何一款预处理器的变量功能都多。</p>
+<h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>要定义一个自定义属性，只需要像其他 CSS 属性那样声明即可。</p>
+<p>变量名前面必须有两个连字符（–），用来跟 CSS 属性区分，剩下的部分可以随意命名，且变量必须在一个声明块内声明。如：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-pseudo">:root</span> &#123;<br>  --<span class="hljs-selector-tag">main</span>-<span class="hljs-attribute">font</span>: Helvetica, Arial, sans-serif;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>调用 <code>var()</code> 函数就能使用自定义属性（CSS变量）。其还接受第二个参数，用于指定备用值。如果第一个参数指定的变量未定义，那么就会使用第二个值。如：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-pseudo">:root</span> &#123;<br>  --<span class="hljs-selector-tag">main</span>-<span class="hljs-attribute">font</span>: Helvetica, Arial, sans-serif;<br>  --brand-<span class="hljs-attribute">color</span>: <span class="hljs-number">#369</span>;<br>&#125;<br><span class="hljs-selector-tag">p</span> &#123;<br>  <span class="hljs-attribute">font-family</span>: <span class="hljs-built_in">var</span>(--main-font);<br>  <span class="hljs-attribute">color</span>: <span class="hljs-built_in">var</span>(--second-color, blue);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>此外，如果 <code>var()</code> 函数算出来的是一个非法值，对应的属性就会设置为其初始值。</p>
+<h2 id="动态改变"><a href="#动态改变" class="headerlink" title="动态改变"></a>动态改变</h2><p>自定义属性不只是为减少重复代码提供了一种便捷方式，它真正的意义在于，自定义属性的声明能够层叠和继承：可以在多个选择器中定义相同的变量，这个变量在网页的不同地方有不同的值。</p>
+<p>例如，可以定义一个变量为黑色，然后在某个容器中重新将其定义为白色。那么基于该变量的任何样式，在容器外部会动态解析为黑色，在容器内部会动态解析为白色。</p>
+<p>自定义属性就像作用域变量一样，因为它的值会被后代元素继承。</p>
+<h2 id="使用-JS-改变"><a href="#使用-JS-改变" class="headerlink" title="使用 JS 改变"></a>使用 JS 改变</h2><p>还可以使用 JavaScript 在浏览器中实时访问和修改自定义属性。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> rootElement = <span class="hljs-built_in">document</span>.documentElement;<br><span class="hljs-keyword">const</span> styles = getComputedStyle(rootElement);<br><span class="hljs-keyword">const</span> mainColor = styles.getPropertyValue(<span class="hljs-string">&#x27;--main-font&#x27;</span>);<br><span class="hljs-built_in">console</span>.lot(<span class="hljs-built_in">String</span>(mainColor).trim());<br></code></pre></td></tr></table></figure>
+
+<h2 id="探索自定义属性"><a href="#探索自定义属性" class="headerlink" title="探索自定义属性"></a>探索自定义属性</h2><p>自定义属性是CSS中一个全新的领域，开发人员刚刚开始探索。因为浏览器支持有限，所以还没有出现“典型”的用法。</p>
+<p>值得注意的是，在不支持自定义属性的浏览器上，任何使用 <code>var()</code> 的声明都会被忽略。需要为这些浏览器提供回退方案。</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/CSS/">CSS</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/CSS/">CSS</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/10/03/CSS%E4%B9%8B%E6%B5%AE%E5%8A%A8/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">CSS之浮动</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/09/25/%E8%B7%A8%E5%9F%9F/">
+                        <span class="hidden-mobile">跨域</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+  <div class="col-lg-7 mx-auto nopadding-x-md">
+    <div class="container custom post-custom mx-auto">
+      <img src="https://octodex.github.com/images/jetpacktocat.png" srcset="/img/loading.gif" lazyload class="rounded mx-auto d-block mt-5" style="width:150px; height:150px;">
+    </div>
+  </div>
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Powered by Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Theme is Fluid</span></a>
+  </div>
+  
+
+  
+
+  
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?bbe44c28232a60458d913426edaff12f";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+    
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?siteId=16939915";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

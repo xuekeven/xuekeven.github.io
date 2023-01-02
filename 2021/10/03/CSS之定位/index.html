@@ -18,7 +18,7 @@
   <meta name="author" content="Keven">
   <meta name="keywords" content="">
   
-  <title>文档 - Keven&#39;s Blog</title>
+  <title>CSS之定位 - Keven&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
 
@@ -187,7 +187,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.2)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="文档">
+            <span class="h2" id="subtitle" title="CSS之定位">
               
             </span>
 
@@ -202,7 +202,7 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-10-03 15:00" pubdate>
+      <time datetime="2021-10-03 18:00" pubdate>
         2021年10月3日
       </time>
     </span>
@@ -214,7 +214,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.9k 字
+      2.9k 字
     </span>
   
 
@@ -224,7 +224,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      21
+      30
        分钟
     </span>
   
@@ -254,61 +254,57 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">文档</h1>
+            <h1 style="display: none">CSS之定位</h1>
             
             <div class="markdown-body">
-              <h1 id="文档"><a href="#文档" class="headerlink" title="文档"></a>文档</h1><p>当浏览器解析HTML文档时，会在内存里将页面的所有元素表示为 DOM（文档对象模型）。它是一个树结构，其中每个元素都由一个节点表示。<code>&lt;html&gt;</code>元素是顶级根节点。它的下面是子节点：<code>&lt;head&gt;</code>和<code>&lt;body&gt;</code>。再下面是逐级嵌套的后代节点。</p>
-<p>在文档中，根节点是所有其他元素的祖先节点。根节点有一个伪类选择器（:root）可以用来选中它自己。这等价于类型选择器 html，但是 html 的优先级相当于一个类名，而不是一个标签。</p>
-<p>定位方案是控制元素的布局，有三种常见方案：普通流、浮动、定位。</p>
-<h1 id="普通流"><a href="#普通流" class="headerlink" title="普通流"></a>普通流</h1><p>普通文档流指的是网页元素的默认布局行为。</p>
-<p>普通文档流中，元素按照其在 HTML 文档中的先后位置至上而下布局。此过程中，行内元素水平排列，跟随文字的方向从左到右排列，直到当行被占满然后换行。块级元素则会被渲染成为一个完整的新行，它会占据完整的一行，前后都有换行。除非另外指定，否则所有元素默认都是普通流定位，即普通流中元素的位置由该元素在 HTML 文档中的位置决定。</p>
-<p>普通文档流是为限定的宽度和无限的高度设计的。内容会填满视口的宽度，然后在必要的时候折行。因此，容器的高度由内容天然地决定，而不是容器自己决定。</p>
-<p>脱离普通文档流有三种方式：浮动、定位（绝对定位和固定定位）。</p>
-<h2 id="BFC"><a href="#BFC" class="headerlink" title="BFC"></a>BFC</h2><p>块格式化上下文（Block Formatting Contexts）是 Web 页面可视 CSS 渲染的一部分，是块盒子的布局过程发生的区域。BFC 是网页的一块区域，元素基于此区域布局，BFC 里内容不会跟外部的元素重叠或相互影响。</p>
-<p>具有 BFC 特性的元素可以看作是隔离了的独立容器，容器里面元素不会在布局上影响到外面元素，并且 BFC 具有普通容器所没有的一些特性。可以把 BFC 理解为一个封闭大箱子，箱子内部的元素无论如何翻江倒海，都不会影响到外部。某些情况下，BFC 中的内容可能还会与别的 BFC 的内容重叠。</p>
-<p>BFC 包含创建它的元素内部的所有内容，属于定位方案的普通流。</p>
-<h3 id="创建-BFC"><a href="#创建-BFC" class="headerlink" title="创建 BFC"></a>创建 BFC</h3><ul>
-<li>根元素（html）</li>
-<li>元素 overflow 值不为 visible</li>
-<li>元素 float 值不为 none</li>
-<li>元素 position 值为 absolute、fixed</li>
-<li>元素 contain 值为 layout、content、paint </li>
-<li>元素 display 值为 flow-root</li>
-<li>元素 display 值为 inline-block</li>
-<li>元素 display 值为 flex、 inline-flex 及其直接子元素（弹性元素及其直接子元素）</li>
-<li>元素 display 值为 grid、inline-grid 及其直接子元素（网格元素及其直接子元素）</li>
-<li>元素 display 值为 table-cell（表格单元格）</li>
-<li>元素 display 值为 table-caption（表格标题）</li>
-<li>元素 display 值为 table、inline-table、table-row、<br>table-row-group、table-header-group、table-footer-group（匿名表格单元格元素）</li>
-<li>元素 column-count、column-width 值不为 auto，包括 column-count 值为 1（多列容器）</li>
-<li>元素 column-span 值为 all，即使该元素没有包裹在一个多列容器中</li>
+              <p>只有绝对定位、固定定位会脱离普通文档流，静态定位、相对定位、粘性定位不会脱离普通文档流。</p>
+<p>脱离普通文档流：从普通文档流中被移除，不影响普通文档流的布局。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">position</span>: static;<br><span class="hljs-attribute">position</span>: fixed;<br><span class="hljs-attribute">position</span>: absolute;<br><span class="hljs-attribute">position</span>: relative;<br><span class="hljs-attribute">position</span>: sticky;<br></code></pre></td></tr></table></figure>
+
+<h1 id="静态定位"><a href="#静态定位" class="headerlink" title="静态定位"></a>静态定位</h1><p>默认值，静态定位，没有定位，遵循正常的文档流对象。static 改成其他值，我们就说元素就被定位，是定位元素。如果元素使用静态定位，那么就说它未被定位，是非定位元素。</p>
+<p>不会受到 top、bottom、left、right 属性的影响。</p>
+<h1 id="固定定位"><a href="#固定定位" class="headerlink" title="固定定位"></a>固定定位</h1><p>给元素设置<code>position: fixed</code>就能将元素放在视口的任意位置而随着网页滑动保持不变。这样需要搭配四个属性一起使用：top、right、bottom、left 。这四个属性值决定了固定定位的元素与浏览器视口边缘的距离，还隐式地定义了元素的宽高。</p>
+<p>固定定位让元素相对视口固定定位，此时视口被称作元素的包含块（containing block）。</p>
+<p>定位一个元素时，不要求指定四个方向的值，可以只指定需要的方向值，然后用 width 和/或 height 来决定它的大小，也可以让元素本身来决定大小。</p>
+<p>因为固定元素从文档流中移除，所以它不再影响页面其他元素的位置。其他的元素会跟随正常文档流，就像固定元素不存在一样。就是说它们通常会在固定元素下面排列，视觉上被遮挡。</p>
+<h1 id="绝对定位"><a href="#绝对定位" class="headerlink" title="绝对定位"></a>绝对定位</h1><p>绝对定位行为跟固定定位相似，只是它的包含块不一样。绝对定位不是相对视口，而是相对最近的祖先定位元素。跟固定元素一样，top、right、bottom、left 属性值决定了元素的边缘在包含块里的位置，还隐式地定义了元素的宽高。</p>
+<p>如果父元素未被定位，则浏览器会沿着 DOM 树往上找它的祖父、曾祖父，直到找到一个定位元素用它作为包含块。但如果祖先元素都没有定位，则会基于初始包含块来定位。初始包含块跟视口一样大，固定在网页的顶部，也就是相对视口定位。</p>
+<p>绝对定位是定位类型里的重量级选手。它经常跟 JavaScript 配合，用于弹出菜单、工具提示及消息盒子等。</p>
+<h1 id="相对定位"><a href="#相对定位" class="headerlink" title="相对定位"></a>相对定位</h1><p>相对定位可能是最不被理解的定位类型。当第一次给元素加上<code>position: relative</code>时候，你通常看不到页面上有任何视觉改变。相对定位元素以及它周围的所有元素，都还保持着原来位置。</p>
+<p>相对定位的位置依赖于文档流。如果设置 top、right、bottom、left 属性，元素就会从它原来所在的文档流位置移动，但是不会改变它周围任何元素的位置。跟固定定位盒绝对定位不一样，不能用这四个属性来改变相对定位元素的大小。这些属性只能让元素在原来的文档流位置下、左、上、右方向移动。可以用 top 或 bottom，但不能一起用（ bottom 会被忽略）；可以用 left 或 right，但也不能一起用（ right 会被忽略）。</p>
+<p>有时可用四个属性调整相对元素的位置，把它挤到某个位置，但这只是相对定位的一个冷门用法。更常见的用法是使用<code>position: relative</code>给它里面的绝对定位元素创建一个包含块。</p>
+<h1 id="粘性定位"><a href="#粘性定位" class="headerlink" title="粘性定位"></a>粘性定位</h1><p>粘性定位是固定定位和相对定位的结合体：正常情况下，元素随着页面滚动，当元素到达屏幕特定位置时，如果用户继续滚动，元素就会“锁定”在这个位置。这个“特定位置”，由 top、right、bottom、left 属性决定。和相对定位相似，可以用 top 或 bottom，但不能一起用（ bottom 会被忽略）；可以用 left 或 right，但也不能一起用（ right 会被忽略），但若一个值也不设置，其定位行为与相对定位相同。</p>
+<p>如果浏览器不支持粘性定位，通常要用固定定位或者绝对定位来回退处理。</p>
+<p>粘性元素永远不会超出父元素的范围。注意，只有当父元素的高度大于粘性元素时侯才会让粘性元素固定，因此建议给父元素加上 min-height，以便让父元素足够高。注意，其父元素不能设置<code>overflow:hidden</code>或者<code>overflow:auto</code>属性。</p>
+<h1 id="定位层叠"><a href="#定位层叠" class="headerlink" title="定位层叠"></a>定位层叠</h1><p>定位非常有用，但也需要弄清楚它会带来什么后果。当把一个元素从文档流中移除时，我们就需要管理之前由文档流处理的所有事情。</p>
+<p>首先要确保元素不会跑到浏览器视口之外，导致用户会看不到元素。其次还要保证元素不会不小心挡住重要内容。最后还有层叠的问题。在同一页面定位多个元素时，可能会遇到两个不同定位的元素重叠的现象。</p>
+<h2 id="渲染过程和层叠顺序"><a href="#渲染过程和层叠顺序" class="headerlink" title="渲染过程和层叠顺序"></a>渲染过程和层叠顺序</h2><p>浏览器将 HTML 文件解析为 DOM 的同时还创建了另一个树形结构，叫作渲染树（render tree）。它代表了每个元素的视觉样式和位置。同时还决定浏览器绘制元素的顺序。顺序很重要，因为如果元素刚好重叠，后绘制的元素就会出现在先绘制的元素前面。</p>
+<p>通常情况下（使用定位之前），元素在 HTML 里出现的顺序决定了绘制的顺序。但在使用定位元素时，这种行为会改变。浏览器会先绘制所有非定位的元素，然后绘制定位元素。默认情况下，所有的定位元素会出现在非定位元素前面。之后对于定位元素，基于源码的层叠关系并没有改变，依然按照后绘制的定位元素出现在先绘制的定位元素前面的规则。</p>
+<p>通常情况下，模态框要放在网页内容的最后，body 标签关闭之前。大多数的构建模态框 JavaScript 库会自动这样做。因为模态框使用固定定位，所以不必关心它标记出现在哪，它会一直定位到屏幕中间。</p>
+<p>改变固定定位元素的标记位置不会产生不好的影响，但是对相对、绝对或粘性定位的元素来说，通常无法用改变标记位置的方法解决层叠问题。相对定位依赖于文档流，绝对定位依赖于元素的定位祖先节点。这时候需要用 z-index 属性来控制它们的层叠行为。</p>
+<h2 id="z-index-属性控制层叠顺序"><a href="#z-index-属性控制层叠顺序" class="headerlink" title="z-index 属性控制层叠顺序"></a>z-index 属性控制层叠顺序</h2><p>z-index 属性值可以是任意整数（正负都行）。z 表示是笛卡儿 x-y-z 坐标系里的深度方向。拥有较高 z-index 的元素出现在拥有较低 z-index 的元素前面。拥有负数 z-index 的元素出现在静态定位元素后面。</p>
+<p>使用 z-index 是解决网页层叠问题的第二个方法，该方法不要求修改 HTML 的结构。</p>
+<p>z-index 行为很好理解，但是使用它时要注意两个小陷阱。第一，z-index 只会在定位元素上生效，不能用它控制静态元素。第二，给一个定位元素加上 z-index 可以创建层叠上下文。</p>
+<h2 id="理解层叠上下文"><a href="#理解层叠上下文" class="headerlink" title="理解层叠上下文"></a>理解层叠上下文</h2><p>一个层叠上下文包含一个元素或者由浏览器一起绘制的一组元素。其中一个元素会被作为层叠上下文的根，比如给一个定位元素添加 z-index 时，该定位元素就变成了一个新的层叠上下文的根，它所有后代元素就是这个层叠上下文的一部分。</p>
+<p>不要将层叠上下文跟 BFC 弄混，它们是两个独立的概念，尽管不一定互斥。层叠上下文是负责决定哪些元素出现在另一些元素前面，而 BFC 负责处理文档流，以及元素是否会重叠。</p>
+<p>实际上将层叠上下文里的所有元素一起绘制会造成严重的后果：层叠上下文之外元素无法叠放在层叠上下文内的两个元素之间。换句话说，若一个元素叠放在一个层叠上下文前，那么此层叠上下文里没有元素可以被拉到该元素前面；若一个元素被放在层叠上下文后，那么层叠上下文里没有元素能出现在该元素后面。</p>
+<p>给一个定位元素加 z-index 属性是创建层叠上下文最主要的方式，但还有别的属性也能创建，比如小于 1 的 opacity 属性，以及 transform、filter 属性。由于这些属性主要会影响元素及其子元素渲染的方式，因此一起绘制父子元素。文档根节点（html 元素）也会给整个页面创建一个顶级的层叠上下文。</p>
+<blockquote>
+<p>所有层叠上下文内的元素会按照以下顺序，从后到前叠放：</p>
+</blockquote>
+<ul>
+<li>层叠上下文的根</li>
+<li>z-index 为负的定位元素（及其子元素）</li>
+<li>block 块状水平盒子</li>
+<li>float 浮动盒子</li>
+<li>inline/inline-block 水平盒子</li>
+<li>z-index 为 auto 看成 z-index:0 的定位元素（及其子元素），不靠 z-index 的重叠上下文</li>
+<li>z-index 为正的定位元素（及其子元素）</li>
 </ul>
-<p>使用说明：</p>
-<p>使用<code>display: flow-root</code>可以创建无副作用的 BFC。在父级块当中使用<code>display: flow-root</code>可以创建新的 BFC，父级块的所有内容都会参与 BFC。</p>
-<p>使用<code>overflow: auto</code>会创建一个包含这个元素的 BFC，通常的做法是设置父级块<code>overflow: auto</code>或者设置其它的非默认的<code>overflow: visible</code>的值。使用 overflow 创建一个新的 BFC，是因为 overflow 属性告诉浏览器你想要怎样处理溢出的内容。当使用这个属性只是为了创建 BFC 的时候，你可能会发现一些不想要的问题，比如滚动条或一些剪切的阴影，需要注意。另外，对于后续的开发，可能不是很清楚当时为什么使用 overflow，所以最好添加一些注释来解释为什么这样做。</p>
-<p>也可以使用其他方式，但是有些问题需要注意，比如，使用浮动或<code>display: inline-block</code>方式创建 BFC 的元素宽度会变成 100%，因此需要限制一下元素的宽度，防止因为过宽而换行，导致内容移动到浮动图片的下面。相反，使用<code>display: table-cell</code>方式显示的元素，它的宽度只会刚好容纳其中的内容，因此需要设置一个较大的宽度，强制使其填满剩余空间。</p>
-<h3 id="BFC-用途"><a href="#BFC-用途" class="headerlink" title="BFC 用途"></a>BFC 用途</h3><ul>
-<li>使用 BFC 浮动定位</li>
-<li>使用 BFC 清除浮动</li>
-<li>使用 BFC 防止外边距折叠</li>
-<li>使用 BFC 防止浮动容器高度塌陷</li>
-<li>使用 BFC 防止媒体对象「文字环绕」</li>
-</ul>
-<h2 id="IFC"><a href="#IFC" class="headerlink" title="IFC"></a>IFC</h2><p>内联格式化上下文（Inline Formatting Contexts）是一个网页的渲染结果的一部分。其中，各行内框（inline boxes）一个接一个地排列，其排列顺序则是根据书写模式的设置来决定的：水平书写，各个框从左边开始水平地排列；垂直书写，各个框从顶部开始水平地排列。</p>
-<h3 id="IFC-布局规则"><a href="#IFC-布局规则" class="headerlink" title="IFC 布局规则"></a>IFC 布局规则</h3><p>子元素水平方向横向排列，并且垂直方向起点为元素顶部。</p>
-<p>子元素只会计算横向样式空间，垂直方向样式空间不会被计算。</p>
-<p>在垂直方向上，子元素会以不同形式来对齐（vertical-align）。</p>
-<p>能把在一行上的框都完全包含进去的一个矩形区域，被称为该行的行框（line box）。行框的宽度是由包含块（containing box）和与其中的浮动来决定。</p>
-<p>IFC中的“line box”一般左右边贴紧其包含块，但float元素会优先排列。</p>
-<p>IFC中的“line box”高度由 CSS 行高计算规则来确定，同个IFC下的多个line box高度可能会不同。</p>
-<p>当 inline-level boxes的总宽度少于包含它们的line box时，其水平渲染规则由 text-align 属性值来决定。</p>
-<p>当一个“inline box”超过父元素的宽度时，它会被分割成多个boxes，这些 oxes 分布在多个“line box”中。如果子元素未设置强制换行的情况下，“inline box”将不可被分割，将会溢出父元素。</p>
-<p>框会从包含块的顶部开始，一个接一个地水平摆放。</p>
-<p>摆放这些框时，它们在水平方向的 内外边距+边框 所占用的空间都会被考虑； 在垂直方向上，这些框可能会以不同形式来对齐： 水平的margin、padding、border有效，垂直无效。不能指定宽高。</p>
-<p>行框的宽度是 由包含块和存在的浮动来决定; 行框的高度 由行高来决定。</p>
-<h3 id="创建-IFC"><a href="#创建-IFC" class="headerlink" title="创建 IFC"></a>创建 IFC</h3><p>块级元素中仅包含内联级别元素。形成条件非常简单，需要注意的是当 IFC 中有块级元素插入时，会产生两个匿名块将父元素分割开来，产生两个 IFC。</p>
-<h3 id="IFC-用途"><a href="#IFC-用途" class="headerlink" title="IFC 用途"></a>IFC 用途</h3><p>水平居中：当一个块要在环境中水平居中时，设置其为<code>displau: inline-block</code>则会在外层产生 IFC，通过 text-align 属性则可以使其水平居中。</p>
-<p>垂直居中：创建一个 IFC，用其中一个元素撑开父元素的高度，然后设置其<code>vertical-align: middle</code>，其他的行内元素则可以在此父元素下垂直居中。</p>
+<p>如果发现 z-index 并没有按照预期表现，那就在 DOM 树里往上找到元素祖先节点，直到层叠上下文的根。然后给它设置 z-idnex，将整个层叠上下文向前或向后放。还要注意多个层叠上下文嵌套的情况。</p>
+<p>网页很复杂时，很难判断是哪个层叠上下文导致的问题。因此在创建层叠上下文的时候就一定要多加小心，没有特殊理由的话不要随意创建，尤其是当一个元素包含了网页很大一部分内容的时候。尽可能地将独立的定位元素（如模态框）放到 DOM 的顶层，body 结束标签之前，这样就没有外部的层叠上下文能束缚它们。</p>
+<p>有些开发人员会忍不住给页面的大量元素使用定位。一定要克制这种冲动。定位用得越多，网页就越复杂，也就越难调试。如果你定位了大量元素，就回头评估一下现在的情况，尤其当你发现很难调试出自己想要的布局时，一定要反思。如果可以用别的方法实现某个布局，应该优先用那些方法。</p>
+<p>如果能够依靠文档流，而不是靠明确指定定位的方式实现布局，那么浏览器会帮我们处理好很多边缘情况。记住，定位可能会将元素拉出文档流。一般来说只有在需要将元素叠放到别的元素之前时，才应该用定位。</p>
 
             </div>
             <hr>
@@ -343,9 +339,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2021/10/03/%E5%AE%9A%E4%BD%8D/">
+                      <a href="/2021/10/03/CSS%E4%B9%8B%E5%B1%82%E5%8F%A0%E5%92%8C%E7%BB%A7%E6%89%BF/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">定位</span>
+                        <span class="hidden-mobile">CSS之层叠和继承</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -353,8 +349,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2021/10/03/%E5%B1%85%E4%B8%AD/">
-                        <span class="hidden-mobile">居中</span>
+                      <a href="/2021/10/03/CSS%E4%B9%8B%E6%96%87%E6%A1%A3%E6%B5%81/">
+                        <span class="hidden-mobile">CSS之文档流</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

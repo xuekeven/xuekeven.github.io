@@ -214,7 +214,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.5k 字
+      2.2k 字
     </span>
   
 
@@ -224,7 +224,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      18
+      27
        分钟
     </span>
   
@@ -257,7 +257,11 @@
             <h1 style="display: none">CSS面试题</h1>
             
             <div class="markdown-body">
-              <h1 id="块级元素、行内元素、行内块级元素的区别与用法"><a href="#块级元素、行内元素、行内块级元素的区别与用法" class="headerlink" title="块级元素、行内元素、行内块级元素的区别与用法"></a>块级元素、行内元素、行内块级元素的区别与用法</h1><p>参考：<br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6964644611822190622">https://juejin.cn/post/6964644611822190622</a> 。<br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6953854318580203533">https://juejin.cn/post/6953854318580203533</a> 。</p>
+              <h1 id="行内元素和块级元素"><a href="#行内元素和块级元素" class="headerlink" title="行内元素和块级元素"></a>行内元素和块级元素</h1><p>参考：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6964644611822190622">https://juejin.cn/post/6964644611822190622</a> 。</li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6953854318580203533">https://juejin.cn/post/6953854318580203533</a> 。</li>
+</ul>
 <table>
 <thead>
 <tr>
@@ -304,6 +308,40 @@
 <li>设置父元素<code>display:table; word-spacing:-1em</code></li>
 <li>设置子元素<code>float:left</code></li>
 </ul>
+<h1 id="文本长度"><a href="#文本长度" class="headerlink" title="文本长度"></a>文本长度</h1><h2 id="超出宽度需要打点打点"><a href="#超出宽度需要打点打点" class="headerlink" title="超出宽度需要打点打点"></a>超出宽度需要打点打点</h2><ol>
+<li>文字超过部分显示为省略号。用到属性：</li>
+</ol>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.runoob.com/cssref/css3-pr-text-overflow.html">text-overflow</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.runoob.com/cssref/pr-text-white-space.html">white-space</a></li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css"></span><br><span class="css">    <span class="hljs-selector-class">.p</span> &#123;</span><br><span class="css">      <span class="hljs-attribute">width</span>: <span class="hljs-number">200px</span>;</span><br><span class="css">      <span class="hljs-attribute">overflow</span>: hidden;</span><br><span class="css">      <span class="hljs-attribute">text-overflow</span>: ellipsis;</span><br><span class="css">      <span class="hljs-attribute">white-space</span>: nowrap;</span><br><span class="css">    &#125;</span><br><span class="css">  </span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;p&quot;</span>&gt;</span><br>    我是一行自动换的文本123我是一行自动换的文本123我是一行自动换的文本123我是一行自动换的文本<br>  <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<ol>
+<li>文本超出两行，超出部分省略号显示。用到属性：</li>
+</ol>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.runoob.com/cssref/css3-pr-word-break.html">word-break</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.runoob.com/cssref/pr-text-white-space.html">white-space</a></li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css"></span><br><span class="css">    <span class="hljs-selector-class">.p</span> &#123;</span><br><span class="css">      <span class="hljs-attribute">width</span>: <span class="hljs-number">200px</span>;</span><br><span class="css">      <span class="hljs-attribute">overflow</span>: hidden;</span><br><span class="css">      <span class="hljs-attribute">text-overflow</span>: ellipsis; <span class="hljs-comment">/* ? */</span></span><br><span class="css">      <span class="hljs-attribute">word-break</span>: break-all;  <span class="hljs-comment">/* ? */</span></span><br><span class="css">      <span class="hljs-attribute">display</span>: -webkit-box;</span><br><span class="css">      -webkit-box-orient: vertical;</span><br><span class="css">      -webkit-line-clamp: <span class="hljs-number">2</span>; <span class="hljs-comment">/* 这里是超出几行省略 */</span></span><br><span class="css">    &#125;</span><br><span class="css">  </span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;p&quot;</span>&gt;</span><br>    我是两行自动换的文本123我是两行自动换的文本123我是两行自动换的文本123我是两行自动换的文本<br>  <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<p>用到相关属性： <a target="_blank" rel="noopener" href="https://www.runoob.com/cssref/css3-pr-text-overflow.html">white-space</a></p>
+<h2 id="长度够还打点"><a href="#长度够还打点" class="headerlink" title="长度够还打点"></a>长度够还打点</h2><p>可能是因为设置了max-width</p>
+<h1 id="画图形"><a href="#画图形" class="headerlink" title="画图形"></a>画图形</h1><p>原理是利用元素的长度、宽度、、边框、背景颜色及其伪元素来实现。<br>如画一个对勾：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-class">.checkbox</span><span class="hljs-selector-class">.checked</span> &#123;<br>  <span class="hljs-attribute">width</span>: <span class="hljs-number">16px</span>;<br>  <span class="hljs-attribute">height</span>: <span class="hljs-number">16px</span>;<br>  <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#2fd2fe</span>;<br>  <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">50%</span>;<br>  <span class="hljs-attribute">position</span>: relative;<br> &#125;<br><br><span class="hljs-selector-class">.checkbox</span><span class="hljs-selector-class">.checked</span><span class="hljs-selector-pseudo">::after</span> &#123;<br>  <span class="hljs-attribute">content</span>: <span class="hljs-string">&quot;&quot;</span>;<br>  <span class="hljs-attribute">display</span>: block;<br>  <span class="hljs-attribute">width</span>: <span class="hljs-number">6px</span>;<br>  <span class="hljs-attribute">height</span>: <span class="hljs-number">4px</span>;<br>  <span class="hljs-attribute">border</span>: <span class="hljs-number">1px</span> solid black;<br>  <span class="hljs-attribute">border-right</span>: none;<br>  <span class="hljs-attribute">border-top</span>: none;<br>  <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">rotate</span>(-<span class="hljs-number">60deg</span>) <span class="hljs-built_in">translate</span>(<span class="hljs-number">7px</span>, -<span class="hljs-number">10px</span>);<br>  <span class="hljs-attribute">position</span>: absolute;<br>  <span class="hljs-attribute">top</span>: <span class="hljs-number">16px</span>;<br>  <span class="hljs-attribute">left</span>: <span class="hljs-number">8.5px</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h1 id="滚动条"><a href="#滚动条" class="headerlink" title="滚动条"></a>滚动条</h1><p>相关伪元素：</p>
+<ul>
+<li>div::-webkit-scrollbar 滚动条整体部分</li>
+<li>div::-webkit-scrollbar-thumb 滚动条里面的小方块，能向上向下移动（或往左往右移动，取决于是垂直滚动条还是水平滚动条</li>
+<li>div::-webkit-scrollbar-track 滚动条的轨道（里面装有 Thumb</li>
+<li>div::-webkit-scrollbar-button 滚动条的轨道的两端按钮，允许通过点击微调小方块的位置</li>
+<li>div::-webkit-scrollbar-track-piece 内层轨道，滚动条中间部分（除去</li>
+<li>div::-webkit-scrollbar-corner 边角，即两个滚动条的交汇处</li>
+<li>div::-webkit-resizer 两个滚动条的交汇处上用于通过拖动调整元素大小的小控件。注意此方案有兼容性问题，一般需要隐藏滚动条时可以用一个色块通过定位盖上去，或者将子级元素调大，父级元素使用 overflow-hidden 截掉滚动条部分。暴力且直接。</li>
+</ul>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs scss"><span class="hljs-keyword">@mixin</span> scrollBar &#123;<br>  &amp;::-webkit-scrollbar &#123;<br>    width: <span class="hljs-number">10px</span>;<br>    <span class="hljs-attribute">height</span>: <span class="hljs-number">10px</span>;<br><br>    &amp;-track &#123;<br>      <span class="hljs-attribute">border-radius</span>: <span class="hljs-variable">$Ra-5</span>;<br>      <span class="hljs-attribute">background-color</span>: transparent;<br>    &#125;<br><br>    &amp;-thumb &#123;<br>      <span class="hljs-attribute">border</span>: <span class="hljs-number">2px</span> solid transparent;<br>      <span class="hljs-attribute">border-radius</span>: <span class="hljs-variable">$Ra-5</span>;<br>      <span class="hljs-attribute">background-color</span>: rgba(<span class="hljs-variable">$M10</span>, <span class="hljs-number">0.1</span>);<br>      <span class="hljs-attribute">background-clip</span>: content-box;<br><br>      &amp;<span class="hljs-selector-pseudo">:hover</span> &#123;<br>        <span class="hljs-attribute">background-color</span>: rgba(<span class="hljs-variable">$M1</span>, <span class="hljs-number">0.3</span>);<br>      &#125;<br>    &#125;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
 <h1 id="隐藏元素"><a href="#隐藏元素" class="headerlink" title="隐藏元素"></a>隐藏元素</h1><p>参考：<a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904200401502215">https://juejin.cn/post/6844904200401502215</a> 。</p>
 <h2 id="display-none"><a href="#display-none" class="headerlink" title="display: none"></a>display: none</h2><ul>
 <li>Render Tree：浏览器不会渲染元素，不占据空间</li>
@@ -326,7 +364,13 @@
 <li>继承：会被子元素继承，且不能设置子元素 opacity: 1 来取消隐藏子元素</li>
 <li>transition：opacity 延时显示和隐藏</li>
 </ul>
-<h1 id="两栏布局和三栏布局"><a href="#两栏布局和三栏布局" class="headerlink" title="两栏布局和三栏布局"></a>两栏布局和三栏布局</h1><p>Demo：<br><a target="_blank" rel="noopener" href="https://github.com/xuekeven/learn_web/blob/main/dome/CSS/%E4%B8%A4%E6%A0%8F1-1.html">https://github.com/xuekeven/learn_web/blob/main/dome/CSS/两栏1-1.html</a> 。<br><a target="_blank" rel="noopener" href="https://github.com/xuekeven/learn_web/blob/main/dome/CSS/%E4%B8%A4%E6%A0%8F1-2.html">https://github.com/xuekeven/learn_web/blob/main/dome/CSS/两栏1-2.html</a> 。<br><a target="_blank" rel="noopener" href="https://github.com/xuekeven/learn_web/blob/main/dome/CSS/%E4%B8%89%E6%A0%8F1-1.html">https://github.com/xuekeven/learn_web/blob/main/dome/CSS/三栏1-1.html</a> 。<br><a target="_blank" rel="noopener" href="https://github.com/xuekeven/learn_web/blob/main/dome/CSS/%E4%B8%89%E6%A0%8F1-2.html">https://github.com/xuekeven/learn_web/blob/main/dome/CSS/三栏1-2.html</a> 。</p>
+<h1 id="两栏布局和三栏布局"><a href="#两栏布局和三栏布局" class="headerlink" title="两栏布局和三栏布局"></a>两栏布局和三栏布局</h1><p>Demo：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/xuekeven/learn_web/blob/main/dome/CSS/%E4%B8%A4%E6%A0%8F1-1.html">https://github.com/xuekeven/learn_web/blob/main/dome/CSS/两栏1-1.html</a> 。</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/xuekeven/learn_web/blob/main/dome/CSS/%E4%B8%A4%E6%A0%8F1-2.html">https://github.com/xuekeven/learn_web/blob/main/dome/CSS/两栏1-2.html</a> 。</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/xuekeven/learn_web/blob/main/dome/CSS/%E4%B8%89%E6%A0%8F1-1.html">https://github.com/xuekeven/learn_web/blob/main/dome/CSS/三栏1-1.html</a> 。</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/xuekeven/learn_web/blob/main/dome/CSS/%E4%B8%89%E6%A0%8F1-2.html">https://github.com/xuekeven/learn_web/blob/main/dome/CSS/三栏1-2.html</a> 。</li>
+</ul>
 <p>两栏：一栏固定，一栏自适应；三栏：左右固定，中间自适应。方式有：</p>
 <ul>
 <li>浮动</li>
@@ -335,7 +379,11 @@
 <li>弹性布局</li>
 <li>网格布局</li>
 </ul>
-<h1 id="圣杯布局和双飞翼布局"><a href="#圣杯布局和双飞翼布局" class="headerlink" title="圣杯布局和双飞翼布局"></a>圣杯布局和双飞翼布局</h1><p>参考：<br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903565278855181">https://juejin.cn/post/6844903565278855181</a> 。<br>Demo：<br><a target="_blank" rel="noopener" href="https://github.com/xuekeven/learn_web/blob/main/dome/CSS/%E4%B8%89%E6%A0%8F_%E5%9C%A3%E6%9D%AF%E5%B8%83%E5%B1%80.html">https://github.com/xuekeven/learn_web/blob/main/dome/CSS/三栏_圣杯布局.html</a> 。<br><a target="_blank" rel="noopener" href="https://github.com/xuekeven/learn_web/blob/main/dome/CSS/%E4%B8%89%E6%A0%8F_%E5%8F%8C%E9%A3%9E%E7%BF%BC%E5%B8%83%E5%B1%80.html">https://github.com/xuekeven/learn_web/blob/main/dome/CSS/三栏_双飞翼布局.html</a> 。</p>
+<h1 id="圣杯布局和双飞翼布局"><a href="#圣杯布局和双飞翼布局" class="headerlink" title="圣杯布局和双飞翼布局"></a>圣杯布局和双飞翼布局</h1><p>参考：<a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903565278855181">https://juejin.cn/post/6844903565278855181</a> 。<br>Demo：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/xuekeven/learn_web/blob/main/dome/CSS/%E4%B8%89%E6%A0%8F_%E5%9C%A3%E6%9D%AF%E5%B8%83%E5%B1%80.html">https://github.com/xuekeven/learn_web/blob/main/dome/CSS/三栏_圣杯布局.html</a> 。</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/xuekeven/learn_web/blob/main/dome/CSS/%E4%B8%89%E6%A0%8F_%E5%8F%8C%E9%A3%9E%E7%BF%BC%E5%B8%83%E5%B1%80.html">https://github.com/xuekeven/learn_web/blob/main/dome/CSS/三栏_双飞翼布局.html</a> 。</li>
+</ul>
 <h2 id="异同点"><a href="#异同点" class="headerlink" title="异同点"></a>异同点</h2><ul>
 <li>都是对三栏使用浮动，然后对左右两栏使用负外边距</li>
 <li>都是把中间栏放在文档流最前面，让中间栏优先加载，并且中间栏占据宽度 100%</li>
