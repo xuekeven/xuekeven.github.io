@@ -1,0 +1,621 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="Keven">
+  <meta name="keywords" content="">
+  
+  <title>JavaScript语言基础之操作符 - Keven&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":60,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"siteId=16939915","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 50vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Keven's Blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/dome/">
+                <i class="iconfont icon-th-large"></i>
+                Dome
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tools/">
+                <i class="iconfont icon-briefcase"></i>
+                工具
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/example.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.2)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="JavaScript语言基础之操作符">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-author" aria-hidden="true"></i>
+      Keven
+    </span>
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2023-01-24 23:00" pubdate>
+        2023年1月24日
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2.9k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      31
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">JavaScript语言基础之操作符</h1>
+            
+            <div class="markdown-body">
+              <p>ECMA-262 描述了一组可用于操作数据值的操作符，包括数学操作符（如加、减）、位操作符、关系操作符和相等操作符等。ECMAScript 中的操作符是独特的，因为它们可用于各种值，包括字符串、数值、布尔值，甚至还有对象。在应用给对象时，操作符通常会调用 <code>valueOf()</code> 或 <code>toString()</code> 方法来取得可以计算的值。</p>
+<h1 id="一元操作符"><a href="#一元操作符" class="headerlink" title="一元操作符"></a>一元操作符</h1><p>只操作一个值的操作符叫一元操作符，是 ECMAScript 中最简单的操作符。</p>
+<h2 id="递增和递减操作符"><a href="#递增和递减操作符" class="headerlink" title="递增和递减操作符"></a>递增和递减操作符</h2><p>递增和递减操作符直接照搬自 C 语言，但有两个版本：前缀版和后缀版。顾名思义，前缀版就是位于要操作的变量前头，后缀版就是位于要操作的变量后头。</p>
+<ul>
+<li>前缀版：在跟其他操作混合时，变量的值在语句被求值之前改变（先递增递减后运算语句）</li>
+<li>后缀版：在跟其他操作混合时，变量的值在语句被求值之后发生（先运算语句后递增递减）</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> age1 = age2 = <span class="hljs-number">29</span>;<br><span class="hljs-comment">// 前缀版</span><br>++age1;<br>--age1;<br><span class="hljs-comment">// 后缀版</span><br>age1++;<br>age1--;<br><br><span class="hljs-built_in">console</span>.log(--age1 + <span class="hljs-number">2</span>); <span class="hljs-comment">// 30</span><br><span class="hljs-built_in">console</span>.log(age2-- + <span class="hljs-number">2</span>); <span class="hljs-comment">// 31</span><br><span class="hljs-built_in">console</span>.log(age1); <span class="hljs-comment">// 28</span><br><span class="hljs-built_in">console</span>.log(age2); <span class="hljs-comment">// 28</span><br></code></pre></td></tr></table></figure>
+
+<p>这 4 个操作符可作用于任何值，整数、字符串、布尔值、浮点值，甚至对象都可。递增和递减操作符遵循如下规则：</p>
+<ul>
+<li>数值，直接改变后返回</li>
+<li>布尔值，<code>true</code> 转换为 1，<code>false</code> 转换为 0，再应用改变，变量类型从布尔值变成数值</li>
+<li>字符串，如果是有效的数值形式，则转换为数值再应用改变；如果非有效的数值形式，则将变量的值设置为 NaN ，变量类型从字符串变成数值</li>
+<li>对象，则调用其 <code>valueOf()</code> 方法取得可以操作的值。对得到的值应用上述规则。如果是 <code>NaN</code>，则调用 <code>toString()</code> 并再次应用其他规则</li>
+</ul>
+<h2 id="一元加和减操作符"><a href="#一元加和减操作符" class="headerlink" title="一元加和减操作符"></a>一元加和减操作符</h2><p>它们在 ECMAScript 中跟在高中数学中的用途一样。</p>
+<p>一元加由一个加号（<code>+</code>）表示，放在变量前头，对数值没有任何影响。如果将一元加应用到非数值，则会执行与使用 <code>Number()</code> 转型函数一样的类型转换：布尔值 <code>false</code> 和 <code>true</code> 转换为 0 和 1，字符串根据特殊规则进行解析，对象会调用它们的 <code>valueOf()</code>或 <code>toString()</code><br>方法以得到可以转换的值。</p>
+<p>一元减由一个减号（<code>-</code>）表示，放在变量前头，用于把数值变成负值。如果将一元减应用到非数值，一元减会遵循与一元加同样的规则，先进行转换然后取负值。</p>
+<h1 id="位操作符"><a href="#位操作符" class="headerlink" title="位操作符"></a>位操作符</h1><p>下面介绍的操作符用于数值的底层操作，也就是操作内存中表示数据的比特（位）。</p>
+<h1 id="布尔操作符"><a href="#布尔操作符" class="headerlink" title="布尔操作符"></a>布尔操作符</h1><p>对于编程语言来说，布尔操作符跟相等操作符同样重要。如果没有能力测试两个值的关系，那么像 <code>if-else</code> 和循环这样的语句也没什么用。布尔操作符一共有 3 个：逻辑非（<code>!</code>）、逻辑与（<code>&amp;&amp;</code>）和逻辑或（<code>||</code>）。</p>
+<h2 id="逻辑非（-）"><a href="#逻辑非（-）" class="headerlink" title="逻辑非（!）"></a>逻辑非（<code>!</code>）</h2><p>可应用给 ECMAScript 中的任何值。这个操作符始终返回布尔值，无论应用到的是什么数据类型。逻辑非操作符首先将操作数转换为布尔值，然后再对其取反，遵循如下规则：</p>
+<ul>
+<li>如果操作数是对象，则返回 <code>false</code></li>
+<li>如果操作数是符号，则返回 <code>false</code></li>
+<li>如果操作数是空字符串，则返回 <code>true</code></li>
+<li>如果操作数是非空字符串，则返回 <code>false</code></li>
+<li>如果操作数是数值 0，则返回 <code>true</code></li>
+<li>如果操作数是非 0 数值（包括 Infinity），则返回 <code>false</code></li>
+<li>如果操作数是 <code>null</code>，则返回 <code>true</code></li>
+<li>如果操作数是 <code>NaN</code>，则返回 <code>true</code></li>
+<li>如果操作数是 <code>undefined</code>，则返回 <code>true</code></li>
+</ul>
+<p>逻辑非操作符也可以用于把任意值转换为布尔值。同时使用两个叹号（<code>!!</code>），相当于调用转型函数 <code>Boolean()</code>。无论操作数是什么类型，第一个叹号总会返回布尔值。第二个叹号对该布尔值取反，从而给出变量真正对应的布尔值。结果与使用 <code>Boolean()</code> 函数一样。</p>
+<h2 id="逻辑与（-amp-amp-）"><a href="#逻辑与（-amp-amp-）" class="headerlink" title="逻辑与（&amp;&amp;）"></a>逻辑与（<code>&amp;&amp;</code>）</h2><p>逻辑与操作符可用于任何类型的操作数。如果有操作数不是布尔值，则逻辑与并不一定会返回布尔值，而是遵循如下规则：</p>
+<ul>
+<li>如果有一个操作数是 <code>null</code>，则返回 <code>null</code></li>
+<li>如果有一个操作数是 <code>NaN</code>，则返回 <code>NaN</code></li>
+<li>如果有一个操作数是 <code>undefined</code>，则返回 <code>undefined</code></li>
+<li>如果第一个操作数是对象，则返回第二个操作数</li>
+<li>如果第二个操作数是对象，则只第一个操作数求值为 <code>true</code> 才会返回该对象</li>
+<li>如果两个操作数都是对象，则返回第二个操作数</li>
+</ul>
+<p>逻辑与操作符是一种短路操作符，意思就是如果第一个操作数决定了结果，那么永远不会对第二个操作数求值。对逻辑与操作符来说，如果第一个操作数是 <code>false</code>，那么无论第二个操作数是什么值，结果也不可能等于 <code>true</code>。</p>
+<h2 id="逻辑或（-）"><a href="#逻辑或（-）" class="headerlink" title="逻辑或（||）"></a>逻辑或（<code>||</code>）</h2><p>与逻辑与类似，如果有一个操作数不是布尔值，那么逻辑或操作符也不一定返回布尔值。它遵循如下规则</p>
+<ul>
+<li>如果两个操作数都是 <code>null</code>，则返回 <code>null</code></li>
+<li>如果两个操作数都是 <code>NaN</code>，则返回 <code>NaN</code></li>
+<li>如果两个操作数都是 <code>undefined</code>，则返回 <code>undefined</code></li>
+<li>如果第一个操作数求值为 <code>false</code>，则返回第二个操作数</li>
+<li>如果第一个操作数是对象，则返回第一个操作数</li>
+<li>如果两个操作数都是对象，则返回第一个操作数</li>
+</ul>
+<p>同样与逻辑与类似，逻辑或操作符也具有短路的特性。第一个操作数求值为 <code>true</code>，第二个操作数就不会再被求值。</p>
+<h1 id="乘性操作符"><a href="#乘性操作符" class="headerlink" title="乘性操作符"></a>乘性操作符</h1><p>ECMAScript 定义了 3 个乘性操作符：乘法、除法和取模。这些操作符跟它们在 Java、C 语言及 Perl 中对应的操作符作用一样，但在处理非数值时，它们也会包含一些自动的类型转换。如果乘性操作符有不是数值的操作数，则该操作数会在后台被使用 <code>Number()</code> 转型函数转换为数值。</p>
+<h2 id="乘法操作符（-）"><a href="#乘法操作符（-）" class="headerlink" title="乘法操作符（*）"></a>乘法操作符（<code>*</code>）</h2><p>用于计算两个数值的乘积。乘法操作符在处理特殊值时也有一些特殊的行为：</p>
+<ul>
+<li>若操作数都是数值，则执行常规的乘法运算，即两个正值相乘是正值，两个负值相乘也是正值，正负符号不同的值相乘得到负值。如果 ECMAScript 不能表示乘积，则返回 Infinity 或-Infinity</li>
+<li>若有任一操作数是 <code>NaN</code>，则返回 <code>NaN</code></li>
+<li>若是 Infinity 乘以 0，则返回 <code>NaN</code></li>
+<li>若是 Infinity 乘以非 0的有限数值，则根据第二个操作数的符号返回 Infinity 或 -Infinity</li>
+<li>若是 Infinity 乘以 Infinity，则返回 Infinity</li>
+<li>若有不是数值的操作数，则先用 <code>Number()</code> 将其转换为数值，然后再应用上述规则</li>
+</ul>
+<h2 id="除法操作符（-）"><a href="#除法操作符（-）" class="headerlink" title="除法操作符（/）"></a>除法操作符（<code>/</code>）</h2><p>用于计算第一个操作数除以第二个操作数的商。跟乘法操作符一样，除法操作符针对特殊值也有一些特殊的行为：</p>
+<ul>
+<li>如果操作数都是数值，则执行常规的除法运算，即两个正值相除是正值，两个负值相除也是正值，符号不同的值相除得到负值。如果ECMAScript不能表示商，则返回 Infinity 或 -Infinity。</li>
+<li>如果有任一操作数是 <code>NaN</code>，则返回 <code>NaN</code></li>
+<li>如果是 Infinity 除以 Infinity，则返回 <code>NaN</code></li>
+<li>如果是 0 除以 0，则返回 <code>NaN</code></li>
+<li>如果是非 0 的有限值除以 0，则根据第一个操作数的符号返回 Infinity 或 -Infinity</li>
+<li>如果是 Infinity 除以任何数值，则根据第二个操作数的符号返回 Infinity 或 -Infinity</li>
+<li>如果有不是数值的操作数，则先用 <code>Number()</code> 函数将其转换为数值，然后再用上述规则</li>
+</ul>
+<h2 id="取模操作符（-）"><a href="#取模操作符（-）" class="headerlink" title="取模操作符（%）"></a>取模操作符（<code>%</code>）</h2><p>与其他乘性操作符一样，取模操作符对特殊值也有一些特殊的行为：</p>
+<ul>
+<li>如果操作数是数值，则执行常规除法运算，返回余数</li>
+<li>如果被除数是无限值，除数是有限值，则返回 <code>NaN</code></li>
+<li>如果被除数是有限值，除数是 0，则返回 <code>NaN</code></li>
+<li>如果是 Infinity 除以 Infinity，则返回 <code>NaN</code></li>
+<li>如果被除数是有限值，除数是无限值，则返回被除数</li>
+<li>如果被除数是 0，除数不是 0，则返回 0</li>
+<li>如果有不是数值的操作数，则先用 <code>Number()</code> 函数将其转换为数值，然后再用上述规则</li>
+</ul>
+<h1 id="指数操作符"><a href="#指数操作符" class="headerlink" title="指数操作符"></a>指数操作符</h1><p>ECMAScript 7 新增了指数操作符，<code>Math.pow()</code> 现在有了自己的操作符 <code>**</code>，两者计算结果一样。<br>而且，指数操作符也有自己的指数赋值操作符 <code>**=</code>，该操作符执行指数运算和结果的赋值操作。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">Math</span>.pow(<span class="hljs-number">16</span>, <span class="hljs-number">0.5</span>)); <span class="hljs-comment">// 4 </span><br><span class="hljs-built_in">console</span>.log(<span class="hljs-number">16</span>** <span class="hljs-number">0.5</span>); <span class="hljs-comment">// 4 </span><br><br><span class="hljs-keyword">let</span> squared = <span class="hljs-number">3</span>; <br>squared **= <span class="hljs-number">2</span>; <br><span class="hljs-built_in">console</span>.log(squared); <span class="hljs-comment">// 9</span><br></code></pre></td></tr></table></figure>
+
+<h1 id="加性操作符"><a href="#加性操作符" class="headerlink" title="加性操作符"></a>加性操作符</h1><h2 id="加法操作符（-）"><a href="#加法操作符（-）" class="headerlink" title="加法操作符（+）"></a>加法操作符（<code>+</code>）</h2><p>如果两个操作数都是数值，加法操作符执行加法运算并根据如下规则返回结果：</p>
+<ul>
+<li>如果有任一操作数是 <code>NaN</code>，则返回 <code>NaN</code></li>
+<li>如果是 Infinity 加 Infinity，则返回 Infinity</li>
+<li>如果是 -Infinity 加 -Infinity，则返回 -Infinity</li>
+<li>如果是 Infinity 加 -Infinity，则返回 <code>NaN</code></li>
+<li>如果是 +0 加 +0，则返回 +0</li>
+<li>如果是 -0 加 +0，则返回 +0</li>
+<li>如果是 -0 加 -0，则返回 -0</li>
+</ul>
+<p>不过，如果有一个操作数是字符串，则要应用如下规则：</p>
+<ul>
+<li>如果两个操作数都是字符串，则将第二个字符串拼接到第一个字符串后面</li>
+<li>如果只有一个操作数是字符串，则将另一个操作数转为字符串，再将两个字符串拼接在一起</li>
+</ul>
+<p>如果有任一操作数是对象、数值或布尔值，则调用它们 <code>toString()</code> 方法以获取字符串，然后再应用关于字符串的规则。对于 <code>undefined</code> 和 <code>null</code>，则调用 <code>String()</code> 函数，分别获取 <code>undefined</code> 和 <code>null</code>。</p>
+<p>ECMAScript 中最常犯的一个错误，就是忽略加法操作中涉及的数据类型。</p>
+<h2 id="减法操作符（-）"><a href="#减法操作符（-）" class="headerlink" title="减法操作符（-）"></a>减法操作符（<code>-</code>）</h2><p>减法操作符也有一组规则用于处理 ECMAScript 中不同类型之间的转换：</p>
+<ul>
+<li>如果两个操作数都是数值，则执行数学减法运算并返回结果</li>
+<li>如果有任一操作数是 NaN，则返回 NaN</li>
+<li>如果是 Infinity 减 Infinity，则返回 NaN</li>
+<li>如果是 -Infinity 减-Infinity，则返回 NaN</li>
+<li>如果是 Infinity 减-Infinity，则返回 Infinity</li>
+<li>如果是 -Infinity 减 Infinity，则返回 -Infinity</li>
+<li>如果是 +0 减 +0，则返回 +0</li>
+<li>如果是 +0 减 -0，则返回 -0</li>
+<li>如果是 -0 减 -0，则返回 +0</li>
+<li>若有任一操作数是字符串、布尔值、<code>null</code> 或 <code>undefined</code>，则先使用 <code>Number()</code> 将其转为数值，然后再根据前面的规则执行数学运算。若转换结果是 <code>NaN</code>，则结果是 <code>NaN</code></li>
+<li>若有任一操作数是对象，则调用其 <code>valueOf()</code> 方法取得表示它的数值。如果该值是 <code>NaN</code>，则计算的结果是 <code>NaN</code>。如果对象没有 <code>valueOf()</code> 方法，则调用其 <code>toString()</code> 方法，然后再将得到的字符串转换为数值</li>
+</ul>
+<h1 id="关系操作符"><a href="#关系操作符" class="headerlink" title="关系操作符"></a>关系操作符</h1>
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/JavaScript/">JavaScript</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/JavaScript/">JavaScript</a>
+                    
+                      <a class="hover-with-bg" href="/tags/JS%E5%9F%BA%E7%A1%80/">JS基础</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/01/20/JavaScript%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%E4%B9%8B%E5%8F%98%E9%87%8F/">
+                        <span class="hidden-mobile">JavaScript语言基础之变量</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+  <div class="col-lg-7 mx-auto nopadding-x-md">
+    <div class="container custom post-custom mx-auto">
+      <img src="https://octodex.github.com/images/jetpacktocat.png" srcset="/img/loading.gif" lazyload class="rounded mx-auto d-block mt-5" style="width:150px; height:150px;">
+    </div>
+  </div>
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Powered by Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Theme is Fluid</span></a>
+  </div>
+  
+
+  
+
+  
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?bbe44c28232a60458d913426edaff12f";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+    
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?siteId=16939915";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

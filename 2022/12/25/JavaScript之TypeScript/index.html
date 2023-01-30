@@ -18,7 +18,7 @@
   <meta name="author" content="Keven">
   <meta name="keywords" content="">
   
-  <title>JavaScript之JavaScript - Keven&#39;s Blog</title>
+  <title>JavaScript之TypeScript - Keven&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
 
@@ -187,7 +187,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.2)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="JavaScript之JavaScript">
+            <span class="h2" id="subtitle" title="JavaScript之TypeScript">
               
             </span>
 
@@ -254,7 +254,7 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">JavaScript之JavaScript</h1>
+            <h1 style="display: none">JavaScript之TypeScript</h1>
             
             <div class="markdown-body">
               <p>进阶部分：<a target="_blank" rel="noopener" href="http://ts.xcatliu.com/advanced/index.html%E3%80%82">http://ts.xcatliu.com/advanced/index.html。</a></p>
@@ -262,7 +262,7 @@
 <h1 id="原始数据类型"><a href="#原始数据类型" class="headerlink" title="原始数据类型"></a>原始数据类型</h1><p>JS 的数据类型两大类：原始数据类型和对象数据类型。</p>
 <p>原始数据类型共七种：<code>Null</code>、<code>Undefined</code>、<code>Boolean</code>、<code>Number</code>、<code>String</code>、<code>Symbol</code>、<code>BigInt</code>。</p>
 <p>这里主要介绍前五种原始数据类型在 TS 中的应用。</p>
-<h2 id="布尔值"><a href="#布尔值" class="headerlink" title="布尔值"></a>布尔值</h2><p>使用 boolean 来定义布尔值类型。直接调用 <code>Boolean()</code> 返回<code>Boolean</code>类型。但是，使用构造函数 <code>new Boolean()</code> 创造的对象不是布尔值，而是 Boolean <strong>对象</strong>。</p>
+<h2 id="布尔值"><a href="#布尔值" class="headerlink" title="布尔值"></a>布尔值</h2><p>使用 boolean 来定义布尔值类型。直接调用 <code>Boolean()</code> 返回 <code>Boolean</code> 类型。但是，使用构造函数 <code>new Boolean()</code> 创造的对象不是布尔值，而是 Boolean <strong>对象</strong>。</p>
 <p>这方面来说，其他类型的构造函数同理（除 null 和 undefined）。</p>
 <figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">let</span> isDone: <span class="hljs-built_in">boolean</span> = <span class="hljs-literal">false</span><br><span class="hljs-keyword">let</span> createdByBoolean: <span class="hljs-built_in">boolean</span> = <span class="hljs-built_in">Boolean</span>(<span class="hljs-number">1</span>)<br><span class="hljs-keyword">let</span> createdBynewBoolean: <span class="hljs-built_in">boolean</span> = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Boolean</span>(<span class="hljs-number">1</span>) <span class="hljs-comment">// Type &#x27;Boolean&#x27; is not assignable to type &#x27;boolean&#x27;</span><br></code></pre></td></tr></table></figure>
 
@@ -275,7 +275,7 @@
 <h2 id="空值"><a href="#空值" class="headerlink" title="空值"></a>空值</h2><p>JS 中没有空值（Void）的概念，在 TS 中可用 void 表示没有任何返回值的函数。</p>
 <figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">alertName</span>(<span class="hljs-params"></span>): <span class="hljs-title">void</span> </span>&#123;<br>  alert(<span class="hljs-string">&#x27;Now is alerting!&#x27;</span>)<br>&#125;<br><span class="hljs-keyword">let</span> unusable: <span class="hljs-built_in">void</span> = <span class="hljs-literal">undefined</span><br></code></pre></td></tr></table></figure>
 
-<h2 id="Null和Undefined"><a href="#Null和Undefined" class="headerlink" title="Null和Undefined"></a><code>Null</code>和<code>Undefined</code></h2><p>使用 null 和 Undefined 来定义这两个类型。</p>
+<h2 id="Null和Undefined"><a href="#Null和Undefined" class="headerlink" title="Null和Undefined"></a><code>Null</code>和<code>Undefined</code></h2><p>使用 null 和 undefined 来定义这两个类型。</p>
 <p>void、null 和 undefined， 这三个类型的变量，都不能赋值给其他类型的变量。</p>
 <figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">let</span> u: <span class="hljs-literal">undefined</span> = <span class="hljs-literal">undefined</span><br><span class="hljs-keyword">let</span> n: <span class="hljs-literal">null</span> = <span class="hljs-literal">null</span><br><span class="hljs-keyword">let</span> v: <span class="hljs-built_in">void</span><br><span class="hljs-keyword">let</span> num: <span class="hljs-built_in">number</span> = <span class="hljs-literal">undefined</span><br><span class="hljs-keyword">let</span> num1: <span class="hljs-built_in">number</span> = u <span class="hljs-comment">// Type &#x27;undefined&#x27; is not assignable to type &#x27;number&#x27;</span><br><span class="hljs-keyword">let</span> num2: <span class="hljs-built_in">number</span> = n <span class="hljs-comment">// Type &#x27;null&#x27; is not assignable to type &#x27;number&#x27;</span><br><span class="hljs-keyword">let</span> num4: <span class="hljs-built_in">number</span> = v <span class="hljs-comment">// Type &#x27;void&#x27; is not assignable to type &#x27;number&#x27;</span><br></code></pre></td></tr></table></figure>
 
@@ -285,7 +285,7 @@
 
 <h2 id="任意值的属性和方法"><a href="#任意值的属性和方法" class="headerlink" title="任意值的属性和方法"></a>任意值的属性和方法</h2><p>在任意值上访问任何属性和调用任何方法但是允许的。</p>
 <p>可以认为，声明一个变量为任意值之后，对它的任何操作，返回的内容的类型都是任意值。</p>
-<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">let</span> anyThing: <span class="hljs-built_in">any</span> = <span class="hljs-string">&#x27;hello&#x27;</span><br><span class="hljs-built_in">console</span>.log(anyThing.myName)<br><span class="hljs-built_in">console</span>.log(anyThing.myName.firstName)<br>anyThing.setName(<span class="hljs-string">&#x27;Jerry&#x27;</span>)<br>anyThing.setName(<span class="hljs-string">&#x27;Jerry&#x27;</span>).sayHello()<br>anyThing.myName.setFirstName(<span class="hljs-string">&#x27;Tom&#x27;</span>)<br></code></pre></td></tr></table></figure>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">let</span> anyThing: <span class="hljs-built_in">any</span> = <span class="hljs-string">&#x27;hello&#x27;</span><br><span class="hljs-built_in">console</span>.log(anyThing.myName) <span class="hljs-comment">// undefined</span><br><span class="hljs-built_in">console</span>.log(anyThing.myName.firstName) <span class="hljs-comment">// Uncaught TypeError: Cannot read properties of undefined (reading &#x27;firstName&#x27;)</span><br>anyThing.setName(<span class="hljs-string">&#x27;Jerry&#x27;</span>)<br>anyThing.setName(<span class="hljs-string">&#x27;Jerry&#x27;</span>).sayHello()<br>anyThing.myName.setFirstName(<span class="hljs-string">&#x27;Tom&#x27;</span>)<br></code></pre></td></tr></table></figure>
 
 <h2 id="未声明类型的变量"><a href="#未声明类型的变量" class="headerlink" title="未声明类型的变量"></a>未声明类型的变量</h2><p>如果在声明变量时未指定其类型，则它会被识别为任意类型。</p>
 <figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">let</span> something;<br>something = <span class="hljs-string">&#x27;seven&#x27;</span>;<br>something = <span class="hljs-number">7</span>;<br>something.setName(<span class="hljs-string">&#x27;Tom&#x27;</span>);<br></code></pre></td></tr></table></figure>
@@ -293,7 +293,7 @@
 <h1 id="类型推论"><a href="#类型推论" class="headerlink" title="类型推论"></a>类型推论</h1><p>如果没有明确的指定类型，那么 TS 会按照类型推论的规则推断出一个类型。</p>
 <h2 id="什么是类型推论"><a href="#什么是类型推论" class="headerlink" title="什么是类型推论"></a>什么是类型推论</h2><p>TS 会在没有明确的指定类型的时候推测出一个类型，这就是类型推论。</p>
 <p>如果定义时没有赋值，不管之后有无赋值，该变量都会被推断为 any 类型而不被类型检查。</p>
-<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">let</span> favoriteNum1 = <span class="hljs-string">&#x27;seven&#x27;</span><br><span class="hljs-keyword">let</span> favoriteNum2: <span class="hljs-built_in">string</span> = <span class="hljs-string">&#x27;seven&#x27;</span> <span class="hljs-comment">// 这两个赋值是等价的</span><br>favoriteNum1 = <span class="hljs-number">7</span> <span class="hljs-comment">// error TS2322: Type &#x27;number&#x27; is not assignable to type &#x27;string&#x27;</span><br>favoriteNum2 = <span class="hljs-number">7</span> <span class="hljs-comment">// error TS2322: Type &#x27;number&#x27; is not assignable to type &#x27;string&#x27;</span><br><span class="hljs-keyword">let</span> favoriteNum<br>favoriteNum = <span class="hljs-string">&#x27;seven&#x27;</span><br>favoriteNum = <span class="hljs-number">7</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">let</span> favoriteNum1 = <span class="hljs-string">&#x27;seven&#x27;</span><br><span class="hljs-keyword">let</span> favoriteNum2: <span class="hljs-built_in">string</span> = <span class="hljs-string">&#x27;seven&#x27;</span> <span class="hljs-comment">// 这两个赋值是等价的</span><br><span class="hljs-keyword">let</span> favoriteNum<br>favoriteNum1 = <span class="hljs-number">7</span> <span class="hljs-comment">// error TS2322: Type &#x27;number&#x27; is not assignable to type &#x27;string&#x27;</span><br>favoriteNum2 = <span class="hljs-number">7</span> <span class="hljs-comment">// error TS2322: Type &#x27;number&#x27; is not assignable to type &#x27;string&#x27;</span><br>favoriteNum = <span class="hljs-string">&#x27;seven&#x27;</span> <span class="hljs-comment">// 没问题</span><br>favoriteNum = <span class="hljs-number">7</span> <span class="hljs-comment">// 没问题</span><br></code></pre></td></tr></table></figure>
 
 <h1 id="联合类型"><a href="#联合类型" class="headerlink" title="联合类型"></a>联合类型</h1><p>联合类型表示取值可以为多种类型中的一种。</p>
 <h2 id="简单的例子"><a href="#简单的例子" class="headerlink" title="简单的例子"></a>简单的例子</h2><p>联合类型使用 <code>|</code> 分隔每个类型。</p>
