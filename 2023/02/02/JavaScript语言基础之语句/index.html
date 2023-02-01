@@ -18,9 +18,25 @@
   <meta name="author" content="Keven">
   <meta name="keywords" content="">
   
-  <title>分类 - JavaScript - Keven&#39;s Blog</title>
+  <title>JavaScript语言基础之语句 - Keven&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
 
 
 
@@ -48,7 +64,7 @@
 
 
 <body>
-  <header style="height: 60vh;">
+  <header style="height: 50vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -166,14 +182,56 @@
 </nav>
 
     <div class="banner" id="banner" parallax=true
-         style="background: url('/img/default.jpg') no-repeat center center;
+         style="background: url('/img/example.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
-        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.2)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="分类 - JavaScript">
+            <span class="h2" id="subtitle" title="JavaScript语言基础之语句">
               
             </span>
+
+            
+              <div class="mt-3">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-author" aria-hidden="true"></i>
+      Keven
+    </span>
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2023-02-02 23:00" pubdate>
+        2023年2月2日
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      117 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      1
+       分钟
+    </span>
+  
+
+  
+  
+</div>
 
             
           </div>
@@ -186,106 +244,97 @@
 
   <main>
     
-      <div class="container nopadding-x-md">
-        <div class="py-5" id="board"
-          >
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
-
-<div class="list-group">
-  <p class="h4">共计 29 篇文章</p>
-  <hr>
-  
-  
-    
       
-      <p class="h5">2023</p>
-    
-    <a href="/2023/02/02/JavaScript%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%E4%B9%8B%E8%AF%AD%E5%8F%A5/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">JavaScript语言基础之语句</span>
-      <time style="float: right;">02-02</time>
-    </a>
-  
-    
-    <a href="/2023/01/24/JavaScript%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%E4%B9%8B%E6%93%8D%E4%BD%9C%E7%AC%A6/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">JavaScript语言基础之操作符</span>
-      <time style="float: right;">01-24</time>
-    </a>
-  
-    
-    <a href="/2023/01/20/JavaScript%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%E4%B9%8B%E5%8F%98%E9%87%8F/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">JavaScript语言基础之变量</span>
-      <time style="float: right;">01-20</time>
-    </a>
-  
-    
-      
-      <p class="h5">2022</p>
-    
-    <a href="/2022/12/25/JavaScript%E4%B9%8BTypeScript/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">JavaScript之TypeScript</span>
-      <time style="float: right;">12-25</time>
-    </a>
-  
-    
-    <a href="/2022/12/10/JavaScript%E4%B9%8BRegExp%E4%B8%8E%E6%AD%A3%E5%88%99/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">JavaScript之RegExp与正则</span>
-      <time style="float: right;">12-10</time>
-    </a>
-  
-    
-    <a href="/2022/10/24/JavaScript%E7%9F%A5%E8%AF%86/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">JavaScript知识</span>
-      <time style="float: right;">10-24</time>
-    </a>
-  
-    
-    <a href="/2022/08/24/%E5%BC%82%E6%AD%A5JavaScript/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">异步JavaScript</span>
-      <time style="float: right;">08-24</time>
-    </a>
-  
-    
-    <a href="/2022/01/25/JavaScript%E8%AF%8D%E6%B3%95%E7%BB%93%E6%9E%84/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">JavaScript词法结构</span>
-      <time style="float: right;">01-25</time>
-    </a>
-  
-    
-      
-      <p class="h5">2021</p>
-    
-    <a href="/2021/11/09/JavaScript%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">JavaScript内存泄漏</span>
-      <time style="float: right;">11-09</time>
-    </a>
-  
-    
-    <a href="/2021/11/08/JavaScript%E7%B1%BB%E6%95%B0%E7%BB%84%E5%AF%B9%E8%B1%A1/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">JavaScript类数组对象</span>
-      <time style="float: right;">11-08</time>
-    </a>
-  
-</div>
 
-
-  <nav aria-label="navigation">
-    <span class="pagination" id="pagination">
-      <span class="page-number current">1</span><a class="page-number" href="/categories/JavaScript/page/2/#board">2</a><a class="page-number" href="/categories/JavaScript/page/3/#board">3</a><a class="extend next" rel="next" href="/categories/JavaScript/page/2/#board"><i class="iconfont icon-arrowright"></i></a>
-    </span>
-  </nav>
-
-
-
-
-              </div>
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">JavaScript语言基础之语句</h1>
+            
+            <div class="markdown-body">
+              <p>ECMA-262 描述了一些语句（也称为流控制语句），而 ECMAScript 大部分语法都体现在语句中。语句通常使用一或多个关键字完成既定的任务。语句可以简单，也可以复杂。简单的如告诉函数退出，复杂的如列出一堆要重复执行的指令。</p>
+<h1 id="if语句"><a href="#if语句" class="headerlink" title="if语句"></a><code>if</code>语句</h1><h1 id="whilg语句"><a href="#whilg语句" class="headerlink" title="whilg语句"></a><code>whilg</code>语句</h1><h1 id="do-while语句"><a href="#do-while语句" class="headerlink" title="do-while语句"></a><code>do-while</code>语句</h1><h1 id="for语句"><a href="#for语句" class="headerlink" title="for语句"></a><code>for</code>语句</h1><h1 id="for-in语句"><a href="#for-in语句" class="headerlink" title="for-in语句"></a><code>for-in</code>语句</h1><h1 id="for-of语句"><a href="#for-of语句" class="headerlink" title="for-of语句"></a><code>for-of</code>语句</h1><h1 id="标签语句"><a href="#标签语句" class="headerlink" title="标签语句"></a>标签语句</h1><h1 id="break-和-continue-语句"><a href="#break-和-continue-语句" class="headerlink" title="break 和 continue 语句"></a><code>break</code> 和 <code>continue</code> 语句</h1><h1 id="with语句"><a href="#with语句" class="headerlink" title="with语句"></a><code>with</code>语句</h1><h1 id="switch语句"><a href="#switch语句" class="headerlink" title="switch语句"></a><code>switch</code>语句</h1>
             </div>
-          </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/JavaScript/">JavaScript</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/JavaScript/">JavaScript</a>
+                    
+                      <a class="hover-with-bg" href="/tags/JS%E5%9F%BA%E7%A1%80/">JS基础</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/01/24/JavaScript%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%E4%B9%8B%E6%93%8D%E4%BD%9C%E7%AC%A6/">
+                        <span class="hidden-mobile">JavaScript语言基础之操作符</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
         </div>
       </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+  <div class="col-lg-7 mx-auto nopadding-x-md">
+    <div class="container custom post-custom mx-auto">
+      <img src="https://octodex.github.com/images/jetpacktocat.png" srcset="/img/loading.gif" lazyload class="rounded mx-auto d-block mt-5" style="width:150px; height:150px;">
+    </div>
+  </div>
+
+
     
 
     
@@ -375,9 +424,15 @@
 
 
 
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
 
 
 
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
 
 
 
