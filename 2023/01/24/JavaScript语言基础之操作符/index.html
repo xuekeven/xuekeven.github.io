@@ -214,7 +214,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      4.6k 字
+      6.1k 字
     </span>
   
 
@@ -224,7 +224,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      50
+      66
        分钟
     </span>
   
@@ -257,8 +257,273 @@
             <h1 style="display: none">JavaScript语言基础之操作符</h1>
             
             <div class="markdown-body">
-              <p>ECMA-262 描述了一组可用于操作数据值的操作符，包括数学操作符（如加、减）、位操作符、关系操作符和相等操作符等。ECMAScript 中的操作符是独特的，因为它们可用于各种值，包括字符串、数值、布尔值，甚至还有对象。在应用给对象时，操作符通常会调用 <code>valueOf()</code> 或 <code>toString()</code> 方法来取得可以计算的值。</p>
-<h1 id="一元操作符"><a href="#一元操作符" class="headerlink" title="一元操作符"></a>一元操作符</h1><p>只操作一个值的操作符叫一元操作符，是 ECMAScript 中最简单的操作符。</p>
+              <p>参考：<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators">https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators</a> 。</p>
+<p>ECMA-262 描述了一组可用于操作数据值的操作符，包括数学操作符（如加、减）、位操作符、关系操作符和相等操作符等。ECMAScript 中的操作符是独特的，因为它们可用于各种值，包括字符串、数值、布尔值，甚至还有对象。在应用给对象时，操作符通常会调用 <code>valueOf()</code> 或 <code>toString()</code> 方法来取得可以计算的值。</p>
+<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>注：</p>
+<ol>
+<li><code>lval</code>即<code>lvalue(左值)</code>，意思是“一个可以合法地出现在赋值表达式左侧的表达式”。在 JavaScript 中，变量、对象元素、数组元素都是“左值”。</li>
+<li>下表的操作符是按照优先级从高到低的顺序排列的，其中的横线分组了相同优先级的操作符。</li>
+<li></li>
+</ol>
+<table>
+<thead>
+<tr>
+<th align="center">操作符</th>
+<th align="center">操作</th>
+<th align="center">结合性</th>
+<th align="center">操作数</th>
+<th align="center">类型</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">++</td>
+<td align="center">先或后递增</td>
+<td align="center">右</td>
+<td align="center">1</td>
+<td align="center">lval-&gt;num</td>
+</tr>
+<tr>
+<td align="center">++</td>
+<td align="center">先或后递增</td>
+<td align="center">右</td>
+<td align="center">1</td>
+<td align="center">lval-&gt;num</td>
+</tr>
+<tr>
+<td align="center">++</td>
+<td align="center">先或后递增</td>
+<td align="center">右</td>
+<td align="center">1</td>
+<td align="center">lval-&gt;num</td>
+</tr>
+<tr>
+<td align="center">++</td>
+<td align="center">先或后递增</td>
+<td align="center">右</td>
+<td align="center">1</td>
+<td align="center">lval-&gt;num</td>
+</tr>
+<tr>
+<td align="center">++</td>
+<td align="center">先或后递增</td>
+<td align="center">右</td>
+<td align="center">1</td>
+<td align="center">lval-&gt;num</td>
+</tr>
+<tr>
+<td align="center">++</td>
+<td align="center">先或后递增</td>
+<td align="center">右</td>
+<td align="center">1</td>
+<td align="center">lval-&gt;num</td>
+</tr>
+<tr>
+<td align="center">++</td>
+<td align="center">先或后递增</td>
+<td align="center">右</td>
+<td align="center">1</td>
+<td align="center">lval-&gt;num</td>
+</tr>
+<tr>
+<td align="center">++</td>
+<td align="center">先或后递增</td>
+<td align="center">右</td>
+<td align="center">1</td>
+<td align="center">lval-&gt;num</td>
+</tr>
+<tr>
+<td align="center">++</td>
+<td align="center">先或后递增</td>
+<td align="center">右</td>
+<td align="center">1</td>
+<td align="center">lval-&gt;num</td>
+</tr>
+<tr>
+<td align="center">++</td>
+<td align="center">先或后递增</td>
+<td align="center">右</td>
+<td align="center">1</td>
+<td align="center">lval-&gt;num</td>
+</tr>
+<tr>
+<td align="center">++</td>
+<td align="center">先或后递增</td>
+<td align="center">右</td>
+<td align="center">1</td>
+<td align="center">lval-&gt;num</td>
+</tr>
+<tr>
+<td align="center">++</td>
+<td align="center">先或后递增</td>
+<td align="center">右</td>
+<td align="center">1</td>
+<td align="center">lval-&gt;num</td>
+</tr>
+<tr>
+<td align="center">++</td>
+<td align="center">先或后递增</td>
+<td align="center">右</td>
+<td align="center">1</td>
+<td align="center">lval-&gt;num</td>
+</tr>
+<tr>
+<td align="center">++</td>
+<td align="center">先或后递增</td>
+<td align="center">右</td>
+<td align="center">1</td>
+<td align="center">lval-&gt;num</td>
+</tr>
+<tr>
+<td align="center">++</td>
+<td align="center">先或后递增</td>
+<td align="center">右</td>
+<td align="center">1</td>
+<td align="center">lval-&gt;num</td>
+</tr>
+<tr>
+<td align="center">++</td>
+<td align="center">先或后递增</td>
+<td align="center">右</td>
+<td align="center">1</td>
+<td align="center">lval-&gt;num</td>
+</tr>
+<tr>
+<td align="center">++</td>
+<td align="center">先或后递增</td>
+<td align="center">右</td>
+<td align="center">1</td>
+<td align="center">lval-&gt;num</td>
+</tr>
+<tr>
+<td align="center">++</td>
+<td align="center">先或后递增</td>
+<td align="center">右</td>
+<td align="center">1</td>
+<td align="center">lval-&gt;num</td>
+</tr>
+<tr>
+<td align="center">++</td>
+<td align="center">先或后递增</td>
+<td align="center">右</td>
+<td align="center">1</td>
+<td align="center">lval-&gt;num</td>
+</tr>
+<tr>
+<td align="center">++</td>
+<td align="center">先或后递增</td>
+<td align="center">右</td>
+<td align="center">1</td>
+<td align="center">lval-&gt;num</td>
+</tr>
+<tr>
+<td align="center">++</td>
+<td align="center">先或后递增</td>
+<td align="center">右</td>
+<td align="center">1</td>
+<td align="center">lval-&gt;num</td>
+</tr>
+<tr>
+<td align="center">++</td>
+<td align="center">先或后递增</td>
+<td align="center">右</td>
+<td align="center">1</td>
+<td align="center">lval-&gt;num</td>
+</tr>
+<tr>
+<td align="center">++</td>
+<td align="center">先或后递增</td>
+<td align="center">右</td>
+<td align="center">1</td>
+<td align="center">lval-&gt;num</td>
+</tr>
+<tr>
+<td align="center">++</td>
+<td align="center">先或后递增</td>
+<td align="center">右</td>
+<td align="center">1</td>
+<td align="center">lval-&gt;num</td>
+</tr>
+<tr>
+<td align="center">++</td>
+<td align="center">先或后递增</td>
+<td align="center">右</td>
+<td align="center">1</td>
+<td align="center">lval-&gt;num</td>
+</tr>
+<tr>
+<td align="center">++</td>
+<td align="center">先或后递增</td>
+<td align="center">右</td>
+<td align="center">1</td>
+<td align="center">lval-&gt;num</td>
+</tr>
+<tr>
+<td align="center">++</td>
+<td align="center">先或后递增</td>
+<td align="center">右</td>
+<td align="center">1</td>
+<td align="center">lval-&gt;num</td>
+</tr>
+<tr>
+<td align="center">++</td>
+<td align="center">先或后递增</td>
+<td align="center">右</td>
+<td align="center">1</td>
+<td align="center">lval-&gt;num</td>
+</tr>
+<tr>
+<td align="center">++</td>
+<td align="center">先或后递增</td>
+<td align="center">右</td>
+<td align="center">1</td>
+<td align="center">lval-&gt;num</td>
+</tr>
+<tr>
+<td align="center">++</td>
+<td align="center">先或后递增</td>
+<td align="center">右</td>
+<td align="center">1</td>
+<td align="center">lval-&gt;num</td>
+</tr>
+<tr>
+<td align="center">++</td>
+<td align="center">先或后递增</td>
+<td align="center">右</td>
+<td align="center">1</td>
+<td align="center">lval-&gt;num</td>
+</tr>
+<tr>
+<td align="center">++</td>
+<td align="center">先或后递增</td>
+<td align="center">右</td>
+<td align="center">1</td>
+<td align="center">lval-&gt;num</td>
+</tr>
+<tr>
+<td align="center">++</td>
+<td align="center">先或后递增</td>
+<td align="center">右</td>
+<td align="center">1</td>
+<td align="center">lval-&gt;num</td>
+</tr>
+</tbody></table>
+<h2 id="操作数个数"><a href="#操作数个数" class="headerlink" title="操作数个数"></a>操作数个数</h2><p>操作符可以按照它们期待的操作数个数（参数数量）来分类。</p>
+<p>多数的 JavaScript 操作符都是二元操作符，可以将两个表达式组合成一个更复杂的表达式。换句话说，这些操作符期待两个操作数。</p>
+<p>同时，JavaScript 也支持一元操作符，这些操作符将一个表达式转换为另一个更复杂的表达式。</p>
+<p>最后，JavaScript 也支持一个三元操作符，即条件操作符，用于将三个表达式组合为一个表达式。</p>
+<h2 id="操作数与结果类型"><a href="#操作数与结果类型" class="headerlink" title="操作数与结果类型"></a>操作数与结果类型</h2><p>有些操作数用于任何类型的数值，但是多数操作符期待自己的操作数是某种特定类型，而且多数操作符也返回（或求值为）特定类型的值，具体如上表。</p>
+<p>JavaScript 操作符通常按照需要转换操作数的类型。如乘法操作符期待数值参数，但表达式<code>&#39;3&#39; * &#39;5&#39;</code>之所以合法，是因为 JavaScript 可以把操作数转化为数值，且其结果是数值15而不是字符串15。</p>
+<p>也要记住，每个 JavaScript 值要么是“真值”要么是“假值”，因此期待布尔值的操作符可以用于任何类型的操作符。</p>
+<p>有些操作符的行为会因为操作数类型的不同而不同。最明显的就是加法操作符，其可以把数值加起来，也可以拼接字符串；还有比较操作符根据操作数类型会俺早数值顺序或字母表顺序比较。</p>
+<h2 id="操作符副效应"><a href="#操作符副效应" class="headerlink" title="操作符副效应"></a>操作符副效应</h2><p>大部分如<code>2 * 3</code>这样的简单表达式求值不会影响程序状态，程序后续的计算也不会北这个求值所影响。</p>
+<p>但是有些表达式是有副效应的，即对它们求值可能影响将来求值的结果。赋值操作符就是一例，把一个值赋给变量或属性，会改变后续使用该变量或属性的表达式的值。同理，递增和递减操作符也有副效应。此外，<code>delete</code>操作符的副效应在于删除属性类似于（但不同于）给属性赋值<code>undefined</code>。</p>
+<p>其它的操作符都没有副效应，但函数调用和对象创建表达式是否有副效应，取决于函数和构造函数体内是否使用了有副效应的操作符。</p>
+<h2 id="操作符优先级"><a href="#操作符优先级" class="headerlink" title="操作符优先级"></a>操作符优先级</h2><p>靠近表格顶部的操作符咸鱼靠近表格底部的操作符先执行。</p>
+<p>如 <code>w = x + y * z</code>，其中，乘法计算先与加法执行，最后赋值给左侧的变量。不过，具体的执行顺序可以由圆括号改写：``w = (x + y) * z`，这样便会先执行加法后进行乘法计算。</p>
+<p>但是要注意，属性访问和调用表达式的优先级高于表格中的任何操作符。因为操作符要基于属性访问、数组索引和函数调用的结果执行，所以这些操作的优先级全部高于操作符。</p>
+<p>如果不确定优先级，最简单的方法是使用圆括号明确求值顺序。最重要的规则在于：乘和除先于加和减执行，而赋值优先级很低，几乎总是最后执行。</p>
+<p>JavaScript 新增的操作符并不总是符合这个优先级模式。比如，<code>??</code> 操作符比 <code>||</code> 和 <code>&amp;&amp;</code> 优先级低，而实际上它相对于这两个操作符的优先级并没有定义，ES2020 要求在混用 <code>??</code> 和 <code>||</code> 或 <code>&amp;&amp;</code> 时必须使用圆括号。类似地，<code>**</code> 相对于一元负值操作符的优先级也没有定义，因此在同时求负值和求幂时也必须使用圆括号。</p>
+<h2 id="操作符结合性"><a href="#操作符结合性" class="headerlink" title="操作符结合性"></a>操作符结合性</h2><h2 id="求值顺序"><a href="#求值顺序" class="headerlink" title="求值顺序"></a>求值顺序</h2><h1 id="一元操作符"><a href="#一元操作符" class="headerlink" title="一元操作符"></a>一元操作符</h1><p>只操作一个值的操作符叫一元操作符，是 ECMAScript 中最简单的操作符。</p>
 <h2 id="递增和递减操作符"><a href="#递增和递减操作符" class="headerlink" title="递增和递减操作符"></a>递增和递减操作符</h2><p>递增和递减操作符直接照搬自 C 语言，但有两个版本：前缀版和后缀版。顾名思义，前缀版就是位于要操作的变量前头，后缀版就是位于要操作的变量后头。</p>
 <ul>
 <li>前缀版：在跟其他操作混合时，变量的值在语句被求值之前改变（先递增递减后运算语句）</li>
