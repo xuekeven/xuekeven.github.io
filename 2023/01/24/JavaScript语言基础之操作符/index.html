@@ -214,7 +214,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      6.1k 字
+      6.4k 字
     </span>
   
 
@@ -224,7 +224,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      66
+      69
        分钟
     </span>
   
@@ -261,9 +261,9 @@
 <p>ECMA-262 描述了一组可用于操作数据值的操作符，包括数学操作符（如加、减）、位操作符、关系操作符和相等操作符等。ECMAScript 中的操作符是独特的，因为它们可用于各种值，包括字符串、数值、布尔值，甚至还有对象。在应用给对象时，操作符通常会调用 <code>valueOf()</code> 或 <code>toString()</code> 方法来取得可以计算的值。</p>
 <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>注：</p>
 <ol>
-<li><code>lval</code>即<code>lvalue(左值)</code>，意思是“一个可以合法地出现在赋值表达式左侧的表达式”。在 JavaScript 中，变量、对象元素、数组元素都是“左值”。</li>
+<li>期待操作符类型中的<code>lval</code>即<code>lvalue(左值)</code>，意思是“一个可以合法地出现在赋值表达式左侧的表达式”。在 JavaScript 中，变量、对象元素、数组元素都是“左值”。</li>
 <li>下表的操作符是按照优先级从高到低的顺序排列的，其中的横线分组了相同优先级的操作符。</li>
-<li></li>
+<li>“左”表示结合性为从左到右，“右”表示结合性为从右到左。</li>
 </ol>
 <table>
 <thead>
@@ -523,7 +523,13 @@
 <p>但是要注意，属性访问和调用表达式的优先级高于表格中的任何操作符。因为操作符要基于属性访问、数组索引和函数调用的结果执行，所以这些操作的优先级全部高于操作符。</p>
 <p>如果不确定优先级，最简单的方法是使用圆括号明确求值顺序。最重要的规则在于：乘和除先于加和减执行，而赋值优先级很低，几乎总是最后执行。</p>
 <p>JavaScript 新增的操作符并不总是符合这个优先级模式。比如，<code>??</code> 操作符比 <code>||</code> 和 <code>&amp;&amp;</code> 优先级低，而实际上它相对于这两个操作符的优先级并没有定义，ES2020 要求在混用 <code>??</code> 和 <code>||</code> 或 <code>&amp;&amp;</code> 时必须使用圆括号。类似地，<code>**</code> 相对于一元负值操作符的优先级也没有定义，因此在同时求负值和求幂时也必须使用圆括号。</p>
-<h2 id="操作符结合性"><a href="#操作符结合性" class="headerlink" title="操作符结合性"></a>操作符结合性</h2><h2 id="求值顺序"><a href="#求值顺序" class="headerlink" title="求值顺序"></a>求值顺序</h2><h1 id="一元操作符"><a href="#一元操作符" class="headerlink" title="一元操作符"></a>一元操作符</h1><p>只操作一个值的操作符叫一元操作符，是 ECMAScript 中最简单的操作符。</p>
+<h2 id="操作符结合性"><a href="#操作符结合性" class="headerlink" title="操作符结合性"></a>操作符结合性</h2><p>操作符结合性规定了相同优先级操作的执行顺序。左结合性意味着操作操作从做到右执行。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs js">w = x - y - z<br>y = a ** b ** c<br>x = ~-y<br>w = x = y = z<br>q = a ? b : c ? d : e ? f : g<br><br><span class="hljs-comment">// 等价于</span><br><br>w = ((x - y) - z)<br>y = (a ** (b ** c))<br>x = ~(-y)<br>w = (x = (y = z))<br>q = (a ? b : (c ? d : (e ? f : g)))<br></code></pre></td></tr></table></figure>
+
+<p>这是因为，减操作符具有左结合性；而幂、一元、赋值、三元操作符具有右结合性。</p>
+<h2 id="求值顺序"><a href="#求值顺序" class="headerlink" title="求值顺序"></a>求值顺序</h2><p>操作符的优先级和结合性规定了复杂表达式中操作的执行顺序，但它们没有规定子表达式的求值顺序。JavaScript 始终严格按照<strong>从左到右</strong>的顺序对表达式求值。</p>
+<p>例如，在表达式 <code>w = x + y * z</code> 中，子表达式 w 首先被求值，再对 x、y 和 z 求值。然后将 y 和 z 相乘，加到 x 上，再把结果赋值给表达式 w 表示的变量或属性。使用圆括号会改变执行顺序，但不会改变从左到右的求值顺序。</p>
+<h1 id="一元操作符"><a href="#一元操作符" class="headerlink" title="一元操作符"></a>一元操作符</h1><p>只操作一个值的操作符叫一元操作符，是 ECMAScript 中最简单的操作符。</p>
 <h2 id="递增和递减操作符"><a href="#递增和递减操作符" class="headerlink" title="递增和递减操作符"></a>递增和递减操作符</h2><p>递增和递减操作符直接照搬自 C 语言，但有两个版本：前缀版和后缀版。顾名思义，前缀版就是位于要操作的变量前头，后缀版就是位于要操作的变量后头。</p>
 <ul>
 <li>前缀版：在跟其他操作混合时，变量的值在语句被求值之前改变（先递增递减后运算语句）</li>
