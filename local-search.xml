@@ -94,7 +94,7 @@
     
     <categories>
       
-      <category>HTML&amp;浏览器</category>
+      <category>HTML和CSS</category>
       
     </categories>
     
@@ -119,7 +119,7 @@
     
     <categories>
       
-      <category>CSS</category>
+      <category>HTML和CSS</category>
       
     </categories>
     
@@ -198,7 +198,7 @@
     
     <categories>
       
-      <category>CSS</category>
+      <category>HTML和CSS</category>
       
     </categories>
     
@@ -225,7 +225,7 @@
     
     <categories>
       
-      <category>框架模块</category>
+      <category>框架和类库</category>
       
       <category>React</category>
       
@@ -233,6 +233,8 @@
     
     
     <tags>
+      
+      <tag>框架和类库</tag>
       
       <tag>React</tag>
       
@@ -252,7 +254,7 @@
     
     <categories>
       
-      <category>框架模块</category>
+      <category>框架和类库</category>
       
       <category>React</category>
       
@@ -260,6 +262,8 @@
     
     
     <tags>
+      
+      <tag>框架和类库</tag>
       
       <tag>React</tag>
       
@@ -466,12 +470,14 @@
     
     <categories>
       
-      <category>框架模块</category>
+      <category>框架和类库</category>
       
     </categories>
     
     
     <tags>
+      
+      <tag>框架和类库</tag>
       
       <tag>Vue</tag>
       
@@ -520,7 +526,7 @@
     
     <categories>
       
-      <category>框架模块</category>
+      <category>框架和类库</category>
       
       <category>Vue</category>
       
@@ -528,6 +534,8 @@
     
     
     <tags>
+      
+      <tag>框架和类库</tag>
       
       <tag>Vue</tag>
       
@@ -547,7 +555,7 @@
     
     <categories>
       
-      <category>HTML&amp;浏览器</category>
+      <category>运行环境</category>
       
     </categories>
     
@@ -601,7 +609,7 @@
     
     <categories>
       
-      <category>CSS</category>
+      <category>HTML和CSS</category>
       
     </categories>
     
@@ -626,7 +634,7 @@
     
     <categories>
       
-      <category>CSS</category>
+      <category>HTML和CSS</category>
       
     </categories>
     
@@ -651,7 +659,7 @@
     
     <categories>
       
-      <category>CSS</category>
+      <category>HTML和CSS</category>
       
     </categories>
     
@@ -676,7 +684,7 @@
     
     <categories>
       
-      <category>CSS</category>
+      <category>HTML和CSS</category>
       
     </categories>
     
@@ -701,7 +709,7 @@
     
     <categories>
       
-      <category>CSS</category>
+      <category>HTML和CSS</category>
       
     </categories>
     
@@ -726,7 +734,7 @@
     
     <categories>
       
-      <category>CSS</category>
+      <category>HTML和CSS</category>
       
     </categories>
     
@@ -751,7 +759,7 @@
     
     <categories>
       
-      <category>CSS</category>
+      <category>HTML和CSS</category>
       
     </categories>
     
@@ -776,7 +784,7 @@
     
     <categories>
       
-      <category>CSS</category>
+      <category>HTML和CSS</category>
       
     </categories>
     
@@ -801,7 +809,7 @@
     
     <categories>
       
-      <category>CSS</category>
+      <category>HTML和CSS</category>
       
     </categories>
     
@@ -826,16 +834,18 @@
     
     <categories>
       
-      <category>HTML&amp;浏览器</category>
+      <category>运行环境</category>
+      
+      <category>浏览器</category>
       
     </categories>
     
     
     <tags>
       
-      <tag>浏览器</tag>
-      
       <tag>网络</tag>
+      
+      <tag>浏览器</tag>
       
     </tags>
     
@@ -853,7 +863,7 @@
     
     <categories>
       
-      <category>框架模块</category>
+      <category>框架和类库</category>
       
       <category>Webpack</category>
       
@@ -863,6 +873,8 @@
     <tags>
       
       <tag>面试题</tag>
+      
+      <tag>框架和类库</tag>
       
       <tag>Webpack</tag>
       
@@ -900,16 +912,16 @@
   
   
   <entry>
-    <title>HTML&amp;浏览器面试题</title>
-    <link href="/2021/09/23/HTML&amp;%E6%B5%8F%E8%A7%88%E5%99%A8%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
-    <url>/2021/09/23/HTML&amp;%E6%B5%8F%E8%A7%88%E5%99%A8%E9%9D%A2%E8%AF%95%E9%A2%98/</url>
+    <title>HTML面试题</title>
+    <link href="/2021/09/23/HTML%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
+    <url>/2021/09/23/HTML%E9%9D%A2%E8%AF%95%E9%A2%98/</url>
     
     <content type="html"><![CDATA[<p>参考：<br><a href="https://juejin.cn/post/6844904021308735502">https://juejin.cn/post/6844904021308735502</a> 。<br><a href="https://juejin.cn/post/6844903951377104903">https://juejin.cn/post/6844903951377104903</a> 。</p><h1 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h1><h2 id="介绍-DOM-树"><a href="#介绍-DOM-树" class="headerlink" title="介绍 DOM 树"></a>介绍 DOM 树</h2><h2 id="标签语义化"><a href="#标签语义化" class="headerlink" title="标签语义化"></a>标签语义化</h2><ul><li>有利于构架良好的 HTML 结构，有利于搜索引擎的建立索引、抓取。</li><li>有利于不同设备的解析（屏幕阅读器，盲人阅读器等）。</li><li>有利于构建清晰的机构，有利于团队的开发、维护。</li></ul><h2 id="src属性和href属性"><a href="#src属性和href属性" class="headerlink" title="src属性和href属性"></a>src属性和href属性</h2><p>参考：<a href="https://juejin.cn/post/6875953466267664398">https://juejin.cn/post/6875953466267664398</a> 。</p><h3 id="src属性"><a href="#src属性" class="headerlink" title="src属性"></a>src属性</h3><p>src 是 source 的缩写，翻译为“来源、源头”。<br>src 指向外部资源的位置，src 指向的内容会嵌入到文档中当前标签所在的位置。<br>src 用在 script 标签、iframe 标签、img 标签、video 标签、audio 标签等等。</p><h3 id="href属性"><a href="#href属性" class="headerlink" title="href属性"></a>href属性</h3><p>href 是 hypertext reference 的缩写，翻译为“超文本引用”。<br>href 用来建立当前元素和文档之间的链接。<br>href 用在 link 标签、a 标签等等。</p><h2 id="link标签和-import"><a href="#link标签和-import" class="headerlink" title="link标签和@import"></a>link标签和@import</h2><ul><li>从属关系不同<br>link 标签除了加载 CSS 以外，还可以定义 RSS 等其他事物，@import 属于 CSS 范畴，只能加载 CSS。</li><li>加载顺序不同<br>link 标签引用 CSS 时在页面载入的同时进行加载，@import 需要等待网页全部加载完以后才进行加载。</li><li>兼容性不同<br>link 标签是标签，没有兼容性的问题，@import 是在 CSS2.1 之后提出的，低版本的浏览器并不支持。</li><li>DOM可控性不同<br>link 标签支持 Javascript 控制 DOM 改变样式，@import 不支持。</li></ul><h2 id="head标签里都有哪些标签"><a href="#head标签里都有哪些标签" class="headerlink" title="head标签里都有哪些标签"></a>head标签里都有哪些标签</h2><p>参考：<a href="https://juejin.cn/post/6987919006468407309">https://juejin.cn/post/6987919006468407309</a> 。</p><p><code>head</code>标签与<code>html</code>标签、<code>body</code>标签一样是一个文档必须的标签。<code>head</code>标签用于说明文档头部信息，它是所有头部标签的容器。<code>head</code>中的标签可以引用脚本、指示浏览器在哪里找到样式表、提供元信息等等。</p><p>文档的头部描述了文档的各种属性和信息，包括文档的标题、在 Web 中的位置以及和其他文档的关系等。绝大多数文档头部包含的数据都不会真正作为内容显示给读者。</p><p>这些标签可用在 <code>head</code> 标签：<code>base</code>，<code>link</code>，<code>meta</code>，<code>script</code>，<code>style</code>，<code>title</code>等等。</p><h2 id="meta标签"><a href="#meta标签" class="headerlink" title="meta标签"></a>meta标签</h2><p>参考：<br><a href="https://juejin.cn/post/6844904099184377870">https://juejin.cn/post/6844904099184377870</a> 。<br><a href="https://juejin.cn/post/6987919006468407309">https://juejin.cn/post/6987919006468407309</a> 。<br><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/meta">https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/meta</a> 。</p><p>meta标签是用来描述网页属性的一种语言，标准的meta标签可以便于搜索引擎排序，提高搜索引擎网站权重排名。</p><h2 id="浏览器前缀"><a href="#浏览器前缀" class="headerlink" title="浏览器前缀"></a>浏览器前缀</h2><p>CSS3 规范要达到 W3C 的推荐标准（即定稿）状态要经过数年。浏览器则通常在 W3C 开发标准的过程中就会提前实现这些特性。这样，标准在最终敲定之前就能知道哪些地方还能进一步改进。</p><p>在包含某个特性的初始阶段，浏览器通常会使用厂商前缀实现这类特性。如今，在多数情况下，我们一般只需要 -webkit 前缀，并非所有的 CSS3 属性都需要使用为浏览器准备的前缀。</p><ul><li>-moz-：代表firefox浏览器私有属性</li><li>-ms-：代表ie浏览器私有属性</li><li>-webkit-：代表safari、chrome私有属性</li><li>-o-：代表Opera私有属性</li></ul><h2 id="其它问题"><a href="#其它问题" class="headerlink" title="其它问题"></a>其它问题</h2><ul><li>为什么link标签放在头部，script标签放在尾部</li></ul><h1 id="浏览器"><a href="#浏览器" class="headerlink" title="浏览器"></a>浏览器</h1><h2 id="常见浏览器内核"><a href="#常见浏览器内核" class="headerlink" title="常见浏览器内核"></a>常见浏览器内核</h2><table><thead><tr><th>浏览器</th><th>内核（渲染引擎）</th><th>JavaScript 引擎</th></tr></thead><tbody><tr><td>Chrome</td><td>Blink</td><td>V8</td></tr><tr><td>FireFox</td><td>Gecko</td><td>SpiderMonkey</td></tr><tr><td>Safari</td><td>Webkit</td><td>JavaScriptCore</td></tr><tr><td>Edge</td><td>EdgeHTML</td><td>Chakra(for JavaScript)</td></tr><tr><td>IE</td><td>Trident</td><td>Chakra(for JScript)</td></tr><tr><td>PhantomJS</td><td>Webkit</td><td>JavaScriptCore</td></tr></tbody></table><h2 id="网络攻击"><a href="#网络攻击" class="headerlink" title="网络攻击"></a>网络攻击</h2><p>参考：<br><a href="https://juejin.cn/post/6844903685122703367">https://juejin.cn/post/6844903685122703367</a> 。<br><a href="https://juejin.cn/post/6844903638532358151">https://juejin.cn/post/6844903638532358151</a> 。</p><h2 id="前端性能优化"><a href="#前端性能优化" class="headerlink" title="前端性能优化"></a>前端性能优化</h2><p>参考：<br><a href="https://juejin.cn/post/6892994632968306702">https://juejin.cn/post/6892994632968306702</a> 。<br><a href="https://juejin.cn/post/6911472693405548557">https://juejin.cn/post/6911472693405548557</a> 。</p><h2 id="其它问题-1"><a href="#其它问题-1" class="headerlink" title="其它问题"></a>其它问题</h2><ul><li>跨域</li><li>同源策略</li><li>解析渲染页面</li></ul>]]></content>
     
     
     <categories>
       
-      <category>HTML&amp;浏览器</category>
+      <category>HTML和CSS</category>
       
     </categories>
     
@@ -919,8 +931,6 @@
       <tag>面试题</tag>
       
       <tag>HTML</tag>
-      
-      <tag>浏览器</tag>
       
     </tags>
     
@@ -963,14 +973,14 @@
     
     <categories>
       
-      <category>框架模块</category>
+      <category>框架和类库</category>
       
     </categories>
     
     
     <tags>
       
-      <tag>框架模块</tag>
+      <tag>框架和类库</tag>
       
     </tags>
     
@@ -1063,7 +1073,9 @@
     
     <categories>
       
-      <category>HTML&amp;浏览器</category>
+      <category>运行环境</category>
+      
+      <category>浏览器</category>
       
     </categories>
     
@@ -1150,7 +1162,9 @@
     
     <categories>
       
-      <category>HTML&amp;浏览器</category>
+      <category>运行环境</category>
+      
+      <category>浏览器</category>
       
     </categories>
     
@@ -1189,6 +1203,35 @@
       <tag>方法属性</tag>
       
       <tag>String</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>浏览器面试题</title>
+    <link href="/2021/09/08/%E6%B5%8F%E8%A7%88%E5%99%A8%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
+    <url>/2021/09/08/%E6%B5%8F%E8%A7%88%E5%99%A8%E9%9D%A2%E8%AF%95%E9%A2%98/</url>
+    
+    <content type="html"><![CDATA[<p>参考：<br><a href="https://juejin.cn/post/6844904021308735502">https://juejin.cn/post/6844904021308735502</a> 。<br><a href="https://juejin.cn/post/6844903951377104903">https://juejin.cn/post/6844903951377104903</a> 。</p><h1 id="浏览器"><a href="#浏览器" class="headerlink" title="浏览器"></a>浏览器</h1><h2 id="常见浏览器内核"><a href="#常见浏览器内核" class="headerlink" title="常见浏览器内核"></a>常见浏览器内核</h2><table><thead><tr><th>浏览器</th><th>内核（渲染引擎）</th><th>JavaScript 引擎</th></tr></thead><tbody><tr><td>Chrome</td><td>Blink</td><td>V8</td></tr><tr><td>FireFox</td><td>Gecko</td><td>SpiderMonkey</td></tr><tr><td>Safari</td><td>Webkit</td><td>JavaScriptCore</td></tr><tr><td>Edge</td><td>EdgeHTML</td><td>Chakra(for JavaScript)</td></tr><tr><td>IE</td><td>Trident</td><td>Chakra(for JScript)</td></tr><tr><td>PhantomJS</td><td>Webkit</td><td>JavaScriptCore</td></tr></tbody></table><h2 id="其它问题"><a href="#其它问题" class="headerlink" title="其它问题"></a>其它问题</h2><ul><li>跨域</li><li>同源策略</li><li>解析渲染页面</li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>运行环境</category>
+      
+      <category>浏览器</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>面试题</tag>
+      
+      <tag>浏览器</tag>
       
     </tags>
     
@@ -1341,7 +1384,7 @@
     
     <categories>
       
-      <category>框架模块</category>
+      <category>框架和类库</category>
       
       <category>Vue</category>
       
@@ -1349,6 +1392,8 @@
     
     
     <tags>
+      
+      <tag>框架和类库</tag>
       
       <tag>Vue</tag>
       
@@ -1429,9 +1474,9 @@
     
     <tags>
       
-      <tag>浏览器</tag>
-      
       <tag>JavaScript</tag>
+      
+      <tag>浏览器</tag>
       
       <tag>Node</tag>
       
@@ -1451,7 +1496,7 @@
     
     <categories>
       
-      <category>框架模块</category>
+      <category>框架和类库</category>
       
       <category>Vue</category>
       
@@ -1461,6 +1506,8 @@
     <tags>
       
       <tag>面试题</tag>
+      
+      <tag>框架和类库</tag>
       
       <tag>Vue</tag>
       
@@ -1561,7 +1608,7 @@
     
     <categories>
       
-      <category>CSS</category>
+      <category>HTML和CSS</category>
       
     </categories>
     
