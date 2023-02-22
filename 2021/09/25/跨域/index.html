@@ -257,7 +257,11 @@
             <h1 style="display: none">跨域</h1>
             
             <div class="markdown-body">
-              <p>参考：<br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903767226351623">https://juejin.cn/post/6844903767226351623</a> 。<br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904126246027278">https://juejin.cn/post/6844904126246027278</a> 。</p>
+              <p>参考：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903767226351623">https://juejin.cn/post/6844903767226351623</a> 。</li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904126246027278">https://juejin.cn/post/6844904126246027278</a> 。</li>
+</ul>
 <h1 id="什么是跨域"><a href="#什么是跨域" class="headerlink" title="什么是跨域"></a>什么是跨域</h1><h2 id="同源策略"><a href="#同源策略" class="headerlink" title="同源策略"></a>同源策略</h2><p>同源策略是一种约定，它是浏览器最核心也最基本的安全功能，如果缺少了同源策略，浏览器很容易受到 XSS、CSRF 等攻击。一个域名地址由 <strong>协议、子域名、主域名、端口号、请求资源地址</strong> 组成。所谓同源是指 <strong>“协议+域名+端口”</strong> 三者相同，即便两个不同的域名指向同一个 IP 地址，也非同源。</p>
 <p>同源策略限制内容有：</p>
 <ul>
@@ -265,18 +269,23 @@
 <li>DOM 节点</li>
 <li>AJAX 通信请求</li>
 </ul>
-<p>有三个标签是允许跨域加载资源：<code>&lt;img src=XXX&gt;</code>、<code>&lt;link href=XXX&gt;</code>、<code>&lt;script src=XXX&gt;</code>。</p>
-<h2 id="跨域"><a href="#跨域" class="headerlink" title="跨域"></a>跨域</h2><p>当协议、子域名、主域名、端口号中任意一个不相同时，都算不同域。不同域之间相互请求资源为“跨域”。</p>
+<p>有三个标签是允许跨域加载资源：</p>
+<ul>
+<li><code>&lt;img src=XXX&gt;</code></li>
+<li><code>&lt;link href=XXX&gt;</code></li>
+<li><code>&lt;script src=XXX&gt;</code></li>
+</ul>
+<h2 id="跨域场景"><a href="#跨域场景" class="headerlink" title="跨域场景"></a>跨域场景</h2><p>当<strong>协议</strong>、<strong>子域名</strong>、<strong>主域名</strong>、<strong>端口号</strong>中任意一个不相同时，都算不同域。不同域之间相互请求资源为“跨域”。</p>
 <p><img src="/images/%E5%B8%B8%E8%A7%81%E8%B7%A8%E5%9F%9F%E5%9C%BA%E6%99%AF.jpg" srcset="/img/loading.gif" lazyload alt="常见跨域场景（来自掘金@浪里行舟）"></p>
 <p>特别说明两点：</p>
 <ul>
 <li><p>第一，如果是协议和端口造成的跨域问题“前台”是无能为力的。</p>
 </li>
-<li><p>第二，在跨域问题上，仅仅是通过“URL的首部”来识别，而不会根据域名对应的IP地址是否相同来判断。<br>（“URL的首部”可以理解为“协议、域名、端口三者必须匹配”）</p>
+<li><p>第二，在跨域问题上，仅仅是通过“URL的首部”来识别，而不会根据域名对应的IP地址是否相同来判断。（“URL的首部”可以理解为“协议、域名、端口三者必须匹配”）</p>
 </li>
 </ul>
 <p>请求跨域了，那么请求到底发出去没有？</p>
-<p>跨域并不是请求发不出去，请求能发出去，服务端能收到请求并正常返回结果，只是结果被浏览器拦截了。你可能会疑问明明通过表单的方式可以发起跨域请求，为什么 Ajax 就不会?因为归根结底，跨域是为了阻止用户读取到另一个域名下的内容，Ajax 可以获取响应，浏览器认为这不安全，所以拦截了响应。但是表单并不会获取新的内容，所以可以发起跨域请求。同时也说明了跨域并不能完全阻止 CSRF，因为请求是发出了。</p>
+<p><strong>跨域并不是请求发不出去，请求能发出去，服务端能收到请求并正常返回结果，只是结果被浏览器拦截了。</strong>你可能会疑问明明通过表单的方式可以发起跨域请求，为什么 Ajax 就不会？因为归根结底，跨域是为了阻止用户读取到另一个域名下的内容，Ajax 可以获取响应，浏览器认为这不安全，所以拦截了响应。但是表单并不会获取新的内容，所以可以发起跨域请求。同时也说明了跨域并不能完全阻止 CSRF，因为请求是发出了。</p>
 <h1 id="跨域解决方案"><a href="#跨域解决方案" class="headerlink" title="跨域解决方案"></a>跨域解决方案</h1><h2 id="JSONP"><a href="#JSONP" class="headerlink" title="JSONP"></a>JSONP</h2><h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>利用<code>&lt;script&gt;</code>标签没有跨域限制的漏洞，网页可以得到从其他来源动态产生的 JSON 数据。JSONP 请求一定需要对方的服务器做支持才可以。</p>
 <p>JSONP 和 AJAX 都是客户端向服务器端发送请求，从服务器端获取数据的方式。<br>但是，AJAX 属于同源策略，JSONP 属于非同源策略（跨域请求）。</p>
 <h3 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h3><p>JSONP 优点是简单兼容性好，可用于解决主流浏览器的跨域数据访问的问题。缺点是其仅支持 GET 方法具有局限性，而且不安全，可能会遭受 XSS 攻击。想使用完整的 REST 接口，请使用 CORS 或者其他代理方式。</p>
@@ -352,6 +361,9 @@
 <p>使用原生 WebSocket API。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// 前端部分</span><br>&lt;script&gt;  <br><span class="hljs-keyword">let</span> socket = <span class="hljs-keyword">new</span> WebSocket(<span class="hljs-string">&quot;ws://localhost:8080&quot;</span>);  <br>socket.onopen = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;    <br>  socket.send(<span class="hljs-string">&quot;秋风的笔记&quot;</span>);  <br>&#125;;  <br>socket.onmessage = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">e</span>) </span>&#123;    <br>  <span class="hljs-built_in">console</span>.log(e.data);  <br>&#125;;<br>&lt;/script&gt;<br></code></pre></td></tr></table></figure>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// 后端部分</span><br>&lt;script&gt;<br><span class="hljs-keyword">const</span> WebSocket = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;ws&quot;</span>);<br><span class="hljs-keyword">const</span> server = <span class="hljs-keyword">new</span> WebSocket.Server(&#123; <span class="hljs-attr">port</span>: <span class="hljs-number">8080</span> &#125;);<br>server.on(<span class="hljs-string">&quot;connection&quot;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">socket</span>) </span>&#123;  <br>  socket.on(<span class="hljs-string">&quot;message&quot;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">data</span>) </span>&#123;    <br>    socket.send(data);  <br>  &#125;);<br>&#125;);<br>&lt;/script&gt;<br></code></pre></td></tr></table></figure>
+
+<h2 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h2><p>（略）见：<a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903767226351623#heading-16%E3%80%82">https://juejin.cn/post/6844903767226351623#heading-16。</a></p>
+
             </div>
             <hr>
             <div>

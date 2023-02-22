@@ -279,22 +279,22 @@
 <li>Session 会在一定时间内保存在服务器上。如果访问量比较大，会比较消耗服务器的性能。考虑到减轻服务器性能方面的开销，应当使用 Cookie；</li>
 <li>单个 Cookie 保存的数据不能超过 4K，很多浏览器都限制一个域名最多保存 50 个 Cookie。将登陆等等重要信息存放为 Session，其他信息如果需要保留，可以放在 Cookie 中。</li>
 </ul>
-<h1 id="WebStorage"><a href="#WebStorage" class="headerlink" title="WebStorage"></a>WebStorage</h1><p>在 Web 本地存储场景上 Cookie 的使用受到种种限制，最关键的就是存储容量太小和数据无法持久化存储。在 HTML5 的标准下，出现了 WebStorage（其又分为 localStorage 和 SessionStorage）。</p>
-<p>不同浏览器无法共享 localStorage 和 SessionStorage 中的信息。同一浏览器的相同域名和端口的不同页面间可以共享相同的 localStorage，但是不同页面间无法共享 SessionStorage 信息。这里需要注意的是，页面仅指顶级窗口，如果一个页面包含多个 iframe 且他们属于同源页面，那么他们之间可以共享 SessionStorage。</p>
+<h1 id="WebStorage"><a href="#WebStorage" class="headerlink" title="WebStorage"></a>WebStorage</h1><p>在 Web 本地存储场景上 Cookie 的使用受到种种限制，最关键的就是存储容量太小和数据无法持久化存储。在 HTML5 的标准下，出现了 WebStorage（其又分为 localStorage 和 sessionStorage）。</p>
+<p>不同浏览器无法共享 localStorage 和 sessionStorage 中的信息。同一浏览器的相同域名和端口的不同页面间可以共享相同的 localStorage，但是不同页面间无法共享 sessionStorage 信息。这里需要注意的是，页面仅指顶级窗口，如果一个页面包含多个 iframe 且他们属于同源页面，那么他们之间可以共享 sessionStorage。</p>
 <h2 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h2><p>它相对 Cookie 有相当多的区别：</p>
 <ul>
 <li>容量。WebStorage 的容量上限为 5M，相比于 Cookie 的 4K 大大增加。当然 5M 是针对一个域名的。</li>
 <li>只存在客户端。默认不参与与服务端的通信，这样就很好地避免了 Cookie 带来的性能问题和安全问题。</li>
-<li>接口封装。通过 localStorage 和 SessionStorage 暴露在全局，并通过它的方法进行操作，非常方便。</li>
+<li>接口封装。通过 localStorage 和 sessionStorage 暴露在全局，并通过它的方法进行操作，非常方便。</li>
 </ul>
-<h2 id="使用-1"><a href="#使用-1" class="headerlink" title="使用"></a>使用</h2><p>localStorage 和 SessionStorage 都是 WebStorage 类型实例，它们的使用方法是一样的。</p>
+<h2 id="使用-1"><a href="#使用-1" class="headerlink" title="使用"></a>使用</h2><p>localStorage 和 sessionStorage 都是 WebStorage 类型实例，它们的使用方法是一样的。</p>
 <p>注意事项：</p>
 <ul>
 <li>WebStorage 写入的时候，如果超出容量会报错，之前保存的数据不会丢失。</li>
 <li>WebStorage 存储容量快要满的时候，getItem() 方法性能会急剧下降。</li>
 <li>WebStorage 存储的都是字符串。（若要存储对象，需调用 JSON.stringify() 方法转为 JSON 数据类型；若要获取数据，需调用 JSON.parse() 方法再解析 JSON 数据类型成对象）</li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> name = <span class="hljs-string">&#x27;SessionData&#x27;</span>, num = <span class="hljs-number">120</span>;<br>SessionStorage.setItem(name, num); <span class="hljs-comment">// 存储数据</span><br>SessionStorage.value = <span class="hljs-number">110</span>; <span class="hljs-comment">// 存储数据</span><br>SessionStorage.valueOf(); <span class="hljs-comment">// 获取全部数据</span><br><span class="hljs-comment">//  &#123;value: &#x27;110&#x27;, SessionData: &#x27;120&#x27;, length: 2&#125;</span><br><span class="hljs-keyword">let</span> dataSession1 = SessionStorage.getItem(name); <span class="hljs-comment">// 获取指定键名数据</span><br><span class="hljs-keyword">let</span> dataSession2 = SessionStorage.SessionData; <span class="hljs-comment">// 获取指定键名数据</span><br><span class="hljs-built_in">console</span>.log(dataSession1, dataSession2);<br><span class="hljs-comment">// 120 120</span><br>SessionStorage.removeItem(name); <span class="hljs-comment">// 删除指定键名数据</span><br>SessionStorage.clear(); <span class="hljs-comment">// 清空缓存数据</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> name = <span class="hljs-string">&#x27;SessionData&#x27;</span>, num = <span class="hljs-number">120</span>;<br>sessionStorage.setItem(name, num); <span class="hljs-comment">// 存储数据</span><br>sessionStorage.value = <span class="hljs-number">110</span>; <span class="hljs-comment">// 存储数据</span><br>sessionStorage.valueOf(); <span class="hljs-comment">// 获取全部数据</span><br><span class="hljs-comment">//  &#123;value: &#x27;110&#x27;, SessionData: &#x27;120&#x27;, length: 2&#125;</span><br><span class="hljs-keyword">let</span> dataSession1 = sessionStorage.getItem(name); <span class="hljs-comment">// 获取指定键名数据</span><br><span class="hljs-keyword">let</span> dataSession2 = sessionStorage.SessionData; <span class="hljs-comment">// 获取指定键名数据</span><br><span class="hljs-built_in">console</span>.log(dataSession1, dataSession2);<br><span class="hljs-comment">// 120 120</span><br>sessionStorage.removeItem(name); <span class="hljs-comment">// 删除指定键名数据</span><br>sessionStorage.clear(); <span class="hljs-comment">// 清空缓存数据</span><br></code></pre></td></tr></table></figure>
 
 <h1 id="IndexedDB"><a href="#IndexedDB" class="headerlink" title="IndexedDB"></a>IndexedDB</h1><p>IndexedDB 是运行在浏览器中的非关系型数据库，本质上是数据库，不是和 WebStorage的 5M 一个量级，理论上这个容量是没有上限的。关于它的使用， MDN 上的教程文档已经非常详尽。</p>
 <p>分析一下 IndexedDB 的一些重要特性，除了拥有数据库本身的特性，比如支持事务，存储二进制数据等等，还有这样一些特性需要格外注意：</p>
@@ -329,7 +329,7 @@
 <td align="center">源生接口可以接受，可封装</td>
 </tr>
 <tr>
-<td align="center">SessionStorage</td>
+<td align="center">sessionStorage</td>
 <td align="center">5MB</td>
 <td align="center">仅在当前网页会话下有效，关闭页面后失效</td>
 <td align="center">保存在客户端，不与服务端通信。节省网络流量</td>
@@ -342,7 +342,7 @@
 <li>都受到跨域限制。</li>
 </ul>
 <h2 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h2><p>从性能来说，因为每次 HTTP 请求都会携带 Cookie 信息，这样无形中浪费了带宽，所以应该尽可能少的使用 Cookie。另外，Cookie 还需要指定作用域，不可以跨域调用，限制比较多。但是用来识别用户登录来说，Cookie 还是更好用的。其他情况下，可以使用 WebStorage 就用 WebStorage。</p>
-<p>WebStorage 在存储数据的大小上秒杀 Cookie，因此基本很少使用 Cookie。localStorage 和 SessionStorage 唯一的差别就是一个永久保存在浏览器中，一个关闭网页就清除信息。localStorage 适合持久化缓存数据，可以用来跨页面传递参数、存储一些内容稳定的资源等等；SessionStorage 适合一次性临时数据保存，防止用户刷新页面之后丢失了一些参数，可以用来对表单信息进行维护，存储本次浏览记录等。</p>
+<p>WebStorage 在存储数据的大小上秒杀 Cookie，因此基本很少使用 Cookie。localStorage 和 sessionStorage 唯一的差别就是一个永久保存在浏览器中，一个关闭网页就清除信息。localStorage 适合持久化缓存数据，可以用来跨页面传递参数、存储一些内容稳定的资源等等；sessionStorage 适合一次性临时数据保存，防止用户刷新页面之后丢失了一些参数，可以用来对表单信息进行维护，存储本次浏览记录等。</p>
 
             </div>
             <hr>
