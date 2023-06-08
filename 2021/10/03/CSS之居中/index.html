@@ -214,7 +214,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.6k 字
+      1.7k 字
     </span>
   
 
@@ -224,7 +224,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      18
+      20
        分钟
     </span>
   
@@ -264,24 +264,26 @@
 <li>针对 <strong>多行文本水平居中</strong> ，将其包装为块级元素，使用块级元素的水平居中方法</li>
 <li>针对 <strong>多行文本垂直居中</strong> ，将其包装为块级元素，使用块级元素的垂直居中方法</li>
 </ul>
-<h1 id="元素居中"><a href="#元素居中" class="headerlink" title="元素居中"></a>元素居中</h1><h2 id="水平居中"><a href="#水平居中" class="headerlink" title="水平居中"></a>水平居中</h2><p>子元素不能填满父元素宽度，说明父元素是块级元素（前后有换行符）。</p>
+<h1 id="元素居中"><a href="#元素居中" class="headerlink" title="元素居中"></a>元素居中</h1><h2 id="水平居中"><a href="#水平居中" class="headerlink" title="水平居中"></a>水平居中</h2><p>要水平居中，说明子元素不能填满父元素宽度，说明父元素是块级元素（前后有换行符），因为对行内元素设置宽度无效。</p>
+<p>子元素有两种情况：行内元素和块级元素。当子元素是行内元素时，对行内元素设置宽度无效；当子元素是块级元素时，其会默认100%继承父元素的宽度，但是要居中，说明给子元素设置了宽度。</p>
 <h3 id="text-align"><a href="#text-align" class="headerlink" title="text-align"></a>text-align</h3><p>针对子元素是行内元素或行内块级元素，行内元素设置宽度无效。</p>
 <p>对父元素设置<code>text-align: center</code></p>
-<h3 id="margin"><a href="#margin" class="headerlink" title="margin"></a>margin</h3><p>针对子元素是块级元素， <strong>需要</strong> 设置子元素宽度。</p>
-<p>对子元素设置<code>margin: 0 auto</code></p>
-<h3 id="定位-calc"><a href="#定位-calc" class="headerlink" title="定位 + calc()"></a>定位 + calc()</h3><p>针对子元素是块级元素， <strong>需要</strong> 设置子元素宽度。</p>
+<h3 id="定位-calc"><a href="#定位-calc" class="headerlink" title="定位 + calc()"></a>定位 + calc()</h3><p>针对子元素是块级元素， <strong>知道</strong> 设置子元素宽度。</p>
 <p>对父元素设置<code>position: relative</code><br>对子元素设置<code>position: absolute; left: calc(50% - width/2)</code></p>
-<h3 id="定位-margin"><a href="#定位-margin" class="headerlink" title="定位 + margin"></a>定位 + margin</h3><p>针对子元素是块级元素， <strong>需要</strong> 设置子元素宽度。</p>
-<p>对父元素设置<code>position: relative</code><br>对子元素设置<code>position: absolute; left: 0; right: 0; margin: 0 auto</code></p>
-<h3 id="定位-负-margin"><a href="#定位-负-margin" class="headerlink" title="定位 + 负 margin"></a>定位 + 负 margin</h3><p>针对子元素是块级元素， <strong>需要</strong> 设置子元素宽度。</p>
+<h3 id="定位-负-margin"><a href="#定位-负-margin" class="headerlink" title="定位 + 负 margin"></a>定位 + 负 margin</h3><p>针对子元素是块级元素， <strong>知道</strong> 设置子元素宽度。</p>
 <p>对父元素设置<code>position: relative</code><br>对子元素设置<code>position: absolute; left: 50%; margin-left: - width/2</code></p>
-<h3 id="定位-transform"><a href="#定位-transform" class="headerlink" title="定位 + transform"></a>定位 + transform</h3><p>针对子元素是块级元素， <strong>不需要</strong> 设置子元素宽度。</p>
+<h3 id="margin"><a href="#margin" class="headerlink" title="margin"></a>margin</h3><p>针对子元素是块级元素， <strong>不知道</strong> 设置子元素宽度。</p>
+<p>对子元素设置<code>margin: 0 auto</code></p>
+<h3 id="定位-margin"><a href="#定位-margin" class="headerlink" title="定位 + margin"></a>定位 + margin</h3><p>针对子元素是块级元素， <strong>不知道</strong> 设置子元素宽度。</p>
+<p>对父元素设置<code>position: relative</code><br>对子元素设置<code>position: absolute; left: 0; right: 0; margin: 0 auto</code></p>
+<h3 id="定位-transform"><a href="#定位-transform" class="headerlink" title="定位 + transform"></a>定位 + transform</h3><p>针对子元素是块级元素， <strong>不知道</strong> 设置子元素宽度。</p>
 <p>对父元素设置<code>position: relative</code><br>对子元素设置<code>position: absolute; left: 50%; transform: translate(-50%, 0)</code></p>
-<h3 id="弹性布局"><a href="#弹性布局" class="headerlink" title="弹性布局"></a>弹性布局</h3><p>针对子元素是块级元素， <strong>不需要</strong> 设置子元素宽度。</p>
+<h3 id="弹性布局"><a href="#弹性布局" class="headerlink" title="弹性布局"></a>弹性布局</h3><p>针对子元素是块级元素， <strong>不知道</strong> 设置子元素宽度。</p>
 <p>对父元素设置<code>display: flex; justify-content: center</code></p>
-<h3 id="网格布局"><a href="#网格布局" class="headerlink" title="网格布局"></a>网格布局</h3><p>针对子元素是块级元素， <strong>不需要</strong> 设置子元素宽度。</p>
+<h3 id="网格布局"><a href="#网格布局" class="headerlink" title="网格布局"></a>网格布局</h3><p>针对子元素是块级元素， <strong>不知道</strong> 设置子元素宽度。</p>
 <p>对父元素设置<code>display: grid; justify-content: center</code>；或者<br>对父元素设置<code>display: grid; justify-items: center</code>；或者<br>对父元素设置<code>display: grid;</code>、对子元素设置<code>justify-self: center</code></p>
-<h2 id="垂直居中"><a href="#垂直居中" class="headerlink" title="垂直居中"></a>垂直居中</h2><p>子元素不能填满父元素高度，说明父元素是块级元素（前后有换行符）。</p>
+<h2 id="垂直居中"><a href="#垂直居中" class="headerlink" title="垂直居中"></a>垂直居中</h2><p>要垂直居中，说明子元素不能填满父元素高度，说明父元素是块级元素（前后有换行符），因为对行内元素设置高度无效。</p>
+<p>子元素有两种情况：行内元素和块级元素。当子元素是行内元素时，对行内元素设置高度无效；当子元素是块级元素时，其会默认高度为0，但是要居中，说明给子元素设置了高度。</p>
 <h3 id="vertical-align"><a href="#vertical-align" class="headerlink" title="vertical-align"></a>vertical-align</h3><ul>
 <li>针对子元素是行内元素或行内块级元素，行内元素设置高度无效。<br>该属性控制着子元素在行内的垂直对齐，想要使用该属性生效，需要该行内的所有元素都设置该属性。</li>
 </ul>
