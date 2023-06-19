@@ -214,7 +214,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      3.8k 字
+      3.9k 字
     </span>
   
 
@@ -224,7 +224,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      41
+      42
        分钟
     </span>
   
@@ -287,7 +287,7 @@
 <h3 id="row-reverse"><a href="#row-reverse" class="headerlink" title="row-reverse"></a>row-reverse</h3><p>主轴从右到左的方向排列，副轴从上到下的方向排列，类似 row。</p>
 <h3 id="column"><a href="#column" class="headerlink" title="column"></a>column</h3><p>主轴从上到下的方向排列，副轴从左到右的方向排列。</p>
 <p>对于弹性子元素而言，flex-basis、flex-grow 和 flex-shrink 现在作用于元素的高度而不是宽度。</p>
-<p>水平弹性盒子的大部分概念同样适用于垂直的弹性盒子。但有一点不同：CSS 中处理高度的方式与处理宽度的方式在本质上不一样。弹性容器会占据 100% 的可用宽度，而高度则由自身的内容来决定。即使改变主轴方向，也不会影响这一本质。</p>
+<p>水平弹性盒子的大部分概念同样适用于垂直的弹性盒子。但有一点不同：CSS 中处理高度的方式与处理宽度的方式在本质上不一样。弹性容器会占据 100% 的可用宽度，而高度则由自身的内容来决定。即使改变主轴方向，也不会影响这一本质。所以在垂直的弹性盒子里，如果不给弹性子元素设置宽度，弹性子元素的宽度默认为弹性容器的宽度，即 100% 的可用宽度。</p>
 <p>弹性容器的高度由弹性子元素决定，它们会填满容器高度。但在垂直的弹性盒子里，子元素的 flex-grow 和 flex-shrink 不会起作用，除非有“外力”强行改变弹性容器的高度。</p>
 <h3 id="column-reverse"><a href="#column-reverse" class="headerlink" title="column-reverse"></a>column-reverse</h3><p>主轴从下到的上方向排列，副轴从左到右的方向排列，类似 column。</p>
 <h2 id="flex-wrap"><a href="#flex-wrap" class="headerlink" title="flex-wrap"></a>flex-wrap</h2><p>默认情况下，子元素都排在一条线（又称”轴线”）上。当子元素填满这根轴线呢？</p>
@@ -331,13 +331,14 @@
 <p>在初始状态下，所有弹性子元素的 order 属性值都为 0。指定一个元素的值为 −1 它则会移动到列表最前面，指定为 1 则会移动到最后。可以按需要给每个子元素指定 order 以便重新编排它们。这些值不一定要连续。</p>
 <p>谨慎使用 order。让屏幕上的视觉布局顺序和源码顺序差别太大会影响网站的可访问性。在大多数浏览器里使用 Tab 键浏览元素的顺序与源码保持一致，如果视觉上的差别太大就会令人困惑。视力受损的用户使用的大部分屏幕阅读器也是根据源码的顺序来的。</p>
 <h2 id="flex"><a href="#flex" class="headerlink" title="flex"></a>flex</h2><p>flex 属性控制弹性子元素在主轴方向上的大小（指元素的宽度），用来设置或者检索弹性盒模型对象子元素如何分配空间。flex 属性是 flex-grow、flex-shrink 和 flex-basis 的属性简写，前两个属性都基于 flex-basis。</p>
-<p>推荐使用简写属性 flex，而不是分别声明 flex-grow、flex-shrink、flex-basis。与大部分的简写属性不一样，如果在 flex 中忽略声明某个子属性，那么子属性的值并不会被置为默认值。如果某个子属性被省略，那么 flex 简写属性会设置其为：<code> flex-grow:1</code> <code>flex-shrink:1</code> <code>flex-basis:0 </code>，这些默认值正是大多数情况下所需要的值。</p>
+<p>推荐使用简写属性 flex，而不是分别声明 flex-grow、flex-shrink、flex-basis。与大部分的简写属性不一样，如果在 flex 中忽略声明某个子属性，那么子属性的值并不会被置为默认值。如果某个子属性被省略，那么 flex 简写属性会设置其为：<code> flex-grow:1</code> <code>flex-shrink:1</code> <code>flex-basis:0 </code>。但是，默认值正是大多数情况下所需要的值。</p>
 <p>flex 有几个特殊值：</p>
 <ul>
 <li><code>flex: 0 1 auto</code>（默认值）<br>不增长但自动收缩，收缩比例为 1；flex-basis 为 auto，即取自用户定义的宽度或内容本身的宽度。</li>
-<li><code>flex: 1 1 auto</code>（auto）<br>自动增长缩放，比例均为 1；flex-basis 为 auto，即取自用户定义的宽度或内容本身的宽度。</li>
-<li><code>flex: 0 0 auto</code>（none）<br>不增长不缩放；flex-basis 为 auto，即取自用户定义的宽度或内容本身的宽度。</li>
-<li><code>flex: 1 1 0</code>（<code>flex: 1</code>）<br>自动增长缩放，比例均为 1；flex-basis 为 0。当给所有子元素设置 flex: 1 则代表子元素平分宽度。</li>
+<li><code>flex: 1 1 auto</code>（<code>flex: auto</code>）<br>自动增长缩放，比例均为 1；flex-basis 为 auto，即取自用户定义的宽度或内容本身的宽度。</li>
+<li><code>flex: 0 0 auto</code>（<code>flex: none</code>）<br>不增长不缩放；flex-basis 为 auto，即取自用户定义的宽度或内容本身的宽度。</li>
+<li><code>flex: 0 1 0%</code>（<code>flex: 0</code>）<br>不增长但自动收缩，收缩比例为 1；flex-basis 为 0。</li>
+<li><code>flex: 1 1 0%</code>（<code>flex: 1</code>）<br>自动增长缩放，比例均为 1；flex-basis 为 0。当给所有子元素设置 flex: 1 则代表子元素平分宽度。</li>
 <li>两个值<br>第一个为 flex-grow；第二个，如果是数字认为是 flex-shrink，如果是宽度认为是 flex-basis。</li>
 </ul>
 <h2 id="flex-basis"><a href="#flex-basis" class="headerlink" title="flex-basis"></a>flex-basis</h2><p>flex-basis 属性定义了子元素大小的长度基准值，即一个初始的“主尺寸”。</p>
