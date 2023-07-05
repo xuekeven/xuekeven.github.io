@@ -214,7 +214,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      5.2k 字
+      5.3k 字
     </span>
   
 
@@ -224,7 +224,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      69
+      70
        分钟
     </span>
   
@@ -332,7 +332,7 @@
 <h3 id="sort-排序"><a href="#sort-排序" class="headerlink" title="sort() 排序"></a>sort() 排序</h3><p>sort() 方法用于对数组元素使用原地算法进行排序，返回排序后的数组。由于它取决于具体的实现，因此无法保证排序的时间复杂度和空间复杂度。</p>
 <p>接收一个参数：</p>
 <ul>
-<li>compareFunction（可选）。用来指定按某种顺序进行排列的函数。默认按字母升序排序，若元素不是字符串，会调用 toString() 方法将元素转化为字符串的 Unicode 位点，然后再比较。<ul>
+<li>compareFunction（可选）。用来指定按某种顺序进行排列的函数，返回值应该是一个数字，其正负性表示两个元素的相对顺序。默认按字母升序排序，若元素不是字符串，会调用 toString() 方法将元素转化为字符串的 Unicode 位点，然后再比较。<ul>
 <li>firstEl：第一个用于比较的元素。</li>
 <li>secondEl：第二个用于比较的元素。</li>
 </ul>
@@ -386,14 +386,14 @@
 <li>searchValue（必需）：给定的要查找的元素。</li>
 <li>fromIndex（可选）：起始搜索位置。接受负值，默认值为 0。</li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> list = [<span class="hljs-number">111</span>, <span class="hljs-number">222</span>, <span class="hljs-number">333</span>];<br>list.indexOf(<span class="hljs-number">333</span>); <span class="hljs-comment">// 2</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> list = [<span class="hljs-number">111</span>, <span class="hljs-number">333</span>, <span class="hljs-number">222</span>, <span class="hljs-number">333</span>];<br>list.indexOf(<span class="hljs-number">333</span>); <span class="hljs-comment">// 1</span><br></code></pre></td></tr></table></figure>
 <h3 id="lastIndexOf-由元素找位置"><a href="#lastIndexOf-由元素找位置" class="headerlink" title="lastIndexOf() 由元素找位置"></a>lastIndexOf() 由元素找位置</h3><p>lastIndexOf() 方法用于在数组中查找给定元素对应的位置，从 fromIndex 位置开始，从后向前搜索，只返回首个满足条件的元素位置，如果不存在则返回 -1。使用严格相等搜索元素。</p>
 <p>接收两个参数：</p>
 <ul>
 <li>searchValue（必需）：给定的要查找的元素。</li>
-<li>fromIndex（可选）：起始搜索位置。接受负值，默认值为 0。</li>
+<li>fromIndex（可选）：起始搜索位置。接受负值，默认值为 数组长度 - 1。</li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> list = [<span class="hljs-number">111</span>, <span class="hljs-number">222</span>, <span class="hljs-number">333</span>];<br>list.lastIndexOf(<span class="hljs-number">333</span>); <span class="hljs-comment">// 2</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> list = [<span class="hljs-number">111</span>, <span class="hljs-number">333</span>, <span class="hljs-number">222</span>, <span class="hljs-number">333</span>];<br>list.lastIndexOf(<span class="hljs-number">333</span>); <span class="hljs-comment">// 3</span><br></code></pre></td></tr></table></figure>
 <h3 id="includes-是否包含元素"><a href="#includes-是否包含元素" class="headerlink" title="includes() 是否包含元素"></a>includes() 是否包含元素</h3><p>includes() 方法用于在数组中查找给定元素，从 fromIndex 位置开始，从后向前搜索，返回布尔值，表示是否至少找到一个与指定元素匹配的项。使用严格相等搜索元素。</p>
 <p>接收两个参数：</p>
 <ul>
@@ -436,7 +436,7 @@
 <li>thisArg（可选）：执行回调函数时 this 绑定对象的值。默认值为 undefined。</li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> list = [<span class="hljs-number">111</span>, <span class="hljs-number">222</span>, <span class="hljs-number">333</span>];<br>list.map(<span class="hljs-function">(<span class="hljs-params">value, key, self</span>) =&gt;</span> value * <span class="hljs-number">2</span>); <span class="hljs-comment">// [222, 444, 666]</span><br></code></pre></td></tr></table></figure>
-<h3 id="filter-过滤所有"><a href="#filter-过滤所有" class="headerlink" title="filter() 过滤所有"></a>filter() 过滤所有</h3><p>filter() 方法用于对调用数组的每一个元素执行一次回调函数，返回一个新的数组，新数组中的元素都是满足回调函数条件的调用数组元素。</p>
+<h3 id="filter-筛选所有满足"><a href="#filter-筛选所有满足" class="headerlink" title="filter() 筛选所有满足"></a>filter() 筛选所有满足</h3><p>filter() 方法用于对调用数组的每一个元素执行一次回调函数，返回一个新的数组，新数组中的元素都是满足回调函数条件的调用数组元素。</p>
 <p>接收两个参数：</p>
 <ul>
 <li>callback（必需）：回调函数。<ul>
@@ -448,7 +448,7 @@
 <li>thisArg（可选）：执行回调函数时 this 绑定对象的值。默认值为 undefined。</li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> list = [<span class="hljs-number">111</span>, <span class="hljs-number">222</span>, <span class="hljs-number">333</span>];<br>list.filter(<span class="hljs-function"><span class="hljs-params">value</span> =&gt;</span> value &gt;= <span class="hljs-number">222</span>); <span class="hljs-comment">// [222, 333]</span><br></code></pre></td></tr></table></figure>
-<h3 id="some-部分满足"><a href="#some-部分满足" class="headerlink" title="some() 部分满足"></a>some() 部分满足</h3><p>some() 方法用于对调用数组的每一个元素执行一次回调函数，判断数组中是否有满足回调函数条件的元素，有一个元素满足条件返回值为 true，没有满足条件的元素返回值为 false。</p>
+<h3 id="some-是否部分满足"><a href="#some-是否部分满足" class="headerlink" title="some() 是否部分满足"></a>some() 是否部分满足</h3><p>some() 方法用于对调用数组的每一个元素执行一次回调函数，判断数组中是否有满足回调函数条件的元素，有一个元素满足条件返回值为 true，没有满足条件的元素返回值为 false。</p>
 <p>接收两个参数：</p>
 <ul>
 <li>callback（必需）：回调函数。<ul>
@@ -460,7 +460,7 @@
 <li>thisArg（可选）：执行回调函数时 this 绑定对象的值。默认值为 undefined。</li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> list = [<span class="hljs-number">12</span>, <span class="hljs-number">5</span>, <span class="hljs-number">8</span>, <span class="hljs-number">130</span>, <span class="hljs-number">44</span>];<br>list.some(<span class="hljs-function">(<span class="hljs-params">value, key, self</span>) =&gt;</span> value &gt;= <span class="hljs-number">10</span>); <span class="hljs-comment">// true</span><br>list.some(<span class="hljs-function">(<span class="hljs-params">value, key, self</span>) =&gt;</span> value &gt;= <span class="hljs-number">5</span>); <span class="hljs-comment">// true</span><br></code></pre></td></tr></table></figure>
-<h3 id="every-全部满足"><a href="#every-全部满足" class="headerlink" title="every() 全部满足"></a>every() 全部满足</h3><p>every() 方法用于对调用数组的每一个元素执行一次回调函数，判断数组所有元素是否都符合回调函数条件，元素都满足条件返回值为 true，有一个元素不满足返回值为 false。</p>
+<h3 id="every-是否所有满足"><a href="#every-是否所有满足" class="headerlink" title="every() 是否所有满足"></a>every() 是否所有满足</h3><p>every() 方法用于对调用数组的每一个元素执行一次回调函数，判断数组所有元素是否都符合回调函数条件，元素都满足条件返回值为 true，有一个元素不满足返回值为 false。</p>
 <p>接收两个参数：</p>
 <ul>
 <li>callback（必需）：回调函数。<ul>
@@ -472,7 +472,7 @@
 <li>thisArg（可选）：执行回调函数时 this 绑定对象的值。默认值为 undefined。</li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> list = [<span class="hljs-number">12</span>, <span class="hljs-number">5</span>, <span class="hljs-number">8</span>, <span class="hljs-number">130</span>, <span class="hljs-number">44</span>];<br>list.every(<span class="hljs-function">(<span class="hljs-params">value, key, self</span>) =&gt;</span> value &gt;= <span class="hljs-number">10</span>); <span class="hljs-comment">// false</span><br>list.every(<span class="hljs-function">(<span class="hljs-params">value, key, self</span>) =&gt;</span> value &gt;= <span class="hljs-number">5</span>); <span class="hljs-comment">// true</span><br></code></pre></td></tr></table></figure>
-<h3 id="find-查找元素"><a href="#find-查找元素" class="headerlink" title="find() 查找元素"></a>find() 查找元素</h3><p>find() 方法用于对数组每一个元素执行一次回调函数，找出数组中第一个满足回调函数的元素，从数组的最小索引开始，返回第一个满足回调函数的元素值，如果没有符合的元素则返回 undefined。</p>
+<h3 id="find-查找首个满足元素"><a href="#find-查找首个满足元素" class="headerlink" title="find() 查找首个满足元素"></a>find() 查找首个满足元素</h3><p>find() 方法用于对数组每一个元素执行一次回调函数，找出数组中第一个满足回调函数的元素，从数组的最小索引开始，返回第一个满足回调函数的元素值，如果没有符合的元素则返回 undefined。</p>
 <p>接收两个参数：</p>
 <ul>
 <li>callback（必需）：回调函数。<ul>
@@ -484,7 +484,7 @@
 <li>thisArg（可选）：执行回调函数时 this 绑定对象的值。默认值为 undefined。</li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> list = [<span class="hljs-number">111</span>, <span class="hljs-number">222</span>, <span class="hljs-number">333</span>];<br>list.find(<span class="hljs-function">(<span class="hljs-params">value, index, self</span>) =&gt;</span> value &gt;= <span class="hljs-number">222</span>); <span class="hljs-comment">// 222</span><br></code></pre></td></tr></table></figure>
-<h3 id="findIndex-查找元素位置"><a href="#findIndex-查找元素位置" class="headerlink" title="findIndex() 查找元素位置"></a>findIndex() 查找元素位置</h3><p>findIndex() 方法用于对数组每一个元素执行一次回调函数，找出数组中第一个满足回调函数的元素，从数组的最小索引开始，返回第一个满足回调函数的元素位置，如果没有符合的元素则返回 -1。</p>
+<h3 id="findIndex-查找首个满足元素位置"><a href="#findIndex-查找首个满足元素位置" class="headerlink" title="findIndex() 查找首个满足元素位置"></a>findIndex() 查找首个满足元素位置</h3><p>findIndex() 方法用于对数组每一个元素执行一次回调函数，找出数组中第一个满足回调函数的元素，从数组的最小索引开始，返回第一个满足回调函数的元素位置，如果没有符合的元素则返回 -1。</p>
 <p>接收两个参数：</p>
 <ul>
 <li>callback（必需）：回调函数。<ul>
