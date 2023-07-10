@@ -308,7 +308,8 @@
 <p>为什么要废弃 componentWillMount、componentWillUpdate、componentWillReceiveProps 生命周期钩子而新增 getDerivedStateFromProps 生命周期钩子，后面会说明原因。</p>
 <h2 id="shouldComponentUpdate"><a href="#shouldComponentUpdate" class="headerlink" title="shouldComponentUpdate"></a>shouldComponentUpdate</h2><p>在组件准备更新之前调用，但是首次渲染或者使用 forceUpdate 函数时不会被调用。跟它的名字一样，它用来判断一个组件是否应该更新。</p>
 <p>默认情况下，当组件的 props 或者 state 变化时，都会导致组件更新。它在 render 方法之前执行，如果它的返回值为 false，则不会更新组件，也不会执行后面关于更新组件的相关方法。</p>
-<p>它接收两个参数，nextProps 和 nextState，即下一次更新的 props 和下一次更新的 state。我们可以将 <code>this.props</code> 和 nextProps 比较，以及将 <code>this.state</code> 与 nextState 比较，并返回 false，让组件跳过更新。不过<strong>注意</strong>：它并不会阻止子组件因为 state 改变而导致的更新。</p>
+<p>它接收两个参数，nextProps 和 nextState，即下一次更新的 props 和下一次更新的 state。我们可以将 <code>this.props</code> 和 nextProps 比较，以及将 <code>this.state</code> 与 nextState 比较，并返回 false，让组件跳过更新。</p>
+<p>？？？不过<strong>注意</strong>：它并不会阻止子组件因为 state 改变而导致的更新。？？？</p>
 <p>使用场景：这个生命周期方法通常用来做性能优化。</p>
 <h2 id="componentWillMount-UNSAFE"><a href="#componentWillMount-UNSAFE" class="headerlink" title="componentWillMount(UNSAFE)"></a>componentWillMount(UNSAFE)</h2><p>在组件挂载至 DOM 之前调用，并且只会调用一次。它在 render 方法之前调用，因此在 componentWillMount 中调用 <code>this.setState</code> 不会触发额外的渲染。</p>
 <p>我们一般在 constructor 中初始化 state，在 componentDidMount 中<strong>引入副作用</strong>或者<strong>订阅内容</strong>，所以这个生命周期钩子使用频率较小。</p>
@@ -323,7 +324,7 @@
 <li>字符串或者数值：会作为文本节点被渲染。</li>
 <li>boolean 类型或者 null：什么都不渲染。</li>
 </ul>
-<p>需要<strong>注意</strong>的是：如果 shouldComponentUpdate 生命周期钩子返回 false，则不会执行关于更新组件的相关方法。</p>
+<p>需要<strong>注意</strong>的是：如果 shouldComponentUpdate 生命周期钩子返回 false，则不会执行重新渲染组件的相关方法。</p>
 <h1 id="commit-阶段"><a href="#commit-阶段" class="headerlink" title="commit 阶段"></a>commit 阶段</h1><p>在首次渲染时有生命周期：</p>
 <ul>
 <li>componentDidMount</li>
@@ -396,9 +397,9 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/React/">React</a>
-                    
                       <a class="hover-with-bg" href="/tags/%E6%A1%86%E6%9E%B6%E5%92%8C%E7%B1%BB%E5%BA%93/">框架和类库</a>
+                    
+                      <a class="hover-with-bg" href="/tags/React/">React</a>
                     
                   </div>
                 
