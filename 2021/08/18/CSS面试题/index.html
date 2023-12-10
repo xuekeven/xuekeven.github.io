@@ -133,9 +133,9 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/dome/">
+              <a class="nav-link" href="/demo/">
                 <i class="iconfont icon-th-large"></i>
-                Dome
+                Demo
               </a>
             </li>
           
@@ -257,11 +257,7 @@
             <h1 style="display: none">CSS面试题</h1>
             
             <div class="markdown-body">
-              <h1 id="行内元素和块级元素"><a href="#行内元素和块级元素" class="headerlink" title="行内元素和块级元素"></a>行内元素和块级元素</h1><p>参考：</p>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6964644611822190622">https://juejin.cn/post/6964644611822190622</a> 。</li>
-<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6953854318580203533">https://juejin.cn/post/6953854318580203533</a> 。</li>
-</ul>
+              <h1 id="行内元素和块级元素"><a href="#行内元素和块级元素" class="headerlink" title="行内元素和块级元素"></a>行内元素和块级元素</h1><p>参考：<br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6964644611822190622">https://juejin.cn/post/6964644611822190622</a><br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6953854318580203533">https://juejin.cn/post/6953854318580203533</a></p>
 <table>
 <thead>
 <tr>
@@ -298,7 +294,7 @@
 </ul>
 <p>常见的块级元素：<code>&lt;div&gt;</code> <code>&lt;p&gt;</code> <code>&lt;h1&gt;</code> <code>&lt;h6&gt;</code> <code>&lt;ul&gt;</code> <code>&lt;ol&gt;</code> <code>&lt;li&gt;</code> <code>&lt;form&gt;</code> <code>&lt;header&gt;</code> <code>&lt;canvas&gt;</code> <code>&lt;dd&gt;</code> <code>&lt;dl&gt;</code> <code>&lt;audio&gt;</code> <code>&lt;video&gt;</code> <code>&lt;section&gt;</code> <code>&lt;hr&gt;</code> <code>&lt;br&gt;</code> <code>&lt;address&gt;</code> <code>&lt;article&gt;</code> <code>&lt;aside&gt;</code> <code>&lt;fieldset&gt;</code></p>
 <p>常见的行内元素：<code>&lt;span&gt;</code> <code>&lt;a&gt;</code> <code>&lt;lable&gt;</code> <code>&lt;strong&gt;</code> <code>&lt;b&gt;</code> <code>&lt;small&gt;</code> <code>&lt;abbr&gt;</code> <code>&lt;button&gt;</code> <code>&lt;input&gt;</code> <code>&lt;textarea&gt;</code> <code>&lt;select&gt;</code> <code>&lt;code&gt;</code> <code>&lt;img&gt;</code> <code>&lt;br&gt;</code> <code>&lt;q&gt;</code> <code>&lt;i&gt;</code> <code>&lt;cite&gt;</code> <code>&lt;var&gt;</code> <code>&lt;kbd&gt;</code> <code>&lt;sub&gt;</code> <code>&lt;bdo&gt;</code></p>
-<h1 id="行内块元素间的间隙问题"><a href="#行内块元素间的间隙问题" class="headerlink" title="行内块元素间的间隙问题"></a>行内块元素间的间隙问题</h1><p>参考：<a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904056121458695">https://juejin.cn/post/6844904056121458695</a> 。</p>
+<h1 id="行内块元素间的间隙问题"><a href="#行内块元素间的间隙问题" class="headerlink" title="行内块元素间的间隙问题"></a>行内块元素间的间隙问题</h1><p>参考：<br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904056121458695">https://juejin.cn/post/6844904056121458695</a></p>
 <p><code>display:inline-block</code>是种布局方法，它相比于与浮动、定位最大的不同就是没有父元素的匿名包裹特性，这使得<code>display:inline-block</code>属性的使用非常自由，可与文字、图片混排，还可内嵌<code>display:block</code>元素，又可置于<code>display:inline</code>水平的元素中。</p>
 <p>在 CSS 布局中，如果我们想要将一些元素在同一行显示，其中的一种方法就是对要所有同行显示的元素设置<code>display:inline-block</code>。但会发现这些<code>display:inline-block</code>同行元素之间经常会出现一定的空隙，这就是“换行符/空格间隙问题”。</p>
 <h2 id="产生原因"><a href="#产生原因" class="headerlink" title="产生原因"></a>产生原因</h2><p>元素被当成行内块元素排版的时候，元素之间的空白符（空格、回车换行等）都会被浏览器处理，根据<code>white-space</code>属性来处理：原来 HTML 代码中的回车换行被转成一个空白符，在字体不为 0 情况下，空白符占据一定宽度，所以<code>display:inline-block</code>元素之间就出现了空隙。</p>
@@ -342,7 +338,7 @@
 </ul>
 <figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs scss"><span class="hljs-keyword">@mixin</span> scrollBar &#123;<br>  &amp;::-webkit-scrollbar &#123;<br>    width: <span class="hljs-number">10px</span>;<br>    <span class="hljs-attribute">height</span>: <span class="hljs-number">10px</span>;<br><br>    &amp;-track &#123;<br>      <span class="hljs-attribute">border-radius</span>: <span class="hljs-variable">$Ra-5</span>;<br>      <span class="hljs-attribute">background-color</span>: transparent;<br>    &#125;<br><br>    &amp;-thumb &#123;<br>      <span class="hljs-attribute">border</span>: <span class="hljs-number">2px</span> solid transparent;<br>      <span class="hljs-attribute">border-radius</span>: <span class="hljs-variable">$Ra-5</span>;<br>      <span class="hljs-attribute">background-color</span>: rgba(<span class="hljs-variable">$M10</span>, <span class="hljs-number">0.1</span>);<br>      <span class="hljs-attribute">background-clip</span>: content-box;<br><br>      &amp;<span class="hljs-selector-pseudo">:hover</span> &#123;<br>        <span class="hljs-attribute">background-color</span>: rgba(<span class="hljs-variable">$M1</span>, <span class="hljs-number">0.3</span>);<br>      &#125;<br>    &#125;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<h1 id="隐藏元素"><a href="#隐藏元素" class="headerlink" title="隐藏元素"></a>隐藏元素</h1><p>参考：<a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904200401502215">https://juejin.cn/post/6844904200401502215</a> 。</p>
+<h1 id="隐藏元素"><a href="#隐藏元素" class="headerlink" title="隐藏元素"></a>隐藏元素</h1><p>参考：<br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904200401502215">https://juejin.cn/post/6844904200401502215</a></p>
 <h2 id="display-none"><a href="#display-none" class="headerlink" title="display: none"></a>display: none</h2><ul>
 <li>Render Tree：浏览器不会渲染元素，不占据空间</li>
 <li>性能：动态改变此属性时会引起回流，性能较差</li>
@@ -364,13 +360,7 @@
 <li>继承：会被子元素继承，且不能设置子元素 opacity: 1 来取消隐藏子元素</li>
 <li>transition：opacity 延时显示和隐藏</li>
 </ul>
-<h1 id="两栏布局和三栏布局"><a href="#两栏布局和三栏布局" class="headerlink" title="两栏布局和三栏布局"></a>两栏布局和三栏布局</h1><p>Demo：</p>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://github.com/xuekeven/learn_web/blob/main/dome/CSS/%E4%B8%A4%E6%A0%8F1-1.html">https://github.com/xuekeven/learn_web/blob/main/dome/CSS/两栏1-1.html</a> 。</li>
-<li><a target="_blank" rel="noopener" href="https://github.com/xuekeven/learn_web/blob/main/dome/CSS/%E4%B8%A4%E6%A0%8F1-2.html">https://github.com/xuekeven/learn_web/blob/main/dome/CSS/两栏1-2.html</a> 。</li>
-<li><a target="_blank" rel="noopener" href="https://github.com/xuekeven/learn_web/blob/main/dome/CSS/%E4%B8%89%E6%A0%8F1-1.html">https://github.com/xuekeven/learn_web/blob/main/dome/CSS/三栏1-1.html</a> 。</li>
-<li><a target="_blank" rel="noopener" href="https://github.com/xuekeven/learn_web/blob/main/dome/CSS/%E4%B8%89%E6%A0%8F1-2.html">https://github.com/xuekeven/learn_web/blob/main/dome/CSS/三栏1-2.html</a> 。</li>
-</ul>
+<h1 id="两栏布局和三栏布局"><a href="#两栏布局和三栏布局" class="headerlink" title="两栏布局和三栏布局"></a>两栏布局和三栏布局</h1><p>Demo：<br><a target="_blank" rel="noopener" href="https://github.com/xuekeven/learn_web/blob/main/dome/CSS/%E4%B8%A4%E6%A0%8F1-1.html">https://github.com/xuekeven/learn_web/blob/main/dome/CSS/两栏1-1.html</a><br><a target="_blank" rel="noopener" href="https://github.com/xuekeven/learn_web/blob/main/dome/CSS/%E4%B8%A4%E6%A0%8F1-2.html">https://github.com/xuekeven/learn_web/blob/main/dome/CSS/两栏1-2.html</a><br><a target="_blank" rel="noopener" href="https://github.com/xuekeven/learn_web/blob/main/dome/CSS/%E4%B8%89%E6%A0%8F1-1.html">https://github.com/xuekeven/learn_web/blob/main/dome/CSS/三栏1-1.html</a><br><a target="_blank" rel="noopener" href="https://github.com/xuekeven/learn_web/blob/main/dome/CSS/%E4%B8%89%E6%A0%8F1-2.html">https://github.com/xuekeven/learn_web/blob/main/dome/CSS/三栏1-2.html</a></p>
 <p>两栏：一栏固定，一栏自适应；三栏：左右固定，中间自适应。方式有：</p>
 <ul>
 <li>浮动</li>
@@ -379,11 +369,8 @@
 <li>弹性布局</li>
 <li>网格布局</li>
 </ul>
-<h1 id="圣杯布局和双飞翼布局"><a href="#圣杯布局和双飞翼布局" class="headerlink" title="圣杯布局和双飞翼布局"></a>圣杯布局和双飞翼布局</h1><p>参考：<a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903565278855181">https://juejin.cn/post/6844903565278855181</a> 。<br>Demo：</p>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://github.com/xuekeven/learn_web/blob/main/dome/CSS/%E4%B8%89%E6%A0%8F_%E5%9C%A3%E6%9D%AF%E5%B8%83%E5%B1%80.html">https://github.com/xuekeven/learn_web/blob/main/dome/CSS/三栏_圣杯布局.html</a> 。</li>
-<li><a target="_blank" rel="noopener" href="https://github.com/xuekeven/learn_web/blob/main/dome/CSS/%E4%B8%89%E6%A0%8F_%E5%8F%8C%E9%A3%9E%E7%BF%BC%E5%B8%83%E5%B1%80.html">https://github.com/xuekeven/learn_web/blob/main/dome/CSS/三栏_双飞翼布局.html</a> 。</li>
-</ul>
+<h1 id="圣杯布局和双飞翼布局"><a href="#圣杯布局和双飞翼布局" class="headerlink" title="圣杯布局和双飞翼布局"></a>圣杯布局和双飞翼布局</h1><p>参考：<br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903565278855181">https://juejin.cn/post/6844903565278855181</a></p>
+<p>Demo：<br><a target="_blank" rel="noopener" href="https://github.com/xuekeven/learn_web/blob/main/dome/CSS/%E4%B8%89%E6%A0%8F_%E5%9C%A3%E6%9D%AF%E5%B8%83%E5%B1%80.html">https://github.com/xuekeven/learn_web/blob/main/dome/CSS/三栏_圣杯布局.html</a><br><a target="_blank" rel="noopener" href="https://github.com/xuekeven/learn_web/blob/main/dome/CSS/%E4%B8%89%E6%A0%8F_%E5%8F%8C%E9%A3%9E%E7%BF%BC%E5%B8%83%E5%B1%80.html">https://github.com/xuekeven/learn_web/blob/main/dome/CSS/三栏_双飞翼布局.html</a></p>
 <h2 id="异同点"><a href="#异同点" class="headerlink" title="异同点"></a>异同点</h2><ul>
 <li>都是对三栏使用浮动，然后对左右两栏使用负外边距</li>
 <li>都是把中间栏放在文档流最前面，让中间栏优先加载，并且中间栏占据宽度 100%</li>
@@ -421,7 +408,7 @@
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/categories/HTML%E5%92%8CCSS/">HTML和CSS</a>
+                      <a class="hover-with-bg" href="/categories/CSS/">CSS</a>
                     
                   </div>
                 

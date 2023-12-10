@@ -133,9 +133,9 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/dome/">
+              <a class="nav-link" href="/demo/">
                 <i class="iconfont icon-th-large"></i>
-                Dome
+                Demo
               </a>
             </li>
           
@@ -317,7 +317,7 @@
 <td align="center">返回</td>
 </tr>
 </tbody></table>
-<h1 id="虚拟-DOM-和-diff-算法"><a href="#虚拟-DOM-和-diff-算法" class="headerlink" title="虚拟 DOM 和 diff 算法"></a>虚拟 DOM 和 diff 算法</h1><p>参考：<a target="_blank" rel="noopener" href="https://juejin.cn/post/6994959998283907102">https://juejin.cn/post/6994959998283907102</a> 。</p>
+<h1 id="虚拟-DOM-和-diff-算法"><a href="#虚拟-DOM-和-diff-算法" class="headerlink" title="虚拟 DOM 和 diff 算法"></a>虚拟 DOM 和 diff 算法</h1><p>参考：<br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6994959998283907102">https://juejin.cn/post/6994959998283907102</a></p>
 <p>好处：</p>
 <ul>
 <li>跨平台</li>
@@ -327,7 +327,7 @@
 <h1 id="可迭代对象"><a href="#可迭代对象" class="headerlink" title="可迭代对象"></a>可迭代对象</h1><p>可迭代对象是指实现了<code>[Symbol.iterator]</code>方法属性的对象。注意，区分类数组对象。<br>类数组对象（伪数组对象）是指可以通过索引属性访问元素并且拥有一个 <code>length</code> 属性的对象。<br>可迭代对象和类数组对象并非是相互排斥的。比如，字符串既是可迭代对象又是类数组对象。</p>
 <p>迭代器模式（特别是在 ECMAScript 这个语境下）描述了一个方案，即可以把有些结构称为“可迭代对象”（iterable），因为它们实现了正式的 Iterable 接口，而且可以通过迭代器 Iterator 消费。</p>
 <p>可迭代对象是一种抽象的说法。基本上，可以把可迭代对象理解成数组或集合这样的集合类型的对象。它们包含的元素都是有限的，而且都具有无歧义的遍历顺序。不过，可迭代对象不一定都是集合对象，也可以是仅仅具有类似数组行为的其他数据结构。基本上，可以使用 for…of 循环的对象都是可迭代对象。</p>
-<h1 id="ES6-新语法"><a href="#ES6-新语法" class="headerlink" title="ES6 新语法"></a>ES6 新语法</h1><p>参考：<br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6854818580660387853">https://juejin.cn/post/6854818580660387853</a> 。<br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903581426925581">https://juejin.cn/post/6844903581426925581</a> 。</p>
+<h1 id="ES6-新语法"><a href="#ES6-新语法" class="headerlink" title="ES6 新语法"></a>ES6 新语法</h1><p>参考：<br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6854818580660387853">https://juejin.cn/post/6854818580660387853</a><br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903581426925581">https://juejin.cn/post/6844903581426925581</a></p>
 <ul>
 <li>let、const</li>
 <li>Set、Map、Symbol</li>
@@ -379,7 +379,7 @@
 </ul>
 <h1 id="event-target-和-event-currentTarget"><a href="#event-target-和-event-currentTarget" class="headerlink" title="event.target 和 event.currentTarget"></a>event.target 和 event.currentTarget</h1><p>在事件处理程序内部，this 对象始终等于 currentTarget 的值，target 只包含事件的实际目标。</p>
 <p>如果事件处理程序直接添加在了意图的目标，则 this、currentTarget 和 target 的值是一样的。如果这个事件处理程序是添加到按钮的父节点（如 document.body）上，那么它们的值就不一样了。由于按钮本身并没有注册事件处理程序，因此 click 事件冒泡到 document.body，从而触发了在它上面注册的处理程序。</p>
-<h1 id="CommonJS-和-ES-Module"><a href="#CommonJS-和-ES-Module" class="headerlink" title="CommonJS 和 ES Module"></a>CommonJS 和 ES Module</h1><p>参考：<a target="_blank" rel="noopener" href="https://juejin.cn/post/6994224541312483336">https://juejin.cn/post/6994224541312483336</a> 。</p>
+<h1 id="CommonJS-和-ES-Module"><a href="#CommonJS-和-ES-Module" class="headerlink" title="CommonJS 和 ES Module"></a>CommonJS 和 ES Module</h1><p>参考：<br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6994224541312483336">https://juejin.cn/post/6994224541312483336</a></p>
 <ul>
 <li>CommonJS<br>CommonJS 模块由 JS 运行时实现。<br>CommonJs 是单个值导出，本质上导出的就是 exports 属性。<br>CommonJS 是可以动态加载的，对每一个加载都存在缓存，可以有效的解决循环引用问题。<br>CommonJS 模块同步加载并执行模块文件</li>
 <li>ES Module<br>ES6 Module 静态的，不能放在块级作用域内，代码发生在编译时。<br>ES6 Module 的值是动态绑定的，可以通过导出方法修改，可以直接访问修改结果。<br>ES6 Module 可以导出多个属性和方法，可以单个导入导出，混合导入导出。<br>ES6 模块提前加载并执行模块文件，<br>ES6 Module 导入模块在严格模式下。<br>ES6 Module 的特性可以很容易实现 Tree Shaking 和 Code Splitting。</li>
@@ -445,9 +445,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2021/07/17/JavaScript%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%E4%B9%8B%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">
+                      <a href="/2021/07/17/JavaScript%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">JavaScript语言基础之数据类型</span>
+                        <span class="hidden-mobile">JavaScript数据类型</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     

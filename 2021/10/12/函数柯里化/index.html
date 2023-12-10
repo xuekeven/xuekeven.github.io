@@ -133,9 +133,9 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/dome/">
+              <a class="nav-link" href="/demo/">
                 <i class="iconfont icon-th-large"></i>
-                Dome
+                Demo
               </a>
             </li>
           
@@ -257,7 +257,7 @@
             <h1 style="display: none">JavaScript函数柯里化</h1>
             
             <div class="markdown-body">
-              <p>参考：<a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903882208837645">https://juejin.cn/post/6844903882208837645</a> 。</p>
+              <p>参考：<br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903882208837645">https://juejin.cn/post/6844903882208837645</a></p>
 <h1 id="什么是柯里化"><a href="#什么是柯里化" class="headerlink" title="什么是柯里化"></a>什么是柯里化</h1><p>在数学和计算机科学中，柯里化是种将使用多个参数的一个函数转换成一系列使用一个参数的函数的技术。</p>
 <p>举例来说，一个接收 3 个参数的普通函数，在进行柯里化后，柯里化版本的函数接收一个参数并返回接收下一个参数的函数，该函数返回一个接收第三个参数的函数。最后一个函数在接收第三个参数后， 将之前接收到的三个参数应用于原普通函数中，并返回最终结果。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// 数学和计算科学中的柯里化</span><br><br><span class="hljs-comment">// 一个接收三个参数的普通函数</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sum</span>(<span class="hljs-params">a, b, c</span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(a + b + c);<br>&#125;<br><br><span class="hljs-comment">// 用于将普通函数转化为柯里化版本的工具函数</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">curry</span>(<span class="hljs-params">fn</span>) </span>&#123;<br>  <span class="hljs-comment">// 内部实现省略，返回一个新函数</span><br>&#125;<br><br><span class="hljs-comment">// 获取一个柯里化后的函数</span><br><span class="hljs-keyword">let</span> _sum = curry(sum);<br><br><span class="hljs-keyword">let</span> A = _sum(<span class="hljs-number">1</span>); <span class="hljs-comment">// 返回一个接收第二个参数的函数</span><br><span class="hljs-keyword">let</span> B = A(<span class="hljs-number">2</span>); <span class="hljs-comment">// 返回一个接收第三个参数的函数</span><br>B(<span class="hljs-number">3</span>); <span class="hljs-comment">// 接收到最后一个参数，将之前所有的参数应用到原函数中，并运行得到 6</span><br></code></pre></td></tr></table></figure>

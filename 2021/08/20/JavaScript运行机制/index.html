@@ -133,9 +133,9 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/dome/">
+              <a class="nav-link" href="/demo/">
                 <i class="iconfont icon-th-large"></i>
-                Dome
+                Demo
               </a>
             </li>
           
@@ -257,7 +257,7 @@
             <h1 style="display: none">JavaScript运行机制</h1>
             
             <div class="markdown-body">
-              <p>参考：<br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903512845860872">https://juejin.cn/post/6844903512845860872</a> 。<br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904100195205133">https://juejin.cn/post/6844904100195205133</a> 。<br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6991849728493256741">https://juejin.cn/post/6991849728493256741</a> 。<br><a target="_blank" rel="noopener" href="https://juejin.cn/post/7126795602276384804">https://juejin.cn/post/7126795602276384804</a> 。</p>
+              <p>参考：<br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903512845860872">https://juejin.cn/post/6844903512845860872</a><br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904100195205133">https://juejin.cn/post/6844904100195205133</a><br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6991849728493256741">https://juejin.cn/post/6991849728493256741</a><br><a target="_blank" rel="noopener" href="https://juejin.cn/post/7126795602276384804">https://juejin.cn/post/7126795602276384804</a></p>
 <h1 id="JavaScript-异步实现"><a href="#JavaScript-异步实现" class="headerlink" title="JavaScript 异步实现"></a>JavaScript 异步实现</h1><p>JavaScript 是一门单线程语言，虽然 HTML5 中提出 Web-Worker，但 JavaScript 是单线程这一核心仍未改变。所以一切 JavaScript 的”多线程”都是用单线程模拟出来的。</p>
 <p>JavaScript 的主运行线程只有一个，但不是整个运行环境都是单线程。JavaScript 的运行环境主要是浏览器，它不仅是多线程的，而且是多进程的。</p>
 <h1 id="浏览器的多进程架构"><a href="#浏览器的多进程架构" class="headerlink" title="浏览器的多进程架构"></a>浏览器的多进程架构</h1><p>以 Chrome 浏览器为例，它由多个进程组成，每个进程都有自己核心的职责，它们相互配合来完成浏览器的整体功能。每个进程中又包含多个线程，一个进程内的多个线程也会协同工作，配合完成所在进程的职责。</p>

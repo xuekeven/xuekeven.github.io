@@ -133,9 +133,9 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/dome/">
+              <a class="nav-link" href="/demo/">
                 <i class="iconfont icon-th-large"></i>
-                Dome
+                Demo
               </a>
             </li>
           
@@ -257,7 +257,7 @@
             <h1 style="display: none">JavaScript数组扁平化</h1>
             
             <div class="markdown-body">
-              <p>参考：<a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904025993773063">https://juejin.cn/post/6844904025993773063</a> 。</p>
+              <p>参考：<br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904025993773063">https://juejin.cn/post/6844904025993773063</a></p>
 <h1 id="数组扁平化的实现"><a href="#数组扁平化的实现" class="headerlink" title="数组扁平化的实现"></a>数组扁平化的实现</h1><p>数组拍平方法 Array.prototype.flat() 也叫数组扁平化、数组拉平、数组降维。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> animals = [<span class="hljs-string">&quot;🐷&quot;</span>, [<span class="hljs-string">&quot;🐶&quot;</span>, <span class="hljs-string">&quot;🐂&quot;</span>], [<span class="hljs-string">&quot;🐎&quot;</span>, [<span class="hljs-string">&quot;🐑&quot;</span>, [<span class="hljs-string">&quot;🐲&quot;</span>]], <span class="hljs-string">&quot;🐛&quot;</span>]];<br><span class="hljs-comment">// 不传参数时，默认“拉平”一层</span><br>animals.flat();<br><span class="hljs-comment">// [&quot;🐷&quot;, &quot;🐶&quot;, &quot;🐂&quot;, &quot;🐎&quot;, [&quot;🐑&quot;, [&quot;🐲&quot;]], &quot;🐛&quot;]</span><br><span class="hljs-comment">// 传入一个整数参数，整数即“拉平”的层数</span><br>animals.flat(<span class="hljs-number">2</span>);<br><span class="hljs-comment">// [&quot;🐷&quot;, &quot;🐶&quot;, &quot;🐂&quot;, &quot;🐎&quot;, &quot;🐑&quot;, [&quot;🐲&quot;], &quot;🐛&quot;]</span><br><span class="hljs-comment">// Infinity 关键字作为参数时，无论多少层嵌套，都会转为一维数组</span><br>animals.flat(<span class="hljs-literal">Infinity</span>);<br><span class="hljs-comment">// [&quot;🐷&quot;, &quot;🐶&quot;, &quot;🐂&quot;, &quot;🐎&quot;, &quot;🐑&quot;, &quot;🐲&quot;, &quot;🐛&quot;]</span><br><span class="hljs-comment">// 传入 &lt;=0 的整数将返回原数组，不“拉平”</span><br>animals.flat(<span class="hljs-number">0</span>);<br>animals.flat(-<span class="hljs-number">10</span>);<br><span class="hljs-comment">// [&quot;🐷&quot;, [&quot;🐶&quot;, &quot;🐂&quot;], [&quot;🐎&quot;, [&quot;🐑&quot;, [&quot;🐲&quot;]], &quot;🐛&quot;]];</span><br><span class="hljs-comment">// 如果原数组有空位，flat()方法会跳过空位。</span><br>[<span class="hljs-string">&quot;🐷&quot;</span>, <span class="hljs-string">&quot;🐶&quot;</span>, <span class="hljs-string">&quot;🐂&quot;</span>, <span class="hljs-string">&quot;🐎&quot;</span>,,].flat();<br><span class="hljs-comment">// [&quot;🐷&quot;, &quot;🐶&quot;, &quot;🐂&quot;, &quot;🐎&quot;]</span><br></code></pre></td></tr></table></figure>
 <p>Array.prototype.flat() 特性总结：</p>

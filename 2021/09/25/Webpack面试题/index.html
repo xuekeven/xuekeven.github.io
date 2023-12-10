@@ -133,9 +133,9 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/dome/">
+              <a class="nav-link" href="/demo/">
                 <i class="iconfont icon-th-large"></i>
-                Dome
+                Demo
               </a>
             </li>
           
@@ -257,7 +257,7 @@
             <h1 style="display: none">Webpack面试题</h1>
             
             <div class="markdown-body">
-              <p>参考：<br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904094281236487">https://juejin.cn/post/6844904094281236487</a> 。<br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6943468761575849992">https://juejin.cn/post/6943468761575849992</a> 。</p>
+              <p>参考：<br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904094281236487">https://juejin.cn/post/6844904094281236487</a><br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6943468761575849992">https://juejin.cn/post/6943468761575849992</a></p>
 <h2 id="Webpack的作用是什么？"><a href="#Webpack的作用是什么？" class="headerlink" title="Webpack的作用是什么？"></a>Webpack的作用是什么？</h2><ul>
 <li>模块打包。可以将不同模块的文件打包整合在一起，并且保证它们之间的引用正确，执行有序。利用好打包我们就可以在开发的时候根据我们自己的业务自由划分文件模块，保证项目结构的清晰和可读性。</li>
 <li>编译兼容。在前端的“上古时期”，手写一堆浏览器兼容代码一直是令前端工程师头皮发麻的事情，而在今天这个问题被大大的弱化了，通过 Webpack 的 Loader 机制，不仅仅可以帮助我们对代码做 polyfill，还可以编译转换诸如 .less、.vue、.jsx 这类在浏览器无法识别的格式文件，让我们在开发的时候可以使用新特性和新语法做开发，提高开发效率。</li>
@@ -284,7 +284,7 @@
 <p>Loader 在 module.rules 中配置，作为模块的解析规则，类型为数组。每一项都是一个 Object，内部包含了 test（类型文件）、loader、options （参数）等属性。</p>
 <p>Plugin 是插件，基于事件流框架 Tapable，插件可以扩展 Webpack 的功能，在 Webpack 运行的生命周期中会广播出许多事件，Plugin 可以监听这些事件，在合适的时机通过 Webpack 提供的 API 改变输出结果。</p>
 <p>Plugin 在 plugins 中单独配置，类型为数组，每一项是一个 Plugin 的实例，参数都通过构造函数传入。</p>
-<h2 id="有哪些常见的Loader？"><a href="#有哪些常见的Loader？" class="headerlink" title="有哪些常见的Loader？"></a>有哪些常见的Loader？</h2><p>Loader 官网：<a target="_blank" rel="noopener" href="https://webpack.docschina.org/loaders">https://Webpack.docschina.org/loaders</a> 。</p>
+<h2 id="有哪些常见的Loader？"><a href="#有哪些常见的Loader？" class="headerlink" title="有哪些常见的Loader？"></a>有哪些常见的Loader？</h2><p>Loader 官网：<br><a target="_blank" rel="noopener" href="https://webpack.docschina.org/loaders">https://Webpack.docschina.org/loaders</a></p>
 <h3 id="文件"><a href="#文件" class="headerlink" title="文件"></a>文件</h3><ul>
 <li>val-loader：将代码作为模块执行，并将其导出为 JS 代码</li>
 <li>ref-loader：用于手动建立文件之间的依赖关系</li>
@@ -335,7 +335,7 @@
 <li>file-loader</li>
 <li>url-loader</li>
 </ul>
-<h2 id="有哪些常见的Plugin？"><a href="#有哪些常见的Plugin？" class="headerlink" title="有哪些常见的Plugin？"></a>有哪些常见的Plugin？</h2><p>Plugin 官网：<a target="_blank" rel="noopener" href="https://webpack.docschina.org/plugins">https://Webpack.docschina.org/plugins</a> 。</p>
+<h2 id="有哪些常见的Plugin？"><a href="#有哪些常见的Plugin？" class="headerlink" title="有哪些常见的Plugin？"></a>有哪些常见的Plugin？</h2><p>Plugin 官网：<br><a target="_blank" rel="noopener" href="https://webpack.docschina.org/plugins">https://Webpack.docschina.org/plugins</a></p>
 <ul>
 <li>define-plugin：定义环境变量 （Webpack4 之后指定 mode 会自动配置）</li>
 <li>ignore-plugin：忽略部分文件</li>
@@ -373,9 +373,9 @@
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/categories/%E6%A1%86%E6%9E%B6%E5%92%8C%E7%B1%BB%E5%BA%93/">框架和类库</a>
+                      <a class="hover-with-bg" href="/categories/%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7/">构建工具</a>
                     
-                      <a class="hover-with-bg" href="/categories/%E6%A1%86%E6%9E%B6%E5%92%8C%E7%B1%BB%E5%BA%93/Webpack/">Webpack</a>
+                      <a class="hover-with-bg" href="/categories/%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7/Webpack/">Webpack</a>
                     
                   </div>
                 
@@ -384,8 +384,6 @@
                     <i class="iconfont icon-tags"></i>
                     
                       <a class="hover-with-bg" href="/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/">面试题</a>
-                    
-                      <a class="hover-with-bg" href="/tags/%E6%A1%86%E6%9E%B6%E5%92%8C%E7%B1%BB%E5%BA%93/">框架和类库</a>
                     
                       <a class="hover-with-bg" href="/tags/Webpack/">Webpack</a>
                     

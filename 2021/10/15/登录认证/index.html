@@ -133,9 +133,9 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/dome/">
+              <a class="nav-link" href="/demo/">
                 <i class="iconfont icon-th-large"></i>
-                Dome
+                Demo
               </a>
             </li>
           
@@ -257,7 +257,7 @@
             <h1 style="display: none">登录认证</h1>
             
             <div class="markdown-body">
-              <p>参考：<br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904034181070861">https://juejin.cn/post/6844904034181070861</a> 。<br><a target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2018/07/json_web_Token-tutorial.html">http://www.ruanyifeng.com/blog/2018/07/json_web_Token-tutorial.html</a> 。<br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903556424826894">https://juejin.cn/post/6844903556424826894</a> 。<br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6845166891393089544">https://juejin.cn/post/6845166891393089544</a> 。</p>
+              <p>参考：<br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904034181070861">https://juejin.cn/post/6844904034181070861</a><br><a target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2018/07/json_web_Token-tutorial.html">http://www.ruanyifeng.com/blog/2018/07/json_web_Token-tutorial.html</a><br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903556424826894">https://juejin.cn/post/6844903556424826894</a><br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6845166891393089544">https://juejin.cn/post/6845166891393089544</a></p>
 <h1 id="认证（Authentication）"><a href="#认证（Authentication）" class="headerlink" title="认证（Authentication）"></a>认证（Authentication）</h1><p>通俗地讲就是验证当前用户的身份。互联网中的认证：</p>
 <ul>
 <li>用户名密码登录</li>
@@ -313,7 +313,7 @@
 <h2 id="Refresh-Token"><a href="#Refresh-Token" class="headerlink" title="Refresh Token"></a>Refresh Token</h2><p>Refresh Token 是专用于刷新 Acesss Token 的 Token。如果没有 Refresh Token，也可以刷新 Acesss Token，但每次刷新都要用户再输入登录用户名与密码，会很麻烦。有了 Refresh Token 可以减少这个麻烦，客户端直接用 Refresh Token 去更新 Acesss Token，无需用户进行额外的操作。</p>
 <p>Access Token 的有效期比较短，当 Acesss Token 由于过期而失效时，使用 Refresh Token 就可以获取到新的 Access Token，如果 Refresh Token 也失效了，用户就只能重新登录。</p>
 <p>Refresh Token 及过期时间是存储在服务器的数据库中，只有在申请新的 Acesss Token 时才会验证，不会对业务接口响应时间造成影响，也不需要向 Session 一样一直保持在内存中以应对大量的请求。</p>
-<h2 id="存放位置"><a href="#存放位置" class="headerlink" title="存放位置"></a>存放位置</h2><p>参考：<a target="_blank" rel="noopener" href="https://juejin.cn/post/6922782392390746125">https://juejin.cn/post/6922782392390746125</a> 。</p>
+<h2 id="存放位置"><a href="#存放位置" class="headerlink" title="存放位置"></a>存放位置</h2><p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6922782392390746125">https://juejin.cn/post/6922782392390746125</a></p>
 <h3 id="将-Token-存储于-localStorage-或-sessionStorage"><a href="#将-Token-存储于-localStorage-或-sessionStorage" class="headerlink" title="将 Token 存储于 localStorage 或 sessionStorage"></a>将 Token 存储于 localStorage 或 sessionStorage</h3><p>Web存储（localStorage &amp; sessionStorage）可以通过同一域商 Javascript 访问。这意味着任何在你的网站上的运行的 JavaScript 都可以访问 Web存储，所以容易受到 XSS 攻击。尤其是项目中用到了很多第三方 JavaScript 类库。</p>
 <p>为了防止 XSS，一般的处理是避开和编码所有不可信的数据。但这并不能百分百防止 XSS。如我们使用托管在 CDN、其它一些公共 JavaScript 库，还有像 npm 这样的包管理器导入别人的代码到我们的应用程序中。</p>
 <p>如果你使用的脚本中有一个被盗用了怎么办？恶意的 JavaScript 可以嵌入到页面上，并且 Web存储被盗用。这些类型的 XSS 攻击可以得到每个人的 Web存储来访问你的网站。</p>
@@ -421,6 +421,8 @@
                     
                       <a class="hover-with-bg" href="/categories/%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83/">运行环境</a>
                     
+                      <a class="hover-with-bg" href="/categories/%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83/%E6%B5%8F%E8%A7%88%E5%99%A8/">浏览器</a>
+                    
                   </div>
                 
                 
@@ -430,6 +432,8 @@
                       <a class="hover-with-bg" href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/">浏览器</a>
                     
                       <a class="hover-with-bg" href="/tags/%E7%99%BB%E5%BD%95/">登录</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%AE%89%E5%85%A8/">安全</a>
                     
                   </div>
                 

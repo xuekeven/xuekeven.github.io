@@ -133,9 +133,9 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/dome/">
+              <a class="nav-link" href="/demo/">
                 <i class="iconfont icon-th-large"></i>
-                Dome
+                Demo
               </a>
             </li>
           
@@ -257,7 +257,7 @@
             <h1 style="display: none">MVVM原理</h1>
             
             <div class="markdown-body">
-              <p>参考：<a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903586103558158">https://juejin.cn/post/6844903586103558158</a> 。</p>
+              <p>参考：<br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903586103558158">https://juejin.cn/post/6844903586103558158</a></p>
 <p>现在无论是 React 还是 Vue 还是最新的 Angular，MVVM 双向数据绑定通过 <strong>数据劫持+发布订阅模式</strong> 完成。真正实现其实靠的是 ES5 中提供的 Object.defineProperty() 方法。</p>
 <h1 id="Object-defineProperty-用法"><a href="#Object-defineProperty-用法" class="headerlink" title="Object.defineProperty()用法"></a>Object.defineProperty()用法</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> obj = &#123;&#125;;<br><span class="hljs-keyword">let</span> song = <span class="hljs-string">&#x27;发如雪&#x27;</span>;<br>obj.singer = <span class="hljs-string">&#x27;周杰伦&#x27;</span>;<br><br><span class="hljs-built_in">Object</span>.defineProperty(obj, <span class="hljs-string">&#x27;music&#x27;</span>, &#123;<br>  <span class="hljs-attr">value</span>: <span class="hljs-string">&#x27;七里香&#x27;</span>, <span class="hljs-comment">// 1.属性值</span><br>  <span class="hljs-attr">configurable</span>: <span class="hljs-literal">true</span>, <span class="hljs-comment">// 2.属性是否可被删除</span><br>  <span class="hljs-attr">writable</span>: <span class="hljs-literal">true</span>, <span class="hljs-comment">// 3.属性值是否可修改</span><br>  <span class="hljs-attr">enumerable</span>: <span class="hljs-literal">true</span>, <span class="hljs-comment">// 4.属性是否可被枚举</span><br>  <span class="hljs-comment">// get 和 set 设置时不能设置 writable 和 value，它们代替了二者且是互斥的</span><br>  <span class="hljs-function"><span class="hljs-title">set</span>(<span class="hljs-params">val</span>)</span> &#123;<br>    song = val<br>  &#125;,<br>  <span class="hljs-function"><span class="hljs-title">get</span>(<span class="hljs-params"></span>)</span> &#123;<br>    <span class="hljs-keyword">return</span> song<br>  &#125;<br>&#125;)<br><br><span class="hljs-comment">// 下面打印的部分分别是对应代码写入顺序执行</span><br><span class="hljs-comment">// 1</span><br><span class="hljs-built_in">console</span>.log(obj); <span class="hljs-comment">// &#123;singer: &#x27;周杰伦&#x27;, music: &#x27;七里香&#x27;&#125;  </span><br><span class="hljs-comment">// 2</span><br><span class="hljs-keyword">delete</span> obj.music; <br><span class="hljs-built_in">console</span>.log(obj); <span class="hljs-comment">// &#123;singer: &#x27;周杰伦&#x27;&#125;</span><br><span class="hljs-comment">// 3</span><br>obj.music = <span class="hljs-string">&#x27;听妈妈的话&#x27;</span>; <br><span class="hljs-built_in">console</span>.log(obj); <span class="hljs-comment">// &#123;singer: &#x27;周杰伦&#x27;, music: &quot;听妈妈的话&quot;&#125;</span><br><span class="hljs-comment">// 4</span><br><span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> key <span class="hljs-keyword">in</span> obj) &#123; <br>  <span class="hljs-built_in">console</span>.log(key); <span class="hljs-comment">// singer, music</span><br>&#125;<br><span class="hljs-comment">// 5</span><br><span class="hljs-built_in">console</span>.log(obj.music); <span class="hljs-comment">// &#x27;发如雪&#x27; </span><br><span class="hljs-comment">// 6</span><br>obj.music = <span class="hljs-string">&#x27;夜曲&#x27;</span>;<br><span class="hljs-built_in">console</span>.log(obj.music); <span class="hljs-comment">// &#x27;夜曲&#x27;</span><br></code></pre></td></tr></table></figure>
 
@@ -283,7 +283,7 @@
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/categories/%E6%A1%86%E6%9E%B6%E5%92%8C%E7%B1%BB%E5%BA%93/">框架和类库</a>
+                      <a class="hover-with-bg" href="/categories/%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/">框架和库</a>
                     
                   </div>
                 
@@ -291,7 +291,7 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/%E6%A1%86%E6%9E%B6%E5%92%8C%E7%B1%BB%E5%BA%93/">框架和类库</a>
+                      <a class="hover-with-bg" href="/tags/MVVM/">MVVM</a>
                     
                   </div>
                 
@@ -308,7 +308,7 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2021/09/20/JavaScript%E5%A4%8D%E6%9D%82%E5%BA%A6/">
+                      <a href="/2021/09/20/%E5%A4%8D%E6%9D%82%E5%BA%A6/">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">复杂度</span>
                         <span class="visible-mobile">上一篇</span>

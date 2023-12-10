@@ -133,9 +133,9 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/dome/">
+              <a class="nav-link" href="/demo/">
                 <i class="iconfont icon-th-large"></i>
-                Dome
+                Demo
               </a>
             </li>
           
@@ -264,7 +264,7 @@
 <li>使用虚拟 DOM 算法。使用虚拟 DOM 配合 diff 算法，提高性能。  </li>
 </ul>
 <h1 id="为什么-Vue-组件中-data-必须是一个函数"><a href="#为什么-Vue-组件中-data-必须是一个函数" class="headerlink" title="为什么 Vue 组件中 data 必须是一个函数"></a>为什么 Vue 组件中 data 必须是一个函数</h1><p>对象为引用类型，若 data 是对象，当复用组件时，同样的组件的 data 都指向同一个数据对象，使用相同的内存地址，导致数据混用：当在一个组件中修改 data 时，其他同样的组件的 data 会同时被修改；若 data 是函数，当复用组件时，都会调用函数，返回是一个新对象，使用不同的内存地址，数据不会混用。</p>
-<h1 id="Vue-组件通信"><a href="#Vue-组件通信" class="headerlink" title="Vue 组件通信"></a>Vue 组件通信</h1><p>参考：<a target="_blank" rel="noopener" href="https://juejin.cn/post/6999687348120190983">https://juejin.cn/post/6999687348120190983</a> 。</p>
+<h1 id="Vue-组件通信"><a href="#Vue-组件通信" class="headerlink" title="Vue 组件通信"></a>Vue 组件通信</h1><p>参考：<br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6999687348120190983">https://juejin.cn/post/6999687348120190983</a></p>
 <ul>
 <li>父组件向子组件传递数据通过 props 传递</li>
 <li>子组件向父组件传递数据通过 $emit 触发事件</li>
@@ -351,10 +351,11 @@
 <h1 id="使用-v-for-时-key-的作用"><a href="#使用-v-for-时-key-的作用" class="headerlink" title="使用 v-for 时 key 的作用"></a>使用 v-for 时 key 的作用</h1><p>当 Vue 用 - v-for 正在更新已渲染过的元素列表时使用“就地复用”策略。如果数据项的顺序被改变，Vue 将不是移动 DOM 元素来匹配数据项的改变，而是简单复用此处每个元素，并且确保它在特定索引下显示已被渲染过的每个元素。</p>
 <p>key 属性用于方便 Vue 跟踪每个节点的身份，从而重用和重新排序现有元素，需要为每项提供一个唯一 key 属性。key 属性只能为 Strig 或 Number 类型。<br>如果不使用 key，Vue 会使用一种最大限度减少动态元素并且尽可能的尝试修复/再利用相同类型元素的算法。使用 key，Vue 会基于 key 的变化重新排列元素顺序，并且会移除 key 不存在的元素。</p>
 <h1 id="nextTick-使用场景和原理"><a href="#nextTick-使用场景和原理" class="headerlink" title="$nextTick 使用场景和原理"></a>$nextTick 使用场景和原理</h1><p>Vue 实现响应式并不是数据发生变化后 DOM 立即变化，而是按照一定的策略来进行 DOM 更新。$nextTick 是在下次 DOM 更新循环结束之后执行延迟回调，在修改数据之后使用 $nextTick，则可以在回调中获取更新后的 DOM。跟全局方法 Vue.nextTick 一样，不同的是回调的 this 自动绑定到调用它的实例上。</p>
-<h1 id="Vue-数据双向绑定原理"><a href="#Vue-数据双向绑定原理" class="headerlink" title="Vue 数据双向绑定原理"></a>Vue 数据双向绑定原理</h1><p>参考：<a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903903822086151">https://juejin.cn/post/6844903903822086151</a> 。<br>Demo：<a target="_blank" rel="noopener" href="https://github.com/xuekeven/js-learn_vue2/tree/main/15.vue%E5%8E%9F%E7%90%86%E9%AB%98%E7%BA%A7%E6%95%99%E7%A8%8B/%E5%93%8D%E5%BA%94%E6%80%A7/4.mini-observer.html">https://github.com/xuekeven/js-learn_vue2/tree/main/15.vue原理高级教程/响应性/4.mini-observer.html</a> 。</p>
+<h1 id="Vue-数据双向绑定原理"><a href="#Vue-数据双向绑定原理" class="headerlink" title="Vue 数据双向绑定原理"></a>Vue 数据双向绑定原理</h1><p>参考：<br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903903822086151">https://juejin.cn/post/6844903903822086151</a></p>
+<p>Demo：<br><a target="_blank" rel="noopener" href="https://github.com/xuekeven/js-learn_vue2/tree/main/15.vue%E5%8E%9F%E7%90%86%E9%AB%98%E7%BA%A7%E6%95%99%E7%A8%8B/%E5%93%8D%E5%BA%94%E6%80%A7/4.mini-observer.html">https://github.com/xuekeven/js-learn_vue2/tree/main/15.vue原理高级教程/响应性/4.mini-observer.html</a></p>
 <p>1、实现一个监听器 Observer ，用来劫持并监听所有属性，如果属性发生变化，就通知订阅者；<br>2、实现一个订阅器 Dep，用来收集订阅者，对监听器 Observer 和 订阅者 Watcher 进行统一管理；<br>3、实现一个订阅者 Watcher，可以收到属性的变化通知并执行相应的方法，从而更新视图；<br>4、实现一个解析器 Compile，可以解析每个节点的相关指令，对模板数据和订阅器进行初始化。</p>
-<h1 id="Vue3-对比-Vue2"><a href="#Vue3-对比-Vue2" class="headerlink" title="Vue3 对比 Vue2"></a>Vue3 对比 Vue2</h1><p>参考：<a target="_blank" rel="noopener" href="https://juejin.cn/post/6892295955844956167">https://juejin.cn/post/6892295955844956167</a> 。</p>
-<h1 id="观察者模式与发布订阅模式"><a href="#观察者模式与发布订阅模式" class="headerlink" title="观察者模式与发布订阅模式"></a>观察者模式与发布订阅模式</h1><p>参考：<a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903603107266567">https://juejin.cn/post/6844903603107266567</a> 。</p>
+<h1 id="Vue3-对比-Vue2"><a href="#Vue3-对比-Vue2" class="headerlink" title="Vue3 对比 Vue2"></a>Vue3 对比 Vue2</h1><p>参考：<br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6892295955844956167">https://juejin.cn/post/6892295955844956167</a></p>
+<h1 id="观察者模式与发布订阅模式"><a href="#观察者模式与发布订阅模式" class="headerlink" title="观察者模式与发布订阅模式"></a>观察者模式与发布订阅模式</h1><p>参考：<br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903603107266567">https://juejin.cn/post/6844903603107266567</a></p>
 
             </div>
             <hr>
@@ -364,9 +365,9 @@
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/categories/%E6%A1%86%E6%9E%B6%E5%92%8C%E7%B1%BB%E5%BA%93/">框架和类库</a>
+                      <a class="hover-with-bg" href="/categories/%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/">框架和库</a>
                     
-                      <a class="hover-with-bg" href="/categories/%E6%A1%86%E6%9E%B6%E5%92%8C%E7%B1%BB%E5%BA%93/Vue/">Vue</a>
+                      <a class="hover-with-bg" href="/categories/%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/Vue/">Vue</a>
                     
                   </div>
                 
@@ -375,8 +376,6 @@
                     <i class="iconfont icon-tags"></i>
                     
                       <a class="hover-with-bg" href="/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/">面试题</a>
-                    
-                      <a class="hover-with-bg" href="/tags/%E6%A1%86%E6%9E%B6%E5%92%8C%E7%B1%BB%E5%BA%93/">框架和类库</a>
                     
                       <a class="hover-with-bg" href="/tags/Vue/">Vue</a>
                     
