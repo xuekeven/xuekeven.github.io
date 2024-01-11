@@ -224,7 +224,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      16
+      17
        分钟
     </span>
   
@@ -257,7 +257,8 @@
             <h1 style="display: none">JavaScript知识</h1>
             
             <div class="markdown-body">
-              <h1 id="解析连接URL"><a href="#解析连接URL" class="headerlink" title="解析连接URL"></a>解析连接URL</h1><p>可以通过创建 a 标签，给 a 标签赋值 href 属性的方式，获取到协议、pathname、origin等location对象上的属性。</p>
+              <h1 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h1><p>标识符是代码中用来识别变量、函数、属性或者函数的字符序列。<br>关键字和保留字不可以用作标识符，但可以用作对象的属性，但不建议这样使用。</p>
+<h1 id="解析连接URL"><a href="#解析连接URL" class="headerlink" title="解析连接URL"></a>解析连接URL</h1><p>可以通过创建 a 标签，给 a 标签赋值 href 属性的方式，获取到协议、pathname、origin等location对象上的属性。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> aEle = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">&#x27;a&#x27;</span>);<br>aEle.href =  <span class="hljs-string">&#x27;https://www.baidu.com/s?tn=68018901_2_oem_dg&amp;ie=utf-8&amp;wd=china&#x27;</span> ;<br><br>aEle.protocol; <span class="hljs-comment">// &#x27;https:&#x27;</span><br>aEle.port; <span class="hljs-comment">// &#x27;&#x27;</span><br>aEle.pathname; <span class="hljs-comment">// &#x27;/s&#x27;</span><br>aEle.origin; <span class="hljs-comment">// &#x27;https://www.baidu.com&#x27;</span><br>aEle.host; <span class="hljs-comment">// &#x27;www.baidu.com&#x27;</span><br>aEle.hostname; <span class="hljs-comment">// &#x27;www.baidu.com&#x27;</span><br>aEle.search; <span class="hljs-comment">// &#x27;?tn=68018901_2_oem_dg&amp;ie=utf-8&amp;wd=china&#x27;</span><br></code></pre></td></tr></table></figure>
 
 <h1 id="复制文字到剪切板"><a href="#复制文字到剪切板" class="headerlink" title="复制文字到剪切板"></a>复制文字到剪切板</h1><p>参考：<br><a target="_blank" rel="noopener" href="https://www.zhangxinxu.com/wordpress/2021/10/js-copy-paste-clipboard/">https://www.zhangxinxu.com/wordpress/2021/10/js-copy-paste-clipboard/</a></p>
