@@ -306,7 +306,7 @@
 </ul>
 <h1 id="Base64"><a href="#Base64" class="headerlink" title="Base64"></a>Base64</h1><p>Base64本身不是加密或者哈希技术，它通过将二进制数据转换为ASCII字符串来实现数据的传输和存储。Base64编码特别适合在那些不允许包含二进制数据的场合中传输数据，如在某些基于文本的协议（如HTTP）中发送图像或其他媒体文件。</p>
 <p>通过将加密或者哈希后的数据转换为可传输的文本格式，Base64可以确保这些数据在网络上传输的可行性和方便性。在Node.js中缺少浏览器的atob()和btoa()函数，Buffer类成为处理Base64编码和解码的主要工具。</p>
-<h2 id="提醒"><a href="#提醒" class="headerlink" title="提醒"></a>提醒</h2><ul>
+<h1 id="提醒"><a href="#提醒" class="headerlink" title="提醒"></a>提醒</h1><ul>
 <li>绝不要以明文存储密码</li>
 <li>永远使用哈希算法来处理密码，绝不要使用 Base64 或其他编码方式来存储密码，这和以明文存储密码是一样的，使用哈希，而不要使用编码。编码以及加密，都是双向的过程，而密码是保密的，应该只被它的所有者知道， 这个过程必须是单向的。哈希正是用于做这个的，从来没有解哈希的这种说法，但是编码就存在解码，加密就存在解密</li>
 <li>绝不要使用弱哈希或已被破解的哈希算法，像 MD5 或 SHA1 ，只使用强密码哈希算法</li>
@@ -325,7 +325,7 @@
                     
                       <a class="hover-with-bg" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/">计算机基础</a>
                     
-                      <a class="hover-with-bg" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E5%8A%A0%E5%AF%86/">加密</a>
+                      <a class="hover-with-bg" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E5%85%B6%E5%AE%83/">其它</a>
                     
                   </div>
                 
