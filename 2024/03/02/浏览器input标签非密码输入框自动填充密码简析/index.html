@@ -18,7 +18,7 @@
   <meta name="author" content="Keven">
   <meta name="keywords" content="">
   
-  <title>常见加密方式 - Keven&#39;s Blog</title>
+  <title>浏览器input标签非密码输入框自动填充密码简析 - Keven&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
 
@@ -187,7 +187,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.2)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="常见加密方式">
+            <span class="h2" id="subtitle" title="浏览器input标签非密码输入框自动填充密码简析">
               
             </span>
 
@@ -202,8 +202,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2024-02-23 20:00" pubdate>
-        2024年2月23日
+      <time datetime="2024-03-02 22:00" pubdate>
+        2024年3月2日
       </time>
     </span>
   
@@ -214,7 +214,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      2.2k 字
+      760 字
     </span>
   
 
@@ -224,7 +224,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      23
+      8
        分钟
     </span>
   
@@ -254,66 +254,37 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">常见加密方式</h1>
+            <h1 style="display: none">浏览器input标签非密码输入框自动填充密码简析</h1>
             
             <div class="markdown-body">
-              <p>参考：<br><a target="_blank" rel="noopener" href="https://juejin.cn/post/7280057907055919144">https://juejin.cn/post/7280057907055919144</a><br><a target="_blank" rel="noopener" href="https://juejin.cn/post/7324084744525283369">https://juejin.cn/post/7324084744525283369</a><br><a target="_blank" rel="noopener" href="https://juejin.cn/post/7128955031063101448">https://juejin.cn/post/7128955031063101448</a></p>
-<p>常见的加密算法主要形式包括：<strong>哈希算法</strong>、<strong>对称加密</strong>和<strong>非对称加密</strong>。</p>
-<h1 id="哈希算法"><a href="#哈希算法" class="headerlink" title="哈希算法"></a>哈希算法</h1><h2 id="介绍特点"><a href="#介绍特点" class="headerlink" title="介绍特点"></a>介绍特点</h2><ul>
-<li>定义：哈希算法又称散列算法、散列函数、哈希函数，是指将任意长度的消息映射为固定长度并输出的算法，输出一般叫做散列值或者哈希值，也摘要（Digest）。简单来说，这种映射就是一种数据压缩，而且散列是不可逆的，即无法通过输出还原输入。</li>
-<li>优点：存储体积小；速度快；不可逆性（单向性）；抗碰撞性（对输入数据高度敏感，消息不同散列值也不同，即使是微小的变化也会产生不同的哈希值，可以帮助保护数据的完整性和减轻篡改风险）。</li>
-<li>缺点：长度固定，安全性不高、容易受到暴力破解。</li>
-</ul>
-<h2 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h2><p>常用于密码存储、数字签名、电子邮件验证、验证下载等方面，更多的是用在验证数据的完整性方面。</p>
+              <h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>如下图，点击第二个下拉选择框后，浏览器自动提示出现密码管理器中的保存的密码进行填充。而且，可以看到下拉框用到的 input 并没有设置 type 为 password ，而是默认的 text ，我们不禁发出一声：“ Chrome 老师，发生甚么事了？”</p>
+<h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><p>经过上网查询和分析，发现问题出在下面的一个 type 为 password 的 input。</p>
+<p>是不是还是满脸问号？其实，问题还就是出在 Chrome 浏览器上。</p>
+<p>因为开启了浏览器的自动填充密码后，浏览器找密码区域很容易，只需要知道哪个 input 的 type 是 password 即可，那么它怎么知道谁是用户名呢？</p>
+<p>答案是，浏览器默认会去找<strong>离 type=”password” 的 input 最近的上方的那个 input 为“用户名”</strong>进行填充，只要一获取上面 input 的焦点，就会自动出现 “用户名填充区域”。</p>
+<p>这种情况发生在 点击了<strong>type=”password” 的 input后，再去点击离 type=”password” 的 input 最近的上方的那个 input</strong>的时候。</p>
+<p>如果是，上来没有先点 type=”password” 的 input ，而是先选了下拉框，此时就不会出现这种问题。不过，等你填了 type=”password” 的 input ，如果再去上面选，还会出现这个问题。</p>
+<h1 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h1><p>如果，下面我只需要一个 type=”password” 的 input 输入框，不需要有 “用户名” ，并且不想影响上面的下拉框，应该怎么办呢？</p>
 <ul>
-<li>密码存储：明文保存密码是危险的。通常我们把密码哈希加密之后保存，这样即使泄漏了密码，因为是散列后的值，也没有办法推导出密码明文（字典攻击难以破解）。验证时，只需要对密码明文做同样的散列，对比散列后的输出和保存的密码散列值，就可以验证同一性。</li>
-<li>验证下载文件的完整性以及防篡改：比如网站提供安装包的时候，通常也会同时提供md5值，这样用户下载之后可以重算安装包的md5值，如果一致，则证明下载到本地的安装包跟网站提供的安装包一致，网络传输过程中没有出错。</li>
+<li>1、禁用掉浏览器的自动填充功能。</li>
 </ul>
-<h2 id="常见类型"><a href="#常见类型" class="headerlink" title="常见类型"></a>常见类型</h2><ul>
-<li>SHA（Secure Hash Algorithm） ：可对任意长度的数据运算生成一个固定位数的数值。SHA-0和SHA-1都是输出128位，已不再安全。SHA-2系列（包括SHA-224、SHA-256、SHA-384和SHA-512）分别输出224、256、384、512位，目前仍被广泛认为是安全的。</li>
-<li>MD5（Message Digest Algorithm 5） ：RSA数据安全公司开发的一种单向散列算法，输出128位，现在已不被认为是安全的。可以使用 crypto-js 进行 MD5 加密。</li>
-</ul>
-<p>SHA与MD5对比：SHA在安全性方面优于MD5，并且可以选择多种不同的密钥长度。 但由于内存需求更高，运行速度会更慢。不过MD5因其速度快而得到广泛使用，但是由于存在碰撞攻击风险，因此不再推荐使用。</p>
-<h1 id="对称加密"><a href="#对称加密" class="headerlink" title="对称加密"></a>对称加密</h1><h2 id="介绍特点-1"><a href="#介绍特点-1" class="headerlink" title="介绍特点"></a>介绍特点</h2><ul>
-<li>定义：采用相同的密钥进行数据的加密和解密。</li>
-<li>优点：通信效率高，速度快，算法简单，系统开销小，适合大数量级的加解密。</li>
-<li>缺点：安全性中等，密钥管理比较难。面临着密钥分发的挑战，即必须在加密和解密双方之间安全地共享密钥。</li>
-</ul>
-<h2 id="应用场景-1"><a href="#应用场景-1" class="headerlink" title="应用场景"></a>应用场景</h2><p>适用于需要高速加解密的场景，例如HTTP传输的SSL/TLS部分；适用于加密大量数据，例如文件加密、网络通信加密、数据加密、电子邮件、Web 聊天等。</p>
+<p>直接从根源解决问题，不过管不了用户的浏览器设置，pass。</p>
 <ul>
-<li>文件加密：将文件用相同的密钥加密后传输或存储，只有拥有密钥的用户才能解密文件。</li>
-<li>数据库加密：对数据库中的敏感信息进行加密保护，防止未经授权的人员访问。</li>
-<li>通信加密：将网络数据进行对称加密，确保数据传输的机密性，适合大量短消息的加解密。</li>
-<li>个人硬盘加密：对称加密安全性较好和处理速度快，对个人电脑而言是一个不错的选择。</li>
+<li>2、给 type=”password” 的input设置属性 autocomplete=”off”。</li>
 </ul>
-<h2 id="常见类型-1"><a href="#常见类型-1" class="headerlink" title="常见类型"></a>常见类型</h2><ul>
-<li>DES（Data Encryption Standard）：分组式加密算法，以64位为分组对数据加密，速度较快。</li>
-<li>3DES（Triple DES）：三重数据加密算法，是基于DES对每个数据块应用三次DES加密算法，强度更高。</li>
-<li>AES（Advanced Encryption Standard）：高级加密标准算法，速度快、安全级别高，目前被广泛应用。可以使用 crypto-js 进行 AES 加密。</li>
+<p>查询 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Attributes/autocomplete">MDN</a> 可知，浏览器根本不鸟”off“值，pass。详见：<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/Security/Securing_your_site/Turning_off_form_autocompletion#autocomplete_%E5%B1%9E%E6%80%A7%E5%92%8C%E7%99%BB%E5%BD%95%E5%AD%97%E6%AE%B5">autocomplete 属性和登录字段</a></p>
+<ul>
+<li>3、给 type=”password” 的 input 设置属性 autocomplete=”new-password” 。</li>
 </ul>
-<p>AES与DES对比：在加密过程中，DES将明文分为两半，然后再进行进一步处理；而在AES中，整个块不进行除法，整个块一起处理以生成密文。相对而言，AES比DES快得多，能够在几秒钟内加密大型文件。</p>
-<h1 id="非对称加密"><a href="#非对称加密" class="headerlink" title="非对称加密"></a>非对称加密</h1><h2 id="介绍特点-2"><a href="#介绍特点-2" class="headerlink" title="介绍特点"></a>介绍特点</h2><ul>
-<li>定义：加密和解密使用不同密钥的算法。解决了密钥分发的问题，公钥私钥成对存在，使用公钥（可以公开）对数据进行加密，只有对应的私钥（不能公开）才能解密。</li>
-<li>优点：安全性高，需要两个不同密钥，信息一对多，服务器只需要维持一个私钥就可以和多个客户端进行通信秘钥容易管理。主要用在数字签名，更适用于区块链技术的点对点之间交易的安全性与可信性。</li>
-<li>缺点：计算量大，算法计算复杂，性能消耗高，速度慢，通信效率较低，适合小数据量或数据签名。</li>
+<p>查询  <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Attributes/autocomplete">MDN</a> 可知，浏览器基本也都不鸟 “new-password” 值，pass。详见：<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/Security/Securing_your_site/Turning_off_form_autocompletion#%E4%BD%BF%E7%94%A8_autocompletenew-password_%E9%98%BB%E6%AD%A2%E8%87%AA%E5%8A%A8%E5%A1%AB%E5%85%85">使用 autocomplete=”new-password” 阻止自动填充</a></p>
+<ul>
+<li>4、自己在 type=”password” 的 input 的上面加一个不用的”用户名“ input 。</li>
 </ul>
-<h2 id="应用场景-2"><a href="#应用场景-2" class="headerlink" title="应用场景"></a>应用场景</h2><p>通常用于需要确保数据完整性和安全性高的场合，例如数字证书的颁发、SSL/TLS 协议的加密、数字签名、加密小文件、密钥交换、实现安全的远程通信等。</p>
-<h2 id="常见类型-2"><a href="#常见类型-2" class="headerlink" title="常见类型"></a>常见类型</h2><ul>
-<li>RSA：由 RSA 公司发明，是一个支持变长密钥的公共密钥算法，需要加密的文件块的长度也是可变的。RSA 算法的安全性基于大数分解问题，密钥长度通常选择 1024 位、2048 位或更长。RSA 算法用于保护数据的机密性、确保数据的完整性和实现数字签名等功能。可以使用 jsencrypt 进行 RSA 加密。</li>
-<li>DSA（Digital Signature Algorithm） ：数字签名算法，仅能用于签名，不能用于加解密。</li>
-<li>ECC（Elliptic Curves Cryptography） ：椭圆曲线密码编码学。</li>
-<li>DSS：数字签名标准，可用于签名，也可以用于加解密。</li>
+<p>没办法的办法，目前看只能这样了，如下面类名为”hidden-input“的input标签：<br>但是要注意，如果你给这个不用的”用户名“ input 设置 display:”none” ，你会发现，浏览器真聪明！点击上面的下拉框还是会出现自动填充^_^。<br>所以，不能设置 display:”none” ，可以用固定定位或相对定位后，设置 left（如设置为99999px），再加上 opacity 为 0。<br>不过，这个方法还有一个缺点，就是，浏览器还是会自动填充 type=”password” 的 input ，不过也管不了那么多了。</p>
+<ul>
+<li>5、将 type=”password” 的 input 改为type=”text“，并使用 passwordEntry.ttf。</li>
 </ul>
-<h1 id="Base64"><a href="#Base64" class="headerlink" title="Base64"></a>Base64</h1><p>Base64本身不是加密或者哈希技术，它通过将二进制数据转换为ASCII字符串来实现数据的传输和存储。Base64编码特别适合在那些不允许包含二进制数据的场合中传输数据，如在某些基于文本的协议（如HTTP）中发送图像或其他媒体文件。</p>
-<p>通过将加密或者哈希后的数据转换为可传输的文本格式，Base64可以确保这些数据在网络上传输的可行性和方便性。在Node.js中缺少浏览器的atob()和btoa()函数，Buffer类成为处理Base64编码和解码的主要工具。</p>
-<h1 id="提醒"><a href="#提醒" class="headerlink" title="提醒"></a>提醒</h1><ul>
-<li>绝不要以明文存储密码</li>
-<li>永远使用哈希算法来处理密码，绝不要使用 Base64 或其他编码方式来存储密码，这和以明文存储密码是一样的，使用哈希，而不要使用编码。编码以及加密，都是双向的过程，而密码是保密的，应该只被它的所有者知道， 这个过程必须是单向的。哈希正是用于做这个的，从来没有解哈希的这种说法，但是编码就存在解码，加密就存在解密</li>
-<li>绝不要使用弱哈希或已被破解的哈希算法，像 MD5 或 SHA1 ，只使用强密码哈希算法</li>
-<li>绝不要以明文形式显示或发送密码，即使是对密码的所有者也应这样。如果你需要 “忘记密码” 的功能，可以随机生成一个新的 一次性的（这点很重要）密码，然后把这个密码发送给用户</li>
-</ul>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>对称加密、非对称加密和哈希算法是构建数字安全基础的三大支柱。它们各自有着独特的功能和优势，但在实际应用中，这些技术往往是相互补充的。从确保网络通信的安全（如HTTPS），到保障数据的完整性和不可篡改性（如区块链技术），这些方法共同构成了我们数字生活的安全基础。</p>
-<p>前端平时用的比较多的也是非对称加密，前后端共用一套加解密算法，前端使用公钥对数据加密，后端使用私钥将数据解密为明文。中间攻击人拿到密文，如果没有私钥的话是没办法破解的。</p>
+<p>将 input 的 type 改为 text 后，给 input 设置 css 的 font-family 为 passwordEntry.ttf ，而 passwordEntry 不是常见的字体，而是把所有的字体全部显示成原点。这样就模拟了密码输入。ttf 的兼容性也十分好，不过我没有试和用这种方法。</p>
 
             </div>
             <hr>
@@ -323,9 +294,9 @@
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/">计算机基础</a>
+                      <a class="hover-with-bg" href="/categories/%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83/">运行环境</a>
                     
-                      <a class="hover-with-bg" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E5%85%B6%E5%AE%83/">其它</a>
+                      <a class="hover-with-bg" href="/categories/%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83/%E6%B5%8F%E8%A7%88%E5%99%A8/">浏览器</a>
                     
                   </div>
                 
@@ -333,7 +304,7 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/%E5%8A%A0%E5%AF%86/">加密</a>
+                      <a class="hover-with-bg" href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/">浏览器</a>
                     
                   </div>
                 
@@ -350,18 +321,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/03/02/%E6%B5%8F%E8%A7%88%E5%99%A8input%E6%A0%87%E7%AD%BE%E9%9D%9E%E5%AF%86%E7%A0%81%E8%BE%93%E5%85%A5%E6%A1%86%E8%87%AA%E5%8A%A8%E5%A1%AB%E5%85%85%E5%AF%86%E7%A0%81%E7%AE%80%E6%9E%90/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">浏览器input标签非密码输入框自动填充密码简析</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/12/23/%E6%B5%8F%E8%A7%88%E5%99%A8%E8%B0%83%E8%AF%95%E6%8A%80%E5%B7%A7/">
-                        <span class="hidden-mobile">浏览器调试技巧</span>
+                      <a href="/2024/02/23/%E5%B8%B8%E8%A7%81%E5%8A%A0%E5%AF%86%E6%96%B9%E5%BC%8F/">
+                        <span class="hidden-mobile">常见加密方式</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
