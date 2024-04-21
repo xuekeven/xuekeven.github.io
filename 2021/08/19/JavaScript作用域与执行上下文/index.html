@@ -224,7 +224,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      62
+      63
        分钟
     </span>
   
@@ -326,7 +326,7 @@
 <li>在进入执行上下文时会给变量对象添加形参、函数声明、变量声明等初始的属性值。</li>
 <li>在代码执行阶段，会再次修改变量对象的属性值。</li>
 </ul>
-<p>需要特别注意的是，ES6 添加了 let 和 const 声明。使用 var 声明的变量会成为全局对象的属性，但是使用 let 和 const 声明的变量不会成为全局对象的属性，而是会成为的变量对象的属性，与全局对象“平级”。</p>
+<p>需要特别注意的是，ES6 添加了 let 和 const 声明。使用 var 声明的变量会成为全局对象的属性，但是使用 let 和 const 声明的变量不会成为全局对象的属性，而是会成为的变量对象的属性，与全局对象“平级”。使用 let、const 定义过的变量名，还能再往全局对象定义，在全局上下文读取时，还是读取的之前的全局上下文的变量对象的变量。</p>
 <p>因此，ES6 之前，全局上下文的变量对象就是全局对象；ES6 之后，全局上下文的变量对象包含全局对象和使用 let 和 const 声明的变量和对象。要特别注意的是，<code>var</code>、<code>let</code>、<code>const</code>三者声明的效果不同。</p>
 <h1 id="执行上下文之作用域链"><a href="#执行上下文之作用域链" class="headerlink" title="执行上下文之作用域链"></a>执行上下文之作用域链</h1><p>参考：<br><a target="_blank" rel="noopener" href="https://github.com/mqyqingfeng/Blog/issues/6">https://github.com/mqyqingfeng/Blog/issues/6</a></p>
 <p>当 JavaScript 代码执行一段可执行代码（executable code）时，都会创建对应的执行上下文。对于每个执行上下文，都有三个重要属性：变量对象（Variable object）、作用域链（Scope chain）、this。</p>
