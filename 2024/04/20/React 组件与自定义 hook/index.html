@@ -18,9 +18,25 @@
   <meta name="author" content="Keven">
   <meta name="keywords" content="">
   
-  <title>归档 - Keven&#39;s Blog</title>
+  <title>React 组件与自定义 hook - Keven&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
 
 
 
@@ -48,7 +64,7 @@
 
 
 <body>
-  <header style="height: 60vh;">
+  <header style="height: 50vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -166,14 +182,56 @@
 </nav>
 
     <div class="banner" id="banner" parallax=true
-         style="background: url('/img/default.jpg') no-repeat center center;
+         style="background: url('/img/example.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
-        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.2)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="归档">
+            <span class="h2" id="subtitle" title="React 组件与自定义 hook">
               
             </span>
+
+            
+              <div class="mt-3">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-author" aria-hidden="true"></i>
+      Keven
+    </span>
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2024-04-20 17:00" pubdate>
+        2024年4月20日
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      562 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      6
+       分钟
+    </span>
+  
+
+  
+  
+</div>
 
             
           </div>
@@ -186,100 +244,113 @@
 
   <main>
     
-      <div class="container nopadding-x-md">
-        <div class="py-5" id="board"
-          >
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
-
-<div class="list-group">
-  <p class="h4">共计 73 篇文章</p>
-  <hr>
-  
-  
-    
       
-      <p class="h5">2021</p>
-    
-    <a href="/2021/09/26/CSS%E4%B9%8B%E5%8D%95%E4%BD%8D/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">CSS之单位</span>
-      <time style="float: right;">09-26</time>
-    </a>
-  
-    
-    <a href="/2021/09/25/%E8%B7%A8%E5%9F%9F/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">跨域</span>
-      <time style="float: right;">09-25</time>
-    </a>
-  
-    
-    <a href="/2021/09/25/Webpack%E9%9D%A2%E8%AF%95%E9%A2%98/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Webpack面试题</span>
-      <time style="float: right;">09-25</time>
-    </a>
-  
-    
-    <a href="/2021/09/23/JavaScript%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">JavaScript数组去重</span>
-      <time style="float: right;">09-23</time>
-    </a>
-  
-    
-    <a href="/2021/09/23/HTML%E9%9D%A2%E8%AF%95%E9%A2%98/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">HTML面试题</span>
-      <time style="float: right;">09-23</time>
-    </a>
-  
-    
-    <a href="/2021/09/20/%E5%A4%8D%E6%9D%82%E5%BA%A6/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">复杂度</span>
-      <time style="float: right;">09-20</time>
-    </a>
-  
-    
-    <a href="/2021/09/20/MVVM%E5%8E%9F%E7%90%86/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">MVVM原理</span>
-      <time style="float: right;">09-20</time>
-    </a>
-  
-    
-    <a href="/2021/09/19/%E6%9F%A5%E6%89%BE/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">查找</span>
-      <time style="float: right;">09-19</time>
-    </a>
-  
-    
-    <a href="/2021/09/18/%E6%8E%92%E5%BA%8F/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">排序</span>
-      <time style="float: right;">09-18</time>
-    </a>
-  
-    
-    <a href="/2021/09/13/JavaScript%E4%BA%8B%E4%BB%B6%E6%9C%BA%E5%88%B6/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">JavaScript事件机制</span>
-      <time style="float: right;">09-13</time>
-    </a>
-  
-</div>
 
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">React 组件与自定义 hook</h1>
+            
+            <div class="markdown-body">
+              <p>参考：<br><a target="_blank" rel="noopener" href="https://zh-hans.react.dev/learn/reusing-logic-with-custom-hooks">https://zh-hans.react.dev/learn/reusing-logic-with-custom-hooks</a></p>
+<h1 id="自定义-Hook：组件间共享逻辑"><a href="#自定义-Hook：组件间共享逻辑" class="headerlink" title="自定义 Hook：组件间共享逻辑"></a>自定义 Hook：组件间共享逻辑</h1><h2 id="Hook-的名称必须永远以-use-开头"><a href="#Hook-的名称必须永远以-use-开头" class="headerlink" title="Hook 的名称必须永远以 use 开头"></a>Hook 的名称必须永远以 use 开头</h2><p>React 应用是由组件构成，而组件由内置或自定义 Hook 构成。可能你经常使用别人写的自定义 Hook，但偶尔也要自己写！你必须遵循以下这些命名公约：</p>
+<ol>
+<li>React 组件名称必须以大写字母开头，比如 StatusBar 和 SaveButton。React 组件还需要返回一些 React 能够显示的内容，比如一段 JSX。</li>
+<li>Hook 的名称必须以 use 开头，然后紧跟一个大写字母，就像内置的 useState 或者本文早前的自定义 useOnlineStatus 一样。Hook 可以返回任意值。</li>
+</ol>
+<p>此外，需要注意，没有 调用 Hook 的函数不需要 变成 Hook。如果你创建的函数没有调用任何 Hook 方法，在命名时应避免使用 use 前缀，把它当成一个常规函数去命名。同时，哪怕内部只使用了一个 Hook，你也应该给这个函数加 use 前缀，让它成为一个 Hook。</p>
+<h2 id="自定义-Hook-共享的只是状态逻辑，而不是状态本身"><a href="#自定义-Hook-共享的只是状态逻辑，而不是状态本身" class="headerlink" title="自定义 Hook 共享的只是状态逻辑，而不是状态本身"></a>自定义 Hook 共享的只是状态逻辑，而不是状态本身</h2><p>自定义 Hook 共享的只是状态逻辑而不是状态本身。对 Hook 的每个调用完全独立于对同一个 Hook 的其他调用。</p>
+<h1 id="在-Hook-之间传递响应值"><a href="#在-Hook-之间传递响应值" class="headerlink" title="在 Hook 之间传递响应值"></a>在 Hook 之间传递响应值</h1><p>每当组件重新渲染，自定义 Hook 中的代码就会重新运行。这就是组件和自定义 Hook 都 需要是纯函数 的原因。我们应该把自定义 Hook 的代码看作组件主体的一部分。</p>
+<h1 id="什么时候使用自定义-Hook"><a href="#什么时候使用自定义-Hook" class="headerlink" title="什么时候使用自定义 Hook"></a>什么时候使用自定义 Hook</h1><p>你没必要对每段重复的代码都提取自定义 Hook。一些重复是好的。</p>
+<p>但是每当你写 Effect 时，考虑一下把它包裹在自定义 Hook 是否更清晰。你不应该经常使用 Effect，所以如果你正在写 Effect 就意味着你需要“走出 React”和某些外部系统同步，或者需要做一些 React 中没有对应内置 API 的事。把 Effect 包裹进自定义 Hook 可以准确表达你的目标以及数据在里面是如何流动的。</p>
 
-  <nav aria-label="navigation">
-    <span class="pagination" id="pagination">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/2021/09/page/2/#board">2</a><a class="page-number" href="/archives/2021/09/page/3/#board">3</a><a class="extend next" rel="next" href="/archives/2021/09/page/2/#board"><i class="iconfont icon-arrowright"></i></a>
-    </span>
-  </nav>
-
-
-
-
-              </div>
             </div>
-          </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/">框架和库</a>
+                    
+                      <a class="hover-with-bg" href="/categories/%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/React/">React</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/React/">React</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/04/21/%E5%BC%95%E5%85%A5%E5%9B%BE%E7%89%87/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">引入图片</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/03/02/%E6%B5%8F%E8%A7%88%E5%99%A8input%E6%A0%87%E7%AD%BE%E9%9D%9E%E5%AF%86%E7%A0%81%E8%BE%93%E5%85%A5%E6%A1%86%E8%87%AA%E5%8A%A8%E5%A1%AB%E5%85%85%E5%AF%86%E7%A0%81%E7%AE%80%E6%9E%90/">
+                        <span class="hidden-mobile">浏览器input标签非密码输入框自动填充密码简析</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
         </div>
       </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+  <div class="col-lg-7 mx-auto nopadding-x-md">
+    <div class="container custom post-custom mx-auto">
+      <img src="https://octodex.github.com/images/jetpacktocat.png" srcset="/img/loading.gif" lazyload class="rounded mx-auto d-block mt-5" style="width:150px; height:150px;">
+    </div>
+  </div>
+
+
     
 
     
@@ -369,9 +440,15 @@
 
 
 
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
 
 
 
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
 
 
 
