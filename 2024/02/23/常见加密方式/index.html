@@ -214,7 +214,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      2.2k 字
+      2.5k 字
     </span>
   
 
@@ -224,7 +224,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      23
+      26
        分钟
     </span>
   
@@ -304,8 +304,16 @@
 <li>ECC（Elliptic Curves Cryptography） ：椭圆曲线密码编码学。</li>
 <li>DSS：数字签名标准，可用于签名，也可以用于加解密。</li>
 </ul>
-<h1 id="Base64"><a href="#Base64" class="headerlink" title="Base64"></a>Base64</h1><p>Base64本身不是加密或者哈希技术，它通过将二进制数据转换为ASCII字符串来实现数据的传输和存储。Base64编码特别适合在那些不允许包含二进制数据的场合中传输数据，如在某些基于文本的协议（如HTTP）中发送图像或其他媒体文件。</p>
-<p>通过将加密或者哈希后的数据转换为可传输的文本格式，Base64可以确保这些数据在网络上传输的可行性和方便性。在Node.js中缺少浏览器的atob()和btoa()函数，Buffer类成为处理Base64编码和解码的主要工具。</p>
+<h1 id="Base64"><a href="#Base64" class="headerlink" title="Base64"></a>Base64</h1><p>Base64本身不是加密或者哈希技术，<strong>它通过将二进制数据转换为ASCII字符串来实现数据的传输和存储</strong>。Base64编码特别适合在那些不允许包含二进制数据的场合中传输数据，如在某些基于文本的协议（如HTTP）中发送图像或其他媒体文件。</p>
+<p>大概有以下几种场景会用到 Base64：</p>
+<ul>
+<li>将小图处理成 Base64，以 Data URLs 的形式传入 img 标签的 src 或 background-image，这样可以减少 HTTP 请求次数；</li>
+<li>通过 Canvas 实现图片压缩/裁切/绘制，最终调用 canvas.toDataURL() 方法，将图片传给客户端或后端进行保存；</li>
+<li>对二进制文件做 Hash 算法 （例如 SHA-1，SHA256）生成 checksum，最后使用 Base64 encode 使得摘要可打印，方便判断是否一致；</li>
+</ul>
+<p>如果仔细看，其实这几种使用场景做的事情都是：将二进制 bytes 通过新的编码系统编码成可读文本，方便以文本形式表示、传输、存储内容。</p>
+<p>那做 Base64 的必要性是没什么，直接输出二进制不行吗？答案当然是不行了，例如👆的第一个例子，HTML 是以文本形式传输的，而图片是二进制文件（一堆 0 和 1），强行将图片按 utf-8 编码输出，保不齐会产生 IMG 结束标签（例如 “/&gt;），导致 HTML 文本解析异常。<br>在文本协议中传输二进制终归是需要编码的，Base64 就是其中一种比较常见通用的编码方案。下面继续看它的编码逻辑。</p>
+<p><strong>通过将加密或者哈希后的数据转换为可传输的文本格式，Base64可以确保这些数据在网络上传输的可行性和方便性</strong>。在 Node.js 中缺少浏览器的 atob() 和 btoa() 函数，Buffer 类成为处理 Base64 编解码主要工具。</p>
 <h1 id="提醒"><a href="#提醒" class="headerlink" title="提醒"></a>提醒</h1><ul>
 <li>绝不要以明文存储密码</li>
 <li>永远使用哈希算法来处理密码，绝不要使用 Base64 或其他编码方式来存储密码，这和以明文存储密码是一样的，使用哈希，而不要使用编码。编码以及加密，都是双向的过程，而密码是保密的，应该只被它的所有者知道， 这个过程必须是单向的。哈希正是用于做这个的，从来没有解哈希的这种说法，但是编码就存在解码，加密就存在解密</li>

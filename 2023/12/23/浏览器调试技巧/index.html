@@ -214,7 +214,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      122 字
+      210 字
     </span>
   
 
@@ -224,7 +224,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      2
+      3
        分钟
     </span>
   
@@ -257,7 +257,10 @@
             <h1 style="display: none">浏览器调试技巧</h1>
             
             <div class="markdown-body">
-              <h3 id="浏览器开发者工具详解"><a href="#浏览器开发者工具详解" class="headerlink" title="浏览器开发者工具详解"></a><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903732488978440">浏览器开发者工具详解</a></h3><h3 id="Chrome-DevTools-Performance-功能详解"><a href="#Chrome-DevTools-Performance-功能详解" class="headerlink" title="Chrome DevTools Performance 功能详解"></a><a target="_blank" rel="noopener" href="https://juejin.cn/post/7149093181244571678">Chrome DevTools Performance 功能详解</a></h3><h3 id="67-Weird-Debugging-Tricks-Your-Browser-Doesn’t-Want-You-to-Know"><a href="#67-Weird-Debugging-Tricks-Your-Browser-Doesn’t-Want-You-to-Know" class="headerlink" title="67 Weird Debugging Tricks Your Browser Doesn’t Want You to Know"></a><a target="_blank" rel="noopener" href="https://alan.norbauer.com/articles/browser-debugging-tricks#monitor-focused-element">67 Weird Debugging Tricks Your Browser Doesn’t Want You to Know</a></h3><p>Add breakpoint — 添加断点<br>Add logpoint — 添加记录点<br>Add conditional breakpoint — 添加有条件的断点<br>   —console.trace(‘somethinga’)<br>   —console.time(‘somethingb’) &amp; console.timeEnd(‘somethingb’)<br>   —arguments.callee.length<br>   —arguments.callee.length != arguments.length</p>
+              <p>控制台</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs stylus">$() <span class="hljs-comment">// 相当于 document.querySelector</span><br>$$() <span class="hljs-comment">// 相当于 document.querySelectorAll</span><br>$_ <span class="hljs-comment">// 返回上一个表达式的值</span><br>$<span class="hljs-number">1</span>-$<span class="hljs-number">4</span> <span class="hljs-comment">// 返回最近5个Elements面板选中的DOM元素。</span><br><span class="hljs-function"><span class="hljs-title">dir</span><span class="hljs-params">()</span></span> <span class="hljs-comment">// console.dir</span><br><span class="hljs-function"><span class="hljs-title">clear</span><span class="hljs-params">()</span></span> <span class="hljs-comment">// console.clear</span><br><span class="hljs-function"><span class="hljs-title">keys</span><span class="hljs-params">()</span></span> <span class="hljs-comment">// 取对象的键名, 返回键名组成的数组</span><br><span class="hljs-function"><span class="hljs-title">values</span><span class="hljs-params">()</span></span> <span class="hljs-comment">// 去对象的值, 返回值组成的数组</span><br><span class="hljs-function"><span class="hljs-title">copy</span><span class="hljs-params">()</span></span> <span class="hljs-comment">// 复制</span><br><br>document<span class="hljs-selector-class">.body</span>.contentEditable=true <span class="hljs-comment">// 让 Chrome 变成编辑器</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="浏览器开发者工具详解"><a href="#浏览器开发者工具详解" class="headerlink" title="浏览器开发者工具详解"></a><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903732488978440">浏览器开发者工具详解</a></h3><h3 id="Chrome-DevTools-Performance-功能详解"><a href="#Chrome-DevTools-Performance-功能详解" class="headerlink" title="Chrome DevTools Performance 功能详解"></a><a target="_blank" rel="noopener" href="https://juejin.cn/post/7149093181244571678">Chrome DevTools Performance 功能详解</a></h3><h3 id="67-Weird-Debugging-Tricks-Your-Browser-Doesn’t-Want-You-to-Know"><a href="#67-Weird-Debugging-Tricks-Your-Browser-Doesn’t-Want-You-to-Know" class="headerlink" title="67 Weird Debugging Tricks Your Browser Doesn’t Want You to Know"></a><a target="_blank" rel="noopener" href="https://alan.norbauer.com/articles/browser-debugging-tricks#monitor-focused-element">67 Weird Debugging Tricks Your Browser Doesn’t Want You to Know</a></h3><p>Add breakpoint — 添加断点<br>Add logpoint — 添加记录点<br>Add conditional breakpoint — 添加有条件的断点<br>   —console.trace(‘somethinga’)<br>   —console.time(‘somethingb’) &amp; console.timeEnd(‘somethingb’)<br>   —arguments.callee.length<br>   —arguments.callee.length != arguments.length</p>
 <p>Dom subtree modifications — DOM子节点改变断点<br>Dom attribute modifications — DOM属性改变断点</p>
 <p>copy()</p>
 <p>setTimeout(function() { debugger; }, 2000);</p>
