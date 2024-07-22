@@ -224,7 +224,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      59
+      60
        分钟
     </span>
   
@@ -257,19 +257,21 @@
             <h1 style="display: none">JavaScript基础之数据类型</h1>
             
             <div class="markdown-body">
-              <p>ECMAScript 目前有数据类型：Undefined、Null、Boolean、Number、String、Symbol、BigInt、Object。<br>前 7 种为简单数据类型（也称基本类型、原始类型、基本值），最后 1 种为复杂数据类型（也称引用类型、引用值）。</p>
+              <p>ECMAScript 有数据类型：Undefined、Null、Boolean、Number、String、Symbol、BigInt、Object。前 7 种为简单数据类型（也称基本类型、原始类型、基本值），最后 1 种为复杂数据类型（也称引用类型、引用值）。</p>
 <p>在 ECMAScript 中不能定义自己的数据类型，所有值都可以用上述数据类型之一来表示。ECMAScript 数据类型很灵活，一种数据类型可以当作多种数据类型来使用。</p>
 <h1 id="Undefined-类型"><a href="#Undefined-类型" class="headerlink" title="Undefined 类型"></a>Undefined 类型</h1><p>Undefined 类型只有一个值：特殊值 <code>undefined</code>。  </p>
 <p>当使用 <code>var</code> 或 <code>let</code> 声明了、但是没有初始化的变量时，就相当于给变量赋予了 <code>undefined</code> 值。一般来说，永远不用显式地给某个变量设 <code>undefined</code> 值。因为在默认情况下，任何未经初始化的变量的值都是 <code>undefined</code>。<code>undefined</code> 值主要用于比较，增加这个特殊值就是为了正式明确空对象指针（<code>null</code>）和未初始化变量（<code>undefined</code>）的区别。  </p>
-<p>无论是<strong>声明了但未初始化的变量</strong>还是<strong>未声明的变量</strong>，对其使用 <code>typeof</code> 返回的都是”undefined”。逻辑上讲这是对的，因为虽然严格来讲这两个变量存在根本性差异，但它们都无法执行实际操作。</p>
-<p>需要注意的是，声明了但未初始化的变量和未声明的变量还是有区别的。声明了但未初始化的变量可以被打印，未声明定义的变量打印会报错。</p>
+<p>无论是<strong>声明了但未初始化的变量</strong>还是<strong>未声明的变量</strong>，对其使用 <code>typeof</code> 返回的都是 <code>undefined</code>。逻辑上讲这是对的，因为虽然严格来讲这两个变量存在根本性差异，但它们都无法执行实际操作。</p>
+<p>需要注意的是，<strong>声明了但未初始化的变量</strong>和<strong>未声明的变量</strong>还是有区别的。声明了但未初始化的变量可以被打印，未声明定义的变量打印会报错。</p>
+<p><code>undefined</code> 是一个假值。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// 未声明的变量 a</span><br><span class="hljs-keyword">let</span> b; <span class="hljs-comment">// 声明了但未初始化的变量 b</span><br><span class="hljs-keyword">let</span> c = <span class="hljs-literal">undefined</span>; <span class="hljs-comment">// 显式地设 undefined 值的变量 c</span><br><br><span class="hljs-built_in">console</span>.log(a); <span class="hljs-comment">// Uncaught ReferenceError: a is not defined at &lt;anonymous&gt;:3:13</span><br><span class="hljs-built_in">console</span>.log(b); <span class="hljs-comment">// undefined</span><br><span class="hljs-built_in">console</span>.log(c); <span class="hljs-comment">// undefined</span><br><span class="hljs-keyword">typeof</span> a; <span class="hljs-comment">// &#x27;undefined&#x27;</span><br><span class="hljs-keyword">typeof</span> b; <span class="hljs-comment">// &#x27;undefined&#x27;</span><br><span class="hljs-keyword">typeof</span> c; <span class="hljs-comment">// &#x27;undefined&#x27;</span><br>b === c; <span class="hljs-comment">// true</span><br></code></pre></td></tr></table></figure>
 
 <h1 id="Null-类型"><a href="#Null-类型" class="headerlink" title="Null 类型"></a>Null 类型</h1><p>Null 类型只有一个值：特殊值 <code>null</code>。</p>
-<p>逻辑上讲，<code>null</code> 值表示一个空对象指针，这也是给 <code>typeof</code> 传 <code>null</code> 值返回”object”的原因。  </p>
-<p><code>undefined</code> 值是由 <code>null</code> 值派生而来的，因此 ECMA-262 将它们定义为表面上相等。用等于操作符（==）比较两者返回 true，用全等操作符（===）比较两者返回 false。  </p>
+<p>逻辑上讲，<code>null</code> 值表示一个空对象指针，这也是给 <code>typeof</code> 传 <code>null</code> 值返回 <code>object</code> 的原因。  </p>
+<p><code>undefined</code> 值是由 <code>null</code> 值派生而来的，因此 ECMA-262 将它们定义为表面上相等。用等于操作符（<code>==</code>）比较两者返回 true，用全等操作符（<code>===</code>）比较两者返回 false。  </p>
 <p>即使 <code>null</code> 和 <code>undefined</code> 有关系，它们的用途也是完全不一样的。如前所述，永远不必显式地将变量值设置为 <code>undefined</code>。但 <code>null</code> 不是这样的。任何时候，只要变量要保存对象，而当时又没有那个对象可保存，就要用 <code>null</code> 来填充该变量。这样就可以保持 <code>null</code> 是空对象指针的语义，并进一步将其与 <code>undefined</code> 区分开来。</p>
-<h1 id="Boolean-类型"><a href="#Boolean-类型" class="headerlink" title="Boolean 类型"></a>Boolean 类型</h1><p>Boolean 类型有两个字面值：<code>true</code> 和 <code>false</code>。  </p>
+<p><code>null</code> 是一个假值。</p>
+<h1 id="Boolean-类型"><a href="#Boolean-类型" class="headerlink" title="Boolean 类型"></a>Boolean 类型</h1><p>Boolean 类型有两个字面值：<code>true</code> 和 <code>false</code>。 </p>
 <p>这两个布尔值不同于数值，<code>true</code> 不等于 1，<code>false</code> 不等于 0。</p>
 <p>虽然布尔值只有两个，但所有其他 ECMAScript 类型的值都有相应布尔值的等价形式。要将一个其他类型值转换为布尔值，可以调用特定的 <code>Boolean()</code> 转型函数（将要转型的值作为参数传入）。<code>Boolean()</code> 转型函数可以在任意类型的数据上调用，而且始终返回一个布尔值。</p>
 <p>下表总结了不同类型与布尔值之间的转换规则：</p>
@@ -317,7 +319,8 @@
 <td align="center">无</td>
 </tr>
 </tbody></table>
-<h1 id="Number-类型"><a href="#Number-类型" class="headerlink" title="Number 类型"></a>Number 类型</h1><p>Number 类型使用 IEEE 754 格式表示整数和浮点值（在某些语言中也叫双精度值）。不同的数值类型相应地也有不同的数值字面量格式。</p>
+<h1 id="Number-类型"><a href="#Number-类型" class="headerlink" title="Number 类型"></a>Number 类型</h1><p>详见红宝书。</p>
+<p>Number 类型使用 IEEE 754 格式表示整数和浮点值（在某些语言中也叫双精度值）。不同的数值类型相应地也有不同的数值字面量格式。</p>
 <p>最基本的数值字面量格式是十进制整数，直接写出来即可。整数也可以用八进制或者十六进制字面量表示。但是，使用八进制和十六进制格式创建的数值在所有数学操作中都被视为十进制数值。  </p>
 <ul>
 <li>八进制字面量，第一个数字必须是 <code>0</code>（零），然后是相应的八进制数字（数值 0~7）。如果字面量中包含的数字超出了应有的范围，就会忽略前缀的零，后面的数字序列会被当成十进制数。</li>
@@ -363,7 +366,8 @@
 <p>不同的数值格式很容易混淆，因此 <code>parseInt()</code> 也接收第二个参数，用于指定底数（进制数）。通过第二个参数，可以极大扩展转换后获得的结果类型。不传底数参数相当于让 parseInt()自己决定如何解析，所以为避免解析出错，建议始终传给它第二个参数。</p>
 <h3 id="parseFloat"><a href="#parseFloat" class="headerlink" title="parseFloat()"></a><code>parseFloat()</code></h3><p><code>parseFloat()</code> 函数的工作方式跟 <code>parseInt()</code> 函数类似，都是从位置 0 开始检测每个字符。同样，它也是解析到字符串末尾或者解析到一个无效的浮点数值字符为止。这意味着第一次出现的小数点是有效的，但第二次出现的小数点就无效了，此时字符串的剩余字符都会被忽略。因此，”22.34.5”将转换成 22.34。</p>
 <p><code>parseFloat()</code> 函数的另一个不同之处在于，它始终忽略字符串开头的零。这个函数能识别前面讨论的所有浮点格式，以及十进制格式（开头的零始终被忽略）。十六进制数值始终会返回 0。因为 <code>parseFloat()</code> 函数只解析十进制值，因此不能指定底数。最后，如果字符串表示整数（没有小数点或者小数点后面只有一个零），则 <code>parseFloat()</code> 返回整数。</p>
-<h1 id="String-类型"><a href="#String-类型" class="headerlink" title="String 类型"></a>String 类型</h1><p>String 类型表示零或多个 16 位 Unicode 字符序列。字符串可以使用双引号（”）、单引号（’）或反引号（`）来标示。跟某些语言中使用不同的引号会改变对字符串的解释方式不同，ECMAScript 语法中表示字符串的引号没有区别。不过要注意的是，以某种引号作为字符串开头，必须仍然以该种引号作为字符串结尾。</p>
+<h1 id="String-类型"><a href="#String-类型" class="headerlink" title="String 类型"></a>String 类型</h1><p>详见红宝书。</p>
+<p>String 类型表示零或多个 16 位 Unicode 字符序列。字符串可以使用双引号（”）、单引号（’）或反引号（`）来标示。跟某些语言中使用不同的引号会改变对字符串的解释方式不同，ECMAScript 语法中表示字符串的引号没有区别。不过要注意的是，以某种引号作为字符串开头，必须仍然以该种引号作为字符串结尾。</p>
 <h2 id="字符字面量"><a href="#字符字面量" class="headerlink" title="字符字面量"></a>字符字面量</h2><p>字符串数据类型包含一些字符字面量，用于表示非打印字符或有其他用途的字符。如：</p>
 <table>
 <thead>
@@ -444,9 +448,11 @@
 <p>另外，也可以通过标签函数的第一个参数，即字符串数组的 <code>.raw</code> 属性取得每个字符串的原始内容。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">printRaw</span>(<span class="hljs-params">strings</span>) </span>&#123; <br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;Actual characters:&#x27;</span>); <br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> string <span class="hljs-keyword">of</span> strings) &#123; <br>    <span class="hljs-built_in">console</span>.log(string); <br>  &#125; <br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;Escaped characters:&#x27;</span>); <br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> rawString <span class="hljs-keyword">of</span> strings.raw) &#123; <br>    <span class="hljs-built_in">console</span>.log(rawString); <br>  &#125; <br>&#125; <br>printRaw<span class="hljs-string">`\u00A9<span class="hljs-subst">$&#123; <span class="hljs-string">&#x27;and&#x27;</span> &#125;</span>\n`</span>; <br><span class="hljs-comment">// Actual characters: </span><br><span class="hljs-comment">// © </span><br><span class="hljs-comment">//（换行符）</span><br><span class="hljs-comment">// Escaped characters: </span><br><span class="hljs-comment">// \u00A9 </span><br><span class="hljs-comment">// \n </span><br></code></pre></td></tr></table></figure>
 
-<h1 id="Symbol-类型"><a href="#Symbol-类型" class="headerlink" title="Symbol 类型"></a>Symbol 类型</h1><p>Symbol 类型是 ECMAScript 6 新增的数据类型。符号是原始值，且符号实例是唯一、不可变的。符号的用途是确保对象属性使用唯一标识符，不会发生属性冲突的危险。</p>
+<h1 id="Symbol-类型"><a href="#Symbol-类型" class="headerlink" title="Symbol 类型"></a>Symbol 类型</h1><p>详见红宝书。</p>
+<p>Symbol 类型是 ECMAScript 6 新增的数据类型。符号是原始值，且符号实例是唯一、不可变的。符号的用途是确保对象属性使用唯一标识符，不会发生属性冲突的危险。</p>
 <p>尽管听起来跟私有属性有点类似，但符号并不是为了提供私有属性的行为才增加的（尤其是因为 Object API 提供了方法，可以更方便地发现符号属性）。相反，符号就是用来创建唯一记号，进而用作非字符串形式的对象属性。</p>
-<h1 id="BigInt-类型"><a href="#BigInt-类型" class="headerlink" title="BigInt 类型"></a>BigInt 类型</h1><h1 id="Object-类型"><a href="#Object-类型" class="headerlink" title="Object 类型"></a>Object 类型</h1><p>ECMAScript 中的对象其实就是一组数据和功能的集合。对象通过 <code>new</code> 操作符后跟对象类型的名称来创建。开发者可以通过创建 Object 类型的实例来创建自己的对象，然后再给对象添加属性和方法。</p>
+<h1 id="BigInt-类型"><a href="#BigInt-类型" class="headerlink" title="BigInt 类型"></a>BigInt 类型</h1><p>不常用，详见MDN。</p>
+<h1 id="Object-类型"><a href="#Object-类型" class="headerlink" title="Object 类型"></a>Object 类型</h1><p>ECMAScript 中的对象其实就是一组数据和功能的集合。对象通过 <code>new</code> 操作符后跟对象类型的名称来创建。开发者可以通过创建 Object 类型的实例来创建自己的对象，然后再给对象添加属性和方法。</p>
 <p>ECMAScript 只要求在给构造函数提供参数时使用括号。如果没有参数，那么完全可以省略括号（不推荐这样使用）。</p>
 <p>Object 的实例本身并不是很有用，但理解与它相关的概念非常重要。ECMAScript 中的 Object 也是派生其他对象的基类。Object 类型的所有属性和方法在派生的对象上同样存在。</p>
 <p>每个 Object 实例都有如下属性和方法：</p>
@@ -493,7 +499,7 @@
 </tr>
 <tr>
 <td align="center">“object”</td>
-<td align="center">对象或 null</td>
+<td align="center">对象或null</td>
 </tr>
 <tr>
 <td align="center">“function”</td>
@@ -505,7 +511,7 @@
 <li>对 null 使用 <code>typeof</code> 会返回”object”。这是因为，null 表示一个对空对象的引用。  </li>
 <li>对函数使用 <code>typeof</code> 会返回”function”。这是因为，虽然函数被认为是可执行的 Object 类型变量，不代表一种数据类型，但函数有自己特殊的属性。为此，就有必要通过 <code>typeof</code> 操作符来区分函数和其他对象。</li>
 </ul>
-<h1 id="相关示例"><a href="#相关示例" class="headerlink" title="相关示例"></a>相关示例</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-literal">null</span> === <span class="hljs-literal">null</span> <span class="hljs-comment">// true</span><br><span class="hljs-literal">undefined</span> === <span class="hljs-literal">undefined</span> <span class="hljs-comment">// true</span><br><span class="hljs-number">1</span> + <span class="hljs-literal">null</span> <span class="hljs-comment">// 1</span><br><span class="hljs-number">1</span>+ <span class="hljs-literal">undefined</span> <span class="hljs-comment">// NaN</span><br>[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-literal">undefined</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>] + <span class="hljs-number">10</span> <span class="hljs-comment">// &#x27;1,2,,4,510&#x27;</span><br></code></pre></td></tr></table></figure>
+<h1 id="相关示例"><a href="#相关示例" class="headerlink" title="相关示例"></a>相关示例</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-literal">null</span> === <span class="hljs-literal">null</span> <span class="hljs-comment">// true</span><br><span class="hljs-literal">undefined</span> === <span class="hljs-literal">undefined</span> <span class="hljs-comment">// true</span><br><span class="hljs-number">1</span> + <span class="hljs-literal">null</span> <span class="hljs-comment">// 1</span><br><span class="hljs-number">1</span> + <span class="hljs-literal">undefined</span> <span class="hljs-comment">// NaN</span><br>[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-literal">undefined</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>] + <span class="hljs-number">10</span> <span class="hljs-comment">// &#x27;1,2,,4,510&#x27;</span><br></code></pre></td></tr></table></figure>
             </div>
             <hr>
             <div>
@@ -551,8 +557,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2021/07/17/JavaScript%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">
-                        <span class="hidden-mobile">JavaScript数据类型</span>
+                      <a href="/2021/07/16/JavaScript%E9%9D%A2%E8%AF%95%E9%A2%98/">
+                        <span class="hidden-mobile">JavaScript面试题</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
