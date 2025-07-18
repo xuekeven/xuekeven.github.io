@@ -1,74 +1,108 @@
 
 
 <!DOCTYPE html>
-<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+<html lang="zh-CN" data-default-color-scheme=auto>
 
 
 
 <head>
   <meta charset="UTF-8">
+
   <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
   <link rel="icon" href="/img/favicon.png">
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
   <meta name="theme-color" content="#2f4154">
-  <meta name="description" content="">
   <meta name="author" content="Keven">
   <meta name="keywords" content="">
   
+    <meta name="description" content="参考：https:&#x2F;&#x2F;juejin.cn&#x2F;post&#x2F;6844904025993773063 。 数组扁平化的实现数组拍平方法 Array.prototype.flat() 也叫数组扁平化、数组拉平、数组降维。 1234567891011121314151617const animals &#x3D; [&quot;🐷&quot;, [&quot;🐶&quot;, &quot;🐂&quot;], [&amp;q">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript数组扁平化">
+<meta property="og:url" content="http://example.com/2021/08/21/JavaScript%E6%95%B0%E7%BB%84%E6%89%81%E5%B9%B3%E5%8C%96/index.html">
+<meta property="og:site_name" content="Keven&#39;s Blog">
+<meta property="og:description" content="参考：https:&#x2F;&#x2F;juejin.cn&#x2F;post&#x2F;6844904025993773063 。 数组扁平化的实现数组拍平方法 Array.prototype.flat() 也叫数组扁平化、数组拉平、数组降维。 1234567891011121314151617const animals &#x3D; [&quot;🐷&quot;, [&quot;🐶&quot;, &quot;🐂&quot;], [&amp;q">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-08-21T02:00:00.000Z">
+<meta property="article:modified_time" content="2022-05-08T13:02:56.000Z">
+<meta property="article:author" content="Keven">
+<meta property="article:tag" content="JavaScript">
+<meta property="article:tag" content="Array">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
   <title>JavaScript数组扁平化 - Keven&#39;s Blog</title>
 
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
 
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
-  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
-  
-    
-    
-      
-      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
-    
-  
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
 
-  
-    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
-  
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
 
 
 
 <!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
 
 
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
 
 
 <link  rel="stylesheet" href="/css/main.css" />
 
-<!-- 自定义样式保持在最底部 -->
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
 
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":60,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"siteId=16939915","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
 <meta name="generator" content="Hexo 5.4.0"></head>
 
 
 <body>
-  <header style="height: 50vh;">
-    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 50vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
-    <a class="navbar-brand"
-       href="/">&nbsp;<strong>Keven's Blog</strong>&nbsp;</a>
+    <a class="navbar-brand" href="/">
+      <strong>Keven&#39;s Blog</strong>
+    </a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
             data-target="#navbarSupportedContent"
@@ -85,9 +119,9 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/">
+              <a class="nav-link" href="/" target="_self">
                 <i class="iconfont icon-home-fill"></i>
-                首页
+                <span>首页</span>
               </a>
             </li>
           
@@ -97,9 +131,9 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/categories/">
+              <a class="nav-link" href="/categories/" target="_self">
                 <i class="iconfont icon-category-fill"></i>
-                分类
+                <span>分类</span>
               </a>
             </li>
           
@@ -109,9 +143,9 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/tags/">
+              <a class="nav-link" href="/tags/" target="_self">
                 <i class="iconfont icon-tags-fill"></i>
-                标签
+                <span>标签</span>
               </a>
             </li>
           
@@ -121,9 +155,9 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/archives/">
+              <a class="nav-link" href="/archives/" target="_self">
                 <i class="iconfont icon-archive-fill"></i>
-                归档
+                <span>归档</span>
               </a>
             </li>
           
@@ -133,21 +167,9 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/dome/">
-                <i class="iconfont icon-th-large"></i>
-                Dome
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/tools/">
+              <a class="nav-link" href="/tools/" target="_self">
                 <i class="iconfont icon-briefcase"></i>
-                工具
+                <span>工具</span>
               </a>
             </li>
           
@@ -157,23 +179,50 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/about/">
+              <a class="nav-link" href="/dome/" target="_self">
+                <i class="iconfont icon-th-large"></i>
+                <span>Dome</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
                 <i class="iconfont icon-user-fill"></i>
-                关于
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
               </a>
             </li>
           
         
         
           <li class="nav-item" id="search-btn">
-            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
-                class="iconfont icon-search"></i>&nbsp;</a>
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
           </li>
+          
         
         
           <li class="nav-item" id="color-toggle-btn">
-            <a class="nav-link" target="_self">&nbsp;<i
-                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
           </li>
         
       </ul>
@@ -181,65 +230,74 @@
   </div>
 </nav>
 
-    <div class="banner" id="banner" parallax=true
-         style="background: url('/img/example.jpg') no-repeat center center;
-           background-size: cover;">
-      <div class="full-bg-img">
-        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.2)">
-          <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="JavaScript数组扁平化">
-              
-            </span>
-
-            
-              <div class="mt-3">
-  
-    <span class="post-meta mr-2">
-      <i class="iconfont icon-author" aria-hidden="true"></i>
-      Keven
-    </span>
-  
-  
-    <span class="post-meta">
-      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-08-21 10:00" pubdate>
-        2021年8月21日
-      </time>
-    </span>
-  
-</div>
-
-<div class="mt-1">
-  
-    
-    <span class="post-meta mr-2">
-      <i class="iconfont icon-chart"></i>
-      1.1k 字
-    </span>
   
 
-  
-    
-    <span class="post-meta mr-2">
-      <i class="iconfont icon-clock-fill"></i>
-      
-      
-      14
-       分钟
-    </span>
-  
-
-  
-  
-</div>
-
-            
-          </div>
-
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/example.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.2)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="JavaScript数组扁平化"></span>
           
         </div>
+
+        
+          
+  <div class="mt-3">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        Keven
+      </span>
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2021-08-21 10:00" pubdate>
+          2021年8月21日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.1k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          7 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
       </div>
+
+      
     </div>
+  </div>
+</div>
+
+</div>
+
   </header>
 
   <main>
@@ -248,16 +306,333 @@
 
 <div class="container-fluid nopadding-x">
   <div class="row nomargin-x">
-    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar category-bar" style="margin-right: -1rem">
+    
+
+
+
+
+
+<div class="category-list">
+  
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="JavaScript"
+        id="heading-686155af75a60a0f6e9d80c1f7edd3e9" role="tab" data-toggle="collapse" href="#collapse-686155af75a60a0f6e9d80c1f7edd3e9"
+        aria-expanded="true"
+      >
+        JavaScript
+        <span class="list-group-count">(29)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-686155af75a60a0f6e9d80c1f7edd3e9"
+           role="tabpanel" aria-labelledby="heading-686155af75a60a0f6e9d80c1f7edd3e9">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2021/09/01/JavaScript%E4%B9%8BArray%E6%96%B9%E6%B3%95%E5%B1%9E%E6%80%A7/" title="JavaScript之Array方法属性"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">JavaScript之Array方法属性</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/11/06/JavaScript%E4%B9%8BFunction%E6%96%B9%E6%B3%95%E5%B1%9E%E6%80%A7/" title="JavaScript之Function方法属性"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">JavaScript之Function方法属性</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/09/09/JavaScript%E4%B9%8BMap%E6%96%B9%E6%B3%95%E5%B1%9E%E6%80%A7/" title="JavaScript之Map方法属性"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">JavaScript之Map方法属性</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/09/06/JavaScript%E4%B9%8BObject%E6%96%B9%E6%B3%95%E5%B1%9E%E6%80%A7/" title="JavaScript之Object方法属性"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">JavaScript之Object方法属性</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/12/10/JavaScript%E4%B9%8BRegExp%E4%B8%8E%E6%AD%A3%E5%88%99/" title="JavaScript之RegExp与正则"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">JavaScript之RegExp与正则</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/09/09/JavaScript%E4%B9%8BSet%E6%96%B9%E6%B3%95%E5%B1%9E%E6%80%A7/" title="JavaScript之Set方法属性"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">JavaScript之Set方法属性</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/09/08/JavaScript%E4%B9%8BString%E6%96%B9%E6%B3%95%E5%B1%9E%E6%80%A7/" title="JavaScript之String方法属性"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">JavaScript之String方法属性</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/12/25/JavaScript%D6%AETypeScript/" title="JavaScript之TypeScript"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">JavaScript之TypeScript</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/09/13/JavaScript%E4%BA%8B%E4%BB%B6%E6%9C%BA%E5%88%B6/" title="JavaScript事件机制"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">JavaScript事件机制</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/08/19/JavaScript%E4%BD%9C%E7%94%A8%E5%9F%9F%E4%B8%8E%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87/" title="JavaScript作用域与执行上下文"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">JavaScript作用域与执行上下文</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/08/23/JavaScript%E5%86%85%E5%AD%98%E5%92%8C%E6%8B%B7%E8%B4%9D/" title="JavaScript内存和拷贝"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">JavaScript内存和拷贝</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/11/09/JavaScript%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F/" title="JavaScript内存泄漏"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">JavaScript内存泄漏</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/10/12/%E5%87%BD%E6%95%B0%E6%9F%AF%E9%87%8C%E5%8C%96/" title="JavaScript函数柯里化"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">JavaScript函数柯里化</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/07/17/JavaScript%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" title="JavaScript数据类型"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">JavaScript数据类型</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/09/23/JavaScript%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D/" title="JavaScript数组去重"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">JavaScript数组去重</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/08/21/JavaScript%E6%95%B0%E7%BB%84%E6%89%81%E5%B9%B3%E5%8C%96/" title="JavaScript数组扁平化"
+           class="list-group-item list-group-item-action
+           active">
+          <span class="category-post">JavaScript数组扁平化</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/10/24/JavaScript%D6%AA%CA%B6/" title="JavaScript知识"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">JavaScript知识</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/09/06/JavaScript%E7%A8%80%E7%96%8F%E6%95%B0%E7%BB%84%E4%B8%8E%E5%AF%86%E9%9B%86%E6%95%B0%E7%BB%84/" title="JavaScript稀疏数组与密集数组"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">JavaScript稀疏数组与密集数组</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/11/08/JavaScript%E7%B1%BB%E6%95%B0%E7%BB%84%E5%AF%B9%E8%B1%A1/" title="JavaScript类数组对象"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">JavaScript类数组对象</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/10/25/JavaScript%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82/" title="JavaScript网络请求"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">JavaScript网络请求</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/01/25/JavaScript%E8%AF%8D%E6%B3%95%E7%BB%93%E6%9E%84/" title="JavaScript词法结构"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">JavaScript词法结构</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2023/01/20/JavaScript%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%E4%B9%8B%E5%8F%98%E9%87%8F/" title="JavaScript语言基础之变量"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">JavaScript语言基础之变量</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2023/01/24/JavaScript%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%E4%B9%8B%E6%93%8D%E4%BD%9C%E7%AC%A6/" title="JavaScript语言基础之操作符"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">JavaScript语言基础之操作符</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/07/17/JavaScript%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%E4%B9%8B%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" title="JavaScript语言基础之数据类型"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">JavaScript语言基础之数据类型</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2023/02/02/JavaScript%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%E4%B9%8B%E8%AF%AD%E5%8F%A5/" title="JavaScript语言基础之语句"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">JavaScript语言基础之语句</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/08/20/JavaScript%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%88%B6/" title="JavaScript运行机制"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">JavaScript运行机制</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/07/16/JavaScript%E9%9D%A2%E8%AF%95%E9%A2%98/" title="JavaScript面试题"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">JavaScript面试题</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/08/24/%E5%BC%82%E6%AD%A5JavaScript/" title="异步JavaScript"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">异步JavaScript</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/08/20/%E6%89%8B%E5%86%99JavaScript/" title="手写JavaScript"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">手写JavaScript</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+</div>
+
+
+  </aside>
+
+
+    </div>
+
     <div class="col-lg-8 nopadding-x-md">
       <div class="container nopadding-x-md" id="board-ctn">
-        <div class="py-5" id="board">
+        <div id="board">
           <article class="post-content mx-auto">
-            <!-- SEO header -->
-            <h1 style="display: none">JavaScript数组扁平化</h1>
+            <h1 id="seo-header">JavaScript数组扁平化</h1>
             
-            <div class="markdown-body">
-              <p>参考：<a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904025993773063">https://juejin.cn/post/6844904025993773063</a> 。</p>
+              <p id="updated-time" class="note note-info" style="">
+                
+                  
+                    本文最后更新于 2022年5月8日 晚上
+                  
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <p>参考：<a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904025993773063">https://juejin.cn/post/6844904025993773063</a> 。</p>
 <h1 id="数组扁平化的实现"><a href="#数组扁平化的实现" class="headerlink" title="数组扁平化的实现"></a>数组扁平化的实现</h1><p>数组拍平方法 Array.prototype.flat() 也叫数组扁平化、数组拉平、数组降维。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> animals = [<span class="hljs-string">&quot;🐷&quot;</span>, [<span class="hljs-string">&quot;🐶&quot;</span>, <span class="hljs-string">&quot;🐂&quot;</span>], [<span class="hljs-string">&quot;🐎&quot;</span>, [<span class="hljs-string">&quot;🐑&quot;</span>, [<span class="hljs-string">&quot;🐲&quot;</span>]], <span class="hljs-string">&quot;🐛&quot;</span>]];<br><span class="hljs-comment">// 不传参数时，默认“拉平”一层</span><br>animals.flat();<br><span class="hljs-comment">// [&quot;🐷&quot;, &quot;🐶&quot;, &quot;🐂&quot;, &quot;🐎&quot;, [&quot;🐑&quot;, [&quot;🐲&quot;]], &quot;🐛&quot;]</span><br><span class="hljs-comment">// 传入一个整数参数，整数即“拉平”的层数</span><br>animals.flat(<span class="hljs-number">2</span>);<br><span class="hljs-comment">// [&quot;🐷&quot;, &quot;🐶&quot;, &quot;🐂&quot;, &quot;🐎&quot;, &quot;🐑&quot;, [&quot;🐲&quot;], &quot;🐛&quot;]</span><br><span class="hljs-comment">// Infinity 关键字作为参数时，无论多少层嵌套，都会转为一维数组</span><br>animals.flat(<span class="hljs-literal">Infinity</span>);<br><span class="hljs-comment">// [&quot;🐷&quot;, &quot;🐶&quot;, &quot;🐂&quot;, &quot;🐎&quot;, &quot;🐑&quot;, &quot;🐲&quot;, &quot;🐛&quot;]</span><br><span class="hljs-comment">// 传入 &lt;=0 的整数将返回原数组，不“拉平”</span><br>animals.flat(<span class="hljs-number">0</span>);<br>animals.flat(-<span class="hljs-number">10</span>);<br><span class="hljs-comment">// [&quot;🐷&quot;, [&quot;🐶&quot;, &quot;🐂&quot;], [&quot;🐎&quot;, [&quot;🐑&quot;, [&quot;🐲&quot;]], &quot;🐛&quot;]];</span><br><span class="hljs-comment">// 如果原数组有空位，flat()方法会跳过空位。</span><br>[<span class="hljs-string">&quot;🐷&quot;</span>, <span class="hljs-string">&quot;🐶&quot;</span>, <span class="hljs-string">&quot;🐂&quot;</span>, <span class="hljs-string">&quot;🐎&quot;</span>,,].flat();<br><span class="hljs-comment">// [&quot;🐷&quot;, &quot;🐶&quot;, &quot;🐂&quot;, &quot;🐎&quot;]</span><br></code></pre></td></tr></table></figure>
 <p>Array.prototype.flat() 特性总结：</p>
@@ -312,42 +687,103 @@
 </ul>
 <p>不推荐使用 toString + split 方法，因为操作字符串是和危险的事情，在上一文章中我做了一个操作字符串的案例还被许多小伙伴们批评了。如果数组中的元素所有都是数字的话，toString +split 是可行的，并且是一步搞定。</p>
 
-            </div>
-            <hr>
-            <div>
-              <div class="post-metas mb-3">
-                
-                  <div class="post-meta mr-3">
-                    <i class="iconfont icon-category"></i>
-                    
-                      <a class="hover-with-bg" href="/categories/JavaScript/">JavaScript</a>
-                    
-                  </div>
-                
-                
-                  <div class="post-meta">
-                    <i class="iconfont icon-tags"></i>
-                    
-                      <a class="hover-with-bg" href="/tags/JavaScript/">JavaScript</a>
-                    
-                      <a class="hover-with-bg" href="/tags/Array/">Array</a>
-                    
-                  </div>
                 
               </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/JavaScript/" class="category-chain-item">JavaScript</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/JavaScript/" class="print-no-link">#JavaScript</a>
+      
+        <a href="/tags/Array/" class="print-no-link">#Array</a>
+      
+    </div>
+  
+</div>
+
+
               
-                <p class="note note-warning">
-                  
-                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
-                  
-                </p>
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>JavaScript数组扁平化</div>
+      <div>http://example.com/2021/08/21/JavaScript数组扁平化/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Keven</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2021年8月21日</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>更新于</div>
+          <div>2022年5月8日</div>
+        </div>
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
               
               
-                <div class="post-prevnext">
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2021/08/23/JavaScript%E5%86%85%E5%AD%98%E5%92%8C%E6%8B%B7%E8%B4%9D/">
+                      <a href="/2021/08/23/JavaScript%E5%86%85%E5%AD%98%E5%92%8C%E6%8B%B7%E8%B4%9D/" title="JavaScript内存和拷贝">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">JavaScript内存和拷贝</span>
                         <span class="visible-mobile">上一篇</span>
@@ -357,7 +793,7 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2021/08/20/JavaScript%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%88%B6/">
+                      <a href="/2021/08/20/JavaScript%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%88%B6/" title="JavaScript运行机制">
                         <span class="hidden-mobile">JavaScript运行机制</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
@@ -373,31 +809,59 @@
         </div>
       </div>
     </div>
-    
-      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
-        <div id="toc">
-  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
   <div class="toc-body" id="toc-body"></div>
 </div>
 
-      </div>
-    
+
+
+  </aside>
+
+
+    </div>
   </div>
 </div>
 
-<!-- Custom -->
 
-  <div class="col-lg-7 mx-auto nopadding-x-md">
-    <div class="container custom post-custom mx-auto">
-      <img src="https://octodex.github.com/images/jetpacktocat.png" srcset="/img/loading.gif" lazyload class="rounded mx-auto d-block mt-5" style="width:150px; height:150px;">
-    </div>
-  </div>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
 
 
     
 
     
-      <a id="scroll-top-button" href="#" role="button">
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
         <i class="iconfont icon-arrowup" aria-hidden="true"></i>
       </a>
     
@@ -416,45 +880,36 @@
       <div class="modal-body mx-3">
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v"
-                 for="local-search-input">关键词</label>
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
     </div>
   </div>
 </div>
+
     
 
     
   </main>
 
-  <footer class="text-center mt-5 py-3">
-  <div class="footer-content">
-     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Powered by Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Theme is Fluid</span></a>
-  </div>
+  <footer>
+    <div class="footer-inner">
   
-
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
   
-
   
-  <script>
-    var _hmt = _hmt || [];
-    (function() {
-      var hm = document.createElement("script");
-      hm.src = "https://hm.baidu.com/hm.js?bbe44c28232a60458d913426edaff12f";
-      var s = document.getElementsByTagName("script")[0]; 
-      s.parentNode.insertBefore(hm, s);
-    })();
-    </script>
-    
-</footer>
-
-
-  <!-- SCRIPTS -->
   
-  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
 
   <script>
     NProgress.configure({"showSpinner":false,"trickleSpeed":100})
@@ -465,12 +920,28 @@
   </script>
 
 
-<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
-<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
 <script  src="/js/events.js" ></script>
 <script  src="/js/plugins.js" ></script>
 
-<!-- Plugins -->
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
 
 
   
@@ -479,25 +950,99 @@
 
 
 
+
   
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
 
 
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
 
-  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
-
-
-
-  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+  <script>Fluid.plugins.codeWidget();</script>
 
 
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
 
-  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
 
 
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
 
-  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
 
-
+  <script>Fluid.plugins.imageCaption();</script>
 
   <script  src="/js/local-search.js" ></script>
 
@@ -505,59 +1050,15 @@
 
 
 
-
-  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
-  <script>
-    (function (window, document) {
-      var typing = Fluid.plugins.typing;
-      var title = document.getElementById('subtitle').title;
-      
-      typing(title)
-      
-    })(window, document);
-  </script>
-
-
-
-
-
-
-
-
-
-
-
-
-  
-    <!-- Baidu Analytics -->
-    <script defer>
-      var _hmt = _hmt || [];
-      (function () {
-        var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?siteId=16939915";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-      })();
-    </script>
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-
-
-
-
-<!-- 主题的启动项 保持在最底部 -->
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
 <script  src="/js/boot.js" ></script>
 
 
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
 </body>
 </html>
