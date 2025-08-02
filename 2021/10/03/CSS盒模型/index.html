@@ -21,22 +21,22 @@
   <meta name="author" content="Keven">
   <meta name="keywords" content="">
   
-    <meta name="description" content="文档当浏览器解析 HTML 文档时，会在内存里将页面的所有元素表示为 DOM（文档对象模型）。它是一个树结构，其中每个元素都由一个节点表示。&lt;html&gt;元素是顶级根节点。它的下面是子节点：&lt;head&gt;和&lt;body&gt;。再下面是逐级嵌套的后代节点。 在文档中，根节点是所有其他元素的祖先节点。根节点有一个伪类选择器（:root）可以用来选中它自己。这等价于类型选择器">
+    <meta name="description" content="盒模型盒模型指的是网页元素的结构，每个元素都是由一个盒子构成。 一个盒子（一个元素）由四部分构成：  内容区域（Content） 内边距（Padding） 边框（Border） 外边距（Margin）  所以，元素实际所占宽度等于元素的内容区域、内边距、边框、外边距宽度之和。（高度同理） 盒子类型 box-sizing: content-box（标准盒模型）元素的宽度（width）等于元素的内容区">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CSS之文档流">
-<meta property="og:url" content="http://example.com/2021/10/03/CSS%E4%B9%8B%E6%96%87%E6%A1%A3%E6%B5%81/index.html">
+<meta property="og:title" content="CSS盒模型">
+<meta property="og:url" content="http://example.com/2021/10/03/CSS%E7%9B%92%E6%A8%A1%E5%9E%8B/index.html">
 <meta property="og:site_name" content="Keven&#39;s Blog">
-<meta property="og:description" content="文档当浏览器解析 HTML 文档时，会在内存里将页面的所有元素表示为 DOM（文档对象模型）。它是一个树结构，其中每个元素都由一个节点表示。&lt;html&gt;元素是顶级根节点。它的下面是子节点：&lt;head&gt;和&lt;body&gt;。再下面是逐级嵌套的后代节点。 在文档中，根节点是所有其他元素的祖先节点。根节点有一个伪类选择器（:root）可以用来选中它自己。这等价于类型选择器">
+<meta property="og:description" content="盒模型盒模型指的是网页元素的结构，每个元素都是由一个盒子构成。 一个盒子（一个元素）由四部分构成：  内容区域（Content） 内边距（Padding） 边框（Border） 外边距（Margin）  所以，元素实际所占宽度等于元素的内容区域、内边距、边框、外边距宽度之和。（高度同理） 盒子类型 box-sizing: content-box（标准盒模型）元素的宽度（width）等于元素的内容区">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-10-03T07:00:00.000Z">
-<meta property="article:modified_time" content="2025-07-30T08:51:59.638Z">
+<meta property="article:published_time" content="2021-10-03T15:00:00.000Z">
+<meta property="article:modified_time" content="2025-08-02T07:54:37.600Z">
 <meta property="article:author" content="Keven">
 <meta property="article:tag" content="CSS">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>CSS之文档流 - Keven&#39;s Blog</title>
+  <title>CSS盒模型 - Keven&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -238,7 +238,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="CSS之文档流"></span>
+            <span id="subtitle" data-typed-text="CSS盒模型"></span>
           
         </div>
 
@@ -254,8 +254,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2021-10-03 15:00" pubdate>
-          2021年10月3日 下午
+        <time datetime="2021-10-03 23:00" pubdate>
+          2021年10月3日 晚上
         </time>
       </span>
     
@@ -266,7 +266,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.9k 字
+          3.2k 字
         
       </span>
     
@@ -277,7 +277,7 @@
         
         
         
-          12 分钟
+          21 分钟
         
       </span>
     
@@ -327,7 +327,7 @@
         aria-expanded="true"
       >
         编程语言
-        <span class="list-group-count">(42)</span>
+        <span class="list-group-count">(44)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
@@ -354,7 +354,7 @@
         aria-expanded="true"
       >
         CSS
-        <span class="list-group-count">(11)</span>
+        <span class="list-group-count">(13)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
@@ -368,82 +368,100 @@
     
       
       
-        <a href="/2021/09/26/CSS%E4%B9%8B%E5%8D%95%E4%BD%8D/" title="CSS之单位"
+        <a href="/2021/09/26/CSS%E5%8D%95%E4%BD%8D/" title="CSS单位"
            class="list-group-item list-group-item-action
            ">
-          <span class="category-post">CSS之单位</span>
+          <span class="category-post">CSS单位</span>
         </a>
       
     
       
       
-        <a href="/2021/10/03/CSS%E4%B9%8B%E5%AE%9A%E4%BD%8D/" title="CSS之定位"
+        <a href="/2021/10/03/CSS%E5%AE%9A%E4%BD%8D/" title="CSS定位"
            class="list-group-item list-group-item-action
            ">
-          <span class="category-post">CSS之定位</span>
+          <span class="category-post">CSS定位</span>
         </a>
       
     
       
       
-        <a href="/2021/10/03/CSS%E4%B9%8B%E5%B1%82%E5%8F%A0%E5%92%8C%E7%BB%A7%E6%89%BF/" title="CSS之层叠和继承"
+        <a href="/2021/10/03/CSS%E5%B1%82%E5%8F%A0%E5%92%8C%E7%BB%A7%E6%89%BF/" title="CSS层叠和继承"
            class="list-group-item list-group-item-action
            ">
-          <span class="category-post">CSS之层叠和继承</span>
+          <span class="category-post">CSS层叠和继承</span>
         </a>
       
     
       
       
-        <a href="/2021/10/03/CSS%E4%B9%8B%E5%B1%85%E4%B8%AD/" title="CSS之居中"
+        <a href="/2021/10/03/CSS%E5%B1%85%E4%B8%AD%20copy/" title="CSS居中"
            class="list-group-item list-group-item-action
            ">
-          <span class="category-post">CSS之居中</span>
+          <span class="category-post">CSS居中</span>
         </a>
       
     
       
       
-        <a href="/2021/10/03/CSS%E4%B9%8B%E5%BC%B9%E6%80%A7%E5%B8%83%E5%B1%80/" title="CSS之弹性布局"
+        <a href="/2021/10/03/CSS%E5%B1%85%E4%B8%AD/" title="CSS居中"
            class="list-group-item list-group-item-action
            ">
-          <span class="category-post">CSS之弹性布局</span>
+          <span class="category-post">CSS居中</span>
         </a>
       
     
       
       
-        <a href="/2021/10/03/CSS%E4%B9%8B%E6%96%87%E6%A1%A3%E6%B5%81/" title="CSS之文档流"
+        <a href="/2021/10/03/CSS%E5%BC%B9%E6%80%A7%E5%B8%83%E5%B1%80/" title="CSS弹性布局"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">CSS弹性布局</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/10/03/CSS%E6%96%87%E6%A1%A3%E6%B5%81/" title="CSS文档流"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">CSS文档流</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2025/08/02/CSS%E5%93%8D%E5%BA%94%E5%BC%8F%E8%AE%BE%E8%AE%A1/" title="CSS模块化"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">CSS模块化</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/10/03/CSS%E6%B5%AE%E5%8A%A8/" title="CSS浮动"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">CSS浮动</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/10/03/CSS%E7%9B%92%E6%A8%A1%E5%9E%8B/" title="CSS盒模型"
            class="list-group-item list-group-item-action
            active">
-          <span class="category-post">CSS之文档流</span>
+          <span class="category-post">CSS盒模型</span>
         </a>
       
     
       
       
-        <a href="/2021/10/03/CSS%E4%B9%8B%E6%B5%AE%E5%8A%A8/" title="CSS之浮动"
+        <a href="/2021/10/03/CSS%E7%BD%91%E6%A0%BC%E5%B8%83%E5%B1%80/" title="CSS网格布局"
            class="list-group-item list-group-item-action
            ">
-          <span class="category-post">CSS之浮动</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2021/10/03/CSS%E4%B9%8B%E7%9B%92%E6%A8%A1%E5%9E%8B/" title="CSS之盒模型"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">CSS之盒模型</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2021/10/03/CSS%E4%B9%8B%E7%BD%91%E6%A0%BC%E5%B8%83%E5%B1%80/" title="CSS之网格布局"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">CSS之网格布局</span>
+          <span class="category-post">CSS网格布局</span>
         </a>
       
     
@@ -822,12 +840,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">CSS之文档流</h1>
+            <h1 id="seo-header">CSS盒模型</h1>
             
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2025年7月30日 下午
+                    本文最后更新于 2025年8月2日 下午
                   
                 
               </p>
@@ -835,58 +853,72 @@
             
               <div class="markdown-body">
                 
-                <h1 id="文档"><a href="#文档" class="headerlink" title="文档"></a>文档</h1><p>当浏览器解析 HTML 文档时，会在内存里将页面的所有元素表示为 DOM（文档对象模型）。它是一个树结构，其中每个元素都由一个节点表示。<code>&lt;html&gt;</code>元素是顶级根节点。它的下面是子节点：<code>&lt;head&gt;</code>和<code>&lt;body&gt;</code>。再下面是逐级嵌套的后代节点。</p>
-<p>在文档中，根节点是所有其他元素的祖先节点。根节点有一个伪类选择器（:root）可以用来选中它自己。这等价于类型选择器 html，但是 html 的优先级相当于一个类名，而不是一个标签。</p>
-<p>定位方案是控制元素的布局，有三种常见方案：普通流、浮动、定位。</p>
-<h1 id="普通流"><a href="#普通流" class="headerlink" title="普通流"></a>普通流</h1><p>普通文档流指的是网页元素的默认布局行为。</p>
-<p>普通文档流中，元素按照其在 HTML 文档中的先后位置至上而下布局。此过程中，行内元素水平排列，跟随文字的方向从左到右排列，直到当行被占满然后换行。块级元素则会被渲染成为一个完整的新行，它会占据完整的一行，前后都有换行。除非另外指定，否则所有元素默认都是普通流定位，即普通流中元素的位置由该元素在 HTML 文档中的位置决定。</p>
-<p>普通文档流是为限定的宽度和无限的高度设计的。内容会填满视口的宽度，然后在必要的时候折行。因此，容器的高度由内容天然地决定，而不是容器自己决定。</p>
-<p>脱离普通文档流有三种方式：浮动、定位（绝对定位和固定定位）。</p>
-<h2 id="BFC"><a href="#BFC" class="headerlink" title="BFC"></a>BFC</h2><p>块格式化上下文（Block Formatting Contexts）是 Web 页面可视 CSS 渲染的一部分，是块盒子的布局过程发生的区域。BFC 是网页的一块区域，元素基于此区域布局，BFC 里内容不会跟外部的元素重叠或相互影响。</p>
-<p>具有 BFC 特性的元素可以看作是隔离了的独立容器，容器里面元素不会在布局上影响到外面元素，并且 BFC 具有普通容器所没有的一些特性。可以把 BFC 理解为一个封闭大箱子，箱子内部的元素无论如何翻江倒海，都不会影响到外部。某些情况下，BFC 中的内容可能还会与别的 BFC 的内容重叠。</p>
-<p>BFC 包含创建它的元素内部的所有内容，属于定位方案的普通流。</p>
-<h3 id="创建-BFC"><a href="#创建-BFC" class="headerlink" title="创建 BFC"></a>创建 BFC</h3><ul>
-<li>根元素（html）</li>
-<li>元素 overflow 值不为 visible</li>
-<li>元素 float 值不为 none</li>
-<li>元素 position 值为 absolute、fixed</li>
-<li>元素 contain 值为 layout、content、paint</li>
-<li>元素 display 值为 flow-root</li>
-<li>元素 display 值为 inline-block</li>
-<li>元素 display 值为 flex、 inline-flex 及其直接子元素（弹性元素及其直接子元素）</li>
-<li>元素 display 值为 grid、inline-grid 及其直接子元素（网格元素及其直接子元素）</li>
-<li>元素 display 值为 table-cell（表格单元格）</li>
-<li>元素 display 值为 table-caption（表格标题）</li>
-<li>元素 display 值为 table、inline-table、table-row、<br>table-row-group、table-header-group、table-footer-group（匿名表格单元格元素）</li>
-<li>元素 column-count、column-width 值不为 auto，包括 column-count 值为 1（多列容器）</li>
-<li>元素 column-span 值为 all，即使该元素没有包裹在一个多列容器中</li>
+                <h1 id="盒模型"><a href="#盒模型" class="headerlink" title="盒模型"></a>盒模型</h1><p>盒模型指的是网页元素的结构，每个元素都是由一个盒子构成。</p>
+<p>一个盒子（一个元素）由四部分构成：</p>
+<ul>
+<li>内容区域（Content）</li>
+<li>内边距（Padding）</li>
+<li>边框（Border）</li>
+<li>外边距（Margin）</li>
 </ul>
-<p>使用说明：</p>
-<p>使用<code>display: flow-root</code>可以创建无副作用的 BFC。在父级块当中使用<code>display: flow-root</code>可以创建新的 BFC，父级块的所有内容都会参与 BFC。</p>
-<p>使用<code>overflow: auto</code>会创建一个包含这个元素的 BFC，通常的做法是设置父级块<code>overflow: auto</code>或者设置其它的非默认的<code>overflow: visible</code>的值。使用 overflow 创建一个新的 BFC，是因为 overflow 属性告诉浏览器你想要怎样处理溢出的内容。当使用这个属性只是为了创建 BFC 的时候，你可能会发现一些不想要的问题，比如滚动条或一些剪切的阴影，需要注意。另外，对于后续的开发，可能不是很清楚当时为什么使用 overflow，所以最好添加一些注释来解释为什么这样做。</p>
-<p>也可以使用其他方式，但是有些问题需要注意，比如，使用浮动或<code>display: inline-block</code>方式创建 BFC 的元素宽度会变成 100%，因此需要限制一下元素的宽度，防止因为过宽而换行，导致内容移动到浮动图片的下面。相反，使用<code>display: table-cell</code>方式显示的元素，它的宽度只会刚好容纳其中的内容，因此需要设置一个较大的宽度，强制使其填满剩余空间。</p>
-<h3 id="BFC-用途"><a href="#BFC-用途" class="headerlink" title="BFC 用途"></a>BFC 用途</h3><ul>
-<li>使用 BFC 浮动定位</li>
-<li>使用 BFC 清除浮动</li>
-<li>使用 BFC 防止外边距折叠</li>
-<li>使用 BFC 防止浮动容器高度塌陷</li>
-<li>使用 BFC 防止媒体对象「文字环绕」</li>
+<p>所以，元素实际所占宽度等于元素的<strong>内容区域</strong>、<strong>内边距</strong>、<strong>边框</strong>、<strong>外边距</strong>宽度之和。（高度同理）</p>
+<h2 id="盒子类型"><a href="#盒子类型" class="headerlink" title="盒子类型"></a>盒子类型</h2><ul>
+<li><p><code>box-sizing: content-box</code>（标准盒模型）<br>元素的<strong>宽度（width）</strong>等于元素的<strong>内容区域（Content）</strong>的宽度。默认值。</p>
+</li>
+<li><p><code>box-sizing: border-box</code>（IE 盒模型）<br>元素的<strong>宽度（width）</strong>等于元素的<strong>内容区域（Content）</strong>、<strong>内边距（Padding）</strong>、<strong>边框（Border）</strong>宽度之和。</p>
+</li>
 </ul>
-<h2 id="IFC"><a href="#IFC" class="headerlink" title="IFC"></a>IFC</h2><p>内联格式化上下文（Inline Formatting Contexts）是一个网页的渲染结果的一部分。其中，各行内框（inline boxes）一个接一个地排列，其排列顺序则是根据书写模式的设置来决定的：水平书写，各个框从左边开始水平地排列；垂直书写，各个框从顶部开始水平地排列。</p>
-<h3 id="IFC-布局规则"><a href="#IFC-布局规则" class="headerlink" title="IFC 布局规则"></a>IFC 布局规则</h3><p>子元素水平方向横向排列，并且垂直方向起点为元素顶部。</p>
-<p>子元素只会计算横向样式空间，垂直方向样式空间不会被计算。</p>
-<p>在垂直方向上，子元素会以不同形式来对齐（vertical-align）。</p>
-<p>能把在一行上的框都完全包含进去的一个矩形区域，被称为该行的行框（line box）。行框的宽度是由包含块（containing box）和与其中的浮动来决定。</p>
-<p>IFC 中的“line box”一般左右边贴紧其包含块，但 float 元素会优先排列。</p>
-<p>IFC 中的“line box”高度由 CSS 行高计算规则来确定，同个 IFC 下的多个 line box 高度可能会不同。</p>
-<p>当 inline-level boxes 的总宽度少于包含它们的 line box 时，其水平渲染规则由 text-align 属性值来决定。</p>
-<p>当一个“inline box”超过父元素的宽度时，它会被分割成多个 boxes，这些 oxes 分布在多个“line box”中。如果子元素未设置强制换行的情况下，“inline box”将不可被分割，将会溢出父元素。</p>
-<p>框会从包含块的顶部开始，一个接一个地水平摆放。</p>
-<p>摆放这些框时，它们在水平方向的 内外边距+边框 所占用的空间都会被考虑； 在垂直方向上，这些框可能会以不同形式来对齐： 水平的 margin、padding、border 有效，垂直无效。不能指定宽高。</p>
-<p>行框的宽度是 由包含块和存在的浮动来决定; 行框的高度 由行高来决定。</p>
-<h3 id="创建-IFC"><a href="#创建-IFC" class="headerlink" title="创建 IFC"></a>创建 IFC</h3><p>块级元素中仅包含内联级别元素。形成条件非常简单，需要注意的是当 IFC 中有块级元素插入时，会产生两个匿名块将父元素分割开来，产生两个 IFC。</p>
-<h3 id="IFC-用途"><a href="#IFC-用途" class="headerlink" title="IFC 用途"></a>IFC 用途</h3><p>水平居中：当一个块要在环境中水平居中时，设置其为<code>displau: inline-block</code>则会在外层产生 IFC，通过 text-align 属性则可以使其水平居中。</p>
-<p>垂直居中：创建一个 IFC，用其中一个元素撑开父元素的高度，然后设置其<code>vertical-align: middle</code>，其他的行内元素则可以在此父元素下垂直居中。</p>
+<p>不管是标准盒模型还是 IE 盒模型，元素的<strong>宽度（width）</strong>都不会包括<strong>外边距（Margin）</strong>。</p>
+<h1 id="元素宽度"><a href="#元素宽度" class="headerlink" title="元素宽度"></a>元素宽度</h1><p>将两列内容宽度设置为 70% 和 30%，但它们总共占据宽度超过了可用空间的 100%，这是因为盒模型的默认行为。当给一个元素设置宽或高的时候，指定的是内容的宽或高，元素的所有内边距、边框都是额外追加到宽度上的。</p>
+<p>最笨的方法是减少其中一列（比如侧边栏）的宽度。在编程中不推荐魔术数值，因为往往这难以解释一个魔术数值生效原因。如果不理解这个数值是怎么来的，那就不会知道在不同的情况下会产生什么样的结果。替代魔术数值的一个方法是让浏览器帮忙计算，使用 calc() 函数减去内边距、边框、外边距等值，得到刚好 100% 的总和，但还有更好解决办法：修改盒类型。</p>
+<p>用通用选择器选中页面上所有元素，并用两个伪元素选择器选中网页的所有伪元素。但是如果在网页中使用了带样式的第三方组件，就可能会因此破坏其中一些组件的布局，尤其是当第三方组件在开发 CSS 的过程中没有考虑到使用者会修改盒模型时。因为全局设置 border-box 时，使用的通用选择器会选中第三方组件内的每个元素，修改盒模型可能会有问题，所以最终需要写另外的样式将组件内的元素恢复为 content-box。</p>
+<p>有一种简单点的方式，是利用继承改一下修改盒模型的方式。盒模型通常不会被继承，但使用 inherit 关键字可以强制继承。</p>
+<h1 id="元素高度"><a href="#元素高度" class="headerlink" title="元素高度"></a>元素高度</h1><p>处理元素高度的方式跟处理宽度不一样。之前对 border-box 的修改适用于高度而且很有用，但通常最好避免给元素指定明确的高度。普通文档流是为限定的宽度和无限的高度设计的。内容会填满视口的宽度，然后在必要的时候折行。因此，容器的高度由内容天然地决定，而不是容器自己决定。</p>
+<p>普通文档流：指的是网页元素的默认布局行为。行内元素跟随文字的方向从左到右排列，当到达容器边缘时会换行。块级元素会占据完整的一行，前后都有换行。</p>
+<h2 id="控制溢出"><a href="#控制溢出" class="headerlink" title="控制溢出"></a>控制溢出</h2><p>当明确设置一个元素的高度时，内容可能会溢出盒容器。当内容在限定区域放不下，渲染到父元素外时就会发生这种现象。用 overflow 属性可以控制溢出内容的行为，支持 4 个值：</p>
+<ul>
+<li>visible（默认值）——所有内容可见，即使溢出容器边缘。</li>
+<li>hidden——溢出容器内边距边缘的内容被裁剪，无法看见。</li>
+<li>scroll——容器出现滚动条，用户可以通过滚动查看剩余内容。在一些操作系统上，会<br>出现水平和垂直两种滚动条，即使所有内容都可见（不溢出）。不过，在这种情况下，滚<br>动条不可滚动（置灰）。</li>
+<li>auto——只有内容溢出时容器才会出现滚动条。</li>
+</ul>
+<p>请谨慎地使用滚动条。浏览器给网页最外层加上了滚动条，如果网页内部再嵌套滚动区域，用户会很反感。如果用户使用鼠标滚轮滚动网页，当鼠标到达一个较小的滚动区域，滚轮就会停止滚动网页，转而滚动较小的区域。</p>
+<p>可以用 overflow-x 属性单独控制水平方向的溢出，用 overflow-y 属性单独控制垂直方向的溢出。但同时给 overflow-x 和 overflow-x 指定不同的值，往往会产生难以预料的结果。</p>
+<h2 id="百分比外的方案"><a href="#百分比外的方案" class="headerlink" title="百分比外的方案"></a>百分比外的方案</h2><p>用百分比指定高度存在问题。百分比参考的是父元素容器块的大小，但容器的高度通常是由子元素的高度决定的。这会造成死循环，浏览器处理不了，因此它会忽略这个声明。若想让百分比高度生效，就必须给父元素明确定义一个高度。</p>
+<p>人们使用百分比高度是想让一个容器填满屏幕。不过更好的方式是用视口的相对单位 vh，100vh 等于视口的高度。还有一个更常见的用法是创造等高列，这不用百分比也能实现。</p>
+<p>等高列的问题从 CSS 出现就一直困扰着人们。当时表格是实现等高列的唯一方式。具体来说，是不明确指定高度就能实现等高列的唯一方式，虽然可以简单地将所有列设置高度 500px 或者其他任意值，但是如果要让列自己决定高度，每个元素可能算出来都不一样高，具体的高度取决于内容。</p>
+<p>为了解决这个问题，诞生了很多有创意的解决方案。随着 CSS 的演进，出现了伪元素、负外边距等方案。若你还在用这些复杂的方案，那么是时候改变了。现代浏览器支持了 CSS 表格，可以轻松实现等高列，比如 IE8+支持 display: table，IE10+支持弹性盒子或者 Flexbox，都默认支持等高列。</p>
+<p>最好办法是让它们自己决定高度，然后扩展较矮的列，让它的高度等于较高的列。CSS 表格和 Flexbox 布局等方式都能实现这种效果。</p>
+<p>除非别无选择，否则不要明确设置元素的高度。先寻找一个替代方案。设置高度一定会导致更复杂的情况。</p>
+<h2 id="最大最小"><a href="#最大最小" class="headerlink" title="最大最小"></a>最大最小</h2><p>可以用 min-height 和 max-height 这两个属性指定最小或最大值，而不是明确定义高度，这样元素就可以在这些界限内自动决定高度。</p>
+<p>用 min-height 指定一个最小高度，而不指定它的明确高度。这意味着元素至少等于你指定的高度，如果内容太多，浏览器就会允许元素自己扩展高度，以免内容溢出。同理，max-height 允许元素自然地增高到一个特定界限。如果到达这个界限，元素就不再增高，内容会溢出。</p>
+<p>还有类似的属性是 min-width 和 max-width，用于限制元素的宽度。</p>
+<h1 id="外边距"><a href="#外边距" class="headerlink" title="外边距"></a>外边距</h1><h2 id="负外边距"><a href="#负外边距" class="headerlink" title="负外边距"></a>负外边距</h2><p>不同于内边距和边框，外边距可以设置为<strong>负值</strong>。负外边距有一些特殊用途，如让元素重叠或者拉伸到比容器还宽。</p>
+<p>负外边距的具体行为取决于设置在元素的哪边。若设置左边或者顶部的负外边距，那么元素就会相应地向左或向上移动，导致元素与它前面的元素重叠；若设置右边或者底部的负外边距，那么并不会移动元素，而是会将它后面的元素拉过来。给元素底部加上负外边距并不等同于给它下面的元素顶部加上负外边距。</p>
+<p>如果不给一个块级元素指定宽度，那么它会自然地填充容器宽度。但是如果在右边加上负外边距，则会把它拉出容器，如果又在左边再加上相等的负外边距，元素的两边都会扩展到容器外面。</p>
+<p>如果元素被别的元素遮挡，利用负外边距让元素重叠的做法可能导致元素不可点击。负外边距并不常用，但是在某些场景下很实用尤其是当创建列布局的时候。不过应当避免频繁使用，不然网页的样式就会失控。</p>
+<h2 id="外边距折叠"><a href="#外边距折叠" class="headerlink" title="外边距折叠"></a>外边距折叠</h2><p>在 CSS 中两个或者多个普通流中相邻盒子的外边距在垂直方向上发生重叠，只产生单个外边距的这种现象叫外边距折叠。这里相邻盒子可能是相邻也可能是嵌套，外边距折叠分为父子外边距折叠和兄弟外边距折叠。</p>
+<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>外边距折叠的折叠值等于相邻外边距中的最大值。</p>
+<p>即使两个元素不是相邻的兄弟节点，即使将两个元素都额外用一个额外的 div 标签包裹起来，也还会有外边距折叠。在没有其他 CSS 的影响下，所有相邻元素的顶部和底部外边距都会发送外边距折叠。</p>
+<p>总之，所有相邻的顶部外边距和底部外边距会折叠到一起。如果只是在页面中添加了一个空的、无样式的 div（没有高度、边框和内边距），它自己的顶部和底部外边距也会折叠。</p>
+<p>可以给任何元素加上外边距，而不必担心它们前后的元素是什么。</p>
+<h3 id="触发"><a href="#触发" class="headerlink" title="触发"></a>触发</h3><p>以下条件都满足会触发：</p>
+<ul>
+<li>都是普通流中的元素且属于同一个 BFC</li>
+<li>没有被<strong>内边距</strong>、<strong>边框</strong>、<strong>非空内容</strong>隔开</li>
+<li>两个或两个以上垂直方向的“相邻元素”，“相邻元素”可能是父子节点也可能是兄弟节点</li>
+</ul>
+<h3 id="防止"><a href="#防止" class="headerlink" title="防止"></a>防止</h3><p>要避免外边距折叠只需破坏掉触发的条件即可，比如创建一个 BFC。两个元素只有在同一 BFC 内才有可能发生垂直外边距的重叠，包括父子节点、兄弟节点。要解决外边距重叠问题，只要让它们不在同一个 BFC 内就行。</p>
+<p>解决：</p>
+<ul>
+<li>对于兄弟节点，只要让其中任一的一个元素触发 BFC，就能使它们相邻的外边距不重叠</li>
+<li>对于父子节点，只要让一个元素的父级元素触发 BFC，就能使父元素和子元素的外边距不重叠</li>
+</ul>
+<h1 id="容器内元素间距"><a href="#容器内元素间距" class="headerlink" title="容器内元素间距"></a>容器内元素间距</h1><p><strong>容器元素的内边距</strong>和<strong>容器子元素的外边距</strong>之间的相互作用处理起来很棘手。</p>
+<p>有好几种方法可以解决该问题。使用相邻的兄弟组合器（+）来选中同一个父元素下紧跟在首个元素后面的元素，这样只在两个元素之间存在外边距。但每一次改变 HTML，都需要考虑这些外边距的问题。你得确保每个元素之间有间距，但是容器的顶部（或底部）没有多余的间距。</p>
+<p>不要给网页当前的内容固定外边距，而是应采取更通用的方式，不管网页结构如何变化都能够生效。这就是猫头鹰选择器：会选中页面上有着相同父级的非第一个子元素。猫头鹰选择器开头是一个通用选择器，它能选中所有元素，后面是一个相邻兄弟组合器，最后是另一个通用选择器。</p>
+<p>也许会担心通用选择器的性能问题。现在不必担心，因为现代浏览器都能很好地处理。此外，猫头鹰选择器可能会减少样式表中的选择器数量，因为它在全局范围内处理了大多数元素的间距问题。实际如果你的样式表要处理的细节很多的话，猫头鹰选择器的性能可能更好。</p>
+<p>这样使用猫头鹰选择器是需要权衡的。它省去了许多的需要设置外边距的地方，但是在某些不想加外边距的地方则需要覆盖。通常只在有并列元素，或者有多列布局时这样使用。有时还需要根据设计，给段落和标题设置特定的外边距。</p>
 
                 
               </div>
@@ -939,8 +971,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>CSS之文档流</div>
-      <div>http://example.com/2021/10/03/CSS之文档流/</div>
+      <div>CSS盒模型</div>
+      <div>http://example.com/2021/10/03/CSS盒模型/</div>
     </div>
     <div class="license-meta">
       
@@ -958,7 +990,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2025年7月30日</div>
+          <div>2025年8月2日</div>
         </div>
       
       
@@ -989,9 +1021,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2021/10/03/CSS%E4%B9%8B%E5%AE%9A%E4%BD%8D/" title="CSS之定位">
+                      <a href="/2021/10/12/%E5%87%BD%E6%95%B0%E6%9F%AF%E9%87%8C%E5%8C%96/" title="JavaScript函数柯里化">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">CSS之定位</span>
+                        <span class="hidden-mobile">JavaScript函数柯里化</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -999,8 +1031,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2021/10/03/CSS%E4%B9%8B%E5%B1%85%E4%B8%AD/" title="CSS之居中">
-                        <span class="hidden-mobile">CSS之居中</span>
+                      <a href="/2021/10/03/CSS%E7%BD%91%E6%A0%BC%E5%B8%83%E5%B1%80/" title="CSS网格布局">
+                        <span class="hidden-mobile">CSS网格布局</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

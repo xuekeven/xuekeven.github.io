@@ -21,22 +21,22 @@
   <meta name="author" content="Keven">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Demo：https:&#x2F;&#x2F;github.com&#x2F;xuekeven&#x2F;learn_web&#x2F;blob&#x2F;main&#x2F;dome&#x2F;CSS&#x2F;两栏_网格布局.html 。https:&#x2F;&#x2F;github.com&#x2F;xuekeven&#x2F;learn_web&#x2F;blob&#x2F;main&#x2F;dome&#x2F;CSS&#x2F;网格布局_照片墙.html 。 搭配：https:&#x2F;&#x2F;www.ruanyifeng.com&#x2F;blog&#x2F;2019&#x2F;03&#x2F;grid-lay">
+    <meta name="description" content="文档当浏览器解析 HTML 文档时，会在内存里将页面的所有元素表示为 DOM（文档对象模型）。它是一个树结构，其中每个元素都由一个节点表示。&lt;html&gt;元素是顶级根节点。它的下面是子节点：&lt;head&gt;和&lt;body&gt;。再下面是逐级嵌套的后代节点。 在文档中，根节点是所有其他元素的祖先节点。根节点有一个伪类选择器（:root）可以用来选中它自己。这等价于类型选择器">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CSS之网格布局">
-<meta property="og:url" content="http://example.com/2021/10/03/CSS%E4%B9%8B%E7%BD%91%E6%A0%BC%E5%B8%83%E5%B1%80/index.html">
+<meta property="og:title" content="CSS文档流">
+<meta property="og:url" content="http://example.com/2021/10/03/CSS%E6%96%87%E6%A1%A3%E6%B5%81/index.html">
 <meta property="og:site_name" content="Keven&#39;s Blog">
-<meta property="og:description" content="Demo：https:&#x2F;&#x2F;github.com&#x2F;xuekeven&#x2F;learn_web&#x2F;blob&#x2F;main&#x2F;dome&#x2F;CSS&#x2F;两栏_网格布局.html 。https:&#x2F;&#x2F;github.com&#x2F;xuekeven&#x2F;learn_web&#x2F;blob&#x2F;main&#x2F;dome&#x2F;CSS&#x2F;网格布局_照片墙.html 。 搭配：https:&#x2F;&#x2F;www.ruanyifeng.com&#x2F;blog&#x2F;2019&#x2F;03&#x2F;grid-lay">
+<meta property="og:description" content="文档当浏览器解析 HTML 文档时，会在内存里将页面的所有元素表示为 DOM（文档对象模型）。它是一个树结构，其中每个元素都由一个节点表示。&lt;html&gt;元素是顶级根节点。它的下面是子节点：&lt;head&gt;和&lt;body&gt;。再下面是逐级嵌套的后代节点。 在文档中，根节点是所有其他元素的祖先节点。根节点有一个伪类选择器（:root）可以用来选中它自己。这等价于类型选择器">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-10-03T14:00:00.000Z">
-<meta property="article:modified_time" content="2025-07-30T08:51:59.638Z">
+<meta property="article:published_time" content="2021-10-03T07:00:00.000Z">
+<meta property="article:modified_time" content="2025-08-02T07:54:37.599Z">
 <meta property="article:author" content="Keven">
 <meta property="article:tag" content="CSS">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>CSS之网格布局 - Keven&#39;s Blog</title>
+  <title>CSS文档流 - Keven&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -238,7 +238,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="CSS之网格布局"></span>
+            <span id="subtitle" data-typed-text="CSS文档流"></span>
           
         </div>
 
@@ -254,8 +254,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2021-10-03 22:00" pubdate>
-          2021年10月3日 晚上
+        <time datetime="2021-10-03 15:00" pubdate>
+          2021年10月3日 下午
         </time>
       </span>
     
@@ -266,7 +266,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          4.9k 字
+          1.9k 字
         
       </span>
     
@@ -277,7 +277,7 @@
         
         
         
-          31 分钟
+          12 分钟
         
       </span>
     
@@ -327,7 +327,7 @@
         aria-expanded="true"
       >
         编程语言
-        <span class="list-group-count">(42)</span>
+        <span class="list-group-count">(44)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
@@ -354,7 +354,7 @@
         aria-expanded="true"
       >
         CSS
-        <span class="list-group-count">(11)</span>
+        <span class="list-group-count">(13)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
@@ -368,82 +368,100 @@
     
       
       
-        <a href="/2021/09/26/CSS%E4%B9%8B%E5%8D%95%E4%BD%8D/" title="CSS之单位"
+        <a href="/2021/09/26/CSS%E5%8D%95%E4%BD%8D/" title="CSS单位"
            class="list-group-item list-group-item-action
            ">
-          <span class="category-post">CSS之单位</span>
+          <span class="category-post">CSS单位</span>
         </a>
       
     
       
       
-        <a href="/2021/10/03/CSS%E4%B9%8B%E5%AE%9A%E4%BD%8D/" title="CSS之定位"
+        <a href="/2021/10/03/CSS%E5%AE%9A%E4%BD%8D/" title="CSS定位"
            class="list-group-item list-group-item-action
            ">
-          <span class="category-post">CSS之定位</span>
+          <span class="category-post">CSS定位</span>
         </a>
       
     
       
       
-        <a href="/2021/10/03/CSS%E4%B9%8B%E5%B1%82%E5%8F%A0%E5%92%8C%E7%BB%A7%E6%89%BF/" title="CSS之层叠和继承"
+        <a href="/2021/10/03/CSS%E5%B1%82%E5%8F%A0%E5%92%8C%E7%BB%A7%E6%89%BF/" title="CSS层叠和继承"
            class="list-group-item list-group-item-action
            ">
-          <span class="category-post">CSS之层叠和继承</span>
+          <span class="category-post">CSS层叠和继承</span>
         </a>
       
     
       
       
-        <a href="/2021/10/03/CSS%E4%B9%8B%E5%B1%85%E4%B8%AD/" title="CSS之居中"
+        <a href="/2021/10/03/CSS%E5%B1%85%E4%B8%AD%20copy/" title="CSS居中"
            class="list-group-item list-group-item-action
            ">
-          <span class="category-post">CSS之居中</span>
+          <span class="category-post">CSS居中</span>
         </a>
       
     
       
       
-        <a href="/2021/10/03/CSS%E4%B9%8B%E5%BC%B9%E6%80%A7%E5%B8%83%E5%B1%80/" title="CSS之弹性布局"
+        <a href="/2021/10/03/CSS%E5%B1%85%E4%B8%AD/" title="CSS居中"
            class="list-group-item list-group-item-action
            ">
-          <span class="category-post">CSS之弹性布局</span>
+          <span class="category-post">CSS居中</span>
         </a>
       
     
       
       
-        <a href="/2021/10/03/CSS%E4%B9%8B%E6%96%87%E6%A1%A3%E6%B5%81/" title="CSS之文档流"
+        <a href="/2021/10/03/CSS%E5%BC%B9%E6%80%A7%E5%B8%83%E5%B1%80/" title="CSS弹性布局"
            class="list-group-item list-group-item-action
            ">
-          <span class="category-post">CSS之文档流</span>
+          <span class="category-post">CSS弹性布局</span>
         </a>
       
     
       
       
-        <a href="/2021/10/03/CSS%E4%B9%8B%E6%B5%AE%E5%8A%A8/" title="CSS之浮动"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">CSS之浮动</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2021/10/03/CSS%E4%B9%8B%E7%9B%92%E6%A8%A1%E5%9E%8B/" title="CSS之盒模型"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">CSS之盒模型</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2021/10/03/CSS%E4%B9%8B%E7%BD%91%E6%A0%BC%E5%B8%83%E5%B1%80/" title="CSS之网格布局"
+        <a href="/2021/10/03/CSS%E6%96%87%E6%A1%A3%E6%B5%81/" title="CSS文档流"
            class="list-group-item list-group-item-action
            active">
-          <span class="category-post">CSS之网格布局</span>
+          <span class="category-post">CSS文档流</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2025/08/02/CSS%E5%93%8D%E5%BA%94%E5%BC%8F%E8%AE%BE%E8%AE%A1/" title="CSS模块化"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">CSS模块化</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/10/03/CSS%E6%B5%AE%E5%8A%A8/" title="CSS浮动"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">CSS浮动</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/10/03/CSS%E7%9B%92%E6%A8%A1%E5%9E%8B/" title="CSS盒模型"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">CSS盒模型</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/10/03/CSS%E7%BD%91%E6%A0%BC%E5%B8%83%E5%B1%80/" title="CSS网格布局"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">CSS网格布局</span>
         </a>
       
     
@@ -822,12 +840,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">CSS之网格布局</h1>
+            <h1 id="seo-header">CSS文档流</h1>
             
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2025年7月30日 下午
+                    本文最后更新于 2025年8月2日 下午
                   
                 
               </p>
@@ -835,119 +853,58 @@
             
               <div class="markdown-body">
                 
-                <p>Demo：<br><a target="_blank" rel="noopener" href="https://github.com/xuekeven/learn_web/blob/main/dome/CSS/%E4%B8%A4%E6%A0%8F_%E7%BD%91%E6%A0%BC%E5%B8%83%E5%B1%80.html">https://github.com/xuekeven/learn_web/blob/main/dome/CSS/两栏_网格布局.html</a> 。<br><a target="_blank" rel="noopener" href="https://github.com/xuekeven/learn_web/blob/main/dome/CSS/%E7%BD%91%E6%A0%BC%E5%B8%83%E5%B1%80_%E7%85%A7%E7%89%87%E5%A2%99.html">https://github.com/xuekeven/learn_web/blob/main/dome/CSS/网格布局_照片墙.html</a> 。</p>
-<p>搭配：<br><a target="_blank" rel="noopener" href="https://www.ruanyifeng.com/blog/2019/03/grid-layout-tutorial.html">https://www.ruanyifeng.com/blog/2019/03/grid-layout-tutorial.html</a> 。</p>
-<h1 id="介绍使用"><a href="#介绍使用" class="headerlink" title="介绍使用"></a>介绍使用</h1><p>CSS 网格布局可以定义由行和列组成的二维布局，然后将元素放到网格中。有些元素可能只占据网格的一个单元，而另一些元素则可能占据多行或多列。网格的大小既可以精确定义，也可以根据自身内容自动计算。你既可以将元素精确地放置到网格某个位置，也可以让其在网格内自动定位，填充划分好的区域。</p>
-<p>跟弹性布局类似，网格布局也是作用于两级的 DOM 结构。设置<code>display: grid</code>的元素是一个网格容器（gridcontainer），它的子元素则变成网格元素（grid items）。使用<code>display: grid</code>定义一个网格容器时，容器表现得像一个块级元素，100%填充可用宽度。也可以使用<code>display: inline-grid</code>，这样元素就会在行内流动，且宽度只能够包含子元素，不过<code>display: inline-grid</code>的使用频率不高。</p>
-<p>有一点值得注意的是，使用网格布局并不会让弹性布局失去用武之地。使用弹性布局时，需要按照一定方式嵌套元素，用网格实现同样的布局需要修改 HTML 结构。</p>
-<p>默认情况下，每个网格容器都会扩展并填满整个网格区域，但网格容器子元素不会填满整个网格容器，因此网格区域会出现多余的高度。一个简单的解决办法是用弹性布局，其子元素会填充高度。</p>
-<h2 id="与弹性布局配合"><a href="#与弹性布局配合" class="headerlink" title="与弹性布局配合"></a>与弹性布局配合</h2><p>这两种布局方式有以下两个重要区别：弹性布局本质上是一维的，而网格布局是二维的；弹性布局是以内容为切入点由内向外工作的，而网格布局是以布局为切入点从外向内工作的。</p>
-<p>弹性布局是一维的，所以它很适合用在相似的元素组成的行（列）上。它支持用 flex-wrap 换行，但是没法让上一行（列）元素跟下一行（列）元素对齐。相反网格布局是二维的，旨在解决一个轨道的元素跟另一个轨道的元素对齐的问题。</p>
-<p>弹性布局让你在一行或一列中安排一系列元素，但是它们的大小不需要明确指定，每个元素占据的大小根据自身的内容决定。在网格布局中首先要描述布局，然后将元素放在布局结构中去。虽然每个网格元素的内容都能影响其网格轨道的大小，但这同时也会影响整个轨道大小，进而影响这个轨道里其他网格元素的大小。</p>
-<p>当设计要求元素在两个维度上都对齐时使用网格布局；当只关心一维元素排列时使用弹性布局。在实践中，这通常（并非总是）意味着网格更适合用于整体的网页布局，弹性布局更适合对网格区域内特定元素布局。继续使用两者，你就会对不同情况下该用哪种布局得心应手。</p>
-<h1 id="网格剖析"><a href="#网格剖析" class="headerlink" title="网格剖析"></a>网格剖析</h1><ul>
-<li>网格线（grid line）</li>
+                <h1 id="文档"><a href="#文档" class="headerlink" title="文档"></a>文档</h1><p>当浏览器解析 HTML 文档时，会在内存里将页面的所有元素表示为 DOM（文档对象模型）。它是一个树结构，其中每个元素都由一个节点表示。<code>&lt;html&gt;</code>元素是顶级根节点。它的下面是子节点：<code>&lt;head&gt;</code>和<code>&lt;body&gt;</code>。再下面是逐级嵌套的后代节点。</p>
+<p>在文档中，根节点是所有其他元素的祖先节点。根节点有一个伪类选择器（:root）可以用来选中它自己。这等价于类型选择器 html，但是 :root 的优先级相当于一个类名，而不是一个标签。</p>
+<p>定位方案是控制元素的布局，有三种常见方案：普通流、浮动、定位。</p>
+<h1 id="普通流"><a href="#普通流" class="headerlink" title="普通流"></a>普通流</h1><p>普通文档流指的是网页元素的默认布局行为。</p>
+<p>普通文档流中，元素按照其在 HTML 文档中的先后位置至上而下布局。此过程中，行内元素水平排列，跟随文字的方向从左到右排列，直到当行被占满然后换行。块级元素则会被渲染成为一个完整的新行，它会占据完整的一行，前后都有换行。除非另外指定，否则所有元素默认都是普通流定位，即普通流中元素的位置由该元素在 HTML 文档中的位置决定。</p>
+<p>普通文档流是为限定的宽度和无限的高度设计的。内容会填满视口的宽度，然后在必要的时候折行。因此，容器的高度由内容天然地决定，而不是容器自己决定。</p>
+<p>脱离普通文档流有三种方式：浮动、定位（绝对定位和固定定位）。</p>
+<h2 id="BFC"><a href="#BFC" class="headerlink" title="BFC"></a>BFC</h2><p>块格式化上下文（Block Formatting Contexts）是 Web 页面可视 CSS 渲染的一部分，是块盒子的布局过程发生的区域。BFC 是网页的一块区域，元素基于此区域布局，BFC 里内容不会跟外部的元素重叠或相互影响。</p>
+<p>具有 BFC 特性的元素可以看作是隔离了的独立容器，容器里面元素不会在布局上影响到外面元素，并且 BFC 具有普通容器所没有的一些特性。可以把 BFC 理解为一个封闭大箱子，箱子内部的元素无论如何翻江倒海，都不会影响到外部。某些情况下，BFC 中的内容可能还会与别的 BFC 的内容重叠。</p>
+<p>BFC 包含创建它的元素内部的所有内容，属于定位方案的普通流。</p>
+<h3 id="创建-BFC"><a href="#创建-BFC" class="headerlink" title="创建 BFC"></a>创建 BFC</h3><ul>
+<li>根元素（html）</li>
+<li>元素 overflow 值不为 visible</li>
+<li>元素 float 值不为 none</li>
+<li>元素 position 值为 absolute、fixed</li>
+<li>元素 contain 值为 layout、content、paint</li>
+<li>元素 display 值为 flow-root</li>
+<li>元素 display 值为 inline-block</li>
+<li>元素 display 值为 flex、 inline-flex 及其直接子元素（弹性元素及其直接子元素）</li>
+<li>元素 display 值为 grid、inline-grid 及其直接子元素（网格元素及其直接子元素）</li>
+<li>元素 display 值为 table-cell（表格单元格）</li>
+<li>元素 display 值为 table-caption（表格标题）</li>
+<li>元素 display 值为 table、inline-table、table-row、<br>table-row-group、table-header-group、table-footer-group（匿名表格单元格元素）</li>
+<li>元素 column-count、column-width 值不为 auto，包括 column-count 值为 1（多列容器）</li>
+<li>元素 column-span 值为 all，即使该元素没有包裹在一个多列容器中</li>
 </ul>
-<p>网格线构成了网格的框架。一条网格线可以水平或者垂直，也可以位于一行或一列的任意一侧。<br>如果指定了 grid-gap 的话，它就位于网格线上。</p>
-<ul>
-<li>网格轨道（grid track）</li>
+<p>使用说明：</p>
+<p>使用<code>display: flow-root</code>可以创建无副作用的 BFC。在父级块当中使用<code>display: flow-root</code>可以创建新的 BFC，父级块的所有内容都会参与 BFC。</p>
+<p>使用<code>overflow: auto</code>会创建一个包含这个元素的 BFC，通常的做法是设置父级块<code>overflow: auto</code>或者设置其它的非默认的<code>overflow: visible</code>的值。使用 overflow 创建一个新的 BFC，是因为 overflow 属性告诉浏览器你想要怎样处理溢出的内容。当使用这个属性只是为了创建 BFC 的时候，你可能会发现一些不想要的问题，比如滚动条或一些剪切的阴影，需要注意。另外，对于后续的开发，可能不是很清楚当时为什么使用 overflow，所以最好添加一些注释来解释为什么这样做。</p>
+<p>也可以使用其他方式，但是有些问题需要注意，比如，使用浮动或<code>display: inline-block</code>方式创建 BFC 的元素宽度会变成 100%，因此需要限制一下元素的宽度，防止因为过宽而换行，导致内容移动到浮动图片的下面。相反，使用<code>display: table-cell</code>方式显示的元素，它的宽度只会刚好容纳其中的内容，因此需要设置一个较大的宽度，强制使其填满剩余空间。</p>
+<h3 id="BFC-用途"><a href="#BFC-用途" class="headerlink" title="BFC 用途"></a>BFC 用途</h3><ul>
+<li>使用 BFC 浮动定位</li>
+<li>使用 BFC 清除浮动</li>
+<li>使用 BFC 防止外边距折叠</li>
+<li>使用 BFC 防止浮动容器高度塌陷</li>
+<li>使用 BFC 防止媒体对象「文字环绕」</li>
 </ul>
-<p>一个网格轨道是两条相邻网格线之间空间。网格有水平轨道（行）和垂直轨道（列）。</p>
-<ul>
-<li>网格单元（grid cell）</li>
-</ul>
-<p>网格上的单个空间，水平和垂直的网格轨道交叉重叠的部分。</p>
-<ul>
-<li>网格区域（grid area）</li>
-</ul>
-<p>网格上的矩形区域，由一个到多个网格单元组成。该区域位于两条垂直网格线和两条水平网格线之间。</p>
-<h2 id="编号网格线"><a href="#编号网格线" class="headerlink" title="编号网格线"></a>编号网格线</h2><p>网格轨道定义好后，要将每个网格子元素放到特定的位置上。浏览器给网格里的每个网格线都赋予了编号。网格线编号从左上角为 1 开始递增，负数则指向从右下角开始的位置。</p>
-<p>可以在 grid-column 和 grid-row 属性中用网格线的编号指定网格子元素位置。如果想要一个网格元素在垂直方向上跨越 1 号到 3 号网格线，就需要给元素设置<code>grid-column: 1 / 3</code>，同理设置<code>grid-row: 3 / 5</code>让元素在水平方向上跨越 3 号到 5 号网格线。这两属性一起就能指定一个元素应该放置的网格区域。</p>
-<p>需要注意，grid-column 是 grid-column-start 和 grid-column-end 的简写；grid-row 是 grid-row-start 和 grid-row-end 的简写。中间的斜线只在简写属性里用于区分这两个值，斜线前后的空格不作要求。</p>
-<p>可以用特别的关键字 span 可以用来指定 grid-row 和 grid-column 的值。这个关键字告诉浏览器子元素需要占据一个网格轨道。如果没有指出具体是哪一行或列，浏览器将会根据网格子元素的布局算法（placement algorithm）自动将其放到合适的位置。布局算法将子元素放在网格上可以容纳该元素的第一处可用空间。</p>
-<h2 id="命名网格线"><a href="#命名网格线" class="headerlink" title="命名网格线"></a>命名网格线</h2><p>有时候记录所有网格线的编号实在太麻烦，尤其是在处理很多网格轨道时。为了简单，可以给网格线命名，并在布局网格子元素时使用网格线名称而不是编号。</p>
-<p>使用 grid-template-columns 和 grid-template-rows 声明网格轨道时，可以在中括号内写上网格线的名称，且可以同时命名两个名称。两个名称之间用空格隔开，之后可以任选一个名称使用。</p>
-<p>还有一个彩蛋：将两个网格线命名为 left-start 和 left-end，就定义了一个叫作 left 的区域，这区域覆盖两个网格线之间的区域。-start 和 -end 后缀作为关键字，定义两者之间区域。子元素设置<code>grid-column: left</code>，它就会跨越从 left-start 到 left-end 的区域。</p>
-<p>命名时重复使用同一个名称合法，可以在名称后跟数字区分是第几个网格线。可以以各种方式命名网格线。它们在网格里的用法也是五花八门，这取决于每个网格特定的结构。</p>
-<h2 id="命名网格区域"><a href="#命名网格区域" class="headerlink" title="命名网格区域"></a>命名网格区域</h2><p>不用计算或者命名网格线，直接用命名的网格区域将网格子元素定位到网格中。想要实现这一方法需要借助网格容器的 grid-template 属性和网格子元素的 grid-area 属性。</p>
-<p>grid-template-areas 属性使用一种 ASCII art 的语法，可以直接在 CSS 中画一个可视化的网格形象。该声明给出了一系列加引号字符串，每一个字符串代表网格的一行，字符串内用空格区分每一列。</p>
-<p>每个命名的网格区域必须组成一个矩形。不能创造更复杂的形状，比如 L 型或者 U 型。也还可以用句点（.）作为名称，这样便能空出一个网格单元。</p>
-<p>注意，区域的命名会影响到网格线。每个区域的起始网格线会被自动命名为：区域名-start；终止网格线会被自动命名为：区域名-end。与命名网格线的彩蛋呼应。</p>
-<h2 id="隐式网格"><a href="#隐式网格" class="headerlink" title="隐式网格"></a>隐式网格</h2><p>在某些场景下，你可能不清楚该把网格子元素放在网格的哪个位置上。处理大量子元素时，挨个指定元素的位置未免太不方便。当元素是从数据库获取时，元素的个数很可能未知。在这些情况下，以一种宽松的方式定义网格可能更合理，剩下的交给布局算法放置网格子元素。</p>
-<p>这时需要用隐式网格（implicit grid）。使用 grid-template-columns，grid-template-rows 属性定义网格轨道创建的是显式网格（explicit grid），但有些网格子元素仍可以放在显式轨道外，此时便会自动创建隐式轨道以扩展网格，从而包含这些元素。</p>
-<p>隐式网格轨道默认大小为 auto，也就是说它们会扩展到能容纳网格子元素内容。设置 grid-auto-columns 和 grid-auto-rows 则是为隐式网格轨道指定每列列宽和每行行高。在指定网格线的时候，隐式网格轨道并不会改变负数的含义。负的网格线编号仍是从显式网格的右下开始的。</p>
-<h1 id="容器属性"><a href="#容器属性" class="headerlink" title="容器属性"></a>容器属性</h1><ul>
-<li>grid-template-columns，grid-template-rows（网格列数行数）</li>
-<li>grid-template-areas，grid-template（网格区域）</li>
-<li>grid-auto-columns，grid-auto-rows（隐式网格列数行数）</li>
-<li>grid-auto-flow，grid（子元素放置顺序）</li>
-<li>grid-column-gap，grid-row-gap，grid-gap（网格列间隔行间隔）</li>
-<li>justify-content，align-content，place-content（内容区域整体水平垂直位置）</li>
-<li>justify-items，align-items，place-items（子元素内部水平垂直位置）</li>
-</ul>
-<h2 id="grid-template-columns，grid-template-rows"><a href="#grid-template-columns，grid-template-rows" class="headerlink" title="grid-template-columns，grid-template-rows"></a>grid-template-columns，grid-template-rows</h2><p>grid-template-columns 属性定义网格的列数和每列列宽，同时可以给网格线命名。<br>grid-template-rows 属性定义网格的行数和每行行高，同时可以给网格线命名。</p>
-<p>新单位 fr 代表每一列（行）的分数单位（fraction unit）。这个单位跟弹性布局中 flex-grow 属性表现一样。不一定非得用分数单位，可以使用其他的单位，比如 px、em 或百分数，也可以混搭这几种单位。</p>
-<p>有时候，重复写同样的值非常麻烦，尤其网格很多时。新方法 repeat() 函数在声明多个网格轨道的时候提供简写方式。使用 repeat() 函数可以定义不同的重复模式，比如<code>grid-template-columns: repeat(3, 2fr 1fr)</code>会重复三遍该模式，从而定义六个网格轨道，重复的最终结果是<code>2fr 1fr 2fr 1fr 2fr 1fr</code>。还可以将 repeat() 作为一个更长的模式的一部分。比如<code>grid-template-columns: 1fr repeat(3, 3fr) 1fr</code>，最终结果是<code>1fr 3fr 3fr 3fr 1fr</code>。可以看出来因为展开写法无法一目了然，所以才产生了 repeat() 这种简写方式。</p>
-<p>有时候我们不想给一个网格轨道设置固定的尺寸，但是又希望限制它的最小值和最大值。这时候需要用到 minmax() 函数。它接收两个值：最小尺寸和最大尺寸。浏览器会确保网格轨道的大小介于这两者之间。</p>
-<p>关键字 auto 表示由浏览器决定长度。轨道大小设置为 auto，轨道会根据自身内容扩展。</p>
-<p>关键字 auto-fill 是特殊值，只要网格放得下，浏览器就会尽可能多地生成轨道，并且不会跟指定大小（minmax() 值）的限制产生冲突。于是两者在一起，会让网格在可用的空间内尽可能多地产生网格列或行，则轨道大小会取 minmax() 函数中的最小值。虽然产生尽可能多轨道，但是网格子元素不一定能填完轨道。</p>
-<p>若网格子元素不够填满所有网格轨道，auto-fill 就会导致一些空的网格轨道。若不希望出现空的网格轨道，可以使用关键字 auto-fit 代替 auto-fill。它会让非空的网格轨道扩展，填满可用空间。具体选择 auto-fill 还是 auto-fit 取决于你是想要确保网格轨道的大小，还是希望整个网格容器都被填满。</p>
-<h2 id="grid-template-areas，grid-template"><a href="#grid-template-areas，grid-template" class="headerlink" title="grid-template-areas，grid-template"></a>grid-template-areas，grid-template</h2><p>grid-template-areas 属性用于定义区域，一个区域由单个或多个单元格组成。grid-template 属性是<br>grid-template-columns、grid-template-rows、grid-template-areas 属性的合并简写形式。</p>
-<p>grid-template-areas 属性使用一种 ASCII art 的语法，可以直接在 CSS 中画一个可视化的网格形象。该声明给出了一系列加引号字符串，每一个字符串代表网格的一行，字符串内用空格区分每一列。</p>
-<p>每个命名的网格区域必须组成一个矩形。不能创造更复杂的形状，比如 L 型或者 U 型。也还可以用句点（.）作为名称，这样便能空出一个网格单元。</p>
-<p>注意，区域的命名会影响到网格线。每个区域的起始网格线会被自动命名为：区域名-start；终止网格线会被自动命名为：区域名-end。与命名网格线的彩蛋呼应。</p>
-<h2 id="grid-auto-columns，grid-auto-rows"><a href="#grid-auto-columns，grid-auto-rows" class="headerlink" title="grid-auto-columns，grid-auto-rows"></a>grid-auto-columns，grid-auto-rows</h2><p>grid-auto-columns 属性用于当设置隐式网格时，浏览器自动创建的网格的每列列宽。<br>grid-auto-rows 属性用于当设置隐式网格时，浏览器自动创建的网格的每行行高。</p>
-<p>它们与 grid-template-columns 和 grid-template-rows 写法完全相同。如果不指定这两个属性，浏览器完全根据单元格内容的大小，自动决定新增网格的每列列宽和每行行高。</p>
-<h2 id="grid-auto-flow，grid"><a href="#grid-auto-flow，grid" class="headerlink" title="grid-auto-flow，grid"></a>grid-auto-flow，grid</h2><p>当不指定网格上元素的位置时，元素会按照其布局算法自动放置。默认情况下，布局算法会按元素在标记中的顺序将其逐列逐行摆放。当一个元素无法在某一行容纳（也就是说该元素占据了太多网格轨道）时，算法会将它移动到下一行寻找足够大的空间容纳它。网格布局模块规范提供了一个属性 grid-auto-flow ，它可以控制布局算法的行为。</p>
-<p>grid-auto-flow 属性控制布局算法放置网格子元素的顺序。grid 属性是<br>grid-template-rows、grid-template-columns、grid-template-areas、<br>grid-auto-rows、grid-auto-columns、grid-auto-flow 属性的合并简写形式。</p>
-<ul>
-<li>row：先行后列。元素优先放在网格行中，只有当一行填满了才会移动到下一列。默认值。</li>
-<li>column：先列后行。元素优先放在网格列中，只有当一列填满了才会移动到下一行。</li>
-<li>row dense：先行后列，并且尽量紧密填满不出现空格。</li>
-<li>column dense：先列后行，并且尽量紧密填满不出现空格。</li>
-</ul>
-<p>关键字 dense 让布局算法紧凑地填满网格里的空白，尽管这会改变某些网格子元素的顺序。加上该关键字，子元素就会“回填”大元素造成的空白区域，但 HTML 源码顺序不变。因此紧凑的 grid-auto-flow 方式可能会导致元素出现的顺序跟 HTML 里不一致。</p>
-<h2 id="grid-column-gap，grid-row-gap，grid-gap"><a href="#grid-column-gap，grid-row-gap，grid-gap" class="headerlink" title="grid-column-gap，grid-row-gap，grid-gap"></a>grid-column-gap，grid-row-gap，grid-gap</h2><p>grid-column-gap 属性设置网格列与列的间隔。<br>grid-row-gap 属性设置网格行与行的间隔。</p>
-<p>grid-gap 属性是 grid-column-gap 和 grid-row-gap 属性的合并简写形式。在使用该值时，省略第二个值，浏览器就会假定第二个值等于第一个值。</p>
-<h2 id="justify-content，align-content，place-content"><a href="#justify-content，align-content，place-content" class="headerlink" title="justify-content，align-content，place-content"></a>justify-content，align-content，place-content</h2><p>justify-content 属性设置整个内容区域整体在容器里面的水平位置（左中右）和间隔。<br>align-content 属性设置整个内容区域整体在容器里面的垂直位置（上中下）和间隔。<br>（特别是当网格子元素的整个内容区域整体无法填满网格容器时）</p>
-<p>place-content 属性是 align-content 和 justify-content 属性的合并简写形式。使用该值时，省略第二个值，浏览器就会假定第二个值等于第一个值。</p>
-<p>当 place-content 属性与 grid-gap 属性冲突时，place-content 属性优先。</p>
-<ul>
-<li>start：对齐容器的起始边框（弹性布局里则是 flex-start）。默认值。</li>
-<li>end：对齐容器的结束边框（弹性布局里则是 flex-end）。</li>
-<li>center：容器内部居中。</li>
-<li>stretch：项目大小没有指定时，拉伸占据整个网格容器。</li>
-<li>space-between：项目间的间隔相等，项目与容器边框之间没有间隔。</li>
-<li>space-around：项目两侧的间隔相等。所以项目之间的间隔是项目与容器边框的间隔一倍。</li>
-<li>space-evenly：项目与项目的间隔相等，项目与容器边框的间隔也相等（弹性布局不支持）。</li>
-</ul>
-<h2 id="justify-items，align-items，place-items"><a href="#justify-items，align-items，place-items" class="headerlink" title="justify-items，align-items，place-items"></a>justify-items，align-items，place-items</h2><p>justify-items 属性设置网格子元素的内容在网格子元素里面的水平位置（左中右）。<br>align-items 属性设置网格子元素的内容在网格子元素里面的垂直位置（上中下）。</p>
-<p>place-items 属性是 align-items 和 justify-items 属性的合并简写形式。使用该值时，省略第二个值，浏览器就会假定第二个值等于第一个值。</p>
-<ul>
-<li>stretch：拉伸，占满单元格的整个宽度。默认值。</li>
-<li>start：对齐单元格的起始边缘。</li>
-<li>end：对齐单元格的结束边缘。</li>
-<li>center：单元格内部居中。</li>
-</ul>
-<h1 id="子元素属性"><a href="#子元素属性" class="headerlink" title="子元素属性"></a>子元素属性</h1><ul>
-<li>grid-column-start，grid-column-end，grid-column（子元素左右网格线）</li>
-<li>grid-row-start，grid-row-end，grid-row（子元素上下网格线）</li>
-<li>grid-area（子元素区域）</li>
-<li>justify-self，align-self，place-self（子元素内部水平垂直位置）</li>
-</ul>
-<h2 id="grid-column-start，grid-column-end，grid-column"><a href="#grid-column-start，grid-column-end，grid-column" class="headerlink" title="grid-column-start，grid-column-end，grid-column"></a>grid-column-start，grid-column-end，grid-column</h2><p>grid-column-start 属性设置网格子元素左边框所在的垂直网格线的编号或名字。<br>grid-column-end 属性设置网格子元素右边框所在的垂直网格线的编号或名字。</p>
-<p>grid-column 属性用网格线编号或名字指定子元素垂直方向位置。grid-column 属性是 grid-column-start 和 grid-column-end 属性的合并简写形式，推荐使用简写属性，可使用 span 关键字直接占据网格轨道个数。</p>
-<h2 id="grid-row-start，grid-row-end，grid-row"><a href="#grid-row-start，grid-row-end，grid-row" class="headerlink" title="grid-row-start，grid-row-end，grid-row"></a>grid-row-start，grid-row-end，grid-row</h2><p>grid-row-start 属性设置网格子元素上边框所在的水平网格线的编号或名字。<br>grid-row-end 属性设置网格子元素下边框所在的水平网格线的编号或名字。</p>
-<p>grid-row 属性用网格线编号或名字指定网格子元素水平方向位置。grid-row 属性是 grid-row-start 和<br>grid-row-end 属性的合并简写形式，推荐使用简写属性，可使用 span 关键字直接占据网格轨道个数。</p>
-<h2 id="grid-area"><a href="#grid-area" class="headerlink" title="grid-area"></a>grid-area</h2><p>grid-area 属性指定网格子元素项目放在哪一个区域（前提为使用 grid-template-areas 给区域命名）。<br>该属性是 grid-row-start、grid-column-start、grid-row-end、grid-column-end 属性的合并简写形式，可以直接指定网格子元素的位置。</p>
-<h2 id="justify-self，align-self，place-self"><a href="#justify-self，align-self，place-self" class="headerlink" title="justify-self，align-self，place-self"></a>justify-self，align-self，place-self</h2><p>justify-self 属性设置网格子元素的内容在网格子元素里面的水平位置（左中右），跟 justify-items 属性用法完全一致，只作用于单个子元素。<br>align-self 属性设置网格子元素的内容在网格子元素里面的垂直位置（上中下），跟 align-items 属性用法<br>完全一致，只作用于单个子元素。</p>
-<p>place-self 属性是 align-self 和 justify-self 属性的合并简写形式。在使用该值时，如果省略第二个值，浏览器就会假定第二个值等于第一个值。</p>
-<ul>
-<li>stretch：拉伸，占满单元格的整个宽度。默认值。</li>
-<li>start：对齐单元格的起始边缘。</li>
-<li>end：对齐单元格的结束边缘。</li>
-<li>center：单元格内部居中。</li>
-</ul>
+<h2 id="IFC"><a href="#IFC" class="headerlink" title="IFC"></a>IFC</h2><p>内联格式化上下文（Inline Formatting Contexts）是一个网页的渲染结果的一部分。其中，各行内框（inline boxes）一个接一个地排列，其排列顺序则是根据书写模式的设置来决定的：水平书写，各个框从左边开始水平地排列；垂直书写，各个框从顶部开始水平地排列。</p>
+<h3 id="IFC-布局规则"><a href="#IFC-布局规则" class="headerlink" title="IFC 布局规则"></a>IFC 布局规则</h3><p>子元素水平方向横向排列，并且垂直方向起点为元素顶部。</p>
+<p>子元素只会计算横向样式空间，垂直方向样式空间不会被计算。</p>
+<p>在垂直方向上，子元素会以不同形式来对齐（vertical-align）。</p>
+<p>能把在一行上的框都完全包含进去的一个矩形区域，被称为该行的行框（line box）。行框的宽度是由包含块（containing box）和与其中的浮动来决定。</p>
+<p>IFC 中的“line box”一般左右边贴紧其包含块，但 float 元素会优先排列。</p>
+<p>IFC 中的“line box”高度由 CSS 行高计算规则来确定，同个 IFC 下的多个 line box 高度可能会不同。</p>
+<p>当 inline-level boxes 的总宽度少于包含它们的 line box 时，其水平渲染规则由 text-align 属性值来决定。</p>
+<p>当一个“inline box”超过父元素的宽度时，它会被分割成多个 boxes，这些 oxes 分布在多个“line box”中。如果子元素未设置强制换行的情况下，“inline box”将不可被分割，将会溢出父元素。</p>
+<p>框会从包含块的顶部开始，一个接一个地水平摆放。</p>
+<p>摆放这些框时，它们在水平方向的 内外边距+边框 所占用的空间都会被考虑； 在垂直方向上，这些框可能会以不同形式来对齐： 水平的 margin、padding、border 有效，垂直无效。不能指定宽高。</p>
+<p>行框的宽度是 由包含块和存在的浮动来决定; 行框的高度 由行高来决定。</p>
+<h3 id="创建-IFC"><a href="#创建-IFC" class="headerlink" title="创建 IFC"></a>创建 IFC</h3><p>块级元素中仅包含内联级别元素。形成条件非常简单，需要注意的是当 IFC 中有块级元素插入时，会产生两个匿名块将父元素分割开来，产生两个 IFC。</p>
+<h3 id="IFC-用途"><a href="#IFC-用途" class="headerlink" title="IFC 用途"></a>IFC 用途</h3><p>水平居中：当一个块要在环境中水平居中时，设置其为<code>displau: inline-block</code>则会在外层产生 IFC，通过 text-align 属性则可以使其水平居中。</p>
+<p>垂直居中：创建一个 IFC，用其中一个元素撑开父元素的高度，然后设置其<code>vertical-align: middle</code>，其他的行内元素则可以在此父元素下垂直居中。</p>
 
                 
               </div>
@@ -1000,8 +957,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>CSS之网格布局</div>
-      <div>http://example.com/2021/10/03/CSS之网格布局/</div>
+      <div>CSS文档流</div>
+      <div>http://example.com/2021/10/03/CSS文档流/</div>
     </div>
     <div class="license-meta">
       
@@ -1019,7 +976,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2025年7月30日</div>
+          <div>2025年8月2日</div>
         </div>
       
       
@@ -1050,9 +1007,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2021/10/03/CSS%E4%B9%8B%E7%9B%92%E6%A8%A1%E5%9E%8B/" title="CSS之盒模型">
+                      <a href="/2021/10/03/CSS%E5%AE%9A%E4%BD%8D/" title="CSS定位">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">CSS之盒模型</span>
+                        <span class="hidden-mobile">CSS定位</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -1060,8 +1017,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2021/10/03/CSS%E4%B9%8B%E5%BC%B9%E6%80%A7%E5%B8%83%E5%B1%80/" title="CSS之弹性布局">
-                        <span class="hidden-mobile">CSS之弹性布局</span>
+                      <a href="/2021/10/03/CSS%E5%B1%85%E4%B8%AD%20copy/" title="CSS居中">
+                        <span class="hidden-mobile">CSS居中</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

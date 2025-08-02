@@ -21,22 +21,22 @@
   <meta name="author" content="Keven">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Demo：https:&#x2F;&#x2F;github.com&#x2F;xuekeven&#x2F;learn_web&#x2F;blob&#x2F;main&#x2F;dome&#x2F;CSS&#x2F;浮动.html 。 浮动Flexbox 正在迅速取代浮动在页面布局中的地位。对新手开发人员而言， Flexbox 的行为很直观，可预测性更好。你可能会问是否还有必要学习浮动，CSS 浮动的时代是不是结束了？ 在现代浏览器中，不用浮动也能比过去更好地实现布局，甚至可以完全弃用浮">
+    <meta name="description" content="参考：  《深入解析 CSS》 。  概览模块化 CSS（Modular CSS）是指把页面分割成不同的组成部分，这些组成部分可以在多种上下文中重复使用，并且互相之间没有依赖关系。最终目的是，当我们修改其中一部分 CSS 时不会对其他部分产生意料之外的影响。 在计算机科学中，编写模块化代码并不是什么新潮的做法，但开发人员近几年才开始将其引入 CSS。随着现代网站和 Web 应用程序体量越来越大、越">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CSS之浮动">
-<meta property="og:url" content="http://example.com/2021/10/03/CSS%E4%B9%8B%E6%B5%AE%E5%8A%A8/index.html">
+<meta property="og:title" content="CSS模块化">
+<meta property="og:url" content="http://example.com/2025/08/02/CSS%E5%93%8D%E5%BA%94%E5%BC%8F%E8%AE%BE%E8%AE%A1/index.html">
 <meta property="og:site_name" content="Keven&#39;s Blog">
-<meta property="og:description" content="Demo：https:&#x2F;&#x2F;github.com&#x2F;xuekeven&#x2F;learn_web&#x2F;blob&#x2F;main&#x2F;dome&#x2F;CSS&#x2F;浮动.html 。 浮动Flexbox 正在迅速取代浮动在页面布局中的地位。对新手开发人员而言， Flexbox 的行为很直观，可预测性更好。你可能会问是否还有必要学习浮动，CSS 浮动的时代是不是结束了？ 在现代浏览器中，不用浮动也能比过去更好地实现布局，甚至可以完全弃用浮">
+<meta property="og:description" content="参考：  《深入解析 CSS》 。  概览模块化 CSS（Modular CSS）是指把页面分割成不同的组成部分，这些组成部分可以在多种上下文中重复使用，并且互相之间没有依赖关系。最终目的是，当我们修改其中一部分 CSS 时不会对其他部分产生意料之外的影响。 在计算机科学中，编写模块化代码并不是什么新潮的做法，但开发人员近几年才开始将其引入 CSS。随着现代网站和 Web 应用程序体量越来越大、越">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-10-03T00:00:00.000Z">
-<meta property="article:modified_time" content="2025-07-31T13:49:28.340Z">
+<meta property="article:published_time" content="2025-08-02T14:00:00.000Z">
+<meta property="article:modified_time" content="2025-08-02T14:24:34.485Z">
 <meta property="article:author" content="Keven">
 <meta property="article:tag" content="CSS">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>CSS之浮动 - Keven&#39;s Blog</title>
+  <title>CSS模块化 - Keven&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -238,7 +238,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="CSS之浮动"></span>
+            <span id="subtitle" data-typed-text="CSS模块化"></span>
           
         </div>
 
@@ -254,8 +254,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2021-10-03 08:00" pubdate>
-          2021年10月3日 早上
+        <time datetime="2025-08-02 22:00" pubdate>
+          2025年8月2日 晚上
         </time>
       </span>
     
@@ -266,7 +266,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2k 字
+          2.5k 字
         
       </span>
     
@@ -277,7 +277,7 @@
         
         
         
-          13 分钟
+          16 分钟
         
       </span>
     
@@ -327,7 +327,7 @@
         aria-expanded="true"
       >
         编程语言
-        <span class="list-group-count">(42)</span>
+        <span class="list-group-count">(44)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
@@ -354,7 +354,7 @@
         aria-expanded="true"
       >
         CSS
-        <span class="list-group-count">(11)</span>
+        <span class="list-group-count">(13)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
@@ -368,82 +368,100 @@
     
       
       
-        <a href="/2021/09/26/CSS%E4%B9%8B%E5%8D%95%E4%BD%8D/" title="CSS之单位"
+        <a href="/2021/09/26/CSS%E5%8D%95%E4%BD%8D/" title="CSS单位"
            class="list-group-item list-group-item-action
            ">
-          <span class="category-post">CSS之单位</span>
+          <span class="category-post">CSS单位</span>
         </a>
       
     
       
       
-        <a href="/2021/10/03/CSS%E4%B9%8B%E5%AE%9A%E4%BD%8D/" title="CSS之定位"
+        <a href="/2021/10/03/CSS%E5%AE%9A%E4%BD%8D/" title="CSS定位"
            class="list-group-item list-group-item-action
            ">
-          <span class="category-post">CSS之定位</span>
+          <span class="category-post">CSS定位</span>
         </a>
       
     
       
       
-        <a href="/2021/10/03/CSS%E4%B9%8B%E5%B1%82%E5%8F%A0%E5%92%8C%E7%BB%A7%E6%89%BF/" title="CSS之层叠和继承"
+        <a href="/2021/10/03/CSS%E5%B1%82%E5%8F%A0%E5%92%8C%E7%BB%A7%E6%89%BF/" title="CSS层叠和继承"
            class="list-group-item list-group-item-action
            ">
-          <span class="category-post">CSS之层叠和继承</span>
+          <span class="category-post">CSS层叠和继承</span>
         </a>
       
     
       
       
-        <a href="/2021/10/03/CSS%E4%B9%8B%E5%B1%85%E4%B8%AD/" title="CSS之居中"
+        <a href="/2021/10/03/CSS%E5%B1%85%E4%B8%AD%20copy/" title="CSS居中"
            class="list-group-item list-group-item-action
            ">
-          <span class="category-post">CSS之居中</span>
+          <span class="category-post">CSS居中</span>
         </a>
       
     
       
       
-        <a href="/2021/10/03/CSS%E4%B9%8B%E5%BC%B9%E6%80%A7%E5%B8%83%E5%B1%80/" title="CSS之弹性布局"
+        <a href="/2021/10/03/CSS%E5%B1%85%E4%B8%AD/" title="CSS居中"
            class="list-group-item list-group-item-action
            ">
-          <span class="category-post">CSS之弹性布局</span>
+          <span class="category-post">CSS居中</span>
         </a>
       
     
       
       
-        <a href="/2021/10/03/CSS%E4%B9%8B%E6%96%87%E6%A1%A3%E6%B5%81/" title="CSS之文档流"
+        <a href="/2021/10/03/CSS%E5%BC%B9%E6%80%A7%E5%B8%83%E5%B1%80/" title="CSS弹性布局"
            class="list-group-item list-group-item-action
            ">
-          <span class="category-post">CSS之文档流</span>
+          <span class="category-post">CSS弹性布局</span>
         </a>
       
     
       
       
-        <a href="/2021/10/03/CSS%E4%B9%8B%E6%B5%AE%E5%8A%A8/" title="CSS之浮动"
+        <a href="/2021/10/03/CSS%E6%96%87%E6%A1%A3%E6%B5%81/" title="CSS文档流"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">CSS文档流</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2025/08/02/CSS%E5%93%8D%E5%BA%94%E5%BC%8F%E8%AE%BE%E8%AE%A1/" title="CSS模块化"
            class="list-group-item list-group-item-action
            active">
-          <span class="category-post">CSS之浮动</span>
+          <span class="category-post">CSS模块化</span>
         </a>
       
     
       
       
-        <a href="/2021/10/03/CSS%E4%B9%8B%E7%9B%92%E6%A8%A1%E5%9E%8B/" title="CSS之盒模型"
+        <a href="/2021/10/03/CSS%E6%B5%AE%E5%8A%A8/" title="CSS浮动"
            class="list-group-item list-group-item-action
            ">
-          <span class="category-post">CSS之盒模型</span>
+          <span class="category-post">CSS浮动</span>
         </a>
       
     
       
       
-        <a href="/2021/10/03/CSS%E4%B9%8B%E7%BD%91%E6%A0%BC%E5%B8%83%E5%B1%80/" title="CSS之网格布局"
+        <a href="/2021/10/03/CSS%E7%9B%92%E6%A8%A1%E5%9E%8B/" title="CSS盒模型"
            class="list-group-item list-group-item-action
            ">
-          <span class="category-post">CSS之网格布局</span>
+          <span class="category-post">CSS盒模型</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/10/03/CSS%E7%BD%91%E6%A0%BC%E5%B8%83%E5%B1%80/" title="CSS网格布局"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">CSS网格布局</span>
         </a>
       
     
@@ -822,12 +840,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">CSS之浮动</h1>
+            <h1 id="seo-header">CSS模块化</h1>
             
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2025年7月31日 晚上
+                    本文最后更新于 2025年8月2日 晚上
                   
                 
               </p>
@@ -835,35 +853,38 @@
             
               <div class="markdown-body">
                 
-                <p>Demo：<a target="_blank" rel="noopener" href="https://github.com/xuekeven/learn_web/blob/main/dome/CSS/%E6%B5%AE%E5%8A%A8.html">https://github.com/xuekeven/learn_web/blob/main/dome/CSS/浮动.html</a> 。</p>
-<h1 id="浮动"><a href="#浮动" class="headerlink" title="浮动"></a>浮动</h1><p>Flexbox 正在迅速取代浮动在页面布局中的地位。对新手开发人员而言， Flexbox 的行为很直观，可预测性更好。你可能会问是否还有必要学习浮动，CSS 浮动的时代是不是结束了？</p>
-<p>在现代浏览器中，不用浮动也能比过去更好地实现布局，甚至可以完全弃用浮动。但是如果要支持 IE 浏览器，现在放弃浮动还为时过早。只有 IE10 和 IE11 支持 Flexbox，而且还有一些 bug。如果不想碰到 bug，或者需要支持旧版浏览器，浮动也许是更好的选择。另外，如果你在支持旧代码库，它很可能用到了浮动布局。为了维护旧代码，也需要了解浮动的工作原理。还有一点，浮动布局通常不需要那么多的标记，新的布局方法则需要添加额外的容器元素。如果你写样式时不允许修改标记，浮动更能满足你的需求。</p>
-<p>此外，要实现将图片移动到网页一侧，并且让文字围绕图片的效果，浮动仍然是唯一的方法。</p>
-<h2 id="理解浮动"><a href="#理解浮动" class="headerlink" title="理解浮动"></a>理解浮动</h2><p>浮动是网页布局最古老的方式，并且在过去很多年都是唯一的方式。不过，它有些让人捉摸不透。要想理解浮动，得从了解它的设计初衷入手。</p>
-<p>在浮动布局中，元素首先按照普通流的位置出现，然后根据浮动的方向尽可能的向左边或右边偏移，效果与印刷排版中的文本环绕相似。</p>
-<p>浮动能将一个元素（通常是一张图片）拉到其容器的一侧，这样文档流就包围它。浮动元素会被移出正常文档流，并被拉到容器边缘。文档流会重新排列，但它会包围浮动元素此刻所占据的空间。如果让多个元素向同侧浮动，它们就会挨着排列。</p>
-<p>浮动本身不是为了实现页面布局而设计的，但是在近 20 年的时间里，我们把它当成了布局工具。之所以这样做是因为它是那个年代唯一的选择。后来，display: inline-block 和 display: table 的问世才让我们有了别的方案，尽管二者可替代的场景有限。Flexbox 和网格布局最近几年才出现，在它们出现之前，浮动一直承担着页面布局的重任。</p>
-<p>通常最简单方式是先将网页的大块区域布局好，再逐级布局内部的小元素。在开始浮动元素前，要先将网页的外层结构样式写好。</p>
-<h2 id="浮动问题"><a href="#浮动问题" class="headerlink" title="浮动问题"></a>浮动问题</h2><p>浮动有一些行为会让人措手不及。这些并不是 bug，而是因为浮动严格遵循了标准。</p>
-<h3 id="容器高度塌陷"><a href="#容器高度塌陷" class="headerlink" title="容器高度塌陷"></a>容器高度塌陷</h3><p>浮动元素不同于普通文档流的元素，它们的高度不会加到父元素上。这可能看起来很奇怪，但是恰好体现了浮动的设计初衷。浮动是为了实现文字围绕浮动元素排列的效果。在段落里浮动图片时，段落的高度并不会增长到能够容纳该图片。就是说，如果图片比段落文字高，下一段就会直接从上一段的文字下面开始，两段文字都会围绕浮动的图片排列。</p>
-<h3 id="清除浮动"><a href="#清除浮动" class="headerlink" title="清除浮动"></a>清除浮动</h3><p>解决包含浮动问题的做法，叫作清除浮动。有两个思路：<strong>使用 clear 属性</strong>和<strong>创建 BFC</strong>。</p>
-<h4 id="clear-属性"><a href="#clear-属性" class="headerlink" title="clear 属性"></a>clear 属性</h4><p>一是使用跟浮动配套的 clear 属性。将一个元素放在主容器的末尾并对它使用 clear，这会让容器扩展到浮动元素下面。clear 属性只对块级元素生效，<code>clear: both</code>声明能让元素移动到浮动元素的下面而不是侧面，clear 也可以设为 left 或 right，但这样只会相应清除向左或向右浮动的元素。因为使用 clear 属性的元素本身没有浮动，所以容器就会扩展直到包含使用 clear 属性的元素，因此也会包含该元素上面的浮动兄弟元素，这样便解决了容器高度塌陷的问题。</p>
-<h5 id="普通版"><a href="#普通版" class="headerlink" title="普通版"></a>普通版</h5><p>要给包含浮动的元素使用 clear 属性，即浮动元素本身或包含浮动元素后面的兄弟元素，而不是给别的元素。可以分为三种情况：</p>
+                <p>参考：</p>
 <ul>
-<li><p>如果浮动的元素后面有兄弟元素<br>设兄弟元素为块级元素并使用 clear 属性。</p>
-</li>
-<li><p>如果浮动的元素是最后一个元素，后面没有兄弟元素<br>将一个空的块级元素放在浮动元素的父元素容器的末尾，并对空的块级元素使用 clear 属性。这种方法能实现预期行为但是不雅：要在 HTML 里添加不必要的标记，才能实现本应该由 CSS 实现的效果。</p>
-</li>
-<li><p>如果浮动的元素是最后一个元素，后面没有兄弟元素，但不想用额外的元素<br>使用伪元素：对伪元素使用 clear 属性并设伪元素为块级元素或行内块级元素。使用 ::after 伪元素选择器，可以快速地在 DOM 中在容器末尾添加一个元素，而不用在 HTML 里添加标记，推荐该方法。注意，伪元素选择器生效显示需要添加 content 属性。</p>
-</li>
+<li><a target="_blank" rel="noopener" href="https://book.douban.com/subject/35021471/">《深入解析 CSS》</a> 。</li>
 </ul>
-<h5 id="修改版"><a href="#修改版" class="headerlink" title="修改版"></a>修改版</h5><p>普通的清除浮动可能还有一个一致性问题没有解决：浮动元素的外边距并不会折叠到清除浮动容器的外部，非浮动元素的外边距则会正常折叠。因此，建议使用伪元素的一个修改版，它能够包含所有的外边距，这样更符合预期。</p>
-<p>在修改版中，设置块级元素时改用<code>display: table</code>而不用<code>display:block</code>。而且是给 ::before 和 ::after 两个伪元素都加上这一属性（但还是只对 ::after 用<code>clear: both</code>）。这样，容器所有子元素的外边距都会包含在容器的顶部和底部之间。当我们不想要外边距折叠时，此版本非常有用。</p>
-<p>在清除浮动时使用<code>display: table</code>能够包含外边距，是利用了 CSS 的一些特性。创建一个 <code>display: table</code>元素，也就在元素内隐式创建了一个表格行和一个单元格。因为外边距无法通过单元格元素折叠，所以也无法通过设置了<code>display: table</code>的伪元素折叠。</p>
-<p>看起来似乎使用<code>display: table-cell</code>也能达到相同的效果，但是 clear 属性只对块级元素生效。表格是块级元素，但单元格并不是。因此，clear 属性无法跟<code>display: table-cell</code>一起使用。所以要用 <code>display: table</code>来清除浮动，同时利用隐式创建单元格来包含外边距。</p>
-<h4 id="创建-BFC"><a href="#创建-BFC" class="headerlink" title="创建 BFC"></a>创建 BFC</h4><h3 id="浮动元素“陷阱”"><a href="#浮动元素“陷阱”" class="headerlink" title="浮动元素“陷阱”"></a>浮动元素“陷阱”</h3><p>如果众多的元素浮动到同一侧，如果每个浮动盒子的高度不一样，最后的布局可能会千变万化。同理，改变浏览器的宽度也会造成相同的结果，因为这样会导致换行，从而改变元素高度。</p>
-<p>想修复这个问题很简单：清除浮动元素上面的浮动。更通用的做法是，清除每行上的首个元素上面的浮动。设置好每行的盒子个数后可以用伪类选择器 nth-child() 选中这些目标元素。</p>
-<p>这种清除每行浮动的技术要求知道每行有几个元素。若宽度不是通过百分比来定义的，那么随着视口宽度的改变，每行的元素个数可能会变化。这种情况下最好用别的布局方案，比如 Flexbox 或者 inline-block 元素。</p>
+<h1 id="概览"><a href="#概览" class="headerlink" title="概览"></a>概览</h1><p>模块化 CSS（Modular CSS）是指把页面分割成不同的组成部分，这些组成部分可以在多种上下文中重复使用，并且互相之间没有依赖关系。最终目的是，当我们修改其中一部分 CSS 时不会对其他部分产生意料之外的影响。</p>
+<p>在计算机科学中，编写模块化代码并不是什么新潮的做法，但开发人员近几年才开始将其引入 CSS。随着现代网站和 Web 应用程序体量越来越大、越来越复杂，我们不得不寻找一些方法来管理日益庞大且繁杂的样式表。</p>
+<p>我们把样式表的每个组成部分称为模块（module） ，每个模块独立负责自己的样式，不会影响其他模块内的样式。也就是说，在 CSS 里引入了软件封装的原则。封装（encapsulation）：相关的函数和数据集合在一起组成对象，通常用来隐藏结构化对象内部的状态或值，从而使外部因素不能操作对象内部。</p>
+<p>CSS 中没有数据和传统函数的概念，但是有选择器及其命中的页面元素。为了达到封装的目的，这些会成为模块的组成部分，并且每个模块都只负责少量的 DOM 元素的样式。有了封装的思想，我们就可以为页面上那些彼此分立的组件定义模块了，像导航菜单、对话框、进度条、缩略图，等等。可以通过为 DOM 元素设置一个独一无二的的类名来识别每个模块。同时，每个模块包含一系列子元素，构建成页面上的组件。模块内部可以嵌套其他模块，最终构成完整的页面。</p>
+<h1 id="基础样式"><a href="#基础样式" class="headerlink" title="基础样式"></a>基础样式</h1><p>开始写模块化样式前需要先配置好环境。每个样式表的开头都要写一些给整个页面使用的通用规则，模块化 CSS 也不例外。这些规则通常被称为基础样式，其他的样式构建在这些基础样式之上的。基础样式本身并不是模块化的，但它会为后面编写模块化样式打好基础。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-pseudo">:root</span> &#123;<br>  <span class="hljs-attribute">box-sizing</span>: border-box;<br>&#125;<br><br>*,<br>*<span class="hljs-selector-pseudo">::before</span>,<br>*<span class="hljs-selector-pseudo">::after</span> &#123;<br>  <span class="hljs-attribute">box-sizing</span>: inherit;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>常用的基础样式还包括链接的颜色、标题的样式、外边距等。<code>&lt;body&gt;</code>标签默认的外边距很小，你可能会考虑将它的外边距去掉。根据项目的实际情况，你也可能想为表单字段、表格和列表等添加一些样式。</p>
+<p>基础样式应该是通用的，只添加那些影响页面上大部分或者全部内容的样式。选择器不应该使用类名或者 ID 来匹配元素，应只用标签类型或者偶尔用用伪类选择器。核心思想是这些基础样式提供了一些默认的渲染效果，但是之后可以很方便地根据需要覆盖基础样式。基础样式配置完成以后，很少会再修改。我们会在基础样式的稳定表现之上构建模块化 CSS。在样式表中，基础样式后面的内容将主要由各种模块组成。</p>
+<h1 id="创建模块"><a href="#创建模块" class="headerlink" title="创建模块"></a>创建模块</h1><p>模块的选择器由单个类名构成，这非常重要。选择器里没有其他规则来约束这些样式仅作用在页面上的某个地方。</p>
+<p>创建模块不但可以精简代码（减少重复），还可以保证视觉一致性。这样看上去更专业，不会给人仓促堆砌的感觉。用户在潜意识里也会更容易相信我们的应用程序。</p>
+<h2 id="模块变体"><a href="#模块变体" class="headerlink" title="模块变体"></a>模块变体</h2><p>保持一致性确实不错，但有时候需要特意避免一致。比如，我们可能想要区分传递信息的消息和表示操作成功的通知（比如保存成功）。这可以通过定义修饰符（modifiers）来实现。</p>
+<p>通过定义一个以模块名称开头的新类名来创建一个修饰符。例如，消息模块的 error 修饰符应该叫作 message-error。通过包含模块名称可以清楚地表明这个类属于消息模块。常用的写法是使用两个连字符来表示修饰符，比如 message–error。修饰符的样式不需要重新定义整个模块，只需覆盖要改变的部分。</p>
+<p>当模块需要有不同的外观或者表现的时候，就创建一个可以直接应用到指定元素的修饰符类。比如，写.dropdown–dark 而不是写成 .page-header .dropdown。通过这种方式，模块本身，并且只能是它本身可以决定自己的样式表现。其他模块不能进入别的模块内部去修改它。千万不要使用基于页面位置的后代选择器来修改模块。坚决遵守这个原则，就可以有效防止样式表变成一堆难以维护的代码。</p>
+<h2 id="多元素模块"><a href="#多元素模块" class="headerlink" title="多元素模块"></a>多元素模块</h2><p>应该避免使用基于通用标签类型的匹配，比如 div 和 span。</p>
+<h1 id="模块组合"><a href="#模块组合" class="headerlink" title="模块组合"></a>模块组合</h1><p>关于类的第一条规则是类应该短小，第二条规则是还要更短小。</p>
+<h2 id="拆分模块"><a href="#拆分模块" class="headerlink" title="拆分模块"></a>拆分模块</h2><p>每个模块应只做一件事情。消息模块的职责是使消息提示醒目；媒体模块的职责是在一段文本中配置一张图片。我们可以简洁明了地概括它们的目标。有的模块是为了版面布局，有的是为了编写体例。当模块想要完成不止一件事的时候，我们应该考虑把它拆分成更小的模块。</p>
+<p>创建模块之前应该先自问一下：“从更高的层面上看，这个模块的职责是什么？”如果不得不使用并（或者和）这个词来表述模块的职责，那可能正在描述多项职责。如果是的话，我们需要为每个职责分别定义模块。这是模块封装一个非常重要的原则，叫作单一职责原则（Single Responsibility Principle）。尽可能把多种功能分散到不同的模块中，这样每个模块就可以保持精炼、聚焦，并且容易理解。</p>
+<h2 id="模块命名"><a href="#模块命名" class="headerlink" title="模块命名"></a>模块命名</h2><p>为模块命名是个很伤脑筋的事情。开发模块的时候我们可以用个临时的名称，但是最终完成之前一定要注意命名。这可能算是模块化 CSS 开发里最难的部分了。</p>
+<p>模块的命名应该有意义，无论使用场景是什么。同时也要避免使用简单地描述视觉效果的名称。我们应该换一种思路，思考模块代表什么含义。这一般并不容易。</p>
+<p>有些人强制用两个词来命名每个模块，这样就可以避免模块指代不明确，因为不知道什么时候会需要另一个新的板块模块。如果现有的板块模块命名比较明确，新的板块模块出现的时候再取名就会比较容易，不至于跟前一个混淆。为模块的变体类命名的时候，应该遵守同样的原则。使用大或小这样具有相对意义的词语来命名修饰符不是最佳方式，但也可以接受。</p>
+<h1 id="工具类"><a href="#工具类" class="headerlink" title="工具类"></a>工具类</h1><p>有时候，我们需要用一个类来对元素做一件简单明确的事，比如让文字居中、让元素左浮动，或者是清除浮动。这样的类被称为工具类（utility class）。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-class">.text-center</span> &#123;<br>  <span class="hljs-attribute">text-align</span>: center <span class="hljs-meta">!important</span>;<br>&#125;<br><br><span class="hljs-selector-class">.float-left</span> &#123;<br>  <span class="hljs-attribute">float</span>: left;<br>&#125;<br><br><span class="hljs-selector-class">.clearfix</span><span class="hljs-selector-pseudo">::before</span>,<br><span class="hljs-selector-class">.clearfix</span><span class="hljs-selector-pseudo">::after</span> &#123;<br>  <span class="hljs-attribute">content</span>: <span class="hljs-string">&quot; &quot;</span>;<br>  <span class="hljs-attribute">display</span>: table;<br>&#125;<br><br><span class="hljs-selector-class">.clearfix</span><span class="hljs-selector-pseudo">::after</span> &#123;<br>  <span class="hljs-attribute">clear</span>: both;<br>&#125;<br><br><span class="hljs-selector-class">.hidden</span> &#123;<br>  <span class="hljs-attribute">display</span>: none <span class="hljs-meta">!important</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>从某种意义上讲，工具类有点像小号的模块。工具类应该专注于某种功能，一般只声明一次。通常把这些工具类放在样式表的底部，模块代码的下面。</p>
+<p>工具类是唯一应该使用 important 注释的地方。事实上，工具类应该优先使用它。这样的话，不管在哪里用到工具类，都可以生效。我敢肯定，任何时候为元素添加 text-center 类，都是想让文本居中，不想让其他样式覆盖它。用了 important 注释就可以确保这一点。</p>
+<p>工具类的作用立竿见影。在页面上做点小事儿的时候不需要创建一个完整的模块，这种情况下可以用一个工具类来实现。但是不要滥用工具类。对于大部分网站，最多十几个工具类就够用了。</p>
+<p>在大型团队里书写模块化样式，需要一些苛刻的约束条件来确保每个人遵守相同的约定。同时也需要采取一些措施来防止大家新建的模块名称出现冲突。为了解决这些问题，一些 Web 开发社区开始尝试模块化 CSS 的替代方案。一番探索后，他们转向了 JavaScript，最终发明了一种解决方案，被称为内联样式（inline styles）或者 CSS in JS。这种方案不再依赖类命名的口头约定，而是使用 JavaScript 来控制，要么生成独一无二的类名，要么使用 HTML 的 style 属性引入所有的样式。已经出现了不少具备这种功能的 JavaScript 库，其中比较流行的有 Aphrodite、Styled Components 和一个叫作 CSS Modules（容易引起误解）的库。绝大部分库绑定了一个 JavaScript 框架或者工具集，比如 WebPack。</p>
 
                 
               </div>
@@ -916,8 +937,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>CSS之浮动</div>
-      <div>http://example.com/2021/10/03/CSS之浮动/</div>
+      <div>CSS模块化</div>
+      <div>http://example.com/2025/08/02/CSS响应式设计/</div>
     </div>
     <div class="license-meta">
       
@@ -929,13 +950,13 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2021年10月3日</div>
+          <div>2025年8月2日</div>
         </div>
       
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2025年7月31日</div>
+          <div>2025年8月2日</div>
         </div>
       
       
@@ -966,18 +987,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2021/10/03/CSS%E4%B9%8B%E5%B1%85%E4%B8%AD/" title="CSS之居中">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">CSS之居中</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2021/09/26/CSS%E4%B9%8B%E5%8D%95%E4%BD%8D/" title="CSS之单位">
-                        <span class="hidden-mobile">CSS之单位</span>
+                      <a href="/2025/07/30/Sass%E7%9F%A5%E8%AF%86/" title="">
+                        <span class="hidden-mobile"></span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

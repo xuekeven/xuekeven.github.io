@@ -21,22 +21,22 @@
   <meta name="author" content="Keven">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Demo：https:&#x2F;&#x2F;github.com&#x2F;xuekeven&#x2F;learn_web&#x2F;blob&#x2F;main&#x2F;dome&#x2F;CSS&#x2F;两栏_弹性布局1.html 。https:&#x2F;&#x2F;github.com&#x2F;xuekeven&#x2F;learn_web&#x2F;blob&#x2F;main&#x2F;dome&#x2F;CSS&#x2F;两栏_弹性布局2.html 。 搭配：https:&#x2F;&#x2F;www.ruanyifeng.com&#x2F;blog&#x2F;2015&#x2F;07&#x2F;flex-gr">
+    <meta name="description" content="只有绝对定位、固定定位会脱离普通文档流，静态定位、相对定位、粘性定位不会脱离普通文档流。 脱离普通文档流：从普通文档流中被移除，不影响普通文档流的布局。 12345position: static;position: fixed;position: absolute;position: relative;position: sticky;  静态定位默认值，静态定位，没有定位，遵循正常的文档流对象">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CSS之弹性布局">
-<meta property="og:url" content="http://example.com/2021/10/03/CSS%E4%B9%8B%E5%BC%B9%E6%80%A7%E5%B8%83%E5%B1%80/index.html">
+<meta property="og:title" content="CSS定位">
+<meta property="og:url" content="http://example.com/2021/10/03/CSS%E5%AE%9A%E4%BD%8D/index.html">
 <meta property="og:site_name" content="Keven&#39;s Blog">
-<meta property="og:description" content="Demo：https:&#x2F;&#x2F;github.com&#x2F;xuekeven&#x2F;learn_web&#x2F;blob&#x2F;main&#x2F;dome&#x2F;CSS&#x2F;两栏_弹性布局1.html 。https:&#x2F;&#x2F;github.com&#x2F;xuekeven&#x2F;learn_web&#x2F;blob&#x2F;main&#x2F;dome&#x2F;CSS&#x2F;两栏_弹性布局2.html 。 搭配：https:&#x2F;&#x2F;www.ruanyifeng.com&#x2F;blog&#x2F;2015&#x2F;07&#x2F;flex-gr">
+<meta property="og:description" content="只有绝对定位、固定定位会脱离普通文档流，静态定位、相对定位、粘性定位不会脱离普通文档流。 脱离普通文档流：从普通文档流中被移除，不影响普通文档流的布局。 12345position: static;position: fixed;position: absolute;position: relative;position: sticky;  静态定位默认值，静态定位，没有定位，遵循正常的文档流对象">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-10-03T13:00:00.000Z">
-<meta property="article:modified_time" content="2025-07-30T08:51:59.638Z">
+<meta property="article:published_time" content="2021-10-03T10:00:00.000Z">
+<meta property="article:modified_time" content="2025-08-02T07:56:12.378Z">
 <meta property="article:author" content="Keven">
 <meta property="article:tag" content="CSS">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>CSS之弹性布局 - Keven&#39;s Blog</title>
+  <title>CSS定位 - Keven&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -238,7 +238,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="CSS之弹性布局"></span>
+            <span id="subtitle" data-typed-text="CSS定位"></span>
           
         </div>
 
@@ -254,7 +254,7 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2021-10-03 21:00" pubdate>
+        <time datetime="2021-10-03 18:00" pubdate>
           2021年10月3日 晚上
         </time>
       </span>
@@ -266,7 +266,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          3.8k 字
+          2.9k 字
         
       </span>
     
@@ -277,7 +277,7 @@
         
         
         
-          24 分钟
+          18 分钟
         
       </span>
     
@@ -327,7 +327,7 @@
         aria-expanded="true"
       >
         编程语言
-        <span class="list-group-count">(42)</span>
+        <span class="list-group-count">(44)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
@@ -354,7 +354,7 @@
         aria-expanded="true"
       >
         CSS
-        <span class="list-group-count">(11)</span>
+        <span class="list-group-count">(13)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
@@ -368,82 +368,100 @@
     
       
       
-        <a href="/2021/09/26/CSS%E4%B9%8B%E5%8D%95%E4%BD%8D/" title="CSS之单位"
+        <a href="/2021/09/26/CSS%E5%8D%95%E4%BD%8D/" title="CSS单位"
            class="list-group-item list-group-item-action
            ">
-          <span class="category-post">CSS之单位</span>
+          <span class="category-post">CSS单位</span>
         </a>
       
     
       
       
-        <a href="/2021/10/03/CSS%E4%B9%8B%E5%AE%9A%E4%BD%8D/" title="CSS之定位"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">CSS之定位</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2021/10/03/CSS%E4%B9%8B%E5%B1%82%E5%8F%A0%E5%92%8C%E7%BB%A7%E6%89%BF/" title="CSS之层叠和继承"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">CSS之层叠和继承</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2021/10/03/CSS%E4%B9%8B%E5%B1%85%E4%B8%AD/" title="CSS之居中"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">CSS之居中</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2021/10/03/CSS%E4%B9%8B%E5%BC%B9%E6%80%A7%E5%B8%83%E5%B1%80/" title="CSS之弹性布局"
+        <a href="/2021/10/03/CSS%E5%AE%9A%E4%BD%8D/" title="CSS定位"
            class="list-group-item list-group-item-action
            active">
-          <span class="category-post">CSS之弹性布局</span>
+          <span class="category-post">CSS定位</span>
         </a>
       
     
       
       
-        <a href="/2021/10/03/CSS%E4%B9%8B%E6%96%87%E6%A1%A3%E6%B5%81/" title="CSS之文档流"
+        <a href="/2021/10/03/CSS%E5%B1%82%E5%8F%A0%E5%92%8C%E7%BB%A7%E6%89%BF/" title="CSS层叠和继承"
            class="list-group-item list-group-item-action
            ">
-          <span class="category-post">CSS之文档流</span>
+          <span class="category-post">CSS层叠和继承</span>
         </a>
       
     
       
       
-        <a href="/2021/10/03/CSS%E4%B9%8B%E6%B5%AE%E5%8A%A8/" title="CSS之浮动"
+        <a href="/2021/10/03/CSS%E5%B1%85%E4%B8%AD%20copy/" title="CSS居中"
            class="list-group-item list-group-item-action
            ">
-          <span class="category-post">CSS之浮动</span>
+          <span class="category-post">CSS居中</span>
         </a>
       
     
       
       
-        <a href="/2021/10/03/CSS%E4%B9%8B%E7%9B%92%E6%A8%A1%E5%9E%8B/" title="CSS之盒模型"
+        <a href="/2021/10/03/CSS%E5%B1%85%E4%B8%AD/" title="CSS居中"
            class="list-group-item list-group-item-action
            ">
-          <span class="category-post">CSS之盒模型</span>
+          <span class="category-post">CSS居中</span>
         </a>
       
     
       
       
-        <a href="/2021/10/03/CSS%E4%B9%8B%E7%BD%91%E6%A0%BC%E5%B8%83%E5%B1%80/" title="CSS之网格布局"
+        <a href="/2021/10/03/CSS%E5%BC%B9%E6%80%A7%E5%B8%83%E5%B1%80/" title="CSS弹性布局"
            class="list-group-item list-group-item-action
            ">
-          <span class="category-post">CSS之网格布局</span>
+          <span class="category-post">CSS弹性布局</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/10/03/CSS%E6%96%87%E6%A1%A3%E6%B5%81/" title="CSS文档流"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">CSS文档流</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2025/08/02/CSS%E5%93%8D%E5%BA%94%E5%BC%8F%E8%AE%BE%E8%AE%A1/" title="CSS模块化"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">CSS模块化</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/10/03/CSS%E6%B5%AE%E5%8A%A8/" title="CSS浮动"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">CSS浮动</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/10/03/CSS%E7%9B%92%E6%A8%A1%E5%9E%8B/" title="CSS盒模型"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">CSS盒模型</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/10/03/CSS%E7%BD%91%E6%A0%BC%E5%B8%83%E5%B1%80/" title="CSS网格布局"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">CSS网格布局</span>
         </a>
       
     
@@ -822,12 +840,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">CSS之弹性布局</h1>
+            <h1 id="seo-header">CSS定位</h1>
             
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2025年7月30日 下午
+                    本文最后更新于 2025年8月2日 下午
                   
                 
               </p>
@@ -835,108 +853,54 @@
             
               <div class="markdown-body">
                 
-                <p>Demo：<br><a target="_blank" rel="noopener" href="https://github.com/xuekeven/learn_web/blob/main/dome/CSS/%E4%B8%A4%E6%A0%8F_%E5%BC%B9%E6%80%A7%E5%B8%83%E5%B1%801.html">https://github.com/xuekeven/learn_web/blob/main/dome/CSS/两栏_弹性布局1.html</a> 。<br><a target="_blank" rel="noopener" href="https://github.com/xuekeven/learn_web/blob/main/dome/CSS/%E4%B8%A4%E6%A0%8F_%E5%BC%B9%E6%80%A7%E5%B8%83%E5%B1%802.html">https://github.com/xuekeven/learn_web/blob/main/dome/CSS/两栏_弹性布局2.html</a> 。</p>
-<p>搭配：<br><a target="_blank" rel="noopener" href="https://www.ruanyifeng.com/blog/2015/07/flex-grammar.html">https://www.ruanyifeng.com/blog/2015/07/flex-grammar.html</a> 。<br><a target="_blank" rel="noopener" href="https://www.ruanyifeng.com/blog/2015/07/flex-examples.html">https://www.ruanyifeng.com/blog/2015/07/flex-examples.html</a> 。</p>
-<h1 id="介绍使用"><a href="#介绍使用" class="headerlink" title="介绍使用"></a>介绍使用</h1><p>Flexbox，全称弹性盒子布局（FlexibleBox Layout），是一种新的布局方式。跟浮动比，Flexbox 的可预测性更好，还能提供更精细的控制，它也能轻松解决困扰我们许久的垂直居中和等高列问题。</p>
-<p>给元素添加<code>display:flex</code>，该元素变成了一个弹性容器（flex container），它的直接子元素变成弹性子元素（flex item）。弹性子元素默认在同一行按照从左到右的顺序并排排列。弹性容器像块级元素一样填满可用宽度，但弹性子元素不一定填满其弹性容器的宽度。弹性子元素高度相等，该高度由它们的内容决定。</p>
-<p>还可以用<code>display: inline-flex</code>，它也能创建了一个弹性容器，行为类似于 inline-block 元素。它会跟其他行内元素一起流式排列，但不会自动增长到 100% 的宽度。此容器内部的弹性子元素跟使用 <code>display: flex</code> 创建的弹性子元素行为一样。在实际开发时，很少用到 <code>display:inline-flex</code>。</p>
-<p>弹性容器能控制内部元素的布局。子元素按照主轴线排列，主轴的方向为主起点（左）直到主终点（右）；垂直于主轴的是副轴，方向从副起点（上）到副终点（下）。轴方向可改变。</p>
-<p>通常情况下，创建一个弹性盒子需要用到这些方法</p>
+                <p>只有绝对定位、固定定位会脱离普通文档流，静态定位、相对定位、粘性定位不会脱离普通文档流。</p>
+<p>脱离普通文档流：从普通文档流中被移除，不影响普通文档流的布局。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">position</span>: static;<br><span class="hljs-attribute">position</span>: fixed;<br><span class="hljs-attribute">position</span>: absolute;<br><span class="hljs-attribute">position</span>: relative;<br><span class="hljs-attribute">position</span>: sticky;<br></code></pre></td></tr></table></figure>
+
+<h1 id="静态定位"><a href="#静态定位" class="headerlink" title="静态定位"></a>静态定位</h1><p>默认值，静态定位，没有定位，遵循正常的文档流对象。static 改成其他值，我们就说元素就被定位，是定位元素。如果元素使用静态定位，那么就说它未被定位，是非定位元素。</p>
+<p>不会受到 top、bottom、left、right 属性的影响。</p>
+<h1 id="固定定位"><a href="#固定定位" class="headerlink" title="固定定位"></a>固定定位</h1><p>给元素设置<code>position: fixed</code>就能将元素放在视口的任意位置而随着网页滑动保持不变。这样需要搭配四个属性一起使用：top、right、bottom、left 。这四个属性值决定了固定定位的元素与浏览器视口边缘的距离，还隐式地定义了元素的宽高。</p>
+<p>固定定位让元素相对视口固定定位，此时视口被称作元素的包含块（containing block）。</p>
+<p>定位一个元素时，不要求指定四个方向的值，可以只指定需要的方向值，然后用 width 和/或 height 来决定它的大小，也可以让元素本身来决定大小。</p>
+<p>因为固定元素从文档流中移除，所以它不再影响页面其他元素的位置。其他的元素会跟随正常文档流，就像固定元素不存在一样。就是说它们通常会在固定元素下面排列，视觉上被遮挡。</p>
+<h1 id="绝对定位"><a href="#绝对定位" class="headerlink" title="绝对定位"></a>绝对定位</h1><p>绝对定位行为跟固定定位相似，只是它的包含块不一样。绝对定位不是相对视口，而是相对最近的祖先定位元素。跟固定元素一样，top、right、bottom、left 属性值决定了元素的边缘在包含块里的位置，还隐式地定义了元素的宽高。</p>
+<p>如果父元素未被定位，则浏览器会沿着 DOM 树往上找它的祖父、曾祖父，直到找到一个定位元素用它作为包含块。但如果祖先元素都没有定位，则会基于初始包含块来定位。初始包含块跟视口一样大，固定在网页的顶部，也就是相对视口定位。</p>
+<p>绝对定位是定位类型里的重量级选手。它经常跟 JavaScript 配合，用于弹出菜单、工具提示及消息盒子等。</p>
+<h1 id="相对定位"><a href="#相对定位" class="headerlink" title="相对定位"></a>相对定位</h1><p>相对定位可能是最不被理解的定位类型。当第一次给元素加上<code>position: relative</code>时候，你通常看不到页面上有任何视觉改变。相对定位元素以及它周围的所有元素，都还保持着原来位置。</p>
+<p>相对定位的位置依赖于文档流。如果设置 top、right、bottom、left 属性，元素就会从它原来所在的文档流位置移动，但是不会改变它周围任何元素的位置。跟固定定位盒绝对定位不一样，不能用这四个属性来改变相对定位元素的大小。这些属性只能让元素在原来的文档流位置下、左、上、右方向移动。可以用 top 或 bottom，但不能一起用（ bottom 会被忽略）；可以用 left 或 right，但也不能一起用（ right 会被忽略）。</p>
+<p>有时可用四个属性调整相对元素的位置，把它挤到某个位置，但这只是相对定位的一个冷门用法。更常见的用法是使用<code>position: relative</code>给它里面的绝对定位元素创建一个包含块。</p>
+<h1 id="粘性定位"><a href="#粘性定位" class="headerlink" title="粘性定位"></a>粘性定位</h1><p>粘性定位是固定定位和相对定位的结合体：正常情况下，元素随着页面滚动，当元素到达屏幕特定位置时，如果用户继续滚动，元素就会“锁定”在这个位置。这个“特定位置”，由 top、right、bottom、left 属性决定。和相对定位相似，可以用 top 或 bottom，但不能一起用（ bottom 会被忽略）；可以用 left 或 right，但也不能一起用（ right 会被忽略），但若一个值也不设置，其定位行为与相对定位相同。</p>
+<p>如果浏览器不支持粘性定位，通常要用固定定位或者绝对定位来回退处理。</p>
+<p>粘性元素永远不会超出父元素的范围。注意，只有当父元素的高度大于粘性元素时侯才会让粘性元素固定，因此建议给父元素加上 min-height，以便让父元素足够高。注意，其父元素不能设置<code>overflow:hidden</code>或者<code>overflow:auto</code>属性。</p>
+<h1 id="定位层叠"><a href="#定位层叠" class="headerlink" title="定位层叠"></a>定位层叠</h1><p>定位非常有用，但也需要弄清楚它会带来什么后果。当把一个元素从文档流中移除时，我们就需要管理之前由文档流处理的所有事情。</p>
+<p>首先要确保元素不会跑到浏览器视口之外，导致用户会看不到元素。其次还要保证元素不会不小心挡住重要内容。最后还有层叠的问题。在同一页面定位多个元素时，可能会遇到两个不同定位的元素重叠的现象。</p>
+<h2 id="渲染过程和层叠顺序"><a href="#渲染过程和层叠顺序" class="headerlink" title="渲染过程和层叠顺序"></a>渲染过程和层叠顺序</h2><p>浏览器将 HTML 文件解析为 DOM 的同时还创建了另一个树形结构，叫作渲染树（render tree）。它代表了每个元素的视觉样式和位置。同时还决定浏览器绘制元素的顺序。顺序很重要，因为如果元素刚好重叠，后绘制的元素就会出现在先绘制的元素前面。</p>
+<p>通常情况下（使用定位之前），元素在 HTML 里出现的顺序决定了绘制的顺序。但在使用定位元素时，这种行为会改变。浏览器会先绘制所有非定位的元素，然后绘制定位元素。默认情况下，所有的定位元素会出现在非定位元素前面。对于定位元素，基于源码的层叠关系并没有改变，依然按照后绘制的定位元素出现在先绘制的定位元素前面的规则。</p>
+<p>通常情况下，模态框要放在网页内容的最后，body 标签关闭之前。大多数的构建模态框 JavaScript 库会自动这样做。因为模态框使用固定定位，所以不必关心它出现在哪，它会一直定位到屏幕中间。</p>
+<p>改变固定定位元素的标记位置不会产生不好的影响，但是对相对、绝对或粘性定位的元素来说，通常无法用改变标记位置的方法解决层叠问题。相对定位依赖于文档流，绝对定位依赖于元素的定位祖先节点。这时候需要用 z-index 属性来控制它们的层叠行为。</p>
+<h2 id="z-index-属性控制层叠顺序"><a href="#z-index-属性控制层叠顺序" class="headerlink" title="z-index 属性控制层叠顺序"></a>z-index 属性控制层叠顺序</h2><p>z-index 属性值可以是任意整数（正负都行），z 表示是笛卡儿 x-y-z 坐标系里的深度方向。z-index 较高的元素出现在 z-index 较低的元素前面。z-index 为负数的元素出现在静态定位元素后面。</p>
+<p>使用 z-index 是解决网页层叠问题的第二个方法，该方法不要求修改 HTML 的结构。</p>
+<p>z-index 的行为很好理解，但是使用它时要注意两个小陷阱。第一，z-index 只会在定位元素上生效，不能用它控制静态元素。第二，给一个定位元素加上 z-index 可以创建层叠上下文。</p>
+<h2 id="理解层叠上下文"><a href="#理解层叠上下文" class="headerlink" title="理解层叠上下文"></a>理解层叠上下文</h2><p>一个层叠上下文包含一个元素或者由浏览器一起绘制的一组元素。其中一个元素会被作为层叠上下文的根，比如给一个定位元素添加 z-index 时，该定位元素就变成了一个新的层叠上下文的根，它所有后代元素就是这个层叠上下文的一部分。</p>
+<p>不要将层叠上下文跟 BFC 弄混，它们是两个独立的概念，尽管不一定互斥。层叠上下文是负责决定哪些元素出现在另一些元素前面，而 BFC 负责处理文档流，以及元素是否会重叠。</p>
+<p>实际上将层叠上下文里的所有元素一起绘制会造成严重的后果：层叠上下文之外元素无法叠放在层叠上下文内的两个元素之间。换句话说，若一个元素叠放在一个层叠上下文前，那么此层叠上下文里没有元素可以被拉到该元素前面；若一个元素被放在层叠上下文后，那么层叠上下文里没有元素能出现在该元素后面。</p>
+<p>给一个定位元素加 z-index 属性是创建层叠上下文最主要的方式，但还有别的属性也能创建，比如小于 1 的 opacity 属性，以及 transform、filter 属性。由于这些属性主要会影响元素及其子元素渲染的方式，因此一起绘制父子元素。文档根节点（html 元素）会给整个页面创建一个顶级的层叠上下文。</p>
+<blockquote>
+<p>所有层叠上下文内的元素会按照以下顺序，从后到前叠放：</p>
+</blockquote>
 <ul>
-<li>选择一个容器及其子元素，给容器设置 <code>display: flex</code> 或 <code>display: inline-flex</code></li>
-<li>如有必要，给容器设置 flex-direction 属性</li>
-<li>给弹性子元素设置外边距和/或 flex 值，用来控制子元素的大小</li>
-<li>将元素大致摆放到合适的位置后，就可以按需添加其他的 Flexbox 属性</li>
+<li>层叠上下文的根</li>
+<li>z-index 为负的定位元素（及其子元素）</li>
+<li>block 块状水平盒子</li>
+<li>float 浮动盒子</li>
+<li>inline/inline-block 水平盒子</li>
+<li>z-index 为 auto 看成 z-index 为 0 的定位元素（及其子元素），不靠 z-index 的重叠上下文</li>
+<li>z-index 为正的定位元素（及其子元素）</li>
 </ul>
-<p>Flexbox 的实现是 CSS 的一大进步。一旦你熟悉了，你可能想要在页面的每个地方都开始使用，不过你应该依靠正常的文档流，只在必要的时候才使用 Flexbox。</p>
-<p>Flexbox 的一个有趣之处是如何基于弹性子元素的数量和其中内容量（及大小）计算容器大小。因为如果网页很大，或者加载很慢时可能会产生奇怪的行为，建议整页布局时用网格布局。只有一行多列的布局才会产生这个问题。如果主页面布局采用的是一列多行 不会出现问题。</p>
-<p>Flexbox 是一维的，是以内容为切入点由内向外工作的。<br>Flexbox 允许使用<code>margin:auto</code>来填充弹性子元素之间的可用空间。</p>
-<h1 id="容器属性"><a href="#容器属性" class="headerlink" title="容器属性"></a>容器属性</h1><ul>
-<li>flex-flow（子元素排列方式）</li>
-<li>flex-direction（主副轴方向）</li>
-<li>flex-wrap（子元素换行）</li>
-<li>justify-content（主轴方向子元素对齐方式）</li>
-<li>align-items（副轴方向子元素对齐方式）</li>
-<li>align-content（多轴线对齐方式）</li>
-</ul>
-<h2 id="flex-flow"><a href="#flex-flow" class="headerlink" title="flex-flow"></a>flex-flow</h2><p>flex-flow 属性用于设置或检索弹性盒模型对象的子元素排列方式。<br>flex-flow 是 flex-direction 和 flex-wrap 的属性简写，默认值为 row nowrap。</p>
-<h2 id="flex-direction"><a href="#flex-direction" class="headerlink" title="flex-direction"></a>flex-direction</h2><p>Flexbox 一个重要功能是能够切换主副轴方向，其用弹性容器的 flex-direction 属性控制。<br>改变弹性方向就改变了主轴方向，副轴因为要与主轴垂直，所以方向也随之改变。</p>
-<h3 id="row"><a href="#row" class="headerlink" title="row"></a>row</h3><p>主轴从左到右的方向排列，副轴从上到下的方向排列。默认值。</p>
-<h3 id="row-reverse"><a href="#row-reverse" class="headerlink" title="row-reverse"></a>row-reverse</h3><p>主轴从右到左的方向排列，副轴从上到下的方向排列，类似 row。</p>
-<h3 id="column"><a href="#column" class="headerlink" title="column"></a>column</h3><p>主轴从上到下的方向排列，副轴从左到右的方向排列。</p>
-<p>对于弹性子元素而言，flex-basis、flex-grow 和 flex-shrink 现在作用于元素的高度而不是宽度。</p>
-<p>水平弹性盒子的大部分概念同样适用于垂直的弹性盒子。但有一点不同：CSS 中处理高度的方式与处理宽度的方式在本质上不一样。弹性容器会占据 100% 的可用宽度，而高度则由自身的内容来决定。即使改变主轴方向，也不会影响这一本质。所以在垂直的弹性盒子里，如果不给弹性子元素设置宽度，弹性子元素的宽度默认为弹性容器的宽度，即 100% 的可用宽度。</p>
-<p>弹性容器的高度由弹性子元素决定，它们会填满容器高度。但在垂直的弹性盒子里，子元素的 flex-grow 和 flex-shrink 不会起作用，除非有“外力”强行改变弹性容器的高度。</p>
-<h3 id="column-reverse"><a href="#column-reverse" class="headerlink" title="column-reverse"></a>column-reverse</h3><p>主轴从下到的上方向排列，副轴从左到右的方向排列，类似 column。</p>
-<h2 id="flex-wrap"><a href="#flex-wrap" class="headerlink" title="flex-wrap"></a>flex-wrap</h2><p>默认情况下，子元素都排在一条线（又称”轴线”）上。当子元素填满这根轴线呢？</p>
-<p>flex-wrap 属性设置是否允许弹性子元素换行（列）显示。当 flex-wrap 属性设置启用换行后，子元素将不再根据 flex-shrink 属性收缩，任何超过弹性容器的子元素都会换行（列）显示。</p>
-<p>若 flex-direction 值为 column 或 column-reverse，则 flex-wrap 允许弹性子元素换到新的一列显示，不过这只在限制容器高度的情况下才发生，否则容器会扩展高度以包含全部子元素。</p>
-<h3 id="nowrap"><a href="#nowrap" class="headerlink" title="nowrap"></a>nowrap</h3><p>不拆行或不拆列。默认值。</p>
-<h3 id="wrap"><a href="#wrap" class="headerlink" title="wrap"></a>wrap</h3><p>必要的时候拆行或拆列，第一行在上方。<br>启用后，子元素不再根据 flex-shrink 值收缩，超过弹性容器的子元素都会换行显示。</p>
-<h3 id="wrap-reverse"><a href="#wrap-reverse" class="headerlink" title="wrap-reverse"></a>wrap-reverse</h3><p>必要的时候拆行或拆列，但是以相反的顺序，第一行在下方。<br>启用后，子元素不再根据 flex-shrink 值收缩，超过弹性容器的子元素都会换行显示。</p>
-<h2 id="justify-content"><a href="#justify-content" class="headerlink" title="justify-content"></a>justify-content</h2><p>justify-content 属性控制子元素在主轴方向上的对齐方式（前提为子元素未填满容器）。</p>
-<p>对齐时子元素之间会产生间距，间距是在子元素的外边距之后另进行计算的，且 flex-grow 值要考虑进来。如果任意子元素的 flex-grow 值不为 0，或任意子元素在主轴方向的外边距值为 auto，justify-content 失效。</p>
-<h3 id="flex-start"><a href="#flex-start" class="headerlink" title="flex-start"></a>flex-start</h3><p>左对齐（子元素从主轴的开始位置顺序排列）。默认值。</p>
-<h3 id="flex-end"><a href="#flex-end" class="headerlink" title="flex-end"></a>flex-end</h3><p>右对齐（子元素从主轴的结束位置开始排列）。</p>
-<h3 id="center"><a href="#center" class="headerlink" title="center"></a>center</h3><p>子元素居中。</p>
-<h3 id="space-between"><a href="#space-between" class="headerlink" title="space-between"></a>space-between</h3><p>第一个子元素左对齐，最后一个子元素右对齐，剩下的子元素间隔均匀放在两者中间。</p>
-<h3 id="space-around"><a href="#space-around" class="headerlink" title="space-around"></a>space-around</h3><p>每个子元素两侧的间隔相等。所以，子元素之间的间隔是子元素与边框的间隔的两倍。</p>
-<h2 id="align-items"><a href="#align-items" class="headerlink" title="align-items"></a>align-items</h2><p>align-items 属性控制子元素在副轴方向上的对齐方式。</p>
-<h3 id="stretch"><a href="#stretch" class="headerlink" title="stretch"></a>stretch</h3><p>在主轴为水平排列情况下，子元素未设高度或设为 auto，子元素填充容器高度（弹性布局能实现等高列）；在主轴为垂直排列情况下，子元素未设宽度或设为 auto，子元素填充容器宽度。默认值。</p>
-<h3 id="flex-start-1"><a href="#flex-start-1" class="headerlink" title="flex-start"></a>flex-start</h3><p>子元素与副轴的起点对齐。</p>
-<h3 id="flex-end-1"><a href="#flex-end-1" class="headerlink" title="flex-end"></a>flex-end</h3><p>子元素与副轴的终点对齐。</p>
-<h3 id="center-1"><a href="#center-1" class="headerlink" title="center"></a>center</h3><p>子元素与副轴的中点对齐。</p>
-<h3 id="baseline"><a href="#baseline" class="headerlink" title="baseline"></a>baseline</h3><p>子元素根据每个弹性子元素的第一行文字的基线对齐。</p>
-<h2 id="align-content"><a href="#align-content" class="headerlink" title="align-content"></a>align-content</h2><p>align-content 属性定义多根轴线在容器内对齐方式（前提为允许子元素换行（列）且有多跟轴线）。</p>
-<p>在主轴为水平排列情况下，轴线为水平轴线，有几行则几根轴线；<br>在主轴为垂直排列情况下，轴线为竖直轴线，有几列则几根轴线。</p>
-<p>Flexbox 为一维布局，适合用在元素组成的行或列上。Flexbox 支持用 flex-wrap 属性换行（列），但是没法让上一行（列）的元素跟下一行（列）的元素对齐，所以没有 justify-items 这样的属性。</p>
-<p>当 align-content 属性与 align-items 属性冲突时，align-content 属性优先。</p>
-<h3 id="stretch-1"><a href="#stretch-1" class="headerlink" title="stretch"></a>stretch</h3><p>轴线占满整个副轴。默认值。</p>
-<h3 id="flex-start-2"><a href="#flex-start-2" class="headerlink" title="flex-start"></a>flex-start</h3><p>与副轴的起点对齐。</p>
-<h3 id="flex-end-2"><a href="#flex-end-2" class="headerlink" title="flex-end"></a>flex-end</h3><p>与副轴的终点对齐。</p>
-<h3 id="center-2"><a href="#center-2" class="headerlink" title="center"></a>center</h3><p>与副轴的中点对齐。</p>
-<h3 id="space-between-1"><a href="#space-between-1" class="headerlink" title="space-between"></a>space-between</h3><p>与副轴两端对齐，轴线之间的间隔平均分布。</p>
-<h3 id="space-around-1"><a href="#space-around-1" class="headerlink" title="space-around"></a>space-around</h3><p>每根轴线两侧的间隔相等。所以轴线之间的间隔是轴线与边框的间隔一倍。</p>
-<h1 id="子元素属性"><a href="#子元素属性" class="headerlink" title="子元素属性"></a>子元素属性</h1><ul>
-<li>order（子元素顺序）</li>
-<li>flex（子元素大小）</li>
-<li>flex-basis（子元素基准）</li>
-<li>flex-grow（子元素增长）</li>
-<li>flex-shrink（子元素收缩）</li>
-<li>align-self（副轴方向子元素对齐方式）</li>
-</ul>
-<h2 id="order"><a href="#order" class="headerlink" title="order"></a>order</h2><p>正常情况下，弹性子元素按照在 HTML 源码中出现的顺序排列。它们会沿着主轴方向从主轴起点开始排列。使用 order 属性能改变子元素排列顺序。还可以将其指为任意正负整数。如果多个弹性子元素有一样的值，它们就会按照源码顺序出现。</p>
-<p>在初始状态下，所有弹性子元素的 order 属性值都为 0。指定一个元素的值为 −1 它则会移动到列表最前面，指定为 1 则会移动到最后。可以按需要给每个子元素指定 order 以便重新编排它们。这些值不一定要连续。</p>
-<p>谨慎使用 order。让屏幕上的视觉布局顺序和源码顺序差别太大会影响网站的可访问性。在大多数浏览器里使用 Tab 键浏览元素的顺序与源码保持一致，如果视觉上的差别太大就会令人困惑。视力受损的用户使用的大部分屏幕阅读器也是根据源码的顺序来的。</p>
-<h2 id="flex"><a href="#flex" class="headerlink" title="flex"></a>flex</h2><p>flex 属性控制弹性子元素在主轴方向上的大小（指元素的宽度），用来设置或者检索弹性盒模型对象子元素如何分配空间。flex 属性是 flex-grow、flex-shrink 和 flex-basis 的属性简写，前两个属性都基于 flex-basis。</p>
-<p>推荐使用简写属性 flex，而不是分别声明 flex-grow、flex-shrink、flex-basis。与大部分的简写属性不一样，如果在 flex 中忽略声明某个子属性，那么子属性的值并不会被置为默认值。如果某个子属性被省略，那么 flex 简写属性会设置其为：<code> flex-grow:1</code> <code>flex-shrink:1</code> <code>flex-basis:0 </code>。但是，默认值正是大多数情况下所需要的值。</p>
-<p>flex 有几个特殊值：</p>
-<ul>
-<li><code>flex: 0 1 auto</code>（默认值）<br>不增长但自动收缩，收缩比例为 1；flex-basis 为 auto，即取自用户定义的宽度或内容本身的宽度。</li>
-<li><code>flex: 1 1 auto</code>（<code>flex: auto</code>）<br>自动增长缩放，比例均为 1；flex-basis 为 auto，即取自用户定义的宽度或内容本身的宽度。</li>
-<li><code>flex: 0 0 auto</code>（<code>flex: none</code>）<br>不增长不缩放；flex-basis 为 auto，即取自用户定义的宽度或内容本身的宽度。</li>
-<li><code>flex: 0 1 0%</code>（<code>flex: 0</code>）<br>不增长但自动收缩，收缩比例为 1；flex-basis 为 0。</li>
-<li><code>flex: 1 1 0%</code>（<code>flex: 1</code>）<br>自动增长缩放，比例均为 1；flex-basis 为 0。当给所有子元素设置 flex: 1 则代表子元素平分宽度。</li>
-<li>两个值<br>第一个为 flex-grow；第二个，如果是数字认为是 flex-shrink，如果是宽度认为是 flex-basis。</li>
-</ul>
-<h2 id="flex-basis"><a href="#flex-basis" class="headerlink" title="flex-basis"></a>flex-basis</h2><p>flex-basis 属性定义了子元素大小的长度基准值，即一个初始的“主尺寸”。</p>
-<p>flex-basis 属性可以设置为任意长度单位的值，包括 px、em、百分比。它默认值是 auto，此时浏览器会检查元素是否设置 width 属性。如果有则使用 width 值作为 flex-basis 值；如果没有则用元素内容自身的大小。如果 flex-basis 的值不是 auto，那么 width 属性会被忽略。</p>
-<p>每个子元素初始主尺寸确定后，它们可能需要在主轴方向扩大或者缩小来适应（或填充）弹性容器的大小。这时候就需要 flex-grow 属性和 flex-shrink 属性来决定如何增长和缩放。</p>
-<p>当 flex-basis 为 0% 时，内边距会改变弹性子元素的初始主宽度计算的方式。如果想要精确结果，则要么保证两列有相同的内边距，要么用 flex 属性时使用 flex-basis 设置弹性基准值。</p>
-<h2 id="flex-grow"><a href="#flex-grow" class="headerlink" title="flex-grow"></a>flex-grow</h2><p>每个弹性子元素 flex-basis 值计算出来后，它们（加上子元素间的外边距）加起来会占据一定的宽度。如果加起来的宽度不一定正好填满弹性容器的宽度，可能会有留白。</p>
-<p>多出来的留白（或剩余宽度）会按照 flex-grow（增长因子）的值分配给每个弹性子元素，flex-grow 的值为非负整数。如果弹性子元素 flex-grow 值为 0，那么子元素的宽度不会超过 flex-basis 的值；如果弹性子元素 flex-grow 值非 0，那么子元素会增长到所有的剩余空间被分配完，这意味着弹性子元素会填满容器的宽度。</p>
-<p>flex-grow 值越大，元素的“权重”越高，就会占据更大剩余宽度。一个<code>flex-grow:2</code>的子元素增长的宽度为<code>flex-grow:1</code>的子元素增长的宽度的两倍。分配时只跟 flex-grow 有关，跟 flex-basis 无关。</p>
-<p>flex-grow 默认值为 0。</p>
-<h2 id="flex-shrink"><a href="#flex-shrink" class="headerlink" title="flex-shrink"></a>flex-shrink</h2><p>flex-shrink 属性与 flex-grow 属性遵循相似的原则。计算出弹性子元素的初始主尺寸后，它们的累加值可能会超出弹性容器的可用宽度。如果不用 flex-shrink 属性又不用 flex-wrap 属性，就会导致溢出。</p>
-<p>每个子元素的 flex-shrink 值代表它是否应该收缩以防止溢出，flex-grow 的值为非负整数。与 flex-grow 属性类似，如果子元素 flex-shrink 值为 0，则不会收缩；如果子元素 flex-shrink 值非 0，则会收缩至不再溢出。按照 flex-shrink 值的比例，值越大的元素收缩得越多。收缩时只跟 flex-shrink 有关，跟 flex-basis 无关。</p>
-<p>flex-shrink 默认值为 1。</p>
-<h2 id="align-self"><a href="#align-self" class="headerlink" title="align-self"></a>align-self</h2><p>align-self 属性控制单个子元素在副轴方向上的对齐方式。align-self 属性跟弹性容器的 align-items 属性效果相同，但是它能单独给弹性子元素设定不同的对齐方式，两者冲突时 align-self 属性优先。</p>
-<h3 id="auto"><a href="#auto" class="headerlink" title="auto"></a>auto</h3><p>以容器的 align-items 值为准，使用其他值会覆盖容器的设置。默认值。</p>
-<h3 id="stretch-2"><a href="#stretch-2" class="headerlink" title="stretch"></a>stretch</h3><p>在主轴为水平排列情况下，子元素未设高度或设为 auto，子元素填充容器高度（弹性布局能实现等高列）；在主轴为垂直排列情况下，子元素未设宽度或设为 auto，子元素填充容器宽度。</p>
-<h3 id="flex-start-3"><a href="#flex-start-3" class="headerlink" title="flex-start"></a>flex-start</h3><p>子元素与副轴的起点对齐。</p>
-<h3 id="flex-end-3"><a href="#flex-end-3" class="headerlink" title="flex-end"></a>flex-end</h3><p>子元素与副轴的终点对齐。</p>
-<h3 id="center-3"><a href="#center-3" class="headerlink" title="center"></a>center</h3><p>子元素与副轴的中点对齐。</p>
-<h3 id="baseline-1"><a href="#baseline-1" class="headerlink" title="baseline"></a>baseline</h3><p>子元素根据每个弹性子元素的第一行文字的基线对齐。</p>
+<p>如果发现 z-index 没有按照预期表现，就在 DOM 树里往上找元素祖先节点，直到层叠上下文的根，然后给它设置 z-idnex，将整个层叠上下文向前或向后放。还要注意多个层叠上下文嵌套的情况。</p>
+<p>网页很复杂时，很难判断是哪个层叠上下文导致的问题。因此在创建层叠上下文的时候就一定要多加小心，没有特殊理由的话不要随意创建，尤其是当一个元素包含了网页很大一部分内容的时候。尽可能地将独立的定位元素（如模态框）放到 DOM 的顶层，body 结束标签之前，这样就没有外部的层叠上下文能束缚它们。</p>
+<p>有些开发人员会忍不住给页面的大量元素使用定位。一定要克制这种冲动。定位用得越多，网页就越复杂，也就越难调试。如果你定位了大量元素，就回头评估一下现在的情况，尤其当你发现很难调试出自己想要的布局时，一定要反思。如果可以用别的方法实现某个布局，应该优先用那些方法。</p>
+<p>如果能够依靠文档流，而不是靠明确指定定位的方式实现布局，那么浏览器会帮我们处理好很多边缘情况。记住，定位可能会将元素拉出文档流。一般来说只有在需要将元素叠放到别的元素之前时，才应该用定位。</p>
 
                 
               </div>
@@ -989,8 +953,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>CSS之弹性布局</div>
-      <div>http://example.com/2021/10/03/CSS之弹性布局/</div>
+      <div>CSS定位</div>
+      <div>http://example.com/2021/10/03/CSS定位/</div>
     </div>
     <div class="license-meta">
       
@@ -1008,7 +972,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2025年7月30日</div>
+          <div>2025年8月2日</div>
         </div>
       
       
@@ -1039,9 +1003,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2021/10/03/CSS%E4%B9%8B%E7%BD%91%E6%A0%BC%E5%B8%83%E5%B1%80/" title="CSS之网格布局">
+                      <a href="/2021/10/03/CSS%E5%B1%82%E5%8F%A0%E5%92%8C%E7%BB%A7%E6%89%BF/" title="CSS层叠和继承">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">CSS之网格布局</span>
+                        <span class="hidden-mobile">CSS层叠和继承</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -1049,8 +1013,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2021/10/03/CSS%E4%B9%8B%E5%B1%82%E5%8F%A0%E5%92%8C%E7%BB%A7%E6%89%BF/" title="CSS之层叠和继承">
-                        <span class="hidden-mobile">CSS之层叠和继承</span>
+                      <a href="/2021/10/03/CSS%E6%96%87%E6%A1%A3%E6%B5%81/" title="CSS文档流">
+                        <span class="hidden-mobile">CSS文档流</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

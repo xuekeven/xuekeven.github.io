@@ -1,0 +1,1349 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Keven">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Demo：https:&#x2F;&#x2F;github.com&#x2F;xuekeven&#x2F;learn_web&#x2F;blob&#x2F;main&#x2F;dome&#x2F;CSS&#x2F;两栏_网格布局.html 。https:&#x2F;&#x2F;github.com&#x2F;xuekeven&#x2F;learn_web&#x2F;blob&#x2F;main&#x2F;dome&#x2F;CSS&#x2F;网格布局_照片墙.html 。 搭配：https:&#x2F;&#x2F;www.ruanyifeng.com&#x2F;blog&#x2F;2019&#x2F;03&#x2F;grid-lay">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS网格布局">
+<meta property="og:url" content="http://example.com/2021/10/03/CSS%E7%BD%91%E6%A0%BC%E5%B8%83%E5%B1%80/index.html">
+<meta property="og:site_name" content="Keven&#39;s Blog">
+<meta property="og:description" content="Demo：https:&#x2F;&#x2F;github.com&#x2F;xuekeven&#x2F;learn_web&#x2F;blob&#x2F;main&#x2F;dome&#x2F;CSS&#x2F;两栏_网格布局.html 。https:&#x2F;&#x2F;github.com&#x2F;xuekeven&#x2F;learn_web&#x2F;blob&#x2F;main&#x2F;dome&#x2F;CSS&#x2F;网格布局_照片墙.html 。 搭配：https:&#x2F;&#x2F;www.ruanyifeng.com&#x2F;blog&#x2F;2019&#x2F;03&#x2F;grid-lay">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-10-03T14:00:00.000Z">
+<meta property="article:modified_time" content="2025-08-02T07:54:37.600Z">
+<meta property="article:author" content="Keven">
+<meta property="article:tag" content="CSS">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>CSS网格布局 - Keven&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 50vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Keven&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tools/" target="_self">
+                <i class="iconfont icon-briefcase"></i>
+                <span>工具</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/dome/" target="_self">
+                <i class="iconfont icon-th-large"></i>
+                <span>Dome</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/example.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.2)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="CSS网格布局"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        Keven
+      </span>
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2021-10-03 22:00" pubdate>
+          2021年10月3日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          4.9k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          31 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar category-bar" style="margin-right: -1rem">
+    
+
+
+
+
+
+<div class="category-list">
+  
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="编程语言"
+        id="heading-3bf8a523aea21a3a0f6c53b0f43429bb" role="tab" data-toggle="collapse" href="#collapse-3bf8a523aea21a3a0f6c53b0f43429bb"
+        aria-expanded="true"
+      >
+        编程语言
+        <span class="list-group-count">(44)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-3bf8a523aea21a3a0f6c53b0f43429bb"
+           role="tabpanel" aria-labelledby="heading-3bf8a523aea21a3a0f6c53b0f43429bb">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="CSS"
+        id="heading-2c56c360580420d293172f42d85dfbed" role="tab" data-toggle="collapse" href="#collapse-2c56c360580420d293172f42d85dfbed"
+        aria-expanded="true"
+      >
+        CSS
+        <span class="list-group-count">(13)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-2c56c360580420d293172f42d85dfbed"
+           role="tabpanel" aria-labelledby="heading-2c56c360580420d293172f42d85dfbed">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2021/09/26/CSS%E5%8D%95%E4%BD%8D/" title="CSS单位"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">CSS单位</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/10/03/CSS%E5%AE%9A%E4%BD%8D/" title="CSS定位"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">CSS定位</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/10/03/CSS%E5%B1%82%E5%8F%A0%E5%92%8C%E7%BB%A7%E6%89%BF/" title="CSS层叠和继承"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">CSS层叠和继承</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/10/03/CSS%E5%B1%85%E4%B8%AD%20copy/" title="CSS居中"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">CSS居中</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/10/03/CSS%E5%B1%85%E4%B8%AD/" title="CSS居中"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">CSS居中</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/10/03/CSS%E5%BC%B9%E6%80%A7%E5%B8%83%E5%B1%80/" title="CSS弹性布局"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">CSS弹性布局</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/10/03/CSS%E6%96%87%E6%A1%A3%E6%B5%81/" title="CSS文档流"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">CSS文档流</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2025/08/02/CSS%E5%93%8D%E5%BA%94%E5%BC%8F%E8%AE%BE%E8%AE%A1/" title="CSS模块化"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">CSS模块化</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/10/03/CSS%E6%B5%AE%E5%8A%A8/" title="CSS浮动"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">CSS浮动</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/10/03/CSS%E7%9B%92%E6%A8%A1%E5%9E%8B/" title="CSS盒模型"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">CSS盒模型</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/10/03/CSS%E7%BD%91%E6%A0%BC%E5%B8%83%E5%B1%80/" title="CSS网格布局"
+           class="list-group-item list-group-item-action
+           active">
+          <span class="category-post">CSS网格布局</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/08/18/CSS%E9%9D%A2%E8%AF%95%E9%A2%98/" title="CSS面试题"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">CSS面试题</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/12/07/Sass%D6%AA%CA%B6/" title="Sass知识"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Sass知识</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="HTML"
+        id="heading-4c4ad5fca2e7a3f74dbb1ced00381aa4" role="tab" data-toggle="collapse" href="#collapse-4c4ad5fca2e7a3f74dbb1ced00381aa4"
+        aria-expanded="false"
+      >
+        HTML
+        <span class="list-group-count">(2)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-4c4ad5fca2e7a3f74dbb1ced00381aa4"
+           role="tabpanel" aria-labelledby="heading-4c4ad5fca2e7a3f74dbb1ced00381aa4">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2023/01/02/HTML%E5%9F%BA%E7%A1%80/" title="HTML基础"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">HTML基础</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/09/23/HTML%E9%9D%A2%E8%AF%95%E9%A2%98/" title="HTML面试题"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">HTML面试题</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="JavaScript"
+        id="heading-686155af75a60a0f6e9d80c1f7edd3e9" role="tab" data-toggle="collapse" href="#collapse-686155af75a60a0f6e9d80c1f7edd3e9"
+        aria-expanded="false"
+      >
+        JavaScript
+        <span class="list-group-count">(29)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-686155af75a60a0f6e9d80c1f7edd3e9"
+           role="tabpanel" aria-labelledby="heading-686155af75a60a0f6e9d80c1f7edd3e9">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2021/09/01/JavaScript%E4%B9%8BArray%E6%96%B9%E6%B3%95%E5%B1%9E%E6%80%A7/" title="JavaScript之Array方法属性"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">JavaScript之Array方法属性</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/11/06/JavaScript%E4%B9%8BFunction%E6%96%B9%E6%B3%95%E5%B1%9E%E6%80%A7/" title="JavaScript之Function方法属性"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">JavaScript之Function方法属性</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/09/09/JavaScript%E4%B9%8BMap%E6%96%B9%E6%B3%95%E5%B1%9E%E6%80%A7/" title="JavaScript之Map方法属性"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">JavaScript之Map方法属性</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/09/06/JavaScript%E4%B9%8BObject%E6%96%B9%E6%B3%95%E5%B1%9E%E6%80%A7/" title="JavaScript之Object方法属性"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">JavaScript之Object方法属性</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/12/10/JavaScript%E4%B9%8BRegExp%E4%B8%8E%E6%AD%A3%E5%88%99/" title="JavaScript之RegExp与正则"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">JavaScript之RegExp与正则</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/09/09/JavaScript%E4%B9%8BSet%E6%96%B9%E6%B3%95%E5%B1%9E%E6%80%A7/" title="JavaScript之Set方法属性"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">JavaScript之Set方法属性</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/09/08/JavaScript%E4%B9%8BString%E6%96%B9%E6%B3%95%E5%B1%9E%E6%80%A7/" title="JavaScript之String方法属性"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">JavaScript之String方法属性</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/12/25/JavaScript%D6%AETypeScript/" title="JavaScript之TypeScript"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">JavaScript之TypeScript</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/09/13/JavaScript%E4%BA%8B%E4%BB%B6%E6%9C%BA%E5%88%B6/" title="JavaScript事件机制"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">JavaScript事件机制</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/08/19/JavaScript%E4%BD%9C%E7%94%A8%E5%9F%9F%E4%B8%8E%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87/" title="JavaScript作用域与执行上下文"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">JavaScript作用域与执行上下文</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/08/23/JavaScript%E5%86%85%E5%AD%98%E5%92%8C%E6%8B%B7%E8%B4%9D/" title="JavaScript内存和拷贝"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">JavaScript内存和拷贝</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/11/09/JavaScript%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F/" title="JavaScript内存泄漏"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">JavaScript内存泄漏</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/10/12/%E5%87%BD%E6%95%B0%E6%9F%AF%E9%87%8C%E5%8C%96/" title="JavaScript函数柯里化"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">JavaScript函数柯里化</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/07/17/JavaScript%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" title="JavaScript数据类型"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">JavaScript数据类型</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/09/23/JavaScript%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D/" title="JavaScript数组去重"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">JavaScript数组去重</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/08/21/JavaScript%E6%95%B0%E7%BB%84%E6%89%81%E5%B9%B3%E5%8C%96/" title="JavaScript数组扁平化"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">JavaScript数组扁平化</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/10/24/JavaScript%D6%AA%CA%B6/" title="JavaScript知识"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">JavaScript知识</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/09/06/JavaScript%E7%A8%80%E7%96%8F%E6%95%B0%E7%BB%84%E4%B8%8E%E5%AF%86%E9%9B%86%E6%95%B0%E7%BB%84/" title="JavaScript稀疏数组与密集数组"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">JavaScript稀疏数组与密集数组</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/11/08/JavaScript%E7%B1%BB%E6%95%B0%E7%BB%84%E5%AF%B9%E8%B1%A1/" title="JavaScript类数组对象"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">JavaScript类数组对象</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/10/25/JavaScript%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82/" title="JavaScript网络请求"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">JavaScript网络请求</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/01/25/JavaScript%E8%AF%8D%E6%B3%95%E7%BB%93%E6%9E%84/" title="JavaScript词法结构"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">JavaScript词法结构</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2023/01/20/JavaScript%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%E4%B9%8B%E5%8F%98%E9%87%8F/" title="JavaScript语言基础之变量"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">JavaScript语言基础之变量</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2023/01/24/JavaScript%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%E4%B9%8B%E6%93%8D%E4%BD%9C%E7%AC%A6/" title="JavaScript语言基础之操作符"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">JavaScript语言基础之操作符</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/07/17/JavaScript%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%E4%B9%8B%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" title="JavaScript语言基础之数据类型"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">JavaScript语言基础之数据类型</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2023/02/02/JavaScript%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%E4%B9%8B%E8%AF%AD%E5%8F%A5/" title="JavaScript语言基础之语句"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">JavaScript语言基础之语句</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/08/20/JavaScript%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%88%B6/" title="JavaScript运行机制"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">JavaScript运行机制</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/07/16/JavaScript%E9%9D%A2%E8%AF%95%E9%A2%98/" title="JavaScript面试题"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">JavaScript面试题</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/08/24/%E5%BC%82%E6%AD%A5JavaScript/" title="异步JavaScript"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">异步JavaScript</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/08/20/%E6%89%8B%E5%86%99JavaScript/" title="手写JavaScript"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">手写JavaScript</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+</div>
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">CSS网格布局</h1>
+            
+              <p id="updated-time" class="note note-info" style="">
+                
+                  
+                    本文最后更新于 2025年8月2日 下午
+                  
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <p>Demo：<br><a target="_blank" rel="noopener" href="https://github.com/xuekeven/learn_web/blob/main/dome/CSS/%E4%B8%A4%E6%A0%8F_%E7%BD%91%E6%A0%BC%E5%B8%83%E5%B1%80.html">https://github.com/xuekeven/learn_web/blob/main/dome/CSS/两栏_网格布局.html</a> 。<br><a target="_blank" rel="noopener" href="https://github.com/xuekeven/learn_web/blob/main/dome/CSS/%E7%BD%91%E6%A0%BC%E5%B8%83%E5%B1%80_%E7%85%A7%E7%89%87%E5%A2%99.html">https://github.com/xuekeven/learn_web/blob/main/dome/CSS/网格布局_照片墙.html</a> 。</p>
+<p>搭配：<br><a target="_blank" rel="noopener" href="https://www.ruanyifeng.com/blog/2019/03/grid-layout-tutorial.html">https://www.ruanyifeng.com/blog/2019/03/grid-layout-tutorial.html</a> 。</p>
+<h1 id="介绍使用"><a href="#介绍使用" class="headerlink" title="介绍使用"></a>介绍使用</h1><p>CSS 网格布局可以定义由行和列组成的二维布局，然后将元素放到网格中。有些元素可能只占据网格的一个单元，而另一些元素则可能占据多行或多列。网格的大小既可以精确定义，也可以根据自身内容自动计算。你既可以将元素精确地放置到网格某个位置，也可以让其在网格内自动定位，填充划分好的区域。</p>
+<p>跟弹性布局类似，网格布局也是作用于两级的 DOM 结构。设置<code>display: grid</code>的元素是一个网格容器（gridcontainer），它的子元素则变成网格元素（grid items）。使用<code>display: grid</code>定义一个网格容器时，容器表现得像一个块级元素，100%填充可用宽度。也可以使用<code>display: inline-grid</code>，这样元素就会在行内流动，且宽度只能够包含子元素，不过<code>display: inline-grid</code>的使用频率不高。</p>
+<p>有一点值得注意的是，使用网格布局并不会让弹性布局失去用武之地。使用弹性布局时，需要按照一定方式嵌套元素，用网格实现同样的布局需要修改 HTML 结构。</p>
+<p>默认情况下，每个网格容器都会扩展并填满整个网格区域，但网格容器子元素不会填满整个网格容器，因此网格区域会出现多余的高度。一个简单的解决办法是用弹性布局，其子元素会填充高度。</p>
+<h2 id="与弹性布局配合"><a href="#与弹性布局配合" class="headerlink" title="与弹性布局配合"></a>与弹性布局配合</h2><p>这两种布局方式有以下两个重要区别：弹性布局本质上是一维的，而网格布局是二维的；弹性布局是以内容为切入点由内向外工作的，而网格布局是以布局为切入点从外向内工作的。</p>
+<p>弹性布局是一维的，所以它很适合用在相似的元素组成的行（列）上。它支持用 flex-wrap 换行，但是没法让上一行（列）元素跟下一行（列）元素对齐。相反网格布局是二维的，旨在解决一个轨道的元素跟另一个轨道的元素对齐的问题。</p>
+<p>弹性布局让你在一行或一列中安排一系列元素，但是它们的大小不需要明确指定，每个元素占据的大小根据自身的内容决定。在网格布局中首先要描述布局，然后将元素放在布局结构中去。虽然每个网格元素的内容都能影响其网格轨道的大小，但这同时也会影响整个轨道大小，进而影响这个轨道里其他网格元素的大小。</p>
+<p>当设计要求元素在两个维度上都对齐时使用网格布局；当只关心一维元素排列时使用弹性布局。在实践中，这通常（并非总是）意味着网格更适合用于整体的网页布局，弹性布局更适合对网格区域内特定元素布局。继续使用两者，你就会对不同情况下该用哪种布局得心应手。</p>
+<h1 id="网格剖析"><a href="#网格剖析" class="headerlink" title="网格剖析"></a>网格剖析</h1><ul>
+<li>网格线（grid line）</li>
+</ul>
+<p>网格线构成了网格的框架。一条网格线可以水平或者垂直，也可以位于一行或一列的任意一侧。<br>如果指定了 grid-gap 的话，它就位于网格线上。</p>
+<ul>
+<li>网格轨道（grid track）</li>
+</ul>
+<p>一个网格轨道是两条相邻网格线之间空间。网格有水平轨道（行）和垂直轨道（列）。</p>
+<ul>
+<li>网格单元（grid cell）</li>
+</ul>
+<p>网格上的单个空间，水平和垂直的网格轨道交叉重叠的部分。</p>
+<ul>
+<li>网格区域（grid area）</li>
+</ul>
+<p>网格上的矩形区域，由一个到多个网格单元组成。该区域位于两条垂直网格线和两条水平网格线之间。</p>
+<h2 id="编号网格线"><a href="#编号网格线" class="headerlink" title="编号网格线"></a>编号网格线</h2><p>网格轨道定义好后，要将每个网格子元素放到特定的位置上。浏览器给网格里的每个网格线都赋予了编号。网格线编号从左上角为 1 开始递增，负数则指向从右下角开始的位置。</p>
+<p>可以在 grid-column 和 grid-row 属性中用网格线的编号指定网格子元素位置。如果想要一个网格元素在垂直方向上跨越 1 号到 3 号网格线，就需要给元素设置<code>grid-column: 1 / 3</code>，同理设置<code>grid-row: 3 / 5</code>让元素在水平方向上跨越 3 号到 5 号网格线。这两属性一起就能指定一个元素应该放置的网格区域。</p>
+<p>需要注意，grid-column 是 grid-column-start 和 grid-column-end 的简写；grid-row 是 grid-row-start 和 grid-row-end 的简写。中间的斜线只在简写属性里用于区分这两个值，斜线前后的空格不作要求。</p>
+<p>可以用特别的关键字 span 可以用来指定 grid-row 和 grid-column 的值。这个关键字告诉浏览器子元素需要占据一个网格轨道。如果没有指出具体是哪一行或列，浏览器将会根据网格子元素的布局算法（placement algorithm）自动将其放到合适的位置。布局算法将子元素放在网格上可以容纳该元素的第一处可用空间。</p>
+<h2 id="命名网格线"><a href="#命名网格线" class="headerlink" title="命名网格线"></a>命名网格线</h2><p>有时候记录所有网格线的编号实在太麻烦，尤其是在处理很多网格轨道时。为了简单，可以给网格线命名，并在布局网格子元素时使用网格线名称而不是编号。</p>
+<p>使用 grid-template-columns 和 grid-template-rows 声明网格轨道时，可以在中括号内写上网格线的名称，且可以同时命名两个名称。两个名称之间用空格隔开，之后可以任选一个名称使用。</p>
+<p>还有一个彩蛋：将两个网格线命名为 left-start 和 left-end，就定义了一个叫作 left 的区域，这区域覆盖两个网格线之间的区域。-start 和 -end 后缀作为关键字，定义两者之间区域。子元素设置<code>grid-column: left</code>，它就会跨越从 left-start 到 left-end 的区域。</p>
+<p>命名时重复使用同一个名称合法，可以在名称后跟数字区分是第几个网格线。可以以各种方式命名网格线。它们在网格里的用法也是五花八门，这取决于每个网格特定的结构。</p>
+<h2 id="命名网格区域"><a href="#命名网格区域" class="headerlink" title="命名网格区域"></a>命名网格区域</h2><p>不用计算或者命名网格线，直接用命名的网格区域将网格子元素定位到网格中。想要实现这一方法需要借助网格容器的 grid-template 属性和网格子元素的 grid-area 属性。</p>
+<p>grid-template-areas 属性使用一种 ASCII art 的语法，可以直接在 CSS 中画一个可视化的网格形象。该声明给出了一系列加引号字符串，每一个字符串代表网格的一行，字符串内用空格区分每一列。</p>
+<p>每个命名的网格区域必须组成一个矩形。不能创造更复杂的形状，比如 L 型或者 U 型。也还可以用句点（.）作为名称，这样便能空出一个网格单元。</p>
+<p>注意，区域的命名会影响到网格线。每个区域的起始网格线会被自动命名为：区域名-start；终止网格线会被自动命名为：区域名-end。与命名网格线的彩蛋呼应。</p>
+<h2 id="隐式网格"><a href="#隐式网格" class="headerlink" title="隐式网格"></a>隐式网格</h2><p>在某些场景下，你可能不清楚该把网格子元素放在网格的哪个位置上。处理大量子元素时，挨个指定元素的位置未免太不方便。当元素是从数据库获取时，元素的个数很可能未知。在这些情况下，以一种宽松的方式定义网格可能更合理，剩下的交给布局算法放置网格子元素。</p>
+<p>这时需要用隐式网格（implicit grid）。使用 grid-template-columns，grid-template-rows 属性定义网格轨道创建的是显式网格（explicit grid），但有些网格子元素仍可以放在显式轨道外，此时便会自动创建隐式轨道以扩展网格，从而包含这些元素。</p>
+<p>隐式网格轨道默认大小为 auto，也就是说它们会扩展到能容纳网格子元素内容。设置 grid-auto-columns 和 grid-auto-rows 则是为隐式网格轨道指定每列列宽和每行行高。在指定网格线的时候，隐式网格轨道并不会改变负数的含义。负的网格线编号仍是从显式网格的右下开始的。</p>
+<h1 id="容器属性"><a href="#容器属性" class="headerlink" title="容器属性"></a>容器属性</h1><ul>
+<li>grid-template-columns，grid-template-rows（网格列数行数）</li>
+<li>grid-template-areas，grid-template（网格区域）</li>
+<li>grid-auto-columns，grid-auto-rows（隐式网格列数行数）</li>
+<li>grid-auto-flow，grid（子元素放置顺序）</li>
+<li>grid-column-gap，grid-row-gap，grid-gap（网格列间隔行间隔）</li>
+<li>justify-content，align-content，place-content（内容区域整体水平垂直位置）</li>
+<li>justify-items，align-items，place-items（子元素内部水平垂直位置）</li>
+</ul>
+<h2 id="grid-template-columns，grid-template-rows"><a href="#grid-template-columns，grid-template-rows" class="headerlink" title="grid-template-columns，grid-template-rows"></a>grid-template-columns，grid-template-rows</h2><p>grid-template-columns 属性定义网格的列数和每列列宽，同时可以给网格线命名。<br>grid-template-rows 属性定义网格的行数和每行行高，同时可以给网格线命名。</p>
+<p>新单位 fr 代表每一列（行）的分数单位（fraction unit）。这个单位跟弹性布局中 flex-grow 属性表现一样。不一定非得用分数单位，可以使用其他的单位，比如 px、em 或百分数，也可以混搭这几种单位。</p>
+<p>有时候，重复写同样的值非常麻烦，尤其网格很多时。新方法 repeat() 函数在声明多个网格轨道的时候提供简写方式。使用 repeat() 函数可以定义不同的重复模式，比如<code>grid-template-columns: repeat(3, 2fr 1fr)</code>会重复三遍该模式，从而定义六个网格轨道，重复的最终结果是<code>2fr 1fr 2fr 1fr 2fr 1fr</code>。还可以将 repeat() 作为一个更长的模式的一部分。比如<code>grid-template-columns: 1fr repeat(3, 3fr) 1fr</code>，最终结果是<code>1fr 3fr 3fr 3fr 1fr</code>。可以看出来因为展开写法无法一目了然，所以才产生了 repeat() 这种简写方式。</p>
+<p>有时候我们不想给一个网格轨道设置固定的尺寸，但是又希望限制它的最小值和最大值。这时候需要用到 minmax() 函数。它接收两个值：最小尺寸和最大尺寸。浏览器会确保网格轨道的大小介于这两者之间。</p>
+<p>关键字 auto 表示由浏览器决定长度。轨道大小设置为 auto，轨道会根据自身内容扩展。</p>
+<p>关键字 auto-fill 是特殊值，只要网格放得下，浏览器就会尽可能多地生成轨道，并且不会跟指定大小（minmax() 值）的限制产生冲突。于是两者在一起，会让网格在可用的空间内尽可能多地产生网格列或行，则轨道大小会取 minmax() 函数中的最小值。虽然产生尽可能多轨道，但是网格子元素不一定能填完轨道。</p>
+<p>若网格子元素不够填满所有网格轨道，auto-fill 就会导致一些空的网格轨道。若不希望出现空的网格轨道，可以使用关键字 auto-fit 代替 auto-fill。它会让非空的网格轨道扩展，填满可用空间。具体选择 auto-fill 还是 auto-fit 取决于你是想要确保网格轨道的大小，还是希望整个网格容器都被填满。</p>
+<h2 id="grid-template-areas，grid-template"><a href="#grid-template-areas，grid-template" class="headerlink" title="grid-template-areas，grid-template"></a>grid-template-areas，grid-template</h2><p>grid-template-areas 属性用于定义区域，一个区域由单个或多个单元格组成。grid-template 属性是<br>grid-template-columns、grid-template-rows、grid-template-areas 属性的合并简写形式。</p>
+<p>grid-template-areas 属性使用一种 ASCII art 的语法，可以直接在 CSS 中画一个可视化的网格形象。该声明给出了一系列加引号字符串，每一个字符串代表网格的一行，字符串内用空格区分每一列。</p>
+<p>每个命名的网格区域必须组成一个矩形。不能创造更复杂的形状，比如 L 型或者 U 型。也还可以用句点（.）作为名称，这样便能空出一个网格单元。</p>
+<p>注意，区域的命名会影响到网格线。每个区域的起始网格线会被自动命名为：区域名-start；终止网格线会被自动命名为：区域名-end。与命名网格线的彩蛋呼应。</p>
+<h2 id="grid-auto-columns，grid-auto-rows"><a href="#grid-auto-columns，grid-auto-rows" class="headerlink" title="grid-auto-columns，grid-auto-rows"></a>grid-auto-columns，grid-auto-rows</h2><p>grid-auto-columns 属性用于当设置隐式网格时，浏览器自动创建的网格的每列列宽。<br>grid-auto-rows 属性用于当设置隐式网格时，浏览器自动创建的网格的每行行高。</p>
+<p>它们与 grid-template-columns 和 grid-template-rows 写法完全相同。如果不指定这两个属性，浏览器完全根据单元格内容的大小，自动决定新增网格的每列列宽和每行行高。</p>
+<h2 id="grid-auto-flow，grid"><a href="#grid-auto-flow，grid" class="headerlink" title="grid-auto-flow，grid"></a>grid-auto-flow，grid</h2><p>当不指定网格上元素的位置时，元素会按照其布局算法自动放置。默认情况下，布局算法会按元素在标记中的顺序将其逐列逐行摆放。当一个元素无法在某一行容纳（也就是说该元素占据了太多网格轨道）时，算法会将它移动到下一行寻找足够大的空间容纳它。网格布局模块规范提供了一个属性 grid-auto-flow ，它可以控制布局算法的行为。</p>
+<p>grid-auto-flow 属性控制布局算法放置网格子元素的顺序。grid 属性是<br>grid-template-rows、grid-template-columns、grid-template-areas、<br>grid-auto-rows、grid-auto-columns、grid-auto-flow 属性的合并简写形式。</p>
+<ul>
+<li>row：先行后列。元素优先放在网格行中，只有当一行填满了才会移动到下一列。默认值。</li>
+<li>column：先列后行。元素优先放在网格列中，只有当一列填满了才会移动到下一行。</li>
+<li>row dense：先行后列，并且尽量紧密填满不出现空格。</li>
+<li>column dense：先列后行，并且尽量紧密填满不出现空格。</li>
+</ul>
+<p>关键字 dense 让布局算法紧凑地填满网格里的空白，尽管这会改变某些网格子元素的顺序。加上该关键字，子元素就会“回填”大元素造成的空白区域，但 HTML 源码顺序不变。因此紧凑的 grid-auto-flow 方式可能会导致元素出现的顺序跟 HTML 里不一致。</p>
+<h2 id="grid-column-gap，grid-row-gap，grid-gap"><a href="#grid-column-gap，grid-row-gap，grid-gap" class="headerlink" title="grid-column-gap，grid-row-gap，grid-gap"></a>grid-column-gap，grid-row-gap，grid-gap</h2><p>grid-column-gap 属性设置网格列与列的间隔。<br>grid-row-gap 属性设置网格行与行的间隔。</p>
+<p>grid-gap 属性是 grid-column-gap 和 grid-row-gap 属性的合并简写形式。在使用该值时，省略第二个值，浏览器就会假定第二个值等于第一个值。</p>
+<h2 id="justify-content，align-content，place-content"><a href="#justify-content，align-content，place-content" class="headerlink" title="justify-content，align-content，place-content"></a>justify-content，align-content，place-content</h2><p>justify-content 属性设置整个内容区域整体在容器里面的水平位置（左中右）和间隔。<br>align-content 属性设置整个内容区域整体在容器里面的垂直位置（上中下）和间隔。<br>（特别是当网格子元素的整个内容区域整体无法填满网格容器时）</p>
+<p>place-content 属性是 align-content 和 justify-content 属性的合并简写形式。使用该值时，省略第二个值，浏览器就会假定第二个值等于第一个值。</p>
+<p>当 place-content 属性与 grid-gap 属性冲突时，place-content 属性优先。</p>
+<ul>
+<li>start：对齐容器的起始边框（弹性布局里则是 flex-start）。默认值。</li>
+<li>end：对齐容器的结束边框（弹性布局里则是 flex-end）。</li>
+<li>center：容器内部居中。</li>
+<li>stretch：项目大小没有指定时，拉伸占据整个网格容器。</li>
+<li>space-between：项目间的间隔相等，项目与容器边框之间没有间隔。</li>
+<li>space-around：项目两侧的间隔相等。所以项目之间的间隔是项目与容器边框的间隔一倍。</li>
+<li>space-evenly：项目与项目的间隔相等，项目与容器边框的间隔也相等（弹性布局不支持）。</li>
+</ul>
+<h2 id="justify-items，align-items，place-items"><a href="#justify-items，align-items，place-items" class="headerlink" title="justify-items，align-items，place-items"></a>justify-items，align-items，place-items</h2><p>justify-items 属性设置网格子元素的内容在网格子元素里面的水平位置（左中右）。<br>align-items 属性设置网格子元素的内容在网格子元素里面的垂直位置（上中下）。</p>
+<p>place-items 属性是 align-items 和 justify-items 属性的合并简写形式。使用该值时，省略第二个值，浏览器就会假定第二个值等于第一个值。</p>
+<ul>
+<li>stretch：拉伸，占满单元格的整个宽度。默认值。</li>
+<li>start：对齐单元格的起始边缘。</li>
+<li>end：对齐单元格的结束边缘。</li>
+<li>center：单元格内部居中。</li>
+</ul>
+<h1 id="子元素属性"><a href="#子元素属性" class="headerlink" title="子元素属性"></a>子元素属性</h1><ul>
+<li>grid-column-start，grid-column-end，grid-column（子元素左右网格线）</li>
+<li>grid-row-start，grid-row-end，grid-row（子元素上下网格线）</li>
+<li>grid-area（子元素区域）</li>
+<li>justify-self，align-self，place-self（子元素内部水平垂直位置）</li>
+</ul>
+<h2 id="grid-column-start，grid-column-end，grid-column"><a href="#grid-column-start，grid-column-end，grid-column" class="headerlink" title="grid-column-start，grid-column-end，grid-column"></a>grid-column-start，grid-column-end，grid-column</h2><p>grid-column-start 属性设置网格子元素左边框所在的垂直网格线的编号或名字。<br>grid-column-end 属性设置网格子元素右边框所在的垂直网格线的编号或名字。</p>
+<p>grid-column 属性用网格线编号或名字指定子元素垂直方向位置。grid-column 属性是 grid-column-start 和 grid-column-end 属性的合并简写形式，推荐使用简写属性，可使用 span 关键字直接占据网格轨道个数。</p>
+<h2 id="grid-row-start，grid-row-end，grid-row"><a href="#grid-row-start，grid-row-end，grid-row" class="headerlink" title="grid-row-start，grid-row-end，grid-row"></a>grid-row-start，grid-row-end，grid-row</h2><p>grid-row-start 属性设置网格子元素上边框所在的水平网格线的编号或名字。<br>grid-row-end 属性设置网格子元素下边框所在的水平网格线的编号或名字。</p>
+<p>grid-row 属性用网格线编号或名字指定网格子元素水平方向位置。grid-row 属性是 grid-row-start 和<br>grid-row-end 属性的合并简写形式，推荐使用简写属性，可使用 span 关键字直接占据网格轨道个数。</p>
+<h2 id="grid-area"><a href="#grid-area" class="headerlink" title="grid-area"></a>grid-area</h2><p>grid-area 属性指定网格子元素项目放在哪一个区域（前提为使用 grid-template-areas 给区域命名）。<br>该属性是 grid-row-start、grid-column-start、grid-row-end、grid-column-end 属性的合并简写形式，可以直接指定网格子元素的位置。</p>
+<h2 id="justify-self，align-self，place-self"><a href="#justify-self，align-self，place-self" class="headerlink" title="justify-self，align-self，place-self"></a>justify-self，align-self，place-self</h2><p>justify-self 属性设置网格子元素的内容在网格子元素里面的水平位置（左中右），跟 justify-items 属性用法完全一致，只作用于单个子元素。<br>align-self 属性设置网格子元素的内容在网格子元素里面的垂直位置（上中下），跟 align-items 属性用法<br>完全一致，只作用于单个子元素。</p>
+<p>place-self 属性是 align-self 和 justify-self 属性的合并简写形式。在使用该值时，如果省略第二个值，浏览器就会假定第二个值等于第一个值。</p>
+<ul>
+<li>stretch：拉伸，占满单元格的整个宽度。默认值。</li>
+<li>start：对齐单元格的起始边缘。</li>
+<li>end：对齐单元格的结束边缘。</li>
+<li>center：单元格内部居中。</li>
+</ul>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" class="category-chain-item">编程语言</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSS/" class="category-chain-item">CSS</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/CSS/" class="print-no-link">#CSS</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>CSS网格布局</div>
+      <div>http://example.com/2021/10/03/CSS网格布局/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Keven</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2021年10月3日</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>更新于</div>
+          <div>2025年8月2日</div>
+        </div>
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/10/03/CSS%E7%9B%92%E6%A8%A1%E5%9E%8B/" title="CSS盒模型">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">CSS盒模型</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/10/03/CSS%E5%BC%B9%E6%80%A7%E5%B8%83%E5%B1%80/" title="CSS弹性布局">
+                        <span class="hidden-mobile">CSS弹性布局</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
