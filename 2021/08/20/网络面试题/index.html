@@ -31,11 +31,11 @@
 <meta property="og:image" content="https://xuekeven.github.io/images/%E5%BC%BA%E5%88%B6%E7%BC%93%E5%AD%98.png">
 <meta property="og:image" content="https://xuekeven.github.io/images/%E5%8D%8F%E5%95%86%E7%BC%93%E5%AD%98.png">
 <meta property="article:published_time" content="2021-08-20T06:00:00.000Z">
-<meta property="article:modified_time" content="2022-05-08T13:02:56.000Z">
+<meta property="article:modified_time" content="2025-08-03T09:59:21.605Z">
 <meta property="article:author" content="Keven">
 <meta property="article:tag" content="面试题">
-<meta property="article:tag" content="网络">
 <meta property="article:tag" content="计算机基础">
+<meta property="article:tag" content="网络协议">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://xuekeven.github.io/images/%E5%BC%BA%E5%88%B6%E7%BC%93%E5%AD%98.png">
   
@@ -473,17 +473,17 @@
     
     <div class="category-sub row nomargin-x">
       <a class="category-subitem 
-          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="网络"
-        id="heading-7ddbe15c845fa27a2bab496183042ca6" role="tab" data-toggle="collapse" href="#collapse-7ddbe15c845fa27a2bab496183042ca6"
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="网络协议"
+        id="heading-813593fa19f82e0bb193bb42a7d9c556" role="tab" data-toggle="collapse" href="#collapse-813593fa19f82e0bb193bb42a7d9c556"
         aria-expanded="true"
       >
-        网络
+        网络协议
         <span class="list-group-count">(1)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
-      <div class="category-collapse collapse show" id="collapse-7ddbe15c845fa27a2bab496183042ca6"
-           role="tabpanel" aria-labelledby="heading-7ddbe15c845fa27a2bab496183042ca6">
+      <div class="category-collapse collapse show" id="collapse-813593fa19f82e0bb193bb42a7d9c556"
+           role="tabpanel" aria-labelledby="heading-813593fa19f82e0bb193bb42a7d9c556">
         
         
           
@@ -526,7 +526,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2022年5月8日 晚上
+                    本文最后更新于 2025年8月3日 下午
                   
                 
               </p>
@@ -635,8 +635,8 @@
 <h3 id="规则"><a href="#规则" class="headerlink" title="规则"></a>规则</h3><p>HTTP 缓存属于客户端缓存。我们认为浏览器存在一个缓存数据库，用于储存一些不经常变化的静态文件。我们将缓存分为强制缓存和协商缓存。两类缓存机制同时存在，强制缓存的优先级高于协商缓存，当执行强制缓存时，如果缓存命中，则不再进行缓存协商。</p>
 <h4 id="强制缓存"><a href="#强制缓存" class="headerlink" title="强制缓存"></a>强制缓存</h4><p>当缓存数据库中已有所请求的数据，而且没有过期时，属于强制缓存命中，浏览器不会向服务器发送请求，而是直接返回状态码 200 并且从缓存数据库获取数据；当缓存数据库中没有所请求的数据或是数据已过期，属于强制缓存未命中，浏览器才会向服务器发起请求。<br><img src="/images/%E5%BC%BA%E5%88%B6%E7%BC%93%E5%AD%98.png" srcset="/img/loading.gif" lazyload alt="强制缓存（来源掘金@北海北方）"></p>
 <h4 id="协商缓存"><a href="#协商缓存" class="headerlink" title="协商缓存"></a>协商缓存</h4><p>如果是缓存数据库的数据已过期，则浏览器向服务器发起请求前，会先从缓存数据库中获取到一个缓存数据标识，得到标识后请求服务器来验证数据是否失效（新鲜）。如果标识没有失效（资源未更新），属于协商缓存命中，服务器返回状态码 304 并且告诉浏览器直接使用缓存数据库资源；如果标识失效（资源更新），属于协商缓存未命中，服务器返回状态码 200 和新资源。<br><img src="/images/%E5%8D%8F%E5%95%86%E7%BC%93%E5%AD%98.png" srcset="/img/loading.gif" lazyload alt="协商缓存（来源掘金@北海北方）"></p>
-<h3 id="方案"><a href="#方案" class="headerlink" title="方案"></a>方案</h3><p>浏览器和服务器是如何判断缓存是否过期和失效呢？浏览器和服务器进行交互的时候会发送一些请求数据和响应数据，我们称之为 HTTP 报文。报文中包含首部header和主体部分body。与缓存相关的规则信息就包含在header中。boby中的内容是 HTTP 请求真正要传输的部分。HTTP 缓存机制在首部header中相关参数为 Expires、Cache-Control、Last-Modified、If-Modified-Since、Etag、If-None-Match 等。</p>
-<h4 id="强制缓存-1"><a href="#强制缓存-1" class="headerlink" title="强制缓存"></a>强制缓存</h4><p>对于强制缓存，服务器响应的header中会用两个字段来表明：Expires 和 Cache-Control。</p>
+<h3 id="方案"><a href="#方案" class="headerlink" title="方案"></a>方案</h3><p>浏览器和服务器是如何判断缓存是否过期和失效呢？浏览器和服务器进行交互的时候会发送一些请求数据和响应数据，我们称之为 HTTP 报文。报文中包含首部 header 和主体部分 body。与缓存相关的规则信息就包含在 header 中。boby 中的内容是 HTTP 请求真正要传输的部分。HTTP 缓存机制在首部 header 中相关参数为 Expires、Cache-Control、Last-Modified、If-Modified-Since、Etag、If-None-Match 等。</p>
+<h4 id="强制缓存-1"><a href="#强制缓存-1" class="headerlink" title="强制缓存"></a>强制缓存</h4><p>对于强制缓存，服务器响应的 header 中会用两个字段来表明：Expires 和 Cache-Control。</p>
 <ul>
 <li>Expires</li>
 </ul>
@@ -663,7 +663,7 @@
 <li>If-None-Match</li>
 </ul>
 <p>浏览器再次请求服务器时，浏览器的请求报文头部会包含此字段，后面跟着在缓存数据库中获得的唯一标识 Etag。服务器接收到此请求头后发现有 If-None-Match，则与被请求资源的唯一标识来进行对比。</p>
-<p>在精准度上，ETag 优于 Last-Modified，因为 ETag 是按照内容给资源上标识，因此能准确感知资源的变化，而 Last-Modified 则不一样，它在一些特殊的情况并不能准确感知资源变化，主要有两种情况：①资源文件被编辑，但是文件内容并没有更改，那这样也会造成缓存失效；②Last-Modified 能够感知的单位时间是秒，如果资源文件在 1 秒内被多次改变，那么此时的 Last-Modified 并没有体现出修改了。</p>
+<p>在精准度上，ETag 优于 Last-Modified，因为 ETag 是按照内容给资源上标识，因此能准确感知资源的变化，而 Last-Modified 则不一样，它在一些特殊的情况并不能准确感知资源变化，主要有两种情况：① 资源文件被编辑，但是文件内容并没有更改，那这样也会造成缓存失效；②Last-Modified 能够感知的单位时间是秒，如果资源文件在 1 秒内被多次改变，那么此时的 Last-Modified 并没有体现出修改了。</p>
 <p>在性能上，Last-Modified 优于 ETag，因为 Last-Modified 仅仅只是记录一个时间点，而 Etag 需要根据文件具体内容生成哈希值。服务器会优先考虑 ETag。</p>
 <h3 id="缓存位置"><a href="#缓存位置" class="headerlink" title="缓存位置"></a>缓存位置</h3><p>当强制缓存命中或者协商缓存中命中时，我们直接从缓存中获取资源，那这些资源究竟缓存在什么位置呢？浏览器中的缓存位置一共有四种，按优先级从高到低排列分别是：</p>
 <ul>
@@ -682,7 +682,7 @@
 <li>加快了浏览器加载网页的速度</li>
 </ul>
 <h3 id="不同请求"><a href="#不同请求" class="headerlink" title="不同请求"></a>不同请求</h3><ul>
-<li><strong>地址栏写入URL</strong>：浏览器发现缓存中有这个文件，不用继续请求，直接从缓存拿（最快）</li>
+<li><strong>地址栏写入 URL</strong>：浏览器发现缓存中有这个文件，不用继续请求，直接从缓存拿（最快）</li>
 <li><strong>F5</strong>：去服务器看看缓存中的文件是否过期，于是浏览器就发送一个请求</li>
 <li><strong>Ctrl + F5</strong>：先将缓存中的文件删除，然后去服务器请求完整的资源文件</li>
 </ul>
@@ -741,7 +741,7 @@
 </tr>
 <tr>
 <td align="center">303</td>
-<td align="center">临时重定向，重定向到新地址时，客户端必须使用GET方法请求新地址</td>
+<td align="center">临时重定向，重定向到新地址时，客户端必须使用 GET 方法请求新地址</td>
 </tr>
 <tr>
 <td align="center">304</td>
@@ -749,11 +749,11 @@
 </tr>
 <tr>
 <td align="center">307</td>
-<td align="center">临时重定向，和302相似，唯一区别是不允许将请求方法从POST改为GET</td>
+<td align="center">临时重定向，和 302 相似，唯一区别是不允许将请求方法从 POST 改为 GET</td>
 </tr>
 <tr>
 <td align="center">308</td>
-<td align="center">永久重定向，和301相似，唯一区别是不允许将请求方法从POST改为GET</td>
+<td align="center">永久重定向，和 301 相似，唯一区别是不允许将请求方法从 POST 改为 GET</td>
 </tr>
 <tr>
 <td align="center">400</td>
@@ -793,7 +793,7 @@
 <h3 id="500-Internal-Server-Error"><a href="#500-Internal-Server-Error" class="headerlink" title="500 Internal Server Error"></a>500 Internal Server Error</h3><p>服务器处理错误，但原因未知。</p>
 <h3 id="503-Service-Unavailable"><a href="#503-Service-Unavailable" class="headerlink" title="503 Service Unavailable"></a>503 Service Unavailable</h3><p>服务器繁忙，暂时无法响应。</p>
 <h2 id="HTTPS"><a href="#HTTPS" class="headerlink" title="HTTPS"></a>HTTPS</h2><p>参考：<br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904021308735502">https://juejin.cn/post/6844904021308735502</a> 。<br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903599303032845">https://juejin.cn/post/6844903599303032845</a> 。<br><a target="_blank" rel="noopener" href="http://ruanyifeng.com/blog/2014/02/ssl_tls.html">http://ruanyifeng.com/blog/2014/02/ssl_tls.html</a> 。</p>
-<p>HTTP 的特性是明文传输，因此在传输的每一个环节，数据都有可能被第三方窃取或者篡改，具体来说，就是HTTP 数据经过 TCP 层，然后经过 WIFI 路由器、运营商和目标服务器，这些环节中都可能被中间人拿到数据并进行篡改，也就是常说的中间人攻击。而且，客户端和服务器无法互相认证，无法确认对方是否是真正的而非伪装的服务器和客户端。</p>
+<p>HTTP 的特性是明文传输，因此在传输的每一个环节，数据都有可能被第三方窃取或者篡改，具体来说，就是 HTTP 数据经过 TCP 层，然后经过 WIFI 路由器、运营商和目标服务器，这些环节中都可能被中间人拿到数据并进行篡改，也就是常说的中间人攻击。而且，客户端和服务器无法互相认证，无法确认对方是否是真正的而非伪装的服务器和客户端。</p>
 <p>为了安全，我们引入新的加密方案，即 HTTPS。HTTPS 并不是一个新的协议，而是一个加强版的 HTTP。其原理是在 HTTP 和 TCP 之间建立了一个中间层，HTTP 和 TCP 通信时并不是像以前直接通信，而是经过了一个中间层进行加密，这个中间层也叫安全层。</p>
 <p>安全层使用 TLS/SSL 协议，核心就是对数据加解密。TLS/SSL 的功能实现主要依赖于三类算法：散列函数、对称加密和非对称加密。其中，非对称加密实现身份认证和密钥协商，对称加密用协商的密钥对数据加密，散列函数验证信息的完整性。</p>
 <h1 id="TCP-UDP"><a href="#TCP-UDP" class="headerlink" title="TCP/UDP"></a>TCP/UDP</h1><h2 id="TCP-和-UDP-的区别"><a href="#TCP-和-UDP-的区别" class="headerlink" title="TCP 和 UDP 的区别"></a>TCP 和 UDP 的区别</h2><p>参考：<br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6939691851746279437">https://juejin.cn/post/6939691851746279437</a> 。<br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6972027657047244837">https://juejin.cn/post/6972027657047244837</a> 。</p>
@@ -823,8 +823,8 @@
 </tr>
 <tr>
 <td align="center">首部开销</td>
-<td align="center">开销大，20字节到60字节不等</td>
-<td align="center">开销小，仅8字节</td>
+<td align="center">开销大，20 字节到 60 字节不等</td>
+<td align="center">开销小，仅 8 字节</td>
 </tr>
 <tr>
 <td align="center">适用场景</td>
@@ -885,7 +885,7 @@
 <h3 id="为什么需要四次挥手，三次不行吗"><a href="#为什么需要四次挥手，三次不行吗" class="headerlink" title="为什么需要四次挥手，三次不行吗"></a>为什么需要四次挥手，三次不行吗</h3><p>TCP 不允许连接处于半打开状态时就单向传输数据，所以在三次握手建立连接时，服务器会把 ACK 和 SYN 放在一起发给客户端，其中，ACK 用来打开客户端的发送通道，SYN 用来打开服务器的发送通道。这样原本的四次握手就成为三次握手。</p>
 <p>但是当连接处于半关闭状态时，TCP 是允许单向传输数据的。我们把先关闭连接的一方叫做主动方，后关闭连接的一方叫做被动方。当主动方关闭连接时，被动方仍然可以在不调用 close 函数的状态下，长时间发送数据，此时连接处于半关闭状态。这一特性是 TCP 的双向通道互相独立所致，却这也使得关闭连接必须通过四次挥手才能做到。</p>
 <h3 id="为什么需要等待-2MSL"><a href="#为什么需要等待-2MSL" class="headerlink" title="为什么需要等待 2MSL"></a>为什么需要等待 2MSL</h3><p>如果不等待，但是服务端还有很多数据包要给客户端发，且此时客户端端口被新应用占据，那么就会接收到无用的数据包，造成数据包混乱，所以最保险方法是等服务器发来的数据包都被接收后再启动新应用。</p>
-<p>1个 MSL 保证四次挥手中主动关闭方最后的 ACK 报文能最终到达对端。<br>1个 MSL 保证对端没有收到 ACK 报文，那么对端进行重传的 FIN 报文能够到达。</p>
+<p>1 个 MSL 保证四次挥手中主动关闭方最后的 ACK 报文能最终到达对端。<br>1 个 MSL 保证对端没有收到 ACK 报文，那么对端进行重传的 FIN 报文能够到达。</p>
 
                 
               </div>
@@ -909,7 +909,7 @@
   
     <span>></span>
     
-  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E7%BD%91%E7%BB%9C/" class="category-chain-item">网络</a>
+  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" class="category-chain-item">网络协议</a>
   
   
 
@@ -928,9 +928,9 @@
       
         <a href="/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/" class="print-no-link">#面试题</a>
       
-        <a href="/tags/%E7%BD%91%E7%BB%9C/" class="print-no-link">#网络</a>
-      
         <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/" class="print-no-link">#计算机基础</a>
+      
+        <a href="/tags/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" class="print-no-link">#网络协议</a>
       
     </div>
   
@@ -961,7 +961,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2022年5月8日</div>
+          <div>2025年8月3日</div>
         </div>
       
       
