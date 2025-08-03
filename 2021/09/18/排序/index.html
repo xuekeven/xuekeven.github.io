@@ -24,17 +24,17 @@
     <meta name="description" content="参考：https:&#x2F;&#x2F;github.com&#x2F;biaochenxuying&#x2F;blog&#x2F;issues&#x2F;42 。https:&#x2F;&#x2F;juejin.cn&#x2F;post&#x2F;6956624975600025613 。 排序有冒泡排序、插入排序、选择排序、归并排序等十种经典方法。 分析一个排序算法，要从执行效率、内存消耗、稳定性三方面入手。  冒泡排序思路 每次冒泡操作是对相邻的两个元素进行比较，看是否满足特定关系要求，">
 <meta property="og:type" content="article">
 <meta property="og:title" content="排序">
-<meta property="og:url" content="http://example.com/2021/09/18/%E6%8E%92%E5%BA%8F/index.html">
+<meta property="og:url" content="https://xuekeven.github.io/2021/09/18/%E6%8E%92%E5%BA%8F/index.html">
 <meta property="og:site_name" content="Keven&#39;s Blog">
 <meta property="og:description" content="参考：https:&#x2F;&#x2F;github.com&#x2F;biaochenxuying&#x2F;blog&#x2F;issues&#x2F;42 。https:&#x2F;&#x2F;juejin.cn&#x2F;post&#x2F;6956624975600025613 。 排序有冒泡排序、插入排序、选择排序、归并排序等十种经典方法。 分析一个排序算法，要从执行效率、内存消耗、稳定性三方面入手。  冒泡排序思路 每次冒泡操作是对相邻的两个元素进行比较，看是否满足特定关系要求，">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/images/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95.png">
+<meta property="og:image" content="https://xuekeven.github.io/images/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95.png">
 <meta property="article:published_time" content="2021-09-18T14:00:00.000Z">
-<meta property="article:modified_time" content="2022-05-08T13:02:56.000Z">
+<meta property="article:modified_time" content="2025-08-02T14:41:33.683Z">
 <meta property="article:author" content="Keven">
 <meta property="article:tag" content="算法">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/images/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95.png">
+<meta name="twitter:image" content="https://xuekeven.github.io/images/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95.png">
   
   
   
@@ -76,7 +76,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+    var CONFIG = {"hostname":"xuekeven.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -324,17 +324,90 @@
     
     <div class="category row nomargin-x">
       <a class="category-item 
-          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="数据结构与算法"
-        id="heading-14db252ece86404e75baf01f51842022" role="tab" data-toggle="collapse" href="#collapse-14db252ece86404e75baf01f51842022"
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="计算机基础"
+        id="heading-5a596b42154341fee9d0bdf28baa6524" role="tab" data-toggle="collapse" href="#collapse-5a596b42154341fee9d0bdf28baa6524"
         aria-expanded="true"
       >
-        数据结构与算法
+        计算机基础
+        <span class="list-group-count">(8)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-5a596b42154341fee9d0bdf28baa6524"
+           role="tabpanel" aria-labelledby="heading-5a596b42154341fee9d0bdf28baa6524">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="Git"
+        id="heading-0bcc70105ad279503e31fe7b3f47b665" role="tab" data-toggle="collapse" href="#collapse-0bcc70105ad279503e31fe7b3f47b665"
+        aria-expanded="false"
+      >
+        Git
+        <span class="list-group-count">(2)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-0bcc70105ad279503e31fe7b3f47b665"
+           role="tabpanel" aria-labelledby="heading-0bcc70105ad279503e31fe7b3f47b665">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2021/08/07/Git%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/" title="Git基本使用"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Git基本使用</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/08/07/Git%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/" title="Git常用方法"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Git常用方法</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="算法"
+        id="heading-046a899ee7a6ec88d370211a518c9e80" role="tab" data-toggle="collapse" href="#collapse-046a899ee7a6ec88d370211a518c9e80"
+        aria-expanded="true"
+      >
+        算法
         <span class="list-group-count">(5)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
-      <div class="category-collapse collapse show" id="collapse-14db252ece86404e75baf01f51842022"
-           role="tabpanel" aria-labelledby="heading-14db252ece86404e75baf01f51842022">
+      <div class="category-collapse collapse show" id="collapse-046a899ee7a6ec88d370211a518c9e80"
+           role="tabpanel" aria-labelledby="heading-046a899ee7a6ec88d370211a518c9e80">
         
         
           
@@ -392,6 +465,47 @@
       </div>
     </div>
   
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="网络"
+        id="heading-7ddbe15c845fa27a2bab496183042ca6" role="tab" data-toggle="collapse" href="#collapse-7ddbe15c845fa27a2bab496183042ca6"
+        aria-expanded="false"
+      >
+        网络
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-7ddbe15c845fa27a2bab496183042ca6"
+           role="tabpanel" aria-labelledby="heading-7ddbe15c845fa27a2bab496183042ca6">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2021/08/20/%E7%BD%91%E7%BB%9C%E9%9D%A2%E8%AF%95%E9%A2%98/" title="网络面试题"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">网络面试题</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
 </div>
 
 
@@ -409,7 +523,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2022年5月8日 晚上
+                    本文最后更新于 2025年8月2日 晚上
                   
                 
               </p>
@@ -431,9 +545,10 @@
 <li>使用多个循环。</li>
 </ul>
 <h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><p>普通：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">bubbleSort</span>(<span class="hljs-params">arr</span>) </span>&#123;<br>  <span class="hljs-keyword">const</span> len = arr.length;<br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; len - <span class="hljs-number">1</span>; i++) &#123;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> j = <span class="hljs-number">0</span>; j &lt; len - i -<span class="hljs-number">1</span>; j++) &#123;<br>      <span class="hljs-keyword">if</span> (arr[j] &gt; arr[j + <span class="hljs-number">1</span>]) &#123;<br>        <span class="hljs-keyword">const</span> temp = arr[j];<br>        arr[j] = arr[j + <span class="hljs-number">1</span>];<br>        arr[j + <span class="hljs-number">1</span>] = temp;<br>      &#125;<br>    &#125;<br>  &#125;<br>  <span class="hljs-keyword">return</span> arr;<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">bubbleSort</span>(<span class="hljs-params">arr</span>) </span>&#123;<br>  <span class="hljs-keyword">const</span> len = arr.length;<br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; len - <span class="hljs-number">1</span>; i++) &#123;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> j = <span class="hljs-number">0</span>; j &lt; len - i - <span class="hljs-number">1</span>; j++) &#123;<br>      <span class="hljs-keyword">if</span> (arr[j] &gt; arr[j + <span class="hljs-number">1</span>]) &#123;<br>        <span class="hljs-keyword">const</span> temp = arr[j];<br>        arr[j] = arr[j + <span class="hljs-number">1</span>];<br>        arr[j + <span class="hljs-number">1</span>] = temp;<br>      &#125;<br>    &#125;<br>  &#125;<br>  <span class="hljs-keyword">return</span> arr;<br>&#125;<br></code></pre></td></tr></table></figure>
+
 <p>改进：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">bubbleSort2</span>(<span class="hljs-params">arr</span>) </span>&#123;<br>  <span class="hljs-keyword">const</span> len = arr.length;<br><br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; len - <span class="hljs-number">1</span>; i++) &#123;<br>    <span class="hljs-keyword">let</span> hasChange = <span class="hljs-literal">false</span>;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> j = <span class="hljs-number">0</span>; j &lt; len -i - <span class="hljs-number">1</span>; j++) &#123;<br>      <span class="hljs-keyword">if</span> (arr[j] &gt; arr[j + <span class="hljs-number">1</span>]) &#123;<br>        <span class="hljs-keyword">const</span> temp = arr[j];<br>        arr[j] = arr[j + <span class="hljs-number">1</span>];<br>        arr[j + <span class="hljs-number">1</span>] = temp;<br>        hasChange = <span class="hljs-literal">true</span>;<br>      &#125;<br>    &#125;<br>    <span class="hljs-keyword">if</span> (!hasChange) <span class="hljs-keyword">break</span><br>  &#125;<br>  <span class="hljs-keyword">return</span> arr;<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">bubbleSort2</span>(<span class="hljs-params">arr</span>) </span>&#123;<br>  <span class="hljs-keyword">const</span> len = arr.length;<br><br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; len - <span class="hljs-number">1</span>; i++) &#123;<br>    <span class="hljs-keyword">let</span> hasChange = <span class="hljs-literal">false</span>;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> j = <span class="hljs-number">0</span>; j &lt; len - i - <span class="hljs-number">1</span>; j++) &#123;<br>      <span class="hljs-keyword">if</span> (arr[j] &gt; arr[j + <span class="hljs-number">1</span>]) &#123;<br>        <span class="hljs-keyword">const</span> temp = arr[j];<br>        arr[j] = arr[j + <span class="hljs-number">1</span>];<br>        arr[j + <span class="hljs-number">1</span>] = temp;<br>        hasChange = <span class="hljs-literal">true</span>;<br>      &#125;<br>    &#125;<br>    <span class="hljs-keyword">if</span> (!hasChange) <span class="hljs-keyword">break</span>;<br>  &#125;<br>  <span class="hljs-keyword">return</span> arr;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <h1 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h1><h2 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h2><ul>
 <li>构建有序序列和未排序序列。认为第一个元素已经被排序，其余均为未排序序列的元素。</li>
@@ -442,7 +557,7 @@
 <h2 id="特点-1"><a href="#特点-1" class="headerlink" title="特点"></a>特点</h2><ul>
 <li>使用多个循环。</li>
 </ul>
-<h2 id="实现-1"><a href="#实现-1" class="headerlink" title="实现"></a>实现</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">selectSort</span>(<span class="hljs-params">arr</span>) </span>&#123;<br>  <span class="hljs-keyword">const</span> len = arr.length;<br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; len - <span class="hljs-number">1</span>; i++) &#123;<br>    <span class="hljs-keyword">let</span> minIndex = i,<br>        temp = arr[i];<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> j = i + <span class="hljs-number">1</span>; j &lt; len; j++) <span class="hljs-keyword">if</span> (arr[j] &lt; arr[minIndex]) minIndex = j<br>    arr[i] = arr[minIndex];<br>    arr[minIndex] = temp;<br>  &#125;<br>  <span class="hljs-keyword">return</span> arr<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="实现-1"><a href="#实现-1" class="headerlink" title="实现"></a>实现</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">selectSort</span>(<span class="hljs-params">arr</span>) </span>&#123;<br>  <span class="hljs-keyword">const</span> len = arr.length;<br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; len - <span class="hljs-number">1</span>; i++) &#123;<br>    <span class="hljs-keyword">let</span> minIndex = i,<br>      temp = arr[i];<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> j = i + <span class="hljs-number">1</span>; j &lt; len; j++) <span class="hljs-keyword">if</span> (arr[j] &lt; arr[minIndex]) minIndex = j;<br>    arr[i] = arr[minIndex];<br>    arr[minIndex] = temp;<br>  &#125;<br>  <span class="hljs-keyword">return</span> arr;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <h1 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h1><p>插入排序又为分为 <strong>直接插入排序</strong> 和优化后的 <strong>拆半插入排序</strong> 与 <strong>希尔排序</strong> 。</p>
 <h2 id="思路-2"><a href="#思路-2" class="headerlink" title="思路"></a>思路</h2><ul>
@@ -453,16 +568,17 @@
 <li>使用多个循环。</li>
 </ul>
 <h2 id="实现-2"><a href="#实现-2" class="headerlink" title="实现"></a>实现</h2><p>普通：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">insertSort</span>(<span class="hljs-params">arr</span>) </span>&#123;<br>  <span class="hljs-keyword">const</span> len = arr.length;<br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">1</span>; i &lt; len; i++) &#123;<br>    <span class="hljs-keyword">let</span> preIndex = i - <span class="hljs-number">1</span>,<br>        current = arr[i];<br>    <span class="hljs-keyword">while</span> (preIndex &gt;= <span class="hljs-number">0</span> &amp;&amp; arr[preIndex] &gt; current) &#123;<br>      arr[preIndex + <span class="hljs-number">1</span>] = arr[preIndex];<br>      preIndex--;<br>    &#125;<br>    <span class="hljs-keyword">if</span> (preIndex !== i - <span class="hljs-number">1</span>) arr[preIndex + <span class="hljs-number">1</span>] = current;<br>  &#125;<br>  <span class="hljs-keyword">return</span> arr<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">insertSort</span>(<span class="hljs-params">arr</span>) </span>&#123;<br>  <span class="hljs-keyword">const</span> len = arr.length;<br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">1</span>; i &lt; len; i++) &#123;<br>    <span class="hljs-keyword">let</span> preIndex = i - <span class="hljs-number">1</span>,<br>      current = arr[i];<br>    <span class="hljs-keyword">while</span> (preIndex &gt;= <span class="hljs-number">0</span> &amp;&amp; arr[preIndex] &gt; current) &#123;<br>      arr[preIndex + <span class="hljs-number">1</span>] = arr[preIndex];<br>      preIndex--;<br>    &#125;<br>    <span class="hljs-keyword">if</span> (preIndex !== i - <span class="hljs-number">1</span>) arr[preIndex + <span class="hljs-number">1</span>] = current;<br>  &#125;<br>  <span class="hljs-keyword">return</span> arr;<br>&#125;<br></code></pre></td></tr></table></figure>
+
 <p>改进：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">binaryInsertionSort</span>(<span class="hljs-params">arr</span>) </span>&#123;<br>  <span class="hljs-keyword">const</span> len = arr.length;<br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">1</span>; i &lt; len; i++) &#123;<br>    <span class="hljs-keyword">let</span> low = <span class="hljs-number">0</span>,<br>        high = i - <span class="hljs-number">1</span>,<br>        current = arr[i];<br>    <span class="hljs-keyword">while</span> (low &lt;= high) &#123;<br>      <span class="hljs-keyword">let</span> m = (low + high) &gt;&gt; <span class="hljs-number">1</span>; <br>      <span class="hljs-keyword">if</span> (arr[i] &gt;= arr[m]) low = m + <span class="hljs-number">1</span>; <br>      <span class="hljs-keyword">else</span> high = m - <span class="hljs-number">1</span>;<br>    &#125;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> j = i; j &gt; low; j--) arr[j] = arr[j - <span class="hljs-number">1</span>];<br>    arr[low] = current; <br>  &#125;<br>  <span class="hljs-keyword">return</span> arr;<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">binaryInsertionSort</span>(<span class="hljs-params">arr</span>) </span>&#123;<br>  <span class="hljs-keyword">const</span> len = arr.length;<br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">1</span>; i &lt; len; i++) &#123;<br>    <span class="hljs-keyword">let</span> low = <span class="hljs-number">0</span>,<br>      high = i - <span class="hljs-number">1</span>,<br>      current = arr[i];<br>    <span class="hljs-keyword">while</span> (low &lt;= high) &#123;<br>      <span class="hljs-keyword">let</span> m = (low + high) &gt;&gt; <span class="hljs-number">1</span>;<br>      <span class="hljs-keyword">if</span> (arr[i] &gt;= arr[m]) low = m + <span class="hljs-number">1</span>;<br>      <span class="hljs-keyword">else</span> high = m - <span class="hljs-number">1</span>;<br>    &#125;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> j = i; j &gt; low; j--) arr[j] = arr[j - <span class="hljs-number">1</span>];<br>    arr[low] = current;<br>  &#125;<br>  <span class="hljs-keyword">return</span> arr;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <h1 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h1><h2 id="思想"><a href="#思想" class="headerlink" title="思想"></a>思想</h2><p>归并排序采用的是分治思想。就是分而治之，将一个大问题分解成小的子问题来解决。小的子问题解决了，大问题也就解决了。</p>
 <p>排序一个数组，我们先把数组从中间分成前后两部分，然后对前后两部分分别排序，再将排好序的两部分合并在一起，这样整个数组就都有序了。</p>
 <h2 id="特点-3"><a href="#特点-3" class="headerlink" title="特点"></a>特点</h2><ul>
 <li>使用递归。</li>
 </ul>
-<h2 id="实现-3"><a href="#实现-3" class="headerlink" title="实现"></a>实现</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">mergeSort</span>(<span class="hljs-params">arr</span>) </span>&#123;<br>  <span class="hljs-keyword">const</span> len = arr.length;<br>  <span class="hljs-keyword">if</span> (len &lt; <span class="hljs-number">2</span>) <span class="hljs-keyword">return</span> arr;<br>  <span class="hljs-keyword">let</span> middle = <span class="hljs-built_in">Math</span>.floor(len / <span class="hljs-number">2</span>),<br>      left = arr.slice(<span class="hljs-number">0</span>, middle),<br>      right = arr.slice(middle);<br>  <span class="hljs-keyword">return</span> merge(<span class="hljs-built_in">arguments</span>.callee(left), <span class="hljs-built_in">arguments</span>.callee(right));<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">merge</span>(<span class="hljs-params">left, right</span>) </span>&#123;<br>  <span class="hljs-keyword">const</span> result = [];<br>  <span class="hljs-keyword">while</span> (left.length &amp;&amp; right.length) &#123;<br>    <span class="hljs-keyword">if</span> (left[<span class="hljs-number">0</span>] &lt;= right[<span class="hljs-number">0</span>]) result.push(left.shift());<br>    <span class="hljs-keyword">else</span> result.push(right.shift());<br>  &#125;<br>  <span class="hljs-keyword">while</span> (left.length) result.push(left.shift());<br>  <span class="hljs-keyword">while</span> (right.length) result.push(right.shift());<br>  <span class="hljs-keyword">return</span> result<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="实现-3"><a href="#实现-3" class="headerlink" title="实现"></a>实现</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">mergeSort</span>(<span class="hljs-params">arr</span>) </span>&#123;<br>  <span class="hljs-keyword">const</span> len = arr.length;<br>  <span class="hljs-keyword">if</span> (len &lt; <span class="hljs-number">2</span>) <span class="hljs-keyword">return</span> arr;<br>  <span class="hljs-keyword">let</span> middle = <span class="hljs-built_in">Math</span>.floor(len / <span class="hljs-number">2</span>),<br>    left = arr.slice(<span class="hljs-number">0</span>, middle),<br>    right = arr.slice(middle);<br>  <span class="hljs-keyword">return</span> merge(<span class="hljs-built_in">arguments</span>.callee(left), <span class="hljs-built_in">arguments</span>.callee(right));<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">merge</span>(<span class="hljs-params">left, right</span>) </span>&#123;<br>  <span class="hljs-keyword">const</span> result = [];<br>  <span class="hljs-keyword">while</span> (left.length &amp;&amp; right.length) &#123;<br>    <span class="hljs-keyword">if</span> (left[<span class="hljs-number">0</span>] &lt;= right[<span class="hljs-number">0</span>]) result.push(left.shift());<br>    <span class="hljs-keyword">else</span> result.push(right.shift());<br>  &#125;<br>  <span class="hljs-keyword">while</span> (left.length) result.push(left.shift());<br>  <span class="hljs-keyword">while</span> (right.length) result.push(right.shift());<br>  <span class="hljs-keyword">return</span> result;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <h1 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h1><h2 id="思想-1"><a href="#思想-1" class="headerlink" title="思想"></a>思想</h2><p>先找到一个基准点（一般指数组的中部），然后数组被该基准点分割为两部分，依次与该基准点数据比较。如果比它小，放左边；反之放右边。左右分别用一个空数组去存储比较后的数据。最后递归执行上述操作，直到数组长度小于等于 1。</p>
 <h2 id="特点-4"><a href="#特点-4" class="headerlink" title="特点"></a>特点</h2><ul>
@@ -470,7 +586,7 @@
 <li>缺点：需要另外声明两个数组，浪费了内存空间资源。</li>
 <li>使用递归。</li>
 </ul>
-<h2 id="实现-4"><a href="#实现-4" class="headerlink" title="实现"></a>实现</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">quickSort</span>(<span class="hljs-params">arr</span>) </span>&#123;<br>  <span class="hljs-keyword">const</span> len = arr.length;<br>  <span class="hljs-keyword">if</span> (len &lt;= <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> arr;<br>  <span class="hljs-keyword">const</span> midIndex = <span class="hljs-built_in">Math</span>.floor(len / <span class="hljs-number">2</span>),<br>        valArr = arr.splice(midIndex, <span class="hljs-number">1</span>),<br>        midIndexVal = valArr[<span class="hljs-number">0</span>],<br>        left = [],<br>        right = [];<br>        <span class="hljs-comment">// 此时 len != arr.length</span><br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; arr.length; i++) &#123;<br>		<span class="hljs-keyword">if</span> (arr[i] &lt; midIndexVal) left.push(arr[i]);<br>		<span class="hljs-keyword">else</span> right.push(arr[i]);<br>	&#125;<br>  <span class="hljs-keyword">return</span> <span class="hljs-built_in">arguments</span>.callee(left).concat(midIndexVal, <span class="hljs-built_in">arguments</span>.callee(right));<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="实现-4"><a href="#实现-4" class="headerlink" title="实现"></a>实现</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">quickSort</span>(<span class="hljs-params">arr</span>) </span>&#123;<br>  <span class="hljs-keyword">const</span> len = arr.length;<br>  <span class="hljs-keyword">if</span> (len &lt;= <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> arr;<br>  <span class="hljs-keyword">const</span> midIndex = <span class="hljs-built_in">Math</span>.floor(len / <span class="hljs-number">2</span>),<br>    valArr = arr.splice(midIndex, <span class="hljs-number">1</span>),<br>    midIndexVal = valArr[<span class="hljs-number">0</span>],<br>    left = [],<br>    right = [];<br>  <span class="hljs-comment">// 此时 len != arr.length</span><br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; arr.length; i++) &#123;<br>    <span class="hljs-keyword">if</span> (arr[i] &lt; midIndexVal) left.push(arr[i]);<br>    <span class="hljs-keyword">else</span> right.push(arr[i]);<br>  &#125;<br>  <span class="hljs-keyword">return</span> <span class="hljs-built_in">arguments</span>.callee(left).concat(midIndexVal, <span class="hljs-built_in">arguments</span>.callee(right));<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <h1 id="希尔排序"><a href="#希尔排序" class="headerlink" title="希尔排序"></a>希尔排序</h1><h2 id="思想-2"><a href="#思想-2" class="headerlink" title="思想"></a>思想</h2><p>先将整个待排序的记录序列分割成为若干子序列，分别进行直接插入排序。待整个序列中记录基本有序时，再对全体记录进行依次直接插入排序。</p>
 <h2 id="特点-5"><a href="#特点-5" class="headerlink" title="特点"></a>特点</h2><ul>
@@ -485,6 +601,7 @@
 <h1 id="计数排序"><a href="#计数排序" class="headerlink" title="计数排序"></a>计数排序</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><br></code></pre></td></tr></table></figure>
 
 <h1 id="基数排序"><a href="#基数排序" class="headerlink" title="基数排序"></a>基数排序</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><br></code></pre></td></tr></table></figure>
+
                 
               </div>
             
@@ -502,8 +619,15 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="category-chain-item">数据结构与算法</a>
+  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/" class="category-chain-item">计算机基础</a>
   
+  
+    <span>></span>
+    
+  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E7%AE%97%E6%B3%95/" class="category-chain-item">算法</a>
+  
+  
+
   
 
       </span>
@@ -530,7 +654,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>排序</div>
-      <div>http://example.com/2021/09/18/排序/</div>
+      <div>https://xuekeven.github.io/2021/09/18/排序/</div>
     </div>
     <div class="license-meta">
       
@@ -548,7 +672,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2022年5月8日</div>
+          <div>2025年8月2日</div>
         </div>
       
       

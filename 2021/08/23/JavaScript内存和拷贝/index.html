@@ -24,21 +24,21 @@
     <meta name="description" content="参考：https:&#x2F;&#x2F;juejin.cn&#x2F;post&#x2F;6844903873992196110 。https:&#x2F;&#x2F;juejin.cn&#x2F;post&#x2F;6955962274917908488 。https:&#x2F;&#x2F;juejin.cn&#x2F;post&#x2F;6844904197595332622 。https:&#x2F;&#x2F;juejin.cn&#x2F;post&#x2F;6844903929705136141 。 栈堆内存JavaScript 是动态语言">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JavaScript内存和拷贝">
-<meta property="og:url" content="http://example.com/2021/08/23/JavaScript%E5%86%85%E5%AD%98%E5%92%8C%E6%8B%B7%E8%B4%9D/index.html">
+<meta property="og:url" content="https://xuekeven.github.io/2021/08/23/JavaScript%E5%86%85%E5%AD%98%E5%92%8C%E6%8B%B7%E8%B4%9D/index.html">
 <meta property="og:site_name" content="Keven&#39;s Blog">
 <meta property="og:description" content="参考：https:&#x2F;&#x2F;juejin.cn&#x2F;post&#x2F;6844903873992196110 。https:&#x2F;&#x2F;juejin.cn&#x2F;post&#x2F;6955962274917908488 。https:&#x2F;&#x2F;juejin.cn&#x2F;post&#x2F;6844904197595332622 。https:&#x2F;&#x2F;juejin.cn&#x2F;post&#x2F;6844903929705136141 。 栈堆内存JavaScript 是动态语言">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/images/%E6%A0%88%E5%A0%86%E7%A9%BA%E9%97%B4.png">
-<meta property="og:image" content="http://example.com/images/%E9%97%AD%E5%8C%85%E5%A0%86%E5%86%85%E5%AD%981.png">
-<meta property="og:image" content="http://example.com/images/%E9%97%AD%E5%8C%85%E5%A0%86%E5%86%85%E5%AD%982.png">
-<meta property="og:image" content="http://example.com/images/%E6%B5%85%E6%8B%B7%E8%B4%9D.png">
-<meta property="og:image" content="http://example.com/images/%E6%B7%B1%E6%8B%B7%E8%B4%9D.png">
+<meta property="og:image" content="https://xuekeven.github.io/images/%E6%A0%88%E5%A0%86%E7%A9%BA%E9%97%B4.png">
+<meta property="og:image" content="https://xuekeven.github.io/images/%E9%97%AD%E5%8C%85%E5%A0%86%E5%86%85%E5%AD%981.png">
+<meta property="og:image" content="https://xuekeven.github.io/images/%E9%97%AD%E5%8C%85%E5%A0%86%E5%86%85%E5%AD%982.png">
+<meta property="og:image" content="https://xuekeven.github.io/images/%E6%B5%85%E6%8B%B7%E8%B4%9D.png">
+<meta property="og:image" content="https://xuekeven.github.io/images/%E6%B7%B1%E6%8B%B7%E8%B4%9D.png">
 <meta property="article:published_time" content="2021-08-23T07:00:00.000Z">
 <meta property="article:modified_time" content="2025-07-30T08:52:11.341Z">
 <meta property="article:author" content="Keven">
 <meta property="article:tag" content="JavaScript">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/images/%E6%A0%88%E5%A0%86%E7%A9%BA%E9%97%B4.png">
+<meta name="twitter:image" content="https://xuekeven.github.io/images/%E6%A0%88%E5%A0%86%E7%A9%BA%E9%97%B4.png">
   
   
   
@@ -80,7 +80,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+    var CONFIG = {"hostname":"xuekeven.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -1017,7 +1017,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>JavaScript内存和拷贝</div>
-      <div>http://example.com/2021/08/23/JavaScript内存和拷贝/</div>
+      <div>https://xuekeven.github.io/2021/08/23/JavaScript内存和拷贝/</div>
     </div>
     <div class="license-meta">
       

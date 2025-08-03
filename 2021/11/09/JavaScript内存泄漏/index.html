@@ -24,7 +24,7 @@
     <meta name="description" content="参考：https:&#x2F;&#x2F;juejin.cn&#x2F;post&#x2F;6947841638118998029 。 内存泄漏就是指由于疏忽或者程序的某些错误造成未能释放已经不再使用的内存的情况。简单来讲就是假设某个变量占用 100M 的内存，而你又用不到这个变量，但是这个变量没有被手动的回收或自动回收，即仍然占用 100M 的内存空间，这就是一种内存的浪费，即内存泄漏。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JavaScript内存泄漏">
-<meta property="og:url" content="http://example.com/2021/11/09/JavaScript%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F/index.html">
+<meta property="og:url" content="https://xuekeven.github.io/2021/11/09/JavaScript%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F/index.html">
 <meta property="og:site_name" content="Keven&#39;s Blog">
 <meta property="og:description" content="参考：https:&#x2F;&#x2F;juejin.cn&#x2F;post&#x2F;6947841638118998029 。 内存泄漏就是指由于疏忽或者程序的某些错误造成未能释放已经不再使用的内存的情况。简单来讲就是假设某个变量占用 100M 的内存，而你又用不到这个变量，但是这个变量没有被手动的回收或自动回收，即仍然占用 100M 的内存空间，这就是一种内存的浪费，即内存泄漏。">
 <meta property="og:locale" content="zh_CN">
@@ -74,7 +74,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+    var CONFIG = {"hostname":"xuekeven.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -908,7 +908,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>JavaScript内存泄漏</div>
-      <div>http://example.com/2021/11/09/JavaScript内存泄漏/</div>
+      <div>https://xuekeven.github.io/2021/11/09/JavaScript内存泄漏/</div>
     </div>
     <div class="license-meta">
       

@@ -21,15 +21,15 @@
   <meta name="author" content="Keven">
   <meta name="keywords" content="">
   
-    <meta name="description" content="剪绳子问题 有一根长度为 n 的绳子，请把绳子剪成整数长度的 m 段（m、n都是整数，n &gt; 1 并且 m &gt; 1），每段绳子的长度记为 k[0],k[1]…k[m-1] 。请问 k[0]k[1]…*k[m-1] 可能的最大乘积是多少？如，当绳子的长度是 8 时，把它剪成 2、3、3 三段，此时得到的最大乘积是18。  动态规划动态规划是编程面试中的热门话题，如果求一个问题的最优解（通">
+    <meta name="description" content="剪绳子问题 有一根长度为 n 的绳子，请把绳子剪成整数长度的 m 段（m、n 都是整数，n &gt; 1 并且 m &gt; 1），每段绳子的长度记为 k[0],k[1]…k[m-1] 。请问 k[0]k[1]…*k[m-1] 可能的最大乘积是多少？如，当绳子的长度是 8 时，把它剪成 2、3、3 三段，此时得到的最大乘积是 18。  动态规划动态规划是编程面试中的热门话题，如果求一个问题的最优解">
 <meta property="og:type" content="article">
 <meta property="og:title" content="动态规划和贪婪算法">
-<meta property="og:url" content="http://example.com/2021/09/07/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%92%8C%E8%B4%AA%E5%A9%AA%E7%AE%97%E6%B3%95/index.html">
+<meta property="og:url" content="https://xuekeven.github.io/2021/09/07/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%92%8C%E8%B4%AA%E5%A9%AA%E7%AE%97%E6%B3%95/index.html">
 <meta property="og:site_name" content="Keven&#39;s Blog">
-<meta property="og:description" content="剪绳子问题 有一根长度为 n 的绳子，请把绳子剪成整数长度的 m 段（m、n都是整数，n &gt; 1 并且 m &gt; 1），每段绳子的长度记为 k[0],k[1]…k[m-1] 。请问 k[0]k[1]…*k[m-1] 可能的最大乘积是多少？如，当绳子的长度是 8 时，把它剪成 2、3、3 三段，此时得到的最大乘积是18。  动态规划动态规划是编程面试中的热门话题，如果求一个问题的最优解（通">
+<meta property="og:description" content="剪绳子问题 有一根长度为 n 的绳子，请把绳子剪成整数长度的 m 段（m、n 都是整数，n &gt; 1 并且 m &gt; 1），每段绳子的长度记为 k[0],k[1]…k[m-1] 。请问 k[0]k[1]…*k[m-1] 可能的最大乘积是多少？如，当绳子的长度是 8 时，把它剪成 2、3、3 三段，此时得到的最大乘积是 18。  动态规划动态规划是编程面试中的热门话题，如果求一个问题的最优解">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-09-07T14:00:00.000Z">
-<meta property="article:modified_time" content="2022-05-08T13:02:56.000Z">
+<meta property="article:modified_time" content="2025-08-02T14:41:33.656Z">
 <meta property="article:author" content="Keven">
 <meta property="article:tag" content="算法">
 <meta name="twitter:card" content="summary_large_image">
@@ -74,7 +74,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+    var CONFIG = {"hostname":"xuekeven.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -322,17 +322,90 @@
     
     <div class="category row nomargin-x">
       <a class="category-item 
-          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="数据结构与算法"
-        id="heading-14db252ece86404e75baf01f51842022" role="tab" data-toggle="collapse" href="#collapse-14db252ece86404e75baf01f51842022"
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="计算机基础"
+        id="heading-5a596b42154341fee9d0bdf28baa6524" role="tab" data-toggle="collapse" href="#collapse-5a596b42154341fee9d0bdf28baa6524"
         aria-expanded="true"
       >
-        数据结构与算法
+        计算机基础
+        <span class="list-group-count">(8)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-5a596b42154341fee9d0bdf28baa6524"
+           role="tabpanel" aria-labelledby="heading-5a596b42154341fee9d0bdf28baa6524">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="Git"
+        id="heading-0bcc70105ad279503e31fe7b3f47b665" role="tab" data-toggle="collapse" href="#collapse-0bcc70105ad279503e31fe7b3f47b665"
+        aria-expanded="false"
+      >
+        Git
+        <span class="list-group-count">(2)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-0bcc70105ad279503e31fe7b3f47b665"
+           role="tabpanel" aria-labelledby="heading-0bcc70105ad279503e31fe7b3f47b665">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2021/08/07/Git%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/" title="Git基本使用"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Git基本使用</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/08/07/Git%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/" title="Git常用方法"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Git常用方法</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="算法"
+        id="heading-046a899ee7a6ec88d370211a518c9e80" role="tab" data-toggle="collapse" href="#collapse-046a899ee7a6ec88d370211a518c9e80"
+        aria-expanded="true"
+      >
+        算法
         <span class="list-group-count">(5)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
-      <div class="category-collapse collapse show" id="collapse-14db252ece86404e75baf01f51842022"
-           role="tabpanel" aria-labelledby="heading-14db252ece86404e75baf01f51842022">
+      <div class="category-collapse collapse show" id="collapse-046a899ee7a6ec88d370211a518c9e80"
+           role="tabpanel" aria-labelledby="heading-046a899ee7a6ec88d370211a518c9e80">
         
         
           
@@ -390,6 +463,47 @@
       </div>
     </div>
   
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="网络"
+        id="heading-7ddbe15c845fa27a2bab496183042ca6" role="tab" data-toggle="collapse" href="#collapse-7ddbe15c845fa27a2bab496183042ca6"
+        aria-expanded="false"
+      >
+        网络
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-7ddbe15c845fa27a2bab496183042ca6"
+           role="tabpanel" aria-labelledby="heading-7ddbe15c845fa27a2bab496183042ca6">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2021/08/20/%E7%BD%91%E7%BB%9C%E9%9D%A2%E8%AF%95%E9%A2%98/" title="网络面试题"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">网络面试题</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
 </div>
 
 
@@ -407,7 +521,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2022年5月8日 晚上
+                    本文最后更新于 2025年8月2日 晚上
                   
                 
               </p>
@@ -416,7 +530,7 @@
               <div class="markdown-body">
                 
                 <h1 id="剪绳子问题"><a href="#剪绳子问题" class="headerlink" title="剪绳子问题"></a>剪绳子问题</h1><blockquote>
-<p>有一根长度为 n 的绳子，请把绳子剪成整数长度的 m 段（m、n都是整数，n &gt; 1 并且 m &gt; 1），每段绳子的长度记为 k[0],k[1]…k[m-1] 。请问 k[0]<em>k[1]</em>…*k[m-1] 可能的最大乘积是多少？如，当绳子的长度是 8 时，把它剪成 2、3、3 三段，此时得到的最大乘积是18。</p>
+<p>有一根长度为 n 的绳子，请把绳子剪成整数长度的 m 段（m、n 都是整数，n &gt; 1 并且 m &gt; 1），每段绳子的长度记为 k[0],k[1]…k[m-1] 。请问 k[0]<em>k[1]</em>…*k[m-1] 可能的最大乘积是多少？如，当绳子的长度是 8 时，把它剪成 2、3、3 三段，此时得到的最大乘积是 18。</p>
 </blockquote>
 <h1 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h1><p>动态规划是编程面试中的热门话题，如果求一个问题的最优解（通常是最大值或最小值），同时该问题能够分解成若干个子问题，而且子问题之间还有重叠的更小子问题，就可以考虑用动态规划来解决这个问题。</p>
 <p>我们在应用动态规划之前要分析能否把大问题分解成小问题，分解后的每个小问题是否存在最优解。如果把小问题的最优解组合起来能够得到整个问题的最优解，那么我们可以应用动态规划解决这个问题。</p>
@@ -427,19 +541,21 @@
 </li>
 <li><p>假设绳子最初长度为 10，我们可以把绳子剪成长度分别为 4 和 6 的两段，也就是 f(4) 和 f(6) 都是 f(10) 的子问题。接下来分别求解这两个子问题。我们可以把长度为 4 的绳子剪成均为 2 的两段，即 f(2) 是 f(4) 的子问题。同样，我们也可以把长度为 6 的绳子剪成长度分别为 2 和 4 的两段，即 f(2) 和 f(4) 都是 f(6) 的子问题。注意到， f(2) 是 f(4) 和 f(6) 公共的更小的子问题：<strong>把大问题分解成若干个小问题，这些小问题之间还有相互重叠的更小的子问题 =&gt; 应用动态规划求解的问题的第三个特点</strong></p>
 </li>
-<li><p>由于子问题在分解大问题的过程中重复出现，为了避免重复求解子问题，我们可以按照从下往上的顺序先计算小问题的最优解并存储下来，再以此为基础求取大问题的最优解：<strong>从上往下分析问题，从下往上解决问题  =&gt; 应用动态规划求解的问题的第四个特点</strong></p>
+<li><p>由于子问题在分解大问题的过程中重复出现，为了避免重复求解子问题，我们可以按照从下往上的顺序先计算小问题的最优解并存储下来，再以此为基础求取大问题的最优解：<strong>从上往下分析问题，从下往上解决问题 =&gt; 应用动态规划求解的问题的第四个特点</strong></p>
 </li>
 </ul>
 <p>在应用动态规划解决问题的时候，我们总是从解决最小问题开始，并把已经解决的子问题的最优解存储下来(大部分面试题都是存储在一维或者二维数组里)，并把子问题的最优解组合起来逐步解决大的问题。</p>
 <p>在应用动态规划的时候，我们每一步都可能面临若干个选择。由于我们不知道哪个才是最优的解法，只好把所有的可能都尝试一遍，然后比较得出最优方法。如果用数学的语言来表示，这就是 f(n) = max(f(i)×(n-i))，其中 0 &lt; i &lt; n。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">cuttingRope</span>(<span class="hljs-params">n</span>) </span>&#123;<br>  <span class="hljs-keyword">const</span> dp = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span>(n + <span class="hljs-number">1</span>).fill(<span class="hljs-number">1</span>);<br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">3</span>; i &lt;= n; i++) &#123;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> j = <span class="hljs-number">1</span>; j &lt; i; j++) &#123;<br>      dp[i] = <span class="hljs-built_in">Math</span>.max(dp[i], j * (i - j), j * dp[i - j])<br>    &#125;<br>  &#125;<br>  <span class="hljs-keyword">return</span> dp[n];<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">cuttingRope</span>(<span class="hljs-params">n</span>) </span>&#123;<br>  <span class="hljs-keyword">const</span> dp = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span>(n + <span class="hljs-number">1</span>).fill(<span class="hljs-number">1</span>);<br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">3</span>; i &lt;= n; i++) &#123;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> j = <span class="hljs-number">1</span>; j &lt; i; j++) &#123;<br>      dp[i] = <span class="hljs-built_in">Math</span>.max(dp[i], j * (i - j), j * dp[i - j]);<br>    &#125;<br>  &#125;<br>  <span class="hljs-keyword">return</span> dp[n];<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <h1 id="贪婪算法"><a href="#贪婪算法" class="headerlink" title="贪婪算法"></a>贪婪算法</h1><p>贪婪算法和动态规划不一样。当应用贪婪算法解决问题的时候，每一步都可以做出一个贪婪的选择。基于此选择，我们确定能够得到最优解。为什么这样的贪婪选择能够得到最优解？需要用数学方式来证明贪婪选择是正确的。</p>
 <p>如果绳子的长度大于 5，则每次都剪出一段长度为 3 的绳子。如果剩下的绳子的长度仍然大于 5，接着剪出一段长度为 3 的绳子。重复这个步骤，直到剩下的绳子的长度小于 5。剪出一段长度为 3 的绳子，就是我们 <strong>在每一步做出贪婪选择</strong> 。为什么这样的贪婪选择能够得到最优解？这是应用贪婪算法时，都需要问的问题：<strong>需要用数学方式来证明贪婪选择是正确的</strong> 。</p>
-<p>首先，当 n ≥ 5 的时候，我们可以证明 2(n - 2) &gt; n并且 3(n - 3) &gt; n。也就是说，当绳子剩下的长度大于或者等于 5 的时候，我们就把它剪成长度为 3 或者 2 的绳子段。另外，当 n ≥ 5 时 3(n - 3) ≥ 2 (n - 2)，因此我们应该尽可能地多剪长度为 3 的绳子段。前面证明的前提是 n ≥ 5。那么当绳子的长度为 4 呢？在长度为 4 的绳子上剪一刀，有两种可能的结果: 2 × 2 &gt; 1 × 3，同时 2 × 2 = 4，也就是说，当绳子长度为 4 时其实没有必要剪，只是题目的要求是至少要剪一刀。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">cuttingRope</span>(<span class="hljs-params">n</span>) </span>&#123;<br>  <span class="hljs-keyword">if</span> (n &lt;= <span class="hljs-number">3</span>) <span class="hljs-keyword">return</span> n - <span class="hljs-number">1</span><br>  <span class="hljs-comment">// 下面内容可以加上也可以去掉</span><br>  <span class="hljs-comment">// else if (n == 4) &#123;</span><br>  <span class="hljs-comment">//   return 4</span><br>  <span class="hljs-comment">// &#125;</span><br>  <span class="hljs-keyword">else</span> &#123;<br>    <span class="hljs-keyword">let</span> num = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">while</span> (n &gt;= <span class="hljs-number">5</span>) &#123;<br>      n = n - <span class="hljs-number">3</span>;<br>      num++;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">Math</span>.pow(<span class="hljs-number">3</span>, num) * n<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>首先，当 n ≥ 5 的时候，我们可以证明 2(n - 2) &gt; n 并且 3(n - 3) &gt; n。也就是说，当绳子剩下的长度大于或者等于 5 的时候，我们就把它剪成长度为 3 或者 2 的绳子段。另外，当 n ≥ 5 时 3(n - 3) ≥ 2 (n - 2)，因此我们应该尽可能地多剪长度为 3 的绳子段。前面证明的前提是 n ≥ 5。那么当绳子的长度为 4 呢？在长度为 4 的绳子上剪一刀，有两种可能的结果: 2 × 2 &gt; 1 × 3，同时 2 × 2 = 4，也就是说，当绳子长度为 4 时其实没有必要剪，只是题目的要求是至少要剪一刀。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">cuttingRope</span>(<span class="hljs-params">n</span>) </span>&#123;<br>  <span class="hljs-keyword">if</span> (n &lt;= <span class="hljs-number">3</span>) <span class="hljs-keyword">return</span> n - <span class="hljs-number">1</span>;<br>  <span class="hljs-comment">// 下面内容可以加上也可以去掉</span><br>  <span class="hljs-comment">// else if (n == 4) &#123;</span><br>  <span class="hljs-comment">//   return 4</span><br>  <span class="hljs-comment">// &#125;</span><br>  <span class="hljs-keyword">else</span> &#123;<br>    <span class="hljs-keyword">let</span> num = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">while</span> (n &gt;= <span class="hljs-number">5</span>) &#123;<br>      n = n - <span class="hljs-number">3</span>;<br>      num++;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">Math</span>.pow(<span class="hljs-number">3</span>, num) * n;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
 <p>或</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">cuttingRope</span>(<span class="hljs-params">n</span>) </span>&#123;<br>  <span class="hljs-keyword">if</span> (n &lt;= <span class="hljs-number">3</span>) &#123;<br>    <span class="hljs-keyword">return</span> n - <span class="hljs-number">1</span><br>  &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(n % <span class="hljs-number">3</span> === <span class="hljs-number">0</span>) &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">3</span> ** (n / <span class="hljs-number">3</span>)<br>  &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(n % <span class="hljs-number">3</span> === <span class="hljs-number">1</span>) &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">3</span> ** (<span class="hljs-built_in">Math</span>.floor(n / <span class="hljs-number">3</span>) - <span class="hljs-number">1</span>) * <span class="hljs-number">2</span> * <span class="hljs-number">2</span><br>  &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(n % <span class="hljs-number">3</span> === <span class="hljs-number">2</span>) &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">3</span> ** <span class="hljs-built_in">Math</span>.floor(n / <span class="hljs-number">3</span>) * <span class="hljs-number">2</span><br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">cuttingRope</span>(<span class="hljs-params">n</span>) </span>&#123;<br>  <span class="hljs-keyword">if</span> (n &lt;= <span class="hljs-number">3</span>) &#123;<br>    <span class="hljs-keyword">return</span> n - <span class="hljs-number">1</span>;<br>  &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (n % <span class="hljs-number">3</span> === <span class="hljs-number">0</span>) &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">3</span> ** (n / <span class="hljs-number">3</span>);<br>  &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (n % <span class="hljs-number">3</span> === <span class="hljs-number">1</span>) &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">3</span> ** (<span class="hljs-built_in">Math</span>.floor(n / <span class="hljs-number">3</span>) - <span class="hljs-number">1</span>) * <span class="hljs-number">2</span> * <span class="hljs-number">2</span>;<br>  &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (n % <span class="hljs-number">3</span> === <span class="hljs-number">2</span>) &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">3</span> ** <span class="hljs-built_in">Math</span>.floor(n / <span class="hljs-number">3</span>) * <span class="hljs-number">2</span>;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
                 
               </div>
             
@@ -457,8 +573,15 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="category-chain-item">数据结构与算法</a>
+  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/" class="category-chain-item">计算机基础</a>
   
+  
+    <span>></span>
+    
+  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E7%AE%97%E6%B3%95/" class="category-chain-item">算法</a>
+  
+  
+
   
 
       </span>
@@ -485,7 +608,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>动态规划和贪婪算法</div>
-      <div>http://example.com/2021/09/07/动态规划和贪婪算法/</div>
+      <div>https://xuekeven.github.io/2021/09/07/动态规划和贪婪算法/</div>
     </div>
     <div class="license-meta">
       
@@ -503,7 +626,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2022年5月8日</div>
+          <div>2025年8月2日</div>
         </div>
       
       
