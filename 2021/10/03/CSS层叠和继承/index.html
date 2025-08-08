@@ -29,7 +29,7 @@
 <meta property="og:description" content="层叠CSS 本质上是声明规则，即在各种条件下，我们希望产生的特定的效果。如果某元素有某个类，则应用对于样式。如果 X 元素是 Y 元素的子节点，则应用那些样式。浏览器会根据这些规则，来判断每个规则应该用在哪里，并使用它们去渲染页面。 在 CSS 里实现一个效果通常有好几种方式。当 HTML 结构变化，或将同一份样式表应用到不同网页时不同的实现方式会产生不同的结果。CSS 开发很重要一点就是以可预测">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-10-03T12:00:00.000Z">
-<meta property="article:modified_time" content="2025-08-02T07:55:46.178Z">
+<meta property="article:modified_time" content="2025-08-07T06:16:05.994Z">
 <meta property="article:author" content="Keven">
 <meta property="article:tag" content="CSS">
 <meta name="twitter:card" content="summary_large_image">
@@ -395,7 +395,7 @@
     
       
       
-        <a href="/2021/10/03/CSS%E5%B1%85%E4%B8%AD/" title="CSS居中"
+        <a href="/2021/10/03/CSS%E5%B1%85%E4%B8%AD%20copy/" title="CSS居中"
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">CSS居中</span>
@@ -404,7 +404,7 @@
     
       
       
-        <a href="/2021/10/03/CSS%E5%B1%85%E4%B8%AD%20copy/" title="CSS居中"
+        <a href="/2021/10/03/CSS%E5%B1%85%E4%B8%AD/" title="CSS居中"
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">CSS居中</span>
@@ -845,7 +845,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2025年8月2日 下午
+                    本文最后更新于 2025年8月7日 下午
                   
                 
               </p>
@@ -878,7 +878,7 @@
 <h4 id="行内样式"><a href="#行内样式" class="headerlink" title="行内样式"></a>行内样式</h4><p>用<code>style</code>属性写的样式，这个声明只会作用于当前元素。实际上行内样式属于“带作用域的”声明，它会覆盖任何来自样式表或者<code>&lt;style&gt;</code>标签的样式。行内样式并没有选择器，因为它们直接作用于所在的元素。</p>
 <p>为了能在样式表里覆盖行内声明，需要为声明添加<code>!important</code>，这样能将它提升到一个更高优先级的来源。但是如果行内样式也被标记为<code>!important</code>，则无法覆盖行内样式。最好是只在样式表内用<code>!important</code>。</p>
 <h4 id="选择器优先级"><a href="#选择器优先级" class="headerlink" title="选择器优先级"></a>选择器优先级</h4><p>分为内联样式和外联样式（用<code>style</code>标签写的样式和引入的 CSS 文件样式）。</p>
-<p>不同类型的选择器有不同的优先级，一个常用表示优先级的方式是用数值形式标记，具体见 <a href="./#%E9%80%89%E6%8B%A9%E5%99%A8">选择器</a> 。</p>
+<p>不同类型的选择器有不同的优先级，一个常用表示优先级的方式是用数值形式标记，具体见 <a href="./#%E9%80%89%E6%8B%A9%E5%99%A8">选择器</a></p>
 <p>通常最好让优先级尽可能低，这样当需要覆盖一些样式时，才能有选择空间。</p>
 <h3 id="源码顺序"><a href="#源码顺序" class="headerlink" title="源码顺序"></a>源码顺序</h3><p>如果两个声明的来源和优先级相同，其中一个声明在样式表中出现较晚，或位于页面较晚引入的样式表中，则该声明胜出。</p>
 <h2 id="选择器"><a href="#选择器" class="headerlink" title="选择器"></a>选择器</h2><p>选择器可以选中页面上的特定元素并为其指定样式。CSS 有各种各样的选择器。</p>
@@ -914,7 +914,7 @@
 <li><p>[attr＊=”value”]<br>“包含”属性选择器。匹配的元素拥有指定属性 attr，且属性值中包含指定的字符串值，<br>如：[class＊=”sprite-“]</p>
 </li>
 </ul>
-<p>更多属性选择器：<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/Attribute_selectors">https://developer.mozilla.org/zh-CN/docs/Web/CSS/Attribute_selectors</a> 。</p>
+<p>更多属性选择器：<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/Attribute_selectors">https://developer.mozilla.org/zh-CN/docs/Web/CSS/Attribute_selectors</a></p>
 <h3 id="伪类选择器"><a href="#伪类选择器" class="headerlink" title="伪类选择器"></a>伪类选择器</h3><p>特点：</p>
 <ul>
 <li>优先级标记：0，1，0</li>
@@ -974,7 +974,7 @@
 <li><p>:optional<br>匹配没有设置 required 属性的元素（Level4）</p>
 </li>
 </ul>
-<p>更多伪类选择器：<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/Pseudo-classes">https://developer.mozilla.org/zh-CN/docs/Web/CSS/Pseudo-classes</a> 。</p>
+<p>更多伪类选择器：<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/Pseudo-classes">https://developer.mozilla.org/zh-CN/docs/Web/CSS/Pseudo-classes</a></p>
 <h3 id="伪元素选择器"><a href="#伪元素选择器" class="headerlink" title="伪元素选择器"></a>伪元素选择器</h3><p>特点：</p>
 <ul>
 <li>优先级标记：0，0，1</li>
@@ -996,7 +996,7 @@
 <li><p>::marker<br>用于选中一个 list item 的 marker box，后者通常含有一个项目符号或者数字。它作用在任何设置了 display: list-item 的元素或伪元素上，例如<code>&lt;li&gt;</code>、<code>&lt;summary&gt;</code></p>
 </li>
 </ul>
-<p>更多伪元素选择器：<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/Pseudo-elements">https://developer.mozilla.org/zh-CN/docs/Web/CSS/Pseudo-elements</a> 。</p>
+<p>更多伪元素选择器：<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/Pseudo-elements">https://developer.mozilla.org/zh-CN/docs/Web/CSS/Pseudo-elements</a></p>
 <h3 id="组合选择器"><a href="#组合选择器" class="headerlink" title="组合选择器"></a>组合选择器</h3><p>特点：</p>
 <ul>
 <li>将多个选择器连接组成的一个复杂选择器</li>
@@ -1130,7 +1130,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2025年8月2日</div>
+          <div>2025年8月7日</div>
         </div>
       
       

@@ -21,16 +21,16 @@
   <meta name="author" content="Keven">
   <meta name="keywords" content="">
   
-    <meta name="description" content="参考：https:&#x2F;&#x2F;juejin.cn&#x2F;post&#x2F;6844903750985842695 。https:&#x2F;&#x2F;github.com&#x2F;biaochenxuying&#x2F;blog&#x2F;issues&#x2F;29 。 什么是复杂度分析复杂度分析是整个算法学习的精髓，使用数据结构与算法是为了能更快时间、更省空间地解决问题。因此，需要从 执行时间 和 占用空间 两个维度来评估数据结构与算法的性能。虽然我们能用代码准确的计算">
+    <meta name="description" content="参考：https:&#x2F;&#x2F;juejin.cn&#x2F;post&#x2F;6844903750985842695https:&#x2F;&#x2F;github.com&#x2F;biaochenxuying&#x2F;blog&#x2F;issues&#x2F;29 什么是复杂度分析复杂度分析是整个算法学习的精髓，使用数据结构与算法是为了能更快时间、更省空间地解决问题。因此，需要从 执行时间 和 占用空间 两个维度来评估数据结构与算法的性能。虽然我们能用代码准确的计算出执行时">
 <meta property="og:type" content="article">
 <meta property="og:title" content="复杂度">
 <meta property="og:url" content="https://xuekeven.github.io/2021/09/20/JavaScript%E5%A4%8D%E6%9D%82%E5%BA%A6/index.html">
 <meta property="og:site_name" content="Keven&#39;s Blog">
-<meta property="og:description" content="参考：https:&#x2F;&#x2F;juejin.cn&#x2F;post&#x2F;6844903750985842695 。https:&#x2F;&#x2F;github.com&#x2F;biaochenxuying&#x2F;blog&#x2F;issues&#x2F;29 。 什么是复杂度分析复杂度分析是整个算法学习的精髓，使用数据结构与算法是为了能更快时间、更省空间地解决问题。因此，需要从 执行时间 和 占用空间 两个维度来评估数据结构与算法的性能。虽然我们能用代码准确的计算">
+<meta property="og:description" content="参考：https:&#x2F;&#x2F;juejin.cn&#x2F;post&#x2F;6844903750985842695https:&#x2F;&#x2F;github.com&#x2F;biaochenxuying&#x2F;blog&#x2F;issues&#x2F;29 什么是复杂度分析复杂度分析是整个算法学习的精髓，使用数据结构与算法是为了能更快时间、更省空间地解决问题。因此，需要从 执行时间 和 占用空间 两个维度来评估数据结构与算法的性能。虽然我们能用代码准确的计算出执行时">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://xuekeven.github.io/images/%E5%B8%B8%E8%A7%81%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90.png">
 <meta property="article:published_time" content="2021-09-20T14:00:00.000Z">
-<meta property="article:modified_time" content="2025-08-02T14:41:38.902Z">
+<meta property="article:modified_time" content="2025-08-07T06:16:06.056Z">
 <meta property="article:author" content="Keven">
 <meta property="article:tag" content="算法">
 <meta name="twitter:card" content="summary_large_image">
@@ -477,7 +477,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2025年8月2日 晚上
+                    本文最后更新于 2025年8月7日 下午
                   
                 
               </p>
@@ -485,7 +485,7 @@
             
               <div class="markdown-body">
                 
-                <p>参考：<br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903750985842695">https://juejin.cn/post/6844903750985842695</a> 。<br><a target="_blank" rel="noopener" href="https://github.com/biaochenxuying/blog/issues/29">https://github.com/biaochenxuying/blog/issues/29</a> 。</p>
+                <p>参考：<br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903750985842695">https://juejin.cn/post/6844903750985842695</a><br><a target="_blank" rel="noopener" href="https://github.com/biaochenxuying/blog/issues/29">https://github.com/biaochenxuying/blog/issues/29</a></p>
 <h1 id="什么是复杂度分析"><a href="#什么是复杂度分析" class="headerlink" title="什么是复杂度分析"></a>什么是复杂度分析</h1><p>复杂度分析是整个算法学习的精髓，使用数据结构与算法是为了能更快时间、更省空间地解决问题。因此，需要从 <strong>执行时间</strong> 和 <strong>占用空间</strong> 两个维度来评估数据结构与算法的性能。虽然我们能用代码准确的计算出执行时间，但是这也会有很多局限性。</p>
 <ul>
 <li>数据规模的不同会直接影响到测试结果。比如同一个排序算法，排序顺序不一样，那么最后的计算效率的结果也会不一样，而如果恰好已经是排序好的了数组，那么执行时间就会更短。又比如如果数据规模比较小的话，测试结果可能也无法反应算法的性能。</li>
@@ -531,7 +531,7 @@
 
 <p>同理，此函数的时间复杂度为 O(m*n)。</p>
 <h1 id="常见时间复杂度"><a href="#常见时间复杂度" class="headerlink" title="常见时间复杂度"></a>常见时间复杂度</h1><p><img src="/images/%E5%B8%B8%E8%A7%81%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90.png" srcset="/img/loading.gif" lazyload alt="常见时间复杂度分析（来自掘金@snowLu）"></p>
-<p>上图可以粗略的分为两类：<strong>多项式量级</strong> 和 <strong>非多项式量级</strong> 。</p>
+<p>上图可以粗略的分为两类：<strong>多项式量级</strong> 和 <strong>非多项式量级</strong></p>
 <p>多项式量级会随着数据规模的增长，执行时间和空间占用按照多项式的比例增长。包括 O(1)（常数阶）、O(logn)（对数阶）、O(n)（线性阶）、O(nlogn)（线性对数阶）、O(n2) （平方阶）、O(n3)（立方阶）。</p>
 <p>非多项式量级有 O(2<sup>n</sup>)（指数阶）和 O(n!)（阶乘阶）。随着数据规模的增长，非多项式量级的执行时间就会急剧增加，所以，非多项式量级的代码算法是非常低效的算法。</p>
 <p>常用的时间复杂度所耗费的时间从小到大（效率从高到低）：<br>O(1) &lt; O(logn) &lt; O(n) &lt; O(nlogn) &lt; O(n<sup>2</sup>) &lt; O(n<sup>3</sup>) &lt; O(2<sup>n</sup>) &lt; O(n!) &lt; O(n<sup>n</sup>)</p>
@@ -620,7 +620,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2025年8月2日</div>
+          <div>2025年8月7日</div>
         </div>
       
       

@@ -1,0 +1,1149 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Keven">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="参考：https:&#x2F;&#x2F;juejin.cn&#x2F;post&#x2F;6844903685122703367https:&#x2F;&#x2F;tech.meituan.com&#x2F;2018&#x2F;10&#x2F;11&#x2F;fe-security-csrf.htmlhttps:&#x2F;&#x2F;juejin.cn&#x2F;post&#x2F;6844903638532358151 XSS概念Cross-Site Scripting（跨站脚本攻击）简称 XSS，是一种代码注入攻击。攻击者通过">
+<meta property="og:type" content="article">
+<meta property="og:title" content="浏览器安全">
+<meta property="og:url" content="https://xuekeven.github.io/2025/08/07/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%AE%89%E5%85%A8/index.html">
+<meta property="og:site_name" content="Keven&#39;s Blog">
+<meta property="og:description" content="参考：https:&#x2F;&#x2F;juejin.cn&#x2F;post&#x2F;6844903685122703367https:&#x2F;&#x2F;tech.meituan.com&#x2F;2018&#x2F;10&#x2F;11&#x2F;fe-security-csrf.htmlhttps:&#x2F;&#x2F;juejin.cn&#x2F;post&#x2F;6844903638532358151 XSS概念Cross-Site Scripting（跨站脚本攻击）简称 XSS，是一种代码注入攻击。攻击者通过">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-08-07T12:00:00.000Z">
+<meta property="article:modified_time" content="2025-08-08T19:25:49.995Z">
+<meta property="article:author" content="Keven">
+<meta property="article:tag" content="浏览器">
+<meta property="article:tag" content="安全">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>浏览器安全 - Keven&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"xuekeven.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 50vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Keven&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tools/" target="_self">
+                <i class="iconfont icon-briefcase"></i>
+                <span>工具</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/dome/" target="_self">
+                <i class="iconfont icon-th-large"></i>
+                <span>Dome</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/example.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.2)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="浏览器安全"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        Keven
+      </span>
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-08-07 20:00" pubdate>
+          2025年8月7日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          7k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          44 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar category-bar" style="margin-right: -1rem">
+    
+
+
+
+
+
+<div class="category-list">
+  
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="运行环境"
+        id="heading-158744a80f0100ee733886680b260f45" role="tab" data-toggle="collapse" href="#collapse-158744a80f0100ee733886680b260f45"
+        aria-expanded="true"
+      >
+        运行环境
+        <span class="list-group-count">(6)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-158744a80f0100ee733886680b260f45"
+           role="tabpanel" aria-labelledby="heading-158744a80f0100ee733886680b260f45">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2021/10/15/%E7%99%BB%E5%BD%95%E8%AE%A4%E8%AF%81/" title="登录认证"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">登录认证</span>
+        </a>
+      
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="浏览器"
+        id="heading-912302cb020149c37f9642fbc9e42891" role="tab" data-toggle="collapse" href="#collapse-912302cb020149c37f9642fbc9e42891"
+        aria-expanded="true"
+      >
+        浏览器
+        <span class="list-group-count">(5)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-912302cb020149c37f9642fbc9e42891"
+           role="tabpanel" aria-labelledby="heading-912302cb020149c37f9642fbc9e42891">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2021/09/09/%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%AD%98%E5%82%A8/" title="客户端存储"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">客户端存储</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2025/08/07/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%AE%89%E5%85%A8/" title="浏览器安全"
+           class="list-group-item list-group-item-action
+           active">
+          <span class="category-post">浏览器安全</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/09/12/%E6%B5%8F%E8%A7%88%E5%99%A8%E8%A7%A3%E6%9E%90%E6%B8%B2%E6%9F%93%E9%A1%B5%E9%9D%A2/" title="浏览器解析渲染页面"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">浏览器解析渲染页面</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/09/08/%E6%B5%8F%E8%A7%88%E5%99%A8%E9%9D%A2%E8%AF%95%E9%A2%98/" title="浏览器面试题"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">浏览器面试题</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/09/25/%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98/" title="跨域问题"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">跨域问题</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+</div>
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">浏览器安全</h1>
+            
+              <p id="updated-time" class="note note-info" style="">
+                
+                  
+                    本文最后更新于 2025年8月9日 凌晨
+                  
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <p>参考：<br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903685122703367">https://juejin.cn/post/6844903685122703367</a><br><a target="_blank" rel="noopener" href="https://tech.meituan.com/2018/10/11/fe-security-csrf.html">https://tech.meituan.com/2018/10/11/fe-security-csrf.html</a><br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903638532358151">https://juejin.cn/post/6844903638532358151</a></p>
+<h1 id="XSS"><a href="#XSS" class="headerlink" title="XSS"></a>XSS</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>Cross-Site Scripting（跨站脚本攻击）简称 XSS，是一种代码注入攻击。攻击者通过在目标网站当中注入恶意脚本，使之在用户的浏览器上运行。利用这些恶意脚本，攻击者可以获取用户的敏感信息如 Cookie、sessionID 等内容，进而危害数据安全。</p>
+<p>为了和 CSS 区分，这里把攻击的第一个字母改成了 X，于是叫做 XSS。XSS 的本质是恶意代码未经过滤，与网站正常的代码混在一起，浏览器无法分辨哪些脚本是可信的，导致恶意脚本被执行。由于直接在用户的终端执行，恶意代码能够直接获取用户的信息，或者利用这些信息冒充用户向网站发起攻击者定义的请求。</p>
+<p>在部分情况下，由于输入的限制，注入的恶意脚本比较短。但可以通过引入外部的脚本，并由浏览器执行来完成比较复杂的攻击策略。不仅是业务上用户生产的内容可以进行注入，包括 URL 上参数等等都可以是攻击的来源。因此在处理输入时，以下内容都不可信：</p>
+<ul>
+<li>来自用户生成的内容（UGC）</li>
+<li>来自第三方的链接</li>
+<li>URL 参数</li>
+<li>POST 参数</li>
+<li>Referer （可能来自不可信的来源）</li>
+<li>Cookie （可能来自其他子域注入）</li>
+</ul>
+<h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><p>根据攻击的来源，XSS 攻击可分为存储型、反射型和 DOM 型三种。<br>存储区：恶意代码存放的位置。插入点：由谁取得恶意代码并插入到网页上。</p>
+<table>
+<thead>
+<tr>
+<th align="center">分类</th>
+<th align="center">存储区</th>
+<th align="center">插入点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">存储型 XSS</td>
+<td align="center">后端数据库</td>
+<td align="center">HTML</td>
+</tr>
+<tr>
+<td align="center">反射型 XSS</td>
+<td align="center">URL</td>
+<td align="center">HTML</td>
+</tr>
+<tr>
+<td align="center">DOM 型 XSS</td>
+<td align="center">无</td>
+<td align="center">前端 JavaScript</td>
+</tr>
+</tbody></table>
+<h3 id="存储型-XSS"><a href="#存储型-XSS" class="headerlink" title="存储型 XSS"></a>存储型 XSS</h3><p>存储型 XSS 的攻击步骤：</p>
+<ul>
+<li>攻击者将恶意代码提交到目标网站的数据库中。</li>
+<li>用户打开目标网站时，网站服务端将恶意代码从数据库取出，拼接在 HTML 中返回给浏览器。</li>
+<li>用户浏览器接收到响应后解析执行，混在其中的恶意代码也被执行。</li>
+<li>恶意代码窃取用户数据并发送到攻击者的网站，或者冒充用户调用目标网站接口执行指定操作。</li>
+</ul>
+<p>这种攻击常见于带有用户保存数据的网站功能，如论坛发帖、商品评论、用户私信等。</p>
+<h3 id="反射型-XSS"><a href="#反射型-XSS" class="headerlink" title="反射型 XSS"></a>反射型 XSS</h3><p>反射型 XSS 的攻击步骤：</p>
+<ul>
+<li>攻击者构造出特殊的 URL，其中包含恶意代码。</li>
+<li>用户打开带有恶意代码的 URL 时，网站服务端将恶意代码从 URL 中取出，拼接在 HTML 中返回给浏览器。</li>
+<li>用户浏览器接收到响应后解析执行，混在其中的恶意代码也被执行。</li>
+<li>恶意代码窃取用户数据并发送到攻击者的网站，或者冒充用户调用目标网站接口执行指定操作。</li>
+</ul>
+<p>反射型 XSS 跟存储型 XSS 的区别是，存储型 XSS 的恶意代码存在数据库里，而反射型 XSS 的恶意代码存在 URL 里。反射型 XSS 漏洞常见于通过 URL 传递参数的功能，如网站搜索、跳转等。</p>
+<p>由于需要用户主动打开恶意的 URL 才能攻击，攻击者往往会结合多种手段诱导用户点击。POST 方法也可以触发反射型 XSS，只不过其触发条件比较苛刻（需要构造表单提交页面，并引导用户点击），所以非常少见。</p>
+<h3 id="DOM-型-XSS"><a href="#DOM-型-XSS" class="headerlink" title="DOM 型 XSS"></a>DOM 型 XSS</h3><p>DOM 型 XSS 的攻击步骤：</p>
+<ul>
+<li>攻击者构造出特殊的 URL，其中包含恶意代码。</li>
+<li>用户打开带有恶意代码的 URL。</li>
+<li>用户浏览器接收到响应后解析执行，前端 JavaScript 取出 URL 中的恶意代码并执行。</li>
+<li>恶意代码窃取用户数据并发送到攻击者的网站，或者冒充用户调用目标网站接口执行指定操作。</li>
+</ul>
+<p>DOM 型 XSS 跟前两种 XSS 的区别：在 DOM 型 XSS 攻击中取出和执行恶意代码由浏览器端完成，属于前端 JavaScript 自身的安全漏洞，而其他两种 XSS 都属于服务端的安全漏洞。</p>
+<h2 id="防范"><a href="#防范" class="headerlink" title="防范"></a>防范</h2><p>XSS 攻击有两大要素：</p>
+<ul>
+<li>攻击者提交恶意代码</li>
+<li>浏览器执行恶意代码</li>
+</ul>
+<h3 id="输入过滤"><a href="#输入过滤" class="headerlink" title="输入过滤"></a>输入过滤</h3><p>在用户提交时，由前端过滤输入，然后提交到后端。这样做不可行。因为一旦攻击者绕过前端过滤，而直接构造请求就可以提交恶意代码。</p>
+<p>后端在写入数据库前对输入进行过滤，然后把“安全的”内容返回给前端。这样做不完全可行。比如，正常输入了 <code>5 &lt; 7</code> 这个内容，在写入数据库前被转义变成了 <code>5 &amp;lt; 7</code>。但问题是，在提交阶段，我们并不确定内容要输出到哪里：</p>
+<ul>
+<li>用户的输入内容可能同时提供给前端和客户端，而一旦经过了 escapeHTML 转义后没有进行 unescapeHTML 反转，客户端显示的内容就变成了乱码 <code>5 &amp;lt; 7</code></li>
+<li>在前端中，不同的位置所需的编码也不同：<ul>
+<li>当 <code>5 &amp;lt; 7</code> 作为 HTML 拼接页面时可以正常显示</li>
+<li>当 <code>5 &amp;lt; 7</code> 通过 Ajax 值返回，然后赋值给 JavaScript 的变量时，前端得到的字符串就是转义后的字符。这个内容不能直接用于 Vue 等模板的展示，也不能直接用于内容长度计算。</li>
+</ul>
+</li>
+</ul>
+<p>所以，输入侧过滤能够在某些情况下解决特定的 XSS 问题，但是会引入很大的不确定性和乱码问题。在防范 XSS 攻击时应避免此类方法。当然，对于明确的输入类型，例如数字、URL、电话号码、邮件地址等内容，进行输入过滤还是必要的。既然输入过滤并非完全可靠，就要通过“防止浏览器执行恶意代码”来防范 XSS。这部分分为两类：</p>
+<ul>
+<li>防止 HTML 中出现注入</li>
+<li>防止 JavaScript 执行时执行恶意代码</li>
+</ul>
+<h3 id="存储型和反射型"><a href="#存储型和反射型" class="headerlink" title="存储型和反射型"></a>存储型和反射型</h3><p>存储型和反射型 XSS 都是在服务端取出恶意代码后插入到响应 HTML 里，攻击者刻意编写的“数据”被内嵌到“代码”中，被浏览器所执行。预防这两种漏洞，有两种常见做法：</p>
+<ul>
+<li>改成纯前端渲染，把代码和数据分隔开</li>
+<li>对 HTML 做充分转义</li>
+</ul>
+<h4 id="纯前端渲染"><a href="#纯前端渲染" class="headerlink" title="纯前端渲染"></a>纯前端渲染</h4><p>纯前端渲染的过程：</p>
+<ul>
+<li>浏览器先加载一个静态 HTML，此 HTML 中不包含任何跟业务相关的数据。</li>
+<li>然后浏览器执行 HTML 中的 JavaScript。</li>
+<li>JavaScript 通过 Ajax 加载业务数据，调用 DOM API 更新到页面上。</li>
+</ul>
+<p>在纯前端渲染中，我们会明确的告诉浏览器：下面要设置的内容是文本（.innerText），还是属性（.setAttribute），还是样式（.style）等等。浏览器不会被轻易的被欺骗，执行预期外的代码。但是纯前端渲染还需注意避免 DOM 型 XSS 漏洞。</p>
+<p>在很多内部管理系统中，采用纯前端渲染是非常合适的。但对于性能要求高或者有 SEO 需求的页面，仍然要面对拼接 HTML 的问题。</p>
+<h4 id="转义-HTML"><a href="#转义-HTML" class="headerlink" title="转义 HTML"></a>转义 HTML</h4><p>如果拼接 HTML 是必要的，就需要采用合适的转义库来对 HTML 模板各处插入点进行充分的转义。</p>
+<p>常用的模板引擎，比如 doT.js、ejs、FreeMarker 等等，对于 HTML 转义通常只有一个规则，就是把 <code>&amp; &lt; &gt; &quot; &#39; /</code> 这几个字符转义掉，虽然能起到一定的 XSS 防护作用，但并不完善：</p>
+<table>
+<thead>
+<tr>
+<th align="center">XSS 安全漏洞</th>
+<th align="center">简单转义是否有防护作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">HTML 标签文字内容</td>
+<td align="center">有</td>
+</tr>
+<tr>
+<td align="center">HTML 属性值</td>
+<td align="center">有</td>
+</tr>
+<tr>
+<td align="center">CSS 内联样式</td>
+<td align="center">无</td>
+</tr>
+<tr>
+<td align="center">内联 JavaScript</td>
+<td align="center">无</td>
+</tr>
+<tr>
+<td align="center">内联 JSON</td>
+<td align="center">无</td>
+</tr>
+<tr>
+<td align="center">跳转链接</td>
+<td align="center">无</td>
+</tr>
+</tbody></table>
+<p>要完善 XSS 防护措施，要使用更完善更细致的转义策略。而且 HTML 编码是十分复杂的，在不同的上下文要使用相应的转义规则。</p>
+<h3 id="DOM-型"><a href="#DOM-型" class="headerlink" title="DOM 型"></a>DOM 型</h3><p>DOM 型 XSS 攻击，实际上就是前端 JavaScript 代码本身不严谨，把不可信的数据当作代码执行了。</p>
+<p>在使用 <code>.innerHTML</code>、<code>.outerHTML</code>、<code>document.write()</code> 时要特别小心，不要把不可信的数据作为 HTML 插到页面上，而应尽量使用 <code>.textContent</code>、<code>.setAttribute()</code> 等属性。如果用 Vue/React 技术栈，尽量不用 <code>v-html</code>/<code>dangerouslySetInnerHTML</code> 等，在前端 render 阶段避免 <code>innerHTML</code>、<code>outerHTML</code> 的 XSS 隐患。</p>
+<p>DOM 中的内联事件监听器，比如 <code>location</code>、<code>onclick</code>、<code>onerror</code>、<code>onload</code>、<code>onmouseover</code> ，<code>&lt;a&gt;</code> 标签的 <code>href</code> 属性，JavaScript 里的 <code>eval()</code>、<code>setTimeout()</code>、<code>setInterval()</code> 等函数，都能把字符串作为代码运行。如果把不可信的数据拼接到字符串中并传递给这些 API，就很容易产生安全隐患。</p>
+<h3 id="其他防范措施"><a href="#其他防范措施" class="headerlink" title="其他防范措施"></a>其他防范措施</h3><h4 id="CSP"><a href="#CSP" class="headerlink" title="CSP"></a>CSP</h4><p>严格的 CSP（Content Security Policy） 在 XSS 的防范中可以起到以下的作用：</p>
+<ul>
+<li>禁止加载外域代码，防止复杂的攻击逻辑。</li>
+<li>禁止外域提交，网站被攻击后，用户的数据不会泄露到外域。</li>
+<li>禁止内联脚本执行（规则较严格，目前发现 GitHub 使用）。</li>
+<li>禁止未授权的脚本执行（新特性，Google Map 移动版在使用）。</li>
+<li>合理使用上报可以及时发现 XSS，利于尽快修复问题。</li>
+</ul>
+<h4 id="控制输入内容长度"><a href="#控制输入内容长度" class="headerlink" title="控制输入内容长度"></a>控制输入内容长度</h4><p>对于不受信任的输入，都应该限定一个合理的长度。虽然无法完全防止 XSS 发生，但可以增加 XSS 攻击的难度。</p>
+<h4 id="Cookie-HttpOnly"><a href="#Cookie-HttpOnly" class="headerlink" title="Cookie HttpOnly"></a>Cookie HttpOnly</h4><p>禁止 JavaScript 读取某些敏感 Cookie，攻击者完成 XSS 注入后也无法窃取 Cookie。</p>
+<h2 id="检测"><a href="#检测" class="headerlink" title="检测"></a>检测</h2><p>有两种方法检测 XSS 漏洞：</p>
+<ul>
+<li><p>使用通用 XSS 攻击字符串手动检测 XSS 漏洞</p>
+<figure class="highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs livescript">jaVasCript:<span class="hljs-comment">/*-/*`/*\`/*&#x27;/*&quot;/**/</span>(<span class="hljs-comment">/* */</span>oNcliCk=alert() )<span class="hljs-regexp">//%0D%0A%0d%0a//</span>&lt;<span class="hljs-regexp">/stYle/</span>&lt;<span class="hljs-regexp">/titLe/</span>&lt;<span class="hljs-regexp">/teXtarEa/</span>&lt;<span class="hljs-regexp">/scRipt/</span>--!&gt;<span class="hljs-string">\x3csVg/&lt;sVg/oNloAd=alert()//&gt;\x3e</span><br></code></pre></td></tr></table></figure>
+
+<p>上面的字符串能够检测到存在于 HTML 属性、HTML 文字内容、HTML 注释、跳转链接、内联 JavaScript 字符串、内联 CSS 样式表等多种上下文 XSS 漏洞，也包括 eval()、setTimeout()、setInterval()、Function()、innerHTML、document.write() 等 DOM 型 XSS 漏洞，并且能绕过一些 XSS 过滤器。</p>
+</li>
+<li><p>使用扫描工具自动检测 XSS 漏洞<br>如 Arachni、Mozilla HTTP Observatory、w3af 等工具。</p>
+</li>
+</ul>
+<h1 id="CSRF"><a href="#CSRF" class="headerlink" title="CSRF"></a>CSRF</h1><h2 id="概念-1"><a href="#概念-1" class="headerlink" title="概念"></a>概念</h2><p>CSRF（Cross-site request forgery）跨站请求伪造：攻击者诱导受害者进入第三方网站，在第三方网站中，向被攻击网站发送跨站请求。利用受害者在被攻击网站已经获取的注册凭证，来绕过后台的用户验证，达到冒充用户对被攻击的网站执行某项操作的目的。</p>
+<p>一个典型的 CSRF 攻击有着如下的流程：</p>
+<ul>
+<li>受害者登录 a.com，并保留了登录凭证（Cookie）</li>
+<li>攻击者引诱受害者访问了 b.com</li>
+<li>b.com 向 a.com 发送了一个请求：a.com/act=xx。浏览器会默认携带 a.com 的 Cookie</li>
+<li>a.com 接收到请求后，对请求进行验证并确认是受害者的凭证，误以为是受害者自己发送的请求</li>
+<li>a.com 以受害者的名义执行了 act=xx</li>
+<li>攻击完成，攻击者在受害者不知情的情况下，冒充受害者，让 a.com 执行了自己定义的操作</li>
+</ul>
+<h2 id="分类-1"><a href="#分类-1" class="headerlink" title="分类"></a>分类</h2><h3 id="GET-类型"><a href="#GET-类型" class="headerlink" title="GET 类型"></a>GET 类型</h3><p>GET 类型的 CSRF 利用非常简单，只需要一个 HTTP 请求，一般会这样利用：</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">![](https:<span class="hljs-regexp">//</span>awps-assets.meituan.net<span class="hljs-regexp">/mit-x/</span>blog-images-bundle-<span class="hljs-number">2018</span>b<span class="hljs-regexp">/ff0cdbee.example/</span>withdraw?amount=<span class="hljs-number">10000</span>&amp;<span class="hljs-keyword">for</span>=hacker)<br></code></pre></td></tr></table></figure>
+
+<p>在受害者访问含有这个 img 的页面后，浏览器会自动向 <a target="_blank" rel="noopener" href="http://bank.example/withdraw?account=xiaoming&amp;amount=10000&amp;for=hacker">http://bank.example/withdraw?account=xiaoming&amp;amount=10000&amp;for=hacker</a> 发出一次 HTTP 请求。bank.example 就会收到包含受害者登录信息的一次跨域请求。</p>
+<h3 id="POST-类型"><a href="#POST-类型" class="headerlink" title="POST 类型"></a>POST 类型</h3><p>这种类型的 CSRF 利用起来通常使用的是一个自动提交的表单，如：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">action</span>=<span class="hljs-string">&quot;http://bank.example/withdraw&quot;</span> <span class="hljs-attr">method</span>=<span class="hljs-string">&quot;POST&quot;</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;hidden&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;account&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;xiaoming&quot;</span> /&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;hidden&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;amount&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;10000&quot;</span> /&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;hidden&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;for&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;hacker&quot;</span> /&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript"></span><br><span class="javascript">  <span class="hljs-built_in">document</span>.forms[<span class="hljs-number">0</span>].submit();</span><br><span class="javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>访问该页面后，表单会自动提交，相当于模拟用户完成了一次 POST 操作。</p>
+<p>POST 类型的攻击通常比 GET 要求更加严格一点，但仍并不复杂。任何个人网站、博客、被黑客上传页面的网站都有可能是发起攻击的来源，后端接口不能将安全寄托在仅允许 POST 上面。</p>
+<h3 id="链接类型"><a href="#链接类型" class="headerlink" title="链接类型"></a>链接类型</h3><p>链接类型的 CSRF 并不常见，比起其他两种用户打开页面就中招的情况，这种需要用户点击链接才会触发。这种类型通常是在论坛中发布的图片中嵌入恶意链接，或以广告的形式诱导用户中招，攻击者通常会以比较夸张的词语诱骗用户点击，例如：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">a</span></span><br><span class="hljs-tag">  <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;http://test.com/csrf/withdraw.php?amount=1000&amp;for=hacker&quot;</span></span><br><span class="hljs-tag">  <span class="hljs-attr">taget</span>=<span class="hljs-string">&quot;_blank&quot;</span>&gt;</span><br>  重磅消息！！<br>  <span class="hljs-tag">&lt;<span class="hljs-name">a</span></span><br><span class="hljs-tag">/&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>由于之前用户登录了信任的网站 A，并且保存了登录状态，只要用户主动访问上面的这个 PHP 页面，则表示攻击成功。</p>
+<h2 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h2><ul>
+<li>攻击一般发起在第三方网站，而不是被攻击的网站，被攻击的网站无法防止攻击发生。</li>
+<li>攻击利用受害者在被攻击网站的登录凭证，冒充受害者提交操作，而不是直接窃取数据。</li>
+<li>整个过程攻击者并不能获取到受害者的登录凭证，仅仅是“冒用”。</li>
+<li>跨站请求可以用各种方式：图片 URL、超链接、CORS、Form 提交等等。部分请求方式可以直接嵌入在第三方论坛、文章中，难以进行追踪。</li>
+</ul>
+<p>CSRF 通常是跨域的，因为外域通常更容易被攻击者掌控。但如果本域下有容易被利用的功能，比如可以发图和链接的论坛和评论区，攻击可以直接在本域下进行，而且这种攻击更加危险。</p>
+<h2 id="防范-1"><a href="#防范-1" class="headerlink" title="防范"></a>防范</h2><p>CSRF 通常从第三方网站发起，被攻击的网站无法防止攻击发生，只能通过增强自己网站针对 CSRF 的防护能力来提升安全性。</p>
+<p>CSRF 通常发生在第三方网站，而且攻击者不能获取到 Cookie 等信息，只是使用。针对这两点，可以专门制定防护策略，如下：</p>
+<ul>
+<li>阻止不明外域的访问<ul>
+<li>同源检测</li>
+<li>Samesite Cookie</li>
+</ul>
+</li>
+<li>提交时要求附加本域才能获取的信息<ul>
+<li>CSRF Token</li>
+<li>双重 Cookie 验证</li>
+</ul>
+</li>
+</ul>
+<h3 id="同源检测"><a href="#同源检测" class="headerlink" title="同源检测"></a>同源检测</h3><p>既然 CSRF 大多来自第三方网站，那么我们就直接禁止外域（或者不受信任域名）对我们发起请求。那么问题来了，我们如何判断请求是否来自外域呢？</p>
+<p>在 HTTP 协议中，每一个异步请求都会携带两个 Header，用于标记来源域名：Origin Header 和 Referer Header。这两个 Header 在浏览器发起请求时，大多数情况会被自动带上，并且不能由前端自定义内容。 服务器可以通过解析这两个 Header 中的域名，确定请求的来源域。</p>
+<h4 id="Origin-Header"><a href="#Origin-Header" class="headerlink" title="Origin Header"></a>Origin Header</h4><p>在部分与 CSRF 有关的请求中，请求的 Header 会携带 Origin 字段。字段内包含请求的域名（不包含 path 及 query）。如果 Origin 存在，那么直接使用 Origin 中的字段确认来源域名就可以。但是 Origin 在以下两种情况下并不存在：</p>
+<ul>
+<li>IE11 同源策略： IE 11 不会在跨站 CORS 请求添加 Origin 标头，Referer 头仍然是唯一的标识。最根本原因是因为 IE 11 对同源的定义和其他浏览器有不同。</li>
+<li>302 重定向： 在 302 重定向之后 Origin 不包含在重定向的请求中，因为 Origin 可能会被认为是其他来源的敏感信息。对于 302 重定向的情况来说都是定向到新的服务器上的 URL，因此浏览器不想将 Origin 泄漏到新的服务器上。</li>
+</ul>
+<h4 id="Referer-Header"><a href="#Referer-Header" class="headerlink" title="Referer Header"></a>Referer Header</h4><p>根据 HTTP 协议，在 HTTP 头中有一个字段叫 Referer，记录了 HTTP 请求的来源地址。对于 Ajax、图片和 script 等资源请求，Referer 为发起请求的页面地址。对于页面跳转，Referer 为打开页面历史记录的前一个页面地址。因此使用 Referer 中链接的 Origin 部分可以得知请求的来源域名。</p>
+<p>这种方法并非万无一失，Referer 的值是由浏览器提供的，虽然 HTTP 协议有明确的要求，但是每个浏览器对于 Referer 的具体实现可能有差别，并不能保证浏览器自身没有安全漏洞。使用验证 Referer 值的方法，就是把安全性都依赖于第三方（即浏览器）来保障，从理论上来讲，这样并不是很安全。在部分情况下，攻击者可以隐藏，甚至修改自己请求的 Referer。</p>
+<p>2014 年，W3C 的 Web 应用安全工作组发布了 Referrer Policy 草案，对浏览器该如何发送 Referer 做了详细的规定。截止现在新版浏览器大部分已经支持了这份草案，终于可以灵活地控制自己网站的 Referer 策略。新版的 Referrer Policy 规定了五种 Referer 策略，之前就存在三种策略。他们的对应关系如下：</p>
+<table>
+<thead>
+<tr>
+<th align="center">策略名称</th>
+<th align="center">属性值（新）</th>
+<th align="center">属性值（旧）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">No Referrer</td>
+<td align="center">no-Referrer</td>
+<td align="center">never</td>
+</tr>
+<tr>
+<td align="center">No Referrer When Downgrade</td>
+<td align="center">no-Referrer-when-downgrade</td>
+<td align="center">default</td>
+</tr>
+<tr>
+<td align="center">Origin Only</td>
+<td align="center">(same or strict) origin</td>
+<td align="center">origin</td>
+</tr>
+<tr>
+<td align="center">Origin When Cross Origin</td>
+<td align="center">(strict) origin-when-crossorigin</td>
+<td align="center">-</td>
+</tr>
+<tr>
+<td align="center">Unsafe URL</td>
+<td align="center">unsafe-url</td>
+<td align="center">always</td>
+</tr>
+</tbody></table>
+<p>根据上面的表格需要把 Referrer Policy 的策略设置成 same-origin，对于同源的链接和引用，会发送 Referer，referer 值为 Host 不带 Path；跨域访问则不携带 Referer。例如：aaa.com 引用 bbb.com 资源，不会发送 Referer。设置 Referrer Policy 的方法有三种：</p>
+<ul>
+<li>在 CSP 设置</li>
+<li>页面头部增加 meta 标签</li>
+<li>a 标签增加 referrer policy 属性</li>
+</ul>
+<p>上面说的比较多，但我们可以知道一个问题：攻击者可以在自己的请求中隐藏 Referer。如果攻击者将自己的请求这样填写，那么这个请求发起的攻击将不携带 Referer：</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">![](https:<span class="hljs-regexp">//</span>awps-assets.meituan.net<span class="hljs-regexp">/mit-x/</span>blog-images-bundle-<span class="hljs-number">2018</span>b<span class="hljs-regexp">/ff0cdbee.example/</span>withdraw?amount=<span class="hljs-number">10000</span>&amp;<span class="hljs-keyword">for</span>=hacker)<br></code></pre></td></tr></table></figure>
+
+<p>另外在以下情况下 Referer 没有或者不可信：</p>
+<ul>
+<li>IE6、7 下使用 window.location.href=url 进行界面的跳转，会丢失 Referer。</li>
+<li>IE6、7 下使用 window.open，也会缺失 Referer。</li>
+<li>HTTPS 页面跳转到 HTTP 页面，所有浏览器 Referer 都丢失。</li>
+<li>点击 Flash 上到达另外一个网站的时候，Referer 的情况就比较杂乱，不太可信。</li>
+</ul>
+<h4 id="无法确认来源"><a href="#无法确认来源" class="headerlink" title="无法确认来源"></a>无法确认来源</h4><p>如果 Origin 和 Referer 都不存在，则建议直接进行阻止，特别是如果没有使用随机 CSRF Token 作为第二次检查。</p>
+<h4 id="阻止外域请求"><a href="#阻止外域请求" class="headerlink" title="阻止外域请求"></a>阻止外域请求</h4><p>通过对 Header 验证，我们可以知道发起请求的来源域名，这些来源域名可能是网站本域、子域名、有授权的第三方域名，又或者来自不可信的未知域名。知道了请求是来自不可信的域名，直接阻止掉这些的请求，就能防御 CSRF 攻击了吗？且慢！当一个请求是页面请求（比如网站的主页），而来源是搜索引擎的链接（例如百度的搜索结果），也会被当成疑似 CSRF 攻击。所以在判断的时候需要过滤掉页面请求情况，通常 Header 符合以下情况：</p>
+<figure class="highlight oxygene"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs oxygene">Accept: text/html<br><span class="hljs-function"><span class="hljs-keyword">Method</span>:</span> GET<br></code></pre></td></tr></table></figure>
+
+<p>但相应的，页面请求就暴露在了 CSRF 的攻击范围之中。如果网站中在页面的 GET 请求中对当前用户做了什么操作的话，防范就失效了。例如下面的页面请求：</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">GET https:<span class="hljs-regexp">//</span>example.com/addComment?comment=XXX&amp;dest=orderId<br></code></pre></td></tr></table></figure>
+
+<p>这种严格来说并不一定存在 CSRF 攻击的风险，但仍然有很多网站经常把主文档 GET 请求挂上参数来实现产品功能，但是这样做对于自身来说是存在安全风险的。</p>
+<p>而且 CSRF 大多情况下来自第三方域名，但并不能排除本域发起。如果攻击者有权限在本域发布评论（含链接、图片等，统称 UGC），那么它可以直接在本域发起攻击，这种情况下同源策略无法防护。</p>
+<p>综上所述：同源验证是一个相对简单的防范方法，能够防范绝大多数的 CSRF 攻击。但是并不是万无一失，对于安全性要求较高或者有较多用户输入内容的网站，需要对关键的接口做额外的防护措施。</p>
+<h3 id="CSRF-Token"><a href="#CSRF-Token" class="headerlink" title="CSRF Token"></a>CSRF Token</h3><p>CSRF 的另一个特征是，攻击者无法直接窃取到用户的信息（Cookie，Header，网站内容等），仅是冒用 Cookie 中的信息。而 CSRF 攻击之所以能够成功，是因为服务器误把攻击者发送的请求当成了用户自己的请求。那么可以要求所有用户请求都携带一个 CSRF 攻击者无法获取到的 Token。服务器通过校验请求是否携带正确的 Token 来把正常的请求和攻击的请求区分开，也可以防范 CSRF 攻击。</p>
+<h4 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h4><p>CSRF Token 的防护策略分为三个步骤：</p>
+<ol>
+<li><p>将 CSRF Token 输出到页面中<br>首先，用户打开页面的时候，服务器需要给这个用户生成一个 Token，该 Token 通过加密算法对数据进行加密，一般 Token 都包括随机字符串和时间戳的组合，显然在提交时 Token 不能再放在 Cookie 中了，否则又会被攻击者冒用。因此,为了安全起见 Token 最好存在服务器的 Session，之后在每次页面加载时，使用 JS 遍历整个 DOM 树，对于 DOM 中所有的 a 和 form 标签后加入 Token。这样可以解决大部分的请求，但是对于在页面加载后动态生成的 HTML 代码，这种方法就没有作用，需要程序员在编码时手动添加 Token。</p>
+</li>
+<li><p>页面提交的请求携带这个 Token<br>对于 GET 请求，Token 将附在请求地址之后，这样 URL 就变成 <code>http://url?csrftoken=tokenvalue</code>。 对于 POST 请求，要在 form 的最后加上<code>&lt;input type=”hidden” name=”csrftoken” value=”tokenvalue”/&gt;</code>。这样就把 Token 以参数的形式加入到请求。</p>
+</li>
+<li><p>服务器验证 Token 是否正确<br>当用户从客户端得到了 Token 再次提交给服务器时，服务器需要判断 Token 的有效性，验证过程是先解密 Token，对比加密字符串以及时间戳，如果加密字符串一致且时间未过期，那么这个 Token 就是有效的。这种方法要比之前检查 Referer 或者 Origin 要安全一些，Token 可以在产生并放于 Session 之中，然后在每次请求时把 Token 从 Session 中拿出，与请求中的 Token 进行比对，但这种方法的比较麻烦的在于如何把 Token 以参数的形式加入请求。</p>
+</li>
+</ol>
+<h4 id="校验"><a href="#校验" class="headerlink" title="校验"></a>校验</h4><p>在大型网站使用 Session 存储 CSRF Token 会带来很大的压力。访问单台服务器 Session 是同一个。但是现在的大型网站中，我们的服务器通常不止一台，可能是几十台甚至几百台之多，甚至多个机房可能在不同的省份，用户发起的 HTTP 请求通常要经过像 Ngnix 之类的负载均衡器之后再路由到具体的服务器，由于 Session 默认存储在单机服务器内存中，因此在分布式环境下同一个用户发送的多次 HTTP 请求可能会先后落到不同的服务器上，导致后面发起的 HTTP 请求无法拿到之前的 HTTP 请求存储在服务器中的 Session 数据，从而使得 Session 机制在分布式环境下失效，因此在分布式集群中 CSRF Token 需要存储在 Redis 之类的公共存储空间。</p>
+<p>由于使用 Session 存储，读取和验证 CSRF Token 会引起比较大的复杂度和性能问题，目前很多网站采用 Encrypted Token Pattern 方式。这种方法算的 Token 是一个计算出来的结果，而非随机生成的字符串。这样在校验时无需再去读取存储的 Token，只用再次计算一次即可。这种 Token 的值通常是使用 UserID、时间戳和随机数，通过加密的方法生成。这样既可以保证分布式服务的 Token 一致，又能保证 Token 不容易被破解。</p>
+<p>在 Token 解密成功之后，服务器可以访问解析值，Token 中所包含的 UserID 和时间戳将会被拿来被验证有效性，将 UserID 与当前登录的 UserID 进行比较，并将时间戳与当前时间进行比较。</p>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>Token 是一个比较有效的 CSRF 防护方法，只要页面没有 XSS 漏洞泄露 Token，那么接口的 CSRF 攻击就无法成功。但是此方法的实现比较复杂，需要给每个页面都写入 Token（前端无法使用纯静态页面），每一个 Form 及 Ajax 请求都携带这个 Token，后端对每一个接口都进行校验，并保证页面 Token 及请求 Token 一致。这就使得这个防护策略不能在通用的拦截上统一拦截处理，而需要每一个页面和接口都添加对应的输出和校验。这种方法工作量巨大，且有可能遗漏。</p>
+<h3 id="双重-Cookie"><a href="#双重-Cookie" class="headerlink" title="双重 Cookie"></a>双重 Cookie</h3><h4 id="原理-1"><a href="#原理-1" class="headerlink" title="原理"></a>原理</h4><p>在会话中存储 CSRF Token 比较繁琐，而且不能在通用的拦截上统一处理所有的接口。另外一种防御措施是使用双重提交 Cookie。利用 CSRF 攻击不能获取到用户 Cookie 的特点，我们可以要求 Ajax 和表单请求携带一个 Cookie 中的值。双重 Cookie 采用以下流程：</p>
+<ul>
+<li>在用户访问网站页面时，向请求域名注入一个 Cookie，内容为随机字符串（例如 <code>csrfCookie=v8g9e4ksfhw</code>）。</li>
+<li>在前端向后端发起请求时，取出 Cookie，并添加到 URL 的参数中（接上例 <code>POST https://www.a.com/comment?csrfCookie=v8g9e4ksfhw</code>）。</li>
+<li>后端接口验证 Cookie 中的字段与 URL 参数中的字段是否一致，不一致则拒绝。</li>
+</ul>
+<p>此方法相对于 CSRF Token 简单了许多，可以直接通过前后端拦截的的方法自动化实现。后端校验也更加方便，只需进行请求中字段的对比，不需要再进行查询和存储 Token。当然此方法并没有大规模应用，其在大型网站上的安全性还是没有 CSRF Token 高。这是因为任何跨域都会导致前端无法获取 Cookie 中的字段（包括子域名之间），于是可能发生如下情况：</p>
+<ul>
+<li>如果用户访问的网站为<code>www.a.com</code>，而后端的 api 域名为<code>api.a.com</code>。那么在<code>www.a.com</code>下，前端拿不到<code>api.a.com</code>的 Cookie，也就无法完成双重 Cookie 认证。</li>
+<li>于是这个认证 Cookie 必须被种在 <code>a.com</code> 下，这样每个子域都可以访问。</li>
+<li>任何一个子域都可以修改 <code>a.com</code> 下的 Cookie。</li>
+<li>某个子域名存在漏洞被 XSS 攻击（例如 <code>upload.a.com</code>）。虽然这个子域下并没有什么信息值得窃取。但攻击者修改了 <code>a.com</code> 下的 Cookie。</li>
+<li>攻击者可以直接使用自己配置的 Cookie，对 XSS 中招的用户再向<code>www.a.com</code>发起 CSRF 攻击。</li>
+</ul>
+<h4 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h4><p>优点：</p>
+<ul>
+<li>无需使用 Session，适用面更广，易于实施。</li>
+<li>Token 储存于客户端中，不会给服务器带来压力。</li>
+<li>相对于 Token，实施成本更低，可以在前后端统一拦截校验，而不需要一个个接口和页面添加。</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>Cookie 中增加了额外的字段。</li>
+<li>如果有其他漏洞（例如 XSS），攻击者可以窃取 Cookie，那么该防御方式失效。</li>
+<li>难以做到子域名的隔离。</li>
+<li>为了确保 Cookie 传输安全，采用这种防御方式的最好确保用整站 HTTPS 的方式，如果还没切 HTTPS 的使用这种方式也会有风险。</li>
+</ul>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83/" class="category-chain-item">运行环境</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83/%E6%B5%8F%E8%A7%88%E5%99%A8/" class="category-chain-item">浏览器</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" class="print-no-link">#浏览器</a>
+      
+        <a href="/tags/%E5%AE%89%E5%85%A8/" class="print-no-link">#安全</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>浏览器安全</div>
+      <div>https://xuekeven.github.io/2025/08/07/浏览器安全/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Keven</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年8月7日</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>更新于</div>
+          <div>2025年8月9日</div>
+        </div>
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2025/08/07/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" title="性能优化">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">性能优化</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/08/02/CSS%E5%93%8D%E5%BA%94%E5%BC%8F%E8%AE%BE%E8%AE%A1/" title="CSS模块化">
+                        <span class="hidden-mobile">CSS模块化</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

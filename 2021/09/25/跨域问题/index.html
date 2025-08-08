@@ -1,0 +1,971 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Keven">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="参考：https:&#x2F;&#x2F;juejin.cn&#x2F;post&#x2F;6844904126246027278https:&#x2F;&#x2F;juejin.cn&#x2F;post&#x2F;6844903767226351623 跨域概念跨域问题其实是浏览器的同源策略导致的。客户端和服务端都没有跨域问题，因为客户端和服务端都没有域名，所以也不存在跨域。 跨域本质上是服务器的信任问题，因为数据都存在服务器，所以服务器的安全性需要保障。如何保障安全性，需">
+<meta property="og:type" content="article">
+<meta property="og:title" content="跨域问题">
+<meta property="og:url" content="https://xuekeven.github.io/2021/09/25/%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98/index.html">
+<meta property="og:site_name" content="Keven&#39;s Blog">
+<meta property="og:description" content="参考：https:&#x2F;&#x2F;juejin.cn&#x2F;post&#x2F;6844904126246027278https:&#x2F;&#x2F;juejin.cn&#x2F;post&#x2F;6844903767226351623 跨域概念跨域问题其实是浏览器的同源策略导致的。客户端和服务端都没有跨域问题，因为客户端和服务端都没有域名，所以也不存在跨域。 跨域本质上是服务器的信任问题，因为数据都存在服务器，所以服务器的安全性需要保障。如何保障安全性，需">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://xuekeven.github.io/images/%E5%B8%B8%E8%A7%81%E8%B7%A8%E5%9F%9F%E5%9C%BA%E6%99%AF.jpg">
+<meta property="article:published_time" content="2021-09-25T10:00:00.000Z">
+<meta property="article:modified_time" content="2025-08-08T19:13:23.948Z">
+<meta property="article:author" content="Keven">
+<meta property="article:tag" content="浏览器">
+<meta property="article:tag" content="网络协议">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://xuekeven.github.io/images/%E5%B8%B8%E8%A7%81%E8%B7%A8%E5%9F%9F%E5%9C%BA%E6%99%AF.jpg">
+  
+  
+  
+  <title>跨域问题 - Keven&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"xuekeven.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 50vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Keven&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tools/" target="_self">
+                <i class="iconfont icon-briefcase"></i>
+                <span>工具</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/dome/" target="_self">
+                <i class="iconfont icon-th-large"></i>
+                <span>Dome</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/example.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.2)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="跨域问题"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        Keven
+      </span>
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2021-09-25 18:00" pubdate>
+          2021年9月25日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.4k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          22 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar category-bar" style="margin-right: -1rem">
+    
+
+
+
+
+
+<div class="category-list">
+  
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="运行环境"
+        id="heading-158744a80f0100ee733886680b260f45" role="tab" data-toggle="collapse" href="#collapse-158744a80f0100ee733886680b260f45"
+        aria-expanded="true"
+      >
+        运行环境
+        <span class="list-group-count">(6)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-158744a80f0100ee733886680b260f45"
+           role="tabpanel" aria-labelledby="heading-158744a80f0100ee733886680b260f45">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2021/10/15/%E7%99%BB%E5%BD%95%E8%AE%A4%E8%AF%81/" title="登录认证"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">登录认证</span>
+        </a>
+      
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="浏览器"
+        id="heading-912302cb020149c37f9642fbc9e42891" role="tab" data-toggle="collapse" href="#collapse-912302cb020149c37f9642fbc9e42891"
+        aria-expanded="true"
+      >
+        浏览器
+        <span class="list-group-count">(5)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-912302cb020149c37f9642fbc9e42891"
+           role="tabpanel" aria-labelledby="heading-912302cb020149c37f9642fbc9e42891">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2021/09/09/%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%AD%98%E5%82%A8/" title="客户端存储"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">客户端存储</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2025/08/07/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%AE%89%E5%85%A8/" title="浏览器安全"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">浏览器安全</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/09/12/%E6%B5%8F%E8%A7%88%E5%99%A8%E8%A7%A3%E6%9E%90%E6%B8%B2%E6%9F%93%E9%A1%B5%E9%9D%A2/" title="浏览器解析渲染页面"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">浏览器解析渲染页面</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/09/08/%E6%B5%8F%E8%A7%88%E5%99%A8%E9%9D%A2%E8%AF%95%E9%A2%98/" title="浏览器面试题"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">浏览器面试题</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/09/25/%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98/" title="跨域问题"
+           class="list-group-item list-group-item-action
+           active">
+          <span class="category-post">跨域问题</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+</div>
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">跨域问题</h1>
+            
+              <p id="updated-time" class="note note-info" style="">
+                
+                  
+                    本文最后更新于 2025年8月9日 凌晨
+                  
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <p>参考：<br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904126246027278">https://juejin.cn/post/6844904126246027278</a><br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903767226351623">https://juejin.cn/post/6844903767226351623</a></p>
+<h1 id="跨域概念"><a href="#跨域概念" class="headerlink" title="跨域概念"></a>跨域概念</h1><p>跨域问题其实是浏览器的同源策略导致的。客户端和服务端都没有跨域问题，因为客户端和服务端都没有域名，所以也不存在跨域。</p>
+<p>跨域本质上是服务器的信任问题，因为数据都存在服务器，所以服务器的安全性需要保障。如何保障安全性，需要有个机制让服务器判断是否应该信任请求方，所以首先就是标识请求方，前端页面可以用域名标识，服务端和客户端没有域名，可以有其他的方式解决信任问题，比如 access_token 等。</p>
+<h2 id="同源策略"><a href="#同源策略" class="headerlink" title="同源策略"></a>同源策略</h2><p>同源策略是一种约定，它是浏览器最核心也最基本的安全功能，如果缺少了同源策略，用户就很容易受到 XSS、CSRF 等攻击。一个域名地址是由<strong>协议、子域名、主域名、端口号、请求资源地址</strong>组成。所谓同源是指 <strong>“协议+域名+端口”</strong> 三者相同，即便两个不同的域名指向同一个 IP 地址也非同源。</p>
+<p>同源策略限制内容有：</p>
+<ul>
+<li>Cookie、WebStorage、IndexedDB 等存储性内容</li>
+<li>DOM 节点</li>
+<li>AJAX 通信请求</li>
+</ul>
+<p>但是有三个标签是允许跨域加载资源：</p>
+<ul>
+<li><code>&lt;img src=XXX&gt;</code></li>
+<li><code>&lt;link href=XXX&gt;</code></li>
+<li><code>&lt;script src=XXX&gt;</code></li>
+</ul>
+<h2 id="跨域场景"><a href="#跨域场景" class="headerlink" title="跨域场景"></a>跨域场景</h2><p><strong>协议</strong>、<strong>子域名</strong>、<strong>主域名</strong>、<strong>端口号</strong>中任意一个不相同都算不同域。不同域之间相互请求资源为“跨域”。</p>
+<p><img src="/images/%E5%B8%B8%E8%A7%81%E8%B7%A8%E5%9F%9F%E5%9C%BA%E6%99%AF.jpg" srcset="/img/loading.gif" lazyload alt="常见跨域场景（来自掘金@浪里行舟）"></p>
+<p>特别说明两点：</p>
+<ul>
+<li>如果是协议和端口号不同造成的跨域问题“前台”是无能为力的。</li>
+<li>在跨域问题上，仅通过“URL 的首部”来识别是不是同域，而不会根据域名对应的 IP 地址是否相同来判断。（“URL 的首部”可以理解为“协议、域名、端口三者必须匹配”）</li>
+</ul>
+<h2 id="跨域请求"><a href="#跨域请求" class="headerlink" title="跨域请求"></a>跨域请求</h2><p><strong>跨域并不是请求发不出去，请求能发出去，服务端能收到请求并正常返回，只是结果被浏览器拦截。</strong>跨域是为了阻止用户在一个域名下去读取另一个域名下的内容。Ajax 可以获取响应，但是浏览器认为这不安全，所以拦截响应；若是提交表单，因为并不会获取新的内容，所以认为可以发起跨域请求。这同时也说明了跨域并不能完全阻止 CSRF 攻击，因为请求已经发出。</p>
+<h1 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h1><h2 id="CORS（生产常用）"><a href="#CORS（生产常用）" class="headerlink" title="CORS（生产常用）"></a>CORS（生产常用）</h2><p><strong>CORS 是当前最主流、最推荐、W3C 指定的标准的跨域解决方式。</strong></p>
+<h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>跨域资源共享（CORS）是一种机制，它使用额外的 HTTP 头来告诉浏览器，让运行在一个 origin（domain）上的 Web 应用被准许访问来自不同源服务器上的指定资源。</p>
+<p>浏览器会自动进行 CORS 通信（请求都会发出），服务器开启了 CORS 就能够实现跨域请求。服务器通过设置一系列配置即可开启，核心配置有：</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs awk">Access-Control-Allow-Origin: https:<span class="hljs-regexp">//</span>example.com <span class="hljs-regexp">//</span> 或 *（非敏感数据）<br>Access-Control-Allow-Methods: GET, POST, PUT     <span class="hljs-regexp">//</span> 允许的 HTTP 方法<br>Access-Control-Allow-Headers: Content-Type       <span class="hljs-regexp">//</span> 允许的自定义头<br>Access-Control-Allow-Credentials: true           <span class="hljs-regexp">//</span> 允许携带 Cookie（需前端配合）<br></code></pre></td></tr></table></figure>
+
+<h3 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h3><p>优点：</p>
+<ul>
+<li>标准、安全、稳定</li>
+<li>支持 Cookie、Token 跨域</li>
+<li>后端控制粒度高（可限制 IP、接口、方法）</li>
+<li>所有浏览器支持</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>需后端配合，需修改服务端代码（如 Nginx 配置或后端中间件）</li>
+</ul>
+<h3 id="Cookie"><a href="#Cookie" class="headerlink" title="Cookie"></a>Cookie</h3><p>如果网站 A 和网站 B 是不同域的，网站 B 对网站 A 设置允许了 CORS，当网站 A 需要向网站 B 发起请求时，网站 A 想要使用网站 B 的 Cookie 需要满足以下三大条件：</p>
+<ul>
+<li><p>前端请求需要带上凭证</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// fetch 或 XMLHttpRequest</span><br>fetch(<span class="hljs-string">&quot;https://B.com/api&quot;</span>, &#123;<br>  <span class="hljs-attr">method</span>: <span class="hljs-string">&quot;GET&quot;</span>,<br>  <span class="hljs-attr">credentials</span>: <span class="hljs-string">&quot;include&quot;</span>, <span class="hljs-comment">// 关键</span><br>&#125;);<br><br><span class="hljs-comment">// axios</span><br>axios.get(<span class="hljs-string">&quot;https://B.com/api&quot;</span>, &#123;<br>  <span class="hljs-attr">withCredentials</span>: <span class="hljs-literal">true</span>, <span class="hljs-comment">// 关键</span><br>&#125;);<br></code></pre></td></tr></table></figure></li>
+<li><p>CORS 允许跨域携带凭证<br><code>Access-Control-Allow-Origin</code> 不能写成 “*“，必须精确写出 A 的域名；<code>Access-Control-Allow-Credentials</code> 需要为 true 表示允许携带 Cookie、HTTP 认证信息等。即网站 B 的响应头里必须设置：</p>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs ada"><span class="hljs-keyword">Access</span>-Control-Allow-Origin: https://A.com<br><span class="hljs-keyword">Access</span>-Control-Allow-Credentials: <span class="hljs-literal">true</span><br></code></pre></td></tr></table></figure></li>
+<li><p>Cookie 属性允许跨域<br>即使满足以上 CORS 配置，网站 B 的 Cookie 属性也必须满足：<code>SameSite=None</code> 和 <code>Secure</code>：</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs routeros">Set-Cookie: <span class="hljs-attribute">session</span>=123; <span class="hljs-attribute">Domain</span>=B.com; <span class="hljs-attribute">SameSite</span>=None; Secure; HttpOnly<br></code></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h3><p>通过 CORS 解决跨域问题时会在发送请求时出现两种情况，分别为简单请求和复杂请求。</p>
+<h4 id="简单请求"><a href="#简单请求" class="headerlink" title="简单请求"></a>简单请求</h4><p><strong>不会触发“预检”请求</strong>的请求为“简单请求”。同时满足以下五个条件，就属于简单请求。</p>
+<p>条件 1，使用下列方法之一：</p>
+<ul>
+<li>GET</li>
+<li>HEAD</li>
+<li>POST</li>
+</ul>
+<p>条件 2，人为设置以下集合外的请求头：</p>
+<ul>
+<li>Accept</li>
+<li>Accept-Language</li>
+<li>Content-Language</li>
+<li>Content-Type （有额外限制）</li>
+<li>DPR</li>
+<li>Downlink</li>
+<li>Save-Data</li>
+<li>Viewport-Width</li>
+<li>Width</li>
+</ul>
+<p>条件 3，Content-Type 的值仅限于下列三者之一：</p>
+<ul>
+<li>text/plain</li>
+<li>multipart/form-data</li>
+<li>application/x-www-form-urlencoded</li>
+</ul>
+<p>条件 4：请求中的任意 XMLHttpRequestUpload 对象均没有注册任何事件监听器，XMLHttpRequestUpload 对象可以使用 XMLHttpRequest.upload 属性访问。</p>
+<p>条件 5：请求中没有使用 ReadableStream 对象。</p>
+<h4 id="复杂请求"><a href="#复杂请求" class="headerlink" title="复杂请求"></a>复杂请求</h4><p>不符合简单请求的就是复杂请求。复杂请求会在正式通信前增加一次 HTTP 查询请求，被称为”预检”请求，该请求使用 OPTION 方法，通过该请求来知道服务端是否允许跨域请求。</p>
+<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><p>下面是一个完整的复杂请求的例子。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// 前端</span><br><br><span class="hljs-comment">// index.html</span><br><span class="hljs-keyword">let</span> xhr = <span class="hljs-keyword">new</span> XMLHttpRequest();<br><span class="hljs-comment">// Cookie 不能跨域</span><br><span class="hljs-built_in">document</span>.Cookie = <span class="hljs-string">&quot;name=xiamen&quot;</span>;<br><span class="hljs-comment">// 前端设置是否带 Cookie</span><br>xhr.withCredentials = <span class="hljs-literal">true</span>;<br>xhr.open(<span class="hljs-string">&quot;PUT&quot;</span>, <span class="hljs-string">&quot;http://localhost:4000/getData&quot;</span>, <span class="hljs-literal">true</span>);<br>xhr.setRequestHeader(<span class="hljs-string">&quot;name&quot;</span>, <span class="hljs-string">&quot;xiamen&quot;</span>);<br>xhr.onreadystatechange = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-keyword">if</span> (xhr.readyState === <span class="hljs-number">4</span>) &#123;<br>    <span class="hljs-keyword">if</span> ((xhr.status &gt;= <span class="hljs-number">200</span> &amp;&amp; xhr.status &lt; <span class="hljs-number">300</span>) || xhr.status === <span class="hljs-number">304</span>) &#123;<br>      <span class="hljs-built_in">console</span>.log(xhr.response);<br>      <span class="hljs-comment">// 得到响应头 后台需设置 Access-Control-Expose-Headers</span><br>      <span class="hljs-built_in">console</span>.log(xhr.getResponseHeader(<span class="hljs-string">&quot;name&quot;</span>));<br>    &#125;<br>  &#125;<br>&#125;;<br>xhr.send();<br><br><span class="hljs-comment">// 后端</span><br><br><span class="hljs-comment">// 用 PUT 向后台请求时，属于复杂请求，后台需做如下配置：</span><br><span class="hljs-comment">// 允许哪个方法访问我</span><br>res.setHeader(<span class="hljs-string">&quot;Access-Control-Allow-Methods&quot;</span>, <span class="hljs-string">&quot;PUT&quot;</span>);<br><span class="hljs-comment">// 预检的存活时间</span><br>res.setHeader(<span class="hljs-string">&quot;Access-Control-Max-Age&quot;</span>, <span class="hljs-number">6</span>);<br><span class="hljs-comment">// OPTIONS 请求不做任何处理</span><br><span class="hljs-keyword">if</span> (req.method === <span class="hljs-string">&quot;OPTIONS&quot;</span>) &#123;<br>  res.end();<br>&#125;<br><span class="hljs-comment">// 定义后台返回的内容</span><br>app.put(<span class="hljs-string">&quot;/getData&quot;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">req, res</span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(req.headers);<br>  res.end(<span class="hljs-string">&quot;我不爱你&quot;</span>);<br>&#125;);<br><br><span class="hljs-comment">// server1.js</span><br><span class="hljs-keyword">let</span> express = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;express&quot;</span>);<br><span class="hljs-keyword">let</span> app = express();<br>app.use(express.static(__dirname));<br>app.listen(<span class="hljs-number">3000</span>);<br><br><span class="hljs-comment">// server2.js</span><br><span class="hljs-keyword">let</span> express = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;express&quot;</span>);<br><span class="hljs-keyword">let</span> app = express();<br><span class="hljs-keyword">let</span> whitList = [<span class="hljs-string">&quot;http://localhost:3000&quot;</span>]; <span class="hljs-comment">//设置白名单</span><br>app.use(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">req, res, next</span>) </span>&#123;<br>  <span class="hljs-keyword">let</span> origin = req.headers.origin;<br>  <span class="hljs-keyword">if</span> (whitList.includes(origin)) &#123;<br>    <span class="hljs-comment">// 设置哪个源可以访问我</span><br>    res.setHeader(<span class="hljs-string">&quot;Access-Control-Allow-Origin&quot;</span>, origin);<br>    <span class="hljs-comment">// 允许携带哪个头访问我</span><br>    res.setHeader(<span class="hljs-string">&quot;Access-Control-Allow-Headers&quot;</span>, <span class="hljs-string">&quot;name&quot;</span>);<br>    <span class="hljs-comment">// 允许哪个方法访问我</span><br>    res.setHeader(<span class="hljs-string">&quot;Access-Control-Allow-Methods&quot;</span>, <span class="hljs-string">&quot;PUT&quot;</span>);<br>    <span class="hljs-comment">// 允许携带 Cookie</span><br>    res.setHeader(<span class="hljs-string">&quot;Access-Control-Allow-Credentials&quot;</span>, <span class="hljs-literal">true</span>);<br>    <span class="hljs-comment">// 预检的存活时间</span><br>    res.setHeader(<span class="hljs-string">&quot;Access-Control-Max-Age&quot;</span>, <span class="hljs-number">6</span>);<br>    <span class="hljs-comment">// 允许返回的头</span><br>    res.setHeader(<span class="hljs-string">&quot;Access-Control-Expose-Headers&quot;</span>, <span class="hljs-string">&quot;name&quot;</span>);<br>    <span class="hljs-keyword">if</span> (req.method === <span class="hljs-string">&quot;OPTIONS&quot;</span>) &#123;<br>      res.end(); <span class="hljs-comment">// OPTIONS 请求不做任何处理</span><br>    &#125;<br>  &#125;<br>  next();<br>&#125;);<br>app.put(<span class="hljs-string">&quot;/getData&quot;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">req, res</span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(req.headers);<br>  res.setHeader(<span class="hljs-string">&quot;name&quot;</span>, <span class="hljs-string">&quot;jw&quot;</span>); <span class="hljs-comment">// 返回一个响应头，后台需设置</span><br>  res.end(<span class="hljs-string">&quot;我不爱你&quot;</span>);<br>&#125;);<br>app.get(<span class="hljs-string">&quot;/getData&quot;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">req, res</span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(req.headers);<br>  res.end(<span class="hljs-string">&quot;我不爱你&quot;</span>);<br>&#125;);<br>app.use(express.static(__dirname));<br>app.listen(<span class="hljs-number">4000</span>);<br></code></pre></td></tr></table></figure>
+
+<h2 id="反向代理（开发常用）"><a href="#反向代理（开发常用）" class="headerlink" title="反向代理（开发常用）"></a>反向代理（开发常用）</h2><h3 id="原理-1"><a href="#原理-1" class="headerlink" title="原理"></a>原理</h3><p>前端请求同源代理服务器，由代理转发至目标服务（服务端间无跨域限制）。<br>通过设置反向代理来“伪造同源”，绕过跨域问题。</p>
+<h3 id="优缺点-1"><a href="#优缺点-1" class="headerlink" title="优缺点"></a>优缺点</h3><p>优点：</p>
+<ul>
+<li>调试方便，仅修改代理配置，前端代码无感知</li>
+<li>不需要改后端，前端就能解决问题（常用于本地开发）</li>
+<li>隐藏真实 API 地址，提升安全性，防止直接暴露后端服务</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>需维护代理层，生产环境需部署 Nginx 等代理服务</li>
+<li>性能损耗，增加一次网络跳转（可通过缓存优化）</li>
+</ul>
+<h3 id="示例-1"><a href="#示例-1" class="headerlink" title="示例"></a>示例</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// vite.config.ts</span><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> defineConfig(&#123;<br>  <span class="hljs-attr">server</span>: &#123;<br>    <span class="hljs-attr">proxy</span>: &#123;<br>      <span class="hljs-string">&quot;/api&quot;</span>: &#123;<br>        <span class="hljs-attr">target</span>: <span class="hljs-string">&quot;https://api.example.com&quot;</span>,<br>        <span class="hljs-attr">changeOrigin</span>: <span class="hljs-literal">true</span>,<br>        <span class="hljs-attr">rewrite</span>: <span class="hljs-function">(<span class="hljs-params">path</span>) =&gt;</span> path.replace(<span class="hljs-regexp">/^\/api/</span>, <span class="hljs-string">&quot;&quot;</span>),<br>      &#125;,<br>    &#125;,<br>  &#125;,<br>&#125;);<br></code></pre></td></tr></table></figure>
+
+<h2 id="JSONP"><a href="#JSONP" class="headerlink" title="JSONP"></a>JSONP</h2><h3 id="原理-2"><a href="#原理-2" class="headerlink" title="原理"></a>原理</h3><p>利用<code>&lt;script&gt;</code>标签没有跨域限制的特性，网页可以得到从其他来源动态产生的 JSON 数据。JSONP 一定要对方的服务器支持才可以。</p>
+<h3 id="优缺点-2"><a href="#优缺点-2" class="headerlink" title="优缺点"></a>优缺点</h3><p>优点：简单兼容性好，可用于解决主流浏览器的跨域数据访问的问题。<br>缺点：仅支持 GET 方法具有局限性而且不安全，可能会遭受 XSS 攻击。想使用完整的 REST 接口，需要使用 CORS 或其他代理方式。</p>
+<h3 id="示例-2"><a href="#示例-2" class="headerlink" title="示例"></a>示例</h3><ul>
+<li>声明一个回调函数，把该函数名（如 show）当做参数值传递给跨域请求数据的服务器，函数的形参为要获取的目标数据（如服务器返回的 data）。</li>
+<li>创建一个<code>&lt;script&gt;</code>标签，把跨域的 API 数据接口地址赋值为 script 的 src，并且在这个地址中向服务器传递函数名（如?callback=show）。</li>
+<li>服务器接收到请求后进行处理：把传递进来的函数名和函数所需要给的数据拼接成一个字符串。例如传递的函数名是 show，那么准备好的数据就是 show(‘我不爱你’)。</li>
+<li>最后服务器把数据返回给客户端，客户端调用对应的回调函数对返回的数据进行操作。</li>
+</ul>
+<p>在开发中可能会遇到多个 JSONP 请求的回调函数名是相同的，可以自己封装一个 JSONP 函数。下面这段代码相当于向<code>http://localhost:3000/say?wd=Iloveyou&amp;callback=show</code>这个地址请求数据，然后后端返回 show(‘我不爱你’)，最后会运行 show 这个函数，打印出’我不爱你’。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// 前端</span><br><span class="hljs-comment">// index.html</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">jsonp</span>(<span class="hljs-params">&#123; url, params, callback &#125;</span>) </span>&#123;<br>  <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> &#123;<br>    <span class="hljs-keyword">let</span> script = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">&quot;script&quot;</span>);<br>    <span class="hljs-built_in">window</span>[callback] = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">data</span>) </span>&#123;<br>      resolve(data);<br>      <span class="hljs-built_in">document</span>.body.removeChild(script);<br>    &#125;;<br>    params = &#123; ...params, callback &#125;; <span class="hljs-comment">// wd=b&amp;callback=show</span><br>    <span class="hljs-keyword">let</span> arrs = [];<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> key <span class="hljs-keyword">in</span> params) &#123;<br>      arrs.push(<span class="hljs-string">`<span class="hljs-subst">$&#123;key&#125;</span>=<span class="hljs-subst">$&#123;params[key]&#125;</span>`</span>);<br>    &#125;<br>    script.src = <span class="hljs-string">`<span class="hljs-subst">$&#123;url&#125;</span>?<span class="hljs-subst">$&#123;arrs.join(<span class="hljs-string">&quot;&amp;&quot;</span>)&#125;</span>`</span>;<br>    <span class="hljs-built_in">document</span>.body.appendChild(script);<br>  &#125;);<br>&#125;<br><br>jsonp(&#123;<br>  <span class="hljs-attr">url</span>: <span class="hljs-string">&quot;http://localhost:3000/say&quot;</span>,<br>  <span class="hljs-attr">params</span>: &#123; <span class="hljs-attr">wd</span>: <span class="hljs-string">&quot;Iloveyou&quot;</span> &#125;,<br>  <span class="hljs-attr">callback</span>: <span class="hljs-string">&quot;show&quot;</span>,<br>&#125;).then(<span class="hljs-function">(<span class="hljs-params">data</span>) =&gt;</span> &#123;<br>  <span class="hljs-built_in">console</span>.log(data);<br>&#125;);<br><br><span class="hljs-comment">// 后端</span><br><span class="hljs-comment">// server.js</span><br><span class="hljs-keyword">let</span> express = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;express&quot;</span>);<br><span class="hljs-keyword">let</span> app = express();<br>app.get(<span class="hljs-string">&quot;/say&quot;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">req, res</span>) </span>&#123;<br>  <span class="hljs-keyword">let</span> &#123; wd, callback &#125; = req.query;<br>  <span class="hljs-built_in">console</span>.log(wd); <span class="hljs-comment">// Iloveyou</span><br>  <span class="hljs-built_in">console</span>.log(callback); <span class="hljs-comment">// show</span><br>  res.end(<span class="hljs-string">`<span class="hljs-subst">$&#123;callback&#125;</span>(&#x27;我不爱你&#x27;)`</span>);<br>&#125;);<br>app.listen(<span class="hljs-number">3000</span>);<br></code></pre></td></tr></table></figure>
+
+<h2 id="postMessage"><a href="#postMessage" class="headerlink" title="postMessage"></a>postMessage</h2><h3 id="原理-3"><a href="#原理-3" class="headerlink" title="原理"></a>原理</h3><p>window.postMessage 方法可以安全地实现跨源通信，其提供了一种受控机制来规避同源策略，只要正确的使用，这种方法很安全。postMessage 是 HTML5 XMLHttpRequest Level 2 中的 API，而且是为数不多可以跨域操作的 window 属性之一，它可用于解决以下方面问题：</p>
+<ul>
+<li>页面和其打开的新窗口的数据传递</li>
+<li>多窗口之间消息传递</li>
+<li>页面与嵌套的 iframe 消息传递</li>
+<li>上面三个场景的跨域数据传递</li>
+</ul>
+<p>允许来自不同源的脚本用异步方式进行有限通信，可以用来实现跨文本档、多窗口、跨域消息传递。</p>
+<h3 id="示例-3"><a href="#示例-3" class="headerlink" title="示例"></a>示例</h3><p><code>otherWindow.postMessage(message, targetOrigin, [transfer]);</code></p>
+<ul>
+<li>otherWindow：其他窗口的一个引用，比如 iframe 的 contentWindow 属性、执行 window.open 返回的窗口对象、或者是命名过或数值索引的 window.frames</li>
+<li>message：将要发送到 otherWindow 的数据</li>
+<li>targetOrigin：通过窗口的 origin 属性来指定哪些窗口能接收到消息事件</li>
+<li>transfer（可选）：一串和 message 同时传递的 Transferable 对象。这些对象的所有权将被转移给消息的接收方，而发送一方将不再保有所有权</li>
+</ul>
+<p>以下是<code>http://localhost:3000/a.html</code>向着<code>http://localhost:4000/b.html</code>传递“我爱你”，后者传回”我不爱你”:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// a.html</span><br><br><span class="hljs-comment">// 等它加载完触发事件</span><br>&lt;iframe<br>  src=<span class="hljs-string">&quot;http://localhost:4000/b.html&quot;</span><br>  frameborder=<span class="hljs-string">&quot;0&quot;</span><br>  id=<span class="hljs-string">&quot;frame&quot;</span><br>  onload=<span class="hljs-string">&quot;load()&quot;</span><br>/&gt;<br><br><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="javascript"><span class="xml">  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">load</span>(<span class="hljs-params"></span>) </span>&#123;</span></span><br><span class="javascript"><span class="xml">    <span class="hljs-keyword">const</span> frame = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">&#x27;frame&#x27;</span>)</span></span><br><span class="javascript"><span class="xml">    <span class="hljs-comment">// 发送数据</span></span></span><br><span class="javascript"><span class="xml">    frame.contentWindow.postMessage(<span class="hljs-string">&#x27;我爱你&#x27;</span>, <span class="hljs-string">&#x27;http://localhost:4000&#x27;</span>)</span></span><br><span class="javascript"><span class="xml">    <span class="hljs-comment">// 接受返回数据</span></span></span><br><span class="javascript"><span class="xml">    <span class="hljs-built_in">window</span>.onmessage = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">e</span>) </span>&#123;</span></span><br><span class="javascript"><span class="xml">      <span class="hljs-built_in">console</span>.log(e.data) <span class="hljs-comment">// 我不爱你</span></span></span><br><span class="javascript"><span class="xml">    &#125;</span></span><br><span class="javascript"><span class="xml">  &#125;</span></span><br><span class="javascript"><span class="xml"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br><br><span class="hljs-comment">// b.html</span><br><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="javascript"><span class="xml">  <span class="hljs-built_in">window</span>.onmessage = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">e</span>) </span>&#123;</span></span><br><span class="javascript"><span class="xml">    <span class="hljs-built_in">console</span>.log(e.data) <span class="hljs-comment">// 我爱你</span></span></span><br><span class="javascript"><span class="xml">    e.source.postMessage(<span class="hljs-string">&#x27;我不爱你&#x27;</span>, e.origin)</span></span><br><span class="javascript"><span class="xml">  &#125;</span></span><br><span class="javascript"><span class="xml"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+
+<h2 id="WebSocket"><a href="#WebSocket" class="headerlink" title="WebSocket"></a>WebSocket</h2><h3 id="原理-4"><a href="#原理-4" class="headerlink" title="原理"></a>原理</h3><p>WebSocket 是 HTML5 的一个持久化协议，它实现了浏览器与服务器的全双工通信，同时也是跨域的一种解决方案。WebSocket 和 HTTP 都是应用层协议，都基于 TCP 协议。WebSocket 是一种双向通信协议，在建立连接之后 WebSocket 的 server 与 client 都能主动向对方发送或接收数据。同时，WebSocket 在建立连接时需要借助 HTTP 协议，连接建立好了之后 client 与 server 之间的双向通信就与 HTTP 无关。<strong>WebSocket 不是解决 HTTP 跨域的通用方案。</strong></p>
+<p>原生 WebSocket API 使用起来不方便，可以使用<code>Socket.io</code>，它很好地封装了 WebSocket 接口，提供了更简单、灵活的接口，也对不支持 WebSocket 的浏览器提供了向下兼容。</p>
+<h3 id="示例-4"><a href="#示例-4" class="headerlink" title="示例"></a>示例</h3><p>本地文件<code>socket.html</code>向<code>localhost:3000</code>发生数据和接受数据。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// socket.html</span><br>&lt;script&gt;<br>  <span class="hljs-keyword">const</span> socket = <span class="hljs-keyword">new</span> WebSocket(<span class="hljs-string">&#x27;ws://localhost:3000&#x27;</span>);<br>  socket.onopen = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;<br>    socket.send(<span class="hljs-string">&#x27;我爱你&#x27;</span>); <span class="hljs-comment">// 向服务器发送数据</span><br>  &#125;<br>  socket.onmessage = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">e</span>) </span>&#123;<br>    <span class="hljs-built_in">console</span>.log(e.data); <span class="hljs-comment">// 接收服务器返回的数据</span><br>  &#125;<br>&lt;/script&gt;<br><br><span class="hljs-comment">// server.js</span><br><span class="hljs-keyword">const</span> express = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;express&quot;</span>);<br><span class="hljs-keyword">const</span> app = express();<br><span class="hljs-keyword">const</span> WebSocket = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;ws&quot;</span>); <span class="hljs-comment">// 记得安装 ws</span><br><span class="hljs-keyword">const</span> wss = <span class="hljs-keyword">new</span> WebSocket.Server(&#123; <span class="hljs-attr">port</span>: <span class="hljs-number">3000</span> &#125;);<br><br>wss.on(<span class="hljs-string">&quot;connection&quot;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">ws</span>) </span>&#123;<br>  ws.on(<span class="hljs-string">&quot;message&quot;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">data</span>) </span>&#123;<br>    <span class="hljs-built_in">console</span>.log(data);<br>    ws.send(<span class="hljs-string">&quot;我不爱你&quot;</span>);<br>  &#125;);<br>&#125;);<br></code></pre></td></tr></table></figure>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83/" class="category-chain-item">运行环境</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83/%E6%B5%8F%E8%A7%88%E5%99%A8/" class="category-chain-item">浏览器</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" class="print-no-link">#浏览器</a>
+      
+        <a href="/tags/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" class="print-no-link">#网络协议</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>跨域问题</div>
+      <div>https://xuekeven.github.io/2021/09/25/跨域问题/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Keven</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2021年9月25日</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>更新于</div>
+          <div>2025年8月9日</div>
+        </div>
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/09/26/CSS%E5%8D%95%E4%BD%8D/" title="CSS单位">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">CSS单位</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/09/25/Webpack%E9%9D%A2%E8%AF%95%E9%A2%98/" title="Webpack面试题">
+                        <span class="hidden-mobile">Webpack面试题</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
