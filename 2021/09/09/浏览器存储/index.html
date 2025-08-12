@@ -23,13 +23,13 @@
   
     <meta name="description" content="参考：https:&#x2F;&#x2F;juejin.cn&#x2F;post&#x2F;6844903516826255373https:&#x2F;&#x2F;juejin.cn&#x2F;post&#x2F;6844903989096497159https:&#x2F;&#x2F;juejin.cn&#x2F;post&#x2F;6844904021308735502#heading-13 前端本地存储方式有三种，分别是 Cookie、WebStorage、IndexedDB。 CookieCookie 最">
 <meta property="og:type" content="article">
-<meta property="og:title" content="客户端存储">
-<meta property="og:url" content="https://xuekeven.github.io/2021/09/09/%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%AD%98%E5%82%A8/index.html">
+<meta property="og:title" content="浏览器存储">
+<meta property="og:url" content="https://xuekeven.github.io/2021/09/09/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%AD%98%E5%82%A8/index.html">
 <meta property="og:site_name" content="Keven&#39;s Blog">
 <meta property="og:description" content="参考：https:&#x2F;&#x2F;juejin.cn&#x2F;post&#x2F;6844903516826255373https:&#x2F;&#x2F;juejin.cn&#x2F;post&#x2F;6844903989096497159https:&#x2F;&#x2F;juejin.cn&#x2F;post&#x2F;6844904021308735502#heading-13 前端本地存储方式有三种，分别是 Cookie、WebStorage、IndexedDB。 CookieCookie 最">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-09-09T07:00:00.000Z">
-<meta property="article:modified_time" content="2025-08-09T01:54:48.126Z">
+<meta property="article:modified_time" content="2025-08-11T13:24:54.279Z">
 <meta property="article:author" content="Keven">
 <meta property="article:tag" content="浏览器">
 <meta property="article:tag" content="数据存储">
@@ -37,7 +37,7 @@
   
   
   
-  <title>客户端存储 - Keven&#39;s Blog</title>
+  <title>浏览器存储 - Keven&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -239,7 +239,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="客户端存储"></span>
+            <span id="subtitle" data-typed-text="浏览器存储"></span>
           
         </div>
 
@@ -267,7 +267,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          3.3k 字
+          3.4k 字
         
       </span>
     
@@ -278,7 +278,7 @@
         
         
         
-          21 分钟
+          22 分钟
         
       </span>
     
@@ -378,10 +378,10 @@
     
       
       
-        <a href="/2021/09/09/%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%AD%98%E5%82%A8/" title="客户端存储"
+        <a href="/2021/09/09/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%AD%98%E5%82%A8/" title="浏览器存储"
            class="list-group-item list-group-item-action
            active">
-          <span class="category-post">客户端存储</span>
+          <span class="category-post">浏览器存储</span>
         </a>
       
     
@@ -443,12 +443,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">客户端存储</h1>
+            <h1 id="seo-header">浏览器存储</h1>
             
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2025年8月9日 上午
+                    本文最后更新于 2025年8月11日 晚上
                   
                 
               </p>
@@ -459,7 +459,7 @@
                 <p>参考：<br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903516826255373">https://juejin.cn/post/6844903516826255373</a><br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903989096497159">https://juejin.cn/post/6844903989096497159</a><br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904021308735502#heading-13">https://juejin.cn/post/6844904021308735502#heading-13</a></p>
 <p>前端本地存储方式有三种，分别是 Cookie、WebStorage、IndexedDB。</p>
 <h1 id="Cookie"><a href="#Cookie" class="headerlink" title="Cookie"></a>Cookie</h1><p>Cookie 最开始被设计出来并不是来做本地存储的，而是为了弥补 HTTP 在状态管理上的不足。HTTP 协议是一个无状态协议，客户端向服务器发请求，服务器返回响应，故事就结束了，但是下次发请求如何让服务端知道客户端是谁呢？在这种背景下就产生了 Cookie。</p>
-<p><strong>Cookie 是 HTTP 协议的一部分，也是服务器发送到用户浏览器并保存在本地的一小块数据</strong>，内部以键值对的方式来存储。向同一个域名下发送请求会携带相同的 Cookie，服务器拿到 Cookie 进行解析以便能拿到客户端的状态。在 HTTP 中：<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Guides/Cookies">Cookie</a>，在浏览器中：<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Document/cookie">cookie</a>。</p>
+<p><strong>Cookie 是 HTTP 协议的一部分，也是服务器发送到用户浏览器并保存在本地的一小块数据</strong>，内部以键值对的方式来存储。向同一个域名下发送请求会携带相同的 Cookie，服务器拿到 Cookie 进行解析以便能拿到客户端的状态。在 HTTP 中有：<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Guides/Cookies">Cookie</a>，在浏览器中有：<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Document/cookie">cookie</a>。</p>
 <h2 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h2><p>Cookie 主要用于以下三个方面：</p>
 <ul>
 <li>会话状态管理<br>如用户登录状态、购物车、游戏分数或其他需要记录的信息。</li>
@@ -472,35 +472,39 @@
 <li>性能缺陷<br>Cookie 紧跟域名，不管域名下面的某个地址需不需要 Cookie，请求时都会携带完整的 Cookie，这样随着请求数的增多，其实会造成巨大的性能浪费，因为请求会携带很多不必要的内容。</li>
 <li>安全缺陷<br>由于 Cookie 以纯文本的形式在浏览器和服务器当中传递，所以很容易被第三方截获或者篡改。在 Cookie 的有效期内重新发送给服务器是相当危险的。</li>
 </ul>
-<h2 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h2><h3 id="域名匹配-Domain"><a href="#域名匹配-Domain" class="headerlink" title="域名匹配 Domain"></a>域名匹配 Domain</h3><p>Cookie 的作用域符合同源策略，默认情况下不同的域不能直接访问彼此的 Cookie。例如，对于主域 <code>a.com</code> 及其子域 <code>sub.a.com</code> 默认不能直接访问彼此的 Cookie，但通过合理设置 <code>Domain</code> 属性可以实现单向或双向共享。</p>
-<p><code>Domain</code> 属性用于指定能访问 Cookie 的域名，但<strong>只能设置</strong>为<strong>当前域</strong>或者<strong>其父域</strong>（一般不允许设置到顶级域），<strong>不能设置</strong>为<strong>当前域子域</strong>、<strong>同级子域</strong>或者<strong>跨站域</strong>。也可以不设置此属性。</p>
-<p>当 <code>a.com</code> 站点设置 Cookie 时：</p>
+<h2 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h2><h3 id="协议匹配-Secure"><a href="#协议匹配-Secure" class="headerlink" title="协议匹配 Secure"></a>协议匹配 Secure</h3><p><code>Secure</code> 属性控制禁止通过 HTTP 协议传输 Cookie（防止中间人窃取），仅允许 HTTPS 协议。</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">Set-Cookie: Session=abc; Secure;  <span class="hljs-regexp">//</span> 仅 HTTPS 连接发送<br></code></pre></td></tr></table></figure>
+
+<h3 id="域名匹配-Domain"><a href="#域名匹配-Domain" class="headerlink" title="域名匹配 Domain"></a>域名匹配 Domain</h3><p><code>Domain</code> 属性用于限制能访问修改 Cookie 的<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Glossary/Domain_name">域名</a>，不用于限制端口以及协议。默认情况下，不同的域名不能直接访问彼此 Cookie，但通过合理设置 <code>Domain</code> 属性可以实现单向或双向共享。</p>
+<p>对于 <code>Domain</code> 属性，<strong>可以设置</strong>为<strong>当前域</strong>或者<strong>祖父域</strong>（<strong>但不能到顶级域</strong>），<strong>不能设置</strong>为<strong>子域</strong>或者<strong>其他域</strong>（<strong>设置了也无效</strong>），但也<strong>可以不设置</strong>此属性。不设置此属性时，<strong>只有当前域</strong>可以访问修改该 Cookie；显式设置此属性为某个域后，<strong>设置的域及其所有子域</strong>可以访问修改该 Cookie。如：</p>
+<p>对于 <code>a.com</code> 站点的 Cookie：</p>
 <ul>
 <li>可以不设置 <code>Domain</code><br>效果：只有 <code>a.com</code> 可以访问修改</li>
 <li>可以设置 <code>Domain=a.com</code>（等同 <code>Domain=.a.com</code>）<br>效果：<code>a.com</code>、<code>sub.a.com</code>、<code>api.a.com</code>、<code>sub.api.a.com</code> 都可以访问修改</li>
 <li>不可以设置 <code>Domain=api.a.com</code>、<code>Domain=b.com</code>、<code>Domain=com</code>（等同 <code>Domain=.com</code>）</li>
 </ul>
-<p>当 <code>api.a.com</code> 站点设置 Cookie 时：</p>
+<p>对于 <code>api.a.com</code> 站点的 Cookie：</p>
 <ul>
 <li>可以不设置 <code>Domain</code><br>效果：只有 <code>api.a.com</code> 可以访问修改</li>
 <li>可以设置 <code>Domain=api.a.com</code><br>效果：<code>api.a.com</code>、<code>sub.api.a.com</code> 可以访问修改，<code>a.com</code>、<code>sub.a.com</code> 不可以访问修改</li>
 <li>可以设置 <code>Domain=a.com</code>（等同 <code>Domain=.a.com</code>）<br>效果：<code>a.com</code>、<code>sub.a.com</code>、<code>api.a.com</code>、<code>sub.api.a.com</code> 都可以访问修改</li>
 <li>不可以设置 <code>Domain=sub.api.a.com</code>、<code>Domain=sub.a.com</code>、<code>Domain=api.b.com</code></li>
 </ul>
-<p>当 <code>sub.api.a.com</code> 站点设置 Cookie 时：</p>
+<p>对于 <code>sub.api.a.com</code>站点的 Cookie：</p>
 <ul>
 <li>可以不设置 <code>Domain</code><br>效果：只有 <code>sub.api.a.com</code> 可以访问修改</li>
 <li>可以设置 <code>Domain=sub.api.a.com</code>、<code>Domain=api.a.com</code>、<code>Domain=a.com</code><br>具体效果略</li>
-<li>不可以设置略</li>
+<li>不可以设置略<br>具体效果略</li>
 </ul>
 <figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs dart"><span class="hljs-comment">// 当前域名 a.com 返回的 HTTP 响应头</span><br><span class="hljs-built_in">Set</span>-Cookie: Session_id=abc123; Domain=.a.com; Path=/; SameSite=Lax; Secure<br><span class="hljs-comment">// 当前域名 a.com 或任意子域的前端执行，共享到所有子域</span><br><span class="hljs-built_in">document</span>.cookie = <span class="hljs-string">&quot;user_token=xyz; domain=.a.com; path=/; secure&quot;</span>;<br></code></pre></td></tr></table></figure>
 
-<h3 id="路径匹配-Path"><a href="#路径匹配-Path" class="headerlink" title="路径匹配 Path"></a>路径匹配 Path</h3><p><code>Path</code> 属性限制 Cookie 仅在指定路径下发送，默认当前路径。</p>
-<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs dart"><span class="hljs-built_in">Set</span>-Cookie: temp=<span class="hljs-number">123</span>; Path=/admin;<br><span class="hljs-comment">// /admin/dashboard → 携带</span><br><span class="hljs-comment">// /home → 不携带</span><br></code></pre></td></tr></table></figure>
-
-<h3 id="协议匹配-Secure"><a href="#协议匹配-Secure" class="headerlink" title="协议匹配 Secure"></a>协议匹配 Secure</h3><p><code>Secure</code> 属性控制禁止通过 HTTP 协议明文传输 Cookie（防止中间人窃取），仅允许 HTTPS 协议。</p>
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">Set-Cookie: Session=abc; Secure;  <span class="hljs-regexp">//</span> 仅 HTTPS 连接发送<br></code></pre></td></tr></table></figure>
-
+<h3 id="路径匹配-Path"><a href="#路径匹配-Path" class="headerlink" title="路径匹配 Path"></a>路径匹配 Path</h3><p><code>Path</code> 属性用于限制能访问修改 Cookie 的<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/URI/Reference/Path">路径</a>，默认为当前路径。对于 <code>a.com</code> 站点，如果设置了 <code>Set-Cookie: temp=123; Domain=a.com; Path=/admin;</code> 那么：</p>
+<ul>
+<li><code>a.com/admin</code> 可以用此 Cookie</li>
+<li><code>a.com/user</code> 不可以用此 Cookie</li>
+<li><code>api.a.com/admin</code> 可以用此 Cookie</li>
+<li><code>api.a.com/user</code> 不可以用此 Cookie</li>
+</ul>
 <h3 id="站点匹配-SameSite"><a href="#站点匹配-SameSite" class="headerlink" title="站点匹配 SameSite"></a>站点匹配 SameSite</h3><p><code>SameSite</code> 属性控制在跨站请求（Cross-site request）时是否携带 Cookie，用于防止 CSRF 攻击。该属性共有三种值，默认值为 Lax：</p>
 <table>
 <thead>
@@ -528,11 +532,11 @@
 </tbody></table>
 <p>需要注意：</p>
 <ul>
-<li>同站（same-site）是指主域名相同（<code>a.com</code> 和 <code>sub.a.com</code> 和 <code>api.a.com</code> 都算同站）</li>
+<li>主域相同的<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Glossary/Site">站点</a>就是同站（same-site）（<code>a.com</code> 和 <code>sub.a.com</code> 和 <code>api.a.com</code> 都算同站）</li>
 <li>跨站是指主域不同（<code>a.com</code> → <code>b.com</code>）</li>
 <li>如果 <code>SameSite=None</code>，浏览器要求必须加 <code>Secure</code>，否则直接忽略 Cookie</li>
 </ul>
-<h3 id="三方存储-Partitioned"><a href="#三方存储-Partitioned" class="headerlink" title="三方存储 Partitioned"></a>三方存储 Partitioned</h3><p><code>Partitioned</code> 属性解决第三方 Cookie 在隐私安全下的存储问题，特别是在浏览器逐渐限制第三方 Cookie 的背景下。</p>
+<h3 id="分区存储-Partitioned"><a href="#分区存储-Partitioned" class="headerlink" title="分区存储 Partitioned"></a>分区存储 Partitioned</h3><p><code>Partitioned</code> 属性解决第三方 Cookie 在隐私安全下的存储问题，特别是在浏览器逐渐限制第三方 Cookie 的背景下。</p>
 <p>传统第三方 Cookie（例如在 <code>siteA.com</code> 里嵌入 iframe 加载 <code>siteB.com</code> 内容）可以跨网站共享，这对广告追踪等行为非常方便，但也带来了隐私泄露和跨站跟踪风险。为了保护用户隐私，Chrome、Firefox、Safari 等浏览器正在逐步阻止第三方 Cookie，但有些合法场景也需要第三方 Cookie，比如跨站嵌入的支付网关、CDN 登录状态共享、多站点业务集群下的用户会话保持等。</p>
 <p>开启 <code>Partitioned</code> 属性后，让第三方 Cookie 隔离到特定的第一方站点上下文中，避免跨站追踪，但又能在嵌入的场景下工作。假设有个站点被两个不同的站点使用：<code>shopA.com</code> 嵌入了 <code>cdn.com</code>，<code>shopB.com</code> 也嵌入了 <code>cdn.com</code>：</p>
 <ul>
@@ -614,16 +618,16 @@
 <li>Session 会在一定时间内保存在服务器上。如果访问量比较大，会比较消耗服务器的性能。如果考虑到减轻服务器性能方面的开销，应当使用 Cookie。</li>
 <li>单个 Cookie 保存的数据大小不能超过 4K，很多浏览器都限制一个域名最多保存 50 个 Cookie。可以将登陆等重要信息存放到 Session，其他信息如果需要保留，可以存放到 Cookie。</li>
 </ul>
-<h1 id="WebStorage"><a href="#WebStorage" class="headerlink" title="WebStorage"></a>WebStorage</h1><p>使用 Cookie 时受到种种限制，最关键是容量太小和无法持久化存储。在 HTML5 的标准下，出现了 WebStorage（又分为 localStorage 和 SessionStorage）。WebStorage 是浏览器基于 HTML5 标准自身的实现，跟 HTTP 无关。</p>
-<h2 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h2><p>WebStorage 作用域规则与 Cookie 完全不同，它严格遵循同源策略（Same-Origin Policy），不同域之间无法互相访问对方的存储数据。</p>
-<p>WebStorage 下的 localStorage 和 SessionStorage 的区别在于，在浏览器的同域的不同页面，可以共享 localStorage 但无法共享 SessionStorage。</p>
-<h2 id="使用-1"><a href="#使用-1" class="headerlink" title="使用"></a>使用</h2><p>localStorage 和 SessionStorage 都是 WebStorage 类型实例，使用方法一样。注意事项：</p>
+<h1 id="WebStorage"><a href="#WebStorage" class="headerlink" title="WebStorage"></a>WebStorage</h1><p>使用 Cookie 时受到种种限制，最关键是容量太小和无法持久化存储。在 HTML5 的标准下，出现了 WebStorage（又分为 localStorage 和 sessionStorage）。WebStorage 是浏览器基于 HTML5 标准自身的实现，跟 HTTP 无关。</p>
+<h2 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h2><p>WebStorage 的作用域规则与 Cookie 不同，它严格遵循<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/Security/Same-origin_policy">浏览器的同源策略</a>（Same-Origin Policy），不同的源之间无法互相访问对方的存储数据。</p>
+<p>WebStorage 下的 localStorage 和 sessionStorage 的区别在于，在浏览器的同源但不同的标签页，可以共享 localStorage 数据但无法共享 sessionStorage 数据。localStorage 是一个域名的本地存储（永久存储），sessionStorage 是一个域名的会话存储（关闭页面后消失）。</p>
+<h2 id="使用-1"><a href="#使用-1" class="headerlink" title="使用"></a>使用</h2><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Window/localStorage">localStorage</a> 和 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Window/sessionStorage">sessionStorage</a> 都是 WebStorage 类型实例，使用方法一样。注意事项：</p>
 <ul>
 <li>写入时如果超出容量会报错，之前保存的数据不会丢失</li>
-<li>存储容量快满时 getItem() 方法性能会急剧下降</li>
-<li>存储的都是字符串（想要存储对象需调用 JSON.stringify() 方法转为 JSON 数据类型；想要获取数据需调用 JSON.parse() 方法再解析 JSON 数据类型成对象）</li>
+<li>存储容量快满时 <code>getItem()</code> 方法性能会急剧下降</li>
+<li>存储的都是字符串（想要存储对象需调用 <code>JSON.stringify()</code> 方法转为 JSON 数据类型；想要获取数据需调用 <code>JSON.parse()</code> 方法再解析 JSON 数据类型成对象）</li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> name = <span class="hljs-string">&quot;SessionData&quot;</span>,<br>  num = <span class="hljs-number">120</span>;<br>SessionStorage.setItem(name, num); <span class="hljs-comment">// 存储数据</span><br>SessionStorage.value = <span class="hljs-number">110</span>; <span class="hljs-comment">// 存储数据</span><br>SessionStorage.valueOf(); <span class="hljs-comment">// 获取全部数据</span><br><span class="hljs-comment">//  &#123;value: &#x27;110&#x27;, SessionData: &#x27;120&#x27;, length: 2&#125;</span><br><span class="hljs-keyword">let</span> dataSession1 = SessionStorage.getItem(name); <span class="hljs-comment">// 获取指定键名数据</span><br><span class="hljs-keyword">let</span> dataSession2 = SessionStorage.SessionData; <span class="hljs-comment">// 获取指定键名数据</span><br><span class="hljs-built_in">console</span>.log(dataSession1, dataSession2);<br><span class="hljs-comment">// 120 120</span><br>SessionStorage.removeItem(name); <span class="hljs-comment">// 删除指定键名数据</span><br>SessionStorage.clear(); <span class="hljs-comment">// 清空缓存数据</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> name = <span class="hljs-string">&quot;SessionData&quot;</span>,<br>  num = <span class="hljs-number">120</span>;<br>sessionStorage.setItem(name, num); <span class="hljs-comment">// 存储数据</span><br>sessionStorage.value = <span class="hljs-number">110</span>; <span class="hljs-comment">// 存储数据</span><br>sessionStorage.valueOf(); <span class="hljs-comment">// 获取全部数据</span><br><span class="hljs-comment">//  &#123;value: &#x27;110&#x27;, SessionData: &#x27;120&#x27;, length: 2&#125;</span><br><span class="hljs-keyword">let</span> dataSession1 = sessionStorage.getItem(name); <span class="hljs-comment">// 获取指定键名数据</span><br><span class="hljs-keyword">let</span> dataSession2 = sessionStorage.SessionData; <span class="hljs-comment">// 获取指定键名数据</span><br><span class="hljs-keyword">let</span> dataSession = sessionStorage; <span class="hljs-comment">// 获取全部数据</span><br><span class="hljs-built_in">console</span>.log(dataSession1, dataSession2, dataSession);<br><span class="hljs-comment">// 120 120 &#123;value: &#x27;110&#x27;, SessionData: &#x27;120&#x27;, length: 2&#125;</span><br>sessionStorage.removeItem(name); <span class="hljs-comment">// 删除指定键名数据</span><br>sessionStorage.clear(); <span class="hljs-comment">// 清空缓存数据</span><br></code></pre></td></tr></table></figure>
 
 <h2 id="对比"><a href="#对比" class="headerlink" title="对比"></a>对比</h2><p>在浏览器开发者面板的 Application 栏可以看到对应的具体信息。</p>
 <p>不同：</p>
@@ -652,7 +656,7 @@
 <td align="center">持久化缓存数据，可以跨页面传递内容、页面默认偏好配置</td>
 </tr>
 <tr>
-<td align="center">SessionStorage</td>
+<td align="center">sessionStorage</td>
 <td align="center">5MB</td>
 <td align="center">仅在当前网页会话有效，关闭页面后失效</td>
 <td align="center">不与服务端通信</td>
@@ -725,8 +729,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>客户端存储</div>
-      <div>https://xuekeven.github.io/2021/09/09/客户端存储/</div>
+      <div>浏览器存储</div>
+      <div>https://xuekeven.github.io/2021/09/09/浏览器存储/</div>
     </div>
     <div class="license-meta">
       
@@ -744,7 +748,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2025年8月9日</div>
+          <div>2025年8月11日</div>
         </div>
       
       
