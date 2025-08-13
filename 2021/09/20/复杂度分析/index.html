@@ -21,16 +21,16 @@
   <meta name="author" content="Keven">
   <meta name="keywords" content="">
   
-    <meta name="description" content="参考：https:&#x2F;&#x2F;juejin.cn&#x2F;post&#x2F;6844903750985842695https:&#x2F;&#x2F;github.com&#x2F;biaochenxuying&#x2F;blog&#x2F;issues&#x2F;29 什么是复杂度分析复杂度分析是整个算法学习的精髓，使用数据结构与算法是为了能更快时间、更省空间地解决问题。因此，需要从 执行时间 和 占用空间 两个维度来评估数据结构与算法的性能。虽然我们能用代码准确的计算出执行时">
+    <meta name="description" content="参考：https:&#x2F;&#x2F;juejin.cn&#x2F;post&#x2F;6844903750985842695https:&#x2F;&#x2F;github.com&#x2F;biaochenxuying&#x2F;blog&#x2F;issues&#x2F;29https:&#x2F;&#x2F;www.hello-algo.com&#x2F;chapter_computational_complexity&#x2F;time_complexity&#x2F; 什么是复杂度分析复杂度分析是整个算法学习的精髓。学习数据结构">
 <meta property="og:type" content="article">
-<meta property="og:title" content="复杂度">
-<meta property="og:url" content="https://xuekeven.github.io/2021/09/20/JavaScript%E5%A4%8D%E6%9D%82%E5%BA%A6/index.html">
+<meta property="og:title" content="复杂度分析">
+<meta property="og:url" content="https://xuekeven.github.io/2021/09/20/%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90/index.html">
 <meta property="og:site_name" content="Keven&#39;s Blog">
-<meta property="og:description" content="参考：https:&#x2F;&#x2F;juejin.cn&#x2F;post&#x2F;6844903750985842695https:&#x2F;&#x2F;github.com&#x2F;biaochenxuying&#x2F;blog&#x2F;issues&#x2F;29 什么是复杂度分析复杂度分析是整个算法学习的精髓，使用数据结构与算法是为了能更快时间、更省空间地解决问题。因此，需要从 执行时间 和 占用空间 两个维度来评估数据结构与算法的性能。虽然我们能用代码准确的计算出执行时">
+<meta property="og:description" content="参考：https:&#x2F;&#x2F;juejin.cn&#x2F;post&#x2F;6844903750985842695https:&#x2F;&#x2F;github.com&#x2F;biaochenxuying&#x2F;blog&#x2F;issues&#x2F;29https:&#x2F;&#x2F;www.hello-algo.com&#x2F;chapter_computational_complexity&#x2F;time_complexity&#x2F; 什么是复杂度分析复杂度分析是整个算法学习的精髓。学习数据结构">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://xuekeven.github.io/images/%E5%B8%B8%E8%A7%81%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90.png">
 <meta property="article:published_time" content="2021-09-20T14:00:00.000Z">
-<meta property="article:modified_time" content="2025-08-07T06:16:06.056Z">
+<meta property="article:modified_time" content="2025-08-13T16:00:42.514Z">
 <meta property="article:author" content="Keven">
 <meta property="article:tag" content="算法">
 <meta name="twitter:card" content="summary_large_image">
@@ -38,7 +38,7 @@
   
   
   
-  <title>复杂度 - Keven&#39;s Blog</title>
+  <title>复杂度分析 - Keven&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -240,7 +240,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="复杂度"></span>
+            <span id="subtitle" data-typed-text="复杂度分析"></span>
           
         </div>
 
@@ -268,7 +268,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.5k 字
+          2.8k 字
         
       </span>
     
@@ -279,7 +279,7 @@
         
         
         
-          16 分钟
+          18 分钟
         
       </span>
     
@@ -379,10 +379,10 @@
     
       
       
-        <a href="/2021/09/20/JavaScript%E5%A4%8D%E6%9D%82%E5%BA%A6/" title="复杂度"
+        <a href="/2021/09/20/%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90/" title="复杂度分析"
            class="list-group-item list-group-item-action
            active">
-          <span class="category-post">复杂度</span>
+          <span class="category-post">复杂度分析</span>
         </a>
       
     
@@ -472,12 +472,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">复杂度</h1>
+            <h1 id="seo-header">复杂度分析</h1>
             
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2025年8月7日 下午
+                    本文最后更新于 2025年8月14日 凌晨
                   
                 
               </p>
@@ -485,70 +485,71 @@
             
               <div class="markdown-body">
                 
-                <p>参考：<br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903750985842695">https://juejin.cn/post/6844903750985842695</a><br><a target="_blank" rel="noopener" href="https://github.com/biaochenxuying/blog/issues/29">https://github.com/biaochenxuying/blog/issues/29</a></p>
-<h1 id="什么是复杂度分析"><a href="#什么是复杂度分析" class="headerlink" title="什么是复杂度分析"></a>什么是复杂度分析</h1><p>复杂度分析是整个算法学习的精髓，使用数据结构与算法是为了能更快时间、更省空间地解决问题。因此，需要从 <strong>执行时间</strong> 和 <strong>占用空间</strong> 两个维度来评估数据结构与算法的性能。虽然我们能用代码准确的计算出执行时间，但是这也会有很多局限性。</p>
+                <p>参考：<br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903750985842695">https://juejin.cn/post/6844903750985842695</a><br><a target="_blank" rel="noopener" href="https://github.com/biaochenxuying/blog/issues/29">https://github.com/biaochenxuying/blog/issues/29</a><br><a target="_blank" rel="noopener" href="https://www.hello-algo.com/chapter_computational_complexity/time_complexity/">https://www.hello-algo.com/chapter_computational_complexity/time_complexity/</a></p>
+<h1 id="什么是复杂度分析"><a href="#什么是复杂度分析" class="headerlink" title="什么是复杂度分析"></a>什么是复杂度分析</h1><p>复杂度分析是整个算法学习的精髓。学习数据结构与算法是为了能更快时间、更省空间地解决问题。因此，需要从<strong>执行时间</strong>和<strong>占用空间</strong>两个维度来评估数据结构与算法的性能。虽然能用代码准确的计算执行时间，但是也有很多的局限性：</p>
 <ul>
-<li>数据规模的不同会直接影响到测试结果。比如同一个排序算法，排序顺序不一样，那么最后的计算效率的结果也会不一样，而如果恰好已经是排序好的了数组，那么执行时间就会更短。又比如如果数据规模比较小的话，测试结果可能也无法反应算法的性能。</li>
-<li>测试的环境不同也会影响到测试结果。比如同一套代码分别在 i3 和 i7 处理器上进行测试，那么 i7 上的测试时间肯定会比 i3 上的短。</li>
+<li>数据规模的不同会直接影响测试结果。比如同一个排序算法，排序顺序不一样，那么最后的计算效率的结果会不一样，而如果恰好已经是排序好的了数组，那么执行时间就会更短。又比如如果数据规模比较小，测试结果可能也无法反应算法的性能</li>
+<li>测试环境的不同也会影响测试结果。比如同一套代码分别在 i3 和 i7 处理器上测试，那么 i7 上的测试时间肯定会比 i3 上的短</li>
 </ul>
-<p>所以需要一个不用准确的测试结果来衡量，就可以粗略地估计代码执行时间的方法。这就是复杂度分析。</p>
-<p>和性能测试相比，复杂度分析有不依赖执行环境、成本低、效率高、易操作、指导性强的特点。掌握复杂度分析，将能编写出性能更优的代码，有利于降低系统开发和维护成本。分别用时间复杂度和空间复杂度两个概念来描述性能问题，二者统称为复杂度。</p>
-<h1 id="大-O-复杂度表示法"><a href="#大-O-复杂度表示法" class="headerlink" title="大 O 复杂度表示法"></a>大 O 复杂度表示法</h1><p>估算下面代码的执行时间</p>
+<p>所以，需要一个不用准确的测试结果就可以粗略地估计代码执行情况的方法，即复杂度分析。分别用<strong>时间复杂度</strong>和<strong>空间复杂度</strong>两个概念来描述性能问题，统称为复杂度。复杂度描述的是算法<strong>执行时间</strong>和<strong>占用空间</strong>与数据规模的增长关系。</p>
+<p>和具体性能测试相比，复杂度分析有<strong>不依赖执行环境、成本低、效率高、易操作、指导性强</strong>的特点。掌握复杂度分析，将能编写出性能更优的代码，有利于降低系统开发和维护成本。</p>
+<h1 id="大-O-表示法"><a href="#大-O-表示法" class="headerlink" title="大 O 表示法"></a>大 O 表示法</h1><p>对于下面代码，估算其执行时间：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">total</span>(<span class="hljs-params">n</span>) </span>&#123;<br>  <span class="hljs-keyword">let</span> sum = <span class="hljs-number">0</span>;<br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) &#123;<br>    sum += i;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<p>我们假设每行代码执行的时间都一样记做 t，那么上面的函数中第 2 行需要 1 个 t 的时间，第 3 行 和 第 4 行分别需要 n 个 t 的时间，那么这段代码总的执行时间为 (2n+1)*t。</p>
+<p>我们假设每行代码执行的时间都一样记做 t，那么上面的函数中第 2 行需要 1 个 t 的时间，第 3 行 和 第 4 行分别需要 (n+1) 个 t 和 n 个 t 的时间，那么代码总的执行时间为 (2n+2)*t。继续估算下面代码执行时间：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">total</span>(<span class="hljs-params">n</span>) </span>&#123;<br>  <span class="hljs-keyword">let</span> sum = <span class="hljs-number">0</span>;<br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) &#123;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> j = <span class="hljs-number">0</span>; j &lt; n; j++) &#123;<br>      sum = sum + i + j;<br>    &#125;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<p>同理，第 2 行需要一个 t 的时间，第 3 行需要 n 个 t 的时间，第 4 行和第 5 行分别需要 n<sup>2</sup> 个的时间，那么这段代码总的执行时间为 (2n<sup>2</sup>+n+1)*t 的时间。</p>
-<p>从数学角度来看，我们可以得出个规律：代码的总执行时间 T(n) 与每行代码的执行次数成正比。</p>
-<blockquote>
-<p>T(n) = O(f(n))</p>
-</blockquote>
-<p>在这个公式中，T(n) 表示每行代码总的执行时间，n 表示数据规模的大小，f(n) 表示每行代码执行次数总和，O 表示代码的执行时间 T(n) 与 f(n) 表达式成正比。</p>
-<p>所以上面两个函数的执行时间可以标记为 T(n) = O(2n+1) 以及 T(n) = O(2n<sup>2</sup>+n+1)。这就是大 O 时间复杂度表示法，它不代表代码真正的执行时间，而是表示代码随数据规模增长的变化趋势，简称时间复杂度。</p>
-<p>由于时间复杂度描述的是算法执行时间与数据规模的增长变化趋势，所以 <strong>常量阶</strong> 、<strong>低阶</strong> 、<strong>系数</strong> 实际上对这种增长趋势不产生决定性影响，所以在做时间复杂度分析时 <strong>忽略</strong> 这些项。</p>
-<p>而且当 n 很大时，我们可以忽略常数项，只保留一个最大量级。所以上面的代码执行时间可以简单标记为 T(n) = O(n) 和 T(n) = O(n<sup>2</sup>)。</p>
-<h1 id="时间复杂度分析"><a href="#时间复杂度分析" class="headerlink" title="时间复杂度分析"></a>时间复杂度分析</h1><p>时间复杂度的全称是渐进时间复杂度，表示代码执行时间随数据规模增长的变化趋势。</p>
-<p>算法的执行时间与每行代码的执行次数成正比，用 T(n) = O(f(n)) 表示，其中，T(n) 表示算法执行总时间，f(n) 表示每行代码执行总次数，而 n 往往表示数据的规模。</p>
-<ul>
-<li>最好情况时间复杂度：在最理想的情况下，执行这段代码的时间复杂度。</li>
-<li>最坏情况时间复杂度：在最糟糕的情况下，执行这段代码的时间复杂度。</li>
-<li>平均情况时间复杂度：用代码在所有情况下执行的次数的加权平均值表示。<br>（也叫加权平均时间复杂度或期望时间复杂度。）</li>
-</ul>
-<h2 id="只关注循环执行次数最多的一段代码"><a href="#只关注循环执行次数最多的一段代码" class="headerlink" title="只关注循环执行次数最多的一段代码"></a>只关注循环执行次数最多的一段代码</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">total</span>(<span class="hljs-params">n</span>) </span>&#123;<br>  <span class="hljs-keyword">let</span> sum = <span class="hljs-number">0</span>;<br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) &#123;<br>    sum += i;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>第 2 行需要一个 t 的时间，第 3 行需要 (n+1) 个 t 的时间，第 4 行和第 5 行分别需要 (n<sup>2</sup> + 1) 个 t 和 n<sup>2</sup> 个 t 的时间，那么代码总的执行时间为 (2n<sup>2</sup>+n+3)*t 的时间。</p>
+<p>可以得出规律，代码的总执行时间 <code>T(n)</code> 与每行代码的执行次数成正比：<code>T(n) = O(f(n))</code>。在这个公式中，<code>T(n)</code> 表示代码的执行时间，<code>n</code> 表示数据规模的大小，<code>f(n)</code> 表示代码关于 <code>n</code> 所执行次数总和，<code>O</code> 表示代码的执行时间 <code>T(n)</code> 与 <code>f(n)</code> 表达式成正比。所以，上面两个函数的执行时间可以标记为 T(n) = O(2n+1) 和 T(n) = O(2n<sup>2</sup>+n+3)。</p>
+<p>这就是<strong>大 O 时间复杂度表示法</strong>，它不代表真正的执行时间，而是表示<strong>算法执行时间随数据规模增长的变化趋势</strong>，所以也叫<strong>渐进时间复杂度</strong>，简称为<strong>时间复杂度</strong>。由于时间复杂度描述的是算法执行时间与数据规模的增长变化趋势，所以<strong>常量阶</strong>、<strong>低阶</strong>、<strong>系数</strong>实际对这种增长趋势不产生决定性影响，所以做时间复杂度分析时<strong>忽略</strong>这些项。所以上面的代码执行时间简单标记为 T(n) = O(n) 和 T(n) = O(n<sup>2</sup>)。</p>
+<h1 id="时间复杂度分析"><a href="#时间复杂度分析" class="headerlink" title="时间复杂度分析"></a>时间复杂度分析</h1><h2 id="只关注循环执行次数最多的一段代码"><a href="#只关注循环执行次数最多的一段代码" class="headerlink" title="只关注循环执行次数最多的一段代码"></a>只关注循环执行次数最多的一段代码</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">total</span>(<span class="hljs-params">n</span>) </span>&#123;<br>  <span class="hljs-keyword">let</span> sum = <span class="hljs-number">0</span>;<br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) &#123;<br>    sum += i;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<p>只有第 3 行和第 4 行执行次数最多，分别执行了 n 次，那么忽略常数项，此段代码的时间复杂度就是 O(n)。</p>
+<p>第 3 和第 4 行执行次数最多，分别执行 n 次，又忽略常数项，故此段代码的时间复杂度就是 O(n)。</p>
 <h2 id="加法法则：总复杂度等于量级最大的那段代码的复杂度"><a href="#加法法则：总复杂度等于量级最大的那段代码的复杂度" class="headerlink" title="加法法则：总复杂度等于量级最大的那段代码的复杂度"></a>加法法则：总复杂度等于量级最大的那段代码的复杂度</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">total</span>(<span class="hljs-params">n</span>) </span>&#123;<br>  <span class="hljs-comment">// 第一个 for 循环</span><br>  <span class="hljs-keyword">let</span> sum1 = <span class="hljs-number">0</span>;<br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) &#123;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> j = <span class="hljs-number">0</span>; j &lt; n; j++) &#123;<br>      sum1 = sum1 + i + j;<br>    &#125;<br>  &#125;<br>  <span class="hljs-comment">// 第二个 for 循环</span><br>  <span class="hljs-keyword">let</span> sum2 = <span class="hljs-number">0</span>;<br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">1000</span>; i++) &#123;<br>    sum2 = sum2 + i;<br>  &#125;<br>  <span class="hljs-comment">// 第三个 for 循环</span><br>  <span class="hljs-keyword">let</span> sum3 = <span class="hljs-number">0</span>;<br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) &#123;<br>    sum3 = sum3 + i;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<p>第一段 for 循环的时间复杂度为 O(n<sup>2</sup>)。<br>第二段 for 循环执行了 1000 次，是个常数量级，尽管对代码的执行时间会有影响，但是当 n 无限大的时候，就可以忽略。因为它本身对增长趋势没有影响，所以这段代码的时间复杂度可以忽略。<br>第三段 for 循环的时间复杂度为 O(n)。<br>总上，取最大量级，所以整段代码的时间复杂度为 O(n<sup>2</sup>)。</p>
-<h2 id="乘法法则：嵌套代码的复杂度等于嵌套内外代码复杂度的乘积"><a href="#乘法法则：嵌套代码的复杂度等于嵌套内外代码复杂度的乘积" class="headerlink" title="乘法法则：嵌套代码的复杂度等于嵌套内外代码复杂度的乘积"></a>乘法法则：嵌套代码的复杂度等于嵌套内外代码复杂度的乘积</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f</span>(<span class="hljs-params">i</span>) </span>&#123;<br>  <span class="hljs-keyword">let</span> sum = <span class="hljs-number">0</span>;<br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> j = <span class="hljs-number">0</span>; j &lt; i; j++) &#123;<br>    sum += j;<br>  &#125;<br>  <span class="hljs-keyword">return</span> sum;<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">total</span>(<span class="hljs-params">n</span>) </span>&#123;<br>  <span class="hljs-keyword">let</span> res = <span class="hljs-number">0</span>;<br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) &#123;<br>    res = res + f(i); <span class="hljs-comment">// 调用 f 函数</span><br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<ul>
+<li>第一段 for 循环的时间复杂度为 O(n<sup>2</sup>)</li>
+<li>第二段 for 循环执行了 1000 次是个常数量级，尽管对代码的执行时间有影响，但当 n 无限大时就可以忽略，因为它本身对增长趋势没有影响，所以这段代码的时间复杂度可以忽略</li>
+<li>第三段 for 循环的时间复杂度为 O(n)</li>
+</ul>
+<p>综上，取最大量级，所以整段代码的时间复杂度为 O(n<sup>2</sup>)。</p>
+<h2 id="乘法法则：嵌套代码的复杂度等于嵌套内外代码复杂度的乘积"><a href="#乘法法则：嵌套代码的复杂度等于嵌套内外代码复杂度的乘积" class="headerlink" title="乘法法则：嵌套代码的复杂度等于嵌套内外代码复杂度的乘积"></a>乘法法则：嵌套代码的复杂度等于嵌套内外代码复杂度的乘积</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f</span>(<span class="hljs-params">i</span>) </span>&#123;<br>  <span class="hljs-keyword">let</span> sum = <span class="hljs-number">0</span>;<br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> j = <span class="hljs-number">0</span>; j &lt; i; j++) &#123;<br>    sum += j;<br>  &#125;<br>  <span class="hljs-keyword">return</span> sum;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">total</span>(<span class="hljs-params">n</span>) </span>&#123;<br>  <span class="hljs-keyword">let</span> res = <span class="hljs-number">0</span>;<br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) &#123;<br>    res = res + f(i); <span class="hljs-comment">// 调用 f 函数</span><br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <p>单独看 total 函数的时间复杂度就是为 T1(n)=O(n)，但是考虑到 f 函数的时间复杂度 T2(n)=O(n)。 所以整段代码的时间复杂度为 T(n) = T1(n) * T2(n) = O(n*n)=O(n<sup>2</sup>)。</p>
-<h2 id="多规模加法：多个参数控制多个循环相加的次数，取二者复杂度相加"><a href="#多规模加法：多个参数控制多个循环相加的次数，取二者复杂度相加" class="headerlink" title="多规模加法：多个参数控制多个循环相加的次数，取二者复杂度相加"></a>多规模加法：多个参数控制多个循环相加的次数，取二者复杂度相加</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">total</span>(<span class="hljs-params">m, n</span>) </span>&#123;<br>  <span class="hljs-keyword">let</span> sum_1 = <span class="hljs-number">0</span>;<br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; m; i++) &#123;<br>    sum_1 = sum_1 + i;<br>  &#125;<br>  <span class="hljs-keyword">let</span> sum_2 = <span class="hljs-number">0</span>;<br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> j = <span class="hljs-number">0</span>; j &lt; n; j++) &#123;<br>    sum_2 = sum_2 + j;<br>  &#125;<br>  <span class="hljs-keyword">return</span> sum_1 + sum_2;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="多规模加法：多个参数控制多个循环相加的次数，二者复杂度相加"><a href="#多规模加法：多个参数控制多个循环相加的次数，二者复杂度相加" class="headerlink" title="多规模加法：多个参数控制多个循环相加的次数，二者复杂度相加"></a>多规模加法：多个参数控制多个循环相加的次数，二者复杂度相加</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">total</span>(<span class="hljs-params">m, n</span>) </span>&#123;<br>  <span class="hljs-keyword">let</span> sum_1 = <span class="hljs-number">0</span>;<br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; m; i++) &#123;<br>    sum_1 = sum_1 + i;<br>  &#125;<br>  <span class="hljs-keyword">let</span> sum_2 = <span class="hljs-number">0</span>;<br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> j = <span class="hljs-number">0</span>; j &lt; n; j++) &#123;<br>    sum_2 = sum_2 + j;<br>  &#125;<br>  <span class="hljs-keyword">return</span> sum_1 + sum_2;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <p>因为我们无法评估 m 和 n 谁的量级比较大，所以就不能忽略掉其中一个，这个函数的复杂度是有两个数据的量级来决定的，所以此函数的时间复杂度为 O(m+n)。</p>
-<h2 id="多规模乘法：多个参数控制多个循环嵌套的次数，取二者复杂度相乘"><a href="#多规模乘法：多个参数控制多个循环嵌套的次数，取二者复杂度相乘" class="headerlink" title="多规模乘法：多个参数控制多个循环嵌套的次数，取二者复杂度相乘"></a>多规模乘法：多个参数控制多个循环嵌套的次数，取二者复杂度相乘</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">total</span>(<span class="hljs-params">m, n</span>) </span>&#123;<br>  <span class="hljs-keyword">let</span> sum = <span class="hljs-number">0</span>;<br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; m; i++) &#123;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> j = <span class="hljs-number">0</span>; j &lt; n; j++) &#123;<br>      sum = sum + i * j;<br>    &#125;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="多规模乘法：多个参数控制多个循环嵌套的次数，二者复杂度相乘"><a href="#多规模乘法：多个参数控制多个循环嵌套的次数，二者复杂度相乘" class="headerlink" title="多规模乘法：多个参数控制多个循环嵌套的次数，二者复杂度相乘"></a>多规模乘法：多个参数控制多个循环嵌套的次数，二者复杂度相乘</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">total</span>(<span class="hljs-params">m, n</span>) </span>&#123;<br>  <span class="hljs-keyword">let</span> sum = <span class="hljs-number">0</span>;<br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; m; i++) &#123;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> j = <span class="hljs-number">0</span>; j &lt; n; j++) &#123;<br>      sum = sum + i * j;<br>    &#125;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <p>同理，此函数的时间复杂度为 O(m*n)。</p>
-<h1 id="常见时间复杂度"><a href="#常见时间复杂度" class="headerlink" title="常见时间复杂度"></a>常见时间复杂度</h1><p><img src="/images/%E5%B8%B8%E8%A7%81%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90.png" srcset="/img/loading.gif" lazyload alt="常见时间复杂度分析（来自掘金@snowLu）"></p>
-<p>上图可以粗略的分为两类：<strong>多项式量级</strong> 和 <strong>非多项式量级</strong></p>
-<p>多项式量级会随着数据规模的增长，执行时间和空间占用按照多项式的比例增长。包括 O(1)（常数阶）、O(logn)（对数阶）、O(n)（线性阶）、O(nlogn)（线性对数阶）、O(n2) （平方阶）、O(n3)（立方阶）。</p>
-<p>非多项式量级有 O(2<sup>n</sup>)（指数阶）和 O(n!)（阶乘阶）。随着数据规模的增长，非多项式量级的执行时间就会急剧增加，所以，非多项式量级的代码算法是非常低效的算法。</p>
+<h1 id="常用的时间复杂度"><a href="#常用的时间复杂度" class="headerlink" title="常用的时间复杂度"></a>常用的时间复杂度</h1><p><img src="/images/%E5%B8%B8%E8%A7%81%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90.png" srcset="/img/loading.gif" lazyload alt="常见时间复杂度分析（来自掘金@snowLu）"></p>
+<p>上图可以粗略的分为两类：<strong>多项式量级</strong>和<strong>非多项式量级</strong>。</p>
+<p><strong>多项式量级</strong>：随着数据规模的增长，执行时间按照多项式的比例增长。包括 O(1)（常数阶）、O(logn)（对数阶）、O(n)（线性阶）、O(nlogn)（线性对数阶）、O(n2) （平方阶）、O(n3)（立方阶）。</p>
+<p><strong>非多项式量级</strong>：随着数据规模的增长，执行时间急剧增加。这种算法是非常低效的算法。包括 O(2<sup>n</sup>)（指数阶）和 O(n!)（阶乘阶）。</p>
 <p>常用的时间复杂度所耗费的时间从小到大（效率从高到低）：<br>O(1) &lt; O(logn) &lt; O(n) &lt; O(nlogn) &lt; O(n<sup>2</sup>) &lt; O(n<sup>3</sup>) &lt; O(2<sup>n</sup>) &lt; O(n!) &lt; O(n<sup>n</sup>)</p>
-<h2 id="O-1"><a href="#O-1" class="headerlink" title="O(1)"></a>O(1)</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">total</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-keyword">let</span> sum = <span class="hljs-number">0</span>;<br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">100</span>; i++) &#123;<br>    sum += i;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="O-1"><a href="#O-1" class="headerlink" title="O(1)"></a>O(1)</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">total</span>(<span class="hljs-params">n</span>) </span>&#123;<br>  <span class="hljs-keyword">let</span> sum = <span class="hljs-number">0</span>;<br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">1000</span>; i++) &#123;<br>    sum += i;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<p>虽然有这么多行，即使 for 循环执行了 100 次，但是代码的执行时间不随 n 的增大而增长，所以这样的代码复杂度就为 O(1)。</p>
-<h2 id="O-logn"><a href="#O-logn" class="headerlink" title="O(logn)"></a>O(logn)</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">total1</span>(<span class="hljs-params">n</span>) </span>&#123;<br>  <span class="hljs-keyword">let</span> sum = <span class="hljs-number">0</span>;<br>  <span class="hljs-keyword">let</span> i = <span class="hljs-number">1</span>;<br>  <span class="hljs-keyword">while</span> (i &lt;= n) &#123;<br>    sum += i;<br>    i = i * <span class="hljs-number">2</span>;<br>  &#125;<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">total2</span>(<span class="hljs-params">n</span>) </span>&#123;<br>  <span class="hljs-keyword">let</span> sum = <span class="hljs-number">0</span>;<br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">1</span>; i &lt;= n; i = i * <span class="hljs-number">2</span>) &#123;<br>    sum += i;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>即使 for 循环执行了 1000 次，但是代码的执行时间不随 n 的增大而变化，所以时间复杂度为 O(1)。</p>
+<h2 id="O-logn"><a href="#O-logn" class="headerlink" title="O(logn)"></a>O(logn)</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">total1</span>(<span class="hljs-params">n</span>) </span>&#123;<br>  <span class="hljs-keyword">let</span> sum = <span class="hljs-number">0</span>;<br>  <span class="hljs-keyword">let</span> i = <span class="hljs-number">1</span>;<br>  <span class="hljs-keyword">while</span> (i &lt;= n) &#123;<br>    sum += i;<br>    i = i * <span class="hljs-number">2</span>;<br>  &#125;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">total2</span>(<span class="hljs-params">n</span>) </span>&#123;<br>  <span class="hljs-keyword">let</span> sum = <span class="hljs-number">0</span>;<br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">1</span>; i &lt;= n; i = i * <span class="hljs-number">2</span>) &#123;<br>    sum += i;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<p>上面两个函数都有一个相同点，变量 i 从 1 开始取值，每循环一次乘以 2，当大于 n 时，循环结束。实际上，i 的取值就是一个等比数列。所以只要知道 x 的值，就可以知道这两个函数的执行次数了。那由 2<sup>x</sup> = n 可以得出 x = log<sub>2</sub>n，所以这两个函数的时间复杂度为 O(log<sub>2</sub>n)。</p>
-<p>实际上不管是以 2 为底、以 3 为底，还是以 10 为底，我们可以把所有对数阶的时间复杂度都记为 O(logn)。因为对数之间是可以互相转换的，log<sub>3</sub>n = log<sub>3</sub>2 _ log<sub>2</sub>n，所以 O(log<sub>3</sub>n) = O(C _ log<sub>2</sub>n)，其中 C = log<sub>3</sub>2 是一个常量，可以忽略。</p>
-<p>那 O(nlogn) 的含义就很明确了，时间复杂度为 O(logn) 的代码执行了 n 次。</p>
-<h1 id="空间复杂度分析"><a href="#空间复杂度分析" class="headerlink" title="空间复杂度分析"></a>空间复杂度分析</h1><p>空间复杂度的全称是渐进空间复杂度，表示代码存储空间随数据规模增长的变化趋势。</p>
-<p>算法的空间复杂度通过计算算法所需的存储空间实现，算法的空间复杂度的计算公式记作：S(n) = O(f(n))，其中，n 为问题的规模，f(n) 为语句关于 n 所占存储空间的函数。</p>
+<p>上面两个函数都有一个相同点，变量 i 从 1 开始取值，每循环一次乘以 2，当大于 n 时，循环结束。实际上，i 的取值就是一个等比数列。所以只要知道 x 的值，就可以知道这两个函数的执行次数。那由 2<sup>x</sup> = n 可以得出 x = log<sub>2</sub>n，所以这两个函数的时间复杂度为 O(log<sub>2</sub>n)。</p>
+<p>实际上不管是以 2 为底、以 3 为底，还是以 10 为底，我们可以把所有对数阶的时间复杂度都记为 O(logn)。因为对数之间是可以互相转换的，log<sub>3</sub>n = log<sub>3</sub>2 * log<sub>2</sub>n，所以 O(log<sub>3</sub>n) = O(C * log<sub>2</sub>n)，其中 C = log<sub>3</sub>2 是一个常量，可以忽略。因此，在对数阶时间复杂度的表示方法里，我们忽略对数的 “底”，统一表示为 O(logn)。</p>
+<p>O(nlogn) 的含义就很明确，时间复杂度为 O(logn) 的代码执行了 n 次。</p>
+<h1 id="时间复杂度分类"><a href="#时间复杂度分类" class="headerlink" title="时间复杂度分类"></a>时间复杂度分类</h1><p>算法的时间效率往往不是固定的，而是与输入数据的分布有关。假设输入一个长度为 n 的数组 nums，其中 nums 由从 1 至 n 的数字组成，每个数字只出现一次；但元素顺序是随机打乱的，任务目标是返回元素 1 的索引。可以得出以下结论：</p>
+<ul>
+<li>当 <code>nums = [?, ..., 1]</code> ，即末尾元素是 1 时，需要完整遍历数组，<strong>达到最差时间复杂度</strong> O(n)</li>
+<li>当 <code>nums = [1, ?, ...]</code> ，即首个元素为 1 时，无需继续遍历数组，<strong>达到最佳时间复杂度</strong> O(1)</li>
+</ul>
+<p>值得说明的是，我们在实际中很少使用最佳时间复杂度，因为通常只有在很小概率下才能达到，可能会带来一定的误导性。<strong>而最差时间复杂度更为实用，因为它给出了一个效率安全值</strong>，让我们可以放心地使用算法。</p>
+<p>从上述示例可以看出，最差时间复杂度和最佳时间复杂度只出现于“特殊的数据分布”，这些情况的出现概率可能很小，并不能真实地反映算法运行效率。相比之下，<strong>平均时间复杂度</strong>可以体现算法在随机输入数据下的运行效率。</p>
+<p>对于部分算法，我们可以简单地推算出随机数据分布下的平均情况。比如上述示例，由于输入数组是被打乱的，因此元素出现在任意索引的概率都是相等的，那么，算法的平均循环次数就是数组长度的一半 n/2，平均时间复杂度为 O(n/2)。</p>
+<p>但对于较为复杂的算法，计算平均时间复杂度往往比较困难，因为很难分析出在数据分布下的整体数学期望。<strong>在这种情况下，通常使用最差时间复杂度作为算法效率的评判标准。</strong></p>
+<h1 id="空间复杂度分析"><a href="#空间复杂度分析" class="headerlink" title="空间复杂度分析"></a>空间复杂度分析</h1><p><strong>空间复杂度</strong>的全称是<strong>渐进空间复杂度</strong>，表示<strong>算法存储空间随数据规模增长的变化趋势</strong>。</p>
+<p>空间复杂度通过计算算法所需的存储空间实现，计算公式记作：<code>S(n) = O(f(n))</code>。其中，<code>n</code> 为数据规模的大小，<code>S(n)</code> 为代码的存储空间，<code>f(n)</code> 为代码关于 <code>n</code> 所占存储空间的函数，<code>O</code> 表示代码的存储空间 <code>S(n)</code> 与 <code>f(n)</code> 表达式成正比。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">initArr</span>(<span class="hljs-params">n</span>) </span>&#123;<br>  <span class="hljs-keyword">const</span> arr = [];<br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) &#123;<br>    arr[i] = i;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <p>空间复杂度和时间复杂度类似，忽略掉常数量级，每次数组赋值都会申请一个空间存储变量，所以此函数的空间复杂度为 O(n)。</p>
-<p>常见的空间复杂度有 O(1)、O(n)、O(n<sup>2</sup>)， 其他的话很少会用到。</p>
+<p>常见的空间复杂度有 O(1)、O(n)、O(n<sup>2</sup>)， 其他的很少会用到。</p>
 
                 
               </div>
@@ -601,8 +602,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>复杂度</div>
-      <div>https://xuekeven.github.io/2021/09/20/JavaScript复杂度/</div>
+      <div>复杂度分析</div>
+      <div>https://xuekeven.github.io/2021/09/20/复杂度分析/</div>
     </div>
     <div class="license-meta">
       
@@ -620,7 +621,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2025年8月7日</div>
+          <div>2025年8月14日</div>
         </div>
       
       

