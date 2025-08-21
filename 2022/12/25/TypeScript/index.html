@@ -21,23 +21,22 @@
   <meta name="author" content="Keven">
   <meta name="keywords" content="">
   
-    <meta name="description" content="参考：https:&#x2F;&#x2F;juejin.cn&#x2F;post&#x2F;6844903602197102605 Set 与扩展操作符去重ES6 新增数据类型 Set，Set 一个最大的特点就是数据不重复。Set() 构造函数可以接受一个数组（或类数组）作为参数来初始化，利用该特性和扩展操作符能够做到给数组去重。 123function unique(arr) &amp;#123;  return [...new Set(ar">
+    <meta name="description" content="TypeScript 入门教程 进阶部分 基础部分   深入理解 TypeScript">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JavaScript数组去重">
-<meta property="og:url" content="https://xuekeven.github.io/2021/09/23/JavaScript%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D/index.html">
+<meta property="og:title" content="TypeScript">
+<meta property="og:url" content="https://xuekeven.github.io/2022/12/25/TypeScript/index.html">
 <meta property="og:site_name" content="Keven&#39;s Blog">
-<meta property="og:description" content="参考：https:&#x2F;&#x2F;juejin.cn&#x2F;post&#x2F;6844903602197102605 Set 与扩展操作符去重ES6 新增数据类型 Set，Set 一个最大的特点就是数据不重复。Set() 构造函数可以接受一个数组（或类数组）作为参数来初始化，利用该特性和扩展操作符能够做到给数组去重。 123function unique(arr) &amp;#123;  return [...new Set(ar">
+<meta property="og:description" content="TypeScript 入门教程 进阶部分 基础部分   深入理解 TypeScript">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-09-23T14:00:00.000Z">
-<meta property="article:modified_time" content="2025-08-20T14:14:06.550Z">
+<meta property="article:published_time" content="2022-12-25T15:00:00.000Z">
+<meta property="article:modified_time" content="2025-08-21T01:57:57.520Z">
 <meta property="article:author" content="Keven">
-<meta property="article:tag" content="JavaScript">
-<meta property="article:tag" content="Array">
+<meta property="article:tag" content="TypeScript">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>JavaScript数组去重 - Keven&#39;s Blog</title>
+  <title>TypeScript - Keven&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -239,7 +238,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="JavaScript数组去重"></span>
+            <span id="subtitle" data-typed-text="TypeScript"></span>
           
         </div>
 
@@ -255,8 +254,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2021-09-23 22:00" pubdate>
-          2021年9月23日 晚上
+        <time datetime="2022-12-25 23:00" pubdate>
+          2022年12月25日 晚上
         </time>
       </span>
     
@@ -267,7 +266,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          764 字
+          17 字
         
       </span>
     
@@ -278,7 +277,7 @@
         
         
         
-          5 分钟
+          1 分钟
         
       </span>
     
@@ -328,7 +327,7 @@
         aria-expanded="true"
       >
         编程语言
-        <span class="list-group-count">(37)</span>
+        <span class="list-group-count">(34)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
@@ -396,7 +395,7 @@
     
       
       
-        <a href="/2021/10/03/CSS%E5%B1%85%E4%B8%AD/" title="CSS居中"
+        <a href="/2021/10/03/CSS%E5%B1%85%E4%B8%AD%20copy/" title="CSS居中"
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">CSS居中</span>
@@ -405,7 +404,7 @@
     
       
       
-        <a href="/2021/10/03/CSS%E5%B1%85%E4%B8%AD%20copy/" title="CSS居中"
+        <a href="/2021/10/03/CSS%E5%B1%85%E4%B8%AD/" title="CSS居中"
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">CSS居中</span>
@@ -540,17 +539,17 @@
     
     
     <div class="category-sub row nomargin-x">
-      <a class="category-subitem 
+      <a class="category-subitem collapsed
           list-group-item category-item-action col-10 col-md-11 col-xm-11" title="JavaScript"
         id="heading-686155af75a60a0f6e9d80c1f7edd3e9" role="tab" data-toggle="collapse" href="#collapse-686155af75a60a0f6e9d80c1f7edd3e9"
-        aria-expanded="true"
+        aria-expanded="false"
       >
         JavaScript
-        <span class="list-group-count">(22)</span>
+        <span class="list-group-count">(18)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
-      <div class="category-collapse collapse show" id="collapse-686155af75a60a0f6e9d80c1f7edd3e9"
+      <div class="category-collapse collapse " id="collapse-686155af75a60a0f6e9d80c1f7edd3e9"
            role="tabpanel" aria-labelledby="heading-686155af75a60a0f6e9d80c1f7edd3e9">
         
         
@@ -623,15 +622,6 @@
     
       
       
-        <a href="/2022/12/25/JavaScript%E4%B9%8BTypeScript/" title="JavaScript之TypeScript"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">JavaScript之TypeScript</span>
-        </a>
-      
-    
-      
-      
         <a href="/2021/09/13/JavaScript%E4%BA%8B%E4%BB%B6%E6%9C%BA%E5%88%B6/" title="JavaScript事件机制"
            class="list-group-item list-group-item-action
            ">
@@ -663,33 +653,6 @@
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">JavaScript函数柯里化</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2021/09/23/JavaScript%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D/" title="JavaScript数组去重"
-           class="list-group-item list-group-item-action
-           active">
-          <span class="category-post">JavaScript数组去重</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2021/08/21/JavaScript%E6%95%B0%E7%BB%84%E6%89%81%E5%B9%B3%E5%8C%96/" title="JavaScript数组扁平化"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">JavaScript数组扁平化</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2022/10/24/JavaScript%E7%9F%A5%E8%AF%86/" title="JavaScript知识"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">JavaScript知识</span>
         </a>
       
     
@@ -762,6 +725,43 @@
       </div>
     </div>
   
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="TypeScript"
+        id="heading-558b544cf685f39d34e4903e39c38b67" role="tab" data-toggle="collapse" href="#collapse-558b544cf685f39d34e4903e39c38b67"
+        aria-expanded="true"
+      >
+        TypeScript
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-558b544cf685f39d34e4903e39c38b67"
+           role="tabpanel" aria-labelledby="heading-558b544cf685f39d34e4903e39c38b67">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2022/12/25/TypeScript/" title="TypeScript"
+           class="list-group-item list-group-item-action
+           active">
+          <span class="category-post">TypeScript</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
         
       </div>
     </div>
@@ -778,12 +778,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">JavaScript数组去重</h1>
+            <h1 id="seo-header">TypeScript</h1>
             
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2025年8月20日 晚上
+                    本文最后更新于 2025年8月21日 上午
                   
                 
               </p>
@@ -791,33 +791,14 @@
             
               <div class="markdown-body">
                 
-                <p>参考：<a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903602197102605">https://juejin.cn/post/6844903602197102605</a></p>
-<h1 id="Set-与扩展操作符去重"><a href="#Set-与扩展操作符去重" class="headerlink" title="Set 与扩展操作符去重"></a>Set 与扩展操作符去重</h1><p>ES6 新增数据类型 Set，Set 一个最大的特点就是数据不重复。Set() 构造函数可以接受一个数组（或类数组）作为参数来初始化，利用该特性和扩展操作符能够做到给数组去重。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">unique</span>(<span class="hljs-params">arr</span>) </span>&#123;<br>  <span class="hljs-keyword">return</span> [...new <span class="hljs-built_in">Set</span>(arr)];<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<h1 id="Set-与-Array-from-方法去重"><a href="#Set-与-Array-from-方法去重" class="headerlink" title="Set 与 Array.from()方法去重"></a>Set 与 Array.from()方法去重</h1><p>原理同上，不过使用的是 <code>Array.from()</code> 方法，该方法可以将可迭代对象转换为数组。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">unique</span>(<span class="hljs-params">arr</span>) </span>&#123;<br>  <span class="hljs-keyword">return</span> <span class="hljs-built_in">Array</span>.from(<span class="hljs-keyword">new</span> <span class="hljs-built_in">Set</span>(arr));<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<h1 id="indexOf-方法去重-1"><a href="#indexOf-方法去重-1" class="headerlink" title="indexOf()方法去重 1"></a>indexOf()方法去重 1</h1><p><code>indexOf()</code>方法可返回某个指定的元素在数组中首次出现的位置。先定义一个空数组 res，然后调用<code>indexOf()</code>方法对原来的数组进行遍历判断，如果元素不在 res 中，则将其放进 res 中，最后将 res 返回即可获得去重后的数组。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">unique</span>(<span class="hljs-params">arr</span>) </span>&#123;<br>  <span class="hljs-keyword">const</span> res = [];<br>  arr.forEach(<span class="hljs-function">(<span class="hljs-params">ele</span>) =&gt;</span> &#123;<br>    <span class="hljs-keyword">if</span> (res.indexOf(ele) === -<span class="hljs-number">1</span>) res.push(ele);<br>  &#125;);<br>  <span class="hljs-keyword">return</span> res;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<h1 id="indexOf-方法去重-2"><a href="#indexOf-方法去重-2" class="headerlink" title="indexOf()方法去重 2"></a>indexOf()方法去重 2</h1><p>利用<code>indexOf()</code>方法检测元素在数组中第一次出现的位置是否和元素现在的位置相等，如果不等则说明该元素是重复元素。<code>filter</code>方法返回就是数组，不用定义空数组。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">unique</span>(<span class="hljs-params">arr</span>) </span>&#123;<br>  <span class="hljs-keyword">return</span> arr.filter(<span class="hljs-function">(<span class="hljs-params">ele, index</span>) =&gt;</span> arr.indexOf(ele) === index);<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<h1 id="相邻元素去重"><a href="#相邻元素去重" class="headerlink" title="相邻元素去重"></a>相邻元素去重</h1><p>首先用数组的排序方法<code>sort()</code>，然后根据排序后的结果进行遍历及相邻元素比对，如果相等则跳过改元素，直到遍历结束。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">unique</span>(<span class="hljs-params">arr</span>) </span>&#123;<br>  arr = arr.sort();<br>  <span class="hljs-keyword">return</span> arr.filter(<span class="hljs-function">(<span class="hljs-params">ele, index</span>) =&gt;</span> ele !== arr[index + <span class="hljs-number">1</span>]);<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<h1 id="利用对象去重"><a href="#利用对象去重" class="headerlink" title="利用对象去重"></a>利用对象去重</h1><p>创建一个空对象和一个空数组，之后遍历原数组，将原数组中的值设为对象的属性，并给该属性赋初始值 1，每出现一次，对应的属性值增加 1，这样，对应的属性值就是该元素出现的次数。（可以去掉 else 部分）</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">unique</span>(<span class="hljs-params">arr</span>) </span>&#123;<br>  <span class="hljs-keyword">const</span> res = [],<br>    obj = &#123;&#125;;<br>  arr.forEach(<span class="hljs-function">(<span class="hljs-params">ele</span>) =&gt;</span> &#123;<br>    <span class="hljs-keyword">if</span> (!obj[ele]) &#123;<br>      res.push(ele);<br>      obj[ele] = <span class="hljs-number">1</span>;<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>      <span class="hljs-comment">// 可以去掉 else 部分</span><br>      obj[ele]++;<br>    &#125;<br>  &#125;);<br>  <span class="hljs-keyword">return</span> res;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<p>用 Map：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">unique</span>(<span class="hljs-params">arr</span>) </span>&#123;<br>  <span class="hljs-keyword">const</span> res = [],<br>    map = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Map</span>();<br>  arr.forEach(<span class="hljs-function">(<span class="hljs-params">ele</span>) =&gt;</span> &#123;<br>    <span class="hljs-keyword">if</span> (!map.has(ele)) &#123;<br>      res.push(ele);<br>      map.set(ele, <span class="hljs-number">1</span>);<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>      <span class="hljs-comment">// 可以去掉 else 部分</span><br>      map.set(ele, map.get(ele) + <span class="hljs-number">1</span>);<br>    &#125;<br>  &#125;);<br>  <span class="hljs-keyword">return</span> res;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<p>用 Set：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">unique</span>(<span class="hljs-params">arr</span>) </span>&#123;<br>  <span class="hljs-keyword">const</span> res = [],<br>    set = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Set</span>();<br>  arr.forEach(<span class="hljs-function">(<span class="hljs-params">ele</span>) =&gt;</span> &#123;<br>    <span class="hljs-keyword">if</span> (!set.has(ele)) &#123;<br>      set.add(ele);<br>      res.push(ele);<br>    &#125;<br>  &#125;);<br>  <span class="hljs-keyword">return</span> res;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<h1 id="双循环去重"><a href="#双循环去重" class="headerlink" title="双循环去重"></a>双循环去重</h1><p>双重 for 循环是比较笨拙的方法，原理很简单：先定义一个包含原始数组第一个元素的数组，然后遍历原始数组，将原始数组中的每个元素与新数组中的每个元素进行比对，如果不重复则添加到新数组中，最后返回新数组。因为它的时间复杂度是 O(n^2)，如果数组长度很大，那么将会非常耗费内存。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">unique</span>(<span class="hljs-params">arr</span>) </span>&#123;<br>  <span class="hljs-keyword">const</span> res = [arr[<span class="hljs-number">0</span>]];<br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">1</span>; i &lt; arr.length; i++) &#123;<br>    <span class="hljs-keyword">let</span> flag = <span class="hljs-literal">true</span>;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> j = <span class="hljs-number">0</span>; j &lt; res.length; j++) &#123;<br>      <span class="hljs-keyword">if</span> (arr[i] === res[j]) &#123;<br>        flag = <span class="hljs-literal">false</span>;<br>        <span class="hljs-keyword">break</span>;<br>      &#125;<br>    &#125;<br>    <span class="hljs-keyword">if</span> (flag) res.push(arr[i]);<br>  &#125;<br>  <span class="hljs-keyword">return</span> res;<br>&#125;<br></code></pre></td></tr></table></figure>
+                <ul>
+<li><a target="_blank" rel="noopener" href="http://ts.xcatliu.com/index.html">TypeScript 入门教程</a><ul>
+<li><a target="_blank" rel="noopener" href="http://ts.xcatliu.com/advanced/index.html">进阶部分</a></li>
+<li><a target="_blank" rel="noopener" href="http://ts.xcatliu.com/basics/index.html">基础部分</a></li>
+</ul>
+</li>
+<li><a target="_blank" rel="noopener" href="https://jkchao.github.io/typescript-book-chinese/">深入理解 TypeScript</a></li>
+</ul>
 
                 
               </div>
@@ -841,7 +822,7 @@
   
     <span>></span>
     
-  <a href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/JavaScript/" class="category-chain-item">JavaScript</a>
+  <a href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/TypeScript/" class="category-chain-item">TypeScript</a>
   
   
 
@@ -858,9 +839,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/JavaScript/" class="print-no-link">#JavaScript</a>
-      
-        <a href="/tags/Array/" class="print-no-link">#Array</a>
+        <a href="/tags/TypeScript/" class="print-no-link">#TypeScript</a>
       
     </div>
   
@@ -872,8 +851,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>JavaScript数组去重</div>
-      <div>https://xuekeven.github.io/2021/09/23/JavaScript数组去重/</div>
+      <div>TypeScript</div>
+      <div>https://xuekeven.github.io/2022/12/25/TypeScript/</div>
     </div>
     <div class="license-meta">
       
@@ -885,13 +864,13 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2021年9月23日</div>
+          <div>2022年12月25日</div>
         </div>
       
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2025年8月20日</div>
+          <div>2025年8月21日</div>
         </div>
       
       
@@ -922,9 +901,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2021/09/25/Webpack%E9%9D%A2%E8%AF%95%E9%A2%98/" title="Webpack面试题">
+                      <a href="/2023/01/02/HTML%E5%9F%BA%E7%A1%80/" title="HTML基础">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Webpack面试题</span>
+                        <span class="hidden-mobile">HTML基础</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -932,8 +911,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2021/09/23/HTML%E9%9D%A2%E8%AF%95%E9%A2%98/" title="HTML面试题">
-                        <span class="hidden-mobile">HTML面试题</span>
+                      <a href="/2022/12/10/JavaScript%E4%B9%8BRegExp%E4%B8%8E%E6%AD%A3%E5%88%99/" title="JavaScript之RegExp与正则">
+                        <span class="hidden-mobile">JavaScript之RegExp与正则</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
