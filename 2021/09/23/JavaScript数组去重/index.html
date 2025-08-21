@@ -29,7 +29,7 @@
 <meta property="og:description" content="参考：https:&#x2F;&#x2F;juejin.cn&#x2F;post&#x2F;6844903602197102605 Set 与扩展操作符去重ES6 新增数据类型 Set，Set 一个最大的特点就是数据不重复。Set() 构造函数可以接受一个数组（或类数组）作为参数来初始化，利用该特性和扩展操作符能够做到给数组去重。 123function unique(arr) &amp;#123;  return [...new Set(ar">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-09-23T14:00:00.000Z">
-<meta property="article:modified_time" content="2025-08-07T06:16:05.930Z">
+<meta property="article:modified_time" content="2025-08-20T14:14:06.550Z">
 <meta property="article:author" content="Keven">
 <meta property="article:tag" content="JavaScript">
 <meta property="article:tag" content="Array">
@@ -328,7 +328,7 @@
         aria-expanded="true"
       >
         编程语言
-        <span class="list-group-count">(41)</span>
+        <span class="list-group-count">(37)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
@@ -396,7 +396,7 @@
     
       
       
-        <a href="/2021/10/03/CSS%E5%B1%85%E4%B8%AD%20copy/" title="CSS居中"
+        <a href="/2021/10/03/CSS%E5%B1%85%E4%B8%AD/" title="CSS居中"
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">CSS居中</span>
@@ -405,7 +405,7 @@
     
       
       
-        <a href="/2021/10/03/CSS%E5%B1%85%E4%B8%AD/" title="CSS居中"
+        <a href="/2021/10/03/CSS%E5%B1%85%E4%B8%AD%20copy/" title="CSS居中"
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">CSS居中</span>
@@ -546,7 +546,7 @@
         aria-expanded="true"
       >
         JavaScript
-        <span class="list-group-count">(26)</span>
+        <span class="list-group-count">(22)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
@@ -659,16 +659,7 @@
     
       
       
-        <a href="/2021/11/09/JavaScript%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F/" title="JavaScript内存泄漏"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">JavaScript内存泄漏</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2021/10/12/%E5%87%BD%E6%95%B0%E6%9F%AF%E9%87%8C%E5%8C%96/" title="JavaScript函数柯里化"
+        <a href="/2021/10/12/JavaScript%E5%87%BD%E6%95%B0%E6%9F%AF%E9%87%8C%E5%8C%96/" title="JavaScript函数柯里化"
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">JavaScript函数柯里化</span>
@@ -713,28 +704,10 @@
     
       
       
-        <a href="/2021/11/08/JavaScript%E7%B1%BB%E6%95%B0%E7%BB%84%E5%AF%B9%E8%B1%A1/" title="JavaScript类数组对象"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">JavaScript类数组对象</span>
-        </a>
-      
-    
-      
-      
         <a href="/2021/10/25/JavaScript%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82/" title="JavaScript网络请求"
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">JavaScript网络请求</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2022/01/25/JavaScript%E8%AF%8D%E6%B3%95%E7%BB%93%E6%9E%84/" title="JavaScript词法结构"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">JavaScript词法结构</span>
         </a>
       
     
@@ -776,15 +749,6 @@
     
       
       
-        <a href="/2022/08/24/%E5%BC%82%E6%AD%A5JavaScript/" title="异步JavaScript"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">异步JavaScript</span>
-        </a>
-      
-    
-      
-      
         <a href="/2021/08/20/%E6%89%8B%E5%86%99JavaScript/" title="手写JavaScript"
            class="list-group-item list-group-item-action
            ">
@@ -819,7 +783,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2025年8月7日 下午
+                    本文最后更新于 2025年8月20日 晚上
                   
                 
               </p>
@@ -831,7 +795,7 @@
 <h1 id="Set-与扩展操作符去重"><a href="#Set-与扩展操作符去重" class="headerlink" title="Set 与扩展操作符去重"></a>Set 与扩展操作符去重</h1><p>ES6 新增数据类型 Set，Set 一个最大的特点就是数据不重复。Set() 构造函数可以接受一个数组（或类数组）作为参数来初始化，利用该特性和扩展操作符能够做到给数组去重。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">unique</span>(<span class="hljs-params">arr</span>) </span>&#123;<br>  <span class="hljs-keyword">return</span> [...new <span class="hljs-built_in">Set</span>(arr)];<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<h1 id="Set-与-Array-from-方法去重"><a href="#Set-与-Array-from-方法去重" class="headerlink" title="Set 与 Array.from()方法去重"></a>Set 与 Array.from()方法去重</h1><p>原理同上，不过使用的是<code>Array.from()</code>方法，该方法可以将可迭代对象转换为数组。</p>
+<h1 id="Set-与-Array-from-方法去重"><a href="#Set-与-Array-from-方法去重" class="headerlink" title="Set 与 Array.from()方法去重"></a>Set 与 Array.from()方法去重</h1><p>原理同上，不过使用的是 <code>Array.from()</code> 方法，该方法可以将可迭代对象转换为数组。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">unique</span>(<span class="hljs-params">arr</span>) </span>&#123;<br>  <span class="hljs-keyword">return</span> <span class="hljs-built_in">Array</span>.from(<span class="hljs-keyword">new</span> <span class="hljs-built_in">Set</span>(arr));<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <h1 id="indexOf-方法去重-1"><a href="#indexOf-方法去重-1" class="headerlink" title="indexOf()方法去重 1"></a>indexOf()方法去重 1</h1><p><code>indexOf()</code>方法可返回某个指定的元素在数组中首次出现的位置。先定义一个空数组 res，然后调用<code>indexOf()</code>方法对原来的数组进行遍历判断，如果元素不在 res 中，则将其放进 res 中，最后将 res 返回即可获得去重后的数组。</p>
@@ -927,7 +891,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2025年8月7日</div>
+          <div>2025年8月20日</div>
         </div>
       
       

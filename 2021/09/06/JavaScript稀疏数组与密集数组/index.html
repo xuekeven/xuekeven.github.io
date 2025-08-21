@@ -29,7 +29,7 @@
 <meta property="og:description" content="参考：https:&#x2F;&#x2F;juejin.cn&#x2F;post&#x2F;6975531514444562462 new Array(len)1234const arr &#x3D; new Array(5);console.log(arr); &#x2F;&#x2F; [empty × 5]console.log(arr.map); &#x2F;&#x2F; ƒ map() &amp;#123; [native code] &amp;#125;console.log(arr.len">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-09-06T08:00:00.000Z">
-<meta property="article:modified_time" content="2025-08-07T06:16:05.929Z">
+<meta property="article:modified_time" content="2025-08-20T09:51:24.308Z">
 <meta property="article:author" content="Keven">
 <meta property="article:tag" content="JavaScript">
 <meta property="article:tag" content="Array">
@@ -267,7 +267,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          701 字
+          697 字
         
       </span>
     
@@ -328,7 +328,7 @@
         aria-expanded="true"
       >
         编程语言
-        <span class="list-group-count">(41)</span>
+        <span class="list-group-count">(37)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
@@ -396,7 +396,7 @@
     
       
       
-        <a href="/2021/10/03/CSS%E5%B1%85%E4%B8%AD%20copy/" title="CSS居中"
+        <a href="/2021/10/03/CSS%E5%B1%85%E4%B8%AD/" title="CSS居中"
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">CSS居中</span>
@@ -405,7 +405,7 @@
     
       
       
-        <a href="/2021/10/03/CSS%E5%B1%85%E4%B8%AD/" title="CSS居中"
+        <a href="/2021/10/03/CSS%E5%B1%85%E4%B8%AD%20copy/" title="CSS居中"
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">CSS居中</span>
@@ -546,7 +546,7 @@
         aria-expanded="true"
       >
         JavaScript
-        <span class="list-group-count">(26)</span>
+        <span class="list-group-count">(22)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
@@ -659,16 +659,7 @@
     
       
       
-        <a href="/2021/11/09/JavaScript%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F/" title="JavaScript内存泄漏"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">JavaScript内存泄漏</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2021/10/12/%E5%87%BD%E6%95%B0%E6%9F%AF%E9%87%8C%E5%8C%96/" title="JavaScript函数柯里化"
+        <a href="/2021/10/12/JavaScript%E5%87%BD%E6%95%B0%E6%9F%AF%E9%87%8C%E5%8C%96/" title="JavaScript函数柯里化"
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">JavaScript函数柯里化</span>
@@ -713,28 +704,10 @@
     
       
       
-        <a href="/2021/11/08/JavaScript%E7%B1%BB%E6%95%B0%E7%BB%84%E5%AF%B9%E8%B1%A1/" title="JavaScript类数组对象"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">JavaScript类数组对象</span>
-        </a>
-      
-    
-      
-      
         <a href="/2021/10/25/JavaScript%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82/" title="JavaScript网络请求"
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">JavaScript网络请求</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2022/01/25/JavaScript%E8%AF%8D%E6%B3%95%E7%BB%93%E6%9E%84/" title="JavaScript词法结构"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">JavaScript词法结构</span>
         </a>
       
     
@@ -776,15 +749,6 @@
     
       
       
-        <a href="/2022/08/24/%E5%BC%82%E6%AD%A5JavaScript/" title="异步JavaScript"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">异步JavaScript</span>
-        </a>
-      
-    
-      
-      
         <a href="/2021/08/20/%E6%89%8B%E5%86%99JavaScript/" title="手写JavaScript"
            class="list-group-item list-group-item-action
            ">
@@ -819,7 +783,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2025年8月7日 下午
+                    本文最后更新于 2025年8月20日 下午
                   
                 
               </p>
@@ -830,37 +794,36 @@
                 <p>参考：<a target="_blank" rel="noopener" href="https://juejin.cn/post/6975531514444562462">https://juejin.cn/post/6975531514444562462</a></p>
 <h1 id="new-Array-len"><a href="#new-Array-len" class="headerlink" title="new Array(len)"></a>new Array(len)</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> arr = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span>(<span class="hljs-number">5</span>);<br><span class="hljs-built_in">console</span>.log(arr); <span class="hljs-comment">// [empty × 5]</span><br><span class="hljs-built_in">console</span>.log(arr.map); <span class="hljs-comment">// ƒ map() &#123; [native code] &#125;</span><br><span class="hljs-built_in">console</span>.log(arr.length); <span class="hljs-comment">// 5</span><br></code></pre></td></tr></table></figure>
 
-<p>使用<code>new Array(len)</code>创建的数组中，Array 相应的方法、属性都存在，但数组中的元素是「empty」。</p>
-<p>在 ECMAScript 标准中介绍了<code>new Array(len)</code>做了什么，精简一下主要干了这几件事：</p>
+<p>使用 <code>new Array(len)</code> 创建的数组中，Array 相应的方法和属性都存在，但数组中的元素都是“空”。在 ECMAScript 标准中介绍了 <code>new Array(len)</code> 做了什么，精简一下主要干了这几件事：</p>
 <ul>
-<li>判断 len 是否为合法数字（小于 2^32 - 1 的正整数），如果不是则抛出错误；</li>
-<li>创建一个 JavaScript Array 实例；</li>
-<li>将这个实例对象的 length 属性设置为入参的值。</li>
+<li>判断 len 是否为合法数字（小于 2^32 - 1 的正整数），如果不是则抛出错误</li>
+<li>创建一个 JavaScript Array 实例</li>
+<li>将这个实例对象的 length 属性设置为入参的值</li>
 </ul>
-<p>其实，<code>const arr = new Array(len);</code> 相当于 <code>const arr = [];arr.length = len;</code>。但是，数组中此时并没有包含任何实际的元素，而且，不能理所当然地认为它包含 len 个值为 undefined 的元素。</p>
-<h1 id="emptyVSundefined"><a href="#emptyVSundefined" class="headerlink" title="emptyVSundefined"></a><code>empty</code>VS<code>undefined</code></h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> arr = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span>(<span class="hljs-number">2</span>),<br>  undefinedArr = [<span class="hljs-literal">undefined</span>, <span class="hljs-literal">undefined</span>];<br><br><span class="hljs-built_in">console</span>.log(arr); <span class="hljs-comment">// [empty × 2]</span><br><span class="hljs-built_in">console</span>.log(undefinedArr); <span class="hljs-comment">// [undefined, undefined]</span><br><br>arr[<span class="hljs-number">0</span>]; <span class="hljs-comment">// undefined</span><br>undefinedArr[<span class="hljs-number">0</span>]; <span class="hljs-comment">// undefined</span><br><br>arr.forEach(<span class="hljs-function">(<span class="hljs-params">item</span>) =&gt;</span> &#123;<br>  <span class="hljs-built_in">console</span>.log(item);<br>&#125;); <span class="hljs-comment">// 无输出</span><br>undefinedArr.forEach(<span class="hljs-function">(<span class="hljs-params">item</span>) =&gt;</span> &#123;<br>  <span class="hljs-built_in">console</span>.log(item);<br>&#125;); <span class="hljs-comment">// 输出两个 undefined</span><br><br><span class="hljs-built_in">console</span>.log(arr.hasOwnProperty(<span class="hljs-number">0</span>)); <span class="hljs-comment">// false</span><br><span class="hljs-built_in">console</span>.log(undefinedArr.hasOwnProperty(<span class="hljs-number">0</span>)); <span class="hljs-comment">// true</span><br></code></pre></td></tr></table></figure>
+<p>其实 <code>const arr = new Array(len)</code> 相当于 <code>const arr = []; arr.length = len</code>。但数组中此时并没有包含任何实际的元素，而且不能理所当然地认为它包含 <code>len</code> 个值为 <code>undefined</code> 的元素。</p>
+<h1 id="empty-VS-undefined"><a href="#empty-VS-undefined" class="headerlink" title="empty VS undefined"></a><code>empty</code> VS <code>undefined</code></h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> arr = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span>(<span class="hljs-number">2</span>),<br>  undefinedArr = [<span class="hljs-literal">undefined</span>, <span class="hljs-literal">undefined</span>];<br><br><span class="hljs-built_in">console</span>.log(arr); <span class="hljs-comment">// [empty × 2]</span><br><span class="hljs-built_in">console</span>.log(undefinedArr); <span class="hljs-comment">// [undefined, undefined]</span><br><br>arr[<span class="hljs-number">0</span>]; <span class="hljs-comment">// undefined</span><br>undefinedArr[<span class="hljs-number">0</span>]; <span class="hljs-comment">// undefined</span><br><br>arr.forEach(<span class="hljs-function">(<span class="hljs-params">item</span>) =&gt;</span> &#123;<br>  <span class="hljs-built_in">console</span>.log(item);<br>&#125;); <span class="hljs-comment">// 无输出</span><br>undefinedArr.forEach(<span class="hljs-function">(<span class="hljs-params">item</span>) =&gt;</span> &#123;<br>  <span class="hljs-built_in">console</span>.log(item);<br>&#125;); <span class="hljs-comment">// 输出两个 undefined</span><br><br><span class="hljs-built_in">console</span>.log(arr.hasOwnProperty(<span class="hljs-number">0</span>)); <span class="hljs-comment">// false</span><br><span class="hljs-built_in">console</span>.log(undefinedArr.hasOwnProperty(<span class="hljs-number">0</span>)); <span class="hljs-comment">// true</span><br></code></pre></td></tr></table></figure>
 
 <p>arr 和 undefinedArr 只有在访问单个具体元素时表现一致，在其他一些情况下大都不一样。</p>
 <p>至于为什么 arr 在访问具体单个元素时返回 undefined，可以从 JS 引擎解析的角度去看。在 v8 源码上对于 empty 的描述是一个空的对象引用，但 JS 基本类型中并无这种类型，故用 undefined 来代替。这种表现就像我们在控制台访问一个不存在变量时，通常得到的就是 undefined。arr 由于没有任何实际的元素，所以 forEach 的 callback 并不会执行，而 undefinedArr 是有填充值的。</p>
-<h1 id="稀疏数组和密集数组"><a href="#稀疏数组和密集数组" class="headerlink" title="稀疏数组和密集数组"></a>稀疏数组和密集数组</h1><p>如果 arr 和 undefinedArr 细分应该是两类数组，arr 类的为稀疏数组 ，undefinedArr 类的为密集数组。</p>
+<h1 id="稀疏数组和密集数组"><a href="#稀疏数组和密集数组" class="headerlink" title="稀疏数组和密集数组"></a>稀疏数组和密集数组</h1><p>应当把 arr 和 undefinedArr 细分为两类数组，前者为稀疏数组，后者为密集数组：</p>
 <ul>
-<li>稀疏数组：索引不连续，数组长度大于元素个数的数组。可以简单理解为有 empty 的数组。</li>
-<li>密集数组：索引连续，数组长度等于元素个数的数组。绝大部分数组是此类数组。</li>
+<li>稀疏数组：索引不连续，数组长度大于元素个数的数组。可以简单理解为有 empty 的数组</li>
+<li>密集数组：索引连续，数组长度等于元素个数的数组。绝大部分数组是此类数组</li>
 </ul>
 <h2 id="相互转换"><a href="#相互转换" class="headerlink" title="相互转换"></a>相互转换</h2><ul>
 <li>稀疏数组 =&gt; 密集数组</li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> arr = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span>(<span class="hljs-number">5</span>); <span class="hljs-comment">// 稀疏数组</span><br><span class="hljs-comment">// [empty × 5]</span><br><span class="hljs-comment">// ES5 方法（方法已经被废弃）</span><br><span class="hljs-built_in">Array</span>.apply(<span class="hljs-literal">null</span>, arr); <span class="hljs-comment">// 生成密集数组</span><br><span class="hljs-comment">// [undefined, undefined, undefined, undefined, undefined]</span><br><span class="hljs-comment">// ES6 方法</span><br><span class="hljs-built_in">Array</span>.from(arr); <span class="hljs-comment">// 生成密集数组</span><br><span class="hljs-comment">// [undefined, undefined, undefined, undefined, undefined]</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> arr = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span>(<span class="hljs-number">5</span>); <span class="hljs-comment">// 稀疏数组</span><br><span class="hljs-comment">// [empty × 5]</span><br><br><span class="hljs-comment">// ES5 方法（方法已经被废弃）</span><br><span class="hljs-built_in">Array</span>.apply(<span class="hljs-literal">null</span>, arr); <span class="hljs-comment">// 生成密集数组</span><br><span class="hljs-comment">// [undefined, undefined, undefined, undefined, undefined]</span><br><br><span class="hljs-comment">// ES6 方法</span><br><span class="hljs-built_in">Array</span>.from(arr); <span class="hljs-comment">// 生成密集数组</span><br><span class="hljs-comment">// [undefined, undefined, undefined, undefined, undefined]</span><br></code></pre></td></tr></table></figure>
 
 <ul>
 <li>密集数组 =&gt; 稀疏数组</li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> arr = [<span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>]; <span class="hljs-comment">// 密集数组</span><br><span class="hljs-comment">// [2, 3, 4, 5, 6]</span><br>arr.length = <span class="hljs-number">10</span>; <span class="hljs-comment">// 生成稀疏数组</span><br><span class="hljs-comment">// [2, 3, 4, 5, 6, empty × 5]</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> arr = [<span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>]; <span class="hljs-comment">// 密集数组</span><br><span class="hljs-comment">// [2, 3, 4, 5, 6]</span><br><br>arr.length = <span class="hljs-number">10</span>; <span class="hljs-comment">// 生成稀疏数组</span><br><span class="hljs-comment">// [2, 3, 4, 5, 6, empty × 5]</span><br></code></pre></td></tr></table></figure>
 
-<h2 id="创建稀疏数组"><a href="#创建稀疏数组" class="headerlink" title="创建稀疏数组"></a>创建稀疏数组</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// 1</span><br><span class="hljs-keyword">const</span> arr1 = [];<br>arr1.length = <span class="hljs-number">5</span>;<br><span class="hljs-comment">// 2</span><br><span class="hljs-keyword">const</span> arr2 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span>(<span class="hljs-number">5</span>);<br><span class="hljs-comment">// 3</span><br><span class="hljs-keyword">const</span> arr3 = [, , , , ,];<br></code></pre></td></tr></table></figure>
+<h2 id="创建稀疏数组"><a href="#创建稀疏数组" class="headerlink" title="创建稀疏数组"></a>创建稀疏数组</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// 1</span><br><span class="hljs-keyword">const</span> arr1 = [];<br>arr1.length = <span class="hljs-number">5</span>;<br><br><span class="hljs-comment">// 2</span><br><span class="hljs-keyword">const</span> arr2 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span>(<span class="hljs-number">5</span>);<br><br><span class="hljs-comment">// 3</span><br><span class="hljs-keyword">const</span> arr3 = [, , , , ,];<br></code></pre></td></tr></table></figure>
 
 <h2 id="稀疏数组特性"><a href="#稀疏数组特性" class="headerlink" title="稀疏数组特性"></a>稀疏数组特性</h2><ul>
-<li>稀疏数组在大多数遍历数组方法中，回调函数遇到「empty」元素不会执行（会跳过）</li>
+<li>稀疏数组在大多数遍历数组方法中，回调函数遇到“空”元素不会执行（会跳过）</li>
 <li>稀疏数组在访问元素的速度上比密集数组慢</li>
 <li>稀疏数组在一些数组方法中与密集数组存在差异</li>
 </ul>
@@ -937,7 +900,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2025年8月7日</div>
+          <div>2025年8月20日</div>
         </div>
       
       
