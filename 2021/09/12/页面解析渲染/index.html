@@ -30,7 +30,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://xuekeven.github.io/images/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E4%B8%BB%E8%A6%81%E8%BF%9B%E7%A8%8B.png">
 <meta property="article:published_time" content="2021-09-12T02:00:00.000Z">
-<meta property="article:modified_time" content="2025-08-13T10:31:55.167Z">
+<meta property="article:modified_time" content="2025-08-25T10:03:45.007Z">
 <meta property="article:author" content="Keven">
 <meta property="article:tag" content="浏览器">
 <meta name="twitter:card" content="summary_large_image">
@@ -268,7 +268,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          4.9k 字
+          5.1k 字
         
       </span>
     
@@ -279,7 +279,7 @@
         
         
         
-          31 分钟
+          32 分钟
         
       </span>
     
@@ -329,7 +329,7 @@
         aria-expanded="true"
       >
         运行环境
-        <span class="list-group-count">(5)</span>
+        <span class="list-group-count">(6)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
@@ -365,7 +365,7 @@
         aria-expanded="true"
       >
         浏览器
-        <span class="list-group-count">(4)</span>
+        <span class="list-group-count">(5)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
@@ -376,6 +376,15 @@
           
   <div class="category-post-list">
     
+    
+      
+      
+        <a href="/2025/08/12/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" title="性能优化"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">性能优化</span>
+        </a>
+      
     
       
       
@@ -440,7 +449,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2025年8月13日 晚上
+                    本文最后更新于 2025年8月25日 晚上
                   
                 
               </p>
@@ -560,7 +569,8 @@
 <li>对具有复杂动画的元素使用绝对定位，使它脱离文档流，否则会引起父元素及后续元素频繁回流</li>
 </ul>
 <h2 id="渲染层合并"><a href="#渲染层合并" class="headerlink" title="渲染层合并"></a>渲染层合并</h2><p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904040346681358#heading-38">https://juejin.cn/post/6844904040346681358#heading-38</a></p>
-<h1 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h1><h2 id="为什么-JavaScript-是单线程的"><a href="#为什么-JavaScript-是单线程的" class="headerlink" title="为什么 JavaScript 是单线程的"></a>为什么 JavaScript 是单线程的</h2><p>这由 Javascript 这门脚本语言诞生的使命所致。JavaScript 用于处理页面中用户的交互，以及操作 DOM 树、CSS 样式树来给用户呈现一份动态且丰富的交互体验。</p>
+<h1 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h1><h2 id="为什么多进程架构还会有单页面卡死后所有页面崩溃"><a href="#为什么多进程架构还会有单页面卡死后所有页面崩溃" class="headerlink" title="为什么多进程架构还会有单页面卡死后所有页面崩溃"></a>为什么多进程架构还会有单页面卡死后所有页面崩溃</h2><p>Chrome 的默认策略是每个标签对应一个渲染进程。但是如果从一个页面打开新页面，而新页面和当前页面属于同一站点，那么新页面会复用父页面的渲染进程（<code>process-per-site-instance</code> 策略）。<br>​<br>简单来说，就是如果多个页面符合同一站点，这几个页面会分配到一个渲染进程中去，所以有这样的情况：一个页面崩溃了，导致同一个站点的其他页面也奔溃，这是因为它们使用的同一个渲染进程。</p>
+<h2 id="为什么-JavaScript-是单线程的"><a href="#为什么-JavaScript-是单线程的" class="headerlink" title="为什么 JavaScript 是单线程的"></a>为什么 JavaScript 是单线程的</h2><p>这由 Javascript 这门脚本语言诞生的使命所致。JavaScript 用于处理页面中用户的交互，以及操作 DOM 树、CSS 样式树来给用户呈现一份动态且丰富的交互体验。</p>
 <p>如果 JavaScript 用多线程的方式来操作这些树，则可能出现操作的冲突。假设存在两个线程同时操作一个 DOM 树或是 CSS 样式树，一个负责修改一个负责删除，那么这个时候就需要浏览器来裁决使用哪个线程的执行结果。可以通过锁来解决这个问题，但为了避免因为引入了锁而带来更大的复杂性，Javascript 在最初就选择了单线程执行。</p>
 <h2 id="为什么-JS-文件会阻塞页面渲染"><a href="#为什么-JS-文件会阻塞页面渲染" class="headerlink" title="为什么 JS 文件会阻塞页面渲染"></a>为什么 JS 文件会阻塞页面渲染</h2><p>因为 JavaScript 可以修改 DOM 节点和 CSS 样式。如果在修改元素的同时渲染界面（即 JavaScript 引擎线程和 GUI 渲染线程同时运行），那么渲染线程前后获得的元素数据可能不一致。因此为了防止渲染出现不可预期的结果，浏览器设置 GUI 渲染线程与 JavaScript 引擎线程互斥。</p>
 <p>构建 DOM 时，如果 HTML 解析器遇到了 JavaScript，那么它会暂停构建 DOM，并将控制权移交给 JS 引擎线程，等 JS 引擎线程运行完毕（进行 JavaScript 的加载、解析与执行），浏览器再继续构建 DOM。</p>
@@ -679,7 +689,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2025年8月13日</div>
+          <div>2025年8月25日</div>
         </div>
       
       
