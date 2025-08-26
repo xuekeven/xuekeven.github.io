@@ -1,0 +1,887 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Keven">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="熟练使用 Claude code、Cursor、ChatGPT 等 AI 工具解决问题和提高效率，关注 AI 与前端开发的结合趋势。  使用场景怎么用 AI Claude、Cursor：编程场景，主要用 Agent 模式，Edit 和 Ask 比较少  在工作中：介绍项目内容、分析项目结构和文件、解释代码、写代码、写注释、写 TS 自我开发：帮助创建项目、直接开发应用   ChatGPT、Dee">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AI面试题">
+<meta property="og:url" content="https://xuekeven.github.io/2025/08/26/AI%E9%9D%A2%E8%AF%95%E9%A2%98/index.html">
+<meta property="og:site_name" content="Keven&#39;s Blog">
+<meta property="og:description" content="熟练使用 Claude code、Cursor、ChatGPT 等 AI 工具解决问题和提高效率，关注 AI 与前端开发的结合趋势。  使用场景怎么用 AI Claude、Cursor：编程场景，主要用 Agent 模式，Edit 和 Ask 比较少  在工作中：介绍项目内容、分析项目结构和文件、解释代码、写代码、写注释、写 TS 自我开发：帮助创建项目、直接开发应用   ChatGPT、Dee">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-08-25T16:00:00.000Z">
+<meta property="article:modified_time" content="2025-08-26T07:14:15.184Z">
+<meta property="article:author" content="Keven">
+<meta property="article:tag" content="AI">
+<meta property="article:tag" content="面试题">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>AI面试题 - Keven&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"xuekeven.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 50vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Keven&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tools/" target="_self">
+                <i class="iconfont icon-briefcase"></i>
+                <span>工具</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/dome/" target="_self">
+                <i class="iconfont icon-th-large"></i>
+                <span>Dome</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/example.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.2)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="AI面试题"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        Keven
+      </span>
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-08-26 00:00" pubdate>
+          2025年8月26日 凌晨
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          19 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar category-bar" style="margin-right: -1rem">
+    
+
+
+
+
+
+<div class="category-list">
+  
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="AI"
+        id="heading-0a40e3c91a3a55c9a37428c6d194d0e5" role="tab" data-toggle="collapse" href="#collapse-0a40e3c91a3a55c9a37428c6d194d0e5"
+        aria-expanded="true"
+      >
+        AI
+        <span class="list-group-count">(2)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-0a40e3c91a3a55c9a37428c6d194d0e5"
+           role="tabpanel" aria-labelledby="heading-0a40e3c91a3a55c9a37428c6d194d0e5">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2025/08/26/AI%E5%BC%80%E5%8F%91/" title="AI开发"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">AI开发</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2025/08/26/AI%E9%9D%A2%E8%AF%95%E9%A2%98/" title="AI面试题"
+           class="list-group-item list-group-item-action
+           active">
+          <span class="category-post">AI面试题</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+</div>
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">AI面试题</h1>
+            
+              <p id="updated-time" class="note note-info" style="">
+                
+                  
+                    本文最后更新于 2025年8月26日 下午
+                  
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <blockquote>
+<p>熟练使用 Claude code、Cursor、ChatGPT 等 AI 工具解决问题和提高效率，关注 AI 与前端开发的结合趋势。</p>
+</blockquote>
+<h1 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h1><h2 id="怎么用-AI"><a href="#怎么用-AI" class="headerlink" title="怎么用 AI"></a>怎么用 AI</h2><ul>
+<li><p>Claude、Cursor：编程场景，主要用 Agent 模式，Edit 和 Ask 比较少</p>
+<ul>
+<li>在工作中：介绍项目内容、分析项目结构和文件、解释代码、写代码、写注释、写 TS</li>
+<li>自我开发：帮助创建项目、直接开发应用</li>
+</ul>
+</li>
+<li><p>ChatGPT、DeepSeek：非直接编程场景，网页直接问</p>
+<ul>
+<li>学习：会让 AI 给我一个概览和简洁的示例，比漫无目的地查文档快很多</li>
+<li>编码：终端命令、正则表达式、不常用的属性和 API，提供更完善的示例</li>
+<li>这次找工作：怎样完善简历、常见问题答案、分析简历、面试官可能问的问题</li>
+<li>生活中的日常问题</li>
+</ul>
+</li>
+</ul>
+<h2 id="AI-编码最佳实践"><a href="#AI-编码最佳实践" class="headerlink" title="AI 编码最佳实践"></a>AI 编码最佳实践</h2><p>AI Coding 和自己手写代码相互配合。AI 能提升编码效率，但不代表说已经是能完全替代手搓代码，更不能把两者对立起来。<strong>首先应该回归初心，写代码是为了什么？</strong></p>
+<p>刨除学习和自嗨为目的的写代码，通常我们写代码是为了构建软件产品。因为要构建一个产品才需要去写代码实现产品需求。所以 AI 写代码和手搓代码，都属于写代码的手段，而不是目的。</p>
+<h3 id="任何情况都应该尝试用-AI-Coding"><a href="#任何情况都应该尝试用-AI-Coding" class="headerlink" title="任何情况都应该尝试用 AI Coding"></a>任何情况都应该尝试用 AI Coding</h3><p>很多任务开始可以先用 AI 写一遍，了解 AI 编程的优缺点在哪里，边界在哪里；另外，每隔一段时间都再测试一下以前失败的地方，看随着模型的进化和工具的升级，能不能解决以前不能解决的问题。</p>
+<p>试试没坏处，AI 不行了再自己手写，或基于 AI 的结果手动改进。AI 应该是程序员的一个重要工具，就像战士的枪一样，应该对它的优缺点和适用场景了如指掌。</p>
+<h3 id="原型开发适合用-AI-写代码"><a href="#原型开发适合用-AI-写代码" class="headerlink" title="原型开发适合用 AI 写代码"></a>原型开发适合用 AI 写代码</h3><p>原型开发是最适合用 AI 大量生成代码的场景，尤其是 Web 开发，利用好设计稿，现在的 AI 很擅长，并且不需要考虑代码后期维护、性能、安全性这些。</p>
+<h3 id="需要用代码理思路或保持心流，手搓代码"><a href="#需要用代码理思路或保持心流，手搓代码" class="headerlink" title="需要用代码理思路或保持心流，手搓代码"></a>需要用代码理思路或保持心流，手搓代码</h3><p>编程是创造性的工作，有时候我们需要直接的渐进反馈，手搓代码更能让我们跟上自己思维的节奏，就像写作的时候用键盘一个字符字符的敲打修改，更能和自己的思路保持相同的节奏，如果 AI 一次性生成太多内容，或者我们不想要的内容，反而会打乱自己的思路。</p>
+<p>另外我个人的经验是 AI 写代码很容易打断心流，要等待结果，要重新修改提示词抽卡，很打断心流，有时候我宁可手动写，虽然慢一点，但是可以保持心流状态，代码质量也更有保证。</p>
+<h3 id="不好描述要做的事或写-Prompt-成本更高，手搓代码"><a href="#不好描述要做的事或写-Prompt-成本更高，手搓代码" class="headerlink" title="不好描述要做的事或写 Prompt 成本更高，手搓代码"></a>不好描述要做的事或写 Prompt 成本更高，手搓代码</h3><p>Prompt 不是万能的，很多需求或者问题是没法用文字或者图片描述清楚的，或者要清楚的描述成本比手搓代码成本还高，那真的没必要还要去写 Prompt。</p>
+<p>如何把需求表达清楚不是很容易，尤其是那些自己擅长写文字的资深人士，是体会不到要清晰的用文字描述清楚一个需求是有点难度需要练习的，而有时候写代码反而直接些，因为简单并什么二义性。</p>
+<p>所以我建议新手可以多用伪代码当提示词，代码也是很好的 Prompt。我自己在写不熟悉的语言时，通常会用熟悉的语言写成伪代码，然后让 AI 生成目标语言的代码。</p>
+<h3 id="AI-代码质量低，手搓代码"><a href="#AI-代码质量低，手搓代码" class="headerlink" title="AI 代码质量低，手搓代码"></a>AI 代码质量低，手搓代码</h3><p>现在 AI 写的代码虽然质量不错但随机性很强，有时候很好，有时候很差，对于复杂一点的没训练过的算法或者训练语料不足的语言，还是得手搓才能获得更好的结果。</p>
+<h3 id="Debug-和-Review-代码时，优先用-AI"><a href="#Debug-和-Review-代码时，优先用-AI" class="headerlink" title="Debug 和 Review 代码时，优先用 AI"></a>Debug 和 Review 代码时，优先用 AI</h3><p>AI Agent 对于 Debug 和 Review 代码能力挺强的，经常能帮助找到一些隐藏的 Bug。AI 比人有优势的地方在于看到人看不见的盲区。但 AI 很多时候也不行，还得去人工复现一点点缩小范围。</p>
+<h3 id="模块级、上下文充足时优先用-AI"><a href="#模块级、上下文充足时优先用-AI" class="headerlink" title="模块级、上下文充足时优先用 AI"></a>模块级、上下文充足时优先用 AI</h3><p>如果代码只是模块级别，并且上下文充足，AI 生成通常能又快又好，如果效果不好可以调整提示词多生成几次。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>用 AI 还是手搓，其实没标准答案，得看不同的场景以及使用 AI 的人。不能简单的就认为手搓代码不如 AI 写代码高级。</p>
+<p>不是所有的场景都适合用 AI 编程，很多时候还是得手写代码，会写代码依然是重要的基础能力，不能因为 AI 写代码强了而忽视了锻炼自己的编程能力。</p>
+<p>但是，手搓代码再熟练也需要多使用 AI Coding，让它成为自己有力的工具。至于未来 AI 如何进化，都需要保持关注，持续学习，无论 AI 怎么强，用好它也能让自己更强。</p>
+<h2 id="项目示例"><a href="#项目示例" class="headerlink" title="项目示例"></a>项目示例</h2><ul>
+<li><p>Cursor：浏览器翻译插件</p>
+<p>在没有浏览器插件开发经验的情况下，使用 Cursor 的 Agent 模式帮助开发了一个从英文翻译为中文的浏览器翻译插件。代码基本都是由 AI 生成，我主要是导入插件到浏览器、自测验收、针对 bug 调整提示语修改，解决不好解决的 bug 和对翻译平台 API 的申请。每个阶段完成小功能后就推送代码，防止 AI 生成代码错乱覆盖好的代码。并且我现在日常还在用这个插件。</p>
+</li>
+<li><p>ChatGPT、DeepSeek：开发滑动小组件</p>
+<p>根据产品经理提供的原型和设计师提供的样式稿，我直接复制贴图给 ChatGPT，描述组件功能和交互要求，要求用 React 的函数组件完成代码设计，并解释实现思路。我主要是对比跟我所想的思路是否一致，对代码进行 Review、自测验收、进行一些样式上的小修改即可。不用再写简单的基础代码，只负责复杂的逻辑校验即可。估时 3 小时的组件 2 小时就能完成，效率提高 30%。</p>
+</li>
+</ul>
+<h2 id="解决难题"><a href="#解决难题" class="headerlink" title="解决难题"></a>解决难题</h2><p>这方面没有特别深的印象：</p>
+<ul>
+<li>如果是用 AI 编程出现的问题，一般是通过给提示语让 AI 解决，实在不行的是自己解决</li>
+<li>如果是已有项目出现 bug 或者是线上问题，还是习惯直接用浏览器直接调试排查</li>
+</ul>
+<h1 id="工具对比"><a href="#工具对比" class="headerlink" title="工具对比"></a>工具对比</h1><h2 id="对比工具"><a href="#对比工具" class="headerlink" title="对比工具"></a>对比工具</h2><p>我主要深度使用 Cursor 和 ChatGPT，对 Claude code 有过一些探索，主要用来对比不同模型答案的多样性。</p>
+<ul>
+<li>Claude：上下文长，适合看文档、读源码</li>
+<li>Cursor：嵌入 IDE，自动补全 + 代码重构，适合日常开发</li>
+<li>ChatGPT：知识面广，适合调试、方案对比</li>
+</ul>
+<p>在技术问题上，DeepSeek 更具深度，ChatGPT 更具有概括性。都通俗易懂，比一些技术文章易读。在社会和经济问题上，ChatGPT 更具深度，DeepSeek 更保守。当然可能跟我的使用有关。</p>
+<h2 id="结合使用"><a href="#结合使用" class="headerlink" title="结合使用"></a>结合使用</h2><ul>
+<li>防止回答错误，查看是否有更好的回答</li>
+<li>防止某个模型不可用</li>
+</ul>
+<h1 id="效率提升"><a href="#效率提升" class="headerlink" title="效率提升"></a>效率提升</h1><h2 id="AI-帮你提升了多少效率"><a href="#AI-帮你提升了多少效率" class="headerlink" title="AI 帮你提升了多少效率"></a>AI 帮你提升了多少效率</h2><p>直接举例子。</p>
+<h2 id="AI-出错如何判断和处理"><a href="#AI-出错如何判断和处理" class="headerlink" title="AI 出错如何判断和处理"></a>AI 出错如何判断和处理</h2><p>基于自己的开发经验。不盲目接受 AI 生成的所有代码。</p>
+<ol>
+<li>逻辑审查：像做 Code Review 一样，仔细阅读 AI 生成的代码，理解它的思路，检查是否有明显逻辑错误或不合理之处</li>
+<li>运行测试：我一定会将代码放到真实环境或测试环境中运行，这是验证其正确性的最有效手段</li>
+<li>交叉验证：对于一些概念性或最佳实践的问题，我会将 AI 的答案与官方文档、权威社区（如 Stack Overflow、GitHub discussions）的信息进行交叉对比，确保其准确性</li>
+</ol>
+<h1 id="深入思考"><a href="#深入思考" class="headerlink" title="深入思考"></a>深入思考</h1><h2 id="前端开发被替代"><a href="#前端开发被替代" class="headerlink" title="前端开发被替代"></a>前端开发被替代</h2><p>我认为不会完全取代，会取代普通开发者，并且会改变前端开发或者说是程序员的工作模式。AI 只是工具，真正取代普通开发者的不是 AI，而是会使用 AI 的开发者。目前的 AI 都是基于已有的数据训练出来的，更擅长的是模式识别和代码生成，但它缺乏真正的创造力、业务理解力和抽象思维。我认为 AI 会处理更多重复性、模式化的底层编码工作，开发者的价值会更多在：</p>
+<ul>
+<li>架构设计：基于公司现有的应用和系统，如何设计更合理、可扩展的系统</li>
+<li>复杂问题拆解：深入理解业务，将复杂需求转化为技术方案</li>
+<li>用户体验决策：做出更人性化、更创新的交互设计</li>
+<li>指导和验证 AI：成为 AI 的教练</li>
+</ul>
+<p>我认为应该主动拥抱 AI，把它当作杠杆来放大开发者的能力，让开发者能更专注于高价值的工作。</p>
+<h2 id="未来方向"><a href="#未来方向" class="headerlink" title="未来方向"></a>未来方向</h2><p>一个是 AI 驱动的前端开发工具，比如 V0 by Vercel、Bluesky 的，它们可以通过自然语言直接生成整个 UI 界面，这可能会改变我们构建应用的起点方式。</p>
+<p>另一个是 AI 辅助的 UI/UX 设计，比如 Galileo AI、GenUI，它们可以根据描述生成设计稿，甚至直接生成前端代码。这意味着前端开发者需要更紧密地与设计流程结合，甚至需要具备一些提示词工程的能力来精准控制输出。</p>
+<h2 id="MCP-是什么"><a href="#MCP-是什么" class="headerlink" title="MCP 是什么"></a>MCP 是什么</h2><h3 id="什么是-MCP？"><a href="#什么是-MCP？" class="headerlink" title="什么是 MCP？"></a>什么是 MCP？</h3><ul>
+<li>MCP = Model Context Protocol</li>
+<li>它是 Anthropic（Claude 背后的团队）提出的一种开放协议，目标是为 AI 模型提供一个统一的扩展接口，让模型可以安全、可控地访问外部工具、数据和 API</li>
+<li>类似于给 AI 定义了一套 “插件系统” 或 “上下文桥梁”</li>
+</ul>
+<h3 id="MCP-解决了什么问题？"><a href="#MCP-解决了什么问题？" class="headerlink" title="MCP 解决了什么问题？"></a>MCP 解决了什么问题？</h3><p>在 AI 应用中，模型经常需要：</p>
+<ul>
+<li>访问数据库（查数据）</li>
+<li>调用 API（比如天气、股价）</li>
+<li>操作文件系统（读写本地文件）</li>
+<li>运行外部工具（如测试、构建、执行代码）</li>
+</ul>
+<p>以前这些都是由每个应用“私有实现”，不通用、不安全。MCP 提供了一个标准协议，让 任何 AI 工具（如 Claude、Cursor、ChatGPT 客户端）都能用统一方式调用外部服务。</p>
+<h3 id="MCP-的工作方式"><a href="#MCP-的工作方式" class="headerlink" title="MCP 的工作方式"></a>MCP 的工作方式</h3><ul>
+<li>MCP Server（服务端）<ul>
+<li>提供某种能力，比如“数据库访问”、“文件读写”、“Git 操作”</li>
+<li>它实现 MCP 协议，就能对外暴露标准接口</li>
+</ul>
+</li>
+<li>MCP Client（客户端，通常是 AI 应用本身）<ul>
+<li>例如 Cursor 或 Claude</li>
+<li>通过 MCP 协议，向 Server 请求能力</li>
+</ul>
+</li>
+<li>AI 模型<ul>
+<li>在和你对话时，决定调用哪个 MCP 工具，把结果作为上下文返回给你</li>
+</ul>
+</li>
+</ul>
+<p>可以理解成：<br>👉 AI 是“大脑”，<br>👉 MCP 是“神经系统”，<br>👉 MCP Server 是“大脑可以控制的手脚”。</p>
+<h3 id="MCP-的应用"><a href="#MCP-的应用" class="headerlink" title="MCP 的应用"></a>MCP 的应用</h3><ul>
+<li>Cursor 支持 MCP，你可以在 .cursor/mcp.json 配置中添加 MCP server，比如：<ul>
+<li>cursor-git → 提供 Git 操作</li>
+<li>cursor-fs → 文件系统操作</li>
+<li>cursor-db → 数据库访问</li>
+</ul>
+</li>
+<li>Claude Desktop 也支持 MCP，可以直接挂载 API 或本地工具</li>
+</ul>
+<h3 id="简单比喻"><a href="#简单比喻" class="headerlink" title="简单比喻"></a>简单比喻</h3><p>MCP 有点像 USB 协议：</p>
+<ul>
+<li>不管你插的是键盘、鼠标还是硬盘，电脑只要支持 USB 协议就能用</li>
+<li>不管是 Cursor 还是 Claude，只要支持 MCP 协议，就能调用 MCP server 提供的工具</li>
+</ul>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/AI/" class="category-chain-item">AI</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/AI/" class="print-no-link">#AI</a>
+      
+        <a href="/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/" class="print-no-link">#面试题</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>AI面试题</div>
+      <div>https://xuekeven.github.io/2025/08/26/AI面试题/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Keven</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年8月26日</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>更新于</div>
+          <div>2025年8月26日</div>
+        </div>
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2025/08/26/AI%E5%BC%80%E5%8F%91/" title="AI开发">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">AI开发</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/08/25/TypeScript%E9%9D%A2%E8%AF%95%E9%A2%98/" title="TypeScript面试题">
+                        <span class="hidden-mobile">TypeScript面试题</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
