@@ -21,15 +21,15 @@
   <meta name="author" content="Keven">
   <meta name="keywords" content="">
   
-    <meta name="description" content="为什么 pnpm 比 npm 快pnpm 比 npm 快的原因在于其优化的文件存储方式、依赖管理方式以及并行下载能力：  pnpm 使用基于内容寻址的文件系统来存储磁盘上的所有文件，这意味着它不会在磁盘中重复存储相同的依赖包，即使这些依赖包被不同的项目所依赖。这种存储方式使得 pnpm 在安装依赖时能够更高效地利用磁盘空间，同时也减少了下载和安装的时间  pnpm 在下载和安装依赖时采用了并行下载">
+    <meta name="description" content="对前端工程化的理解前端工程化是一套方法论和工具链的集合，核心目标是通过标准化、自动化和流程化提升开发效率、保障代码质量、并支撑大型应用的开发。它主要解决了以下几个问题：  开发效率：通过脚手架、热更新等工具，快速创建项目和获得即时反馈 代码质量：通过 ESLint、Prettier、Husky 等工具强制统一代码规范，并在提交前拦截问题 重复劳动：通过自动化构建（编译、压缩、打包）、自动化部署（C">
 <meta property="og:type" content="article">
 <meta property="og:title" content="前端工程化面试题">
 <meta property="og:url" content="https://xuekeven.github.io/2025/08/25/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96%E9%9D%A2%E8%AF%95%E9%A2%98/index.html">
 <meta property="og:site_name" content="Keven&#39;s Blog">
-<meta property="og:description" content="为什么 pnpm 比 npm 快pnpm 比 npm 快的原因在于其优化的文件存储方式、依赖管理方式以及并行下载能力：  pnpm 使用基于内容寻址的文件系统来存储磁盘上的所有文件，这意味着它不会在磁盘中重复存储相同的依赖包，即使这些依赖包被不同的项目所依赖。这种存储方式使得 pnpm 在安装依赖时能够更高效地利用磁盘空间，同时也减少了下载和安装的时间  pnpm 在下载和安装依赖时采用了并行下载">
+<meta property="og:description" content="对前端工程化的理解前端工程化是一套方法论和工具链的集合，核心目标是通过标准化、自动化和流程化提升开发效率、保障代码质量、并支撑大型应用的开发。它主要解决了以下几个问题：  开发效率：通过脚手架、热更新等工具，快速创建项目和获得即时反馈 代码质量：通过 ESLint、Prettier、Husky 等工具强制统一代码规范，并在提交前拦截问题 重复劳动：通过自动化构建（编译、压缩、打包）、自动化部署（C">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-08-25T06:00:00.000Z">
-<meta property="article:modified_time" content="2025-08-25T09:08:45.572Z">
+<meta property="article:modified_time" content="2025-08-30T08:43:19.066Z">
 <meta property="article:author" content="Keven">
 <meta property="article:tag" content="面试题">
 <meta property="article:tag" content="前端工程化">
@@ -267,7 +267,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          245 字
+          921 字
         
       </span>
     
@@ -278,7 +278,7 @@
         
         
         
-          2 分钟
+          6 分钟
         
       </span>
     
@@ -328,7 +328,7 @@
         aria-expanded="true"
       >
         前端工程化
-        <span class="list-group-count">(4)</span>
+        <span class="list-group-count">(5)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
@@ -347,6 +347,15 @@
            class="list-group-item list-group-item-action
            active">
           <span class="category-post">前端工程化面试题</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2025/08/12/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" title="性能优化"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">性能优化</span>
         </a>
       
     
@@ -458,7 +467,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2025年8月25日 下午
+                    本文最后更新于 2025年8月30日 下午
                   
                 
               </p>
@@ -466,7 +475,38 @@
             
               <div class="markdown-body">
                 
-                <h2 id="为什么-pnpm-比-npm-快"><a href="#为什么-pnpm-比-npm-快" class="headerlink" title="为什么 pnpm 比 npm 快"></a><a target="_blank" rel="noopener" href="https://juejin.cn/post/7350535815132659749#heading-13">为什么 pnpm 比 npm 快</a></h2><p>pnpm 比 npm 快的原因在于其优化的文件存储方式、依赖管理方式以及并行下载能力：</p>
+                <h2 id="对前端工程化的理解"><a href="#对前端工程化的理解" class="headerlink" title="对前端工程化的理解"></a>对前端工程化的理解</h2><p>前端工程化是一套方法论和工具链的集合，核心目标是通过标准化、自动化和流程化提升开发效率、保障代码质量、并支撑大型应用的开发。它主要解决了以下几个问题：</p>
+<ul>
+<li>开发效率：通过脚手架、热更新等工具，快速创建项目和获得即时反馈</li>
+<li>代码质量：通过 ESLint、Prettier、Husky 等工具强制统一代码规范，并在提交前拦截问题</li>
+<li>重复劳动：通过自动化构建（编译、压缩、打包）、自动化部署（CI/CD）解放人力</li>
+<li>资源管理：通过模块化、组件化管理和复用代码；通过打包工具处理依赖、合并资源、优化性能</li>
+<li>研发协同：统一的目录结构、开发规范、构建流程使得团队协作更顺畅</li>
+</ul>
+<h2 id="CI-CD-流程是怎样的"><a href="#CI-CD-流程是怎样的" class="headerlink" title="CI/CD 流程是怎样的"></a>CI/CD 流程是怎样的</h2><p>主要是流程的使用者，基于 GitLab CI 和 Jenkins 的流程大致如下：</p>
+<ul>
+<li>提交代码：开发者在特性分支开发，提交 Pull/Merge Request</li>
+<li>CI（持续集成）：MR 触发 CI 流水线，自动执行：<ul>
+<li>npm install 安装依赖</li>
+<li>npm run lint 代码规范检查</li>
+<li>npm test 运行单元测试</li>
+<li>npm run build 执行构建，这一步很关键，用于检查代码是否能成功编译。只有 CI 阶段全部通过，才允许合并代码到主分支</li>
+</ul>
+</li>
+<li>CD（持续部署）：代码合并到主分支后，自动触发 CD 流水线：<ul>
+<li>拉取最新代码，执行构建，生成生产环境用的 dist 目录</li>
+<li>将 dist 产物部署到测试/预发布环境，进行 QA 测试</li>
+<li>测试通过后，手动点击（或自动）部署到生产环境</li>
+</ul>
+</li>
+</ul>
+<h2 id="模块化和组件化的区别和联系"><a href="#模块化和组件化的区别和联系" class="headerlink" title="模块化和组件化的区别和联系"></a>模块化和组件化的区别和联系</h2><p>它们都是‘分治’思想的体现，但关注点不同：</p>
+<ul>
+<li>模块化更偏向代码组织层面。它的粒度可大可小，主要目的是解耦和复用。一个工具函数、一个 JSON 文件、一个 Class 都可以是一个模块。核心是语法和依赖管理。</li>
+<li>组件化更偏向 UI 界面层面。它的粒度通常更大，主要目的是复用和封装。一个按钮、一个弹窗、一个页面都是一个组件。它的核心是视图（模板）、逻辑（状态、方法）和样式的独立单元。</li>
+</ul>
+<p>联系在于：一个复杂的组件内部，必然会使用模块化的方式来组织其代码；多个模块组合起来，可以构成一个组件。在现代框架（如 React/Vue）中，一个文件就是一个模块，这个模块默认导出的就是一个组件，两者完美融合。</p>
+<h2 id="为什么-pnpm-比-npm-快"><a href="#为什么-pnpm-比-npm-快" class="headerlink" title="为什么 pnpm 比 npm 快"></a><a target="_blank" rel="noopener" href="https://juejin.cn/post/7350535815132659749#heading-13">为什么 pnpm 比 npm 快</a></h2><p>pnpm 比 npm 快的原因在于其优化的文件存储方式、依赖管理方式以及并行下载能力：</p>
 <ul>
 <li><p>pnpm 使用基于内容寻址的文件系统来存储磁盘上的所有文件，这意味着它不会在磁盘中重复存储相同的依赖包，即使这些依赖包被不同的项目所依赖。这种存储方式使得 pnpm 在安装依赖时能够更高效地利用磁盘空间，同时也减少了下载和安装的时间</p>
 </li>
@@ -547,7 +587,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2025年8月25日</div>
+          <div>2025年8月30日</div>
         </div>
       
       
