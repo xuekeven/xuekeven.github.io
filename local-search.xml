@@ -301,6 +301,35 @@
   
   
   <entry>
+    <title>React面试题</title>
+    <link href="/2025/08/24/React%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
+    <url>/2025/08/24/React%E9%9D%A2%E8%AF%95%E9%A2%98/</url>
+    
+    <content type="html"><![CDATA[<ul><li><p>为什么要用 Hook</p><ul><li>解决逻辑复用难的问题。类组件里想复用逻辑，只能用高阶组件 (HOC) 或 Render Props，会导致组件嵌套地狱。Hooks 允许把状态逻辑提取到自定义 Hook 中，实现逻辑共享</li><li>解决类组件复杂度高的问题。一个功能的逻辑可能分散在多个生命周期函数：订阅在 <code>componentDidMount</code>、更新在 <code>componentDidUpdate</code>、清理在 <code>componentWillUnmount</code>。Hooks 用 <code>useEffect</code> 就能把逻辑集中到一起，更符合“关注点分离”的设计</li><li>解决 this 问题。类组件里 this 经常出错，需要手动绑定。函数组件没有 this 彻底解决此困扰</li><li>更好支持函数式编程和 Fiber 架构。函数组件 + Hook 更契合 React 声明式和可中断渲染。在执行过程能暂停、恢复甚至丢弃函数组件的执行，而类组件里状态绑定在实例上不好做</li></ul></li><li><p>为什么只能在函数内部最外层调用 Hook</p><p>因为 React 使用单向链表来存储每个组件调用的 Hook 状态，每个 Hook 节点都存储着它的状态（如 state、effect 函数、依赖项等）。React 通过<strong>调用顺序</strong>来判断哪个 Hook 对应哪个状态。</p><p>函数组件的每次渲染都是完全独立的。也就是说，每个函数中的 state 变量只是一个简单的常量，每次渲染时从钩子中获取到的常量，没有附着数据绑定（除了 <code>useRef.current</code> 返回是引用）。</p><p>所以如果把 Hook 放在条件语句/循环/子函数里，就会破坏调用顺序，React 无法正确找到对应的 Hook 状态。</p></li><li><p>为什么只能在 React 函数组件或自定义 Hook 中用 Hook</p><p>因为 Hooks 必须被关联到一个具体的 React 组件实例上。React 内部有一个当前正在渲染组件的指向（可以理解为一个全局的“光标”）。当调用 Hook 时 React 会检查这个“光标”，知道这个状态是属于哪个组件的，然后把它挂载到对应的 Fiber 节点（React 内部表示组件的结构）上。</p></li><li><p><a href="https://juejin.cn/post/7204307381689532474#heading-2">简述 React diff 算法过程</a></p><p>在 React 中，diff 算法需要与虚拟 DOM 配合才能发挥出真正的效果。React 会使用 diff 算法算出虚拟 DOM 中真正发生变化的部分，并且只会针对该部分进行 DOM 操作，从而避免了对页面进行大面积的更新渲染，减小性能的开销。</p><p>React 定义了三大策略，在对比时根据策略只需遍历一次树就可以完成对比，复杂度降到了 O(n)</p><ul><li>tree diff：在两个树对比时，只会比较同一层级的节点，忽略跨层级的操作</li><li>component diff：在对比两个组件时，首先会判断它们两个的类型是否相同，如果不同直接替换整个组件下的所有子节点</li><li>element diff：同一层级的节点使用唯一性的 key 来区分是否需要创建、删除、移动</li></ul></li><li><p><a href="https://juejin.cn/post/7348651815759282226#heading-58">为何 React JSX 循环需要使用 key</a></p><p>React 通过 key 唯一标识列表中的每个元素。当列表发生变化时，React 会通过 key 快速判断，哪些元素是新增、哪些是移除、哪些是移动，从而提高性能。如果没有 key，React 默认使用数组索引作为标识，会认为所有 key 变化的元素都是新节点，从而进行不必要的重建，而不是高效的移动，导致性能下降和潜在的状态 bug。</p></li><li><p><a href="https://juejin.cn/post/6844903806090608647">精读《useEffect 完全指南》</a></p></li><li><p><a href="https://juejin.cn/post/7094037148088664078">React18 新特性</a></p></li><li><p><a href="https://juejin.cn/post/7371777383588954175">React 性能优化十大总结</a></p></li><li><p><a href="https://juejin.cn/post/7529722916290215946">React 性能优化深度指南：从基础到高级技巧</a></p></li><li><p><a href="https://juejin.cn/post/7363121890791227426">深入理解受控组件、非受控组件</a></p></li><li><p><a href="https://juejin.cn/post/7204307381689532474#heading-5">setState 是同步还是异步</a></p></li><li><p><a href="https://juejin.cn/post/7204307381689532474#heading-65">React-Router 工作原理</a></p></li><li><p><a href="https://juejin.cn/post/7204307381689532474#heading-152">React 实现原理</a></p></li><li><p><a href="https://juejin.cn/post/7182382408807743548">一文带你梳理 React 面试题（2023 年版本）</a></p><ul><li><p><a href="https://juejin.cn/post/7182382408807743548#heading-1">React 设计思想</a></p></li><li><p><a href="https://juejin.cn/post/7182382408807743548#heading-4">React 事件机制</a></p></li><li><p><a href="https://juejin.cn/post/7182382408807743548#heading-10">数据如何在 React 组件中流动</a></p></li></ul></li><li><p><a href="https://juejin.cn/post/7348651815759282226">2025 最新 React 面试题</a></p><ul><li><a href="https://juejin.cn/post/7348651815759282226#heading-18">React 懒加载的实现原理</a></li><li><a href="https://juejin.cn/post/7348651815759282226#heading-27">React Hooks 实现生命周期</a></li><li><a href="https://juejin.cn/post/7348651815759282226#heading-36">React-Router 的 <code>&lt;Link /&gt;</code> 组件和 <code>&lt;a&gt;</code> 的区别</a></li><li><a href="https://juejin.cn/post/7348651815759282226#heading-37">PureComponent 和 Component 的区别</a></li><li><a href="https://juejin.cn/post/7348651815759282226#heading-45">render 方法原理以及何时出发</a></li><li><a href="https://juejin.cn/post/7348651815759282226#heading-53">JSX 的本质是什么</a></li><li><a href="https://juejin.cn/post/7348651815759282226#heading-49">JSX 转换成真实 DOM 的过程</a></li><li><a href="https://juejin.cn/post/7348651815759282226#heading-62">如何理解 React concurrency 并发机制</a></li><li><a href="https://juejin.cn/post/7348651815759282226#heading-59">React 事件和原生事件有什么区别</a></li><li><a href="https://juejin.cn/post/7348651815759282226#heading-38">React 事件和原生事件的执行顺序</a></li><li><a href="https://juejin.cn/post/7348651815759282226#heading-60">简述 React batchUpdate 机制</a></li><li><a href="https://juejin.cn/post/7348651815759282226#heading-61">简述 React 事务机制</a></li><li><a href="https://juejin.cn/post/7348651815759282226#heading-57">简述 React 和 Vue diff 算法的区别</a></li></ul></li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>框架和库</category>
+      
+      <category>React</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>面试题</tag>
+      
+      <tag>React</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>React生态简介</title>
     <link href="/2025/08/23/React%E7%94%9F%E6%80%81%E7%AE%80%E4%BB%8B/"/>
     <url>/2025/08/23/React%E7%94%9F%E6%80%81%E7%AE%80%E4%BB%8B/</url>
@@ -608,35 +637,6 @@
   
   
   <entry>
-    <title>React面试题</title>
-    <link href="/2022/12/04/React%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
-    <url>/2022/12/04/React%E9%9D%A2%E8%AF%95%E9%A2%98/</url>
-    
-    <content type="html"><![CDATA[<ul><li><p>为什么要用 Hook</p><ul><li>解决逻辑复用难的问题。类组件里想复用逻辑，只能用高阶组件 (HOC) 或 Render Props，会导致组件嵌套地狱。Hooks 允许把状态逻辑提取到自定义 Hook 中，实现逻辑共享</li><li>解决类组件复杂度高的问题。一个功能的逻辑可能分散在多个生命周期函数：订阅在 <code>componentDidMount</code>、更新在 <code>componentDidUpdate</code>、清理在 <code>componentWillUnmount</code>。Hooks 用 <code>useEffect</code> 就能把逻辑集中到一起，更符合“关注点分离”的设计</li><li>解决 this 问题。类组件里 this 经常出错，需要手动绑定。函数组件没有 this 彻底解决此困扰</li><li>更好支持函数式编程和 Fiber 架构。函数组件 + Hook 更契合 React 声明式和可中断渲染。在执行过程能暂停、恢复甚至丢弃函数组件的执行，而类组件里状态绑定在实例上不好做</li></ul></li><li><p>为什么只能在函数内部最外层调用 Hook</p><p>因为 React 使用单向链表来存储每个组件调用的 Hook 状态，每个 Hook 节点都存储着它的状态（如 state、effect 函数、依赖项等）。React 通过<strong>调用顺序</strong>来判断哪个 Hook 对应哪个状态。</p><p>函数组件的每次渲染都是完全独立的。也就是说，每个函数中的 state 变量只是一个简单的常量，每次渲染时从钩子中获取到的常量，没有附着数据绑定（除了 <code>useRef.current</code> 返回是引用）。</p><p>所以如果把 Hook 放在条件语句/循环/子函数里，就会破坏调用顺序，React 无法正确找到对应的 Hook 状态。</p></li><li><p>为什么只能在 React 函数组件或自定义 Hook 中用 Hook</p><p>因为 Hooks 必须被关联到一个具体的 React 组件实例上。React 内部有一个当前正在渲染组件的指向（可以理解为一个全局的“光标”）。当调用 Hook 时 React 会检查这个“光标”，知道这个状态是属于哪个组件的，然后把它挂载到对应的 Fiber 节点（React 内部表示组件的结构）上。</p></li><li><p><a href="https://juejin.cn/post/7204307381689532474#heading-2">简述 React diff 算法过程</a></p><p>在 React 中，diff 算法需要与虚拟 DOM 配合才能发挥出真正的效果。React 会使用 diff 算法算出虚拟 DOM 中真正发生变化的部分，并且只会针对该部分进行 DOM 操作，从而避免了对页面进行大面积的更新渲染，减小性能的开销。</p><p>React 定义了三大策略，在对比时根据策略只需遍历一次树就可以完成对比，复杂度降到了 O(n)</p><ul><li>tree diff：在两个树对比时，只会比较同一层级的节点，忽略跨层级的操作</li><li>component diff：在对比两个组件时，首先会判断它们两个的类型是否相同，如果不同直接替换整个组件下的所有子节点</li><li>element diff：同一层级的节点使用唯一性的 key 来区分是否需要创建、删除、移动</li></ul></li><li><p><a href="https://juejin.cn/post/7348651815759282226#heading-58">为何 React JSX 循环需要使用 key</a></p><p>React 通过 key 唯一标识列表中的每个元素。当列表发生变化时，React 会通过 key 快速判断，哪些元素是新增、哪些是移除、哪些是移动，从而提高性能。如果没有 key，React 默认使用数组索引作为标识，会认为所有 key 变化的元素都是新节点，从而进行不必要的重建，而不是高效的移动，导致性能下降和潜在的状态 bug。</p></li><li><p><a href="https://juejin.cn/post/6844903806090608647">精读《useEffect 完全指南》</a></p></li><li><p><a href="https://juejin.cn/post/7094037148088664078">React18 新特性</a></p></li><li><p><a href="https://juejin.cn/post/7371777383588954175">React 性能优化十大总结</a></p></li><li><p><a href="https://juejin.cn/post/7529722916290215946">React 性能优化深度指南：从基础到高级技巧</a></p></li><li><p><a href="https://juejin.cn/post/7363121890791227426">深入理解受控组件、非受控组件</a></p></li><li><p><a href="https://juejin.cn/post/7204307381689532474#heading-5">setState 是同步还是异步</a></p></li><li><p><a href="https://juejin.cn/post/7204307381689532474#heading-65">React-Router 工作原理</a></p></li><li><p><a href="https://juejin.cn/post/7204307381689532474#heading-152">React 实现原理</a></p></li><li><p><a href="https://juejin.cn/post/7182382408807743548">一文带你梳理 React 面试题（2023 年版本）</a></p><ul><li><p><a href="https://juejin.cn/post/7182382408807743548#heading-1">React 设计思想</a></p></li><li><p><a href="https://juejin.cn/post/7182382408807743548#heading-4">React 事件机制</a></p></li><li><p><a href="https://juejin.cn/post/7182382408807743548#heading-10">数据如何在 React 组件中流动</a></p></li></ul></li><li><p><a href="https://juejin.cn/post/7348651815759282226">2025 最新 React 面试题</a></p><ul><li><a href="https://juejin.cn/post/7348651815759282226#heading-18">React 懒加载的实现原理</a></li><li><a href="https://juejin.cn/post/7348651815759282226#heading-27">React Hooks 实现生命周期</a></li><li><a href="https://juejin.cn/post/7348651815759282226#heading-36">React-Router 的 <code>&lt;Link /&gt;</code> 组件和 <code>&lt;a&gt;</code> 的区别</a></li><li><a href="https://juejin.cn/post/7348651815759282226#heading-37">PureComponent 和 Component 的区别</a></li><li><a href="https://juejin.cn/post/7348651815759282226#heading-45">render 方法原理以及何时出发</a></li><li><a href="https://juejin.cn/post/7348651815759282226#heading-53">JSX 的本质是什么</a></li><li><a href="https://juejin.cn/post/7348651815759282226#heading-49">JSX 转换成真实 DOM 的过程</a></li><li><a href="https://juejin.cn/post/7348651815759282226#heading-62">如何理解 React concurrency 并发机制</a></li><li><a href="https://juejin.cn/post/7348651815759282226#heading-59">React 事件和原生事件有什么区别</a></li><li><a href="https://juejin.cn/post/7348651815759282226#heading-38">React 事件和原生事件的执行顺序</a></li><li><a href="https://juejin.cn/post/7348651815759282226#heading-60">简述 React batchUpdate 机制</a></li><li><a href="https://juejin.cn/post/7348651815759282226#heading-61">简述 React 事务机制</a></li><li><a href="https://juejin.cn/post/7348651815759282226#heading-57">简述 React 和 Vue diff 算法的区别</a></li></ul></li></ul>]]></content>
-    
-    
-    <categories>
-      
-      <category>框架和库</category>
-      
-      <category>React</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>面试题</tag>
-      
-      <tag>React</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>React生命周期</title>
     <link href="/2022/12/04/React%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/"/>
     <url>/2022/12/04/React%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/</url>
@@ -736,9 +736,9 @@
       
       <tag>JavaScript</tag>
       
-      <tag>方法属性</tag>
-      
       <tag>Function</tag>
+      
+      <tag>方法属性</tag>
       
     </tags>
     
@@ -1659,9 +1659,9 @@
       
       <tag>JavaScript</tag>
       
-      <tag>Array</tag>
-      
       <tag>方法属性</tag>
+      
+      <tag>Array</tag>
       
     </tags>
     
