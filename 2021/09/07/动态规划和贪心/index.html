@@ -21,22 +21,22 @@
   <meta name="author" content="Keven">
   <meta name="keywords" content="">
   
-    <meta name="description" content="如果我们需要重复多次计算相同的问题，通常可以采用递归或循环两种不同的方法。  递归是在一个函数的内部调用这个函数自身 循环是通过设置计算的初始值和终止条件，在一个范围内重复运算  对比递归实现的代码会比较简洁，递归实现要比循环简单得多，但性能不如循环。 递归从尾到头（自上而下）实现，循环从头到尾（自下而上）实现。 递归是函数调用其自身，而函数的调用有时间和空间的消耗。每一次调用函数，都需要在内存中">
+    <meta name="description" content="剪绳子 有一根长度为 n 的绳子，请把绳子剪成整数长度的 m 段（m、n 都是整数，n &gt; 1 并且 m &gt; 1），每段绳子的长度记为 k[0],k[1]…k[m-1]请问 k[0]k[1]…*k[m-1] 可能的最大乘积是多少？如，当绳子的长度是 8 时，把它剪成 2、3、3 三段，此时得到的最大乘积是 18。  动态规划介绍动态规划是编程面试中的热门话题，如果求一个问题的最优解（通">
 <meta property="og:type" content="article">
-<meta property="og:title" content="递归循环">
-<meta property="og:url" content="https://xuekeven.github.io/2021/09/07/%E9%80%92%E5%BD%92%E5%92%8C%E5%BE%AA%E7%8E%AF/index.html">
+<meta property="og:title" content="动态规划和贪心">
+<meta property="og:url" content="https://xuekeven.github.io/2021/09/07/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%92%8C%E8%B4%AA%E5%BF%83/index.html">
 <meta property="og:site_name" content="Keven&#39;s Blog">
-<meta property="og:description" content="如果我们需要重复多次计算相同的问题，通常可以采用递归或循环两种不同的方法。  递归是在一个函数的内部调用这个函数自身 循环是通过设置计算的初始值和终止条件，在一个范围内重复运算  对比递归实现的代码会比较简洁，递归实现要比循环简单得多，但性能不如循环。 递归从尾到头（自上而下）实现，循环从头到尾（自下而上）实现。 递归是函数调用其自身，而函数的调用有时间和空间的消耗。每一次调用函数，都需要在内存中">
+<meta property="og:description" content="剪绳子 有一根长度为 n 的绳子，请把绳子剪成整数长度的 m 段（m、n 都是整数，n &gt; 1 并且 m &gt; 1），每段绳子的长度记为 k[0],k[1]…k[m-1]请问 k[0]k[1]…*k[m-1] 可能的最大乘积是多少？如，当绳子的长度是 8 时，把它剪成 2、3、3 三段，此时得到的最大乘积是 18。  动态规划介绍动态规划是编程面试中的热门话题，如果求一个问题的最优解（通">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-09-07T14:00:00.000Z">
-<meta property="article:modified_time" content="2025-08-30T16:53:15.356Z">
+<meta property="article:modified_time" content="2025-08-31T07:49:14.062Z">
 <meta property="article:author" content="Keven">
 <meta property="article:tag" content="算法">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>递归循环 - Keven&#39;s Blog</title>
+  <title>动态规划和贪心 - Keven&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -238,7 +238,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="递归循环"></span>
+            <span id="subtitle" data-typed-text="动态规划和贪心"></span>
           
         </div>
 
@@ -266,7 +266,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          613 字
+          2.2k 字
         
       </span>
     
@@ -277,7 +277,7 @@
         
         
         
-          4 分钟
+          14 分钟
         
       </span>
     
@@ -327,7 +327,7 @@
         aria-expanded="true"
       >
         计算机基础
-        <span class="list-group-count">(8)</span>
+        <span class="list-group-count">(9)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
@@ -391,7 +391,7 @@
         aria-expanded="true"
       >
         算法
-        <span class="list-group-count">(5)</span>
+        <span class="list-group-count">(6)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
@@ -405,10 +405,28 @@
     
       
       
-        <a href="/2021/09/07/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%92%8C%E8%B4%AA%E5%A9%AA%E7%AE%97%E6%B3%95/" title="动态规划和贪婪算法"
+        <a href="/2025/08/31/%E5%88%86%E6%B2%BB%E5%9B%9E%E6%BA%AF/" title="分治回溯"
            class="list-group-item list-group-item-action
            ">
-          <span class="category-post">动态规划和贪婪算法</span>
+          <span class="category-post">分治回溯</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/09/07/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%92%8C%E8%B4%AA%E5%BF%83/" title="动态规划和贪心"
+           class="list-group-item list-group-item-action
+           active">
+          <span class="category-post">动态规划和贪心</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/09/18/%E5%8D%81%E5%A4%A7%E6%8E%92%E5%BA%8F/" title="十大排序"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">十大排序</span>
         </a>
       
     
@@ -423,15 +441,6 @@
     
       
       
-        <a href="/2021/09/18/%E6%8E%92%E5%BA%8F/" title="排序"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">排序</span>
-        </a>
-      
-    
-      
-      
         <a href="/2021/09/19/%E6%90%9C%E7%B4%A2%E6%9F%A5%E6%89%BE/" title="搜索查找"
            class="list-group-item list-group-item-action
            ">
@@ -441,10 +450,10 @@
     
       
       
-        <a href="/2021/09/07/%E9%80%92%E5%BD%92%E5%92%8C%E5%BE%AA%E7%8E%AF/" title="递归循环"
+        <a href="/2021/09/07/%E8%BF%AD%E4%BB%A3%E9%80%92%E5%BD%92/" title="迭代递归"
            class="list-group-item list-group-item-action
-           active">
-          <span class="category-post">递归循环</span>
+           ">
+          <span class="category-post">迭代递归</span>
         </a>
       
     
@@ -516,12 +525,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">递归循环</h1>
+            <h1 id="seo-header">动态规划和贪心</h1>
             
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2025年8月31日 凌晨
+                    本文最后更新于 2025年8月31日 下午
                   
                 
               </p>
@@ -529,30 +538,55 @@
             
               <div class="markdown-body">
                 
-                <p>如果我们需要重复多次计算相同的问题，通常可以采用递归或循环两种不同的方法。</p>
+                <h1 id="剪绳子"><a href="#剪绳子" class="headerlink" title="剪绳子"></a>剪绳子</h1><blockquote>
+<p>有一根长度为 n 的绳子，请把绳子剪成整数长度的 m 段（m、n 都是整数，n &gt; 1 并且 m &gt; 1），每段绳子的长度记为 k[0],k[1]…k[m-1]请问 k[0]<em>k[1]</em>…*k[m-1] 可能的最大乘积是多少？如，当绳子的长度是 8 时，把它剪成 2、3、3 三段，此时得到的最大乘积是 18。</p>
+</blockquote>
+<h1 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h1><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>动态规划是编程面试中的热门话题，如果求一个问题的最优解（通常是最大值或最小值），同时该问题能够分解成若干个子问题，且子问题之间还有重叠的更小子问题，可以考虑用动态规划来解决问题。</p>
+<p>在应用动态规划之前要分析能否把大问题分解成小问题，分解后的每个小问题是否存在最优解。如果把小问题的最优解组合起来能够得到整个问题的最优解，那么可以应用动态规划解决这个问题。</p>
 <ul>
-<li>递归是在一个函数的内部调用这个函数自身</li>
-<li>循环是通过设置计算的初始值和终止条件，在一个范围内重复运算</li>
+<li><p>如何把长度为 n 的绳子剪成若干段，使得得到的各段长度的乘积最大。这个问题的目标是求剪出的各段绳子长度的乘积最大值：<strong>求一个问题的最优解 =&gt; 应用动态规划求解问题的第一个特点</strong></p>
+</li>
+<li><p>把长度为 n 的绳子剪成若干段后得到的乘积最大值定义为函数 f(n)。假设我们把第一刀剪在长度为 i (0 &lt; i &lt; n)的位置，于是把绳子剪成长度分别为 i 和 n-i 的两段。我们要想得到整个问题的最优解 f(n)，那么要同样用最优化的方法把长度为 i 和 n-i 的两段分别剪成若干段，使得它们各自剪出的每段绳子长度乘积最大：<strong>整体问题的最优解是依赖各个子问题的最优解 =&gt; 应用动态规划求解的问题的第二个特点</strong></p>
+</li>
+<li><p>假设绳子最初长度为 10，我们可以把绳子剪成长度分别为 4 和 6 的两段，也就是 f(4) 和 f(6) 都是 f(10) 的子问题。接下来分别求解这两个子问题。我们可以把长度为 4 的绳子剪成均为 2 的两段，即 f(2) 是 f(4) 的子问题。同样，我们也可以把长度为 6 的绳子剪成长度分别为 2 和 4 的两段，即 f(2) 和 f(4) 都是 f(6) 的子问题。注意到， f(2) 是 f(4) 和 f(6) 公共的更小的子问题：<strong>把大问题分解成若干个小问题，这些小问题之间还有相互重叠的更小的子问题 =&gt; 应用动态规划求解的问题的第三个特点</strong></p>
+</li>
+<li><p>由于子问题在分解大问题的过程中重复出现，为了避免重复求解子问题，我们可以按照从下往上的顺序先计算小问题的最优解并存储下来，再以此为基础求取大问题的最优解：<strong>从上往下分析问题，从下往上解决问题 =&gt; 应用动态规划求解的问题的第四个特点</strong></p>
+</li>
 </ul>
-<h2 id="对比"><a href="#对比" class="headerlink" title="对比"></a>对比</h2><p>递归实现的代码会比较简洁，递归实现要比循环简单得多，但性能不如循环。</p>
-<p>递归从尾到头（自上而下）实现，循环从头到尾（自下而上）实现。</p>
-<p>递归是函数调用其自身，而函数的调用有时间和空间的消耗。每一次调用函数，都需要在内存中分配空间以保存参数、返回地址、临时变量，而且入栈和出栈都需要时间。</p>
-<p>递归中有可能很多计算是重复的，从而对性能带来负面影响。递归的本质是把一个问题分解成两个或者多个小问题。如果小问题内存在重叠的部分，就会存在重复的计算。</p>
-<p>递归还有可能引起更严重的问题：调用栈溢出。每个进程的栈的容量是有限的，当递归调用的层级太多时，就会超出栈的容量导致栈溢出。不过，对此 JS 提出了尾递归优化，改善了此问题。</p>
-<p>当使用动态规划解决问题时都是用递归的思路分析，但递归分解的子问题中存在大量的重复，因此总是使用自下而上的循环来实现代码。</p>
-<h2 id="斐波那契数列问题"><a href="#斐波那契数列问题" class="headerlink" title="斐波那契数列问题"></a>斐波那契数列问题</h2><blockquote>
-<p>斐波那契数列的定义如下：<br>F(0) = 0; F(1) = 1; F(N) = F(N - 1) + F(N - 2)，其中 N &gt; 1。<br>求斐波那契数列的第 n 项（即 F(N)）。</p>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// 递归</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fib</span>(<span class="hljs-params">n</span>) </span>&#123;<br>  <span class="hljs-keyword">return</span> n &lt;= <span class="hljs-number">1</span> ? n : <span class="hljs-built_in">arguments</span>.callee(n - <span class="hljs-number">1</span>) + <span class="hljs-built_in">arguments</span>.callee(n - <span class="hljs-number">2</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>在应用动态规划解决问题的时候，我们总是从解决最小问题开始，并把已经解决的子问题的最优解存储下来(大部分面试题都是存储在一维或者二维数组里)，并把子问题的最优解组合起来逐步解决大的问题。</p>
+<p>在应用动态规划的时候，我们每一步都可能面临若干个选择。由于我们不知道哪个才是最优的解法，只好把所有的可能都尝试一遍，然后比较得出最优方法。如果用数学的语言来表示，这就是 f(n) = max(f(i)×(n-i))，其中 0 &lt; i &lt; n。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">cuttingRope</span>(<span class="hljs-params">n</span>) </span>&#123;<br>  <span class="hljs-keyword">const</span> dp = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span>(n + <span class="hljs-number">1</span>).fill(<span class="hljs-number">1</span>);<br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">3</span>; i &lt;= n; i++) &#123;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> j = <span class="hljs-number">1</span>; j &lt; i; j++) &#123;<br>      dp[i] = <span class="hljs-built_in">Math</span>.max(dp[i], j * (i - j), j * dp[i - j]);<br>    &#125;<br>  &#125;<br>  <span class="hljs-keyword">return</span> dp[n];<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// 循环</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fib</span>(<span class="hljs-params">n</span>) </span>&#123;<br>  <span class="hljs-keyword">let</span> a = <span class="hljs-number">0</span>,<br>    b = <span class="hljs-number">1</span>,<br>    sum;<br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) &#123;<br>    sum = a + b;<br>    a = b;<br>    b = sum;<br>  &#125;<br>  <span class="hljs-keyword">return</span> a;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>动态规划是一种“从底至顶”的方法：从最小子问题的解开始，迭代地构建更大子问题的解，直至得到原问题的解。由于动态规划不包含回溯过程，因此只需使用循环迭代实现，无须使用递归。</p>
+<h2 id="对比"><a href="#对比" class="headerlink" title="对比"></a>对比</h2><p>子问题分解是一种通用的算法思路，在分治、动态规划、回溯中的侧重点不同：</p>
+<ul>
+<li>分治递归地将原问题分为多个相互独立的子问题直至最小子问题，并在回溯中合并子问题的解，最终得到原问题的解。</li>
+<li>动态规划也对问题进行递归分解，但与分治算法的主要区别是，动态规划中的子问题相互依赖，在分解过程中会出现许多重叠子问题。</li>
+<li>回溯算法在尝试和回退中穷举所有可能的解，并通过剪枝避免不必要的搜索分支。原问题的解由一系列决策步骤构成，可以将每个决策步骤之前的子序列看作一个子问题。</li>
+</ul>
+<h1 id="贪心"><a href="#贪心" class="headerlink" title="贪心"></a>贪心</h1><h2 id="介绍-1"><a href="#介绍-1" class="headerlink" title="介绍"></a>介绍</h2><p>当用贪心解决问题时，每一步都可以做出一个贪婪的选择，即贪心地做出局部最优的决策，以期获得全局最优解。为什么这样的贪婪选择能够得到最优的解？需要用数学方式来证明贪婪选择是正确的。贪心和动态规划都常用于解决优化问题。它们之间存在一些相似之处，比如都依赖最优子结构性质，但工作原理不同：</p>
+<ul>
+<li>动态规划会根据之前的所有决策来考虑当前决策，并使用过去子问题的解来构建当前子问题的解</li>
+<li>贪心不会考虑过去的决策，而是一路向前地进行贪心选择，不断缩小问题范围，直至问题被解决</li>
+</ul>
+<p>如果绳子的长度大于 5，则每次都需剪出一段长度为 3 的绳子。如果剩下的绳子的长度仍然大于 5，接着剪出一段长度为 3 的绳子。重复这个步骤，直到剩下的绳子的长度小于 5。剪出一段长度为 3 的绳子，就是我们<strong>在每一步做出的贪婪选择</strong>。为什么这样的贪婪选择能得到最优解？这是应用贪心时，都需要问的问题：<strong>需要用数学方式来证明贪婪选择是正确的</strong>。</p>
+<p>首先，当 n ≥ 5 的时候，我们可以证明 2(n - 2) &gt; n 并且 3(n - 3) &gt; n。也就是说，当绳子剩下的长度大于或者等于 5 的时候，我们就把它剪成长度为 3 或者 2 的绳子段。另外，当 n ≥ 5 时 3(n - 3) ≥ 2 (n - 2)，因此我们应该尽可能地多剪长度为 3 的绳子段。前面证明的前提是 n ≥ 5。那么当绳子的长度为 4 呢？在长度为 4 的绳子上剪一刀，有两种可能的结果: 2 × 2 &gt; 1 × 3，同时 2 × 2 = 4，也就是说，当绳子长度为 4 时其实没有必要剪，只是题目的要求是至少要剪一刀。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">cuttingRope</span>(<span class="hljs-params">n</span>) </span>&#123;<br>  <span class="hljs-keyword">if</span> (n &lt;= <span class="hljs-number">3</span>) <span class="hljs-keyword">return</span> n - <span class="hljs-number">1</span>;<br>  <span class="hljs-comment">// 下面内容可以加上也可以去掉</span><br>  <span class="hljs-comment">// else if (n == 4) &#123;</span><br>  <span class="hljs-comment">//   return 4</span><br>  <span class="hljs-comment">// &#125;</span><br>  <span class="hljs-keyword">else</span> &#123;<br>    <span class="hljs-keyword">let</span> num = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">while</span> (n &gt;= <span class="hljs-number">5</span>) &#123;<br>      n = n - <span class="hljs-number">3</span>;<br>      num++;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">Math</span>.pow(<span class="hljs-number">3</span>, num) * n;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<h2 id="爬楼梯问题"><a href="#爬楼梯问题" class="headerlink" title="爬楼梯问题"></a>爬楼梯问题</h2><blockquote>
-<p>假设你正在爬楼梯，需要 n 阶你才能到达楼顶。<br>每次可以爬 1 或 2 个台阶，有多少种不同的方法可以爬到楼顶？（n 是一个正整数）</p>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// 递归</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">climbStairs</span>(<span class="hljs-params">n</span>) </span>&#123;<br>  <span class="hljs-keyword">return</span> n &lt;= <span class="hljs-number">2</span> ? n : <span class="hljs-built_in">arguments</span>.callee(n - <span class="hljs-number">1</span>) + <span class="hljs-built_in">arguments</span>.callee(n - <span class="hljs-number">2</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>或</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">cuttingRope</span>(<span class="hljs-params">n</span>) </span>&#123;<br>  <span class="hljs-keyword">if</span> (n &lt;= <span class="hljs-number">3</span>) &#123;<br>    <span class="hljs-keyword">return</span> n - <span class="hljs-number">1</span>;<br>  &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (n % <span class="hljs-number">3</span> === <span class="hljs-number">0</span>) &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">3</span> ** (n / <span class="hljs-number">3</span>);<br>  &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (n % <span class="hljs-number">3</span> === <span class="hljs-number">1</span>) &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">3</span> ** (<span class="hljs-built_in">Math</span>.floor(n / <span class="hljs-number">3</span>) - <span class="hljs-number">1</span>) * <span class="hljs-number">2</span> * <span class="hljs-number">2</span>;<br>  &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (n % <span class="hljs-number">3</span> === <span class="hljs-number">2</span>) &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">3</span> ** <span class="hljs-built_in">Math</span>.floor(n / <span class="hljs-number">3</span>) * <span class="hljs-number">2</span>;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// 循环</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">climbStairs</span>(<span class="hljs-params">n</span>) </span>&#123;<br>  <span class="hljs-keyword">let</span> a = <span class="hljs-number">1</span>,<br>    b = <span class="hljs-number">2</span>,<br>    sum;<br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">1</span>; i &lt; n; i++) &#123;<br>    sum = a + b;<br>    a = b;<br>    b = sum;<br>  &#125;<br>  <span class="hljs-keyword">return</span> a;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="适用"><a href="#适用" class="headerlink" title="适用"></a>适用</h2><p>一般情况下，贪心算法的适用情况分以下两种：</p>
+<ul>
+<li>可以保证找到最优解：贪心在这种情况下往往是最优选择，因为它往往比回溯、动态规划更高效</li>
+<li>可以找到近似最优解：贪心在这种情况下也是可用的。对于很多复杂问题来说，寻找全局最优解非常困难，能以较高效率找到次优解也是非常不错的</li>
+</ul>
+<p>相较于动态规划，贪心算法的使用条件更加苛刻，其主要关注问题的两个性质：</p>
+<ul>
+<li>贪心选择性质：只有当局部最优选择始终可以导致全局最优解时，贪心算法才能保证得到最优解</li>
+<li>最优子结构：原问题的最优解包含子问题的最优解</li>
+</ul>
+<p>探究贪心选择性质的判断方法，虽然描述看上去比较简单，但是实际上对于许多问题，证明贪心选择性质并非易事。</p>
 
                 
               </div>
@@ -605,8 +639,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>递归循环</div>
-      <div>https://xuekeven.github.io/2021/09/07/递归和循环/</div>
+      <div>动态规划和贪心</div>
+      <div>https://xuekeven.github.io/2021/09/07/动态规划和贪心/</div>
     </div>
     <div class="license-meta">
       
@@ -655,9 +689,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2021/09/07/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%92%8C%E8%B4%AA%E5%A9%AA%E7%AE%97%E6%B3%95/" title="动态规划和贪婪算法">
+                      <a href="/2021/09/08/%E6%B5%8F%E8%A7%88%E5%99%A8%E9%9D%A2%E8%AF%95%E9%A2%98/" title="浏览器面试题">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">动态规划和贪婪算法</span>
+                        <span class="hidden-mobile">浏览器面试题</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -665,8 +699,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2021/09/06/JavaScript%E7%A8%80%E7%96%8F%E6%95%B0%E7%BB%84%E4%B8%8E%E5%AF%86%E9%9B%86%E6%95%B0%E7%BB%84/" title="JavaScript稀疏数组与密集数组">
-                        <span class="hidden-mobile">JavaScript稀疏数组与密集数组</span>
+                      <a href="/2021/09/07/%E8%BF%AD%E4%BB%A3%E9%80%92%E5%BD%92/" title="迭代递归">
+                        <span class="hidden-mobile">迭代递归</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
