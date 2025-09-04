@@ -29,7 +29,7 @@
 <meta property="og:description" content="参考：https:&#x2F;&#x2F;juejin.cn&#x2F;post&#x2F;6844903685122703367https:&#x2F;&#x2F;juejin.cn&#x2F;post&#x2F;6844903638532358151 概念Cross-Site Scripting（跨站脚本攻击）简称 XSS，是一种代码注入攻击。攻击者通过在目标网站当中注入恶意脚本，使之在用户的浏览器上运行。利用这些恶意脚本，攻击者可以获取用户的敏感信息如 Cookie、s">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-08-07T12:00:00.000Z">
-<meta property="article:modified_time" content="2025-08-25T14:30:00.488Z">
+<meta property="article:modified_time" content="2025-09-02T02:07:42.632Z">
 <meta property="article:author" content="Keven">
 <meta property="article:tag" content="浏览器">
 <meta property="article:tag" content="网络安全">
@@ -485,7 +485,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2025年8月25日 晚上
+                    本文最后更新于 2025年9月2日 上午
                   
                 
               </p>
@@ -495,8 +495,8 @@
                 
                 <p>参考：<br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903685122703367">https://juejin.cn/post/6844903685122703367</a><br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903638532358151">https://juejin.cn/post/6844903638532358151</a></p>
 <h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><p>Cross-Site Scripting（跨站脚本攻击）简称 XSS，是一种代码注入攻击。攻击者通过在目标网站当中注入恶意脚本，使之在用户的浏览器上运行。利用这些恶意脚本，攻击者可以获取用户的敏感信息如 Cookie、sessionID 等内容，进而危害数据安全。</p>
-<p>为了和 CSS 区分，这里把攻击的第一个字母改成了 X，于是叫做 XSS。XSS 的本质是恶意代码未经过滤，与网站正常的代码混在一起，浏览器无法分辨哪些脚本是可信的，导致恶意脚本被执行。由于直接在用户的终端执行，恶意代码能够直接获取用户的信息，或者利用这些信息冒充用户向网站发起攻击者定义的请求。</p>
-<p>在部分情况下，由于输入的限制，注入的恶意脚本比较短。但可以通过引入外部的脚本，并由浏览器执行来完成比较复杂的攻击策略。不仅是业务上用户生产的内容可以进行注入，包括 URL 上参数等都可以是攻击的来源。因此在处理输入时，以下内容都不可信：</p>
+<p>为了和 CSS 区分，这里把攻击的第一个字母改成了 X，于是叫做 XSS。<strong>XSS 的本质是恶意代码未经过滤，与网站正常的代码混在一起，浏览器无法分辨哪些脚本是可信的，导致恶意脚本被执行</strong>。由于直接在用户的终端执行，恶意代码能够直接获取用户的信息，或者利用这些信息冒充用户向网站发起攻击者定义的请求。</p>
+<p>在部分情况下，由于输入的限制，注入的恶意脚本比较短。但可以通过引入外部的脚本，并由浏览器执行来完成比较复杂的攻击策略。不仅是业务上用户生产的内容可以进行注入，包括 URL 上参数等都可以是攻击的来源。<strong>因此在处理输入时，以下内容都不可信</strong>：</p>
 <ul>
 <li>来自用户生成的内容（UGC）</li>
 <li>来自第三方的链接</li>
@@ -734,7 +734,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2025年8月25日</div>
+          <div>2025年9月2日</div>
         </div>
       
       
