@@ -29,7 +29,7 @@
 <meta property="og:description" content="Demo：https:&#x2F;&#x2F;github.com&#x2F;xuekeven&#x2F;learn_web&#x2F;blob&#x2F;main&#x2F;dome&#x2F;CSS&#x2F;居中_元素水平居中.htmlhttps:&#x2F;&#x2F;github.com&#x2F;xuekeven&#x2F;learn_web&#x2F;blob&#x2F;main&#x2F;dome&#x2F;CSS&#x2F;居中_元素垂直居中.htmlhttps:&#x2F;&#x2F;github.com&#x2F;xuekeven&#x2F;learn_web&#x2F;blob&#x2F;main&#x2F;dome&#x2F;">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-10-03T02:00:00.000Z">
-<meta property="article:modified_time" content="2025-08-07T06:16:05.988Z">
+<meta property="article:modified_time" content="2025-09-06T14:39:46.059Z">
 <meta property="article:author" content="Keven">
 <meta property="article:tag" content="CSS">
 <meta name="twitter:card" content="summary_large_image">
@@ -327,7 +327,7 @@
         aria-expanded="true"
       >
         编程语言
-        <span class="list-group-count">(35)</span>
+        <span class="list-group-count">(34)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
@@ -354,7 +354,7 @@
         aria-expanded="true"
       >
         CSS
-        <span class="list-group-count">(13)</span>
+        <span class="list-group-count">(12)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
@@ -398,15 +398,6 @@
         <a href="/2021/10/03/CSS%E5%B1%85%E4%B8%AD/" title="CSS居中"
            class="list-group-item list-group-item-action
            active">
-          <span class="category-post">CSS居中</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2021/10/03/CSS%E5%B1%85%E4%B8%AD%20copy/" title="CSS居中"
-           class="list-group-item list-group-item-action
-           ">
           <span class="category-post">CSS居中</span>
         </a>
       
@@ -792,7 +783,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2025年8月7日 下午
+                    本文最后更新于 2025年9月6日 晚上
                   
                 
               </p>
@@ -836,7 +827,7 @@
 </ul>
 <p><code>display: table-cell</code>会使元素表现类似一个表格中的单元格 td，这个特性可以实现文字的垂直居中效果。同时它也会破坏一些 CSS 属性，使用 table-cell 时最好不要与 float 和<code>position: absolute</code>一起使用，设置了 table-cell 的元素对高度和宽度高度敏感，对 margin 设置无效，可以响应 padding 设置，表现几乎类似一个 td 元素。</p>
 <h3 id="定位-calc-1"><a href="#定位-calc-1" class="headerlink" title="定位 + calc()"></a>定位 + calc()</h3><p>针对子元素是块级元素， <strong>知道</strong> 子元素高度。</p>
-<p>对父元素设置<code>position: relative</code><br>对子元素设置<code>position: absolute; top: calc(50% - widht/2)</code></p>
+<p>对父元素设置<code>position: relative</code><br>对子元素设置<code>position: absolute; top: calc(50% - hight/2)</code></p>
 <h3 id="定位-负-margin-1"><a href="#定位-负-margin-1" class="headerlink" title="定位 + 负 margin"></a>定位 + 负 margin</h3><p>针对子元素是块级元素， <strong>知道</strong> 子元素高度。</p>
 <p>对父元素设置<code>position: relative</code><br>对子元素设置<code>position: absolute; top: 50%; margin-top: - width/2</code></p>
 <h3 id="定位-margin-1"><a href="#定位-margin-1" class="headerlink" title="定位 + margin"></a>定位 + margin</h3><p>针对子元素是块级元素， <strong>不知道</strong> 子元素高度。</p>
@@ -848,11 +839,11 @@
 <h3 id="网格布局-1"><a href="#网格布局-1" class="headerlink" title="网格布局"></a>网格布局</h3><p>针对子元素是块级元素， <strong>不知道</strong> 子元素高度。</p>
 <p>对父元素设置<code>display: grid; align-content: center</code>；或者<br>对父元素设置<code>display: grid; align-items: center</code>；或者<br>对父元素设置<code>display: grid</code>、对子元素设置<code>align-self: center</code></p>
 <h2 id="水平垂直居中"><a href="#水平垂直居中" class="headerlink" title="水平垂直居中"></a>水平垂直居中</h2><h3 id="定位-calc-2"><a href="#定位-calc-2" class="headerlink" title="定位 + calc()"></a>定位 + calc()</h3><p>针对子元素是块级元素， <strong>知道</strong> 子元素高度和宽度。</p>
-<p>对父元素设置<code>position: relative</code><br>对子元素设置<code>position: absolute; top: calc(50% - widht/2); left: calc(50% - width/2)</code></p>
+<p>对父元素设置<code>position: relative</code><br>对子元素设置<code>position: absolute; top: calc(50% - hight/2); left: calc(50% - width/2)</code></p>
 <h3 id="定位-负-margin-2"><a href="#定位-负-margin-2" class="headerlink" title="定位 + 负 margin"></a>定位 + 负 margin</h3><p>针对子元素是块级元素， <strong>知道</strong> 子元素高度和宽度。</p>
 <p>对父元素设置<code>position: relative</code><br>对子元素设置<code>position: absolute; top: 50%; left: 50%; margin: -height/2 0 0 - width/2</code></p>
 <h3 id="定位-margin-2"><a href="#定位-margin-2" class="headerlink" title="定位 + margin"></a>定位 + margin</h3><p>针对子元素是块级元素， <strong>不知道</strong> 子元素高度和宽度。</p>
-<p>对父元素设置<code>position: relative</code><br>对子元素设置<code>position: absolute; top: 0; left: 0; top: 0; bottom: 0; margin: auto</code></p>
+<p>对父元素设置<code>position: relative</code><br>对子元素设置<code>position: absolute; top: 0; left: 0; right: 0; bottom: 0; margin: auto</code></p>
 <h3 id="定位-transform-2"><a href="#定位-transform-2" class="headerlink" title="定位 + transform"></a>定位 + transform</h3><p>针对子元素是块级元素， <strong>不知道</strong> 子元素高度和宽度。</p>
 <p>对父元素设置<code>position: relative</code><br>对子元素设置<code>position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%)</code></p>
 <h3 id="弹性布局-2"><a href="#弹性布局-2" class="headerlink" title="弹性布局"></a>弹性布局</h3><p>针对子元素是块级元素， <strong>不知道</strong> 子元素高度和宽度。</p>
@@ -930,7 +921,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2025年8月7日</div>
+          <div>2025年9月6日</div>
         </div>
       
       
@@ -971,8 +962,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2021/10/03/CSS%E5%B1%85%E4%B8%AD%20copy/" title="CSS居中">
-                        <span class="hidden-mobile">CSS居中</span>
+                      <a href="/2021/10/03/CSS%E6%B5%AE%E5%8A%A8/" title="CSS浮动">
+                        <span class="hidden-mobile">CSS浮动</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
