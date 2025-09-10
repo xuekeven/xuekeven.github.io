@@ -21,15 +21,15 @@
   <meta name="author" content="Keven">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Vue 优点 轻量级框架。只关注视图层，体积小。 组件化。把单页应用中的模块拆分为一个个单独组件，清晰明了。 响应式数据绑定。自动对页面某些数据的变化做出同步响应。 使用虚拟 DOM 算法。使用虚拟 DOM 配合 diff 算法，提高性能。  为什么 data 必须是函数对象为引用类型，若 data 是对象，当复用组件时，同样的组件的 data 都指向同一个数据对象，使用相同的内存地址，导致数据混">
+    <meta name="description" content="React 和 Vue 的 diff 比较🎯 React 的 Diff 算法 思想：提出了一套通用的“调和（Reconciliation）”算法。 规则： 同级比较：只比较同层节点，不跨层。 不同类型 → 直接替换：比如 &lt;div&gt; → &lt;span&gt;，直接卸载重建。 同类型 → 递归比较子节点。 列表 diff：通过 key 来判断节点是否复用，否则可能导致整个列表重建。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Vue2面试题">
-<meta property="og:url" content="https://xuekeven.github.io/2021/08/20/Vue2%E9%9D%A2%E8%AF%95%E9%A2%98/index.html">
+<meta property="og:title" content="Vue面试题">
+<meta property="og:url" content="https://xuekeven.github.io/2021/08/20/Vue%E9%9D%A2%E8%AF%95%E9%A2%98/index.html">
 <meta property="og:site_name" content="Keven&#39;s Blog">
-<meta property="og:description" content="Vue 优点 轻量级框架。只关注视图层，体积小。 组件化。把单页应用中的模块拆分为一个个单独组件，清晰明了。 响应式数据绑定。自动对页面某些数据的变化做出同步响应。 使用虚拟 DOM 算法。使用虚拟 DOM 配合 diff 算法，提高性能。  为什么 data 必须是函数对象为引用类型，若 data 是对象，当复用组件时，同样的组件的 data 都指向同一个数据对象，使用相同的内存地址，导致数据混">
+<meta property="og:description" content="React 和 Vue 的 diff 比较🎯 React 的 Diff 算法 思想：提出了一套通用的“调和（Reconciliation）”算法。 规则： 同级比较：只比较同层节点，不跨层。 不同类型 → 直接替换：比如 &lt;div&gt; → &lt;span&gt;，直接卸载重建。 同类型 → 递归比较子节点。 列表 diff：通过 key 来判断节点是否复用，否则可能导致整个列表重建。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-08-20T08:00:00.000Z">
-<meta property="article:modified_time" content="2025-08-27T08:46:08.602Z">
+<meta property="article:modified_time" content="2025-09-10T16:53:53.053Z">
 <meta property="article:author" content="Keven">
 <meta property="article:tag" content="面试题">
 <meta property="article:tag" content="Vue">
@@ -37,7 +37,7 @@
   
   
   
-  <title>Vue2面试题 - Keven&#39;s Blog</title>
+  <title>Vue面试题 - Keven&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -239,7 +239,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Vue2面试题"></span>
+            <span id="subtitle" data-typed-text="Vue面试题"></span>
           
         </div>
 
@@ -267,7 +267,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.5k 字
+          2.1k 字
         
       </span>
     
@@ -278,7 +278,7 @@
         
         
         
-          10 分钟
+          14 分钟
         
       </span>
     
@@ -469,10 +469,10 @@
     
       
       
-        <a href="/2021/08/20/Vue2%E9%9D%A2%E8%AF%95%E9%A2%98/" title="Vue2面试题"
+        <a href="/2021/08/20/Vue%E9%9D%A2%E8%AF%95%E9%A2%98/" title="Vue面试题"
            class="list-group-item list-group-item-action
            active">
-          <span class="category-post">Vue2面试题</span>
+          <span class="category-post">Vue面试题</span>
         </a>
       
     
@@ -498,12 +498,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Vue2面试题</h1>
+            <h1 id="seo-header">Vue面试题</h1>
             
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2025年8月27日 下午
+                    本文最后更新于 2025年9月11日 凌晨
                   
                 
               </p>
@@ -511,7 +511,33 @@
             
               <div class="markdown-body">
                 
-                <h1 id="Vue-优点"><a href="#Vue-优点" class="headerlink" title="Vue 优点"></a>Vue 优点</h1><ul>
+                <h1 id="React-和-Vue-的-diff-比较"><a href="#React-和-Vue-的-diff-比较" class="headerlink" title="React 和 Vue 的 diff 比较"></a>React 和 Vue 的 diff 比较</h1><h2 id="🎯-React-的-Diff-算法"><a href="#🎯-React-的-Diff-算法" class="headerlink" title="🎯 React 的 Diff 算法"></a>🎯 React 的 Diff 算法</h2><ul>
+<li>思想：提出了一套通用的“调和（Reconciliation）”算法。</li>
+<li>规则：<ul>
+<li>同级比较：只比较同层节点，不跨层。</li>
+<li>不同类型 → 直接替换：比如 <code>&lt;div&gt;</code> → <code>&lt;span&gt;</code>，直接卸载重建。</li>
+<li>同类型 → 递归比较子节点。</li>
+<li>列表 diff：通过 key 来判断节点是否复用，否则可能导致整个列表重建。</li>
+</ul>
+</li>
+<li>特点：借助 Fiber 架构，更新过程可被中断和恢复，更适合大规模应用的性能优化。</li>
+</ul>
+<p>👉 React diff 更强调 通用性，需要开发者手动优化（比如 key 的使用）。</p>
+<h2 id="🎯-Vue-的-Diff-算法"><a href="#🎯-Vue-的-Diff-算法" class="headerlink" title="🎯 Vue 的 Diff 算法"></a>🎯 Vue 的 Diff 算法</h2><ul>
+<li>思想：Vue 的 diff 更“收敛”，基于双端比较策略，主要用于模板生成的虚拟 DOM 更新。</li>
+<li>规则：<ul>
+<li>同样是 同层比较，不跨层。</li>
+<li>子节点比较时，Vue 使用 双指针法（从头尾往中间对比），尽量复用节点，减少 DOM 操作。</li>
+<li>处理列表时，同样依赖 key，但 Vue 内部会尽量移动/复用节点，减少销毁重建。</li>
+</ul>
+</li>
+<li>特点：因为 Vue 模板更可控，它的 diff 算法做了更多的优化假设，性能上通常比 React 更高效。</li>
+</ul>
+<p>👉 Vue diff 更强调 工程化的优化，利用模板编译结果做静态标记（Vue3 里尤其明显）。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>React 和 Vue 都是基于虚拟 DOM 的 diff，但思路有区别：<br>React 的 diff 更通用，基于 Fiber 架构，同层比较，如果节点类型不同就直接替换，同类型则递归对子节点 diff，列表更新依赖 key。它强调灵活性，但需要开发者注意优化。<br>Vue 的 diff 更工程化，基于双端比较算法，能更高效地移动和复用节点；另外 Vue 编译阶段会做静态标记，比如 Vue3 的静态提升，可以跳过不变的部分，从而减少 diff 的开销。<br>总体来说，React 更通用，Vue 更收敛和高效。</p>
+<h1 id="Vue3-对比-Vue2"><a href="#Vue3-对比-Vue2" class="headerlink" title="Vue3 对比 Vue2"></a>Vue3 对比 Vue2</h1><p>Vue2 的响应式是基于 Object.defineProperty，而 Vue3 使用 Proxy 实现，能够更好地处理新增属性和深层对象。<br>在编程方式上，Vue2 主要是 Options API，而 Vue3 引入了 Composition API，逻辑更清晰，也更方便复用。<br>此外，Vue3 的性能有提升，打包体积更小，对 TypeScript 的支持也更好。<br>虽然我还没有完整的 Vue3 项目经验，但我平时会关注 Vue3 的特性，并且相信凭借 Vue2 的经验，可以很快上手 Vue3。</p>
+<p>其它参考：<a target="_blank" rel="noopener" href="https://juejin.cn/post/6892295955844956167">https://juejin.cn/post/6892295955844956167</a></p>
+<h1 id="Vue-优点"><a href="#Vue-优点" class="headerlink" title="Vue 优点"></a>Vue 优点</h1><ul>
 <li>轻量级框架。只关注视图层，体积小。</li>
 <li>组件化。把单页应用中的模块拆分为一个个单独组件，清晰明了。</li>
 <li>响应式数据绑定。自动对页面某些数据的变化做出同步响应。</li>
@@ -606,7 +632,6 @@
 <h1 id="nextTick-使用场景和原理"><a href="#nextTick-使用场景和原理" class="headerlink" title="$nextTick 使用场景和原理"></a>$nextTick 使用场景和原理</h1><p>Vue 实现响应式并不是数据发生变化后 DOM 立即变化，而是按照一定的策略来进行 DOM 更新。$nextTick 是在下次 DOM 更新循环结束之后执行延迟回调，在修改数据之后使用 $nextTick，则可以在回调中获取更新后的 DOM。跟全局方法 Vue.nextTick 一样，不同的是回调的 this 自动绑定到调用它的实例上。</p>
 <h1 id="Vue-数据双向绑定原理"><a href="#Vue-数据双向绑定原理" class="headerlink" title="Vue 数据双向绑定原理"></a>Vue 数据双向绑定原理</h1><p>参考：<a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903903822086151">https://juejin.cn/post/6844903903822086151</a><br>Demo：<a target="_blank" rel="noopener" href="https://github.com/xuekeven/js-learn_vue2/tree/main/15.vue%E5%8E%9F%E7%90%86%E9%AB%98%E7%BA%A7%E6%95%99%E7%A8%8B/%E5%93%8D%E5%BA%94%E6%80%A7/4.mini-observer.html">https://github.com/xuekeven/js-learn_vue2/tree/main/15.vue原理高级教程/响应性/4.mini-observer.html</a></p>
 <p>1、实现一个监听器 Observer ，用来劫持并监听所有属性，如果属性发生变化，就通知订阅者；<br>2、实现一个订阅器 Dep，用来收集订阅者，对监听器 Observer 和 订阅者 Watcher 进行统一管理；<br>3、实现一个订阅者 Watcher，可以收到属性的变化通知并执行相应的方法，从而更新视图；<br>4、实现一个解析器 Compile，可以解析每个节点的相关指令，对模板数据和订阅器进行初始化。</p>
-<h1 id="Vue3-对比-Vue2"><a href="#Vue3-对比-Vue2" class="headerlink" title="Vue3 对比 Vue2"></a>Vue3 对比 Vue2</h1><p>参考：<a target="_blank" rel="noopener" href="https://juejin.cn/post/6892295955844956167">https://juejin.cn/post/6892295955844956167</a></p>
 <h1 id="观察者模式与发布订阅模式"><a href="#观察者模式与发布订阅模式" class="headerlink" title="观察者模式与发布订阅模式"></a>观察者模式与发布订阅模式</h1><p>参考：<a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903603107266567">https://juejin.cn/post/6844903603107266567</a></p>
 
                 
@@ -662,8 +687,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Vue2面试题</div>
-      <div>https://xuekeven.github.io/2021/08/20/Vue2面试题/</div>
+      <div>Vue面试题</div>
+      <div>https://xuekeven.github.io/2021/08/20/Vue面试题/</div>
     </div>
     <div class="license-meta">
       
@@ -681,7 +706,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2025年8月27日</div>
+          <div>2025年9月11日</div>
         </div>
       
       
