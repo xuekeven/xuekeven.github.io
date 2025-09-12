@@ -29,7 +29,7 @@
 <meta property="og:description" content="参考：https:&#x2F;&#x2F;juejin.cn&#x2F;post&#x2F;6981673766178783262https:&#x2F;&#x2F;juejin.cn&#x2F;post&#x2F;6892994632968306702https:&#x2F;&#x2F;juejin.cn&#x2F;post&#x2F;7326268947069534234 概念原因为了提高网页的加载速度和响应速度，给用户带来更好的体验和用户满意度，同时还能减少服务器的负载压力，以此来提升程序的稳定性，具体有以下">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-08-12T12:00:00.000Z">
-<meta property="article:modified_time" content="2025-08-29T04:08:39.839Z">
+<meta property="article:modified_time" content="2025-09-12T07:12:26.369Z">
 <meta property="article:author" content="Keven">
 <meta property="article:tag" content="浏览器">
 <meta property="article:tag" content="性能优化">
@@ -267,7 +267,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.5k 字
+          1.2k 字
         
       </span>
     
@@ -278,7 +278,7 @@
         
         
         
-          10 分钟
+          8 分钟
         
       </span>
     
@@ -467,7 +467,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2025年8月29日 中午
+                    本文最后更新于 2025年9月12日 下午
                   
                 
               </p>
@@ -568,7 +568,6 @@
 <li><a target="_blank" rel="noopener" href="https://juejin.cn/post/7040792659153125413">CSS Tree Shaking</a></li>
 <li>使用 Code Splitting 将大 chunk 拆分成多个小 chunk</li>
 <li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6892994632968306702#heading-25">按需加载（懒加载）</a></li>
-<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/7326268947069534234#heading-13">择优选择三方库依赖</a></li>
 </ul>
 </li>
 <li><p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6892994632968306702#heading-18">图片优化</a>/<a target="_blank" rel="noopener" href="https://juejin.cn/post/6981673766178783262#heading-4">图像策略</a></p>
@@ -609,22 +608,16 @@
 </li>
 <li><p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6981673766178783262#heading-8">CSS 策略</a></p>
 <ul>
-<li>避免为 ID 选择器添加多余选择器</li>
-<li>避免使用标签选择器代替类选择器</li>
-<li>避免使用通配选择器，只对目标节点声明规则</li>
-<li>避免重复匹配重复定义，关注可继承属性</li>
 <li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6892994632968306702#heading-43">尽量降低 CSS 选择器复杂度</a></li>
 <li><a target="_blank" rel="noopener" href="https://juejin.cn/post/7333066398175903781">尽量用<code>link</code>少用<code>@import</code></a></li>
 <li><a target="_blank" rel="noopener" href="https://juejin.cn/post/7326268947069534234#heading-9">尽量用 CSS 实现动画</a></li>
-<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6892994632968306702#heading-47">使用 <code>transform</code> 和 <code>opacity</code> 实现动画</a></li>
-<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6892994632968306702#heading-46">使用弹性布局</a></li>
+<li>GPU 加速（<a target="_blank" rel="noopener" href="https://juejin.cn/post/6892994632968306702#heading-47">使用<code>transform</code>和<code>opacity</code>实现动画</a>）</li>
 </ul>
 </li>
 <li><p>阻塞策略</p>
 <ul>
 <li>使用骨架屏</li>
 <li>静态生成首屏文件</li>
-<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6892994632968306702#heading-8">使用服务端渲染（SSR）</a></li>
 <li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903815758479374#heading-15">尽量减少 JS 操作 DOM 和 CSSOM</a></li>
 <li><a href="/2021/09/12/%E9%A1%B5%E9%9D%A2%E8%A7%A3%E6%9E%90%E6%B8%B2%E6%9F%93/#%E4%B8%BA%E4%BB%80%E4%B9%88-JS-%E6%96%87%E4%BB%B6%E4%BC%9A%E9%98%BB%E5%A1%9E%E9%A1%B5%E9%9D%A2%E6%B8%B2%E6%9F%93">CSS 文件放在头部，JS 文件放在底部或使用 <code>defer/async</code></a></li>
 </ul>
@@ -641,10 +634,7 @@
 <ul>
 <li>事件节流/防抖（<code>throttle / debounce</code>）</li>
 <li><a target="_blank" rel="noopener" href="https://juejin.cn/post/7326268947069534234#heading-8">启用事件委托</a></li>
-<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6892994632968306702#heading-33">if-else 对比 switch</a></li>
-<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6892994632968306702#heading-38">使用位操作</a></li>
 <li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6892994632968306702#heading-42">尽量使用原生方法，执行效率高</a></li>
-<li>虚拟列表（virtual scroll）</li>
 </ul>
 </li>
 <li><p>内存管理</p>
@@ -658,26 +648,9 @@
 <li>耗时计算放到 Worker 中，避免阻塞 UI</li>
 </ul>
 </li>
-<li><p>React</p>
-<ul>
-<li>使用 hook 添加依赖</li>
-<li>使用 memo 函数</li>
-</ul>
+<li><p>React（见对应下的分类）</p>
 </li>
-<li><p>Vue</p>
-<ul>
-<li>合理使用 watch 和 computed，数据变化就会执行，避免使用太多，减少不必要的开销</li>
-<li>合理使用组件，提高代码可维护性的同事也会降低代码组件的耦合性</li>
-<li>使用路由懒加载，在需要的时候才会进行加载，避免一次性加载太多路由，导致页面阻塞</li>
-<li>使用 Vuex 缓存数据</li>
-<li>合理使用 mixins，抽离公共代码封装成模块，避免重复代码。</li>
-<li>合理使用 v-if 、v-show</li>
-<li>v-for 不要和 v-if 一起使用，v-for 的优先级会比 v-if 高</li>
-<li>v-for 中不要用 index 做 key，要保证 key 的唯一性</li>
-<li>使用异步组件，避免一次性加载太多组件</li>
-<li>避免使用 v-html，存在安全问风险和性能问题，可以使用 v-text</li>
-<li>使用 keep-alive 缓存组件，避免组件重复加载</li>
-</ul>
+<li><p>Vue（见对应下的分类）</p>
 </li>
 </ul>
 <h1 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h1><ul>
@@ -751,7 +724,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2025年8月29日</div>
+          <div>2025年9月12日</div>
         </div>
       
       

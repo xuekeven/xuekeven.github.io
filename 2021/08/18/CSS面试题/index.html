@@ -21,15 +21,15 @@
   <meta name="author" content="Keven">
   <meta name="keywords" content="">
   
-    <meta name="description" content="行内元素块级元素参考： https:&#x2F;&#x2F;juejin.cn&#x2F;post&#x2F;6964644611822190622https:&#x2F;&#x2F;juejin.cn&#x2F;post&#x2F;6953854318580203533    diaplay 特点 宽度、高度 内边距、外边距    block 块级元素，元素的前和后换行 有效 都有效   inline 行内元素，元素的前和后不换行 无效 水平方向有效，竖直方向无效   in">
+    <meta name="description" content="CSS 如何启用 GPU 加速GPU 加速原理：  启用 CSS 来进行 GPU 加速的核心原理是将元素的渲染工作从 CPU 转移到 GPU 上，利用 GPU 强大的并行计算能力来处理图形操作，从而提升动画的流畅度和性能。浏览器在渲染时会为某些特定 CSS 属性作用的元素创建一个独立的合成层（Compositor Layer）。这个层的渲染和变换（如位移、旋转、透明度变化）可由 GPU 直接处理，">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CSS面试题">
 <meta property="og:url" content="https://xuekeven.github.io/2021/08/18/CSS%E9%9D%A2%E8%AF%95%E9%A2%98/index.html">
 <meta property="og:site_name" content="Keven&#39;s Blog">
-<meta property="og:description" content="行内元素块级元素参考： https:&#x2F;&#x2F;juejin.cn&#x2F;post&#x2F;6964644611822190622https:&#x2F;&#x2F;juejin.cn&#x2F;post&#x2F;6953854318580203533    diaplay 特点 宽度、高度 内边距、外边距    block 块级元素，元素的前和后换行 有效 都有效   inline 行内元素，元素的前和后不换行 无效 水平方向有效，竖直方向无效   in">
+<meta property="og:description" content="CSS 如何启用 GPU 加速GPU 加速原理：  启用 CSS 来进行 GPU 加速的核心原理是将元素的渲染工作从 CPU 转移到 GPU 上，利用 GPU 强大的并行计算能力来处理图形操作，从而提升动画的流畅度和性能。浏览器在渲染时会为某些特定 CSS 属性作用的元素创建一个独立的合成层（Compositor Layer）。这个层的渲染和变换（如位移、旋转、透明度变化）可由 GPU 直接处理，">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-08-18T02:00:00.000Z">
-<meta property="article:modified_time" content="2025-08-07T06:17:34.550Z">
+<meta property="article:modified_time" content="2025-09-11T10:27:15.180Z">
 <meta property="article:author" content="Keven">
 <meta property="article:tag" content="面试题">
 <meta property="article:tag" content="CSS">
@@ -267,7 +267,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.1k 字
+          2.4k 字
         
       </span>
     
@@ -278,7 +278,7 @@
         
         
         
-          14 分钟
+          16 分钟
         
       </span>
     
@@ -784,7 +784,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2025年8月7日 下午
+                    本文最后更新于 2025年9月11日 晚上
                   
                 
               </p>
@@ -792,7 +792,18 @@
             
               <div class="markdown-body">
                 
-                <h1 id="行内元素块级元素"><a href="#行内元素块级元素" class="headerlink" title="行内元素块级元素"></a>行内元素块级元素</h1><p>参考：</p>
+                <h1 id="CSS-如何启用-GPU-加速"><a href="#CSS-如何启用-GPU-加速" class="headerlink" title="CSS 如何启用 GPU 加速"></a>CSS 如何启用 GPU 加速</h1><p>GPU 加速原理：</p>
+<ul>
+<li>启用 CSS 来进行 GPU 加速的核心原理是将元素的渲染工作从 CPU 转移到 GPU 上，利用 GPU 强大的并行计算能力来处理图形操作，从而提升动画的流畅度和性能。浏览器在渲染时会为某些特定 CSS 属性作用的元素创建一个独立的合成层（Compositor Layer）。这个层的渲染和变换（如位移、旋转、透明度变化）可由 GPU 直接处理，避免了触发浏览器耗时的重排（Layout） 和重绘（Paint） 过程，只需要在最后的合成阶段进行合并，效率极高。</li>
+<li>通过把元素提升到单独的“合成图层”，交给 GPU 去处理绘制和合成操作，从而避免频繁的重绘（Paint），性能更流畅。</li>
+</ul>
+<p>启用 GPU 加速的方法：</p>
+<ul>
+<li>transform 属性。如 <code>transform: translateZ(0);</code> 或 <code>transform: translate3d(0, 0, 0);</code> 会把元素提升为 GPU 图层，动画执行在 GPU 上更流畅。</li>
+<li>opacity 动画。opacity 变化也可以触发 GPU 合成，而不是 CPU 重绘。</li>
+<li>will-change 提示。<code>will-change: transform, opacity;</code> 会提前告诉浏览器哪些属性要变动，浏览器会为其分配独立图层，优化渲染。</li>
+</ul>
+<h1 id="行内元素块级元素"><a href="#行内元素块级元素" class="headerlink" title="行内元素块级元素"></a>行内元素块级元素</h1><p>参考：</p>
 <p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6964644611822190622">https://juejin.cn/post/6964644611822190622</a><br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6953854318580203533">https://juejin.cn/post/6953854318580203533</a></p>
 <table>
 <thead>
@@ -1009,7 +1020,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2025年8月7日</div>
+          <div>2025年9月11日</div>
         </div>
       
       
