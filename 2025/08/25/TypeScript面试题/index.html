@@ -29,7 +29,7 @@
 <meta property="og:description" content="更多：https:&#x2F;&#x2F;juejin.cn&#x2F;post&#x2F;7321542773076082699 TS 和 JS优点：  静态类型检查。类型错误在 JS 里只能在运行时发现，但是 TS 在编译阶段就能发现，比如访问了不存在的属性，调用方法参数类型不对，这些在写代码时就会报错 更强的 IDE 支持。比如自动补全、跳转到定义和类型推导，开发效率更高 在团队协作中很有价值。因为接口契约清晰，维护成本更低 TS">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-08-25T14:00:00.000Z">
-<meta property="article:modified_time" content="2025-09-12T07:12:22.325Z">
+<meta property="article:modified_time" content="2025-09-15T08:09:10.350Z">
 <meta property="article:author" content="Keven">
 <meta property="article:tag" content="面试题">
 <meta property="article:tag" content="TypeScript">
@@ -267,7 +267,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          3.1k 字
+          3.3k 字
         
       </span>
     
@@ -278,7 +278,7 @@
         
         
         
-          20 分钟
+          21 分钟
         
       </span>
     
@@ -784,7 +784,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2025年9月12日 下午
+                    本文最后更新于 2025年9月15日 下午
                   
                 
               </p>
@@ -914,6 +914,44 @@
 <td align="center">“这里绝对不应该到达”</td>
 </tr>
 </tbody></table>
+<h2 id="元组和数组"><a href="#元组和数组" class="headerlink" title="元组和数组"></a>元组和数组</h2><table>
+<thead>
+<tr>
+<th align="center">特性</th>
+<th align="center">数组（Array）</th>
+<th align="center">元组（Tuple）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><strong>长度</strong></td>
+<td align="center">不固定</td>
+<td align="center">固定（或有限制）</td>
+</tr>
+<tr>
+<td align="center"><strong>元素类型</strong></td>
+<td align="center">必须统一（或联合类型）</td>
+<td align="center">每个位置类型可不同</td>
+</tr>
+<tr>
+<td align="center"><strong>适用场景</strong></td>
+<td align="center">存放一类数据集合</td>
+<td align="center">表示一组有顺序的、结构化的数据</td>
+</tr>
+<tr>
+<td align="center"><strong>示例</strong></td>
+<td align="center"><code>[1, 2, 3]</code></td>
+<td align="center"><code>[string, number] → [&quot;Tom&quot;, 25]</code></td>
+</tr>
+</tbody></table>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> tuple: [string, number] = [<span class="hljs-string">&quot;Tom&quot;</span>, <span class="hljs-number">25</span>];<br><br>tuple[<span class="hljs-number">0</span>]; <span class="hljs-comment">// string</span><br>tuple[<span class="hljs-number">1</span>]; <span class="hljs-comment">// number</span><br>tuple.push(<span class="hljs-string">&quot;extra&quot;</span>); <span class="hljs-comment">// ✅（特殊情况 TS 容许，但最好避免）</span><br>tuple[<span class="hljs-number">2</span>]; <span class="hljs-comment">// ❌ 不在定义范围内</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="Omit-和-Pick"><a href="#Omit-和-Pick" class="headerlink" title="Omit 和 Pick"></a>Omit 和 Pick</h2><ul>
+<li><code>Pick&lt;T, K&gt;</code> 是从类型 T 里挑选出一部分属性，生成新类型</li>
+<li><code>Omit&lt;T, K&gt;</code> 是从类型 T 里排除掉一部分属性，生成新类型</li>
+</ul>
+<p>它们的作用正好相反，一个是“取子集”，一个是“去子集”。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">interface</span> Person &#123;<br>  <span class="hljs-attr">name</span>: <span class="hljs-built_in">string</span>;<br>  age: <span class="hljs-built_in">number</span>;<br>  gender: <span class="hljs-built_in">string</span>;<br>&#125;<br><br><span class="hljs-comment">// Pick 出 name 和 age</span><br><span class="hljs-keyword">type</span> PersonBase = Pick&lt;Person, <span class="hljs-string">&quot;name&quot;</span> | <span class="hljs-string">&quot;age&quot;</span>&gt;;<br><br><span class="hljs-comment">// Omit 掉 age</span><br><span class="hljs-keyword">type</span> WithoutAge = Omit&lt;Person, <span class="hljs-string">&quot;age&quot;</span>&gt;;<br><br><span class="hljs-comment">/*</span><br><span class="hljs-comment">PersonBase 等价于：</span><br><span class="hljs-comment">&#123;</span><br><span class="hljs-comment">  name: string;</span><br><span class="hljs-comment">  age: number;</span><br><span class="hljs-comment">&#125;</span><br><span class="hljs-comment">*/</span><br><br><span class="hljs-comment">/*</span><br><span class="hljs-comment">WithoutAge 等价于：</span><br><span class="hljs-comment">&#123;</span><br><span class="hljs-comment">  name: string;</span><br><span class="hljs-comment">  gender: string;</span><br><span class="hljs-comment">&#125;</span><br><span class="hljs-comment">*/</span><br></code></pre></td></tr></table></figure>
+
 <h2 id="联合类型和交叉类型"><a href="#联合类型和交叉类型" class="headerlink" title="联合类型和交叉类型"></a>联合类型和交叉类型</h2><table>
 <thead>
 <tr>
@@ -977,9 +1015,6 @@
 <li>内置：包括数字(number)，字符串(string)，布尔值(boolean)，无效(void)，空值(null)，未定义(undefined)，bigint，符号（symbol）</li>
 <li>用户定义：包括枚举(enums)，类(classes)，接口(interfaces)，数组(arrays)，元组(tuple)</li>
 </ul>
-<h2 id="Omit-类型作用"><a href="#Omit-类型作用" class="headerlink" title="Omit 类型作用"></a><a target="_blank" rel="noopener" href="https://juejin.cn/post/7162011064819777567#heading-30">Omit 类型作用</a></h2><p>Omit 以一个类型为基础支持剔除某些属性，然后返回一个新类型：</p>
-<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-comment">// 示例</span><br>Omit&lt;Type, Keys&gt;;<br><br><span class="hljs-comment">// 使用</span><br><span class="hljs-keyword">interface</span> Todo &#123;<br>  <span class="hljs-attr">title</span>: <span class="hljs-built_in">string</span>;<br>  description: <span class="hljs-built_in">string</span>;<br>  completed: <span class="hljs-built_in">boolean</span>;<br>  createdAt: <span class="hljs-built_in">number</span>;<br>&#125;<br><br><span class="hljs-keyword">type</span> TodoPreview = Omit&lt;Todo, <span class="hljs-string">&quot;description&quot;</span>&gt;;<br></code></pre></td></tr></table></figure>
-
 <h2 id="TS-中什么是装饰器"><a href="#TS-中什么是装饰器" class="headerlink" title="TS 中什么是装饰器"></a><a target="_blank" rel="noopener" href="https://juejin.cn/post/7162011064819777567#heading-8">TS 中什么是装饰器</a></h2><p>是一种特殊类型的声明，它能过被附加到类声明，方法，属性或者参数上，可以修改类的行为。</p>
 <p>通俗的来说就是一个方法，可以注入到类，方法，属性参数上来扩展类，属性，方法，参数的功能。装饰器的分类: 类装饰器、属性装饰器、方法装饰器、参数装饰器等。</p>
 <h2 id="解释-TS-的-mixin"><a href="#解释-TS-的-mixin" class="headerlink" title="解释 TS 的 mixin"></a><a target="_blank" rel="noopener" href="https://juejin.cn/post/7162011064819777567#heading-23">解释 TS 的 mixin</a></h2><p>在 TS 里，Mixin 是一种通过组合来复用类逻辑的方式。比如我有 Jumpable 和 Runnable 这样的类，我可以把它们混入到 SuperPerson 里，让它同时拥有 jump 和 run 方法。</p>
@@ -1097,7 +1132,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2025年9月12日</div>
+          <div>2025年9月15日</div>
         </div>
       
       

@@ -31,7 +31,7 @@
 <meta property="og:image" content="https://xuekeven.github.io/images/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84Event%20Loop.png">
 <meta property="og:image" content="https://xuekeven.github.io/images/Node.js%E7%9A%84Event%20Loop.png">
 <meta property="article:published_time" content="2021-08-20T09:30:00.000Z">
-<meta property="article:modified_time" content="2025-09-09T10:00:08.866Z">
+<meta property="article:modified_time" content="2025-09-15T08:00:24.067Z">
 <meta property="article:author" content="Keven">
 <meta property="article:tag" content="浏览器">
 <meta property="article:tag" content="JavaScript">
@@ -271,7 +271,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          3k 字
+          3.2k 字
         
       </span>
     
@@ -282,7 +282,7 @@
         
         
         
-          19 分钟
+          20 分钟
         
       </span>
     
@@ -788,7 +788,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2025年9月9日 晚上
+                    本文最后更新于 2025年9月15日 下午
                   
                 
               </p>
@@ -884,6 +884,30 @@
 <li>主线程内的任务执行完毕后就去 Event Queue 取出里面的回调函数放入主线程执行</li>
 </ul>
 <p>主线程不断循环上述执行流程，就是浏览器的 Event Loop。</p>
+<h3 id="DOM-操作"><a href="#DOM-操作" class="headerlink" title="DOM 操作"></a>DOM 操作</h3><p>浏览器的事件循环（Event Loop）大致分成几个关键步骤：</p>
+<ul>
+<li>执行同步代码（主线程调用栈）<ul>
+<li>JS 是单线程的，先执行同步任务</li>
+</ul>
+</li>
+<li>处理微任务（microtask）队列<ul>
+<li>比如：Promise.then、queueMicrotask、MutationObserver</li>
+</ul>
+</li>
+<li>渲染（Render/Update the rendering）<ul>
+<li>浏览器会把 DOM 的变化更新到页面上，也就是布局（Layout）+ 绘制（Paint）</li>
+</ul>
+</li>
+<li>继续处理后续宏任务（macrotask）队列<ul>
+<li>比如：setTimeout、setInterval、setImmediate、requestAnimationFrame</li>
+</ul>
+</li>
+</ul>
+<p>针对 DOM 操作：</p>
+<ul>
+<li>在 JS 里修改 DOM（比如 <code>element.style.color = &#39;red&#39;</code>），这个修改会立即反映到 DOM 树/渲染树的内存数据结构中</li>
+<li>浏览器不会立刻把页面渲染出来，而是等到本轮的宏任务和所有微任务都执行完，进入渲染阶段时统一更新页面</li>
+</ul>
 <h3 id="计时不准"><a href="#计时不准" class="headerlink" title="计时不准"></a>计时不准</h3><p>Event Loop 的这个流程里面其实还是隐藏了一些问题的，最典型的就是总是先执行同步任务，然后再执行 Event Queue 里面的回调函数。这个特性就直接影响定时器的执行。如果主线程长时间被阻塞，定时器的回调函数就没机会执行，即使执行时间也不准。所以写代码时一定不要长时间占用主线程。</p>
 <h3 id="setTimeout"><a href="#setTimeout" class="headerlink" title="setTimeout"></a>setTimeout</h3><p>setTimeout 用于指定在一定时间后执行某些代码。实际上，是指经过指定的时间后，把要执行的任务加入 Event Queue 中，又因为是单线程任务要一个一个执行，所以如果前面的任务需要的时间太久，那么只能等着，导致真正的延迟时间大于指定的时间。</p>
 <p>setTimeout(fn, 0) 含义是，指定某个任务在主线程最早可得的空闲时间执行，意思就是不用再等多少时间，只要主线程执行栈内的同步任务全部执行完成，栈为空就马上执行这儿任务。但是即便主线程为空，0 毫秒实际上也达不到。根据 HTML 的标准最低是 4 毫秒。而且 setTimeout(fn, 0) 会被强制改为 setTimeout(fn, 1)。</p>
@@ -1031,7 +1055,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2025年9月9日</div>
+          <div>2025年9月15日</div>
         </div>
       
       

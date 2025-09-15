@@ -29,7 +29,7 @@
 <meta property="og:description" content="0.1+0.2原因JavaScript 使用 IEEE 754 标准的 64 位（1 位符号位 + 11 位指数位 + 52 位尾数位）双精度浮点数来存储数字，这种格式无法精确表示某些十进制小数，特别是像 0.1 和 0.2 这样的分数。 0.1 和 0.2 转成二进制时是无限循环小数，存储时只能截断到 52 位尾数位所以有精度损失，导致两者相加时也有损失：  0.1 ≈ 0.0001100110">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-07-16T04:00:00.000Z">
-<meta property="article:modified_time" content="2025-09-13T13:15:11.637Z">
+<meta property="article:modified_time" content="2025-09-15T07:36:33.209Z">
 <meta property="article:author" content="Keven">
 <meta property="article:tag" content="面试题">
 <meta property="article:tag" content="JavaScript">
@@ -267,7 +267,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          3.7k 字
+          4k 字
         
       </span>
     
@@ -278,7 +278,7 @@
         
         
         
-          23 分钟
+          26 分钟
         
       </span>
     
@@ -784,7 +784,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2025年9月13日 晚上
+                    本文最后更新于 2025年9月15日 下午
                   
                 
               </p>
@@ -988,6 +988,55 @@
 <li>只能在 async 函数内部使用</li>
 </ul>
 <p><a target="_blank" rel="noopener" href="https://juejin.cn/post/7195358576364224568">手写实现 async</a></p>
+<h1 id="使用-Map-和-Set"><a href="#使用-Map-和-Set" class="headerlink" title="使用 Map 和 Set"></a>使用 Map 和 Set</h1><p>✅ 什么时候用 Map</p>
+<ul>
+<li>需要存储键值对，并且键不一定是字符串</li>
+<li>比如：<ul>
+<li>缓存：<code>map.set(obj, computedValue)</code></li>
+<li>记录用户 ID → 用户信息：<code>map.set(userId, userInfo)</code></li>
+<li>做索引表、映射关系</li>
+</ul>
+</li>
+</ul>
+<p>✅ 什么时候用 Set</p>
+<ul>
+<li>只需要存储一组唯一值</li>
+<li>比如：<ul>
+<li>数组去重 <code>[...new Set(arr)]</code></li>
+<li>判断值是否存在：<code>set.has(x)</code></li>
+<li>集合运算：交集、并集、差集</li>
+</ul>
+</li>
+</ul>
+<p>✅ 总结</p>
+<ul>
+<li>Map 用来存储键值对，键可以是任意类型，适合做缓存、索引表等需要高效映射的场景</li>
+<li>Set 用来存储一组唯一值，适合数组去重、存在性判断、集合运算等场景</li>
+</ul>
+<h1 id="继承调用-super"><a href="#继承调用-super" class="headerlink" title="继承调用 super"></a>继承调用 super</h1><ul>
+<li><p><code>super()</code> → 只能在 <code>constructor</code> 里用，作用是调用父类构造函数，初始化 <code>this</code></p>
+<ul>
+<li>使用 <code>extends</code> 继承时，如果子类没有写 <code>constructor</code>，JS 会自动调用 <code>super(...args)</code></li>
+<li>如果子类定义了 <code>constructor</code> 则必须在其里面先调用 <code>super()</code>，否则无法初始化 <code>this</code><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Parent</span> </span>&#123;<br>  <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">name</span>)</span> &#123;<br>    <span class="hljs-built_in">this</span>.name = name;<br>  &#125;<br>&#125;<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Child</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Parent</span> </span>&#123;<br>  <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">name, age</span>)</span> &#123;<br>    <span class="hljs-comment">// ❌ 如果不写 super，会报错：</span><br>    <span class="hljs-comment">// ReferenceError: Must call super constructor</span><br>    <span class="hljs-built_in">super</span>(name); <span class="hljs-comment">// ✅ 必须调用</span><br>    <span class="hljs-built_in">this</span>.age = age;<br>  &#125;<br>&#125;<br><span class="hljs-keyword">const</span> c = <span class="hljs-keyword">new</span> Child(<span class="hljs-string">&quot;Tom&quot;</span>, <span class="hljs-number">18</span>);<br><span class="hljs-built_in">console</span>.log(c.name, c.age); <span class="hljs-comment">// Tom 18</span><br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p><code>super.xxx()</code> → 在 子类的普通方法 或 静态方法 中用，用来调用父类对应的方法</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Parent</span> </span>&#123;<br>  <span class="hljs-function"><span class="hljs-title">sayHello</span>(<span class="hljs-params"></span>)</span> &#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;Hello from Parent&quot;</span>);<br>  &#125;<br>&#125;<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Child</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Parent</span> </span>&#123;<br>  <span class="hljs-function"><span class="hljs-title">sayHello</span>(<span class="hljs-params"></span>)</span> &#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;Hello from Child&quot;</span>);<br>    <span class="hljs-built_in">super</span>.sayHello(); <span class="hljs-comment">// 调用父类的方法</span><br>  &#125;<br>&#125;<br><span class="hljs-keyword">const</span> c = <span class="hljs-keyword">new</span> Child();<br>c.sayHello();<br><span class="hljs-comment">// Hello from Child</span><br><span class="hljs-comment">// Hello from Parent</span><br></code></pre></td></tr></table></figure></li>
+</ul>
+<h1 id="可迭代对象"><a href="#可迭代对象" class="headerlink" title="可迭代对象"></a>可迭代对象</h1><p>可迭代对象是指实现了<code>[Symbol.iterator]</code>方法属性的对象，可以用 <code>for...of</code> 循环的都是可迭代对象。类数组对象（伪数组对象）指可以通过索引属性访问元素并且拥有一个 <code>length</code> 属性的对象。可迭代对象和类数组对象并非是相互排斥的，比如，字符串既是可迭代对象又是类数组对象。</p>
+<p>迭代器模式描述了一个方案，即可以把有些结构称为“可迭代对象”（iterable），因为它们实现正式的 Iterable 接口，而且可以通过迭代器 Iterator 消费。</p>
+<h1 id="箭头函数特点"><a href="#箭头函数特点" class="headerlink" title="箭头函数特点"></a>箭头函数特点</h1><ul>
+<li>箭头函数没有没有原型对象</li>
+<li>箭头函数 this 值为其所在上下文的 this 值</li>
+<li>箭头函数箭头函数不能使用 arguments、super、new.target</li>
+<li>箭头函数不能定义生成器函数</li>
+</ul>
+<h1 id="for-in-和-for-of"><a href="#for-in-和-for-of" class="headerlink" title="for-in 和 for-of"></a>for-in 和 for-of</h1><ul>
+<li>for-in 循环：用于遍历对象的键名（数组就是遍历索引下标值）</li>
+<li>for-of 循环：用于遍历可迭代对象（Array、String、Map、Set 等），不能遍历类数组对象。使用 <code>for-of</code> 循环和 <code>Object.keys()</code>、<code>Object.vales()</code>、<code>Object.entries()</code> 配合可遍历对象</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> a = &#123; <span class="hljs-attr">sfd</span>: <span class="hljs-number">45</span>, <span class="hljs-attr">eee</span>: <span class="hljs-number">93</span> &#125;;<br><span class="hljs-keyword">const</span> b = [<span class="hljs-string">&quot;sfd&quot;</span>, <span class="hljs-number">45</span>, <span class="hljs-string">&quot;eee&quot;</span>, <span class="hljs-number">93</span>];<br><span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> s <span class="hljs-keyword">in</span> a) &#123;<br>  <span class="hljs-built_in">console</span>.log(s);<br>&#125;<br><span class="hljs-comment">// sfd</span><br><span class="hljs-comment">// eee</span><br><span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> s <span class="hljs-keyword">in</span> b) &#123;<br>  <span class="hljs-built_in">console</span>.log(s);<br>&#125;<br><span class="hljs-comment">// 0</span><br><span class="hljs-comment">// 1</span><br><span class="hljs-comment">// 2</span><br><span class="hljs-comment">// 3</span><br><span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> s <span class="hljs-keyword">of</span> a) &#123;<br>  <span class="hljs-built_in">console</span>.log(s);<br>&#125;<br><span class="hljs-comment">// Uncaught TypeError: a is not iterable</span><br><span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> s <span class="hljs-keyword">of</span> <span class="hljs-built_in">Object</span>.keys(a)) &#123;<br>  <span class="hljs-built_in">console</span>.log(s);<br>&#125;<br><span class="hljs-comment">// sfd</span><br><span class="hljs-comment">// eee</span><br></code></pre></td></tr></table></figure>
+
 <h1 id="判断对象属性"><a href="#判断对象属性" class="headerlink" title="判断对象属性"></a>判断对象属性</h1><p>字符串属性：</p>
 <table>
 <thead>
@@ -1054,20 +1103,6 @@
 <li><code>Object.getOwnPropertySymbols()</code>返回名字是符号的自有属性，无论是否可枚举</li>
 <li><code>Reflect.ownKeys()</code>返回所有属性名，包括可枚举和不可枚举属性，以及字符串属性和符号属性</li>
 </ul>
-<h1 id="可迭代对象"><a href="#可迭代对象" class="headerlink" title="可迭代对象"></a>可迭代对象</h1><p>可迭代对象是指实现了<code>[Symbol.iterator]</code>方法属性的对象，可以用 <code>for...of</code> 循环的都是可迭代对象。类数组对象（伪数组对象）指可以通过索引属性访问元素并且拥有一个 <code>length</code> 属性的对象。可迭代对象和类数组对象并非是相互排斥的，比如，字符串既是可迭代对象又是类数组对象。</p>
-<p>迭代器模式描述了一个方案，即可以把有些结构称为“可迭代对象”（iterable），因为它们实现正式的 Iterable 接口，而且可以通过迭代器 Iterator 消费。</p>
-<h1 id="箭头函数特点"><a href="#箭头函数特点" class="headerlink" title="箭头函数特点"></a>箭头函数特点</h1><ul>
-<li>箭头函数没有没有原型对象</li>
-<li>箭头函数 this 值为其所在上下文的 this 值</li>
-<li>箭头函数箭头函数不能使用 arguments、super、new.target</li>
-<li>箭头函数不能定义生成器函数</li>
-</ul>
-<h1 id="for-in-和-for-of"><a href="#for-in-和-for-of" class="headerlink" title="for-in 和 for-of"></a>for-in 和 for-of</h1><ul>
-<li>for-in 循环：用于遍历对象的键名（数组就是遍历索引下标值）</li>
-<li>for-of 循环：用于遍历可迭代对象（Array、String、Map、Set 等），不能遍历类数组对象。使用 <code>for-of</code> 循环和 <code>Object.keys()</code>、<code>Object.vales()</code>、<code>Object.entries()</code> 配合可遍历对象</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> a = &#123; <span class="hljs-attr">sfd</span>: <span class="hljs-number">45</span>, <span class="hljs-attr">eee</span>: <span class="hljs-number">93</span> &#125;;<br><span class="hljs-keyword">const</span> b = [<span class="hljs-string">&quot;sfd&quot;</span>, <span class="hljs-number">45</span>, <span class="hljs-string">&quot;eee&quot;</span>, <span class="hljs-number">93</span>];<br><span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> s <span class="hljs-keyword">in</span> a) &#123;<br>  <span class="hljs-built_in">console</span>.log(s);<br>&#125;<br><span class="hljs-comment">// sfd</span><br><span class="hljs-comment">// eee</span><br><span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> s <span class="hljs-keyword">in</span> b) &#123;<br>  <span class="hljs-built_in">console</span>.log(s);<br>&#125;<br><span class="hljs-comment">// 0</span><br><span class="hljs-comment">// 1</span><br><span class="hljs-comment">// 2</span><br><span class="hljs-comment">// 3</span><br><span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> s <span class="hljs-keyword">of</span> a) &#123;<br>  <span class="hljs-built_in">console</span>.log(s);<br>&#125;<br><span class="hljs-comment">// Uncaught TypeError: a is not iterable</span><br><span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> s <span class="hljs-keyword">of</span> <span class="hljs-built_in">Object</span>.keys(a)) &#123;<br>  <span class="hljs-built_in">console</span>.log(s);<br>&#125;<br><span class="hljs-comment">// sfd</span><br><span class="hljs-comment">// eee</span><br></code></pre></td></tr></table></figure>
-
 <h1 id="判断数据类型"><a href="#判断数据类型" class="headerlink" title="判断数据类型"></a>判断数据类型</h1><ul>
 <li>typeof 操作符</li>
 <li>instanceof 操作符</li>
@@ -1183,7 +1218,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2025年9月13日</div>
+          <div>2025年9月15日</div>
         </div>
       
       
