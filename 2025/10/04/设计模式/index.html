@@ -21,23 +21,23 @@
   <meta name="author" content="Keven">
   <meta name="keywords" content="">
   
-    <meta name="description" content="参考：https:&#x2F;&#x2F;juejin.cn&#x2F;post&#x2F;6981673766178783262https:&#x2F;&#x2F;juejin.cn&#x2F;post&#x2F;6892994632968306702https:&#x2F;&#x2F;juejin.cn&#x2F;post&#x2F;7326268947069534234 指标Web 通用LCPLCP（Largest Contentful Paint，最大内容渲染时间）  含义：测量视口中最大文本或图片元素完成">
+    <meta name="description" content="概念设计模式（Design Pattern）是软件开发中对于常见问题的通用解决方案的总结。它不是具体的代码，而是一些可复用的设计思路和原则，帮助开发者写出更健壮、可维护、可扩展的程序。  本质：别人踩坑总结出的“最佳实践” 目的：减少重复劳动、提高代码可读性和可维护性 使用场景：当遇到类似的架构或代码问题时，直接套用成熟的模式  分类创建型模式（解决对象创建问题） 单例模式（Singleton）�">
 <meta property="og:type" content="article">
-<meta property="og:title" content="性能优化">
-<meta property="og:url" content="https://xuekeven.github.io/2025/08/12/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/index.html">
+<meta property="og:title" content="设计模式">
+<meta property="og:url" content="https://xuekeven.github.io/2025/10/04/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/index.html">
 <meta property="og:site_name" content="Keven&#39;s Blog">
-<meta property="og:description" content="参考：https:&#x2F;&#x2F;juejin.cn&#x2F;post&#x2F;6981673766178783262https:&#x2F;&#x2F;juejin.cn&#x2F;post&#x2F;6892994632968306702https:&#x2F;&#x2F;juejin.cn&#x2F;post&#x2F;7326268947069534234 指标Web 通用LCPLCP（Largest Contentful Paint，最大内容渲染时间）  含义：测量视口中最大文本或图片元素完成">
+<meta property="og:description" content="概念设计模式（Design Pattern）是软件开发中对于常见问题的通用解决方案的总结。它不是具体的代码，而是一些可复用的设计思路和原则，帮助开发者写出更健壮、可维护、可扩展的程序。  本质：别人踩坑总结出的“最佳实践” 目的：减少重复劳动、提高代码可读性和可维护性 使用场景：当遇到类似的架构或代码问题时，直接套用成熟的模式  分类创建型模式（解决对象创建问题） 单例模式（Singleton）�">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-08-12T12:00:00.000Z">
-<meta property="article:modified_time" content="2025-09-16T04:13:31.820Z">
+<meta property="article:published_time" content="2025-10-04T07:00:00.000Z">
+<meta property="article:modified_time" content="2025-10-04T07:30:09.104Z">
 <meta property="article:author" content="Keven">
-<meta property="article:tag" content="浏览器">
-<meta property="article:tag" content="性能优化">
+<meta property="article:tag" content="面试题">
+<meta property="article:tag" content="设计模式">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>性能优化 - Keven&#39;s Blog</title>
+  <title>设计模式 - Keven&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -239,7 +239,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="性能优化"></span>
+            <span id="subtitle" data-typed-text="设计模式"></span>
           
         </div>
 
@@ -255,8 +255,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-08-12 20:00" pubdate>
-          2025年8月12日 晚上
+        <time datetime="2025-10-04 15:00" pubdate>
+          2025年10月4日 下午
         </time>
       </span>
     
@@ -267,7 +267,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.3k 字
+          504 字
         
       </span>
     
@@ -278,7 +278,7 @@
         
         
         
-          9 分钟
+          4 分钟
         
       </span>
     
@@ -323,17 +323,17 @@
     
     <div class="category row nomargin-x">
       <a class="category-item 
-          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="前端工程化"
-        id="heading-93941ce1385f4ff3812a61a48670664a" role="tab" data-toggle="collapse" href="#collapse-93941ce1385f4ff3812a61a48670664a"
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="计算机基础"
+        id="heading-5a596b42154341fee9d0bdf28baa6524" role="tab" data-toggle="collapse" href="#collapse-5a596b42154341fee9d0bdf28baa6524"
         aria-expanded="true"
       >
-        前端工程化
-        <span class="list-group-count">(5)</span>
+        计算机基础
+        <span class="list-group-count">(10)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
-      <div class="category-collapse collapse show" id="collapse-93941ce1385f4ff3812a61a48670664a"
-           role="tabpanel" aria-labelledby="heading-93941ce1385f4ff3812a61a48670664a">
+      <div class="category-collapse collapse show" id="collapse-5a596b42154341fee9d0bdf28baa6524"
+           role="tabpanel" aria-labelledby="heading-5a596b42154341fee9d0bdf28baa6524">
         
         
           
@@ -343,19 +343,10 @@
     
       
       
-        <a href="/2025/08/25/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96%E9%9D%A2%E8%AF%95%E9%A2%98/" title="前端工程化面试题"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">前端工程化面试题</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2025/08/12/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" title="性能优化"
+        <a href="/2025/10/04/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" title="设计模式"
            class="list-group-item list-group-item-action
            active">
-          <span class="category-post">性能优化</span>
+          <span class="category-post">设计模式</span>
         </a>
       
     
@@ -368,17 +359,17 @@
     
     <div class="category-sub row nomargin-x">
       <a class="category-subitem collapsed
-          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="Git"
-        id="heading-0bcc70105ad279503e31fe7b3f47b665" role="tab" data-toggle="collapse" href="#collapse-0bcc70105ad279503e31fe7b3f47b665"
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="数据结构"
+        id="heading-0fea7c47d93da5689f31820ee525b367" role="tab" data-toggle="collapse" href="#collapse-0fea7c47d93da5689f31820ee525b367"
         aria-expanded="false"
       >
-        Git
-        <span class="list-group-count">(2)</span>
+        数据结构
+        <span class="list-group-count">(1)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
-      <div class="category-collapse collapse " id="collapse-0bcc70105ad279503e31fe7b3f47b665"
-           role="tabpanel" aria-labelledby="heading-0bcc70105ad279503e31fe7b3f47b665">
+      <div class="category-collapse collapse " id="collapse-0fea7c47d93da5689f31820ee525b367"
+           role="tabpanel" aria-labelledby="heading-0fea7c47d93da5689f31820ee525b367">
         
         
           
@@ -387,19 +378,10 @@
     
       
       
-        <a href="/2021/08/07/Git%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/" title="Git基本使用"
+        <a href="/2025/08/16/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" title="数据结构"
            class="list-group-item list-group-item-action
            ">
-          <span class="category-post">Git基本使用</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2021/08/07/Git%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/" title="Git常用方法"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">Git常用方法</span>
+          <span class="category-post">数据结构</span>
         </a>
       
     
@@ -414,17 +396,17 @@
     
     <div class="category-sub row nomargin-x">
       <a class="category-subitem collapsed
-          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="Webpack"
-        id="heading-c64e0f7d4e01e48e693c9c5638b5e8f7" role="tab" data-toggle="collapse" href="#collapse-c64e0f7d4e01e48e693c9c5638b5e8f7"
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="算法"
+        id="heading-046a899ee7a6ec88d370211a518c9e80" role="tab" data-toggle="collapse" href="#collapse-046a899ee7a6ec88d370211a518c9e80"
         aria-expanded="false"
       >
-        Webpack
-        <span class="list-group-count">(1)</span>
+        算法
+        <span class="list-group-count">(6)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
-      <div class="category-collapse collapse " id="collapse-c64e0f7d4e01e48e693c9c5638b5e8f7"
-           role="tabpanel" aria-labelledby="heading-c64e0f7d4e01e48e693c9c5638b5e8f7">
+      <div class="category-collapse collapse " id="collapse-046a899ee7a6ec88d370211a518c9e80"
+           role="tabpanel" aria-labelledby="heading-046a899ee7a6ec88d370211a518c9e80">
         
         
           
@@ -433,10 +415,101 @@
     
       
       
-        <a href="/2021/09/25/Webpack%E9%9D%A2%E8%AF%95%E9%A2%98/" title="Webpack面试题"
+        <a href="/2025/08/31/%E5%88%86%E6%B2%BB%E5%9B%9E%E6%BA%AF/" title="分治回溯"
            class="list-group-item list-group-item-action
            ">
-          <span class="category-post">Webpack面试题</span>
+          <span class="category-post">分治回溯</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/09/07/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%92%8C%E8%B4%AA%E5%BF%83/" title="动态规划和贪心"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">动态规划和贪心</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/09/18/%E5%8D%81%E5%A4%A7%E6%8E%92%E5%BA%8F/" title="十大排序"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">十大排序</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/09/20/%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90/" title="复杂度分析"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">复杂度分析</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/09/19/%E6%90%9C%E7%B4%A2%E6%9F%A5%E6%89%BE/" title="搜索查找"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">搜索查找</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/09/07/%E8%BF%AD%E4%BB%A3%E9%80%92%E5%BD%92/" title="迭代递归"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">迭代递归</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="网络协议"
+        id="heading-813593fa19f82e0bb193bb42a7d9c556" role="tab" data-toggle="collapse" href="#collapse-813593fa19f82e0bb193bb42a7d9c556"
+        aria-expanded="false"
+      >
+        网络协议
+        <span class="list-group-count">(2)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-813593fa19f82e0bb193bb42a7d9c556"
+           role="tabpanel" aria-labelledby="heading-813593fa19f82e0bb193bb42a7d9c556">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2021/08/20/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE%E9%9D%A2%E8%AF%95%E9%A2%98/" title="网络协议面试题"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">网络协议面试题</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2025/08/25/%E7%BD%91%E7%BB%9C%E8%AE%BE%E7%BD%AE%E5%92%8C%E8%B0%83%E8%AF%95/" title="网络设置和抓包"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">网络设置和抓包</span>
         </a>
       
     
@@ -462,12 +535,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">性能优化</h1>
+            <h1 id="seo-header">设计模式</h1>
             
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2025年9月16日 中午
+                    本文最后更新于 2025年10月4日 下午
                   
                 
               </p>
@@ -475,217 +548,44 @@
             
               <div class="markdown-body">
                 
-                <p>参考：<br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6981673766178783262">https://juejin.cn/post/6981673766178783262</a><br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6892994632968306702">https://juejin.cn/post/6892994632968306702</a><br><a target="_blank" rel="noopener" href="https://juejin.cn/post/7326268947069534234">https://juejin.cn/post/7326268947069534234</a></p>
-<h1 id="指标"><a href="#指标" class="headerlink" title="指标"></a>指标</h1><h2 id="Web-通用"><a href="#Web-通用" class="headerlink" title="Web 通用"></a>Web 通用</h2><h3 id="LCP"><a href="#LCP" class="headerlink" title="LCP"></a>LCP</h3><p>LCP（Largest Contentful Paint，<strong>最大内容渲染时间</strong>）</p>
+                <h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><p>设计模式（Design Pattern）是软件开发中对于常见问题的通用解决方案的总结。它不是具体的代码，而是一些可复用的设计思路和原则，帮助开发者写出更健壮、可维护、可扩展的程序。</p>
 <ul>
-<li>含义：测量视口中最大文本或图片元素完成渲染的时间（例如首屏横幅图或标题）</li>
-<li>理想值：≤ 2.5 秒（超过 4 秒为“差”）</li>
-<li>影响因素：<ul>
-<li>服务器响应慢（TTFB 高）</li>
-<li>渲染阻塞的 JS/CSS 文件</li>
-<li>未优化的图片/视频资源</li>
+<li>本质：别人踩坑总结出的“最佳实践”</li>
+<li>目的：减少重复劳动、提高代码可读性和可维护性</li>
+<li>使用场景：当遇到类似的架构或代码问题时，直接套用成熟的模式</li>
 </ul>
-</li>
-<li>优化方向：<ul>
-<li>预加载关键图片：<code>&lt;link rel=&quot;preload&quot; as=&quot;image&quot; href=&quot;banner.jpg&quot;&gt;</code></li>
-<li>开启 HTTP/2 或 CDN 加速资源传输</li>
-<li>服务端渲染（SSR）减少客户端渲染延迟</li>
+<h1 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h1><h2 id="创建型模式（解决对象创建问题）"><a href="#创建型模式（解决对象创建问题）" class="headerlink" title="创建型模式（解决对象创建问题）"></a>创建型模式（解决对象创建问题）</h2><ul>
+<li>单例模式（Singleton）👉 确保一个类只有一个实例</li>
+<li>工厂方法（Factory Method）👉 定义创建对象的接口</li>
+<li>抽象工厂（Abstract Factory）👉 生产一系列相关对象</li>
+<li>建造者（Builder）👉 复杂对象的分步骤创建</li>
+<li>原型模式（Prototype）👉 通过拷贝已有对象来创建新对象</li>
 </ul>
-</li>
+<h2 id="结构型模式（解决对象之间的组合问题）"><a href="#结构型模式（解决对象之间的组合问题）" class="headerlink" title="结构型模式（解决对象之间的组合问题）"></a>结构型模式（解决对象之间的组合问题）</h2><ul>
+<li>适配器（Adapter）👉 接口不兼容的类协同工作</li>
+<li>装饰器（Decorator）👉 动态地为对象添加新功能</li>
+<li>代理（Proxy）👉 控制对对象的访问</li>
+<li>外观（Facade）👉 提供统一的接口来访问子系统</li>
+<li>组合（Composite）👉 树形结构处理（如文件夹-文件）</li>
+<li>桥接（Bridge）👉 分离抽象和实现，提高扩展性</li>
+<li>享元（Flyweight）👉 共享对象，减少内存开销</li>
 </ul>
-<h3 id="FCP"><a href="#FCP" class="headerlink" title="FCP"></a>FCP</h3><p>FCP（First Contentful Paint，<strong>首次内容绘制时间</strong>）</p>
-<ul>
-<li>含义：记录浏览器首次渲染任何内容的时间（如文字、图片），标志着用户感知到页面开始加载</li>
-<li>理想值：≤ 1.8 秒（超过 3 秒为“差”）</li>
-<li>与 LCP 区别：FCP 关注“首次开始渲染”，LCP 关注“最大内容渲染完成”</li>
-<li>优化方向：<ul>
-<li>内联关键 CSS（Critical CSS）</li>
-<li>异步加载非阻塞 JS（async/defer）</li>
-<li>减少首屏 DOM 复杂度</li>
+<h2 id="行为型模式（解决对象之间的职责分配问题）"><a href="#行为型模式（解决对象之间的职责分配问题）" class="headerlink" title="行为型模式（解决对象之间的职责分配问题）"></a>行为型模式（解决对象之间的职责分配问题）</h2><ul>
+<li>观察者（Observer）👉 发布-订阅机制（如事件监听）</li>
+<li>策略（Strategy）👉 算法可以互换</li>
+<li>命令（Command）👉 将请求封装成对象（如撤销/重做）</li>
+<li>状态（State）👉 对象在不同状态下有不同行为</li>
+<li>责任链（Chain of Responsibility）👉 请求沿着链传递，直到被处理</li>
+<li>迭代器（Iterator）👉 顺序访问集合对象</li>
+<li>模板方法（Template Method）👉 定义算法骨架，子类实现细节</li>
+<li>访问者（Visitor）</li>
+<li>解释器（Interpreter）</li>
+<li>中介者（Mediator）</li>
+<li>备忘录（Memento）</li>
 </ul>
-</li>
-</ul>
-<h3 id="FID"><a href="#FID" class="headerlink" title="FID"></a>FID</h3><p>FID（First Input Delay，<strong>首次输入延迟</strong>）</p>
-<ul>
-<li>含义：测量用户首次交互（点击按钮、输入文本）到浏览器实际响应的时间，反映页面可交互性</li>
-<li>理想值：≤ 100 毫秒（超过 300 毫秒为“差”）</li>
-<li>根本原因：主线程被长任务（Long Tasks &gt;50ms）阻塞（如解析大 JS 文件）</li>
-<li>优化方向：<ul>
-<li>拆分长任务：用 requestIdleCallback 分片执行</li>
-<li>优化第三方脚本（广告、分析工具）</li>
-<li>使用 Web Workers 处理计算任务</li>
-</ul>
-</li>
-</ul>
-<h3 id="CLS"><a href="#CLS" class="headerlink" title="CLS"></a>CLS</h3><p>CLS（Cumulative Layout Shift，<strong>累积布局偏移</strong>）</p>
-<ul>
-<li>含义：量化页面意外布局移动的严重程度（例如图片加载后挤压下方内容）</li>
-<li>计算方式：CLS = 影响比例 × 位移距离（视口高度占比）</li>
-<li>理想值：≤ 0.1（超过 0.25 为“差”）</li>
-<li>常见场景：<ul>
-<li>未设置尺寸的图片/广告位</li>
-<li>动态插入的页面元素（如弹窗）</li>
-<li>异步加载的字体 37。</li>
-</ul>
-</li>
-<li>优化方向：<ul>
-<li>为媒体元素设置宽高：<code>&lt;img width=&quot;600&quot; height=&quot;400&quot; src=&quot;...&quot;&gt;</code></li>
-<li>预留动态内容占位区域</li>
-<li>使用 <code>transform: scale()</code> 替代改变布局的属性</li>
-</ul>
-</li>
-</ul>
-<h2 id="移动端和-H5"><a href="#移动端和-H5" class="headerlink" title="移动端和 H5"></a>移动端和 H5</h2><ul>
-<li>弱网环境适配：2G/3G 下的加载体验</li>
-<li>首屏加载时间：H5 推荐 &lt; 3 秒</li>
-<li>白屏时间：可通过骨架屏/Loading 降低感知</li>
-<li>交互流畅度：滑动、动画是否掉帧</li>
-<li>包体积：H5 打包 JS 大小过大影响首屏</li>
-<li>功耗与内存占用：移动设备性能较弱，过重的 JS/CSS 会发热、卡顿</li>
-<li>离线/弱网可用性：是否用 Service Worker 提升</li>
-</ul>
-<h1 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h1><ul>
-<li><p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6911472693405548557#heading-5">调试工具</a></p>
-<ul>
-<li>浏览器控制台 Network（网络请求分析、DOMContentLoaded 时间、load 时间）</li>
-<li>浏览器控制台 Lighthouse（FCP、LCP、CLS）</li>
-<li>浏览器控制台 Peformance（详细分析性能）</li>
-<li>三方测试工具 webPageTest（模拟在不同地区用不同浏览器下的访问性能）</li>
-<li>webpack 开启 source-map 和 webpack-bundle-analyzer（资源打包分析）</li>
-</ul>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6911472693405548557#heading-16">监控 API</a></p>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://github.com/GoogleChrome/web-vitals/tree/main"><code>web-vitals</code></a>（FCP、LCP、CLS、FID）</li>
-<li><code>const observer = new PerformanceObserver((list) =&gt; &#123;&#125;)</code></li>
-<li><code>window.addEventListener(&#39;DOMContentLoaded&#39;, (event) =&gt; &#123;&#125;)</code></li>
-<li><code>window.addEventListener(&#39;load&#39;, (event) =&gt; &#123;&#125;)</code></li>
-</ul>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://juejin.cn/post/7028028584463695879#heading-3">建立监控体系</a></p>
-<ul>
-<li>建立监控体系</li>
-<li>确定监控指标</li>
-<li>根据信息分析</li>
-</ul>
-</li>
-</ul>
-<h1 id="方案"><a href="#方案" class="headerlink" title="方案"></a>方案</h1><p>从<strong>优化目标</strong>、<strong>优化策略</strong>两个方面来考虑，还可以了解一下<a target="_blank" rel="noopener" href="https://juejin.cn/post/6981673766178783262#heading-13">六大指标</a>。</p>
-<h2 id="优化目标"><a href="#优化目标" class="headerlink" title="优化目标"></a>优化目标</h2><table>
-<thead>
-<tr>
-<th align="center">层面</th>
-<th align="center">目标</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">加载性能</td>
-<td align="center">目标（时间层面）：LCP ≤2.5s（首屏内容渲染）、FCP ≤1.8s（首次内容绘制） <br> 策略：资源压缩、CDN 分发、预加载关键资源</td>
-</tr>
-<tr>
-<td align="center">交互体验</td>
-<td align="center">目标（时间层面）：FID ≤100ms（输入响应）、CLS ≤0.1（布局稳定性） <br> 策略：拆分长任务、避免强制同步布局、使用 will-change 触发 GPU 加速</td>
-</tr>
-<tr>
-<td align="center">资源效率</td>
-<td align="center">目标（体积层面）：JS &lt;200KB（首屏）、CSS &lt;100KB、图片体积减少 25%-50% <br> 策略：Tree Shaking、图片转 WebP/AVIF、字体子集化</td>
-</tr>
-</tbody></table>
-<h2 id="优化策略"><a href="#优化策略" class="headerlink" title="优化策略"></a>优化策略</h2><h3 id="网络传输"><a href="#网络传输" class="headerlink" title="网络传输"></a>网络传输</h3><ul>
-<li><p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6981673766178783262#heading-3">构建策略</a></p>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6892994632968306702#heading-0">合并小文件，减少 HTTP 请求</a></li>
-<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6892994632968306702#heading-17">使用 GZIP 压缩静态文件（HTML/CSS/JS/图片）</a></li>
-<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/7381739621338857523">JS Tree Shaking</a></li>
-<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/7040792659153125413">CSS Tree Shaking</a></li>
-<li>使用 Code Splitting 将大 chunk 拆分成多个小 chunk</li>
-<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6892994632968306702#heading-25">按需加载（懒加载）</a></li>
-</ul>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6892994632968306702#heading-18">图片优化</a>/<a target="_blank" rel="noopener" href="https://juejin.cn/post/6981673766178783262#heading-4">图像策略</a></p>
-<ul>
-<li>用 CSS 代替图片</li>
-<li>图片延迟加载</li>
-<li>响应式图片</li>
-<li>调整图片大小</li>
-<li>降低图片质量</li>
-<li>使用 webp 格式</li>
-</ul>
-</li>
-<li><p>请求策略</p>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6911472693405548557#heading-23">减少 Cookie 传输</a></li>
-<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6892994632968306702#heading-1">使用 HTTP2</a></li>
-</ul>
-</li>
-<li><p>分发策略</p>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6892994632968306702#heading-11">静态资源使用 CDN</a></li>
-</ul>
-</li>
-<li><p>缓存策略</p>
-<ul>
-<li><a href="/2021/08/20/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE%E9%9D%A2%E8%AF%95%E9%A2%98/#%E7%BC%93%E5%AD%98%E6%9C%BA%E5%88%B6">使用 HTTP 缓存</a></li>
-</ul>
-</li>
-<li><p>字体优化</p>
-</li>
-</ul>
-<h3 id="页面解析渲染"><a href="#页面解析渲染" class="headerlink" title="页面解析渲染"></a>页面解析渲染</h3><ul>
-<li><p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6981673766178783262#heading-9">DOM 策略</a></p>
-<ul>
-<li>尽量减少 DOM 数量</li>
-<li>缓存 DOM 计算属性</li>
-<li>避免过多 DOM 操作</li>
-<li>使用 DOMFragment 缓存批量化 DOM 操作</li>
-</ul>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6981673766178783262#heading-8">CSS 策略</a></p>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6892994632968306702#heading-43">尽量降低 CSS 选择器复杂度</a></li>
-<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/7333066398175903781">尽量用<code>link</code>少用<code>@import</code></a></li>
-<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/7326268947069534234#heading-9">尽量用 CSS 实现动画</a></li>
-<li>GPU 加速（<a target="_blank" rel="noopener" href="https://juejin.cn/post/6892994632968306702#heading-47">使用<code>transform</code>和<code>opacity</code>实现动画</a>）</li>
-</ul>
-</li>
-<li><p>阻塞策略</p>
-<ul>
-<li>使用骨架屏</li>
-<li>静态生成首屏文件</li>
-<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903815758479374#heading-15">尽量减少 JS 操作 DOM 和 CSSOM</a></li>
-<li><a href="/2021/09/12/%E9%A1%B5%E9%9D%A2%E8%A7%A3%E6%9E%90%E6%B8%B2%E6%9F%93/#%E4%B8%BA%E4%BB%80%E4%B9%88-JS-%E6%96%87%E4%BB%B6%E4%BC%9A%E9%98%BB%E5%A1%9E%E9%A1%B5%E9%9D%A2%E6%B8%B2%E6%9F%93">CSS 文件放在头部，JS 文件放在底部或使用 <code>defer/async</code></a></li>
-</ul>
-</li>
-<li><p>回流重绘策略</p>
-<ul>
-<li><a href="/2021/09/12/%E9%A1%B5%E9%9D%A2%E8%A7%A3%E6%9E%90%E6%B8%B2%E6%9F%93/#%E5%B8%83%E5%B1%80-Render-Tree%EF%BC%88%E5%9B%9E%E6%B5%81%EF%BC%89">减少使用会导致回流的属性和方法</a></li>
-<li><a href="/2021/09/12/%E9%A1%B5%E9%9D%A2%E8%A7%A3%E6%9E%90%E6%B8%B2%E6%9F%93/#%E7%BB%98%E5%88%B6-Render-Tree%EF%BC%88%E9%87%8D%E7%BB%98%EF%BC%89">减少使用会导致重绘的属性和方法</a></li>
-</ul>
-</li>
-</ul>
-<h3 id="运行时性能"><a href="#运行时性能" class="headerlink" title="运行时性能"></a>运行时性能</h3><ul>
-<li><p>JavaScript 执行性能</p>
-<ul>
-<li>事件节流/防抖</li>
-<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/7326268947069534234#heading-8">启用事件委托</a></li>
-<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6892994632968306702#heading-42">尽量使用原生方法，执行效率高</a></li>
-</ul>
-</li>
-<li><p>内存管理</p>
-<ul>
-<li>及时清理定时器和事件监听</li>
-<li>避免内存泄漏（闭包/DOM 引用未释放）</li>
-</ul>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6892994632968306702#heading-37">使用 Web Worker</a></p>
-<ul>
-<li>耗时计算放到 Worker 中，避免阻塞 UI</li>
-</ul>
-</li>
-<li><p>React（见对应下的分类）</p>
-</li>
-<li><p>Vue（见对应下的分类）</p>
-</li>
+<h1 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h1><ul>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/7215967453929586748">前端必须掌握的 7 种设计模式</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/7249286405024923705">十大 JavaScript 设计模式让你成为编程巨匠</a></li>
 </ul>
 
                 
@@ -705,7 +605,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/" class="category-chain-item">前端工程化</a>
+  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/" class="category-chain-item">计算机基础</a>
   
   
 
@@ -720,9 +620,9 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" class="print-no-link">#浏览器</a>
+        <a href="/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/" class="print-no-link">#面试题</a>
       
-        <a href="/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" class="print-no-link">#性能优化</a>
+        <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="print-no-link">#设计模式</a>
       
     </div>
   
@@ -734,8 +634,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>性能优化</div>
-      <div>https://xuekeven.github.io/2025/08/12/性能优化/</div>
+      <div>设计模式</div>
+      <div>https://xuekeven.github.io/2025/10/04/设计模式/</div>
     </div>
     <div class="license-meta">
       
@@ -747,13 +647,13 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年8月12日</div>
+          <div>2025年10月4日</div>
         </div>
       
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2025年9月16日</div>
+          <div>2025年10月4日</div>
         </div>
       
       
@@ -784,9 +684,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/08/16/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" title="数据结构">
+                      <a href="/2025/10/04/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" title="性能优化">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">数据结构</span>
+                        <span class="hidden-mobile">性能优化</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -794,8 +694,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/08/11/CSRF%E6%94%BB%E5%87%BB/" title="CSRF攻击">
-                        <span class="hidden-mobile">CSRF攻击</span>
+                      <a href="/2025/08/31/%E5%88%86%E6%B2%BB%E5%9B%9E%E6%BA%AF/" title="分治回溯">
+                        <span class="hidden-mobile">分治回溯</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
