@@ -1,0 +1,1115 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Keven">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="概念Nginx 是高性能的开源 Web 服务器，同时可用作反向代理、负载均衡器、邮件代理 和 HTTP 缓存。由俄罗斯程序员 Igor Sysoev 用 C 编写于 2004 年创建，现已成为全球最流行的 Web 服务器之一。 原理特点   特点 说明    高并发 单机支持上万并发连接   内存占用低 C 编写，极度轻量   异步非阻塞 epoll 事件模型   热加载 修改配置可平滑重启">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Nginx服务器">
+<meta property="og:url" content="https://xuekeven.github.io/2025/10/31/Nginx%E6%9C%8D%E5%8A%A1%E5%99%A8/index.html">
+<meta property="og:site_name" content="Keven&#39;s Blog">
+<meta property="og:description" content="概念Nginx 是高性能的开源 Web 服务器，同时可用作反向代理、负载均衡器、邮件代理 和 HTTP 缓存。由俄罗斯程序员 Igor Sysoev 用 C 编写于 2004 年创建，现已成为全球最流行的 Web 服务器之一。 原理特点   特点 说明    高并发 单机支持上万并发连接   内存占用低 C 编写，极度轻量   异步非阻塞 epoll 事件模型   热加载 修改配置可平滑重启">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-10-31T08:30:00.000Z">
+<meta property="article:modified_time" content="2025-11-01T15:06:20.025Z">
+<meta property="article:author" content="Keven">
+<meta property="article:tag" content="后端服务">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>Nginx服务器 - Keven&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"xuekeven.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 50vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Keven&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tools/" target="_self">
+                <i class="iconfont icon-briefcase"></i>
+                <span>工具</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/dome/" target="_self">
+                <i class="iconfont icon-th-large"></i>
+                <span>Dome</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/example.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.2)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Nginx服务器"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        Keven
+      </span>
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-10-31 16:30" pubdate>
+          2025年10月31日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.8k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          12 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar category-bar" style="margin-right: -1rem">
+    
+
+
+
+
+
+<div class="category-list">
+  
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="后端服务"
+        id="heading-4878e13337d54d42d86a40783b4ca218" role="tab" data-toggle="collapse" href="#collapse-4878e13337d54d42d86a40783b4ca218"
+        aria-expanded="true"
+      >
+        后端服务
+        <span class="list-group-count">(2)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-4878e13337d54d42d86a40783b4ca218"
+           role="tabpanel" aria-labelledby="heading-4878e13337d54d42d86a40783b4ca218">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2025/10/31/Nginx%E6%9C%8D%E5%8A%A1%E5%99%A8/" title="Nginx服务器"
+           class="list-group-item list-group-item-action
+           active">
+          <span class="category-post">Nginx服务器</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2025/10/31/REST%E6%8E%A5%E5%8F%A3/" title="REST接口"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">REST接口</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+</div>
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Nginx服务器</h1>
+            
+              <p id="updated-time" class="note note-info" style="">
+                
+                  
+                    本文最后更新于 2025年11月1日 晚上
+                  
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><p>Nginx 是<strong>高性能的开源 Web 服务器</strong>，同时可用作<strong>反向代理、负载均衡器、邮件代理 和 HTTP 缓存</strong>。由俄罗斯程序员 Igor Sysoev 用 C 编写于 2004 年创建，现已成为全球最流行的 Web 服务器之一。</p>
+<h1 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h1><h2 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h2><table>
+<thead>
+<tr>
+<th>特点</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>高并发</td>
+<td>单机支持上万并发连接</td>
+</tr>
+<tr>
+<td>内存占用低</td>
+<td>C 编写，极度轻量</td>
+</tr>
+<tr>
+<td>异步非阻塞</td>
+<td>epoll 事件模型</td>
+</tr>
+<tr>
+<td>热加载</td>
+<td>修改配置可平滑重启</td>
+</tr>
+<tr>
+<td>可扩展</td>
+<td>支持自定义模块（Lua、RTMP等）</td>
+</tr>
+</tbody></table>
+<h3 id="高性能架构"><a href="#高性能架构" class="headerlink" title="高性能架构"></a>高性能架构</h3><ul>
+<li>事件驱动架构<ul>
+<li>采用异步非阻塞 I/O 模型</li>
+</ul>
+</li>
+<li>低内存消耗<ul>
+<li>处理静态资源时内存占用极少</li>
+</ul>
+</li>
+<li>多进程模型<ul>
+<li>一个主进程（Master Process）负责管理</li>
+<li>多个工作进程（Worker Processes）负责处理请求</li>
+<li>每个 Worker 都是单线程、基于 epoll（Linux 高性能 I/O 模型）</li>
+</ul>
+</li>
+<li>高并发能力<ul>
+<li>单机可高效处理成千上万的连接，在高并发环境下依然轻量、稳定、低占用</li>
+</ul>
+</li>
+</ul>
+<h3 id="高可靠性"><a href="#高可靠性" class="headerlink" title="高可靠性"></a>高可靠性</h3><ul>
+<li>热部署<ul>
+<li>支持不停止服务更新配置和二进制文件</li>
+</ul>
+</li>
+<li>健康检查<ul>
+<li>对后端服务器进行健康状态监测</li>
+</ul>
+</li>
+<li>故障转移<ul>
+<li>自动剔除故障节点，保证服务可用性</li>
+</ul>
+</li>
+</ul>
+<h2 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h2><table>
+<thead>
+<tr>
+<th>场景</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>1️⃣ 静态资源服务器</strong></td>
+<td>高速提供 HTML、CSS、JS、图片、视频等静态文件</td>
+</tr>
+<tr>
+<td><strong>2️⃣ 反向代理</strong></td>
+<td>接收客户端请求，转发到后端（Node.js/Python/Java）服务</td>
+</tr>
+<tr>
+<td><strong>3️⃣ 负载均衡</strong></td>
+<td>在多台后端服务器之间分配请求，提高可用性与吞吐</td>
+</tr>
+<tr>
+<td><strong>4️⃣ 动静分离</strong></td>
+<td>静态资源由 Nginx 处理，动态接口由后端 API 服务处理</td>
+</tr>
+<tr>
+<td><strong>5️⃣ HTTPS / SSL 终结</strong></td>
+<td>Nginx 负责 HTTPS 握手与证书，后端只处理纯 HTTP</td>
+</tr>
+<tr>
+<td><strong>6️⃣ 缓存与压缩</strong></td>
+<td>可对静态文件 / 代理请求进行缓存与 Gzip 压缩，加速响应</td>
+</tr>
+<tr>
+<td><strong>7️⃣ 跨域与路由控制</strong></td>
+<td>rewrite、add_header 配置实现 CORS、URL 重写、访问控制</td>
+</tr>
+</tbody></table>
+<h2 id="对比"><a href="#对比" class="headerlink" title="对比"></a>对比</h2><table>
+<thead>
+<tr>
+<th>特性</th>
+<th>Nginx</th>
+<th>Apache</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>架构模型</td>
+<td>事件驱动、异步非阻塞</td>
+<td>进程/线程模型、同步阻塞</td>
+</tr>
+<tr>
+<td>内存消耗</td>
+<td>较低</td>
+<td>较高</td>
+</tr>
+<tr>
+<td>并发性能</td>
+<td>优秀（高并发）</td>
+<td>良好</td>
+</tr>
+<tr>
+<td>静态资源</td>
+<td>非常高效</td>
+<td>良好</td>
+</tr>
+<tr>
+<td>动态内容</td>
+<td>需通过FastCGI等</td>
+<td>原生支持良好</td>
+</tr>
+<tr>
+<td>配置语法</td>
+<td>简洁直观</td>
+<td>较复杂</td>
+</tr>
+<tr>
+<td>模块系统</td>
+<td>较新，热插拔</td>
+<td>成熟，丰富</td>
+</tr>
+</tbody></table>
+<h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><h2 id="模块"><a href="#模块" class="headerlink" title="模块"></a>模块</h2><p>关键模块解析：</p>
+<table>
+<thead>
+<tr>
+<th>模块</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>http</code></td>
+<td>处理 HTTP 请求的主要模块</td>
+</tr>
+<tr>
+<td><code>server</code></td>
+<td>定义虚拟主机（域名、端口）</td>
+</tr>
+<tr>
+<td><code>location</code></td>
+<td>定义请求路径匹配规则（路由分发）</td>
+</tr>
+<tr>
+<td><code>proxy_pass</code></td>
+<td>转发请求到后端服务器（反向代理）</td>
+</tr>
+<tr>
+<td><code>upstream</code></td>
+<td>定义负载均衡服务器组</td>
+</tr>
+<tr>
+<td><code>gzip</code></td>
+<td>开启响应压缩</td>
+</tr>
+<tr>
+<td><code>ssl_certificate</code></td>
+<td>设置 HTTPS 证书</td>
+</tr>
+<tr>
+<td><code>rewrite</code></td>
+<td>URL 重写、跳转</td>
+</tr>
+</tbody></table>
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><p>配置文件路径（默认）：<code>/etc/nginx/nginx.conf</code></p>
+<p>配置文件主要分为三个层级：</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-comment"># 全局块：影响整个 Nginx 服务的参数</span><br><span class="hljs-attribute">user</span> nginx nginx;<br><span class="hljs-attribute">worker_processes</span> auto;<br><span class="hljs-attribute">error_log</span> /var/log/nginx/error.log;<br><br><span class="hljs-comment"># events 块：影响网络连接的配置</span><br><span class="hljs-section">events</span> &#123;<br>    <span class="hljs-attribute">worker_connections</span> <span class="hljs-number">1024</span>;<br>    <span class="hljs-attribute">use</span> <span class="hljs-literal">epoll</span>;<br>    <span class="hljs-attribute">multi_accept</span> <span class="hljs-literal">on</span>;<br>&#125;<br><br><span class="hljs-comment"># http 块：HTTP服务器相关配置</span><br><span class="hljs-section">http</span> &#123;<br>    <span class="hljs-attribute">include</span>       mime.types;<br>    <span class="hljs-attribute">sendfile</span>      <span class="hljs-literal">on</span>;<br>    <span class="hljs-attribute">keepalive_timeout</span>  <span class="hljs-number">65</span>;<br>    <span class="hljs-attribute">default_type</span> application/octet-stream;<br>    <br>    <span class="hljs-comment"># 日志格式</span><br>    <span class="hljs-attribute">log_format</span> main <span class="hljs-string">&#x27;$remote_addr - $remote_user [$time_local] &quot;$request&quot; &#x27;</span><br>                    <span class="hljs-string">&#x27;$status $body_bytes_sent &quot;$http_referer&quot; &#x27;</span><br>                    <span class="hljs-string">&#x27;&quot;$http_user_agent&quot; &quot;$http_x_forwarded_for&quot;&#x27;</span>;<br>    <span class="hljs-attribute">access_log</span> /var/log/nginx/access.log main;<br><br>    <span class="hljs-comment"># server 块：虚拟主机配置</span><br>    <span class="hljs-section">server</span> &#123;<br>        <span class="hljs-attribute">listen</span>       <span class="hljs-number">80</span>;<br>        <span class="hljs-attribute">server_name</span>  mysite.com;<br><br>        <span class="hljs-comment"># location 块：请求路径匹配规则</span><br>        <span class="hljs-attribute">location</span> / &#123;<br>            <span class="hljs-attribute">root</span>   /var/www/html;<br>            <span class="hljs-attribute">index</span>  index.html index.htm;<br>        &#125;<br><br>        <span class="hljs-comment"># 反向代理</span><br>        <span class="hljs-attribute">location</span> /api/ &#123;<br>            <span class="hljs-attribute">proxy_pass</span> http://localhost:3000/;<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><h3 id="静态服务"><a href="#静态服务" class="headerlink" title="静态服务"></a>静态服务</h3><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-section">server</span> &#123;<br>    <span class="hljs-attribute">listen</span> <span class="hljs-number">80</span>;<br>    <span class="hljs-attribute">server_name</span> example.com;<br>    <br>    <span class="hljs-attribute">location</span> /static/ &#123;<br>        <span class="hljs-attribute">root</span> /var/www/html;<br>        <span class="hljs-attribute">expires</span> <span class="hljs-number">1y</span>;  <span class="hljs-comment"># 长期缓存</span><br>        <span class="hljs-attribute">add_header</span> Cache-Control <span class="hljs-string">&quot;public, immutable&quot;</span>;<br>    &#125;<br>    <br>    <span class="hljs-attribute">location</span> /uploads/ &#123;<br>        <span class="hljs-attribute">root</span> /var/www;<br>        <span class="hljs-comment"># 自动生成缩略图等</span><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="动静分离"><a href="#动静分离" class="headerlink" title="动静分离"></a>动静分离</h3><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-section">server</span> &#123;<br>    <span class="hljs-attribute">location</span> <span class="hljs-regexp">~* \.(js|css|png|jpg|jpeg|gif|ico|svg)$</span> &#123;<br>        <span class="hljs-attribute">expires</span> <span class="hljs-number">1y</span>;<br>        <span class="hljs-attribute">add_header</span> Cache-Control <span class="hljs-string">&quot;public, immutable&quot;</span>;<br>        <span class="hljs-attribute">root</span> /var/www/static;<br>    &#125;<br>    <br>    <span class="hljs-attribute">location</span> / &#123;<br>        <span class="hljs-attribute">proxy_pass</span> http://app_server;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="反向代理"><a href="#反向代理" class="headerlink" title="反向代理"></a>反向代理</h3><p>反向代理与正向代理的区别？</p>
+<ul>
+<li><p>正向代理：客户端代理自己访问外部（如 VPN）。</p>
+</li>
+<li><p>反向代理：代理服务器替后端服务处理客户端请求。</p>
+</li>
+<li><p>需求：当前端访问 <code>http://example.com/api/...</code> 时，Nginx 将请求转发到本地运行的 Node.js 后端 <code>http://127.0.0.1:3000</code></p>
+</li>
+<li><p>原理：客户端不知道后端真实地址，所有请求都通过 Nginx 转发。这就是“反向代理”，在 Nginx 中通过 <code>proxy_pass</code> 实现。</p>
+</li>
+<li><p>实现：</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-section">server</span> &#123;<br>    <span class="hljs-attribute">listen</span> <span class="hljs-number">80</span>;<br>    <span class="hljs-attribute">server_name</span> example.com;<br><br>    <span class="hljs-attribute">location</span> /api/ &#123;<br>        <span class="hljs-attribute">proxy_pass</span> http://127.0.0.1:3000/;<br>        <span class="hljs-attribute">proxy_set_header</span> Host $host;<br>        <span class="hljs-attribute">proxy_set_header</span> X-Real-IP $remote_addr;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="负载均衡"><a href="#负载均衡" class="headerlink" title="负载均衡"></a>负载均衡</h3><ul>
+<li>说明：<ul>
+<li>weight：权重，数值越大请求比例越高</li>
+<li>down：临时下线</li>
+<li>支持多种负载均衡算法<ul>
+<li>轮询（round-robin）：默认方式</li>
+<li>加权轮询（weighted round-robin）</li>
+<li>IP 哈希（ip_hash）：会话保持</li>
+<li>最少连接（least_conn）</li>
+<li>一致性哈希（hash）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>实现：<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">upstream</span> backend_servers &#123;<br>    <span class="hljs-attribute">server</span> <span class="hljs-number">127.0.0.1:3001</span> weight=<span class="hljs-number">3</span>;<br>    <span class="hljs-attribute">server</span> <span class="hljs-number">127.0.0.1:3002</span> weight=<span class="hljs-number">1</span>;<br>    <span class="hljs-attribute">server</span> <span class="hljs-number">127.0.0.1:3003</span> down;<br>&#125;<br><br><span class="hljs-section">server</span> &#123;<br>    <span class="hljs-attribute">listen</span> <span class="hljs-number">80</span>;<br>    <span class="hljs-attribute">location</span> /api/ &#123;<br>        <span class="hljs-attribute">proxy_pass</span> http://backend_servers;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="SSL-TLS"><a href="#SSL-TLS" class="headerlink" title="SSL/TLS"></a>SSL/TLS</h3><ul>
+<li>可以用 Let’s Encrypt 免费申请证书，通过 <code>sudo certbot --nginx</code> 自动配置</li>
+<li>实现：<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-section">server</span> &#123;<br>    <span class="hljs-attribute">listen</span> <span class="hljs-number">443</span> ssl http2;<br>    <span class="hljs-attribute">server_name</span> example.com;<br>    <br>    <span class="hljs-attribute">ssl_certificate</span> /path/to/cert.pem;<br>    <span class="hljs-attribute">ssl_certificate_key</span> /path/to/private.key;<br>    <br>    <span class="hljs-comment"># 安全配置</span><br>    <span class="hljs-attribute">ssl_protocols</span> TLSv1.<span class="hljs-number">2</span> TLSv1.<span class="hljs-number">3</span>;<br>    <span class="hljs-attribute">ssl_ciphers</span> ECDHE-RSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384;<br>    <br>    <span class="hljs-attribute">location</span> / &#123;<br>        <span class="hljs-attribute">proxy_pass</span> http://backend;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="常用"><a href="#常用" class="headerlink" title="常用"></a>常用</h2><p>前端常用场景总结：</p>
+<table>
+<thead>
+<tr>
+<th>场景</th>
+<th>Nginx 配置功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>部署前端项目（React/Vue）</td>
+<td>静态资源服务（root + index）</td>
+</tr>
+<tr>
+<td>配置路由模式 history</td>
+<td><code>try_files $uri /index.html;</code></td>
+</tr>
+<tr>
+<td>代理后端 API</td>
+<td><code>proxy_pass http://localhost:3000/</code></td>
+</tr>
+<tr>
+<td>解决跨域问题</td>
+<td><code>add_header Access-Control-Allow-Origin *;</code></td>
+</tr>
+<tr>
+<td>前后端分离</td>
+<td>动静分离配置</td>
+</tr>
+<tr>
+<td>HTTPS 强制跳转</td>
+<td><code>return 301 https://$host$request_uri;</code></td>
+</tr>
+</tbody></table>
+<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><table>
+<thead>
+<tr>
+<th>分类</th>
+<th>考点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>静态资源服务</td>
+<td>root、index</td>
+</tr>
+<tr>
+<td>反向代理</td>
+<td>proxy_pass</td>
+</tr>
+<tr>
+<td>路由重写</td>
+<td>try_files</td>
+</tr>
+<tr>
+<td>跨域处理</td>
+<td>add_header</td>
+</tr>
+<tr>
+<td>缓存控制</td>
+<td>expires、Cache-Control</td>
+</tr>
+<tr>
+<td>HTTPS 配置</td>
+<td>ssl_certificate</td>
+</tr>
+<tr>
+<td>性能优化</td>
+<td>gzip、worker_processes</td>
+</tr>
+</tbody></table>
+<h2 id="什么是-Nginx？作用是？"><a href="#什么是-Nginx？作用是？" class="headerlink" title="什么是 Nginx？作用是？"></a>什么是 Nginx？作用是？</h2><p>Nginx 是一个高性能的 Web 服务器，同时也作为反向代理、负载均衡器和静态资源服务器。在前端中 Nginx 通常用于：</p>
+<ul>
+<li>静态资源托管（HTML/CSS/JS/图片）</li>
+<li>接口请求的反向代理（解决跨域）</li>
+<li>前端路由的 history 模式支持</li>
+<li>简单的负载均衡（开发环境多服务）</li>
+<li>HTTPS 证书管理</li>
+</ul>
+<h2 id="为什么前端项目要用-Nginx-部署，而不是-Node"><a href="#为什么前端项目要用-Nginx-部署，而不是-Node" class="headerlink" title="为什么前端项目要用 Nginx 部署，而不是 Node"></a>为什么前端项目要用 Nginx 部署，而不是 Node</h2><p>优点：</p>
+<ul>
+<li>性能优势：Nginx 处理静态文件效率极高</li>
+<li>资源消耗：内存占用少，并发能力强</li>
+<li>稳定性：久经考验，故障率低</li>
+</ul>
+<p>功能：</p>
+<ul>
+<li>Nginx 负责高效分发静态资源</li>
+<li>支持路由控制、缓存、gzip 压缩</li>
+<li>可以代理 API 请求</li>
+</ul>
+<p>对比：</p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>Nginx</th>
+<th>Node.js</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>类型</td>
+<td>Web 服务器</td>
+<td>应用服务器</td>
+</tr>
+<tr>
+<td>语言</td>
+<td>C</td>
+<td>JavaScript</td>
+</tr>
+<tr>
+<td>主要用途</td>
+<td>静态文件服务、反向代理</td>
+<td>动态业务逻辑处理</td>
+</tr>
+<tr>
+<td>优势</td>
+<td>高并发、低内存、配置简单</td>
+<td>灵活、逻辑可编程</td>
+</tr>
+</tbody></table>
+<p>实际上常搭配使用：Nginx 代理请求到 Node.js。</p>
+<h2 id="如何配置-Nginx-支持前端路由的-history-模式"><a href="#如何配置-Nginx-支持前端路由的-history-模式" class="headerlink" title="如何配置 Nginx 支持前端路由的 history 模式"></a>如何配置 Nginx 支持前端路由的 history 模式</h2><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-section">server</span> &#123;<br>    <span class="hljs-attribute">listen</span> <span class="hljs-number">80</span>;<br>    <span class="hljs-attribute">server_name</span> your-domain.com;<br>    <span class="hljs-attribute">root</span> /var/www/dist;<br>    <span class="hljs-attribute">index</span> index.html;<br>    <br>    <span class="hljs-attribute">location</span> / &#123;<br>      <span class="hljs-comment"># try_files 指令的作用：按顺序尝试文件路径，最终回退到 index.html 让前端路由接管</span><br>        <span class="hljs-attribute">try_files</span> $uri $uri/ /index.html;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="如何配置-Nginx-解决跨域问题？"><a href="#如何配置-Nginx-解决跨域问题？" class="headerlink" title="如何配置 Nginx 解决跨域问题？"></a>如何配置 Nginx 解决跨域问题？</h2><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-section">server</span> &#123;<br>    <span class="hljs-attribute">listen</span> <span class="hljs-number">80</span>;<br>    <span class="hljs-attribute">server_name</span> localhost;<br>    <br>    <span class="hljs-attribute">location</span> /api/ &#123;<br>        <span class="hljs-attribute">proxy_pass</span> http://api-server:3000;<br>        <span class="hljs-attribute">add_header</span> <span class="hljs-string">&#x27;Access-Control-Allow-Origin&#x27;</span> <span class="hljs-string">&#x27;*&#x27;</span> always;<br>        <span class="hljs-attribute">add_header</span> <span class="hljs-string">&#x27;Access-Control-Allow-Methods&#x27;</span> <span class="hljs-string">&#x27;GET, POST, OPTIONS&#x27;</span> always;<br>        <span class="hljs-attribute">add_header</span> <span class="hljs-string">&#x27;Access-Control-Allow-Headers&#x27;</span> <span class="hljs-string">&#x27;Content-Type, Authorization&#x27;</span> always;<br>        <br>        <span class="hljs-attribute">if</span> ($request_method = <span class="hljs-string">&#x27;OPTIONS&#x27;</span>) &#123;<br>            <span class="hljs-attribute">return</span> <span class="hljs-number">204</span>;<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="如何用-Nginx-优化前端静态资源加载？"><a href="#如何用-Nginx-优化前端静态资源加载？" class="headerlink" title="如何用 Nginx 优化前端静态资源加载？"></a>如何用 Nginx 优化前端静态资源加载？</h2><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-comment"># 缓存策略</span><br><span class="hljs-attribute">location</span> <span class="hljs-regexp">~* \.(js|css|png|jpg|jpeg|gif|ico|svg)$</span> &#123;<br>    <span class="hljs-attribute">expires</span> <span class="hljs-number">1y</span>;<br>    <span class="hljs-attribute">add_header</span> Cache-Control <span class="hljs-string">&quot;public, immutable&quot;</span>;<br>    <span class="hljs-attribute">add_header</span> Vary <span class="hljs-string">&quot;Accept-Encoding&quot;</span>;<br>&#125;<br><br><span class="hljs-attribute">location</span> <span class="hljs-regexp">~* \.(html)$</span> &#123;<br>    <span class="hljs-attribute">expires</span> <span class="hljs-number">1h</span>;<br>    <span class="hljs-attribute">add_header</span> Cache-Control <span class="hljs-string">&quot;public&quot;</span>;<br>&#125;<br><br><span class="hljs-comment"># gzip 压缩</span><br><span class="hljs-attribute">gzip</span> <span class="hljs-literal">on</span>;<br><span class="hljs-attribute">gzip_types</span> text/plain text/css application/json application/javascript text/xml application/xml application/xml+rss text/javascript;<br><span class="hljs-attribute">gzip_min_length</span> <span class="hljs-number">1024</span>;<br><span class="hljs-attribute">gzip_comp_level</span> <span class="hljs-number">6</span>;<br></code></pre></td></tr></table></figure>
+
+<h2 id="开发环境中如何使用-Nginx？"><a href="#开发环境中如何使用-Nginx？" class="headerlink" title="开发环境中如何使用 Nginx？"></a>开发环境中如何使用 Nginx？</h2><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-comment"># 开发环境多项目代理</span><br><span class="hljs-section">server</span> &#123;<br>    <span class="hljs-attribute">listen</span> <span class="hljs-number">80</span>;<br>    <br>    <span class="hljs-attribute">location</span> /project-a/ &#123;<br>        <span class="hljs-attribute">proxy_pass</span> http://localhost:3001;<br>    &#125;<br>    <br>    <span class="hljs-attribute">location</span> /project-b/ &#123;<br>        <span class="hljs-attribute">proxy_pass</span> http://localhost:3002;<br>    &#125;<br>    <br>    <span class="hljs-attribute">location</span> /mock-api/ &#123;<br>        <span class="hljs-attribute">proxy_pass</span> http://localhost:3003;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%90%8E%E7%AB%AF%E6%9C%8D%E5%8A%A1/" class="category-chain-item">后端服务</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%90%8E%E7%AB%AF%E6%9C%8D%E5%8A%A1/" class="print-no-link">#后端服务</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Nginx服务器</div>
+      <div>https://xuekeven.github.io/2025/10/31/Nginx服务器/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Keven</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年10月31日</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>更新于</div>
+          <div>2025年11月1日</div>
+        </div>
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2025/11/01/%E5%A6%82%E4%BD%95%E8%AE%BE%E8%AE%A1%E4%B8%80%E4%B8%AA%E7%BB%84%E4%BB%B6/" title="如何设计一个组件">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">如何设计一个组件</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/10/31/REST%E6%8E%A5%E5%8F%A3/" title="REST接口">
+                        <span class="hidden-mobile">REST接口</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
