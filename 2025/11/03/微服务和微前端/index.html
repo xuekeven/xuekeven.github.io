@@ -21,22 +21,22 @@
   <meta name="author" content="Keven">
   <meta name="keywords" content="">
   
-    <meta name="description" content="合并问题   配置命令 对应策略 等价命令    git config pull.rebase false 普通合并 git pull --merge   git config pull.rebase true 变基合并 git pull --rebase   git config pull.ff only 仅允许快进 git pull --ff-only   OpenSSL SSL_read:">
+    <meta name="description" content="基本概念微前端与微服务是两个不同层面的架构理念，但核心目标一致：  解耦 独立开发、独立部署 团队分工更高效  微服务微服务是一种后端架构风格，它是将一个大型的后端应用程序，按业务能力拆分成一组小型、自治、松散耦合的服务。每个服务都围绕着特定的业务能力（如用户管理、订单处理、支付）进行构建并且可以独立的开发、部署、扩展和运维。 特点 单一职责：每个微服务只负责一个明确定义的业务功能 独立部署：可以">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Git常用方法">
-<meta property="og:url" content="https://xuekeven.github.io/2021/08/07/Git%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/index.html">
+<meta property="og:title" content="微服务和微前端">
+<meta property="og:url" content="https://xuekeven.github.io/2025/11/03/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%92%8C%E5%BE%AE%E5%89%8D%E7%AB%AF/index.html">
 <meta property="og:site_name" content="Keven&#39;s Blog">
-<meta property="og:description" content="合并问题   配置命令 对应策略 等价命令    git config pull.rebase false 普通合并 git pull --merge   git config pull.rebase true 变基合并 git pull --rebase   git config pull.ff only 仅允许快进 git pull --ff-only   OpenSSL SSL_read:">
+<meta property="og:description" content="基本概念微前端与微服务是两个不同层面的架构理念，但核心目标一致：  解耦 独立开发、独立部署 团队分工更高效  微服务微服务是一种后端架构风格，它是将一个大型的后端应用程序，按业务能力拆分成一组小型、自治、松散耦合的服务。每个服务都围绕着特定的业务能力（如用户管理、订单处理、支付）进行构建并且可以独立的开发、部署、扩展和运维。 特点 单一职责：每个微服务只负责一个明确定义的业务功能 独立部署：可以">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-08-07T04:30:00.000Z">
-<meta property="article:modified_time" content="2025-08-25T11:01:14.762Z">
+<meta property="article:published_time" content="2025-11-03T00:00:00.000Z">
+<meta property="article:modified_time" content="2025-11-03T02:00:53.063Z">
 <meta property="article:author" content="Keven">
-<meta property="article:tag" content="Git">
+<meta property="article:tag" content="架构">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>Git常用方法 - Keven&#39;s Blog</title>
+  <title>微服务和微前端 - Keven&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -238,7 +238,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Git常用方法"></span>
+            <span id="subtitle" data-typed-text="微服务和微前端"></span>
           
         </div>
 
@@ -254,8 +254,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2021-08-07 12:30" pubdate>
-          2021年8月7日 下午
+        <time datetime="2025-11-03 08:00" pubdate>
+          2025年11月3日 早上
         </time>
       </span>
     
@@ -266,7 +266,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          189 字
+          1.5k 字
         
       </span>
     
@@ -277,7 +277,7 @@
         
         
         
-          2 分钟
+          10 分钟
         
       </span>
     
@@ -357,17 +357,17 @@
     
     
     <div class="category-sub row nomargin-x">
-      <a class="category-subitem 
+      <a class="category-subitem collapsed
           list-group-item category-item-action col-10 col-md-11 col-xm-11" title="Git"
         id="heading-0bcc70105ad279503e31fe7b3f47b665" role="tab" data-toggle="collapse" href="#collapse-0bcc70105ad279503e31fe7b3f47b665"
-        aria-expanded="true"
+        aria-expanded="false"
       >
         Git
         <span class="list-group-count">(2)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
-      <div class="category-collapse collapse show" id="collapse-0bcc70105ad279503e31fe7b3f47b665"
+      <div class="category-collapse collapse " id="collapse-0bcc70105ad279503e31fe7b3f47b665"
            role="tabpanel" aria-labelledby="heading-0bcc70105ad279503e31fe7b3f47b665">
         
         
@@ -388,7 +388,7 @@
       
         <a href="/2021/08/07/Git%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/" title="Git常用方法"
            class="list-group-item list-group-item-action
-           active">
+           ">
           <span class="category-post">Git常用方法</span>
         </a>
       
@@ -440,17 +440,17 @@
     
     
     <div class="category-sub row nomargin-x">
-      <a class="category-subitem collapsed
+      <a class="category-subitem 
           list-group-item category-item-action col-10 col-md-11 col-xm-11" title="架构"
         id="heading-0eaa6af97d68cc910c54feed58ad05dd" role="tab" data-toggle="collapse" href="#collapse-0eaa6af97d68cc910c54feed58ad05dd"
-        aria-expanded="false"
+        aria-expanded="true"
       >
         架构
         <span class="list-group-count">(2)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
-      <div class="category-collapse collapse " id="collapse-0eaa6af97d68cc910c54feed58ad05dd"
+      <div class="category-collapse collapse show" id="collapse-0eaa6af97d68cc910c54feed58ad05dd"
            role="tabpanel" aria-labelledby="heading-0eaa6af97d68cc910c54feed58ad05dd">
         
         
@@ -471,7 +471,7 @@
       
         <a href="/2025/11/03/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%92%8C%E5%BE%AE%E5%89%8D%E7%AB%AF/" title="微服务和微前端"
            class="list-group-item list-group-item-action
-           ">
+           active">
           <span class="category-post">微服务和微前端</span>
         </a>
       
@@ -498,12 +498,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Git常用方法</h1>
+            <h1 id="seo-header">微服务和微前端</h1>
             
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2025年8月25日 晚上
+                    本文最后更新于 2025年11月3日 上午
                   
                 
               </p>
@@ -511,44 +511,127 @@
             
               <div class="markdown-body">
                 
-                <h1 id="合并问题"><a href="#合并问题" class="headerlink" title="合并问题"></a>合并问题</h1><table>
+                <h1 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h1><p>微前端与微服务是两个不同层面的架构理念，但核心目标一致：</p>
+<ul>
+<li>解耦</li>
+<li>独立开发、独立部署</li>
+<li>团队分工更高效</li>
+</ul>
+<h2 id="微服务"><a href="#微服务" class="headerlink" title="微服务"></a>微服务</h2><p>微服务是一种后端架构风格，它是将一个大型的后端应用程序，按业务能力拆分成一组<strong>小型、自治、松散耦合的服务</strong>。每个服务都围绕着特定的业务能力（如用户管理、订单处理、支付）进行构建并且可以独立的开发、部署、扩展和运维。</p>
+<h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><ul>
+<li>单一职责：每个微服务只负责一个明确定义的业务功能</li>
+<li>独立部署：可以单独更新一个服务，而无需重新部署整个应用程序</li>
+<li>技术异构：不同的微服务可以使用不同的编程语言、框架和数据库</li>
+<li>通过 API 交互：服务之间通过定义良好的轻量级 API（通常是 RESTful API 或 gRPC）进行通信</li>
+<li>独立的数据存储：每个微服务可以拥有自己独立的数据库，避免了数据模型的紧耦合</li>
+</ul>
+<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><p>一个庞大的电商后端被拆解为：</p>
+<ul>
+<li>用户服务：处理注册、登录、用户信息</li>
+<li>商品目录服务：管理商品、分类、库存</li>
+<li>订单服务：处理下单、订单状态</li>
+<li>支付服务：与支付网关交互</li>
+<li>推荐服务：根据用户行为推荐商品</li>
+</ul>
+<p>这些服务通过内部网络 API 调用协同工作，共同完成“用户购买商品”这个业务流程。</p>
+<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><ul>
+<li>高可维护性：代码库小，易于理解和修改</li>
+<li>技术灵活性：可以为不同服务选择最合适的技术栈</li>
+<li>弹性与容错：一个服务故障不一定导致整个系统崩溃</li>
+<li>独立扩展：可以对性能瓶颈服务进行针对性扩容</li>
+</ul>
+<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><ul>
+<li>复杂度高：带来了服务发现、网络通信、数据一致性等分布式系统问题</li>
+<li>运维 overhead：需要成熟的 DevOps 和容器化技术（如 Docker, Kubernetes）</li>
+<li>调试困难：一个请求可能经过多个服务，排查问题链更复杂</li>
+</ul>
+<h2 id="微前端"><a href="#微前端" class="headerlink" title="微前端"></a>微前端</h2><p>微前端是一种前端架构风格，它是将一个庞大的前端应用程序拆分成一组可以<strong>独立开发、测试、部署的小型前端应用</strong>。最后在运行时通过某种机制将这些小型应用组合成一个完整的整体，呈现给用户。其核心理念是：<strong>将后端微服务的理念扩展到浏览器端</strong>。</p>
+<h3 id="特点-1"><a href="#特点-1" class="headerlink" title="特点"></a>特点</h3><ul>
+<li>技术栈无关：团队可以为自己的部分选择合适的技术框架（React, Vue, Angular, Svelte 等）</li>
+<li>独立开发：团队可以独立并行开发功能，互不阻塞</li>
+<li>独立部署：每个微前端应用可以独立构建和部署，无需整个应用一起发布</li>
+<li>自治性：每个团队负责自己特性的全生命周期，从用户界面到后端集成</li>
+</ul>
+<h3 id="示例-1"><a href="#示例-1" class="headerlink" title="示例"></a>示例</h3><p>一个电商网站可拆为：</p>
+<ul>
+<li>首页应用：React</li>
+<li>商品展示应用：Vue</li>
+<li>购物车应用：Angular</li>
+<li>订单管理应用：旧 jQuery 系统接入</li>
+</ul>
+<p>用户访问网站时，一个容器应用根据当前路由，动态加载并显示对应的微前端应用。用户在浏览器中无感知，但其实是多个应用拼装运行。就像把多个前端仓库汇聚到一个站点运行。</p>
+<h3 id="优点-1"><a href="#优点-1" class="headerlink" title="优点"></a>优点</h3><ul>
+<li>解耦巨型前端：拆分复杂应用，降低维护成本</li>
+<li>团队自治：团队可以拥有自己的开发、发布流程</li>
+<li>渐进式升级：可以逐步重构或升级老系统的一部分，而无需重写整个应用</li>
+<li>技术栈灵活：新功能可以使用新技术，不受历史包袱限制</li>
+</ul>
+<h3 id="缺点-1"><a href="#缺点-1" class="headerlink" title="缺点"></a>缺点</h3><ul>
+<li>重复依赖：可能造成公共库（如 React）被重复加载，增加体积</li>
+<li>性能挑战：资源加载、应用切换可能带来性能开销</li>
+<li>一致性：保持不同团队开发的应用在 UI/UX 上的一致性是个挑战</li>
+<li>复杂性：增加了构建、部署和运行时的复杂度</li>
+</ul>
+<h2 id="对比"><a href="#对比" class="headerlink" title="对比"></a>对比</h2><table>
 <thead>
 <tr>
-<th>配置命令</th>
-<th>对应策略</th>
-<th>等价命令</th>
+<th>特点</th>
+<th>微服务（后端）</th>
+<th>微前端（前端）</th>
 </tr>
 </thead>
 <tbody><tr>
-<td><code>git config pull.rebase false</code></td>
-<td>普通合并</td>
-<td><code>git pull --merge</code></td>
+<td>解决问题</td>
+<td>后端系统过大、难维护</td>
+<td>前端项目臃肿、不同技术栈共存</td>
 </tr>
 <tr>
-<td><code>git config pull.rebase true</code></td>
-<td>变基合并</td>
-<td><code>git pull --rebase</code></td>
+<td>拆分粒度</td>
+<td>按业务拆分多个独立服务</td>
+<td>按页面或业务模块拆分前端应用</td>
 </tr>
 <tr>
-<td><code>git config pull.ff only</code></td>
-<td>仅允许快进</td>
-<td><code>git pull --ff-only</code></td>
+<td>拆分对象</td>
+<td>拆解服务器端应用的逻辑和数据库</td>
+<td>拆解浏览器端应用的界面和交互</td>
+</tr>
+<tr>
+<td>技术栈</td>
+<td>任意（Java/Go/Node…）</td>
+<td>任意（React/Vue/Angular…）可共存</td>
+</tr>
+<tr>
+<td>部署</td>
+<td>各服务独立部署</td>
+<td>各应用独立构建&amp;部署</td>
+</tr>
+<tr>
+<td>通信方式</td>
+<td>通过网络的API/消息队列等调用</td>
+<td>通过路由/事件/共享状态/应用间通信机制</td>
+</tr>
+<tr>
+<td>优点</td>
+<td>可扩展、稳定、独立迭代</td>
+<td>可并行开发、兼容旧系统、灰度升级</td>
+</tr>
+<tr>
+<td>解决方案</td>
+<td>Docker、K8s、Spring Cloud</td>
+<td>Single-SPA、Module Federation、乾坤</td>
+</tr>
+<tr>
+<td>最终目标</td>
+<td>提升后端可扩展性、弹性和开发速度</td>
+<td>提升前端可维护性、团队独立性和交付效率</td>
 </tr>
 </tbody></table>
-<h1 id="OpenSSL-SSL-read-Connection-was-reset-errno-10054"><a href="#OpenSSL-SSL-read-Connection-was-reset-errno-10054" class="headerlink" title="OpenSSL SSL_read: Connection was reset, errno 10054"></a>OpenSSL SSL_read: Connection was reset, errno 10054</h1><figure class="highlight tcl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs tcl">git config --<span class="hljs-keyword">global</span> <span class="hljs-keyword">http</span>.sslVerify <span class="hljs-string">&quot;false&quot;</span><br></code></pre></td></tr></table></figure>
+<h2 id="关系"><a href="#关系" class="headerlink" title="关系"></a>关系</h2><p>微前端：前端的模块化拆分解决方案，解决了前端的复杂性问题，让不同的团队可以独立负责不同的用户界面和用户体验。<br>微服务：后端的模块化拆分解决方案，解决了后端的复杂性问题，让不同的团队可以独立负责不同的业务逻辑和数据。</p>
+<p>一个现代化的云原生应用，通常是 “微前端 + 微服务” 的组合。它们经常结合使用：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs">商品前端 → 商品服务<br>订单前端 → 订单服务<br>支付前端 → 支付服务<br></code></pre></td></tr></table></figure>
 
-<h1 id="更新本地代码"><a href="#更新本地代码" class="headerlink" title="更新本地代码"></a>更新本地代码</h1><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/delav/p/11118555.html">https://www.cnblogs.com/delav/p/11118555.html</a></p>
-<h1 id="连接远程仓库"><a href="#连接远程仓库" class="headerlink" title="连接远程仓库"></a>连接远程仓库</h1><h2 id="一、本地已创建仓库-然后与远程仓库关联"><a href="#一、本地已创建仓库-然后与远程仓库关联" class="headerlink" title="一、本地已创建仓库, 然后与远程仓库关联"></a>一、本地已创建仓库, 然后与远程仓库关联</h2><h3 id="初始化-Git-仓库"><a href="#初始化-Git-仓库" class="headerlink" title="初始化 Git 仓库"></a>初始化 Git 仓库</h3><p><code>git init</code></p>
-<h3 id="添加文件到暂存区"><a href="#添加文件到暂存区" class="headerlink" title="添加文件到暂存区"></a>添加文件到暂存区</h3><p><code>git add .</code></p>
-<h3 id="提交改变到缓存"><a href="#提交改变到缓存" class="headerlink" title="提交改变到缓存"></a>提交改变到缓存</h3><p><code>git commit -m &#39;description&#39;</code></p>
-<h3 id="分支管理"><a href="#分支管理" class="headerlink" title="分支管理"></a>分支管理</h3><p><code>git branch -M main</code></p>
-<h3 id="本地-git-仓库关联-GitHub-仓库"><a href="#本地-git-仓库关联-GitHub-仓库" class="headerlink" title="本地 git 仓库关联 GitHub 仓库"></a>本地 git 仓库关联 GitHub 仓库</h3><p><code>git remote add origin xxx</code></p>
-<h3 id="提交到远程仓库"><a href="#提交到远程仓库" class="headerlink" title="提交到远程仓库"></a>提交到远程仓库</h3><p><code>git push -u origin main</code></p>
-<h2 id="二、不用关联远程仓库-直接从远程仓库克隆到本地"><a href="#二、不用关联远程仓库-直接从远程仓库克隆到本地" class="headerlink" title="二、不用关联远程仓库, 直接从远程仓库克隆到本地"></a>二、不用关联远程仓库, 直接从远程仓库克隆到本地</h2><h3 id="从-GitHub-上克隆项目到本地"><a href="#从-GitHub-上克隆项目到本地" class="headerlink" title="从 GitHub 上克隆项目到本地"></a>从 GitHub 上克隆项目到本地</h3><p><code>git clone xxx</code></p>
-<h3 id="添加文件到暂存区-1"><a href="#添加文件到暂存区-1" class="headerlink" title="添加文件到暂存区"></a>添加文件到暂存区</h3><p><code>git add .</code></p>
-<h3 id="提交改变到缓存-1"><a href="#提交改变到缓存-1" class="headerlink" title="提交改变到缓存"></a>提交改变到缓存</h3><p><code>git commit -m &#39;description&#39;</code></p>
-<h3 id="提交到远程仓库-1"><a href="#提交到远程仓库-1" class="headerlink" title="提交到远程仓库"></a>提交到远程仓库</h3><p><code>git push -u origin main</code></p>
-
+<p>一条业务链路 = 多个前端 + 多个后端协同。它们是一对相辅相成的架构理念，共同构成了大型现代 Web 应用的完整技术架构。</p>
+<h1 id="实现方案"><a href="#实现方案" class="headerlink" title="实现方案"></a>实现方案</h1>
                 
               </div>
             
@@ -571,7 +654,7 @@
   
     <span>></span>
     
-  <a href="/categories/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/Git/" class="category-chain-item">Git</a>
+  <a href="/categories/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/%E6%9E%B6%E6%9E%84/" class="category-chain-item">架构</a>
   
   
 
@@ -588,7 +671,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/Git/" class="print-no-link">#Git</a>
+        <a href="/tags/%E6%9E%B6%E6%9E%84/" class="print-no-link">#架构</a>
       
     </div>
   
@@ -600,8 +683,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Git常用方法</div>
-      <div>https://xuekeven.github.io/2021/08/07/Git常用方法/</div>
+      <div>微服务和微前端</div>
+      <div>https://xuekeven.github.io/2025/11/03/微服务和微前端/</div>
     </div>
     <div class="license-meta">
       
@@ -613,13 +696,13 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2021年8月7日</div>
+          <div>2025年11月3日</div>
         </div>
       
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2025年8月25日</div>
+          <div>2025年11月3日</div>
         </div>
       
       
@@ -650,9 +733,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2021/08/18/CSS%E9%9D%A2%E8%AF%95%E9%A2%98/" title="CSS面试题">
+                      <a href="/2025/11/03/Docker/" title="Docker">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">CSS面试题</span>
+                        <span class="hidden-mobile">Docker</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -660,8 +743,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2021/08/07/Git%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/" title="Git基本使用">
-                        <span class="hidden-mobile">Git基本使用</span>
+                      <a href="/2025/11/01/%E5%A6%82%E4%BD%95%E8%AE%BE%E8%AE%A1%E4%B8%80%E4%B8%AA%E7%BB%84%E4%BB%B6/" title="如何设计一个组件">
+                        <span class="hidden-mobile">如何设计一个组件</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
