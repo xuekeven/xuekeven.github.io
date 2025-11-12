@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>命令行</title>
+    <link href="/2025/11/12/%E5%91%BD%E4%BB%A4%E8%A1%8C/"/>
+    <url>/2025/11/12/%E5%91%BD%E4%BB%A4%E8%A1%8C/</url>
+    
+    <content type="html"><![CDATA[<p>自定义 <code>PATH</code> 环境变量：<a href="https://mp.weixin.qq.com/s/ptRFIddHT3eLLmQVPzOx_g">https://mp.weixin.qq.com/s/ptRFIddHT3eLLmQVPzOx_g</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>计算机基础</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>命令行</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Docker</title>
     <link href="/2025/11/03/Docker/"/>
     <url>/2025/11/03/Docker/</url>
@@ -264,31 +289,6 @@
   
   
   <entry>
-    <title>AI开发</title>
-    <link href="/2025/08/26/AI%E5%BC%80%E5%8F%91/"/>
-    <url>/2025/08/26/AI%E5%BC%80%E5%8F%91/</url>
-    
-    <content type="html"><![CDATA[<h1 id="MCP-协议"><a href="#MCP-协议" class="headerlink" title="MCP 协议"></a>MCP 协议</h1><p>MCP 是让模型（Model）通过宿主（Host）访问外部服务器（MCP Server）中工具和资源的协议：</p><table><thead><tr><th>角色</th><th>英文名</th><th>职责</th><th>类比</th></tr></thead><tbody><tr><td>模型宿主</td><td><strong>Model Host / Client</strong></td><td>托管或调用大语言模型（如 ChatGPT、Claude、DeepSeek 等），并负责与 MCP 服务器通信</td><td>「用户代理」或「宿主 App」</td></tr><tr><td>大模型（LLM）</td><td><strong>Model / Assistant</strong></td><td>执行自然语言推理、调用 MCP 工具、利用资源生成回答</td><td>ChatGPT、Claude 等</td></tr><tr><td>服务器</td><td><strong>MCP Server / Tool Server</strong></td><td>通过 MCP 协议暴露工具（tools）、资源（resources）、上下文（contexts）等给模型使用</td><td>插件服务器、第三方 API 服务</td></tr></tbody></table><table><thead><tr><th>角色</th><th>功能定位</th><th>是否运行模型</th><th>是否暴露工具</th><th>是否直接与用户交互</th></tr></thead><tbody><tr><td>Model Host</td><td>调度者 / 管理员</td><td>✅（调用模型）</td><td>❌</td><td>✅</td></tr><tr><td>Model</td><td>智能体（LLM）</td><td>✅</td><td>❌</td><td>✅</td></tr><tr><td>MCP Server</td><td>工具/数据提供方</td><td>❌</td><td>✅</td><td>❌</td></tr></tbody></table><h1 id="大模型版本"><a href="#大模型版本" class="headerlink" title="大模型版本"></a>大模型版本</h1><h2 id="版本差异"><a href="#版本差异" class="headerlink" title="版本差异"></a>版本差异</h2><table><thead><tr><th>维度</th><th>差异内容</th><th>意义</th></tr></thead><tbody><tr><td><strong>参数规模</strong></td><td>数十亿 → 数千亿</td><td>更强的理解、推理、生成能力</td></tr><tr><td><strong>训练数据量 &amp; 时效性</strong></td><td>数据更新时间不同</td><td>新版本掌握更新知识</td></tr><tr><td><strong>推理能力</strong></td><td>数学、逻辑、代码能力提升</td><td>Less hallucination（更可信）</td></tr><tr><td><strong>安全性 &amp; 对齐</strong></td><td>对不当内容的控制增强</td><td>商业化能力更强</td></tr><tr><td><strong>推理速度 &amp; Token效率</strong></td><td>更经济、更快的推理</td><td>降低使用成本</td></tr><tr><td><strong>多模态能力</strong></td><td>文本 → 图像 → 语音 → 视频</td><td>全面人机交互能力提升</td></tr><tr><td><strong>自主工具调用能力</strong></td><td>API、检索增强</td><td>应用能力更接近“智能体”</td></tr></tbody></table><h2 id="命名与定位"><a href="#命名与定位" class="headerlink" title="命名与定位"></a>命名与定位</h2><table><thead><tr><th>品牌</th><th>基础模型</th><th>专业模型</th><th>特化模型</th></tr></thead><tbody><tr><td>GPT</td><td>GPT-mini / GPT-x</td><td>GPT-Pro / GPT-o</td><td>Vision、Coding、Reasoning</td></tr><tr><td>DeepSeek</td><td>小模型 R</td><td>V 系列</td><td>Code / Math</td></tr><tr><td>Claude</td><td>Haiku</td><td>Sonnet</td><td>Opus</td></tr><tr><td>Gemini</td><td>Nano</td><td>Pro</td><td>Ultra</td></tr></tbody></table><h1 id="开发网站"><a href="#开发网站" class="headerlink" title="开发网站"></a>开发网站</h1><ul><li><code>v0.dev</code> 的应用场景是你不需要懂编程以及任何 IDE，只需要做网页界面，那么发送一个设计稿、截图，能马上生成一个不错的网页出来，特别适合不会编程的产品经理、或者要做复杂的网页 UI（最佳搭配是 TailwindCSS 和 ShadcnUI），并且所见即所得。</li><li><code>bolt.new</code> 适合你要做一个小网站，希望可视化编辑，做完一键部署发布，尤其适合前端不熟练网站简单的场景。</li></ul>]]></content>
-    
-    
-    <categories>
-      
-      <category>AI</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>AI</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>AI面试题</title>
     <link href="/2025/08/26/AI%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
     <url>/2025/08/26/AI%E9%9D%A2%E8%AF%95%E9%A2%98/</url>
@@ -308,6 +308,31 @@
       <tag>AI</tag>
       
       <tag>面试题</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>AI开发</title>
+    <link href="/2025/08/26/AI%E5%BC%80%E5%8F%91/"/>
+    <url>/2025/08/26/AI%E5%BC%80%E5%8F%91/</url>
+    
+    <content type="html"><![CDATA[<h1 id="MCP-协议"><a href="#MCP-协议" class="headerlink" title="MCP 协议"></a>MCP 协议</h1><p>MCP 是让模型（Model）通过宿主（Host）访问外部服务器（MCP Server）中工具和资源的协议：</p><table><thead><tr><th>角色</th><th>英文名</th><th>职责</th><th>类比</th></tr></thead><tbody><tr><td>模型宿主</td><td><strong>Model Host / Client</strong></td><td>托管或调用大语言模型（如 ChatGPT、Claude、DeepSeek 等），并负责与 MCP 服务器通信</td><td>「用户代理」或「宿主 App」</td></tr><tr><td>大模型（LLM）</td><td><strong>Model / Assistant</strong></td><td>执行自然语言推理、调用 MCP 工具、利用资源生成回答</td><td>ChatGPT、Claude 等</td></tr><tr><td>服务器</td><td><strong>MCP Server / Tool Server</strong></td><td>通过 MCP 协议暴露工具（tools）、资源（resources）、上下文（contexts）等给模型使用</td><td>插件服务器、第三方 API 服务</td></tr></tbody></table><table><thead><tr><th>角色</th><th>功能定位</th><th>是否运行模型</th><th>是否暴露工具</th><th>是否直接与用户交互</th></tr></thead><tbody><tr><td>Model Host</td><td>调度者 / 管理员</td><td>✅（调用模型）</td><td>❌</td><td>✅</td></tr><tr><td>Model</td><td>智能体（LLM）</td><td>✅</td><td>❌</td><td>✅</td></tr><tr><td>MCP Server</td><td>工具/数据提供方</td><td>❌</td><td>✅</td><td>❌</td></tr></tbody></table><h1 id="大模型版本"><a href="#大模型版本" class="headerlink" title="大模型版本"></a>大模型版本</h1><h2 id="版本差异"><a href="#版本差异" class="headerlink" title="版本差异"></a>版本差异</h2><table><thead><tr><th>维度</th><th>差异内容</th><th>意义</th></tr></thead><tbody><tr><td><strong>参数规模</strong></td><td>数十亿 → 数千亿</td><td>更强的理解、推理、生成能力</td></tr><tr><td><strong>训练数据量 &amp; 时效性</strong></td><td>数据更新时间不同</td><td>新版本掌握更新知识</td></tr><tr><td><strong>推理能力</strong></td><td>数学、逻辑、代码能力提升</td><td>Less hallucination（更可信）</td></tr><tr><td><strong>安全性 &amp; 对齐</strong></td><td>对不当内容的控制增强</td><td>商业化能力更强</td></tr><tr><td><strong>推理速度 &amp; Token效率</strong></td><td>更经济、更快的推理</td><td>降低使用成本</td></tr><tr><td><strong>多模态能力</strong></td><td>文本 → 图像 → 语音 → 视频</td><td>全面人机交互能力提升</td></tr><tr><td><strong>自主工具调用能力</strong></td><td>API、检索增强</td><td>应用能力更接近“智能体”</td></tr></tbody></table><h2 id="命名与定位"><a href="#命名与定位" class="headerlink" title="命名与定位"></a>命名与定位</h2><table><thead><tr><th>品牌</th><th>基础模型</th><th>专业模型</th><th>特化模型</th></tr></thead><tbody><tr><td>GPT</td><td>GPT-mini / GPT-x</td><td>GPT-Pro / GPT-o</td><td>Vision、Coding、Reasoning</td></tr><tr><td>DeepSeek</td><td>小模型 R</td><td>V 系列</td><td>Code / Math</td></tr><tr><td>Claude</td><td>Haiku</td><td>Sonnet</td><td>Opus</td></tr><tr><td>Gemini</td><td>Nano</td><td>Pro</td><td>Ultra</td></tr></tbody></table><h1 id="开发网站"><a href="#开发网站" class="headerlink" title="开发网站"></a>开发网站</h1><ul><li><code>v0.dev</code> 的应用场景是你不需要懂编程以及任何 IDE，只需要做网页界面，那么发送一个设计稿、截图，能马上生成一个不错的网页出来，特别适合不会编程的产品经理、或者要做复杂的网页 UI（最佳搭配是 TailwindCSS 和 ShadcnUI），并且所见即所得。</li><li><code>bolt.new</code> 适合你要做一个小网站，希望可视化编辑，做完一键部署发布，尤其适合前端不熟练网站简单的场景。</li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>AI</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>AI</tag>
       
     </tags>
     
@@ -430,7 +455,7 @@
     <link href="/2025/08/24/React%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
     <url>/2025/08/24/React%E9%9D%A2%E8%AF%95%E9%A2%98/</url>
     
-    <content type="html"><![CDATA[<h1 id="React-和-Vue-的区别"><a href="#React-和-Vue-的区别" class="headerlink" title="React 和 Vue 的区别"></a>React 和 Vue 的区别</h1><p>React 和 Vue 都是流行的前端框架，但有一些核心区别：</p><ul><li>React 更偏向函数式编程和单向数据流，本质是 UI 库，需要依赖社区生态来解决路由、状态管理等问题；而 Vue 是渐进式框架，开箱即用，支持双向绑定，学习曲线更平滑。</li><li>在视图层上，React 使用 JSX，逻辑和视图融合度更高，更灵活；Vue 使用模板和指令，写法更直观。</li><li>响应式上，React 借助 Fiber 架构和 Virtual DOM 来驱动更新，而 Vue 2 用 defineProperty，Vue 3 用 Proxy，响应式能力更强。</li></ul><p>总体来看，React 更适合大型复杂应用和跨端场景，Vue 更适合快速开发和中小型项目。</p><h1 id="为什么要用-Hook"><a href="#为什么要用-Hook" class="headerlink" title="为什么要用 Hook"></a>为什么要用 Hook</h1><ul><li>解决逻辑复用难的问题。类组件里想复用逻辑，只能用高阶组件 (HOC) 或 Render Props，会导致组件嵌套地狱。Hooks 允许把状态逻辑提取到自定义 Hook 中，实现逻辑共享</li><li>解决类组件复杂度高的问题。一个功能的逻辑可能分散在多个生命周期函数：订阅在 <code>componentDidMount</code>、更新在 <code>componentDidUpdate</code>、清理在 <code>componentWillUnmount</code>。Hooks 用 <code>useEffect</code> 就能把逻辑集中到一起，更符合“关注点分离”的设计</li><li>解决 this 问题。类组件里 this 经常出错，需要手动绑定。函数组件没有 this 彻底解决此困扰</li><li>更好支持函数式编程和 Fiber 架构。函数组件 + Hook 更契合 React 声明式和可中断渲染。在执行过程能暂停、恢复甚至丢弃函数组件的执行，而类组件里状态绑定在实例上不好做</li></ul><h1 id="为什么只能在函数内部最外层调用-Hook"><a href="#为什么只能在函数内部最外层调用-Hook" class="headerlink" title="为什么只能在函数内部最外层调用 Hook"></a>为什么只能在函数内部最外层调用 Hook</h1><p>因为 React 使用单向链表来存储每个组件调用的 Hook 状态，每个 Hook 节点都存储着它的状态（如 state、effect 函数、依赖项等）。React 通过<strong>调用顺序</strong>来判断哪个 Hook 对应哪个状态。</p><p>函数组件的每次渲染都是完全独立的。也就是说，每个函数中的 state 变量只是一个简单的常量，每次渲染时从钩子中获取到的常量，没有附着数据绑定（除了 <code>useRef.current</code> 返回是引用）。</p><p>所以如果把 Hook 放在条件语句/循环/子函数里，就会破坏调用顺序，React 无法正确找到对应的 Hook 状态。</p><h1 id="为什么只能在-React-函数组件或自定义-Hook-中用-Hook"><a href="#为什么只能在-React-函数组件或自定义-Hook-中用-Hook" class="headerlink" title="为什么只能在 React 函数组件或自定义 Hook 中用 Hook"></a>为什么只能在 React 函数组件或自定义 Hook 中用 Hook</h1><p>因为 Hooks 必须被关联到一个具体的 React 组件实例上。React 内部有一个当前正在渲染组件的指向（可以理解为一个全局的“光标”）。当调用 Hook 时 React 会检查这个“光标”，知道这个状态是属于哪个组件的，然后把它挂载到对应的 Fiber 节点（React 内部表示组件的结构）上。</p><h1 id="React-性能优化"><a href="#React-性能优化" class="headerlink" title="React 性能优化"></a>React 性能优化</h1><ul><li>React.memo、shouldCompountUpdata、useMemo、useCallBack</li><li>index、key</li><li>render、useTransition、useDeferredValue</li><li>React.lanzy、Suspance</li><li>useContext</li><li>useEffect、return</li><li>useRuducer</li></ul><p>来源：<a href="https://juejin.cn/post/7371777383588954175">React 性能优化十大总结</a>、<a href="https://juejin.cn/post/7529722916290215946">React 性能优化深度指南：从基础到高级技巧</a></p><h1 id="React18-新特性"><a href="#React18-新特性" class="headerlink" title="React18 新特性"></a><a href="https://juejin.cn/post/7094037148088664078">React18 新特性</a></h1><ul><li>render、useTransition、useDeferredValue</li><li>setSate 批处理、flushSync</li></ul><h1 id="React-diff-算法过程"><a href="#React-diff-算法过程" class="headerlink" title="React diff 算法过程"></a><a href="https://juejin.cn/post/7204307381689532474#heading-2">React diff 算法过程</a></h1><p>在 React 中，diff 算法需要与虚拟 DOM 配合才能发挥出真正的效果。React 会使用 diff 算法算出虚拟 DOM 中真正发生变化的部分，并且只会针对该部分进行 DOM 操作，从而避免了对页面进行大面积的更新渲染，减小性能的开销。</p><p>React 定义了三大策略，在对比时根据策略只需遍历一次树就可以完成对比，复杂度降到了 O(n)</p><ul><li>tree diff：在两个树对比时，只会比较同一层级的节点，忽略跨层级的操作</li><li>component diff：在对比两个组件时，首先会判断它们两个的类型是否相同，如果不同直接替换整个组件下的所有子节点</li><li>element diff：同一层级的节点使用唯一性的 key 来区分是否需要创建、删除、移动</li></ul><h1 id="为何-React-JSX-循环需要使用-key"><a href="#为何-React-JSX-循环需要使用-key" class="headerlink" title="为何 React JSX 循环需要使用 key"></a><a href="https://juejin.cn/post/7348651815759282226#heading-58">为何 React JSX 循环需要使用 key</a></h1><p>React 通过 key 唯一标识列表中的每个元素。当列表发生变化时，React 会通过 key 快速判断，哪些元素是新增、哪些是移除、哪些是移动，从而提高性能。如果没有 key，React 默认使用数组索引作为标识，会认为所有 key 变化的元素都是新节点，从而进行不必要的重建，而不是高效的移动，导致性能下降和潜在的状态 bug。</p><h1 id="精读《useEffect-完全指南》"><a href="#精读《useEffect-完全指南》" class="headerlink" title="精读《useEffect 完全指南》"></a><a href="https://juejin.cn/post/6844903806090608647">精读《useEffect 完全指南》</a></h1><h1 id="深入理解受控组件、非受控组件"><a href="#深入理解受控组件、非受控组件" class="headerlink" title="深入理解受控组件、非受控组件"></a><a href="https://juejin.cn/post/7363121890791227426">深入理解受控组件、非受控组件</a></h1><h1 id="setState-是同步还是异步"><a href="#setState-是同步还是异步" class="headerlink" title="setState 是同步还是异步"></a><a href="https://juejin.cn/post/7204307381689532474#heading-5">setState 是同步还是异步</a></h1><h1 id="React-Router-工作原理"><a href="#React-Router-工作原理" class="headerlink" title="React-Router 工作原理"></a><a href="https://juejin.cn/post/7204307381689532474#heading-65">React-Router 工作原理</a></h1><h1 id="一文带你梳理-React-面试题（2023-年版本）"><a href="#一文带你梳理-React-面试题（2023-年版本）" class="headerlink" title="一文带你梳理 React 面试题（2023 年版本）"></a><a href="https://juejin.cn/post/7182382408807743548">一文带你梳理 React 面试题（2023 年版本）</a></h1><ul><li><a href="https://juejin.cn/post/7182382408807743548#heading-1">React 设计思想</a></li><li><a href="https://juejin.cn/post/7182382408807743548#heading-4">React 事件机制</a></li><li><a href="https://juejin.cn/post/7182382408807743548#heading-10">数据如何在 React 组件中流动</a></li></ul><h1 id="2025-最新-React-面试题"><a href="#2025-最新-React-面试题" class="headerlink" title="2025 最新 React 面试题"></a><a href="https://juejin.cn/post/7348651815759282226">2025 最新 React 面试题</a></h1><ul><li><a href="https://juejin.cn/post/7348651815759282226#heading-18">React 懒加载的实现原理</a></li><li><a href="https://juejin.cn/post/7348651815759282226#heading-27">React Hooks 实现生命周期</a></li><li><a href="https://juejin.cn/post/7348651815759282226#heading-36">React-Router 的 <code>&lt;Link /&gt;</code> 组件和 <code>&lt;a&gt;</code> 的区别</a></li><li><a href="https://juejin.cn/post/7348651815759282226#heading-37">PureComponent 和 Component 的区别</a></li><li><a href="https://juejin.cn/post/7348651815759282226#heading-45">render 方法原理以及何时出发</a></li><li><a href="https://juejin.cn/post/7348651815759282226#heading-53">JSX 的本质是什么</a></li><li><a href="https://juejin.cn/post/7348651815759282226#heading-49">JSX 转换成真实 DOM 的过程</a></li><li><a href="https://juejin.cn/post/7348651815759282226#heading-62">如何理解 React concurrency 并发机制</a></li><li><a href="https://juejin.cn/post/7348651815759282226#heading-59">React 事件和原生事件有什么区别</a></li><li><a href="https://juejin.cn/post/7348651815759282226#heading-38">React 事件和原生事件的执行顺序</a></li><li><a href="https://juejin.cn/post/7348651815759282226#heading-60">简述 React batchUpdate 机制</a></li><li><a href="https://juejin.cn/post/7348651815759282226#heading-61">简述 React 事务机制</a></li><li><a href="https://juejin.cn/post/7348651815759282226#heading-57">简述 React 和 Vue diff 算法的区别</a></li></ul>]]></content>
+    <content type="html"><![CDATA[<h1 id="Component、Hook、Utils"><a href="#Component、Hook、Utils" class="headerlink" title="Component、Hook、Utils"></a>Component、Hook、Utils</h1><table><thead><tr><th>类型</th><th>封装</th><th>渲染 UI</th><th>依赖生命周期</th><th>使用场景</th></tr></thead><tbody><tr><td><strong>react 组件</strong></td><td><strong>UI 结构</strong>和<strong>逻辑</strong></td><td>✅</td><td>✅</td><td>页面、模块、UI 片段</td></tr><tr><td><strong>自定义 hook</strong></td><td>可复用的<strong>逻辑</strong>状态</td><td>❌</td><td>✅</td><td>状态逻辑、数据请求、订阅等</td></tr><tr><td><strong>utils 函数</strong></td><td><strong>纯逻辑</strong>或<strong>通用计算</strong></td><td>❌</td><td>❌</td><td>格式化、计算、API 调用等</td></tr></tbody></table><h2 id="react-组件"><a href="#react-组件" class="headerlink" title="react 组件"></a>react 组件</h2><ul><li>特征：能返回 UI（JSX）</li><li>用途：构建界面（View 层）</li><li>特点：<ul><li>可以有 state</li><li>可以有 props</li><li>可以渲染 HTML 结构</li><li>可以使用 Hook（包括自定义 Hook）</li></ul></li><li>示例：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">UserCard</span>(<span class="hljs-params">&#123; user &#125;</span>) </span>&#123;<br>  <span class="hljs-keyword">return</span> (<br>    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">&quot;card&quot;</span>&gt;</span></span><br><span class="xml">      <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&#123;user.avatar&#125;</span> /&gt;</span></span><br><span class="xml">      <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;user.name&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span><br><span class="xml">    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br>  )<br>&#125;<br></code></pre></td></tr></table></figure></li></ul><p>✅ 用来展示界面（UI）<br>⚠️ 不推荐在组件中堆太多逻辑，应交给 hook 或 utils</p><h2 id="自定义-hook"><a href="#自定义-hook" class="headerlink" title="自定义 hook"></a>自定义 hook</h2><ul><li>特征：以 use 开头、封装状态逻辑，可在多个组件中共享</li><li>用途：封装“与 React 生命周期有关”的逻辑，比如：<ul><li>状态管理（useState、useReducer）</li><li>副作用（useEffect）</li><li>数据请求（fetch、WebSocket）</li><li>DOM 监听（scroll、resize）</li></ul></li><li>示例：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">import</span> &#123; useState, useEffect &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;react&#x27;</span><br><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">useUserInfo</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-keyword">const</span> [user, setUser] = useState(<span class="hljs-literal">null</span>)<br><br>  useEffect(<span class="hljs-function">() =&gt;</span> &#123;<br>    fetch(<span class="hljs-string">&#x27;/api/user&#x27;</span>).then(<span class="hljs-function"><span class="hljs-params">res</span> =&gt;</span> res.json()).then(setUser)<br>  &#125;, [])<br><br>  <span class="hljs-keyword">return</span> user<br>&#125;<br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> useUserInfo<br></code></pre></td></tr></table></figure></li></ul><p>✅ 可以被多个组件复用逻辑<br>❌ 不渲染 UI，自身返回的是“数据和行为”</p><h2 id="utils-函数函数"><a href="#utils-函数函数" class="headerlink" title="utils 函数函数"></a>utils 函数函数</h2><ul><li>特征：纯逻辑、无状态、无 React 依赖</li><li>用途：做纯计算、格式化、工具类操作</li><li>场景：<ul><li>时间格式化（<code>formatDate()</code>）</li><li>金额处理（<code>formatPrice()</code>）</li><li>深拷贝、节流防抖</li><li>网络请求封装（如 <code>request()</code>）</li></ul></li><li>示例：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">formatPrice</span>(<span class="hljs-params">price: number</span>) </span>&#123;<br>  <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;￥&#x27;</span> + price.toFixed(<span class="hljs-number">2</span>)<br>&#125;<br></code></pre></td></tr></table></figure></li></ul><p>✅ 任何 JS 环境都能用<br>✅ 不依赖 React<br>✅ 可在 Node、Vue 等项目中重用</p><h2 id="三者关系"><a href="#三者关系" class="headerlink" title="三者关系"></a>三者关系</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-attr">[ utils ]</span> ← 最底层（纯函数层）<br>     ↑<br><span class="hljs-selector-attr">[ hooks ]</span> ← 逻辑复用层（依赖 React）<br>     ↑<br><span class="hljs-selector-attr">[ components ]</span> ← UI 展示层<br><br></code></pre></td></tr></table></figure><ul><li>utils：通用工具逻辑</li><li>hook：封装 React 状态逻辑</li><li>component：渲染 UI</li></ul><h1 id="React-和-Vue-的区别"><a href="#React-和-Vue-的区别" class="headerlink" title="React 和 Vue 的区别"></a>React 和 Vue 的区别</h1><p>React 和 Vue 都是流行的前端框架，但有一些核心区别：</p><ul><li>React 更偏向函数式编程和单向数据流，本质是 UI 库，需要依赖社区生态来解决路由、状态管理等问题；而 Vue 是渐进式框架，开箱即用，支持双向绑定，学习曲线更平滑。</li><li>在视图层上，React 使用 JSX，逻辑和视图融合度更高，更灵活；Vue 使用模板和指令，写法更直观。</li><li>响应式上，React 借助 Fiber 架构和 Virtual DOM 来驱动更新，而 Vue 2 用 defineProperty，Vue 3 用 Proxy，响应式能力更强。</li></ul><p>总体来看，React 更适合大型复杂应用和跨端场景，Vue 更适合快速开发和中小型项目。</p><h1 id="为什么要用-Hook"><a href="#为什么要用-Hook" class="headerlink" title="为什么要用 Hook"></a>为什么要用 Hook</h1><ul><li>解决逻辑复用难的问题。类组件里想复用逻辑，只能用高阶组件 (HOC) 或 Render Props，会导致组件嵌套地狱。Hooks 允许把状态逻辑提取到自定义 Hook 中，实现逻辑共享</li><li>解决类组件复杂度高的问题。一个功能的逻辑可能分散在多个生命周期函数：订阅在 <code>componentDidMount</code>、更新在 <code>componentDidUpdate</code>、清理在 <code>componentWillUnmount</code>。Hooks 用 <code>useEffect</code> 就能把逻辑集中到一起，更符合“关注点分离”的设计</li><li>解决 this 问题。类组件里 this 经常出错，需要手动绑定。函数组件没有 this 彻底解决此困扰</li><li>更好支持函数式编程和 Fiber 架构。函数组件 + Hook 更契合 React 声明式和可中断渲染。在执行过程能暂停、恢复甚至丢弃函数组件的执行，而类组件里状态绑定在实例上不好做</li></ul><h1 id="为什么只能在函数内部最外层调用-Hook"><a href="#为什么只能在函数内部最外层调用-Hook" class="headerlink" title="为什么只能在函数内部最外层调用 Hook"></a>为什么只能在函数内部最外层调用 Hook</h1><p>因为 React 使用单向链表来存储每个组件调用的 Hook 状态，每个 Hook 节点都存储着它的状态（如 state、effect 函数、依赖项等）。React 通过<strong>调用顺序</strong>来判断哪个 Hook 对应哪个状态。</p><p>函数组件的每次渲染都是完全独立的。也就是说，每个函数中的 state 变量只是一个简单的常量，每次渲染时从钩子中获取到的常量，没有附着数据绑定（除了 <code>useRef.current</code> 返回是引用）。</p><p>所以如果把 Hook 放在条件语句/循环/子函数里，就会破坏调用顺序，React 无法正确找到对应的 Hook 状态。</p><h1 id="为什么只能在-React-函数组件或自定义-Hook-中用-Hook"><a href="#为什么只能在-React-函数组件或自定义-Hook-中用-Hook" class="headerlink" title="为什么只能在 React 函数组件或自定义 Hook 中用 Hook"></a>为什么只能在 React 函数组件或自定义 Hook 中用 Hook</h1><p>因为 Hooks 必须被关联到一个具体的 React 组件实例上。React 内部有一个当前正在渲染组件的指向（可以理解为一个全局的“光标”）。当调用 Hook 时 React 会检查这个“光标”，知道这个状态是属于哪个组件的，然后把它挂载到对应的 Fiber 节点（React 内部表示组件的结构）上。</p><h1 id="React-性能优化"><a href="#React-性能优化" class="headerlink" title="React 性能优化"></a>React 性能优化</h1><ul><li>React.memo、shouldCompountUpdata、useMemo、useCallBack</li><li>index、key</li><li>render、useTransition、useDeferredValue</li><li>React.lanzy、Suspance</li><li>useContext</li><li>useEffect、return</li><li>useRuducer</li></ul><p>来源：<a href="https://juejin.cn/post/7371777383588954175">React 性能优化十大总结</a>、<a href="https://juejin.cn/post/7529722916290215946">React 性能优化深度指南：从基础到高级技巧</a></p><h1 id="React18-新特性"><a href="#React18-新特性" class="headerlink" title="React18 新特性"></a><a href="https://juejin.cn/post/7094037148088664078">React18 新特性</a></h1><ul><li>render、useTransition、useDeferredValue</li><li>setSate 批处理、flushSync</li></ul><h1 id="React-diff-算法过程"><a href="#React-diff-算法过程" class="headerlink" title="React diff 算法过程"></a><a href="https://juejin.cn/post/7204307381689532474#heading-2">React diff 算法过程</a></h1><p>在 React 中，diff 算法需要与虚拟 DOM 配合才能发挥出真正的效果。React 会使用 diff 算法算出虚拟 DOM 中真正发生变化的部分，并且只会针对该部分进行 DOM 操作，从而避免了对页面进行大面积的更新渲染，减小性能的开销。</p><p>React 定义了三大策略，在对比时根据策略只需遍历一次树就可以完成对比，复杂度降到了 O(n)</p><ul><li>tree diff：在两个树对比时，只会比较同一层级的节点，忽略跨层级的操作</li><li>component diff：在对比两个组件时，首先会判断它们两个的类型是否相同，如果不同直接替换整个组件下的所有子节点</li><li>element diff：同一层级的节点使用唯一性的 key 来区分是否需要创建、删除、移动</li></ul><h1 id="为何-React-JSX-循环需要使用-key"><a href="#为何-React-JSX-循环需要使用-key" class="headerlink" title="为何 React JSX 循环需要使用 key"></a><a href="https://juejin.cn/post/7348651815759282226#heading-58">为何 React JSX 循环需要使用 key</a></h1><p>React 通过 key 唯一标识列表中的每个元素。当列表发生变化时，React 会通过 key 快速判断，哪些元素是新增、哪些是移除、哪些是移动，从而提高性能。如果没有 key，React 默认使用数组索引作为标识，会认为所有 key 变化的元素都是新节点，从而进行不必要的重建，而不是高效的移动，导致性能下降和潜在的状态 bug。</p><h1 id="精读《useEffect-完全指南》"><a href="#精读《useEffect-完全指南》" class="headerlink" title="精读《useEffect 完全指南》"></a><a href="https://juejin.cn/post/6844903806090608647">精读《useEffect 完全指南》</a></h1><h1 id="深入理解受控组件、非受控组件"><a href="#深入理解受控组件、非受控组件" class="headerlink" title="深入理解受控组件、非受控组件"></a><a href="https://juejin.cn/post/7363121890791227426">深入理解受控组件、非受控组件</a></h1><h1 id="setState-是同步还是异步"><a href="#setState-是同步还是异步" class="headerlink" title="setState 是同步还是异步"></a><a href="https://juejin.cn/post/7204307381689532474#heading-5">setState 是同步还是异步</a></h1><h1 id="React-Router-工作原理"><a href="#React-Router-工作原理" class="headerlink" title="React-Router 工作原理"></a><a href="https://juejin.cn/post/7204307381689532474#heading-65">React-Router 工作原理</a></h1><h1 id="一文带你梳理-React-面试题（2023-年版本）"><a href="#一文带你梳理-React-面试题（2023-年版本）" class="headerlink" title="一文带你梳理 React 面试题（2023 年版本）"></a><a href="https://juejin.cn/post/7182382408807743548">一文带你梳理 React 面试题（2023 年版本）</a></h1><ul><li><a href="https://juejin.cn/post/7182382408807743548#heading-1">React 设计思想</a></li><li><a href="https://juejin.cn/post/7182382408807743548#heading-4">React 事件机制</a></li><li><a href="https://juejin.cn/post/7182382408807743548#heading-10">数据如何在 React 组件中流动</a></li></ul><h1 id="2025-最新-React-面试题"><a href="#2025-最新-React-面试题" class="headerlink" title="2025 最新 React 面试题"></a><a href="https://juejin.cn/post/7348651815759282226">2025 最新 React 面试题</a></h1><ul><li><a href="https://juejin.cn/post/7348651815759282226#heading-18">React 懒加载的实现原理</a></li><li><a href="https://juejin.cn/post/7348651815759282226#heading-27">React Hooks 实现生命周期</a></li><li><a href="https://juejin.cn/post/7348651815759282226#heading-36">React-Router 的 <code>&lt;Link /&gt;</code> 组件和 <code>&lt;a&gt;</code> 的区别</a></li><li><a href="https://juejin.cn/post/7348651815759282226#heading-37">PureComponent 和 Component 的区别</a></li><li><a href="https://juejin.cn/post/7348651815759282226#heading-45">render 方法原理以及何时出发</a></li><li><a href="https://juejin.cn/post/7348651815759282226#heading-53">JSX 的本质是什么</a></li><li><a href="https://juejin.cn/post/7348651815759282226#heading-49">JSX 转换成真实 DOM 的过程</a></li><li><a href="https://juejin.cn/post/7348651815759282226#heading-62">如何理解 React concurrency 并发机制</a></li><li><a href="https://juejin.cn/post/7348651815759282226#heading-59">React 事件和原生事件有什么区别</a></li><li><a href="https://juejin.cn/post/7348651815759282226#heading-38">React 事件和原生事件的执行顺序</a></li><li><a href="https://juejin.cn/post/7348651815759282226#heading-60">简述 React batchUpdate 机制</a></li><li><a href="https://juejin.cn/post/7348651815759282226#heading-61">简述 React 事务机制</a></li><li><a href="https://juejin.cn/post/7348651815759282226#heading-57">简述 React 和 Vue diff 算法的区别</a></li></ul>]]></content>
     
     
     <categories>
@@ -834,9 +859,9 @@
       
       <tag>JavaScript</tag>
       
-      <tag>Function</tag>
-      
       <tag>方法属性</tag>
+      
+      <tag>Function</tag>
       
     </tags>
     
@@ -1730,9 +1755,9 @@
       
       <tag>JavaScript</tag>
       
-      <tag>方法属性</tag>
-      
       <tag>Array</tag>
+      
+      <tag>方法属性</tag>
       
     </tags>
     
@@ -1931,9 +1956,9 @@
     
     <tags>
       
-      <tag>面试题</tag>
-      
       <tag>CSS</tag>
+      
+      <tag>面试题</tag>
       
     </tags>
     

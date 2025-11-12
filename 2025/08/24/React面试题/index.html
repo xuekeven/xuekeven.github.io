@@ -21,15 +21,15 @@
   <meta name="author" content="Keven">
   <meta name="keywords" content="">
   
-    <meta name="description" content="React 和 Vue 的区别React 和 Vue 都是流行的前端框架，但有一些核心区别：  React 更偏向函数式编程和单向数据流，本质是 UI 库，需要依赖社区生态来解决路由、状态管理等问题；而 Vue 是渐进式框架，开箱即用，支持双向绑定，学习曲线更平滑。 在视图层上，React 使用 JSX，逻辑和视图融合度更高，更灵活；Vue 使用模板和指令，写法更直观。 响应式上，React 借助">
+    <meta name="description" content="Component、Hook、Utils   类型 封装 渲染 UI 依赖生命周期 使用场景    react 组件 UI 结构和逻辑 ✅ ✅ 页面、模块、UI 片段   自定义 hook 可复用的逻辑状态 ❌ ✅ 状态逻辑、数据请求、订阅等   utils 函数 纯逻辑或通用计算 ❌ ❌ 格式化、计算、API 调用等   react 组件 特征：能返回 UI（JSX） 用途：构建界面（View">
 <meta property="og:type" content="article">
 <meta property="og:title" content="React面试题">
 <meta property="og:url" content="https://xuekeven.github.io/2025/08/24/React%E9%9D%A2%E8%AF%95%E9%A2%98/index.html">
 <meta property="og:site_name" content="Keven&#39;s Blog">
-<meta property="og:description" content="React 和 Vue 的区别React 和 Vue 都是流行的前端框架，但有一些核心区别：  React 更偏向函数式编程和单向数据流，本质是 UI 库，需要依赖社区生态来解决路由、状态管理等问题；而 Vue 是渐进式框架，开箱即用，支持双向绑定，学习曲线更平滑。 在视图层上，React 使用 JSX，逻辑和视图融合度更高，更灵活；Vue 使用模板和指令，写法更直观。 响应式上，React 借助">
+<meta property="og:description" content="Component、Hook、Utils   类型 封装 渲染 UI 依赖生命周期 使用场景    react 组件 UI 结构和逻辑 ✅ ✅ 页面、模块、UI 片段   自定义 hook 可复用的逻辑状态 ❌ ✅ 状态逻辑、数据请求、订阅等   utils 函数 纯逻辑或通用计算 ❌ ❌ 格式化、计算、API 调用等   react 组件 特征：能返回 UI（JSX） 用途：构建界面（View">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-08-24T04:00:00.000Z">
-<meta property="article:modified_time" content="2025-10-31T03:43:41.268Z">
+<meta property="article:modified_time" content="2025-11-12T16:29:24.127Z">
 <meta property="article:author" content="Keven">
 <meta property="article:tag" content="面试题">
 <meta property="article:tag" content="React">
@@ -267,7 +267,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.3k 字
+          1.7k 字
         
       </span>
     
@@ -278,7 +278,7 @@
         
         
         
-          9 分钟
+          11 分钟
         
       </span>
     
@@ -503,7 +503,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2025年10月31日 中午
+                    本文最后更新于 2025年11月13日 凌晨
                   
                 
               </p>
@@ -511,7 +511,84 @@
             
               <div class="markdown-body">
                 
-                <h1 id="React-和-Vue-的区别"><a href="#React-和-Vue-的区别" class="headerlink" title="React 和 Vue 的区别"></a>React 和 Vue 的区别</h1><p>React 和 Vue 都是流行的前端框架，但有一些核心区别：</p>
+                <h1 id="Component、Hook、Utils"><a href="#Component、Hook、Utils" class="headerlink" title="Component、Hook、Utils"></a>Component、Hook、Utils</h1><table>
+<thead>
+<tr>
+<th>类型</th>
+<th>封装</th>
+<th>渲染 UI</th>
+<th>依赖生命周期</th>
+<th>使用场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>react 组件</strong></td>
+<td><strong>UI 结构</strong>和<strong>逻辑</strong></td>
+<td>✅</td>
+<td>✅</td>
+<td>页面、模块、UI 片段</td>
+</tr>
+<tr>
+<td><strong>自定义 hook</strong></td>
+<td>可复用的<strong>逻辑</strong>状态</td>
+<td>❌</td>
+<td>✅</td>
+<td>状态逻辑、数据请求、订阅等</td>
+</tr>
+<tr>
+<td><strong>utils 函数</strong></td>
+<td><strong>纯逻辑</strong>或<strong>通用计算</strong></td>
+<td>❌</td>
+<td>❌</td>
+<td>格式化、计算、API 调用等</td>
+</tr>
+</tbody></table>
+<h2 id="react-组件"><a href="#react-组件" class="headerlink" title="react 组件"></a>react 组件</h2><ul>
+<li>特征：能返回 UI（JSX）</li>
+<li>用途：构建界面（View 层）</li>
+<li>特点：<ul>
+<li>可以有 state</li>
+<li>可以有 props</li>
+<li>可以渲染 HTML 结构</li>
+<li>可以使用 Hook（包括自定义 Hook）</li>
+</ul>
+</li>
+<li>示例：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">UserCard</span>(<span class="hljs-params">&#123; user &#125;</span>) </span>&#123;<br>  <span class="hljs-keyword">return</span> (<br>    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">&quot;card&quot;</span>&gt;</span></span><br><span class="xml">      <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&#123;user.avatar&#125;</span> /&gt;</span></span><br><span class="xml">      <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;user.name&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span><br><span class="xml">    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br>  )<br>&#125;<br></code></pre></td></tr></table></figure></li>
+</ul>
+<p>✅ 用来展示界面（UI）<br>⚠️ 不推荐在组件中堆太多逻辑，应交给 hook 或 utils</p>
+<h2 id="自定义-hook"><a href="#自定义-hook" class="headerlink" title="自定义 hook"></a>自定义 hook</h2><ul>
+<li>特征：以 use 开头、封装状态逻辑，可在多个组件中共享</li>
+<li>用途：封装“与 React 生命周期有关”的逻辑，比如：<ul>
+<li>状态管理（useState、useReducer）</li>
+<li>副作用（useEffect）</li>
+<li>数据请求（fetch、WebSocket）</li>
+<li>DOM 监听（scroll、resize）</li>
+</ul>
+</li>
+<li>示例：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">import</span> &#123; useState, useEffect &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;react&#x27;</span><br><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">useUserInfo</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-keyword">const</span> [user, setUser] = useState(<span class="hljs-literal">null</span>)<br><br>  useEffect(<span class="hljs-function">() =&gt;</span> &#123;<br>    fetch(<span class="hljs-string">&#x27;/api/user&#x27;</span>).then(<span class="hljs-function"><span class="hljs-params">res</span> =&gt;</span> res.json()).then(setUser)<br>  &#125;, [])<br><br>  <span class="hljs-keyword">return</span> user<br>&#125;<br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> useUserInfo<br></code></pre></td></tr></table></figure></li>
+</ul>
+<p>✅ 可以被多个组件复用逻辑<br>❌ 不渲染 UI，自身返回的是“数据和行为”</p>
+<h2 id="utils-函数函数"><a href="#utils-函数函数" class="headerlink" title="utils 函数函数"></a>utils 函数函数</h2><ul>
+<li>特征：纯逻辑、无状态、无 React 依赖</li>
+<li>用途：做纯计算、格式化、工具类操作</li>
+<li>场景：<ul>
+<li>时间格式化（<code>formatDate()</code>）</li>
+<li>金额处理（<code>formatPrice()</code>）</li>
+<li>深拷贝、节流防抖</li>
+<li>网络请求封装（如 <code>request()</code>）</li>
+</ul>
+</li>
+<li>示例：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">formatPrice</span>(<span class="hljs-params">price: number</span>) </span>&#123;<br>  <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;￥&#x27;</span> + price.toFixed(<span class="hljs-number">2</span>)<br>&#125;<br></code></pre></td></tr></table></figure></li>
+</ul>
+<p>✅ 任何 JS 环境都能用<br>✅ 不依赖 React<br>✅ 可在 Node、Vue 等项目中重用</p>
+<h2 id="三者关系"><a href="#三者关系" class="headerlink" title="三者关系"></a>三者关系</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-attr">[ utils ]</span> ← 最底层（纯函数层）<br>     ↑<br><span class="hljs-selector-attr">[ hooks ]</span> ← 逻辑复用层（依赖 React）<br>     ↑<br><span class="hljs-selector-attr">[ components ]</span> ← UI 展示层<br><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>utils：通用工具逻辑</li>
+<li>hook：封装 React 状态逻辑</li>
+<li>component：渲染 UI</li>
+</ul>
+<h1 id="React-和-Vue-的区别"><a href="#React-和-Vue-的区别" class="headerlink" title="React 和 Vue 的区别"></a>React 和 Vue 的区别</h1><p>React 和 Vue 都是流行的前端框架，但有一些核心区别：</p>
 <ul>
 <li>React 更偏向函数式编程和单向数据流，本质是 UI 库，需要依赖社区生态来解决路由、状态管理等问题；而 Vue 是渐进式框架，开箱即用，支持双向绑定，学习曲线更平滑。</li>
 <li>在视图层上，React 使用 JSX，逻辑和视图融合度更高，更灵活；Vue 使用模板和指令，写法更直观。</li>
@@ -643,7 +720,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2025年10月31日</div>
+          <div>2025年11月13日</div>
         </div>
       
       
